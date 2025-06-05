@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "ff58396ae82b85d1",
+    "type": "split",
+    "children": [
+      {
+        "id": "34b990085ff5133b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f4e47bd2e7a5f02e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cyber Kill Chain/Cyber Kill Chain Command and Control.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Cyber Kill Chain Command and Control"
+            }
+          },
+          {
+            "id": "e7075d18ca876a32",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cyber Kill Chain/Cyber Kill Chain Actions on Objectives.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Cyber Kill Chain Actions on Objectives"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6c91f643e5541100",
+    "type": "split",
+    "children": [
+      {
+        "id": "366f7e24dd2fcd55",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "145affc754c1bf74",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "75b12d3908bb2fad",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "15ba736c982a62cc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dccee587b6e980ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "200c9f55d0840a9d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2a3372eadfd800b4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Secure Fundamentals The CIA Triad.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Secure Fundamentals The CIA Triad"
+            }
+          },
+          {
+            "id": "73b2c449c77d0c5a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Secure Fundamentals The CIA Triad.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Secure Fundamentals The CIA Triad"
+            }
+          },
+          {
+            "id": "209ae26c4d0215a8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0f63df2b81137817",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Secure Fundamentals The CIA Triad.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Secure Fundamentals The CIA Triad"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "145affc754c1bf74",
+  "lastOpenFiles": [
+    "Cyber Kill Chain/Cyber Kill Chain Command and Control.md",
+    "Cyber Kill Chain/Cyber Kill Chain Actions on Objectives.md",
+    "Cyber Kill Chain/Cyber Kill Chain Installation.md",
+    "Cyber Kill Chain/Cyber Kill Chain Delivery.md",
+    "Cyber Kill Chain/Cyber Kill Chain Weaponization.md",
+    "Cyber Kill Chain/Cyber Kill Chain Reconnaissance.md",
+    "Wireshark TLS Traffic.md",
+    "Cyber Kill Chain",
+    "Understanding Wireshark TLS Handshake.md",
+    "Linux/Linux CLI Ep 7 Using wc.md",
+    "Encoding Base64.md",
+    "Intro to Wireshark.md",
+    "Linux/Linux CLI Ep 11 - SSH and SCP.md",
+    "Linux/Linux CLI Ep 14 using screen.md",
+    "Linux/Linux CLI Ep 13 searching and sorting.md",
+    "Linux/Linux CLI Ep 12 Using Find.md",
+    "Linux/Linux CLI Ep 10 Sudo.md",
+    "Linux/Linux CLI Ep 9 Stream Redirection.md",
+    "NIST 800-53 Access Control.md",
+    "Linux/Linux CLI Ep 8 Manipulating Text.md",
+    "Linux/Linux CLI ep 6 Editing Files.md",
+    "Linux/Linux CLI Ep 4 Changing Things.md",
+    "Linux/Linux CLI Ep 1 Introduction.md",
+    "Splunk/Splunk Basics Ep.3 Search.md",
+    "Splunk/Splunk Basics Ep4 Advanced Search (SPL & Transforming).md",
+    "Demonstrate Skills Splunk Basics.md",
+    "Linux",
+    "tcpdump.md",
+    "Splunk",
+    "Secure Fundamentals",
+    "Ethics & Laws"
+  ]
+}
