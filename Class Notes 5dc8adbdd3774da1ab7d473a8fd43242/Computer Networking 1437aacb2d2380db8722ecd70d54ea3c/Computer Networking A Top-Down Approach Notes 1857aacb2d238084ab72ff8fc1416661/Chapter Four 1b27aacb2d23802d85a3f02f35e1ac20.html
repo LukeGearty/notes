@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter Four</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1b27aacb-2d23-802d-85a3-f02f35e1ac20" class="page sans"><header><h1 class="page-title">Chapter Four</h1><p class="page-description"></p></header><div class="page-body"><p id="1b67aacb-2d23-80ee-8004-fd725b030569" class="">The transport layer provides process-to-process communication, while the network layer provides host to host communication. </p><p id="1b27aacb-2d23-8090-aa91-ddbfb1241a58" class="">The network layer can be decomposed into two interacting parts: data plane and control plane.</p><h1 id="1b27aacb-2d23-80ba-927b-d49fb81c43a3" class="">Overview of Network Layer</h1><p id="1b27aacb-2d23-8064-88b1-c93e61edbf75" class="">Suppose two hosts are communicating with each other, H1 and H2. The network layer at H1 encapsulates transport layer segments into datagrams and sends it to its nearby router R1. The network layer at H2 receives the datagram from its router, R2, and delivers the segments up to the transport layer at H2. </p><p id="1b27aacb-2d23-8064-b202-e2ba94f67ecf" class="">The primary role of the network layer data plane at each router is to forward datagrams from its input links to its output links. The primary role of the network control plane is to coordinate these local, per-router forwarding actions os that <strong>datagrams </strong>are ultimately transferred end-to-end, along paths of routers between source and destination hosts. </p><h2 id="1b27aacb-2d23-8084-abfa-e0a23be98c22" class="">Forwarding and Routing: The Data and Control Planes</h2><p id="1b27aacb-2d23-80b5-82c6-f56ffdb527c5" class="">The primary role of the network layer is to move packets from a sending host to a receiving host. There are two important network-layer functions:</p><ol type="1" id="1b27aacb-2d23-807d-9d40-c3f42beef8b8" class="numbered-list" start="1"><li>Forwarding: Router moving an arriving packet from the router’s input link to the appropriate output link. Packets can be blocked from exiting a router or might be duplicated and sent over multiple outgoing links. A router-local action.</li></ol><ol type="1" id="1b27aacb-2d23-803b-8d59-cacb828f4ed5" class="numbered-list" start="2"><li>Routing: The network layer must determine the route taken by packets as they flow from a sender to a receiver. The algorithms that calculate these paths are routing algorithms. A network-wide process. A global action. </li></ol><p id="1b27aacb-2d23-802a-bbe2-faabb59eae8d" class="">A key element in every network router is the <strong>forwarding table</strong>. When a packet arrives, a router forwards it by examining the value of one or more fields in the arriving packet’s header and uses these values to index into its forwarding table. The value stored in the forwarding table entry for those values indicates the outgoing link interface at that router to which the packet is to be forwarded. </p><h3 id="1b27aacb-2d23-8097-b5ab-c36ad269e8da" class="">Control Plane: The Traditional Approach</h3><p id="1b27aacb-2d23-80c3-8755-d13062e6cefd" class="">A routing algorithm runs in each and every router and both forwarding and routing functions are contained within a router. The routing algorithm in one router exchanges routing messages with other routers to compute the values for its forwarding table.</p><h3 id="1b27aacb-2d23-8041-86b5-d9dd74b4a079" class="">Control Plane: The SDN Approach</h3><p id="1b27aacb-2d23-80fe-bb27-dbfad9b88c1b" class="">A physically separate, remote controller computes and distributes the forwarding tables to be used by each and every router. In this example, the routing device performs forwarding only, while the remote controller computes and distributes forwarding tables. This is implemented in software, in a remote data center with high reliability and redundancy, and might be managed by the ISP. The remote controller and the router communicate by exchanging messages containing forwarding tables and other pieces of routing information. </p><p id="1c47aacb-2d23-8087-b1b7-f6b204e52202" class=""><strong>Software-defined Networking</strong>: The network is “software-defined” because the controller that computes forwarding tables and interacts with routers is implemented in software.</p><h2 id="1b27aacb-2d23-80d5-8fe3-d1d48b33618e" class="">Network Service Model</h2><p id="1b27aacb-2d23-80a5-8062-d64d60f37e74" class="">The network service model defines the characteristics of end-to-end delivery of packets between sending and receiving hosts. </p><p id="1b27aacb-2d23-8047-bdbe-fb185f861d0a" class="">These services could include:</p><ul id="1b27aacb-2d23-804f-a715-c4beabe7d7c7" class="bulleted-list"><li style="list-style-type:disc">Guaranteed Delivery of a packet sent by a source host will eventually arrive at destination</li></ul><ul id="1b27aacb-2d23-8048-8183-e903cf9e22de" class="bulleted-list"><li style="list-style-type:disc">Guaranteed delivery with bounded delays: guaranteed delivery within a specified host-to-host delay bound</li></ul><ul id="1b27aacb-2d23-807b-a558-ec339d4e0116" class="bulleted-list"><li style="list-style-type:disc">In order packet delivery: Packets arrive at the destination in the order that they were sent</li></ul><ul id="1b27aacb-2d23-80cc-9d29-c3990335bb2d" class="bulleted-list"><li style="list-style-type:disc">Guaranteed minimal bandwidth: emulating the behavior of a transmission link of a specified bit rate between sending and receiving hosts. As long as the sender transmits bits at a rate below the specified rate, then all packets are eventually delivered to the destination.</li></ul><ul id="1b27aacb-2d23-8097-93e3-e4ee05e4b816" class="bulleted-list"><li style="list-style-type:disc">Security: Encrypt all datagrams at the source and decrypt at the destination.</li></ul><p id="1b27aacb-2d23-8033-8540-c602877229a3" class="">The internet’s network layer is a <strong>best-effort service. </strong>Packets are neither guaranteed to be received in the order in which they were sent, nor is their eventual delivery even guaranteed. </p><p id="1d77aacb-2d23-8021-b6ee-ce2dca697dc2" class="">Other network architectures provide services that go beyond best-effort. ATM Network provides for guaranteed in-order delay, bounded delay, and guaranteed minimal bandwidth.</p><h1 id="1b27aacb-2d23-8024-9665-d79f773bedc1" class="">What’s Inside a Router?</h1><p id="1b27aacb-2d23-8023-ad03-ea4d7481665d" class="">The below are almost always implemented in hardware, except for routing processor.  They are implemented in hardware because they need to be fast.</p><ul id="1b27aacb-2d23-8046-9770-de67d55d36d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Input Ports</strong>: an input port performs several key functions. <ul id="1b27aacb-2d23-80fb-a7b9-fff2d6908039" class="bulleted-list"><li style="list-style-type:circle">Terminating an incoming physical link at a router. The physical aspects of receiving a signal - converting electrical or optical signals into digital data.</li></ul><ul id="1b27aacb-2d23-8011-9978-e60d4ed453d1" class="bulleted-list"><li style="list-style-type:circle">Performs link-layer functions needed to interoperate with the link layer at the other side of the incoming link. </li></ul><ul id="1b27aacb-2d23-80c9-82ae-ebbc2ff2fa4b" class="bulleted-list"><li style="list-style-type:circle">A lookup function where the forwarding table is consulted to determine the router output port to which an arriving packet will be forwarded via the switching fabric. <ul id="1b27aacb-2d23-8052-b8f2-cb0741af11e0" class="bulleted-list"><li style="list-style-type:square">Control packets are forwarded from an input port to the routing processor.</li></ul></li></ul></li></ul><ul id="1b27aacb-2d23-801a-aaaa-ebe176ae484e" class="bulleted-list"><li style="list-style-type:disc"><strong>Switching fabric</strong>: connects the router’s input ports to its output ports. This is completely contained within the router. </li></ul><ul id="1b27aacb-2d23-8011-8319-d7f5a7c89050" class="bulleted-list"><li style="list-style-type:disc"><strong>Output Ports: </strong>stores packets received from the switching fabric and transmits these packets on the outgoing link by performing the necessary link-layer and physical-layer functions. When a link is bidirectional, it is paired with an input port.</li></ul><ul id="1b27aacb-2d23-80b7-92f2-e5f64c6dd98b" class="bulleted-list"><li style="list-style-type:disc"><strong>Routing Processor: </strong>performs control-plane functions. Executes routing protocols in traditional routers, maintains routing tables and attached link state information, and computes the forwarding table for the router. Communicates with remote controller in SDN routers, in order to receive forwarding table entries computed by the remote controller and install these entries in the router’s input ports.</li></ul><p id="1b27aacb-2d23-805b-b3ec-c2bd2ae105f5" class="">The data plane operates at the nanosecond time scale. Control plane are implemented at the millisecond or second time scale. </p><p id="1b27aacb-2d23-8093-a645-cf8406a6f488" class="">Processing can be <em>destination-based forwarding, </em>where their ‘exit’ is based on where the destination is, or <em>generalized forwarding, </em>which is based on many different factors (like origin for instance).</p><p id="1b97aacb-2d23-80e4-bfd1-ce1005307636" class="">As an analogy, packet forwarding and the principle router components can be compared to a car entering and leaving an interchange. In destination based forwarding, the car stops at an entry station and indicates its final destination, where an attendant at the entry station looks up the final destination, determines the roundabout exit and tells the driver which roundabout exit to take. In Generalized forwarding, the attendant determine’s the exit ramp based on factors like the car’s origin, the kind of car, where the car is coming from, etc. It may be allowed to pass, or it may be destroyed (dropped in router terms) with the attendant blowing it up (assuming no one is in this car and it’s a self driven car).</p><p id="1b97aacb-2d23-804d-82d1-e646a5263a22" class="">For the router components, the entry road and entry station is the input port, the roundabout is the switching fabric, the exit road is the output port. If the station attendant is slow, or if cars are slow, or if the cars all leave at the same exit ramp, backups can occur. </p><h2 id="1b27aacb-2d23-8021-a5d6-db36fd8d1f5f" class="">Input Port Processing and Destination-Based Forwarding</h2><p id="1b27aacb-2d23-8040-aac8-e88aa9c0addd" class="">The input port’s line-termination function and link-layer processing implement the physical and link layers for that individual input link. </p><p id="1b97aacb-2d23-80e6-ae62-c0b2b71cd3ba" class="">The lookup is performed in the input port to lookup to which output port the arriving packet will be forwarded. The forwarding table is either computed and updated by the routing processor/received from a remote SDN controller. It is copied from the routing processor to the line cards over a separate bus. With a shadow copy at each line card, forwarding decisions can be made locally, preventing centralized processing bottlenecks.<div class="indented"><p id="1c17aacb-2d23-8036-a3f4-d22eb79e1a95" class="">More simply, it is the equivalent of your manager giving you a set of directions on a piece of paper at work. Whenever you need to know what to do, you refer to that set of directions rather than asking your manager each time. </p></div></p><p id="1b27aacb-2d23-80cb-b430-c039c4d3ab7f" class="">There won’t be an entry for each IP address in the forwarding table, as that would require billions of entries. Instead, lets say there are four links, number 0 through 3. The routing table might assign destination address range for each interface.</p><p id="1b27aacb-2d23-8080-b059-de72784d42b7" class="">We could also have a prefix of the packet’s destination address with the entries in the table. If a prefix matches multiple interfaces, the longest prefix matching rule: it finds the longest matching entry in the table and forwards the packet to the link interface associated with the longest prefix match. </p><p id="1b97aacb-2d23-8050-a5f2-eafa46e615d1" class="">To explain longest prefix matching:</p><p id="1b97aacb-2d23-80e5-846f-f536c9274604" class="">Say there is this table:</p><table id="1b97aacb-2d23-80af-8d5a-c4df2da44cff" class="simple-table"><tbody><tr id="1b97aacb-2d23-80e6-a94c-eacb1a0914d5"><td id="{eVN" class="" style="width:284px">Prefix</td><td id="FSlX" class="" style="width:132px">Link Interface</td></tr><tr id="1b97aacb-2d23-808c-a14e-d163ba800fb6"><td id="{eVN" class="" style="width:284px">11001000 00010111 0010*** ********</td><td id="FSlX" class="" style="width:132px">0</td></tr><tr id="1b97aacb-2d23-80cc-a530-d3adc49d091e"><td id="{eVN" class="" style="width:284px">11001000 00010111 00011000 ********</td><td id="FSlX" class="" style="width:132px">1</td></tr><tr id="1b97aacb-2d23-806d-8f88-fdb466ba6055"><td id="{eVN" class="" style="width:284px">11001000 00010111 00011*** ********</td><td id="FSlX" class="" style="width:132px">2</td></tr><tr id="1b97aacb-2d23-8047-94e5-f9b31f2e6878"><td id="{eVN" class="" style="width:284px">Otherwise</td><td id="FSlX" class="" style="width:132px">3</td></tr></tbody></table><p id="1b97aacb-2d23-808c-99a9-f8039c77e193" class="">The * represents wildcards, they could be anything.</p><p id="1b97aacb-2d23-80a2-97c3-c50c19bbb1f8" class="">if this address comes in: 11001000 00010111 00010110 10100001. It would go out on Link 0. </p><p id="1b97aacb-2d23-80fe-a9ec-f67882a56e7c" class="">If this address comes in: 11001000 00010111 00011000 10101010. It would go out on Link 1. The 21 most left bits match the third entry on Link 2, but the 24 most left bits match the second entry on Link 1. </p><p id="1b27aacb-2d23-804c-80ee-d87fc93b66bb" class="">The lookup is conceptually simple but it needs to be really fast. Nanoseconds fast. Linear search won’t cut it. There also needs to be considerations for memory access time, using embedded on-chip DRAM and SRAM to improve memory performance. </p><p id="1b27aacb-2d23-800f-94c7-d0b7c70eea71" class="">A packet may be temporarily blocked from entering the switching fabric after the lookup, in which case a queue will form at the input port. This happens if packets from other input ports are using the fabric. </p><p id="1b27aacb-2d23-803c-90e6-db7d3b2063b9" class="">The input port must also:</p><ul id="1b27aacb-2d23-8049-801d-c2de33356471" class="bulleted-list"><li style="list-style-type:disc">do physical and link-layer processing</li></ul><ul id="1b27aacb-2d23-8062-ae95-c3bd6938c25e" class="bulleted-list"><li style="list-style-type:disc">Check the packet’s version number, checksum, and time-to-live field, and rewrite the latter two</li></ul><ul id="1b27aacb-2d23-8035-8fa9-f7caa9de0766" class="bulleted-list"><li style="list-style-type:disc">Counters used for network management must be updated</li></ul><h2 id="1b27aacb-2d23-806a-b47e-ec4adcf32dd2" class="">Switching</h2><p id="1b27aacb-2d23-805b-a9c8-e361576617b8" class="">Switching fabric is the heart of the router - this is where packets are forwarded from input to output. Switching can be done in a variety of ways.</p><ul id="1b27aacb-2d23-80e2-b6ff-c74ec715db43" class="bulleted-list"><li style="list-style-type:disc"><em>Switching via memory. </em>The simplest routers were traditional computers, with switching between input and output ports being done under direct control of the CPU. An input port first signaled the routing processor via an interrupt. The packet was the ncopied from the input port into processor memory. The routing processor then extracted the destination addres from the header, looked up the appropriate output port in the forwarding table, and copied the packet to the output port’s buffers. If the memory bandwidth was such that a maximum of B packets per second can be written into, or read from memory, then the overall forwarding throughput must be less than B/2.<br/>IN simpler terms, the CPU moves packets from input to output through main memory. If memory is limited to B packets, the maximum forwarding throughput is limited to B/2. This is because it is limited by the memory’s read/write function. Packets cannot be forwarded at the same time -  Only one memory read/write can be done at a time, even if there are different output ports.<br/><ul id="1b27aacb-2d23-801a-b428-e15e5a99254c" class="bulleted-list"><li style="list-style-type:circle">The modern implementation of this, the major difference is that the lookup of the destination address and the storing of the packet into the appropriate memory location are performed by processing on the input line cards.</li></ul><ul id="1c27aacb-2d23-8014-9e09-d8fa956336fb" class="bulleted-list"><li style="list-style-type:circle">Think of this as literally just a CPU executing instructions, the instructions being to forward packets. It needs to read/write into memory.</li></ul></li></ul><ul id="1b27aacb-2d23-80b7-9577-e7a04720a734" class="bulleted-list"><li style="list-style-type:disc"><em>Switching via a bus</em>. An input port transfers a packet directly to the output port over a shared bus, without intervention by the routing processor. The input ports puts a switch-internal label to the packet indicating the local output port to which this packet should be transferred to. All output ports receive the packet, but only the match port will keep it. This is limited by the bus speed. <ul id="1c27aacb-2d23-807e-80f5-ce8eb44af10b" class="bulleted-list"><li style="list-style-type:circle">Think of this as a single bus getting ready for a packet to board the bus. Before getting on, the bus station gives the packet a ticket (switch-internal label) to indicate the destination. The packet then boards the bus and the bus takes each packet to the output port. The only thing is, only one packet can get on the bus at a time, and if there are multiple packets they have to wait. </li></ul></li></ul><ul id="1b27aacb-2d23-80ee-8fdc-da67307d8f04" class="bulleted-list"><li style="list-style-type:disc"><em>Switching via an interconnection network. </em>The bandwidth limitations of one bus means only so much can fit through it. Switching via an interconnection network tries to overcome it by using a more sophisticated interconnection network, allowing multiple packets to move through. This has been used in the past to interconnect processors in a multiprocessor computer architecture. <ul id="1c27aacb-2d23-801c-a908-ddb3549c066f" class="bulleted-list"><li style="list-style-type:circle">Think of this as instead of having one bus, there are multiple buses that can take packets on different routes to their output ports, assuming there are different output ports.</li></ul><ul id="1b97aacb-2d23-80b2-9aa1-c2bb524b65ab" class="bulleted-list"><li style="list-style-type:circle">In a crossbar switch, there are 2<em>N </em>buses that connect <em>N </em>input ports to <em>N output ports. </em>Each vertical bus intersects each horizontal bus at a crosspoint, which can be opened or closed at any time by the switch fabric controller. </li></ul><ul id="1b97aacb-2d23-80aa-9c0c-fc4c87a91db1" class="bulleted-list"><li style="list-style-type:circle">When a packet arrives from Port A and needs to be forwarded to Port Y, a direct path between the two is created by closing the crosspoint at the intersection of busses A and Y. Port B to Port X can be forwarded at the same time since the A-to-Y and B-to-X packets use different input and output busses. </li></ul><ul id="1b97aacb-2d23-807b-951d-de65bd26fcb0" class="bulleted-list"><li style="list-style-type:circle">Non-blocking: a packet being forwarded to an ouptut port will not be blocked from reaching that output port as long as no ther packet is currently being forwarded to that output port. If they have the same output port though, one will have to wait.</li></ul></li></ul><p id="1b97aacb-2d23-8004-b052-c4253d733825" class="">
+</p><h2 id="1b27aacb-2d23-80bb-9f48-ef05ce086025" class="">Output Port Processing</h2><p id="1b27aacb-2d23-8007-a75a-e73c43a6d763" class="">Takes packets stored in the output port’s memory and transmits them over the output link. This includes selecting (scheduling) and de-queuing packets for transmission.</p><h2 id="1b27aacb-2d23-8012-8d82-d2002f671759" class="">Where Does Queuing Occur?</h2><p id="1b27aacb-2d23-800a-8a7a-d8dfd5c51a9b" class="">Packet queues can occur at both the input ports and the output ports. When learning about packet loss, it occurs here within the router.</p><p id="1b27aacb-2d23-8023-97db-d932d88fd355" class="">Suppose that input and output line speeds all have an identical transmission rate of <em>R_line</em> packets per second, and there are N input ports and N output ports. The time to send a packet on any link is equal to the time to receive a packet on any link. Switching fabric transfer rate is <em>R_switch. </em>If <em>R_switch </em>is N times faster than <em>R_line</em>, then only negligible queuing will occur at input ports. It means it can handle all incoming packets quickly enough.</p><p id="1b97aacb-2d23-8001-8e11-ef03ebca567b" class="">Transmission rate of Input and output line speeds: <em>R_line</em></p><p id="1b97aacb-2d23-8006-b6d9-d22b644f28b3" class="">Switch Fabric Transfer Rate: <em>R_switch</em></p><p id="1b97aacb-2d23-80da-a671-ca5e427b31c3" class=""><em>Amount of Input ports: N</em></p><p id="1b97aacb-2d23-807b-8fa0-e286255da0fc" class="">Amount of Output Ports: <em>N</em></p><p id="1b97aacb-2d23-809e-bf33-de19d53cc03d" class="">If R_switch is N times faster than R_line, then negligible queuing occurs at input ports. This is because, even in the worse case where all N input lines are receiving packets, all packets are to be forwarded to the same output port, each batch of <em>N </em>packets (one packet per input port) can be cleared through the fabric before the next batch arrives. </p><h3 id="1b27aacb-2d23-8033-a78f-e60a8f022292" class="">Input Queueing</h3><p id="1b27aacb-2d23-8055-a984-da3654368785" class="">If the switch fabric is not fast enough to transfer all arriving packets without delay. Packet queues can occur at the input ports. </p><p id="1c07aacb-2d23-801e-b123-ce1e922ea614" class="">In a crossbar switching fabric where all link speeds are identical, one packet can be transferred from any one input port to a given output port, packets are moved from a given input queue to their desired output queue in an FCFS manner. Multiple packets can be transferred in parallel if their output ports are different. If two packets at the front of two input queues are destined for the same output queue, then one will be blocked.</p><p id="1b27aacb-2d23-80fc-8c78-de0466926679" class=""><strong>Head-of-the-line blocking </strong>in an input-queued switch - a queued packet in an input queue must wait for transfer through the fabric because it is blocked by another packet at the head of the line. </p><h3 id="1b27aacb-2d23-805a-8a24-de7174e344ce" class="">Output Queueing</h3><p id="1b27aacb-2d23-800f-b27e-cef0268a9101" class="">If R_Switch is again N times faster than R_line, and  packets arrives at each of the N input ports are destined to the same output port. In the time it takes to send a single packet onto the outgoing link, N new packets will arrive at this output port, one for each of the N input ports. The N arriving packets will have to queue since the output port can only transmit one packet at a time. </p><p id="1b27aacb-2d23-805b-ac1a-dd283cbad029" class="">When there is not enough memory to buffer an incoming packet, it can either drop the arriving packet (<strong>drop-tail </strong>policy) or it can drop an already queued packet to make room. It may be advantageous to drop a packet before the buffer is full to provide a congestion signal to the sender (Explicit Congestion Notification). </p><p id="1b97aacb-2d23-80f5-8351-edfb6320660f" class="">Active Queue Management - a number of proactive packet-dropping and -marking policies. </p><p id="1b97aacb-2d23-80dd-9d23-c717d8aa72e4" class="">A packet scheduler at the output port must choose one packet among those queued for transmission. </p><h3 id="1b27aacb-2d23-8001-b888-d73128de8255" class="">How Much Buffering is “Enough”?</h3><p id="1c07aacb-2d23-801f-be89-f177fc6ece4a" class="">Formula for Buffering used to be:</p><p id="1c07aacb-2d23-80ca-b07f-d7b886356d49" class="">Let B = the amount of buffering</p><p id="1c07aacb-2d23-80da-a71d-db5a444901d6" class="">RTT = Round Trip Time in seconds</p><p id="1c07aacb-2d23-80bb-8039-c42bd96a787f" class="">Link Capacity = C</p><p id="1c07aacb-2d23-80e3-a00a-c06c522ee02e" class="">B = RTT * C</p><p id="1b27aacb-2d23-800a-9924-db17d6c1b522" class="">The rule of thumb was that the buffer size should be equal to the average round-trip time multipled by the link capacity. Recently, it may be that the amount of buffering needed is round trip time multiplied by link capacity divided by the square root of the number of independent TCP flows passing through a link. </p><p id="1b97aacb-2d23-8062-b137-fbac64457389" class="">A 10 Gbps link with an RTT of 250 msec would need an amount of buffering equal to .25 sec (equivelant to 250 msec) * 10 = 2.5 Gbits of buffers. </p><p id="1b27aacb-2d23-8087-8cc6-f407d87529ac" class="">More buffering isn’t always better - it could lead to longer wait times. This is called <strong>bufferbloat.</strong></p><h2 id="1b27aacb-2d23-80ea-95b8-c98577f94ef8" class="">Packet Scheduling</h2><p id="1b27aacb-2d23-80d2-be8a-da7e2838c4d9" class="">There is is the first come, first served (or First in First Out) way of doing it. Priority basis, round-robin queuing.</p><h3 id="1b27aacb-2d23-8088-9dd9-c6d70a42d30b" class="">First-in-First-Out (FIFO)</h3><p id="1b27aacb-2d23-8013-86c2-f5a8351e32f2" class="">The scheduling discipline selects packets for link transmission in the same order in which they arrived at the output link queue. </p><p id="1b97aacb-2d23-809b-b492-e3c0e89aa283" class="">The arrivals wait in the queuing area, and are sent in the order they came. </p><h3 id="1b27aacb-2d23-80b4-addf-dbb0d75ed93a" class="">Priority Queueing</h3><p id="1b27aacb-2d23-80f2-9b83-f1013dd68fff" class="">Packets arriving at the output link are classified into priority classes upon arrival at the queue. A network operator may configure a queue so that packets carrying network management information receive priority over user traffic. </p><h3 id="1b27aacb-2d23-80a7-872d-d16e4ea35ddf" class="">Round Robin and Weight Fair Queuing (WFQ)</h3><p id="1b27aacb-2d23-80ca-b43b-c5f17873761d" class="">Packets are sorted into classes upon arriving, but the round robin scheduler alternates services among the class. For example, a class 1 packet is transmitted, followed y class 2, followed by class 1, then class 2, etc. A work conserving queueing discipline will never allow the link to remain idle whenever there are packets queued. </p><p id="1b27aacb-2d23-8078-8a8b-cdf553c26196" class=""><strong>Weighted Fair Queuing Discipline: </strong>packets are classified and queued in the appropriate per-class waiting area. As in round robin, it will serve classes in a circular manner. Like a work conserving queuing discipline, it will immediately move on to the next class if it finds an empty class queue.</p><p id="1b27aacb-2d23-80f4-a388-e0a0f8dcd784" class="">Each class however may receive a differential amount of service in any interval of time. Each class, <em>i, </em>is assigned a weight, <em>w_i</em>. During any interval of time where there are class <em>i </em>packets to send, class <em>i </em>will be guaranted to receive a fraction of service equal to:</p><p id="1b27aacb-2d23-8078-aec7-d38e5c8d932d" class=""> </p><figure id="1b27aacb-2d23-80d9-a366-c3aa5747c8a8" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><munder><mo>∑</mo><mrow></mrow></munder><msub><mi>w</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w_i / (\sum_{} w_j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mopen">(</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.9em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div></figure><p id="1b27aacb-2d23-800d-afa0-c6e391875f8b" class="">where the sum is taken over all classes that also have packets queued for transmission. </p><h1 id="1b37aacb-2d23-8021-a1ee-cc433cde5c51" class="">The Internet Protocol (IP): IPv4, Addressing, IPv6, and More</h1><p id="1ba7aacb-2d23-8054-9f66-f6593ad41630" class="">The Internet Protocol is the key aspect of the network layer in today’s internet.</p><p id="1b37aacb-2d23-809c-bdbb-e92ca73edd76" class="">There are two versions of IP: IPv4 and IPv6. IPv6 has been proposed to replace IPv4.</p><h2 id="1b37aacb-2d23-801b-b0ec-e5ae1748c9aa" class="">IPv4 Datagram Format</h2><p id="1b37aacb-2d23-8085-88da-dfbceeb6b8a3" class="">A Network-layer packet is a <em>datagram. </em>The key fields in an IPv4 datagram are:</p><ul id="1b37aacb-2d23-804e-8a2d-fb3b075090b8" class="bulleted-list"><li style="list-style-type:disc">version number: 4 bits specify the IP protocol version - IPv4 or IPv6</li></ul><ul id="1b37aacb-2d23-80be-8bf7-e5dfaffa0bba" class="bulleted-list"><li style="list-style-type:disc">Header Length: 4 bits to determine where in the IP datagram the payload begins. IPv4 datagram can contain a variable number of options, that’s why these are needed. Most IP datagrams don’t contain options, so this is typically 20-bytes.</li></ul><ul id="1b37aacb-2d23-8003-9b03-fa119c629e64" class="bulleted-list"><li style="list-style-type:disc">Type of Service: Allows different type of IP datagrams to be distinguished from each other. For example, real-time datagrams used by an IP telephony application from non-real time traffic like FTP. Two of the ToS bits are used for Explicit Congestion Notification. <ul id="1c27aacb-2d23-8050-8632-ece440997e85" class="bulleted-list"><li style="list-style-type:circle">Basically just shows what kind of traffic it is. Is it real time voice or video streaming? Non-real time like FTP or emails? Real time voice or streaming requires low delay, while FTP and emails can tolerate delays without issue.</li></ul></li></ul><ul id="1b37aacb-2d23-807f-b6de-f416ca63e5f5" class="bulleted-list"><li style="list-style-type:disc">Datagram length: The total length of the P datagram measured in bytes. This field is 16 bits long, so theoretically the max length is 65,535 bytes. Datagrams are rarely larger than 1500 bytes, which allows an IP datagram to fit in the payload field of a maximally sized Ethernet frame.</li></ul><ul id="1b37aacb-2d23-8071-bff4-cae59341222d" class="bulleted-list"><li style="list-style-type:disc">Identifier flags, fragmentation offset: IP fragmentation is when a large IP datagram is broken down into smaller IP datagrams and sent independently. They are reassembled at the destination host.<ul id="1c27aacb-2d23-80c1-81e0-fdda1f1c4924" class="bulleted-list"><li style="list-style-type:circle">IPv6 does not have these, as fragmentation is not allowed in IPv6. </li></ul></li></ul><ul id="1b37aacb-2d23-80fc-844d-eb16ebcbfd72" class="bulleted-list"><li style="list-style-type:disc">Time-to-live: TTL field ensures datagrams do not circulate forever. This field is decremented by 1 for each router. If it reaches 0, then the packet is dropped by the router. </li></ul><ul id="1b37aacb-2d23-806a-8dbc-e02af641b887" class="bulleted-list"><li style="list-style-type:disc">Protocol: Field is typically used only when an IP datagram reaches its final destination. Indicates the specific transport-layer protocol to which the data portion of this IP datagram should be passed. For example, a value of 6 indicates the data portion passed to TCP, 17 to UDP. Protocol numbers bind the network and transport layers together, like the port number binding the transport and application layers together.</li></ul><ul id="1b37aacb-2d23-80cc-853b-f026bf4e9f7b" class="bulleted-list"><li style="list-style-type:disc">Header Checksum: aids a router in detecting bit errors in a datagram. It is computed by treating each 2 bytes in the header as a number and summing these numbers using 1s complement arithmetic. Routers discard datagrams for which an error has been detected. <ul id="1c17aacb-2d23-8034-ab4b-d08a4904e69a" class="bulleted-list"><li style="list-style-type:circle">Why does TCP/IP perform error checking at both the transport and network layers?<ul id="1c17aacb-2d23-802b-96df-ef2b77fdee1b" class="bulleted-list"><li style="list-style-type:square">Only the IP header is checksummed at the IP layer, while the entire TCP/UDP segment is checksummed.</li></ul><ul id="1c17aacb-2d23-8096-b587-fe7fca731cf2" class="bulleted-list"><li style="list-style-type:square">TCP/UDP and IP do not necessarily both have to belong to the same protocol stack. <ul id="1c17aacb-2d23-8038-9d52-d013fabfa5af" class="bulleted-list"><li style="list-style-type:disc">TCP can, in principle, run over a different network-layer protocol like ATM and IP can carry data will not be passed to TCP/UDP.</li></ul></li></ul></li></ul></li></ul><ul id="1b37aacb-2d23-80b7-9514-dbb67045cbb5" class="bulleted-list"><li style="list-style-type:disc">Source and destination IP Addresses: When a source creates a datagram, it inserts its IP address into the source IP address field and inserts the address of the ultimate destination into the destination IP address field. </li></ul><ul id="1b37aacb-2d23-80ae-9e0c-efce4d817743" class="bulleted-list"><li style="list-style-type:disc">Options: The IP header can be extended. Options can be of variable length, so one cannot determine a priori where the data field will start. ANd since processing can be different depending on options, this complicates things.</li></ul><ul id="1b37aacb-2d23-80f0-9f09-d7e04d83dc0e" class="bulleted-list"><li style="list-style-type:disc">Data (payload): The data for the datagram, typically contains the transport-layer segment (TCP or UDP) to be delivered. It can also contain other types of data, like ICMP messages. </li></ul><p id="1b37aacb-2d23-8076-8bd0-cb57e88ec5a5" class="">IP datagram has a total of 20 bytes of header (assuming no options). If the datagram carries a TCP segment, then each datagram carries a total of 40 bytes of header (20 bytes of IP plus 20 bytes of TCP) along with the application layer message.</p><h2 id="1b37aacb-2d23-800c-961e-dfb7cc218077" class="">IPv4 Addressing</h2><p id="1b37aacb-2d23-80f3-896f-f0982bb49bf1" class="">A host typically has a single link into a network: when IP in the host wants to send a datagram, it does so over the link. The boundary between the host and the physical link is called an <strong>interface</strong>. A router will have two or more links, the boundary of which is also called an interface. Because every host and router is capable of receiving and sending IP datagrams, IP requires that each host and router interface have its own IP address. <em>An IP address is technically associated with an interface rather than a router or host. </em></p><p id="1b37aacb-2d23-80d1-8304-ededfaea96f3" class="">Each IP address is 32 bits long and there are 2^32 possible IP addresses. They are written in dotted decimal notation, where each byte of the address is written in its decimal form and separated by a period. For ex: 193.32.216.9. </p><p id="1b37aacb-2d23-803c-ac1a-e2ba9284d05d" class="">A network can be connected not just by routers. They can be connected by Ethernet LAN or wireless access points. Say there are 3 hosts, each with the IP address of 223.1.1.1, 223.1.1.2, and 223.1.1.3. They all have the same router, 223.1.1.4, and they connect to each other with Ethernet LAN or a wireless access point. The first 24 bits of those IP addresses are the same. </p><p id="1b37aacb-2d23-80c9-bf68-e38007b18b65" class="">This network interconnecting three host interfaces and one router interface form a <strong>subnet. </strong>The subnet address for the above would be 223.1.1.0/24, where the /24 is called the <strong>subnet mask. </strong>Any host that connects to that network will have an IP address of 223.1.1.x. </p><p id="1b37aacb-2d23-803a-80c0-eae07d1a2516" class=""><em>To determine the subnets, detach each interface from its host or router, creating<br/>islands of isolated networks, with interfaces terminating the end points of the<br/>isolated networks. Each of these isolated networks is called a <br/></em><em><strong>subnet</strong></em><em>.</em></p><p id="1ba7aacb-2d23-80db-8502-cb84d04dcd0f" class="">Subnets: Taking a network and dividing it into sub-networks</p><figure id="1ba7aacb-2d23-8082-b4d1-d6a4b84d345b" class="link-to-page"><a href="Chapter%20Four%201b27aacb2d23802d85a3f02f35e1ac20/Subnets%201ba7aacb2d238082b4d1d6a4b84d345b.html">Subnets</a></figure><p id="1b37aacb-2d23-80a8-997e-c6a556f96cf7" class="">Classless Interdomain Routing (CIDR) is the internet’s address assignment strategy. CIDR generalizes the notion of subnet addressing. The 32 bit IP address is divided into 2 parts and has the dotted-decimal form a.b.c.d/x, where x indicates the number of bits in the first part of the address.</p><p id="1b37aacb-2d23-803b-b625-ca126b0bf097" class="">The x most significant bits of an address constitute the network portion of the IP address, and is referred to as the prefix. An organization is typically assigned a block of contiguous addresses - a range of address with a common prefix. </p><p id="1b37aacb-2d23-80ad-9569-e96234a2c316" class="">The remaining 32 - x bits of an address distinguishes among the devices within the organization, the bits that are considered when forwarding packets at routers within the organization. </p><p id="1b37aacb-2d23-80bc-bfb3-fbc08ad69e1d" class="">Before CIDR, the network portions of an IP address were constrained to be 8, 16, or 24 bits in length in a scheme known as classful addressing, and were known as Class A, Class B, and Class C networks respectively. </p><p id="1b37aacb-2d23-80b6-9831-c5e761413abc" class="">The IP broadcast address 255.255.255.255. When a host sends a datagram with that destination, the message is delivered to all hosts on the same subnet. </p><h3 id="1b37aacb-2d23-801c-a76f-f5b4450154fc" class="">Obtaining a Block of Addresses</h3><p id="1b37aacb-2d23-80fe-aff6-cd9243801a00" class="">You can obtain them from an ISP, which may have allocated an address block. For example, it has the address block 200.23.16.0/20. The ISP could divide its address block into eight equal-sized contiguous address blocks and give one of these address blocks out to each of up to 8 organizations, in this case 200.23.16.0/23, 200.23.18.0/23, 200.23.20.0/23 … 200.23.30.0/23.</p><p id="1b37aacb-2d23-808b-9fc6-d3041d54dccb" class="">The Internet Corporation for Assigned Names and Numbers (ICANN) is an authroity for managing the IP Address space, and manages DNS root servers. </p><h3 id="1b37aacb-2d23-80b9-8026-f4be5b759a03" class="">Obtaining a Host Address: The Dynamic Host Configuration Protocol</h3><p id="1b37aacb-2d23-8012-b268-e303104cb421" class="">DHCP is a protocol that allows IP address allocation to host and router interfaces automatically. It can obtain an IP address every time it connects to the network or may be given a temporary IP address. It is a plug and play or zeroconf (zero configuration) protocol. It is also widespread used in residential Internet access networks. Think of taking your laptop to another location, like the library. </p><p id="1b37aacb-2d23-805b-a45b-ebc899c06120" class="">DHCP is a client-server protocol. A client is the newly arriving host and the server is the DHCP server. </p><p id="1b37aacb-2d23-803f-9ab2-f736fa20f55f" class="">For a newly arriving host, there is a four step process.</p><ul id="1b37aacb-2d23-80e9-8851-c0d7b462d6d6" class="bulleted-list"><li style="list-style-type:disc">DHCP server discovery: A DHCP discover message is sent by the client within a UDP packet to port 67. It sends it to the broadcast address of 255.255.255.255. </li></ul><ul id="1b37aacb-2d23-808d-bce5-fc92062ae787" class="bulleted-list"><li style="list-style-type:disc">DHCP Server Offer(s): The DHCP server responds to the client with a DHCP offer message that is broadcast to all nodes on the subnet (using 255.255.255.255). This is because the host doesn’t have an IP address yet. The offer message contains transaction ID, proposed IP address, network mask, and an IP address lease time. </li></ul><ul id="1b37aacb-2d23-80e9-bbbe-df885c2b4b4d" class="bulleted-list"><li style="list-style-type:disc">DHCP request: The newly arriving client chooses from among one or more server offers and respond to its selected offer with a DHCP request message.</li></ul><ul id="1b37aacb-2d23-8056-9a72-feee258b4c5a" class="bulleted-list"><li style="list-style-type:disc">DHCP ACK: the server acknowledges the DHCP request message to confirm the requested parameters. </li></ul><p id="1c27aacb-2d23-80ba-b399-c97f5a410857" class="">
+</p><h3 id="1c27aacb-2d23-801c-9d75-fe8076612f16" class="">Address Aggregation</h3><p id="1c27aacb-2d23-8089-80d1-c1089d7c3e18" class="">The ability to use a single prefix to advertise multiple networks. Also called route aggregation or route summarization. ISPs provide addresses from an address block. Say for example 200.23.16.0/20. Eight organizations get this address block and form their own address blocks, 200.23.16.0/23, 200.23.18.0/23, 200.23.20.0/23, etc. The ISP then basically tells the internet “send me anything with addresses that begin with 200.23.16.0/20” so all traffic destined for addresses are routed through them. If another ISP has an organization with an address within that block, then there will be longest prefix matching used. The first ISP will still say “send me anything with addresses that begin with 200.23.16.0/20” but the second organization will say something like “send me anything with addresses that begin with 200.23.20.0/23”. </p><h2 id="1b37aacb-2d23-80a1-8767-dfe4dd68b26d" class="">Network Address Translation (NAT)</h2><p id="1c27aacb-2d23-803a-87d3-d90e269f38f8" class="">Due to the fact that IPv4 addresses are 32 bits long, there are 2^32 potential IP addresses. In today’s world, that isn’t enough to accomodate every single device. Think of the phones, gaming consoles, and IoT devices. </p><p id="1b37aacb-2d23-80c4-a674-eac9d7ca7775" class="">NAT is a solution to not enough unique public IP addresses for every device, ISPs not having enough IP addresses, and homeowners not being able to manage IP addresses.</p><p id="1b37aacb-2d23-808d-953f-f3c7769395de" class="">Within the home network, the devices have a private network with a private address that has meaning only to devices within that network. This private address can look something like 10.0.0.0/24. </p><p id="1b37aacb-2d23-801a-88cd-c14939b59b5e" class="">With a NAT enabled router, it behaves to the outside world as a single device with a single IP address. That IP address is assigned by the ISP’s DHCP. All traffic leaving the home router will have a public IP address, and all traffic coming to the home router will have that public IP address. The devices inside have their IP address assigned by their own DHCP. </p><p id="1b37aacb-2d23-80af-9390-cf6fdbdd0d38" class="">The routers have a NAT translation table to know the internal host it should forward a datagram. The internal IP address and port number is used at this NAT translation table. </p><h2 id="1b37aacb-2d23-8091-9e75-f9b0ad4700fe" class="">IPv6</h2><p id="1b37aacb-2d23-8026-8ac2-eb46c8c49fd4" class="">Since IPv4 has 2^32 possible addresses, and with the constant amount of devices being added, this is a limited number of addresses. To respond to this, IPv6 was developed when IPv4 eventually runs out.</p><h3 id="1b37aacb-2d23-8077-b30d-c9a80450b330" class="">IPv6 Datagram Format</h3><p id="1b37aacb-2d23-8035-ac11-ffd218365a23" class="">The changes to IPv6 are evident in the datagram format:</p><ul id="1b37aacb-2d23-80c8-ab6b-f9703b17c961" class="bulleted-list"><li style="list-style-type:disc">Expanded addressing capabilities: IPv6 increases the size of the IP address from 32 to 128 bits. IPv6 has also introudced an <strong>anycast address </strong>that allows a datagram to be delivered to any one of a group of hosts.</li></ul><ul id="1b37aacb-2d23-8010-b5b5-fd907c20fe9b" class="bulleted-list"><li style="list-style-type:disc">A streamlined 40 byte header: allows for faster processing of the IP datagram by a router, and a new encoding of options allows for more flexible options processing.</li></ul><ul id="1b37aacb-2d23-8099-a0c2-ea8cf1a75f23" class="bulleted-list"><li style="list-style-type:disc">Flow Labeling: IPv6 has an elusive defintion of flow. This “labeling of packets belonging to particular flows for which the sender requests special handling, such as a non-default quality of service or real-time service”. Audio and video might likely be treated as a flow, but file transfer and e-mail might not. <br/><br/></li></ul><p id="1b37aacb-2d23-802f-a5fd-ce9fbd723f97" class="">The following fields for the IPv6 datagram:</p><ul id="1b37aacb-2d23-8085-9da4-e665973d21cd" class="bulleted-list"><li style="list-style-type:disc">Version: the 4 bit field that identifies the IP version number. IPv6 carries a 6. IPv4 does not carry a 4.</li></ul><ul id="1b37aacb-2d23-8098-9eee-f7bef9f03b11" class="bulleted-list"><li style="list-style-type:disc">Traffic class: Like the TOS field in IPv4, can be used to give priority to certain datagrams with a flow.</li></ul><ul id="1b37aacb-2d23-80c6-8d96-eca56bd7089b" class="bulleted-list"><li style="list-style-type:disc">Flow label: used to identify a flow of datagram.</li></ul><ul id="1b37aacb-2d23-802b-abb7-e48ed53a4bca" class="bulleted-list"><li style="list-style-type:disc">Payload length: an unsigned integer giving the number of bytes in the IPv6 datagram following the fixed-length, 40-byte datagram header.</li></ul><ul id="1b37aacb-2d23-80ed-ad72-c16dbec294b1" class="bulleted-list"><li style="list-style-type:disc">Next header: Identifies the protocol to which the contents of this datagram will be delivered (to TCP or UDP).</li></ul><ul id="1b37aacb-2d23-802c-a4bb-cb27c112192f" class="bulleted-list"><li style="list-style-type:disc">Hop limit: decremented by one by each router that forwards the datagram. If it reaches 0, the router must discard that datagram.</li></ul><ul id="1b37aacb-2d23-8017-8d06-f7c953cef717" class="bulleted-list"><li style="list-style-type:disc">Source and destination addresses</li></ul><ul id="1b37aacb-2d23-8077-8475-c66a980b5786" class="bulleted-list"><li style="list-style-type:disc">Data: the payload of the IPv6 datagram. </li></ul><p id="1b37aacb-2d23-804d-9304-e8cb384a9916" class="">
+</p><p id="1b37aacb-2d23-808d-b5d0-fac55172ea46" class="">IPv6 datagrams do not allow for fragmentation/reassembly. If an IPv6 datagram is received by a router and it is too large, then the router drops the datagram and sends a “Packet Too Big” ICMP error message back to the sender. The sender can then resend the data with a smaller IP Datagram size. <div class="indented"><p id="1c27aacb-2d23-80d1-95fd-c53d2139d260" class="">Fragmentation and reassembly is time consuming, so this removes the cost of those operations.</p></div></p><p id="1b37aacb-2d23-80a7-9cac-d272474f9ed6" class="">IPv6 datagrams do not contain header checksums, to reduce overhead (the checksum needs to be computed at every router)</p><p id="1b37aacb-2d23-803c-babc-c03bfc8d982d" class="">IPv6 datagrams do not contain options. It is instead in the next header field.</p><h3 id="1b37aacb-2d23-80ed-b495-e418de5a4f6b" class="">Transitioning from IPv4 to IPv6</h3><p id="1b37aacb-2d23-8088-a73e-daa7ccf422c2" class="">IPv6 capable systems can send and route and receive IPv4 datagrams. IPv4 only capable systems are not capable of dealing with IPv6.</p><p id="1b37aacb-2d23-80e8-9ff2-c4f4603e3f75" class="">There can be a flag day, where all Internet machines are turned off and upgraded to IPv6. This is not possible.</p><p id="1b37aacb-2d23-80b1-af90-cc6af5eead38" class=""><strong>Tunneling: </strong>Suppose there are two IPv6 nodes connected by an IPv4 router. Tunneling is when the sender takes an entire IPv6 datagram and puts it in the data field of an IPv4 datagram. </p><p id="1c07aacb-2d23-8093-9733-cc5a58b36375" class="">Say an IPv6 address is going to send a packet to another IPv6 host, and an Ipv4 node is in the way. The IPv6 takes the Ipv6 datagram and puts it in the (data) payload field of an IPv4 datagram. The Ipv4 datagram is addressed to the Ip6 node on the receiivng side of the receiving side of the tunnel. The Ipv4 passes along the datagram to the Ipv6 dest, and the IPv6 knows it is an Ipv6 datagram through the protocol field ,which will be 41 in this case to indicate an IPv6 packet.</p><h1 id="1b47aacb-2d23-80a2-bbec-e109e4518108" class="">Generalized Forwarding and SDN</h1><p id="1b47aacb-2d23-80a5-ada4-c28cd9948e44" class="">Destination based forwarding is the two steps of looking up a destination IP address (match) and then sending the packet into the switching fabric to the specified output port (action).</p><p id="1bb7aacb-2d23-80b6-8a82-ebe2ac2545be" class="">in The generalized match plus action paradigm, the match can be made over multiple header stacks and the action can include multiple things like forwarding, load balancing, rewriting header values, blocking/dropping, etc. </p><p id="1b47aacb-2d23-800a-b0bd-e92f0ac8eb02" class="">The match can be made over multiple header fields associated with different protocols at different layers. The action can include forwarding the packet to one or more output ports, load balancing packets acros multiple outgoing interfaces, rewriting header values, purposefully blocking/drpping a packet, etc. </p><p id="1bb7aacb-2d23-80e5-973a-d196c67e6579" class="">It is possible for individual packet switches to do this, in practice generalized match-plus-action is implemented via a remote controller.</p><p id="1b47aacb-2d23-80ce-bab6-c91ad24b8b50" class="">Generalized forwarding - a match plus action table generalizes the notion of the destination-based forwarding table. </p><p id="1b47aacb-2d23-8018-b1db-c92ad50e3312" class="">Each entry in the match-plus-action forwarding table (<strong>flow table </strong>in OpenFlow) includes:</p><ul id="1b47aacb-2d23-8077-a539-e2f1b86d8f4c" class="bulleted-list"><li style="list-style-type:disc">A set of header field values. </li></ul><ul id="1b47aacb-2d23-8078-a9a0-d55f247fa123" class="bulleted-list"><li style="list-style-type:disc">A set of counters that are updated as packets are matched to flow table entries.</li></ul><ul id="1b47aacb-2d23-8078-b3b3-d85e3c3385e1" class="bulleted-list"><li style="list-style-type:disc">A set of actions to be taken when a packet matches a flow table entry.</li></ul><p id="1bb7aacb-2d23-80e5-af56-d71df84b4127" class="">OpenFlow is a highly visible standard that has pioneered the notion of the match-plus-action forwarding abstraction. </p><h2 id="1b47aacb-2d23-80a1-b5fc-e50bd7169f75" class="">Match</h2><p id="1bb7aacb-2d23-8024-a059-f32481a96b7e" class="">Under OpenFlow, there are 11 packet-header fields and the incoming port ID that can be matched. </p><p id="1b47aacb-2d23-804e-83ab-c8971badb314" class="">A link-layer frame arriving to a packet switch will contain a network-layer datagram as its payload, which in turn will contain a transport-layer segment. Match abstraction allows for a match to be made on the fields from three layers of protocol headers. </p><p id="1b47aacb-2d23-80a6-ba9d-e6dfdda08ac2" class="">Flow table entries can have wild cards. For example, 128.119.*.* will match any IP that has 128.119 as the first 16 bits of its address. Each entry also has an associated priority, where if a packet matches mutliple flow table entries, the selected match and corresponding action will be that of the highest priority entry.</p><p id="1bb7aacb-2d23-80be-8398-da4bce4e23df" class="">Not all fields in an IP header can be matched - OpenFlow does not allow matching on the basis of TTL field or datagram length. </p><h2 id="1b47aacb-2d23-80aa-8f04-f9df3621a923" class="">Action</h2><p id="1b47aacb-2d23-8023-aa28-faa5bd76a09d" class="">Each entry has a list of zero or more actions that determine the processing that is to be applied to a match. Some of these possible actions:</p><ul id="1b47aacb-2d23-807c-83b9-c30989727c57" class="bulleted-list"><li style="list-style-type:disc">Forwarding: an incoming packet may be forwarded to a particular physical output port, broadcast over all ports, or multicast over a selected set of ports. The packet may be encapsulated and sent to the remote controller for this device, and the controller may take some action.</li></ul><ul id="1b47aacb-2d23-800a-a39b-dacfa39aba0c" class="bulleted-list"><li style="list-style-type:disc">Dropping: A flow table entry with no action indicates that packet should be dropped</li></ul><ul id="1b47aacb-2d23-809e-a7e7-fc9439ea88a3" class="bulleted-list"><li style="list-style-type:disc">Modify-field: The values in 10 packet-header fields (all layer 2, 3, and 4 fields except the IP protocol field) may be rewritten.</li></ul><h2 id="1b47aacb-2d23-8034-a615-fea8f29332a4" class="">OpenFlow Examples of Match-plus-action in Action</h2><ul id="1bb7aacb-2d23-80fa-85ce-f98609661b8f" class="bulleted-list"><li style="list-style-type:disc">A sample network that has 6 hosts - h1, h2, h3, h4, h5, h6</li></ul><ul id="1bb7aacb-2d23-80b9-bf6c-c51a8a2951a1" class="bulleted-list"><li style="list-style-type:disc">Three packet switches: s1, s2, and s3 with Four local interfaces - 1 through 4</li></ul><ul id="1bb7aacb-2d23-80cf-a597-dd7f9cec035a" class="bulleted-list"><li style="list-style-type:disc">H1: 10.1.0.1<ul id="1bb7aacb-2d23-8001-9a5f-df96a128c9d4" class="bulleted-list"><li style="list-style-type:circle">conencted to S1 on interface 2</li></ul></li></ul><ul id="1bb7aacb-2d23-8078-8a5c-e30621766eb5" class="bulleted-list"><li style="list-style-type:disc">H2: 10.1.0.2 <ul id="1bb7aacb-2d23-8046-b55d-fc2345e68399" class="bulleted-list"><li style="list-style-type:circle">Conneted to s1 on interface 3. S1 connects to S2 on interface 4 and 2 respectively. S1 connects to S3 on interface 1 and 3 respectively</li></ul></li></ul><ul id="1bb7aacb-2d23-80d3-a836-e4386aee4b92" class="bulleted-list"><li style="list-style-type:disc">H3: 10.2.0.3<ul id="1bb7aacb-2d23-801e-b346-c19c34d4e7bb" class="bulleted-list"><li style="list-style-type:circle">connected to S2 on interface 3</li></ul></li></ul><ul id="1bb7aacb-2d23-8096-9267-f5b607da02b2" class="bulleted-list"><li style="list-style-type:disc">H4: 10.2.0.4<ul id="1bb7aacb-2d23-80aa-b3fb-e135f24213f8" class="bulleted-list"><li style="list-style-type:circle">Connected to S2 on interface 4. S2 connects to S3 on interface 1 and 4 respectively</li></ul></li></ul><ul id="1bb7aacb-2d23-80a4-a3ec-d17495e8181d" class="bulleted-list"><li style="list-style-type:disc">H5: 10.3.0.5<ul id="1bb7aacb-2d23-80ed-afbc-ffc75fa6142d" class="bulleted-list"><li style="list-style-type:circle">connected to S3 on interface 1</li></ul></li></ul><ul id="1bb7aacb-2d23-805f-a758-e43af862092d" class="bulleted-list"><li style="list-style-type:disc">H6: 10.3.0.6<ul id="1bb7aacb-2d23-808c-9424-c0bbe168d89e" class="bulleted-list"><li style="list-style-type:circle">Connected to s3 on interface 2. </li></ul></li></ul><p id="1bb7aacb-2d23-809b-ab3b-cefdffc3e1cf" class="">As an example, the desired forwarding forwarding behavior is that packets from h5 or h6 are forwarded from s3 to S1 and then from s1 to s2. The table entry in S1 would be the following:</p><table id="1bb7aacb-2d23-8099-90a9-ddd39d155f47" class="simple-table"><tbody><tr id="1bb7aacb-2d23-8000-9620-f46cc510901a"><td id="sWNL" class="" style="width:284px">Match</td><td id="=~rQ" class="" style="width:246px">Action</td></tr><tr id="1bb7aacb-2d23-807c-a290-d32d154a5172"><td id="sWNL" class="" style="width:284px">Ingress Port = 1; IP Src = 10.3.*.*, Ip Dst = 10.2.*.*</td><td id="=~rQ" class="" style="width:246px">Forward(4)</td></tr><tr id="1bb7aacb-2d23-8084-864e-d1e88d19db14"><td id="sWNL" class="" style="width:284px"></td><td id="=~rQ" class="" style="width:246px"></td></tr></tbody></table><p id="1bb7aacb-2d23-8030-8558-e8ff90e0d6f1" class="">At S3 the table would look like this:</p><table id="1bb7aacb-2d23-808f-9e5a-f6507bd38df2" class="simple-table"><tbody><tr id="1bb7aacb-2d23-803d-81d0-e44cef7da7fe"><td id="&lt;?Qz" class="">Match</td><td id="hI|g" class="">Action</td></tr><tr id="1bb7aacb-2d23-8013-a45d-ee1861a9e934"><td id="&lt;?Qz" class="">Ip Src = 10.3.*.*, Ip Dst = 10.2.*.*</td><td id="hI|g" class="">Forward(3)</td></tr><tr id="1bb7aacb-2d23-803f-bb6e-f94553f59f2c"><td id="&lt;?Qz" class=""></td><td id="hI|g" class=""></td></tr></tbody></table><p id="1bb7aacb-2d23-80ca-861a-f1d49bec024e" class="">And at S2, the table would like this:</p><table id="1bb7aacb-2d23-805c-ab88-eb1a09d7bcfc" class="simple-table"><tbody><tr id="1bb7aacb-2d23-8097-afb7-d5a71208127a"><td id="hcFL" class="">Match</td><td id="UI|k" class="">Action</td></tr><tr id="1bb7aacb-2d23-80ef-a4a0-fb3eeb3e05df"><td id="hcFL" class="">Ingress Port = 2; IP Dst = 10.2.0.3</td><td id="UI|k" class="">Forward(3)</td></tr><tr id="1bb7aacb-2d23-80b0-b687-d009537a50d2"><td id="hcFL" class="">Ingress Port = 2; Ip DSt = 10.2.0.4</td><td id="UI|k" class="">Forward(4)</td></tr></tbody></table><h1 id="1b57aacb-2d23-802b-9067-f25faab2164a" class="">Middleboxes</h1><p id="1b57aacb-2d23-80ce-be56-d8cc26ae5915" class="">“<em>any intermediary box performing functions apart from normal, standard functions of an IP router on the data path between a source host and destination host”</em></p><p id="1bc7aacb-2d23-8088-b5a7-f4306480a4fa" class="">
+</p><p id="1b57aacb-2d23-809a-a056-ec635b44dc9a" class="">A middlebox is something like a firewall, an IDS, a web cache, etc</p><p id="1b57aacb-2d23-80f0-a387-dcc5c5b374b7" class="">There are certain services performed by middleboxes:</p><ul id="1b57aacb-2d23-800a-9e49-ffa795efdd7a" class="bulleted-list"><li style="list-style-type:disc">NAT Translation</li></ul><ul id="1b57aacb-2d23-80ab-ae20-ffc060e16588" class="bulleted-list"><li style="list-style-type:disc">Security Services</li></ul><ul id="1b57aacb-2d23-80f5-befa-f89c3044c619" class="bulleted-list"><li style="list-style-type:disc">Performance Enhancements</li></ul><p id="1b57aacb-2d23-800a-a23a-f013beb54992" class="">Middleboxes need to be managed, operated, and upgraded. The need to do this can have significant operational and capital costs. There is network function virtualization - commodity hardware with speciialized software built on top of a common software stack. </p><p id="1b57aacb-2d23-80e6-a916-c13ce24156a5" class="">Traditional internet architecture maintains a clear separation between network layer and transport/application layers. Middleboxes disrupt this by performing functions that aren’t just packet forwarding. </p><p id="1bc7aacb-2d23-8042-b346-e765c47b3722" class="">Network Function Virtualization - an approach where researchers explore the use of commodity hardware (networking, computing and storage) with specialized software built on top of a common software stack. Similar to the approach in SDN.</p><p id="1b97aacb-2d23-801e-901b-f851a2721935" class="">
+</p><figure id="1b97aacb-2d23-8010-ab2f-e4a4d006bf52" class="link-to-page"><a href="Chapter%20Four%201b27aacb2d23802d85a3f02f35e1ac20/Questions%201b97aacb2d238010ab2fe4a4d006bf52.html">Questions</a></figure><figure id="1bc7aacb-2d23-803d-858d-f81192cd489e" class="link-to-page"><a href="Chapter%20Four%201b27aacb2d23802d85a3f02f35e1ac20/Problems%201bc7aacb2d23803d858df81192cd489e.html">Problems</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

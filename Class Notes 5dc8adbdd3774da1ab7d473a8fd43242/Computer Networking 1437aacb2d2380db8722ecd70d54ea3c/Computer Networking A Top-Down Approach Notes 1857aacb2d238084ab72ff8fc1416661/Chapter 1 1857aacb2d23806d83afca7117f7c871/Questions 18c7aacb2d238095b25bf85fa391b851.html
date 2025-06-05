@@ -1,0 +1,709 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18c7aacb-2d23-8095-b25b-f85fa391b851" class="page sans"><header><h1 class="page-title">Questions</h1><p class="page-description"></p></header><div class="page-body"><h1 id="18c7aacb-2d23-802e-812e-cdc16b9e73b2" class="">Section 1.1</h1><p id="18f7aacb-2d23-808f-9fb2-e49fdbfb15ec" class="">
+</p><p id="18c7aacb-2d23-800f-acb8-c5d038e17cee" class=""> R1.  What is the difference between a host and an end system? List several different types of end systems. Is a Web server an end system?</p><p id="18c7aacb-2d23-8002-8706-d5d6cd3aad18" class="">There is no difference between a host and an end system. They are all devices that are connected to the internet. A web server is an end system.</p><p id="18c7aacb-2d23-80f9-ac2b-cbe3cf365cbe" class=""><br/>R2.  The word <br/><em>protocol </em>is often used to describe diplomatic relations. How does Wikipedia describe diplomatic protocol?</p><p id="18c7aacb-2d23-80e3-8e13-f70c8a712a2f" class="">As a rule which describes how an activity should be performed, especially in the field of diplomacy.<br/><br/>R3.  Why are standards important for protocols?<br/>Because the protocols define how the end systems, that can be running different devices and operating systems, interact with each other.<br/></p><p id="18c7aacb-2d23-8071-9fb2-f5c9b8f3f35b" class="">
+</p><h2 id="18c7aacb-2d23-8098-b816-ff0724bd5d80" class="">Section 1.2</h2><p id="18c7aacb-2d23-8065-844d-ff4b12f31a33" class=""><br/>R4.  List four access technologies. Classify each one as home access, enterprise<br/>access, or wide-area wireless access.<br/>DSL and Cable Access - home access<br/></p><p id="18c7aacb-2d23-809f-8136-f51be17b366a" class="">Ethernet and Wifi - enterprise access</p><p id="18c7aacb-2d23-8056-a90d-f4dd1cd0e63c" class="">3G, LTE 4G, 5G - Wide area wireless access<br/><br/></p><p id="18c7aacb-2d23-80d8-9519-f390b6ed2c9e" class="">R5.  Is HFC transmission rate dedicated or shared among users? Are collisions<br/>possible in a downstream HFC channel? Why or why not?<br/>HFC transmission rate is shared among users.<br/></p><p id="18f7aacb-2d23-8059-9949-de11e7ad01ae" class="">Collisions are not possible because all packets originate from a single source, the head end, meaning there&#x27;s no competition for the channel bandwidth on the downstream path</p><p id="18f7aacb-2d23-80d9-9c88-e44cc7eafff4" class="">Difference between shared and dedicate - </p><p id="18f7aacb-2d23-803a-930d-c600a4325ab4" class="">shared: multiple users share the same bandwidth</p><p id="18f7aacb-2d23-80a8-b06c-f0a33bb56821" class="">dedicated: each user has fixed, guaranteed bandwidth. More expensive</p><p id="18f7aacb-2d23-807a-b705-f51058884861" class=""><br/>R6.  List the available residential access technologies in your city. For each<br/>type of access, provide the advertised downstream rate, upstream rate, and<br/>monthly price.<br/></p><p id="18f7aacb-2d23-801a-87b8-f0285de35b77" class="">dial-up; DSL; cable modem; fiber- to-the-home.</p><p id="18f7aacb-2d23-8082-b02d-f986ccd6476b" class=""><br/>R7.  What is the transmission rate of Ethernet LANs?<br/></p><p id="18f7aacb-2d23-8003-aabc-e91259f940b3" class="">10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps<br/><br/>R8.  What are some of the physical media that Ethernet can run over?<br/></p><p id="18f7aacb-2d23-8090-b4d1-eecb32507027" class="">Fiber optic, twisted-pair copper cables, <br/><br/>5. R9.  HFC, DSL, and FTTH are all used for residential access. For each of<br/>these access technologies, provide a range of transmission rates and<br/>comment on whether the transmission rate is shared or dedicated.<br/></p><p id="18f7aacb-2d23-80a9-9216-e2cfd0d9472f" class="">ADSL: up to 24 Mbps downstream and 2.5 Mbps upstream, bandwidth is dedicated;HFC, rates up to 42.8 Mbps and upstream rates of up to 30.7 Mbps, bandwidth isshared. FTTH: 2-10Mbps upload; 10-20 Mbps download; bandwidth is not shared.</p><p id="18f7aacb-2d23-80b9-8e5e-ed4a7b0be582" class=""><br/>R10.  Describe the most popular wireless Internet access technologies today.<br/>Compare and contrast them.<br/></p><p id="18c7aacb-2d23-80ff-8327-e048972a4b2b" class="">WiFI and 3G, 4G</p><p id="18f7aacb-2d23-8090-b7c7-ccfd1e834d9b" class="">WiFi:In a wireless LAN, wireless users transmit/receive packets to/from an base station (i.e., wireless access point) within a radius of few tens of meters. The base station is typically connected to the wired Internet and thus serves to connect wireless users to the wired network</p><p id="18f7aacb-2d23-80c5-b84e-cce1695e94b4" class="">33G and 4G wide-area wireless access networks. In these systems, packets aretransmitted over the same wireless infrastructure used for cellular telephony, with the base station thus being managed by a telecommunications provider.This provides wireless access to users within a radius of tens of kilometers of the base station</p><h1 id="18c7aacb-2d23-8008-88db-dd25f1a1c850" class="">Section 1.3</h1><p id="18c7aacb-2d23-80d6-8013-f6ea5d906d2d" class="">R11. Suppose there is exactly one packet switch between a sending host and a receiving host. The transmission rates between the sending host and the switch and between the switch and the receiving host are <em>R</em>1 and <em>R</em>2, respectively. Assuming that the switch uses store-and-forward packet switching, what is the total end-to-end delay to send a packet of length <em>L</em>? (Ignore queuing, propagation delay, and processing delay.)</p><p id="1987aacb-2d23-80e8-b7b4-ddcd121b5993" class="">
+</p><p id="1987aacb-2d23-8015-9bd1-fd1c2f0493a0" class="">L/R1 + L/R2</p><p id="18c7aacb-2d23-800b-86ee-d569403b4bd2" class="">
+</p><p id="18c7aacb-2d23-804e-8359-e17849db894f" class="">R12. What advantage does a circuit-switched network have over a packet-switched network? What advantages does TDM have over FDM in a circuit-switched network?<br/><br/></p><p id="1987aacb-2d23-8067-8d75-e05fb2481414" class="">A circuit-switched network will guarantee consistent bandwidth and minimal latency. TDM can support higher data rates and more users per channel. </p><p id="1987aacb-2d23-80c4-9b11-ecbc937b98e1" class="">
+</p><p id="18c7aacb-2d23-80a3-843c-fa004eea18a3" class="">R13. Suppose users share a 2 Mbps link. Also suppose each user transmits continuously at 1 Mbps when transmitting, but each user transmits only 20 percent of the time. (See the discussion of statistical multiplexing in Section 1.3.)</p><ol type="a" id="18c7aacb-2d23-8059-8081-c8ee9e532311" class="numbered-list" start="1"><li>When circuit switching is used, how many users can be supported?</li></ol><ol type="a" id="18c7aacb-2d23-805a-bc12-cd8b050a863a" class="numbered-list" start="2"><li>For the remainder of this problem, suppose packet switching is used. Why will there be essentially no queuing delay before the link if two or fewer<br/>users transmit at the same time? Why will there be a queuing delay if three users transmit at the same time?<br/></li></ol><ol type="a" id="18c7aacb-2d23-80c1-ac12-e230476769ca" class="numbered-list" start="3"><li>Find the probability that a given user is transmitting.</li></ol><ol type="a" id="18c7aacb-2d23-80b0-a177-d5e8a639b724" class="numbered-list" start="4"><li>Suppose now there are three users. Find the probability that at any given<br/>time, all three users are transmitting simultaneously. Find the fraction of<br/>time during which the queue grows.<br/></li></ol><p id="1987aacb-2d23-80ad-9324-d4eeb431ff0e" class="">
+</p><ol type="a" id="1987aacb-2d23-8068-bdb3-cee663602b74" class="numbered-list" start="1"><li>2 users because each user will need half of the available 2 Mbps link</li></ol><ol type="a" id="1987aacb-2d23-8016-b067-e54cde3f2660" class="numbered-list" start="2"><li>Since the link is 2 Mbps, and since each user requires 1 Mbps when transmitting, then if there are two or fewer users, then that fits in. If there are 3 users transmitting simultaneously, the bandwidth required will exceed the bandwidth available.</li></ol><ol type="a" id="1987aacb-2d23-802e-9ecc-c39003df08ee" class="numbered-list" start="3"><li>Probability of a given user transmitting = 20 % = 0.2</li></ol><ol type="a" id="1987aacb-2d23-801d-8b7f-f3f12a6293b9" class="numbered-list" start="4"><li></li></ol><figure id="1987aacb-2d23-8070-8045-edace70d2bf5" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mn>3</mn><mn>3</mn></mfrac><mo fence="true">)</mo></mrow><msup><mi>p</mi><mn>3</mn></msup><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><msup><mo stretchy="false">)</mo><mrow><mn>3</mn><mo>−</mo><mn>3</mn></mrow></msup></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+\binom{3}{3}p^3(1-p)^{3-3}
+\end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.8em;vertical-align:-0.65em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.97em;"><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8951em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="1987aacb-2d23-80b9-ad1d-fc818fe18e0a" class="">= 0.008</p><p id="1987aacb-2d23-80a3-b12f-ffd6aa80c0fb" class="">
+</p><p id="18c7aacb-2d23-80af-bd64-f10e2a0c0a4b" class="">R14. Why will two ISPs at the same level of the hierarchy often peer with each other? How does an IXP earn money?</p><p id="1987aacb-2d23-807c-be11-fb6ecf2741cb" class="">
+</p><p id="1987aacb-2d23-8035-bc04-ea16011f6f7f" class="">If two ISPs do not peer with each other, then when they send traffic to each other they have to send the traffic through a provider ISP to which they have to pay for carrying the traffic. By peering with each other directly, the two ISPs can reduce their payments to their provider ISPs. An IXP is a meeting point where multiple ISPs can connect and/or peer together. An ISP earns its money by charging each of the ISPS that connec tot he IXP a relatively small fee, which may depend on the amount of traffic sent to or received from the IXP.</p><p id="1987aacb-2d23-807d-b558-c3e6c019c061" class="">
+</p><p id="18c7aacb-2d23-8065-ac27-ec82b17a77c2" class="">R15. Some content providers have created their own networks. Describe Google’s network. What motivates content providers to create these networks?</p><p id="1987aacb-2d23-8051-a98f-def6b8f6218e" class="">
+</p><p id="1987aacb-2d23-809d-8c00-d2c61516aee0" class="">Google’s private network connects together all its data centers, big and small. Traffic between the Google data centers passes over its private network rather than over the public Internet. Many of these data centers are located in or are close to lower tier ISPs. </p><p id="1987aacb-2d23-80e7-9025-d7373768f7b2" class="">They create these networks to have more control of the User experience, since it has to use few intermediary ISPs. It can also save money by sending less traffic into provider networks. It can also save by not paying ISPs (in countries where net neutrality doesn’t apply).</p><p id="18c7aacb-2d23-804e-9ccf-dca654e726e2" class="">
+</p><h1 id="18c7aacb-2d23-80da-b2db-d02cf93c7746" class="">Section 1.4</h1><p id="18c7aacb-2d23-8057-8805-f4e8314a4b97" class=""><br/>R18 How long does it take a packet of length 1,000 bytes to propagate over a link of distance 2,500 km, propagation speed 2.5 * 10^8 m/s, and transmission<br/>rate 2 Mbps?<br/></p><p id="18c7aacb-2d23-8037-b708-c02ffbab7973" class="">More generally, how long does it take a packet of length <em>L </em>to propagate over a link of distance <em>d</em>, propagation speed <em>s</em>, and transmission rate <em>R </em>bps? Does this delay depend on packet length? Does this delay depend on transmission rate?<br/><br/>Transmission time = Packet Length in bits / transmission rate in bits/sec<br/></p><p id="18c7aacb-2d23-809d-87d2-efc081d1f8bf" class="">1000 bytes = 8000 bits</p><p id="18c7aacb-2d23-8058-b2c1-d25a1f19c662" class="">2 Mbps = 2 * 10^6 = 2000000 bits/sec</p><p id="18c7aacb-2d23-80c0-9457-ce61ac5ac11c" class="">8000/2000000 = 0.004 seconds, or 4 miliseconds</p><p id="18c7aacb-2d23-8009-a9ed-daf68a0ef415" class="">Propagation Delay: Distance between router a and router B divided by propagation speed of the link<br/>Distance = 2500 km = 2500000 meters<br/>Propagation Speed = 2.5 * 10^8 meters/sec<br/></p><p id="18c7aacb-2d23-800a-9613-e78aebd9da6d" class="">= 2500000 / (2.5 * 10^8)</p><p id="18c7aacb-2d23-8037-a884-d0ced8b09f6f" class="">= .01 seconds  = 10 msec</p><p id="18c7aacb-2d23-8019-a331-e2161b36e211" class="">
+</p><p id="18c7aacb-2d23-8050-817a-d0043fa78c8a" class="">d/s</p><p id="18c7aacb-2d23-8053-bd86-ec31e6eb7bf9" class="">No</p><p id="18c7aacb-2d23-8098-bb30-e191bf07bd77" class="">No</p><p id="18c7aacb-2d23-80ec-99bc-f060ab05d68d" class=""><strong>The propagation delay is the time taken by the first bit of the data to transfer from one station to another. It depends on the distance of the transmission link and the propagation speed</strong><br/><br/></p><p id="18c7aacb-2d23-80e9-a0b5-cac342a62a55" class="">R19.  Suppose Host A wants to send a large file to Host B . The path from Host A to Host<br/>B has three links, of rates <br/><em>R</em>1 = 500 kbps, <em>R</em>2 = 2 Mbps, and <em>R</em>3 = 1 Mbps.<br/>    a. Assuming no other traffic in the network, what is the throughput for the file transfer?<br/>    b. Suppose the file is 4 million bytes. Dividing the file size by the throughput, roughly how long will it take to transfer the file to Host B?<br/>    c. Repeat (a) and (b), but now with <br/><em>R</em>2 reduced to 100 kbps.</p><p id="19a7aacb-2d23-80be-a5d9-fed77778096c" class="">
+</p><ol type="a" id="19a7aacb-2d23-80e6-b382-d45c0d1cc74a" class="numbered-list" start="1"><li>throughput is equal to the minimum of the three links, so 500 kbps</li></ol><ol type="a" id="19a7aacb-2d23-808e-a253-f94beadb4c88" class="numbered-list" start="2"><li>500 kb = 500000 bits<br/>4000000 bytes = 32000000 bits<br/>32000000/500000 = 64 seconds<br/></li></ol><ol type="a" id="19a7aacb-2d23-8061-896d-e94c7604a3f3" class="numbered-list" start="3"><li>100 kb = 100000 bits<br/>4000000 bytes = 32000000 bits<br/>32000000/100000 = 320 seconds<br/></li></ol><p id="19a7aacb-2d23-80b8-a0d9-e23fee7ccce4" class="">
+</p><p id="19a7aacb-2d23-8089-87e7-e655ed65fea9" class=""><br/>R20.  Suppose end system A wants to send a large file to end system B. At a very<br/>high level, describe how end system A creates packets from the file. When<br/>one of these packets arrives to a router, what information in the packet does<br/>the router use to determine the link onto which the packet is forwarded?<br/>Why is packet switching in the Internet analogous to driving from one city to<br/>another and asking directions along the way?<br/><br/></p><p id="19a7aacb-2d23-806f-961a-ea251c232b37" class="">End system A creates the file and breaks down the file into chunks. It adds headers to each chunk to create packets. The headers will include the IP address for the destination of end system B. The packet switch uses the header with the destination IP to determine which outgoing link to send it. The packet arrives at the packet switch, analogous to a person arriving at a city in a car, and then the packet switch determines which link to send it through, analogous to asking for directions before moving on to the next city.</p><p id="19a7aacb-2d23-8068-b143-cdc0f00ae066" class="">
+</p><p id="19a7aacb-2d23-8078-8825-c6a379cdbe11" class="">R21.  Visit the Queuing and Loss interactive animation at the companion Web site. What is the maximum emission rate and the minimum transmission rate? With those rates, what is the traffic intensity? Run the interactive animation with these rates and determine how long it takes for packet loss to occur. Then repeat the experiment a second time and determine again how long it takes for packet loss to occur. Are the values different? Why or why not?</p><p id="19a7aacb-2d23-80f7-9802-fc8710e1c92b" class="">Maximum Emission Rate: 500 packet/s</p><p id="19a7aacb-2d23-8068-bdc7-db11bea3da21" class="">Minimum Transmission Rate: 350 packet/s</p><p id="19a7aacb-2d23-802a-9ad3-f5a3d7dce823" class="">First Experiment: About 9mses</p><p id="19a7aacb-2d23-8021-9d3c-d66d1ff551df" class="">Second: About 9mses, but differently. Packet loss will be random.</p><p id="19a7aacb-2d23-80a1-b79c-f1f136ce8706" class="">
+</p><h1 id="19a7aacb-2d23-8002-a099-c37170305102" class="">Section 1.5</h1><p id="19a7aacb-2d23-80c5-86d1-e32a81c721e9" class=""><br/>R22.  List five tasks that a layer can perform. Is it possible that one (or more) of these tasks could be performed by two (or more) layers?<br/><br/></p><ol type="1" id="19a7aacb-2d23-80db-a7d6-c626a17aeb67" class="numbered-list" start="1"><li>Flow Control</li></ol><ol type="1" id="19a7aacb-2d23-80ea-a77f-ccaab247a86e" class="numbered-list" start="2"><li>Error Control</li></ol><ol type="1" id="19a7aacb-2d23-80e3-80d5-cdb3844231d4" class="numbered-list" start="3"><li>Segmentation and reassembly</li></ol><ol type="1" id="19a7aacb-2d23-8059-b409-c16e28d15eb5" class="numbered-list" start="4"><li>Multiplexing</li></ol><ol type="1" id="19a7aacb-2d23-80f3-875d-f47a7b977e99" class="numbered-list" start="5"><li>Connection Setup</li></ol><p id="19a7aacb-2d23-80a0-ae8e-e4e07e5a2810" class="">Yes, there are tasks that can be duplicated at different layers</p><p id="19a7aacb-2d23-80bc-8c9b-ec2d501d0f97" class="">
+</p><p id="19a7aacb-2d23-805a-a640-fb13ec090b92" class=""><br/>R23.  What are the five layers in the Internet protocol stack? What are the principal responsibilities of each of these layers?<br/></p><p id="19a7aacb-2d23-8082-92b8-dfcc28127063" class="">
+</p><p id="19a7aacb-2d23-8059-9a61-dadf77fa2476" class="">Application Layer - Provides human-computer interaction. The packet of information at this layer is called a <strong>message. </strong></p><p id="19a7aacb-2d23-804d-88b1-fc9f662633a8" class="">Transport Layer - Transporting application layer messages between application endpoints (sockets). There is TCP and UDP protocols at this layer. A transport-layer packet is a <strong>segment.</strong></p><p id="19a7aacb-2d23-8060-9f1d-c70f86bf0a61" class="">Network Layer - Moving network-layer packets, known as <strong>datagrams, </strong>from one host to another. </p><p id="19a7aacb-2d23-80a7-9dfb-c87f29c2183c" class="">Link Layer - Moves packets, called <strong>frames </strong>at this layer, from one network node to another along the route plotted by the Network layer</p><p id="19a7aacb-2d23-8073-8171-e29a1597ff26" class="">Physical Layer - The physical/electric bits<br/>	<br/><br/><br/></p><p id="19a7aacb-2d23-807d-acfb-e738c029c1b2" class=""><br/>R24.  What is an application-layer message? A transport-layer segment? A network-layer datagram? A link-layer frame?<br/>Application-layer message: data which an application want to send and pssed on to the transport layer<br/></p><p id="19a7aacb-2d23-801b-baa2-eb7955065c12" class="">Segments are generated by transport layer and encapsulates the application-layer message with transport layer header</p><p id="19a7aacb-2d23-80c3-94e1-de2f929c4ebc" class="">Network layer datagrams encapsulate the segments with a network layer header</p><p id="19a7aacb-2d23-8007-964e-dcaa71b2f212" class="">Link-layer frames encapsulates datagrams with a link-layer header</p><p id="19a7aacb-2d23-807e-a70e-c0697ff48ab6" class="">
+</p><p id="19a7aacb-2d23-80a5-8410-e63e1db1e765" class=""><br/>R25.  Which layers in the Internet protocol stack does a router process? Which layers does a link-layer switch process? Which layers does a host process?<br/></p><p id="19a7aacb-2d23-80a4-a463-dd24b08baabc" class="">Routers process network, link and physical layers. Link layer switches process link and physical layers. Hosts process all 5.</p><p id="19a7aacb-2d23-8043-a057-ece3a049acbf" class="">
+</p><p id="19a7aacb-2d23-8040-a5ba-d13ef2818411" class="">
+</p><p id="19a7aacb-2d23-80af-856f-cb19b5d6b825" class=""><br/><br/>	<br/><br/>	<br/><br/></p><h1 id="19a7aacb-2d23-8064-abe5-e1c052c9543a" class="">Section 1.6</h1><p id="19a7aacb-2d23-807a-99b3-e67ee8180a03" class=""><br/>R26.  What is self-replicating malware?<br/>A type of malicious software that can create copies of itself and spread to other systems without user interaction. <br/></p><p id="19a7aacb-2d23-8050-96ba-d6626a9597e1" class="">
+</p><p id="19a7aacb-2d23-8052-99f2-e984f9d44013" class=""><br/>R27.  Describe how a botnet can be created and how it can be used for a DDoS attack.<br/></p><p id="19a7aacb-2d23-8001-9c14-c46ed10b1f12" class="">A botnet is created when a host is compromised by a certain type of malware. The compromised host becomes part of a network controlled by an attacker, that can be leveraged into a DDoS attack.</p><p id="19a7aacb-2d23-8080-84fe-d94e34e4853e" class="">
+</p><p id="19a7aacb-2d23-800b-a601-e7fe3e827cc5" class=""><br/><br/>R28.  Suppose Alice and Bob are sending packets to each other over a computer network. Suppose Trudy positions herself in the network so that she can capture all the packets sent by Alice and send whatever she wants to Bob; she can also capture all the packets sent by Bob and send whatever she wants to Alice. List some of the malicious things Trudy can do from this position.<br/>Trudy can just spy on Alice and Bob and gather information.<br/></p><p id="19a7aacb-2d23-80e1-8066-dd068954d343" class="">She can alter the messages.</p><p id="19a7aacb-2d23-80ae-b19b-db77921ad49e" class="">She can drop packets.</p><p id="19a7aacb-2d23-80bb-abb4-cb0f051563da" class=""><br/>	<br/><br/></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

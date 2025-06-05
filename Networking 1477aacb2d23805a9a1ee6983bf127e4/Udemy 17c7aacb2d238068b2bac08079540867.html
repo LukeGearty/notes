@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Udemy</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17c7aacb-2d23-8068-b2ba-c08079540867" class="page sans"><header><h1 class="page-title">Udemy</h1><p class="page-description"></p></header><div class="page-body"><p id="1477aacb-2d23-8046-a616-f30b5761812d" class="">Interconnected Devices that can talk to each other</p><p id="1477aacb-2d23-8071-aa34-c2f1ec2d4027" class="">exchange resources</p><p id="1477aacb-2d23-8086-8043-c1f8da1ea2b3" class="">IoT - Internet of Things - interconnected physical objects with sensors, processing ability, software, and other technologies…</p><p id="1477aacb-2d23-8056-92b7-e4029ff97fec" class="">Wireless - </p><p id="1477aacb-2d23-800d-9399-f4aadf4146b8" class="">Wireless networks - same as any other network, only without cables. The technology<br/>uses a variety of radio connections...<br/></p><p id="1477aacb-2d23-808f-835e-c5ae407a860c" class="">Mobile - (or Cellular) network consist of a number of base stations, each serving wireless transmission and reception of digital information.</p><p id="1477aacb-2d23-8077-b0af-c5a3c0a2c055" class="">SDN - Software-Defined<br/>Networking is a technology that enables virtualization of network devices<br/></p><p id="1477aacb-2d23-8047-ace6-cb96471cb0ae" class="">Air-gapped - Deploy strategic networks with compelling e-business needs - describes network that is physically not connected to the actual network</p><p id="1477aacb-2d23-8067-992c-f93d0fc13934" class="">
+</p><p id="1477aacb-2d23-802e-97db-e3dbc79d6363" class="">Internet : globally connected network system facilitating worldwide communication</p><p id="1477aacb-2d23-8068-b433-cfc37418a96e" class="">Internet refers to global communication system, including hardware and software. World Wide Web is one of those services.</p><p id="1477aacb-2d23-8093-942c-e3e35151b6e9" class="">Other services</p><p id="1477aacb-2d23-80e8-b12b-f276bd323c37" class="">Email </p><p id="1477aacb-2d23-8072-86e4-d66a65189921" class="">Instant messaging </p><p id="1477aacb-2d23-8048-abef-e326d781c2e6" class="">VOIP</p><p id="1477aacb-2d23-80a5-ab9d-e9776af94cbb" class="">Web surfing</p><p id="1477aacb-2d23-80d9-bc8e-db95c800356e" class="">Gaming  </p><p id="1477aacb-2d23-8062-add2-f64e8f7a6c72" class="">
+</p><p id="1477aacb-2d23-80c3-9be7-d2e2cf7cbe0d" class="">Protocol: a network protocol is an established set of rules that determine how data is transmitted between different devices in a network</p><p id="1477aacb-2d23-8023-8653-c3f952ee90d5" class="">A human analogy: </p><p id="1477aacb-2d23-80fe-8448-dc378ae2c3b7" class="">Alice says hi</p><p id="1477aacb-2d23-8000-82bd-c304d8f0dc8b" class="">Bob says hi</p><p id="1477aacb-2d23-809d-ba60-da66bc38b9d9" class="">Alice then asks time</p><p id="1477aacb-2d23-8017-a799-c6b3495218f4" class="">Bob gives time</p><p id="1477aacb-2d23-8008-8bb3-e5ca0173ae60" class="">Computers:</p><p id="1477aacb-2d23-809c-be35-d466962ded84" class="">Client initiates tcp connection, server responds. The client asks for a web page, the server responds with that web page. </p><p id="1477aacb-2d23-80e8-9a29-c63f9358e283" class="">TCP: divides message into a series of packets and reassembles them</p><p id="1477aacb-2d23-8096-8e82-f516f2ecc146" class="">HTTP: for browsing the web</p><p id="1477aacb-2d23-80e8-b9e0-c8afc0f17b7a" class="">SMTP: outgoing/sending email. POP is for receiving email.</p><p id="1477aacb-2d23-802e-a49d-c10b20c77366" class="">FTP: file transfer protocol</p><p id="1477aacb-2d23-806b-b539-dbadd46ccc3a" class="">Telnet: remote login, it is all in plaintext</p><p id="1477aacb-2d23-805b-a201-fda1415a1a12" class="">
+</p><p id="1477aacb-2d23-80b4-a1d9-e2e462c38f69" class="">The OSI Model: </p><p id="1477aacb-2d23-80fc-b264-d4dab6f8737a" class="">Application: holds some of the above protocols</p><p id="1477aacb-2d23-808f-b61d-f7f6b2667448" class="">Presentation: provide services that allow applications to interpret meaning of data, such as encryption and decryption </p><p id="1477aacb-2d23-807b-8c5f-e83697de1e78" class="">Session: </p><p id="1477aacb-2d23-806d-bc98-e56b557fa722" class="">Transport: </p><p id="1477aacb-2d23-8047-a355-c3bd9fd88a0e" class="">Network</p><p id="1477aacb-2d23-80fd-b541-d7e24585f0c0" class="">Data Link</p><p id="1477aacb-2d23-8062-9fc3-cbd398266bcb" class="">Physical</p><h1 id="1477aacb-2d23-8010-aa96-f7defd6a7dd0" class=""><strong>The OSI (Open Systems Interconnection) model is a conceptual framework that describes how data is transmitted across a network. It divides the process into seven layers, each with specific roles. Here’s an overview with simple explanations for each layer:</strong></h1><h1 id="1477aacb-2d23-80b3-8515-f29ba8de2c13" class=""><strong>1. Physical Layer</strong></h1><h1 id="1477aacb-2d23-80c2-9de7-cbe0de1bfbd6" class=""><strong>	What it does: Handles the physical connection between devices and the transmission of raw binary data (0s and 1s) over cables, radio waves, or other mediums.</strong></h1><h1 id="1477aacb-2d23-8046-9d54-ee7d1cb031fd" class=""><strong>	Examples: Ethernet cables, fiber optics, Wi-Fi signals.</strong></h1><h1 id="1477aacb-2d23-8017-95d6-d714ed6b0a9f" class=""><strong>	Simple Explanation: Think of it as the wires or wireless signals that carry data from one device to another.</strong></h1><h1 id="1477aacb-2d23-80f9-8597-c39fe36beda2" class=""><strong>2. Data Link Layer</strong></h1><h1 id="1477aacb-2d23-804c-9c58-fc35701ef5db" class=""><strong>	What it does: Ensures error-free data transfer between devices on the same network. It organizes data into frames and manages access to the physical medium.</strong></h1><h1 id="1477aacb-2d23-8034-ab94-c0a54bbe9a82" class=""><strong>	Examples: MAC addresses, switches.</strong></h1><h1 id="1477aacb-2d23-8004-8f3d-f63b29d9ec36" class=""><strong>	Simple Explanation: Like labeling envelopes so data gets to the correct device within the local network.</strong></h1><h1 id="1477aacb-2d23-80dd-82ec-ce8f5acbb374" class=""><strong>3. Network Layer</strong></h1><h1 id="1477aacb-2d23-8043-9fb5-f9bb256687f8" class=""><strong>	What it does: Determines the best path for data to travel from one device to another, even across multiple networks. It handles logical addressing.</strong></h1><h1 id="1477aacb-2d23-80ad-a26f-ddf2d657dd95" class=""><strong>	Examples: IP addresses, routers.</strong></h1><h1 id="1477aacb-2d23-800f-b52c-f02a48622b3f" class=""><strong>	Simple Explanation: Like GPS for data, figuring out the best route to its destination.</strong></h1><h1 id="1477aacb-2d23-806b-bdf4-cd16b2c73459" class=""><strong>4. Transport Layer</strong></h1><h1 id="1477aacb-2d23-80e2-affa-f07c350182d6" class=""><strong>	What it does: Ensures reliable data delivery between devices by managing error checking, retransmissions, and flow control.</strong></h1><h1 id="1477aacb-2d23-8066-a018-e93ac7968a95" class=""><strong>	Examples: TCP (Transmission Control Protocol), UDP (User Datagram Protocol).</strong></h1><h1 id="1477aacb-2d23-80f9-9436-c3d99029188d" class=""><strong>	Simple Explanation: Like a delivery service, ensuring the package arrives safely and in order.</strong></h1><h1 id="1477aacb-2d23-8062-bdfa-ec7484c192c4" class=""><strong>5. Session Layer</strong></h1><h1 id="1477aacb-2d23-809e-983f-e5bde2efbf6a" class=""><strong>	What it does: Manages and controls the connections between devices, keeping communication sessions open, secure, and synchronized.</strong></h1><h1 id="1477aacb-2d23-80d3-bff2-dfdffdbaf241" class=""><strong>	Examples: Session management in APIs, login systems.</strong></h1><h1 id="1477aacb-2d23-803c-8233-ce112bbb940c" class=""><strong>	Simple Explanation: Like a phone call, maintaining the connection until both sides hang up.</strong></h1><h1 id="1477aacb-2d23-8064-a830-f013556949b8" class=""><strong>6. Presentation Layer</strong></h1><h1 id="1477aacb-2d23-8071-b908-f73fde4fef9d" class=""><strong>	What it does: Translates data into a format the application layer can understand. It also handles encryption and compression.</strong></h1><h1 id="1477aacb-2d23-8079-a543-ed1f10311f3c" class=""><strong>	Examples: JPEG, MP3, SSL/TLS encryption.</strong></h1><h1 id="1477aacb-2d23-80a3-8aed-d01110a5f539" class=""><strong>	Simple Explanation: Like a translator, ensuring the data is in a readable format for the application.</strong></h1><h1 id="1477aacb-2d23-80f7-a5b4-d61647b0fbe6" class=""><strong>7. Application Layer</strong></h1><h1 id="1477aacb-2d23-806c-9ad0-f635adda720b" class=""><strong>	What it does: Provides the interface for end-users and applications to interact with the network.</strong></h1><h1 id="1477aacb-2d23-80fd-8a13-e77926dc2969" class=""><strong>	Examples: Web browsers (HTTP), email clients (SMTP), file transfer programs (FTP).</strong></h1><h1 id="1477aacb-2d23-802f-984d-cafbbdb74280" class=""><strong>	Simple Explanation: Like the app you use to browse the web, send emails, or watch videos.</strong></h1><h1 id="1477aacb-2d23-801b-b82d-fff0ddb023cc" class=""><strong>Mnemonic for the Layers:</strong></h1><h1 id="1477aacb-2d23-8046-8655-f7c3e2d4c568" class=""><strong>To help remember the order, you can use a phrase like:</strong></h1><h1 id="1477aacb-2d23-80ea-adb9-cf2e1bf6a48c" class=""><strong>“Please Do Not Throw Sausage Pizza Away” (Physical, Data Link, Network, Transport, Session, Presentation, Application).</strong></h1><h1 id="1477aacb-2d23-80ac-a47c-f7479f0941ed" class=""><strong>Step 1: Application Layer (Layer 7)</strong></h1><h1 id="1477aacb-2d23-80f5-9da1-c3461d7709cb" class=""><strong>	The user writes an email using an application like Gmail or Outlook.</strong></h1><h1 id="1477aacb-2d23-80a1-a314-d93361c9a0cd" class=""><strong>	The email is prepared and follows protocols like SMTP (Simple Mail Transfer Protocol).</strong></h1><h1 id="1477aacb-2d23-806b-9e51-e17bd7301960" class=""><strong>	What happens here: The application prepares the email for sending.</strong></h1><h1 id="1477aacb-2d23-80b6-a8ef-ce90824324da" class=""><strong>Step 2: Presentation Layer (Layer 6)</strong></h1><h1 id="1477aacb-2d23-80cb-88d6-ed3fdbfe9a69" class=""><strong>	The email data is formatted (e.g., plain text, HTML, or attachments) and possibly encrypted (e.g., TLS/SSL).</strong></h1><h1 id="1477aacb-2d23-80a0-9e15-e17477e22e7b" class=""><strong>	What happens here: The email is converted into a readable and secure format for transmission.</strong></h1><h1 id="1477aacb-2d23-80d8-bfaa-eb09be9e8590" class=""><strong>Step 3: Session Layer (Layer 5)</strong></h1><h1 id="1477aacb-2d23-8042-a7eb-e2fc8a28548e" class=""><strong>	A session is established between the sender’s and receiver’s devices to maintain communication.</strong></h1><h1 id="1477aacb-2d23-8016-908c-e95c45957165" class=""><strong>	What happens here: The system manages the connection so the email can flow smoothly.</strong></h1><h1 id="1477aacb-2d23-80f5-8812-d4e3d7001d4f" class=""><strong>Step 4: Transport Layer (Layer 4)</strong></h1><h1 id="1477aacb-2d23-80fa-b83b-c04ee8c46a29" class=""><strong>	The email is broken into smaller pieces called segments. Protocols like TCP ensure reliable delivery by numbering these segments and requesting retransmission if any get lost.</strong></h1><h1 id="1477aacb-2d23-8045-b12d-f73871f707a6" class=""><strong>	What happens here: Data is prepared for transport with reliability checks.</strong></h1><h1 id="1477aacb-2d23-801c-8381-c8f1ab373510" class=""><strong>Step 5: Network Layer (Layer 3)</strong></h1><h1 id="1477aacb-2d23-80d1-8c73-d74787d26e80" class=""><strong>	Each segment is assigned a source and destination IP address (e.g., 192.168.1.1) and packaged into packets.</strong></h1><h1 id="1477aacb-2d23-80cc-b655-e105bf26a3d3" class=""><strong>	Routers decide the best path for the packets to take across networks to reach the recipient’s email server.</strong></h1><h1 id="1477aacb-2d23-80b7-b3ea-d25c4e7c6f06" class=""><strong>	What happens here: The packets navigate through the internet toward the destination.</strong></h1><h1 id="1477aacb-2d23-809d-ba2f-e9205afbb85f" class=""><strong>Step 6: Data Link Layer (Layer 2)</strong></h1><h1 id="1477aacb-2d23-8086-ae38-c113bc45087b" class=""><strong>	The packets are encapsulated into frames with MAC addresses for the devices on the same local network. Frames ensure proper delivery within the local or immediate network.</strong></h1><h1 id="1477aacb-2d23-805a-b8da-d2f42faf4cc8" class=""><strong>	What happens here: Frames carry the data over the local network, such as through a switch or Wi-Fi access point.</strong></h1><h1 id="1477aacb-2d23-8071-8d18-e1be6b174042" class=""><strong>Step 7: Physical Layer (Layer 1)</strong></h1><h1 id="1477aacb-2d23-8036-86d4-d91260e76dab" class=""><strong>	The frames are converted into electrical signals, light pulses (fiber optics), or radio waves (Wi-Fi) and transmitted through cables, antennas, or other physical media.</strong></h1><h1 id="1477aacb-2d23-8074-9737-ec7f13f63013" class=""><strong>	What happens here: Raw bits are sent over the medium (e.g., Ethernet cables or Wi-Fi).</strong></h1><h1 id="1477aacb-2d23-80a8-afff-fa3ad5c2fea8" class=""><strong>At the Receiving End</strong></h1><h1 id="1477aacb-2d23-807c-86f5-c8b6c0b296e7" class=""><strong>1.	The recipient’s device follows the reverse process:</strong></h1><h1 id="1477aacb-2d23-8032-a770-d48f7ae8c982" class=""><strong>	Physical Layer: Receives raw bits via cables or Wi-Fi.</strong></h1><h1 id="1477aacb-2d23-80c7-b0a7-e5cfa3aa78e9" class=""><strong>	Data Link Layer: Converts bits into frames and passes them up.</strong></h1><h1 id="1477aacb-2d23-807f-a981-cad7f6fe8529" class=""><strong>	Network Layer: Uses the destination IP address to route packets to the correct device.</strong></h1><h1 id="1477aacb-2d23-80da-bfb2-db32e3f35b56" class=""><strong>	Transport Layer: Reassembles the segments into the original data.</strong></h1><h1 id="1477aacb-2d23-8012-bd43-e4ffca74c6e2" class=""><strong>	Session Layer: Maintains the communication session.</strong></h1><h1 id="1477aacb-2d23-80a6-8a69-de2bc5c6c3f1" class=""><strong>	Presentation Layer: Decodes, decompresses, and decrypts the email.</strong></h1><h1 id="1477aacb-2d23-803c-a910-fc2c8d910047" class=""><strong>	Application Layer: Displays the email to the user in their email application.</strong></h1><h1 id="1477aacb-2d23-8041-a1cd-f0b381ef860a" class="">Application Layer:</h1><p id="1477aacb-2d23-80ef-8c64-e22d9592712a" class="">Layer 7, ensures an application can effectively communicate with other applications on different systems and networks</p><p id="1477aacb-2d23-80ec-86d4-f873457fa35f" class="">Component within application that controls the communication method to other devices. Abstraction that masks the rest of the application from the transmission process</p><p id="1477aacb-2d23-80cb-ac28-d47931c1f446" class="">Relies on all layers below it to complete process</p><p id="1477aacb-2d23-8089-b786-cd09384ad88d" class="">App later functions: </p><ul id="1477aacb-2d23-8076-a1e2-c35fccaf318b" class="bulleted-list"><li style="list-style-type:disc">ensures that the receiving application is identified, reachable and ready to accept data;</li></ul><ul id="1477aacb-2d23-80c2-9470-e6af33169d63" class="bulleted-list"><li style="list-style-type:disc">when appropriate, enables authentication between devices for an extra layer of network security;</li></ul><ul id="1477aacb-2d23-808e-b8f4-c1b5fcb4573e" class="bulleted-list"><li style="list-style-type:disc">defines the types of messages exchanged, for example, request messages and response messages;</li></ul><ul id="1477aacb-2d23-8092-b6c5-cb6fb68c4cdc" class="bulleted-list"><li style="list-style-type:disc">ensures agreement at both ends on error recovery procedures, data integrity and privacy;</li></ul><ul id="1477aacb-2d23-805a-87a7-c523e092d6de" class="bulleted-list"><li style="list-style-type:disc">determines protocol and data syntax rules at the application level; and</li></ul><ul id="1477aacb-2d23-8018-99ea-e4c948b76cbf" class="bulleted-list"><li style="list-style-type:disc">presents the data on the receiving end to the user application.</li></ul><p id="1477aacb-2d23-80e4-90a8-fb66fd290701" class="">
+</p><p id="1477aacb-2d23-80e3-83a1-c1613bfc497d" class="">Protocols:</p><p id="1477aacb-2d23-802a-8957-fa9f9469ccfa" class="">HTTP on port 80 - TCP</p><p id="1477aacb-2d23-80c6-b69b-d3776ade4960" class="">FTP on port 20,21 - TCP</p><p id="1477aacb-2d23-803f-b521-e255f664edba" class="">SMTP,POP3,IMAP - 25/587, 110,143 - TCP</p><p id="1477aacb-2d23-80ed-902d-dae5c6cc7702" class="">Telnet on port 23 - TCP</p><p id="1477aacb-2d23-80e1-8148-e1d4cfddfb06" class="">Internet Telephony - SIP, RTP, Skype, on port 5060, 5061, 16384-32767 - UDP or TCP</p><p id="1477aacb-2d23-80a7-b6d0-f3e0db048eab" class="">Application architecture: designed by the application developer and dictates how the application is structured over the various end systems </p><p id="1477aacb-2d23-8094-8d38-c1b810cafb61" class="">Client-Server Architecture</p><p id="1477aacb-2d23-807d-97c8-fb82a7505f9b" class=""><strong>Client-server architecture is a way computers communicate with each other in a network.</strong></p><p id="1477aacb-2d23-8039-a81a-cdd3aa95a36b" class=""><strong>•	The client is the device or program (like your web browser) that requests a service or resource.</strong></p><p id="1477aacb-2d23-8095-8369-f7bbf3575a2a" class=""><strong>•	The server is the device or program that provides the requested service or resource (like a website or file).</strong></p><p id="1477aacb-2d23-8074-919f-d1c53af4cfac" class=""><strong>Example:</strong></p><p id="1477aacb-2d23-8021-b8c7-fb884cdc202c" class=""><strong>1.	You (the client) type a website URL in your browser.</strong></p><p id="1477aacb-2d23-8068-beb2-c080d3ddda5a" class=""><strong>2.	The server hosting the website sends the data back to your browser.</strong></p><p id="1477aacb-2d23-801e-9c67-eb6127787569" class=""><strong>3.	You see the website load on your screen.</strong></p><p id="1477aacb-2d23-8012-b055-d16d38cc5eaf" class=""><strong>In short: Clients ask, servers respond</strong></p><p id="1477aacb-2d23-803f-841c-ee9a7a1d5a1a" class=""><strong>In Peer-to-Peer (P2P) architecture, devices (called peers) communicate directly with each other, without needing a central server to manage requests. Each peer can act as both a client and a server, sharing resources like files, processing power, or data.</strong></p><p id="1477aacb-2d23-800d-a760-efba85be6f72" class=""><strong>Example:</strong></p><p id="1477aacb-2d23-8013-8998-e7e15299811b" class=""><strong>1.	You use a file-sharing program to download a song.</strong></p><p id="1477aacb-2d23-809d-abf8-caf9e0d32778" class=""><strong>2.	The file is split into pieces, and each piece is downloaded from different peers who have the file.</strong></p><p id="1477aacb-2d23-80c4-a34a-c64176aa4be1" class=""><strong>3.	At the same time, your computer can share pieces of files it already has with others.</strong></p><p id="1477aacb-2d23-8045-a278-c765a8d6b64c" class=""><strong>In short: Peers share directly with each other, without a middleman.</strong></p><h2 id="1537aacb-2d23-8087-8e76-c00d8b72f264" class="">HTTP</h2><p id="1537aacb-2d23-807a-a11d-caa83c71a688" class="">Implemented in a client program and server program, executing on different end systems, talk to each other by exchanging HTTP messages</p><p id="1537aacb-2d23-8098-8209-ddb7c73dd509" class="">Web Page - consists of objects. Object - HTML file, JPEG, Java Applet, etc</p><p id="1537aacb-2d23-8074-9713-f5e49b59c81f" class=""><br/>HTTP client initiage a TCP connection to the server on port 80<br/></p><p id="1537aacb-2d23-80b8-a289-e1fe4c349f28" class="">HTTP client sends HTTP request message to server, including path name</p><p id="1537aacb-2d23-80d8-a2a8-c733f2818fb3" class="">HTTP server proces receives the request message ,finds the object, sends object to client</p><p id="1537aacb-2d23-803e-bb1b-d937aea7fa1d" class="">HTTP client receives client</p><h3 id="1537aacb-2d23-80ca-b8ac-db4f29b3f63a" class=""><strong>Overview</strong></h3><ul id="1537aacb-2d23-80c8-9aff-d87b9e71d305" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTP</strong>: A protocol used for transferring hypertext (web pages) between a client (e.g., browser) and a server.</li></ul><ul id="1537aacb-2d23-80ce-8ab7-efbb0305f1bf" class="bulleted-list"><li style="list-style-type:disc"><strong>Stateless</strong>: Each request/response is independent, meaning the server does not retain session information unless explicitly implemented using cookies, sessions, or other mechanisms.</li></ul><ul id="1537aacb-2d23-80c7-bb23-f9c01cd00636" class="bulleted-list"><li style="list-style-type:disc">Operates on the <strong>application layer</strong> of the OSI model.</li></ul><hr id="1537aacb-2d23-809d-98be-d15a56f97ef7"/><h3 id="1537aacb-2d23-8042-9363-c28bc3dd818a" class=""><strong>HTTP Methods</strong></h3><ol type="1" id="1537aacb-2d23-800d-a8ad-eaae004722ed" class="numbered-list" start="1"><li><strong>GET</strong>: Requests data from a server.<ul id="1537aacb-2d23-8057-9bf2-dfb9b617e25b" class="bulleted-list"><li style="list-style-type:disc">Used to retrieve resources (e.g., HTML, JSON, images).</li></ul><ul id="1537aacb-2d23-8096-8208-e11961e1cb2e" class="bulleted-list"><li style="list-style-type:disc">Parameters can be sent in the URL as query strings.</li></ul><ul id="1537aacb-2d23-802c-9cef-f97fc77b22de" class="bulleted-list"><li style="list-style-type:disc">Safe and idempotent (does not modify data).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80ff-b045-d347532e98ae" class="numbered-list" start="2"><li><strong>POST</strong>: Submits data to a server to process.<ul id="1537aacb-2d23-80d8-9e42-d098793c0753" class="bulleted-list"><li style="list-style-type:disc">Often used for form submissions.</li></ul><ul id="1537aacb-2d23-8023-9676-f406e5ce8ac0" class="bulleted-list"><li style="list-style-type:disc">Data is sent in the body of the request.</li></ul><ul id="1537aacb-2d23-8080-bd76-d8dd4b2913d2" class="bulleted-list"><li style="list-style-type:disc">Not idempotent (can result in changes or side effects).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8060-8292-f3c5766fe79f" class="numbered-list" start="3"><li><strong>PUT</strong>: Updates a resource on the server.<ul id="1537aacb-2d23-803b-9d65-c7885005253e" class="bulleted-list"><li style="list-style-type:disc">If the resource does not exist, it may create one.</li></ul><ul id="1537aacb-2d23-8044-886f-f85d235eeea8" class="bulleted-list"><li style="list-style-type:disc">Idempotent.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80e2-91e1-ee00b68ee48d" class="numbered-list" start="4"><li><strong>DELETE</strong>: Deletes a resource from the server.<ul id="1537aacb-2d23-8035-8e32-d2de26a79a81" class="bulleted-list"><li style="list-style-type:disc">Idempotent.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80ee-ac8f-c29794b6d8d1" class="numbered-list" start="5"><li><strong>HEAD</strong>: Similar to GET but only retrieves headers, not the body.<ul id="1537aacb-2d23-80f7-8be3-c70c4a1ded60" class="bulleted-list"><li style="list-style-type:disc">Useful for checking if a resource is available.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80ce-94de-d417f685811d" class="numbered-list" start="6"><li><strong>OPTIONS</strong>: Describes communication options for a resource.<ul id="1537aacb-2d23-806e-8985-f5eedd260612" class="bulleted-list"><li style="list-style-type:disc">Used in CORS (Cross-Origin Resource Sharing) preflight requests.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8009-9647-c7122f39fb45" class="numbered-list" start="7"><li><strong>PATCH</strong>: Partially updates a resource.<ul id="1537aacb-2d23-801f-be4a-f79e7db7373b" class="bulleted-list"><li style="list-style-type:disc">Non-idempotent.</li></ul></li></ol><hr id="1537aacb-2d23-806f-8174-ff4e999545ef"/><h3 id="1537aacb-2d23-8079-b047-f0112b39fbe9" class=""><strong>HTTP Request Structure</strong></h3><ol type="1" id="1537aacb-2d23-8014-96fe-ccac37c390d4" class="numbered-list" start="1"><li><strong>Request Line</strong>:<ul id="1537aacb-2d23-80c2-8d5b-ef29eb75af65" class="bulleted-list"><li style="list-style-type:disc">Format: <code>&lt;Method&gt; &lt;URL&gt; &lt;HTTP Version&gt;</code></li></ul><ul id="1537aacb-2d23-80fc-8ed4-d45f42c44112" class="bulleted-list"><li style="list-style-type:disc">Example: <code>GET /index.html HTTP/1.1</code></li></ul></li></ol><ol type="1" id="1537aacb-2d23-8045-9c6c-ea8bb2fad23a" class="numbered-list" start="2"><li><strong>Headers</strong>:<ul id="1537aacb-2d23-80e4-be9c-e4e8820fabfc" class="bulleted-list"><li style="list-style-type:disc">Key-value pairs providing metadata about the request.</li></ul><ul id="1537aacb-2d23-8028-a8da-df77dc709abf" class="bulleted-list"><li style="list-style-type:disc">Examples:<ul id="1537aacb-2d23-80be-b073-e00cbb1b30e7" class="bulleted-list"><li style="list-style-type:circle"><code>User-Agent</code>: Information about the client making the request.</li></ul><ul id="1537aacb-2d23-80f8-a259-d69aae24fe02" class="bulleted-list"><li style="list-style-type:circle"><code>Accept</code>: Types of content the client can process (e.g., <code>text/html</code>, <code>application/json</code>).</li></ul><ul id="1537aacb-2d23-8034-bc78-eca05abe8370" class="bulleted-list"><li style="list-style-type:circle"><code>Authorization</code>: Credentials for authentication.</li></ul></li></ul></li></ol><ol type="1" id="1537aacb-2d23-8026-bdb1-dad639664de3" class="numbered-list" start="3"><li><strong>Body</strong> (Optional):<ul id="1537aacb-2d23-80d8-b251-ed957b62173c" class="bulleted-list"><li style="list-style-type:disc">Contains data sent to the server (e.g., form data in POST requests).</li></ul></li></ol><hr id="1537aacb-2d23-8028-b727-d6ecefdfdf94"/><h3 id="1537aacb-2d23-8037-82d2-dd05e50ae207" class=""><strong>HTTP Response Structure</strong></h3><ol type="1" id="1537aacb-2d23-8066-bf05-e23d1b7ec96e" class="numbered-list" start="1"><li><strong>Status Line</strong>:<ul id="1537aacb-2d23-80d0-a62a-c2bb9eba82cb" class="bulleted-list"><li style="list-style-type:disc">Format: <code>&lt;HTTP Version&gt; &lt;Status Code&gt; &lt;Reason Phrase&gt;</code></li></ul><ul id="1537aacb-2d23-8014-b884-efdfb4dd2a2b" class="bulleted-list"><li style="list-style-type:disc">Example: <code>HTTP/1.1 200 OK</code></li></ul></li></ol><ol type="1" id="1537aacb-2d23-80a0-b44f-d717a2d5fc6b" class="numbered-list" start="2"><li><strong>Headers</strong>:<ul id="1537aacb-2d23-8048-85c7-ee650ad46d19" class="bulleted-list"><li style="list-style-type:disc">Provide metadata about the response.</li></ul><ul id="1537aacb-2d23-80da-a0a2-c850d8f22305" class="bulleted-list"><li style="list-style-type:disc">Examples:<ul id="1537aacb-2d23-80a4-8aaa-c0be07800922" class="bulleted-list"><li style="list-style-type:circle"><code>Content-Type</code>: Format of the response (e.g., <code>text/html</code>).</li></ul><ul id="1537aacb-2d23-80f4-b2ca-edf41566d3a2" class="bulleted-list"><li style="list-style-type:circle"><code>Set-Cookie</code>: Set cookies for the client.</li></ul></li></ul></li></ol><ol type="1" id="1537aacb-2d23-80b4-8d50-f053e0f2d9ad" class="numbered-list" start="3"><li><strong>Body</strong> (Optional):<ul id="1537aacb-2d23-80cf-bbe8-e1682fca0577" class="bulleted-list"><li style="list-style-type:disc">Contains the data returned by the server (e.g., HTML, JSON).</li></ul></li></ol><hr id="1537aacb-2d23-8030-b6fe-e1e90b0f7648"/><h3 id="1537aacb-2d23-803d-9e98-dae56f55321b" class=""><strong>HTTP Status Codes</strong></h3><ul id="1537aacb-2d23-8067-8190-c3f6fa39ffd0" class="bulleted-list"><li style="list-style-type:disc"><strong>1xx (Informational)</strong>: Request received, continuing process.<ul id="1537aacb-2d23-8035-bfc1-fd64d944a3a8" class="bulleted-list"><li style="list-style-type:circle"><code>100 Continue</code></li></ul></li></ul><ul id="1537aacb-2d23-80ca-bf18-f21928734eff" class="bulleted-list"><li style="list-style-type:disc"><strong>2xx (Success)</strong>: Request processed successfully.<ul id="1537aacb-2d23-805e-9746-c01514d3f2de" class="bulleted-list"><li style="list-style-type:circle"><code>200 OK</code>: Standard response for successful requests.</li></ul><ul id="1537aacb-2d23-803e-8b4e-ecd4bda7b3dc" class="bulleted-list"><li style="list-style-type:circle"><code>201 Created</code>: Resource successfully created.</li></ul></li></ul><ul id="1537aacb-2d23-802d-b8eb-d24e2bd1fd57" class="bulleted-list"><li style="list-style-type:disc"><strong>3xx (Redirection)</strong>: Further action needed to complete the request.<ul id="1537aacb-2d23-8008-adce-e27915a3e17c" class="bulleted-list"><li style="list-style-type:circle"><code>301 Moved Permanently</code> - Requested object has been permanently moved; the new URL is specified in Location: header of the response message. The client software will automatically retrieve the URl</li></ul><ul id="1537aacb-2d23-800f-88fb-d16a4a0fde08" class="bulleted-list"><li style="list-style-type:circle"><code>302 Found</code></li></ul><ul id="1537aacb-2d23-8072-90f2-e0966f767f1a" class="bulleted-list"><li style="list-style-type:circle"><code>304 Not Modified</code></li></ul></li></ul><ul id="1537aacb-2d23-80b3-97e9-f17eae010890" class="bulleted-list"><li style="list-style-type:disc"><strong>4xx (Client Errors)</strong>: Problem with the request.<ul id="1537aacb-2d23-801a-b090-f2eafcbd1852" class="bulleted-list"><li style="list-style-type:circle"><code>400 Bad Request</code></li></ul><ul id="1537aacb-2d23-8004-b41d-d32b08a8e04a" class="bulleted-list"><li style="list-style-type:circle"><code>401 Unauthorized</code>: Authentication needed.</li></ul><ul id="1537aacb-2d23-8052-8d46-f738001b0677" class="bulleted-list"><li style="list-style-type:circle"><code>403 Forbidden</code>: Access denied.</li></ul><ul id="1537aacb-2d23-8039-b37b-e559cb689388" class="bulleted-list"><li style="list-style-type:circle"><code>404 Not Found</code>: Resource not found.</li></ul></li></ul><ul id="1537aacb-2d23-8024-9fba-fd90ebc74d4e" class="bulleted-list"><li style="list-style-type:disc"><strong>5xx (Server Errors)</strong>: Problem with the server.<ul id="1537aacb-2d23-800d-a7b7-c908062c720d" class="bulleted-list"><li style="list-style-type:circle"><code>500 Internal Server Error</code></li></ul><ul id="1537aacb-2d23-80d2-a491-d880ae0e382d" class="bulleted-list"><li style="list-style-type:circle"><code>502 Bad Gateway</code></li></ul><ul id="1537aacb-2d23-80aa-9c85-fee783ccec05" class="bulleted-list"><li style="list-style-type:circle"><code>503 Service Unavailable</code></li></ul></li></ul><hr id="1537aacb-2d23-804e-83b3-cfd9c2f03b51"/><h3 id="1537aacb-2d23-8018-8b3f-c7aee2d204a2" class=""><strong>HTTP Versions</strong></h3><ol type="1" id="1537aacb-2d23-80fa-acad-e7c3a8cddd3b" class="numbered-list" start="1"><li><strong>HTTP/1.0</strong>:<ul id="1537aacb-2d23-8016-8507-ca0f5248340c" class="bulleted-list"><li style="list-style-type:disc">One request per connection (no connection reuse).</li></ul><ul id="1537aacb-2d23-80a9-9268-d9efe60b2470" class="bulleted-list"><li style="list-style-type:disc">Limited header options.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8098-b63a-f307d2f4989f" class="numbered-list" start="2"><li><strong>HTTP/1.1</strong>:<ul id="1537aacb-2d23-805e-b181-fe705f7a1a61" class="bulleted-list"><li style="list-style-type:disc">Persistent connections (keep-alive).</li></ul><ul id="1537aacb-2d23-8095-9496-c478222eb878" class="bulleted-list"><li style="list-style-type:disc">Chunked transfer encoding.</li></ul><ul id="1537aacb-2d23-80e8-9c95-f28c234264ff" class="bulleted-list"><li style="list-style-type:disc">Support for caching and virtual hosting.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80a3-afa2-e6a6d362732b" class="numbered-list" start="3"><li><strong>HTTP/2</strong>:<ul id="1537aacb-2d23-8095-a1e7-e3aa7f20715f" class="bulleted-list"><li style="list-style-type:disc">Binary protocol (not text-based like HTTP/1.x).</li></ul><ul id="1537aacb-2d23-80db-84f7-fad9b289f7ec" class="bulleted-list"><li style="list-style-type:disc">Multiplexing: Multiple requests and responses over a single connection.</li></ul><ul id="1537aacb-2d23-80f7-9884-e9a078557263" class="bulleted-list"><li style="list-style-type:disc">Header compression for better performance.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8038-a329-c5d6c217e4c4" class="numbered-list" start="4"><li><strong>HTTP/3</strong>:<ul id="1537aacb-2d23-804e-884c-cc4aec94fe70" class="bulleted-list"><li style="list-style-type:disc">Based on <strong>QUIC</strong> protocol.</li></ul><ul id="1537aacb-2d23-80a8-aeec-e0af51efe1b9" class="bulleted-list"><li style="list-style-type:disc">Reduces latency and improves performance over unreliable networks.</li></ul></li></ol><hr id="1537aacb-2d23-8088-9d87-f00b8f6acbc3"/><h3 id="1537aacb-2d23-80eb-93bc-dd7eabbe9c89" class=""><strong>Security in HTTP</strong></h3><ul id="1537aacb-2d23-808c-87b7-d54a5d089beb" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTPS</strong>: Secure version of HTTP using <strong>TLS/SSL</strong> for encryption.<ul id="1537aacb-2d23-80ed-82ad-eaa88f241762" class="bulleted-list"><li style="list-style-type:circle">Encrypts data in transit to prevent eavesdropping and tampering.</li></ul><ul id="1537aacb-2d23-8036-ae28-e3b3bf837418" class="bulleted-list"><li style="list-style-type:circle">Identified by the <code>https://</code> prefix and a padlock icon in browsers.</li></ul></li></ul><ul id="1537aacb-2d23-8089-abf2-c9e773baa191" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Headers</strong>:<ul id="1537aacb-2d23-80f8-8262-f6377c36e617" class="bulleted-list"><li style="list-style-type:circle"><code>Strict-Transport-Security (HSTS)</code>: Enforces HTTPS.</li></ul><ul id="1537aacb-2d23-801f-9478-caccd4a15156" class="bulleted-list"><li style="list-style-type:circle"><code>Content-Security-Policy (CSP)</code>: Prevents injection attacks.</li></ul><ul id="1537aacb-2d23-802b-9b08-c3a9672f00af" class="bulleted-list"><li style="list-style-type:circle"><code>X-Frame-Options</code>: Prevents clickjacking.</li></ul></li></ul><hr id="1537aacb-2d23-8040-a939-ccd5e4a07545"/><h3 id="1537aacb-2d23-8090-a76b-db2675a391b1" class=""><strong>Key Concepts</strong></h3><ul id="1537aacb-2d23-8051-b392-ff054b19db7e" class="bulleted-list"><li style="list-style-type:disc"><strong>Cookies</strong>: Small pieces of data stored by the browser for state management (e.g., sessions).</li></ul><ul id="1537aacb-2d23-8081-b97b-e7ed94663467" class="bulleted-list"><li style="list-style-type:disc"><strong>Caching</strong>: Mechanisms like <code>ETag</code> and <code>Cache-Control</code> to reduce server load and improve speed.</li></ul><ul id="1537aacb-2d23-807c-af8e-fb0680a2bd9c" class="bulleted-list"><li style="list-style-type:disc"><strong>RESTful APIs</strong>: HTTP used as a foundation for APIs adhering to REST principles.</li></ul><h2 id="1537aacb-2d23-80b4-9c43-ca2fda10d83e" class="">HTTPS</h2><p id="1537aacb-2d23-80a2-9d73-c098d2f94945" class="">Hyper Text Transfer Protocol Secure</p><p id="1537aacb-2d23-8034-859b-cf6fd2d03272" class="">Combination of HTTP and SSL (Secure Socket Layer) protocols. </p><p id="1537aacb-2d23-8053-bdef-cf51d76bcd65" class="">Widely used.</p><p id="1537aacb-2d23-80bd-b039-c2e42c74b8ce" class="">
+</p><h3 id="1537aacb-2d23-8094-b832-e521349d50d6" class=""><strong>Overview</strong></h3><ul id="1537aacb-2d23-80a3-b8fa-c77cd78a4aad" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTPS</strong> is the secure version of HTTP, adding encryption, data integrity, and authentication using <strong>TLS/SSL</strong>.</li></ul><ul id="1537aacb-2d23-805d-8b5f-ed520ca0b426" class="bulleted-list"><li style="list-style-type:disc">Ensures secure communication between a client (e.g., browser) and a server.</li></ul><ul id="1537aacb-2d23-8083-b8ce-fdfd68e9d630" class="bulleted-list"><li style="list-style-type:disc">Identified by the <code>https://</code> protocol in URLs and a padlock icon in browsers.</li></ul><hr id="1537aacb-2d23-802f-9c6c-e387568e7d99"/><h3 id="1537aacb-2d23-80eb-aa26-ec5cd8939875" class=""><strong>Core Features</strong></h3><ol type="1" id="1537aacb-2d23-8038-b6b2-cc733e61490c" class="numbered-list" start="1"><li><strong>Encryption</strong>:<ul id="1537aacb-2d23-805a-ad9d-ec4611f07b01" class="bulleted-list"><li style="list-style-type:disc">Uses <strong>TLS (Transport Layer Security)</strong> or its predecessor <strong>SSL (Secure Sockets Layer)</strong>.</li></ul><ul id="1537aacb-2d23-8013-917a-cb0c107cb7c4" class="bulleted-list"><li style="list-style-type:disc">Ensures data transmitted between client and server is encrypted and not readable by attackers.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-804d-b875-ee5d94637bcd" class="numbered-list" start="2"><li><strong>Authentication</strong>:<ul id="1537aacb-2d23-80a6-9c4f-d7d6d2424909" class="bulleted-list"><li style="list-style-type:disc">Uses digital certificates to confirm the server&#x27;s identity.</li></ul><ul id="1537aacb-2d23-801e-80ab-fcdac57141c2" class="bulleted-list"><li style="list-style-type:disc">Certificates are issued by trusted <strong>Certificate Authorities (CAs)</strong>.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-808a-8a75-c4d673c100f4" class="numbered-list" start="3"><li><strong>Data Integrity</strong>:<ul id="1537aacb-2d23-80ec-a6c0-f20b2f40bec1" class="bulleted-list"><li style="list-style-type:disc">Prevents data from being tampered with during transmission.</li></ul><ul id="1537aacb-2d23-8033-a5f8-ebdcd011ca64" class="bulleted-list"><li style="list-style-type:disc">Ensures the data received is identical to the data sent.</li></ul></li></ol><hr id="1537aacb-2d23-8054-9c0a-db3073f969e4"/><h3 id="1537aacb-2d23-8043-9878-fc7ee8ef00f6" class=""><strong>TLS/SSL Handshake</strong></h3><ul id="1537aacb-2d23-8010-ab03-c6386a969ea5" class="bulleted-list"><li style="list-style-type:disc">A process that establishes a secure connection between client and server.</li></ul><ol type="1" id="1537aacb-2d23-8048-8f7d-d0c0c2a17c61" class="numbered-list" start="1"><li><strong>Client Hello</strong>:<ul id="1537aacb-2d23-8043-b0bb-ce527f6b3720" class="bulleted-list"><li style="list-style-type:disc">Client sends supported cryptographic algorithms and a random value to the server.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80cc-bd67-f29c96e01c7a" class="numbered-list" start="2"><li><strong>Server Hello</strong>:<ul id="1537aacb-2d23-8035-a598-f25d1d15e4b6" class="bulleted-list"><li style="list-style-type:disc">Server selects algorithms, provides its certificate, and sends a random value.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8025-8753-f9cd70b1c0da" class="numbered-list" start="3"><li><strong>Certificate Validation</strong>:<ul id="1537aacb-2d23-8071-989c-e9a9b61bb416" class="bulleted-list"><li style="list-style-type:disc">Client validates the server’s certificate using CA-signed certificates.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8094-b034-ca5b7f38f5cd" class="numbered-list" start="4"><li><strong>Key Exchange</strong>:<ul id="1537aacb-2d23-808a-8ec8-f3df132c9b32" class="bulleted-list"><li style="list-style-type:disc">Server and client exchange keys securely (e.g., using RSA or Diffie-Hellman).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-809a-942c-df145c835ae7" class="numbered-list" start="5"><li><strong>Session Key Established</strong>:<ul id="1537aacb-2d23-8061-a96d-d5ee08a9513a" class="bulleted-list"><li style="list-style-type:disc">Both agree on a symmetric session key for encrypting further communication.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80d4-8f7b-e8718825ab6b" class="numbered-list" start="6"><li><strong>Secure Connection</strong>:<ul id="1537aacb-2d23-8065-947e-cced8b1a603a" class="bulleted-list"><li style="list-style-type:disc">Encrypted data exchange begins.</li></ul></li></ol><hr id="1537aacb-2d23-8049-bb06-c812643c25bc"/><h3 id="1537aacb-2d23-8044-ba00-e00d436e1f61" class=""><strong>Digital Certificates</strong></h3><ul id="1537aacb-2d23-802c-b82f-f20ea6924e39" class="bulleted-list"><li style="list-style-type:disc"><strong>X.509 Certificates</strong>:<ul id="1537aacb-2d23-80c7-9b3d-d2037828ca1e" class="bulleted-list"><li style="list-style-type:circle">Standard format for HTTPS certificates.</li></ul><ul id="1537aacb-2d23-8052-9ec5-cdc486a57dc2" class="bulleted-list"><li style="list-style-type:circle">Contains the server’s public key, domain name, expiration date, and the issuing CA&#x27;s information.</li></ul></li></ul><ul id="1537aacb-2d23-806b-8970-d7385020ff68" class="bulleted-list"><li style="list-style-type:disc"><strong>Certificate Authority (CA)</strong>:<ul id="1537aacb-2d23-8025-a742-f1e2e1639003" class="bulleted-list"><li style="list-style-type:circle">Trusted entities that issue and validate certificates.</li></ul><ul id="1537aacb-2d23-80bf-b719-fbf0fb35265a" class="bulleted-list"><li style="list-style-type:circle">Examples: DigiCert, Let’s Encrypt, GlobalSign.</li></ul></li></ul><ul id="1537aacb-2d23-8062-a524-d309d29e003b" class="bulleted-list"><li style="list-style-type:disc"><strong>Certificate Chain</strong>:<ul id="1537aacb-2d23-8088-bb28-d21fe5ca6828" class="bulleted-list"><li style="list-style-type:circle">Includes intermediate and root certificates to verify the legitimacy of the server’s certificate.</li></ul></li></ul><hr id="1537aacb-2d23-8094-a195-dab8c335577b"/><h3 id="1537aacb-2d23-80db-88c3-e4e1105c6384" class=""><strong>Key HTTPS Headers</strong></h3><ul id="1537aacb-2d23-8012-ac32-d80877c1747e" class="bulleted-list"><li style="list-style-type:disc"><strong>Strict-Transport-Security (HSTS)</strong>:<ul id="1537aacb-2d23-807d-81c3-f8a82968295c" class="bulleted-list"><li style="list-style-type:circle">Forces clients to use HTTPS, even if HTTP is initially requested.</li></ul><ul id="1537aacb-2d23-80c4-a084-f4415d5e2094" class="bulleted-list"><li style="list-style-type:circle">Example: <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code>.</li></ul></li></ul><ul id="1537aacb-2d23-80b0-b960-f6b7583c2d2a" class="bulleted-list"><li style="list-style-type:disc"><strong>Public-Key-Pinning (HPKP)</strong>:<ul id="1537aacb-2d23-80f8-9413-d701fbc939a5" class="bulleted-list"><li style="list-style-type:circle">Binds a website to specific cryptographic keys to prevent impersonation (deprecated due to complexity).</li></ul></li></ul><ul id="1537aacb-2d23-8095-8d66-c13438ba0a7a" class="bulleted-list"><li style="list-style-type:disc"><strong>Content-Security-Policy (CSP)</strong>:<ul id="1537aacb-2d23-80ef-8225-ca08cf329168" class="bulleted-list"><li style="list-style-type:circle">Mitigates cross-site scripting (XSS) and other code injection attacks.</li></ul><ul id="1537aacb-2d23-80a5-bc5d-cdf0354572c1" class="bulleted-list"><li style="list-style-type:circle">Example: <code>Content-Security-Policy: default-src &#x27;self&#x27;;</code>.</li></ul></li></ul><hr id="1537aacb-2d23-800c-bdc8-ec940b15d8ed"/><h3 id="1537aacb-2d23-80e1-9a85-f7dc2de7b6c0" class=""><strong>Advantages of HTTPS</strong></h3><ol type="1" id="1537aacb-2d23-809a-bd4f-f6ce7bd24d8b" class="numbered-list" start="1"><li><strong>Security</strong>:<ul id="1537aacb-2d23-8031-9ed8-c5953afc347f" class="bulleted-list"><li style="list-style-type:disc">Encrypts all data, including sensitive information (e.g., passwords, credit card numbers).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80b1-b563-f0e363132d29" class="numbered-list" start="2"><li><strong>Trust</strong>:<ul id="1537aacb-2d23-806f-8523-f6bb440311aa" class="bulleted-list"><li style="list-style-type:disc">Increases user confidence through visible indicators (e.g., padlock icon).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8041-bdf3-c6b1826ab1f0" class="numbered-list" start="3"><li><strong>SEO</strong>:<ul id="1537aacb-2d23-8032-9934-ce1ea840b586" class="bulleted-list"><li style="list-style-type:disc">Search engines like Google prioritize HTTPS-enabled websites.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80cf-b7d6-f042d317cf0d" class="numbered-list" start="4"><li><strong>Performance</strong>:<ul id="1537aacb-2d23-808e-9168-ed2ecc682c61" class="bulleted-list"><li style="list-style-type:disc">Modern HTTPS implementations (e.g., HTTP/2 with TLS) often outperform HTTP.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8042-8407-d475d8476c3b" class="numbered-list" start="5"><li><strong>Compliance</strong>:<ul id="1537aacb-2d23-8068-b230-fc19f1d58269" class="bulleted-list"><li style="list-style-type:disc">Meets security standards for regulations like GDPR, PCI DSS, and HIPAA.</li></ul></li></ol><hr id="1537aacb-2d23-80d7-9560-ea83909cccba"/><h3 id="1537aacb-2d23-806d-9a03-fe0cdbe6889f" class=""><strong>How to Enable HTTPS</strong></h3><ol type="1" id="1537aacb-2d23-80bc-975a-e1f1a63ffc7b" class="numbered-list" start="1"><li><strong>Obtain a Certificate</strong>:<ul id="1537aacb-2d23-800d-9fe6-dd71a1ee8119" class="bulleted-list"><li style="list-style-type:disc">Get an SSL/TLS certificate from a CA.</li></ul><ul id="1537aacb-2d23-801a-9a9a-c62aabf402a0" class="bulleted-list"><li style="list-style-type:disc">Free options are available (e.g., Let’s Encrypt).</li></ul></li></ol><ol type="1" id="1537aacb-2d23-805b-a936-e1d7da4a6968" class="numbered-list" start="2"><li><strong>Configure the Server</strong>:<ul id="1537aacb-2d23-8060-b6f6-fbf62fec6519" class="bulleted-list"><li style="list-style-type:disc">Install the certificate on the web server.</li></ul><ul id="1537aacb-2d23-80f6-87e4-ebe6a6463fcb" class="bulleted-list"><li style="list-style-type:disc">Update server configuration to support HTTPS.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-806a-8dd0-c2cabf1d3775" class="numbered-list" start="3"><li><strong>Redirect HTTP to HTTPS</strong>:<ul id="1537aacb-2d23-805b-9d03-ca2953b3961b" class="bulleted-list"><li style="list-style-type:disc">Use <code>.htaccess</code> rules or server settings to force HTTPS.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-80f2-9c31-c40ae11ab932" class="numbered-list" start="4"><li><strong>Test Configuration</strong>:<ul id="1537aacb-2d23-80f6-ac58-d187e6c0400e" class="bulleted-list"><li style="list-style-type:disc">Use tools like <strong>SSL Labs</strong> or <strong>OpenSSL</strong> to validate the setup.</li></ul></li></ol><hr id="1537aacb-2d23-8021-bf7b-ca74479b6fa0"/><h3 id="1537aacb-2d23-8038-ac36-c8a6dfc8f076" class=""><strong>Common HTTPS Issues</strong></h3><ol type="1" id="1537aacb-2d23-804e-a96e-ec640b278f8e" class="numbered-list" start="1"><li><strong>Mixed Content</strong>:<ul id="1537aacb-2d23-8084-a867-d956713a733d" class="bulleted-list"><li style="list-style-type:disc">Occurs when a secure HTTPS page includes resources (e.g., images, scripts) loaded over HTTP.</li></ul><ul id="1537aacb-2d23-8003-a211-f2a4fb3adfad" class="bulleted-list"><li style="list-style-type:disc">Fix: Update all resources to use HTTPS.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8027-a115-ed875f699b91" class="numbered-list" start="2"><li><strong>Certificate Errors</strong>:<ul id="1537aacb-2d23-808a-95ff-f55f65897b28" class="bulleted-list"><li style="list-style-type:disc">Expired certificates, mismatched domain names, or untrusted CAs.</li></ul><ul id="1537aacb-2d23-80bb-94c9-ec8ba5023185" class="bulleted-list"><li style="list-style-type:disc">Fix: Regularly renew certificates and ensure proper configurations.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8061-a543-f9b9d09442f6" class="numbered-list" start="3"><li><strong>Performance Overhead</strong>:<ul id="1537aacb-2d23-800c-bcbb-d3d455ac3ee9" class="bulleted-list"><li style="list-style-type:disc">HTTPS adds slight latency due to encryption/decryption.</li></ul><ul id="1537aacb-2d23-8035-bc13-cb85c4ccbc54" class="bulleted-list"><li style="list-style-type:disc">Mitigation: Use optimized TLS libraries and HTTP/2.</li></ul></li></ol><hr id="1537aacb-2d23-8026-a35d-f4c2e2de9530"/><h3 id="1537aacb-2d23-808d-ae61-d7e73d845c6f" class=""><strong>TLS/SSL Vulnerabilities</strong></h3><ol type="1" id="1537aacb-2d23-8060-aa11-c30895055d7c" class="numbered-list" start="1"><li><strong>Old Protocols</strong>:<ul id="1537aacb-2d23-804e-a670-f2de29c41d99" class="bulleted-list"><li style="list-style-type:disc">SSL 2.0, SSL 3.0, and TLS 1.0/1.1 are outdated and insecure.</li></ul><ul id="1537aacb-2d23-80c4-8dcc-d286a07b86e7" class="bulleted-list"><li style="list-style-type:disc">Fix: Use TLS 1.2 or TLS 1.3.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-803d-bf42-f6dfb6cc0ba4" class="numbered-list" start="2"><li><strong>Man-in-the-Middle (MITM) Attacks</strong>:<ul id="1537aacb-2d23-8040-b83a-fc3dd94fd0e7" class="bulleted-list"><li style="list-style-type:disc">Attacks targeting unencrypted or poorly implemented HTTPS.</li></ul><ul id="1537aacb-2d23-8027-a964-dfdf67b02bb4" class="bulleted-list"><li style="list-style-type:disc">Fix: Use HSTS and strong ciphers.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-805f-bb50-f217b2dd9c8d" class="numbered-list" start="3"><li><strong>Weak Cipher Suites</strong>:<ul id="1537aacb-2d23-805f-af19-c51fcb569f8c" class="bulleted-list"><li style="list-style-type:disc">Vulnerabilities in encryption algorithms (e.g., RC4, DES).</li></ul><ul id="1537aacb-2d23-807b-8985-e77df19d0a06" class="bulleted-list"><li style="list-style-type:disc">Fix: Disable weak ciphers in server configuration.</li></ul></li></ol><hr id="1537aacb-2d23-80ec-932c-fefdac1accd4"/><h3 id="1537aacb-2d23-80bd-b0ed-c9b907ecc3c5" class=""><strong>Modern TLS Features</strong></h3><ul id="1537aacb-2d23-8004-b3e2-f69250d3398f" class="bulleted-list"><li style="list-style-type:disc"><strong>TLS 1.3</strong>:<ul id="1537aacb-2d23-80dc-83d6-c3b36fd2f7bd" class="bulleted-list"><li style="list-style-type:circle">Faster handshake and reduced latency.</li></ul><ul id="1537aacb-2d23-80fd-b544-c95d10ba443e" class="bulleted-list"><li style="list-style-type:circle">Enhanced security with modern ciphers and no support for older algorithms.</li></ul></li></ul><ul id="1537aacb-2d23-80a4-a280-e2dabc1e2445" class="bulleted-list"><li style="list-style-type:disc"><strong>Perfect Forward Secrecy (PFS)</strong>:<ul id="1537aacb-2d23-8023-9ea1-fd99cf1b4d22" class="bulleted-list"><li style="list-style-type:circle">Protects past communications even if the server’s private key is compromised.</li></ul></li></ul><p id="1577aacb-2d23-80a2-bf34-cbdd2f6e2780" class="">
+</p><h2 id="1577aacb-2d23-805f-a8d2-d2ca6cd3c5af" class="">FTP</h2><ol type="1" id="1577aacb-2d23-802c-884a-c473974782dc" class="numbered-list" start="1"><li><strong>Purpose</strong>: FTP is used to transfer files between a client (your computer) and a server (another computer).</li></ol><ol type="1" id="1577aacb-2d23-8026-bd8f-e6a400a1e83b" class="numbered-list" start="2"><li><strong>Connection</strong>:<ul id="1577aacb-2d23-80e2-9547-fb593c0c4517" class="bulleted-list"><li style="list-style-type:disc">Your computer connects to an FTP server using an FTP client (a program like FileZilla).</li></ul><ul id="1577aacb-2d23-8081-b6b5-d2d056fb742d" class="bulleted-list"><li style="list-style-type:disc">You log in with a username and password or use anonymous access if the server allows it.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-806d-8bef-ccf80b36dd56" class="numbered-list" start="3"><li><strong>Commands</strong>:<ul id="1577aacb-2d23-80f2-8b8d-e6e996c5edae" class="bulleted-list"><li style="list-style-type:disc">The client sends commands to the server to do things like list files, upload, or download files.</li></ul><ul id="1577aacb-2d23-802c-a93f-d867293b3c80" class="bulleted-list"><li style="list-style-type:disc">The server responds and performs the requested actions.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80fa-845a-d1afe9e1554d" class="numbered-list" start="4"><li><strong>Two Modes of Communication</strong>:<ul id="1577aacb-2d23-80e6-a33f-f8fbb0dc2455" class="bulleted-list"><li style="list-style-type:disc"><strong>Control Channel</strong>: This is for sending commands and responses (e.g., &quot;list files&quot;).</li></ul><ul id="1577aacb-2d23-80d9-8f54-e054c0b54462" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Channel</strong>: This is for transferring the actual files.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8015-a0d2-c78b4fff57b3" class="numbered-list" start="5"><li><strong>Two Transfer Modes</strong>:<ul id="1577aacb-2d23-8029-827f-d08bfea46577" class="bulleted-list"><li style="list-style-type:disc"><strong>Active Mode</strong>: The server connects back to the client to send data.</li></ul><ul id="1577aacb-2d23-801b-a43e-d8179cf5210a" class="bulleted-list"><li style="list-style-type:disc"><strong>Passive Mode</strong>: The client connects to the server for both commands and data. (This is more common for modern setups.)</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80ef-b774-e087650a0887" class="numbered-list" start="6"><li><strong>File Transfer</strong>:<ul id="1577aacb-2d23-80bc-baea-fcc8d3072605" class="bulleted-list"><li style="list-style-type:disc">You can upload files (send them to the server) or download files (get them from the server).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8031-b707-db16ed546f1b" class="numbered-list" start="7"><li><strong>Security Note</strong>: Basic FTP doesn’t encrypt data, so anyone can intercept the data. For secure transfers, use FTPS (FTP Secure) or SFTP (SSH File Transfer Protocol).</li></ol><p id="1577aacb-2d23-80f1-98fc-e7dc90c4293f" class="">FTP uses two main ports:</p><ol type="1" id="1577aacb-2d23-802e-9656-c545af72be4a" class="numbered-list" start="1"><li><strong>Port 21</strong>: This is the <strong>control port</strong>. It handles the commands and responses between the client and server, like logging in, listing files, or starting a transfer.</li></ol><ol type="1" id="1577aacb-2d23-805f-983a-f3cb82d22927" class="numbered-list" start="2"><li><strong>Port 20</strong>: This is the <strong>data port</strong>. It is used for transferring the actual files in <strong>active mode</strong>.</li></ol><figure id="1577aacb-2d23-80bb-8b56-f96656d58e7a" class="link-to-page"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Questions%20on%20FTP%201577aacb2d2380bb8b56f96656d58e7a.html">Questions on FTP</a></figure><p id="1577aacb-2d23-804d-b500-ee1e9c516881" class="">
+</p><h2 id="1577aacb-2d23-8008-89e1-d9a9a946f92b" class="">EMAIL</h2><p id="1577aacb-2d23-802e-b0c6-fad3e8198961" class="">SMTP - Simple Mail Transfer Protocol, transfers messages from senders mail server to recipients mail servers. Uses TCP. Port 25</p><p id="1577aacb-2d23-80e1-b541-fa61fbc781df" class="">POP3 - Post office protocol. Extremely simple and limited in functionalitiies.</p><p id="1577aacb-2d23-8067-a322-ecccaa6961a7" class="">IMAP</p><p id="1577aacb-2d23-80fc-8c16-e0d23bebc972" class="">Web mail</p><h3 id="1577aacb-2d23-80ca-8b17-dff32f85950a" class=""><strong>Email Overview</strong></h3><ul id="1577aacb-2d23-808e-aa96-d47f6e7af0f2" class="bulleted-list"><li style="list-style-type:disc">Email is a method of sending messages electronically from one user to another using the Internet.</li></ul><ul id="1577aacb-2d23-80c4-8499-c211125e744b" class="bulleted-list"><li style="list-style-type:disc">It involves sending, receiving, and storing messages on mail servers.</li></ul><hr id="1577aacb-2d23-80b5-90f9-f7056b6155ef"/><h3 id="1577aacb-2d23-80f5-bc59-ef08f1960195" class=""><strong>Email Protocols</strong></h3><ol type="1" id="1577aacb-2d23-804d-b82b-c433e011ec64" class="numbered-list" start="1"><li><strong>SMTP (Simple Mail Transfer Protocol)</strong>:<ul id="1577aacb-2d23-8002-a4ca-d0e62faec4d0" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Used for <strong>sending</strong> emails from the client to the server or between servers.</li></ul><ul id="1577aacb-2d23-8061-9cd8-edab98fb11cc" class="bulleted-list"><li style="list-style-type:disc"><strong>Port Numbers</strong>:<ul id="1577aacb-2d23-8088-9531-c69d4f1b4750" class="bulleted-list"><li style="list-style-type:circle">Port <strong>25</strong>: Default (but often blocked to prevent spam).</li></ul><ul id="1577aacb-2d23-80d2-b56d-c671f9b81938" class="bulleted-list"><li style="list-style-type:circle">Port <strong>587</strong>: For sending emails securely (STARTTLS encryption).</li></ul><ul id="1577aacb-2d23-80bf-bd5f-f59f72432dbc" class="bulleted-list"><li style="list-style-type:circle">Port <strong>465</strong>: Legacy port for sending with SSL encryption.</li></ul></li></ul><ul id="1577aacb-2d23-80e6-a47c-f373f537c76d" class="bulleted-list"><li style="list-style-type:disc"><strong>Flow</strong>: Client → Mail Server → Recipient&#x27;s Mail Server.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8048-8ad8-fcd3f623f2d3" class="numbered-list" start="2"><li><strong>POP3 (Post Office Protocol version 3)</strong>:<ul id="1577aacb-2d23-803d-b659-f9b803cd17f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Used to <strong>retrieve emails</strong> from the server to the client.</li></ul><ul id="1577aacb-2d23-801f-916c-e5553becd853" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics</strong>:<ul id="1577aacb-2d23-8009-98c4-ef5f5184f1d5" class="bulleted-list"><li style="list-style-type:circle">Downloads emails to the client and often deletes them from the server.</li></ul><ul id="1577aacb-2d23-80fd-a510-f05b65648391" class="bulleted-list"><li style="list-style-type:circle">Best for offline access, but not suitable for accessing emails from multiple devices.</li></ul></li></ul><ul id="1577aacb-2d23-806c-83f4-f20b54ea5202" class="bulleted-list"><li style="list-style-type:disc"><strong>Port Numbers</strong>:<ul id="1577aacb-2d23-80cf-afd2-e38c4d88f194" class="bulleted-list"><li style="list-style-type:circle">Port <strong>110</strong>: Default.</li></ul><ul id="1577aacb-2d23-8010-98ff-e3591243ad35" class="bulleted-list"><li style="list-style-type:circle">Port <strong>995</strong>: Secure connection with SSL/TLS.</li></ul></li></ul><ul id="1577aacb-2d23-8030-92c8-f0dc08d31b04" class="bulleted-list"><li style="list-style-type:disc"><strong>Flow</strong>: Server → Client (download).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8000-a369-f04a723fa331" class="numbered-list" start="3"><li><strong>IMAP (Internet Message Access Protocol)</strong>:<ul id="1577aacb-2d23-80c5-973e-c1024cc5e058" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Used to <strong>retrieve and manage emails</strong> on the server.</li></ul><ul id="1577aacb-2d23-803b-bdec-f6c562a55498" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics</strong>:<ul id="1577aacb-2d23-801c-bc7f-fe81fee08196" class="bulleted-list"><li style="list-style-type:circle">Synchronizes emails between client and server, allowing access from multiple devices.</li></ul><ul id="1577aacb-2d23-808f-a403-c63c77b810e1" class="bulleted-list"><li style="list-style-type:circle">Emails remain on the server unless explicitly deleted.</li></ul><ul id="1577aacb-2d23-803e-8f28-cd943b87e8bd" class="bulleted-list"><li style="list-style-type:circle">Better for modern, multi-device workflows.</li></ul></li></ul><ul id="1577aacb-2d23-801a-b947-c02a71a784a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Port Numbers</strong>:<ul id="1577aacb-2d23-8071-8cbc-c63d02307d52" class="bulleted-list"><li style="list-style-type:circle">Port <strong>143</strong>: Default.</li></ul><ul id="1577aacb-2d23-8060-adf4-c9442f254434" class="bulleted-list"><li style="list-style-type:circle">Port <strong>993</strong>: Secure connection with SSL/TLS.</li></ul></li></ul><ul id="1577aacb-2d23-80bc-92fa-fdd47872f62e" class="bulleted-list"><li style="list-style-type:disc"><strong>Flow</strong>: Server ↔ Client (synchronization).</li></ul></li></ol><hr id="1577aacb-2d23-808f-a08c-c992ffca71b5"/><h3 id="1577aacb-2d23-8022-8f09-da4b3e3009a3" class=""><strong>Web Mail</strong></h3><ul id="1577aacb-2d23-808c-a99e-cccee3b2550d" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Access email through a web browser.</li></ul><ul id="1577aacb-2d23-8049-9eda-f6bde3a21fb0" class="bulleted-list"><li style="list-style-type:disc">Examples: Gmail, Outlook.com, Yahoo Mail.</li></ul><ul id="1577aacb-2d23-8081-9211-e84a2944502e" class="bulleted-list"><li style="list-style-type:disc">Emails are stored on the provider&#x27;s servers and accessed through a web interface.</li></ul><ul id="1577aacb-2d23-80c3-93ac-eacd06face0e" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>:<ul id="1577aacb-2d23-80ab-8fa3-dfbd431216a5" class="bulleted-list"><li style="list-style-type:circle">No need for a separate client application.</li></ul><ul id="1577aacb-2d23-8008-8252-e1522b5f3db3" class="bulleted-list"><li style="list-style-type:circle">Accessible from anywhere with an internet connection.</li></ul></li></ul><ul id="1577aacb-2d23-80f7-904b-ebb805aea978" class="bulleted-list"><li style="list-style-type:disc"><strong>Disadvantages</strong>:<ul id="1577aacb-2d23-80f6-8cac-eb12ea8c4c5f" class="bulleted-list"><li style="list-style-type:circle">Reliant on the provider&#x27;s availability.</li></ul><ul id="1577aacb-2d23-8057-8ec6-f1da4bad5782" class="bulleted-list"><li style="list-style-type:circle">Requires internet access to read and manage emails (unless cached locally).</li></ul></li></ul><hr id="1577aacb-2d23-80dc-9b27-ec3fb1baa7c7"/><h3 id="1577aacb-2d23-80ab-a8fa-e7755980c146" class=""><strong>Comparison of POP3 vs. IMAP</strong></h3><table id="1577aacb-2d23-80d8-b37c-dfd88046dca4" class="simple-table"><tbody><tr id="1577aacb-2d23-80e3-8184-ff7f74de79a3"><td id="vIjr" class="">Feature</td><td id="&gt;Itk" class="">POP3</td><td id=":OLh" class="">IMAP</td></tr><tr id="1577aacb-2d23-8062-86cf-d487cc8ffe70"><td id="vIjr" class=""><strong>Storage</strong></td><td id="&gt;Itk" class="">Downloads to client</td><td id=":OLh" class="">Stays on server</td></tr><tr id="1577aacb-2d23-80e2-908f-c52563b6fd89"><td id="vIjr" class=""><strong>Access</strong></td><td id="&gt;Itk" class="">Single device preferred</td><td id=":OLh" class="">Multiple devices supported</td></tr><tr id="1577aacb-2d23-8082-8e9e-e804437cdf02"><td id="vIjr" class=""><strong>Sync</strong></td><td id="&gt;Itk" class="">No sync after download</td><td id=":OLh" class="">Syncs across devices</td></tr><tr id="1577aacb-2d23-806d-9641-d83503a4bf7a"><td id="vIjr" class=""><strong>Use Case</strong></td><td id="&gt;Itk" class="">Simple, offline access</td><td id=":OLh" class="">Modern, multi-device access</td></tr></tbody></table><hr id="1577aacb-2d23-802f-ba39-f079b5658ff7"/><h3 id="1577aacb-2d23-8037-b1bc-d2727c6efe4f" class=""><strong>Security</strong></h3><ul id="1577aacb-2d23-8088-97c1-ee28e90267aa" class="bulleted-list"><li style="list-style-type:disc">To ensure security, modern email systems use encryption protocols like:<ul id="1577aacb-2d23-8014-9cec-e845f56f32de" class="bulleted-list"><li style="list-style-type:circle"><strong>SSL/TLS</strong>: For encrypting email traffic.</li></ul><ul id="1577aacb-2d23-8012-bd8a-dd2d3032b630" class="bulleted-list"><li style="list-style-type:circle"><strong>STARTTLS</strong>: Upgrades plain text connections to encrypted ones.</li></ul></li></ul><hr id="1577aacb-2d23-80a6-a716-d29a6d14ec61"/><figure id="1577aacb-2d23-8005-a0b7-d39b48be6a76" class="link-to-page"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Questions%20on%20Email%201577aacb2d238005a0b7d39b48be6a76.html">Questions on Email</a></figure><p id="1577aacb-2d23-8087-9d46-c79c2f0072cc" class="">
+</p><h2 id="1577aacb-2d23-803a-92d1-ece952f5880b" class="">DNS</h2><h3 id="1577aacb-2d23-801d-beb5-df3246be83a4" class=""><strong>What is DNS?</strong></h3><ul id="1577aacb-2d23-8008-b023-f7c4ba5510fa" class="bulleted-list"><li style="list-style-type:disc"><strong>DNS (Domain Name System)</strong> is the system that translates <strong>human-readable domain names</strong> (e.g., <code>www.example.com</code>) into <strong>IP addresses</strong> (e.g., <code>192.168.1.1</code>) so that browsers and other applications can locate resources on the Internet.</li></ul><ul id="1577aacb-2d23-806d-9f4d-dec1fec7d1ef" class="bulleted-list"><li style="list-style-type:disc">DNS is essential for routing traffic on the Internet, as users typically access websites using domain names rather than IP addresses.</li></ul><hr id="1577aacb-2d23-80ed-8c4a-ce735313e835"/><h3 id="1577aacb-2d23-8022-aae6-dafdc45d2e02" class=""><strong>How DNS Works</strong></h3><ol type="1" id="1577aacb-2d23-8027-9776-fb2042f8bdbd" class="numbered-list" start="1"><li><strong>DNS Query Process</strong>:<ul id="1577aacb-2d23-80e8-b0bd-c7ff5070e37a" class="bulleted-list"><li style="list-style-type:disc">When a user types a domain name (e.g., <code>www.example.com</code>) into their browser, the browser sends a DNS query to a DNS resolver.</li></ul><ul id="1577aacb-2d23-8040-afd8-f284f172bcac" class="bulleted-list"><li style="list-style-type:disc">The DNS resolver is usually provided by the ISP or a third-party service (e.g., Google DNS or Cloudflare).</li></ul><ul id="1577aacb-2d23-80a4-aca5-ee9d9e18220a" class="bulleted-list"><li style="list-style-type:disc">The resolver checks its cache for the IP address associated with the domain.<ul id="1577aacb-2d23-80cf-98c2-db182ab6d0fa" class="bulleted-list"><li style="list-style-type:circle">If the IP is not found in the cache, it queries other DNS servers to resolve the address.</li></ul><ul id="1577aacb-2d23-8057-8dbb-fa9a01182f01" class="bulleted-list"><li style="list-style-type:circle">The resolver will query <strong>root DNS servers</strong>, <strong>TLD (Top-Level Domain) servers</strong>, and finally the <strong>authoritative DNS servers</strong> for the domain to get the IP address.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-807f-bcdc-c690ef1ac2ef" class="numbered-list" start="2"><li><strong>DNS Resolution Steps</strong>:<ul id="1577aacb-2d23-805d-9328-d0bba48824e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Step 1</strong>: The DNS resolver checks if it has the requested domain&#x27;s IP address cached.</li></ul><ul id="1577aacb-2d23-8081-b996-d2f910a9ad7e" class="bulleted-list"><li style="list-style-type:disc"><strong>Step 2</strong>: If not cached, the resolver queries a <strong>root DNS server</strong>, which directs it to the appropriate TLD server (e.g., <code>.com</code> for <code>example.com</code>).</li></ul><ul id="1577aacb-2d23-80a0-bf1e-d72ac3567d8c" class="bulleted-list"><li style="list-style-type:disc"><strong>Step 3</strong>: The TLD server directs the query to the <strong>authoritative DNS server</strong> for the domain, which provides the IP address for the domain.</li></ul><ul id="1577aacb-2d23-8011-928c-eabacae552ec" class="bulleted-list"><li style="list-style-type:disc"><strong>Step 4</strong>: The resolver sends the IP address back to the client (e.g., the web browser), which then connects to the server hosting the website.</li></ul></li></ol><hr id="1577aacb-2d23-8005-b989-d7da2526ce14"/><h3 id="1577aacb-2d23-8026-b270-e6d220400759" class=""><strong>Types of DNS Records</strong></h3><ol type="1" id="1577aacb-2d23-80ed-bb0c-ecf3558b0981" class="numbered-list" start="1"><li><strong>A Record</strong> (Address Record):<ul id="1577aacb-2d23-80fd-8000-ebd2556892c9" class="bulleted-list"><li style="list-style-type:disc">Maps a domain name to an <strong>IPv4 address</strong> (e.g., <code>example.com</code> → <code>192.168.1.1</code>).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80a5-9585-cc32e1944cbc" class="numbered-list" start="2"><li><strong>AAAA Record</strong> (IPv6 Address Record):<ul id="1577aacb-2d23-80ae-b601-d816737b06b4" class="bulleted-list"><li style="list-style-type:disc">Maps a domain name to an <strong>IPv6 address</strong> (e.g., <code>example.com</code> → <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8085-8f96-cfb2c41e7153" class="numbered-list" start="3"><li><strong>CNAME Record</strong> (Canonical Name Record):<ul id="1577aacb-2d23-80f6-a761-c12ebff6a7dd" class="bulleted-list"><li style="list-style-type:disc">Alias record that points one domain to another domain (e.g., <code>www.example.com</code> → <code>example.com</code>).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80d6-962b-db8f4344007c" class="numbered-list" start="4"><li><strong>MX Record</strong> (Mail Exchange Record):<ul id="1577aacb-2d23-80e7-86a7-f6f55f7e4053" class="bulleted-list"><li style="list-style-type:disc">Defines the mail servers responsible for receiving emails for the domain (e.g., <code>example.com</code> mail handled by <code>mail.example.com</code>).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8019-a17c-d46d892a5fdc" class="numbered-list" start="5"><li><strong>NS Record</strong> (Name Server Record):<ul id="1577aacb-2d23-80b2-9af4-e95fe120003e" class="bulleted-list"><li style="list-style-type:disc">Indicates which DNS servers are authoritative for the domain.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-800c-89fa-c60299bf6f02" class="numbered-list" start="6"><li><strong>PTR Record</strong> (Pointer Record):<ul id="1577aacb-2d23-80a5-8058-d60f048968b8" class="bulleted-list"><li style="list-style-type:disc">Used for <strong>reverse DNS lookups</strong>, mapping an IP address to a domain name (used in security and troubleshooting).</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80b0-ab61-c004411f9f84" class="numbered-list" start="7"><li><strong>TXT Record</strong>:<ul id="1577aacb-2d23-803c-b550-ce2b1b56a25a" class="bulleted-list"><li style="list-style-type:disc">Can contain arbitrary text, commonly used for <strong>verification</strong>, <strong>security</strong> (e.g., SPF, DKIM, DMARC), or other purposes.</li></ul></li></ol><hr id="1577aacb-2d23-8086-a797-c7807e66390e"/><h3 id="1577aacb-2d23-8022-ac80-c56ef81650d8" class=""><strong>DNS Caching</strong></h3><ul id="1577aacb-2d23-8080-a386-c4c8d4d5210a" class="bulleted-list"><li style="list-style-type:disc"><strong>Caching</strong> is an optimization that stores DNS query results locally for a certain period (TTL, or Time to Live) to reduce query traffic and speed up name resolution.</li></ul><ul id="1577aacb-2d23-806c-9211-fbe94bac0373" class="bulleted-list"><li style="list-style-type:disc"><strong>TTL</strong> specifies how long a record is cached before a new query is made to the authoritative server.</li></ul><ul id="1577aacb-2d23-80d8-8e13-dbe84b79c89b" class="bulleted-list"><li style="list-style-type:disc">Both the <strong>client</strong> and the <strong>resolver</strong> cache DNS queries, and the records remain cached until the TTL expires.</li></ul><hr id="1577aacb-2d23-8058-a3cc-e907fa048462"/><h3 id="1577aacb-2d23-8053-91da-e3dba4e40e5d" class=""><strong>DNS Security</strong></h3><ol type="1" id="1577aacb-2d23-80bd-b408-d895ea24618e" class="numbered-list" start="1"><li><strong>DNS Spoofing (Cache Poisoning)</strong>:<ul id="1577aacb-2d23-80ad-94e3-f5974b7ece33" class="bulleted-list"><li style="list-style-type:disc">Attackers insert false DNS records into a cache, causing clients to resolve incorrect IP addresses.</li></ul><ul id="1577aacb-2d23-80ff-be50-e3c942010e8c" class="bulleted-list"><li style="list-style-type:disc">Mitigated by DNSSEC (DNS Security Extensions) which adds cryptographic signatures to DNS records to ensure their authenticity.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80f8-81d3-eb12fc2a102b" class="numbered-list" start="2"><li><strong>DNSSEC (DNS Security Extensions)</strong>:<ul id="1577aacb-2d23-8090-9528-ff5597cb9533" class="bulleted-list"><li style="list-style-type:disc">A set of extensions to DNS that adds security by using digital signatures to verify the integrity of the DNS data and prevent tampering.</li></ul><ul id="1577aacb-2d23-80e6-85d6-ea197aa3bae2" class="bulleted-list"><li style="list-style-type:disc">Ensures that DNS records are authentic and have not been altered in transit.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80db-8216-f8edb3f31e36" class="numbered-list" start="3"><li><strong>DDoS Attacks on DNS</strong>:<ul id="1577aacb-2d23-8012-8ff1-f4975554e85d" class="bulleted-list"><li style="list-style-type:disc"><strong>DNS Amplification Attacks</strong>: Attackers use DNS servers to flood a target with massive amounts of traffic, overwhelming its resources.</li></ul></li></ol><hr id="1577aacb-2d23-8000-8590-e1259bc76794"/><h3 id="1577aacb-2d23-804e-8394-f2cf98510907" class=""><strong>DNS Servers</strong></h3><ol type="1" id="1577aacb-2d23-8046-a5ee-fb267877ff34" class="numbered-list" start="1"><li><strong>Recursive DNS Server</strong>:<ul id="1577aacb-2d23-802f-8fbd-ea99ea1fbe27" class="bulleted-list"><li style="list-style-type:disc">Responsible for resolving domain names by querying other DNS servers.</li></ul><ul id="1577aacb-2d23-8090-805e-c2b7ac1d916e" class="bulleted-list"><li style="list-style-type:disc">It typically belongs to an ISP or third-party DNS service.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8097-9dc2-fb056c7bef02" class="numbered-list" start="2"><li><strong>Authoritative DNS Server</strong>:<ul id="1577aacb-2d23-8003-acf0-cda9a1927405" class="bulleted-list"><li style="list-style-type:disc">Contains the official DNS records for a domain. When queried, it provides the correct and most up-to-date information for that domain.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8073-be6a-e247eca3f567" class="numbered-list" start="3"><li><strong>Root DNS Servers</strong>:<ul id="1577aacb-2d23-808c-95ef-c21eceadc013" class="bulleted-list"><li style="list-style-type:disc">The top-level servers in the DNS hierarchy, responsible for directing queries to appropriate TLD servers.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8053-ba6a-ffa4043d7c53" class="numbered-list" start="4"><li><strong>TLD DNS Servers</strong>:<ul id="1577aacb-2d23-80e0-a30d-eaafeb54491b" class="bulleted-list"><li style="list-style-type:disc">Manage the domain extensions (e.g., <code>.com</code>, <code>.org</code>, <code>.net</code>) and point to authoritative servers for domains under that extension.</li></ul></li></ol><hr id="1577aacb-2d23-80eb-8659-f328938d0bf7"/><h3 id="1577aacb-2d23-80f6-a7d9-edd87c0b32e8" class=""><strong>DNS Tools</strong></h3><ul id="1577aacb-2d23-80fe-97eb-cdeb8fef02b4" class="bulleted-list"><li style="list-style-type:disc"><strong>nslookup</strong>: A command-line tool to query DNS servers and troubleshoot DNS issues.</li></ul><ul id="1577aacb-2d23-801e-b117-c6688f19b475" class="bulleted-list"><li style="list-style-type:disc"><strong>dig</strong>: A more advanced tool for querying DNS records and gathering information about DNS servers.</li></ul><ul id="1577aacb-2d23-80f1-9601-f30bb36abda8" class="bulleted-list"><li style="list-style-type:disc"><strong>whois</strong>: A tool to query domain registration information, which includes nameservers.</li></ul><hr id="1577aacb-2d23-80e1-a161-ecf07cbced52"/><h3 id="1577aacb-2d23-8005-95ad-d445f0ec7fdf" class=""><strong>Common DNS Issues</strong></h3><ol type="1" id="1577aacb-2d23-8026-98a3-d00432691211" class="numbered-list" start="1"><li><strong>DNS Resolution Failures</strong>: Occur when the DNS server cannot find the IP address for a domain.</li></ol><ol type="1" id="1577aacb-2d23-807e-bf18-e20a5267c7f3" class="numbered-list" start="2"><li><strong>Slow DNS Resolution</strong>: Caused by issues like an overloaded DNS server, poor network connection, or misconfigured settings.</li></ol><ol type="1" id="1577aacb-2d23-8071-be8d-cd499760759c" class="numbered-list" start="3"><li><strong>DNS Propagation Delay</strong>: When DNS records are updated, changes may take time (up to 48 hours) to propagate across all servers globally.</li></ol><figure id="1577aacb-2d23-8007-9e71-c4948fbed3cb" class="link-to-page"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Questions%20on%20DNS%201577aacb2d2380079e71c4948fbed3cb.html">Questions on DNS</a></figure><h1 id="17c7aacb-2d23-80fa-9f73-ce06efc26701" class="">Transport Layer</h1><p id="17c7aacb-2d23-8056-aba8-ef65cc9547b9" class="">Provides for a logical communication between application processes running on different hosts.</p><p id="17c7aacb-2d23-8067-93a6-dbaa46d9a748" class="">Application processes use logical communication provided by the transport layer to send messages to each other, free from the worry of the physical infrastructure used to carry these messages.</p><h2 id="17c7aacb-2d23-8063-9116-e912d3f1b92e" class="">UDP</h2><p id="17c7aacb-2d23-8049-b40e-fa8dc3b75f35" class=""><a href="https://www.ietf.org/rfc/rfc768.txt">RFC</a> 768</p><p id="17c7aacb-2d23-80ae-bf2d-dd056484dbc1" class="">does just about as little as a transport protcol can do. Light error checking, adds nothing to IP</p><p id="17c7aacb-2d23-80da-a8c6-f3497d9a2ad1" class="">
+</p><h3 id="17c7aacb-2d23-80c7-9fb8-f9ce9de693a8" class=""><strong>Transmission Control Protocol (TCP)</strong></h3><ul id="17c7aacb-2d23-802f-ae0b-fd711915468f" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Reliable communication for transmitting data between devices on a network.</li></ul><ul id="17c7aacb-2d23-80e9-938b-d3dd17f5c992" class="bulleted-list"><li style="list-style-type:disc"><strong>Features</strong>:<ul id="17c7aacb-2d23-8001-b794-f26796f2b1a7" class="bulleted-list"><li style="list-style-type:circle"><strong>Connection-Oriented</strong>: Establishes a connection before transmitting data (via a three-way handshake).</li></ul><ul id="17c7aacb-2d23-808a-93e6-d6217b5e0bdb" class="bulleted-list"><li style="list-style-type:circle"><strong>Reliable Delivery</strong>: Ensures data reaches its destination correctly.<ul id="17c7aacb-2d23-8030-98c9-f0965bf32188" class="bulleted-list"><li style="list-style-type:square">Includes error checking and retransmission for lost packets.</li></ul></li></ul><ul id="17c7aacb-2d23-80f1-944f-f39cc46ccaf0" class="bulleted-list"><li style="list-style-type:circle"><strong>Ordered Delivery</strong>: Reassembles data in the correct order at the receiver.</li></ul><ul id="17c7aacb-2d23-8083-8144-d8aa3538f9ac" class="bulleted-list"><li style="list-style-type:circle"><strong>Flow Control</strong>: Manages the rate of data transmission between sender and receiver.</li></ul><ul id="17c7aacb-2d23-80ba-85b7-cd7173fb6ab7" class="bulleted-list"><li style="list-style-type:circle"><strong>Examples</strong>: Used in applications like HTTP (web browsing), FTP (file transfer), and email (SMTP).</li></ul></li></ul><hr id="17c7aacb-2d23-800e-a611-d6314b572902"/><h3 id="17c7aacb-2d23-80c8-86df-c03daa64fe8f" class=""><strong>User Datagram Protocol (UDP)</strong></h3><ul id="17c7aacb-2d23-803f-aebd-ed4b9140d492" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Fast, lightweight communication with minimal overhead.</li></ul><ul id="17c7aacb-2d23-805c-aaa7-f4784d2a7af3" class="bulleted-list"><li style="list-style-type:disc"><strong>Features</strong>:<ul id="17c7aacb-2d23-804c-8c50-d4d394060fec" class="bulleted-list"><li style="list-style-type:circle"><strong>Connectionless</strong>: No need to establish a connection before sending data.</li></ul><ul id="17c7aacb-2d23-80e3-b6c0-ff59e4f01f45" class="bulleted-list"><li style="list-style-type:circle"><strong>Unreliable Delivery</strong>: No guarantee that data will arrive, nor in what order.</li></ul><ul id="17c7aacb-2d23-8012-a12b-fecd53a07e47" class="bulleted-list"><li style="list-style-type:circle"><strong>Low Overhead</strong>: Faster than TCP due to the lack of reliability features.</li></ul><ul id="17c7aacb-2d23-80b2-ab85-cc050671911c" class="bulleted-list"><li style="list-style-type:circle"><strong>Applications</strong>: Ideal for real-time applications like video streaming, gaming, and VoIP (Voice over IP).</li></ul><ul id="17c7aacb-2d23-8083-bd50-cf33d5c831e3" class="bulleted-list"><li style="list-style-type:circle"><strong>Examples</strong>: DNS, DHCP, TFTP.</li></ul></li></ul><hr id="17c7aacb-2d23-805d-bdcb-db1fc4a20827"/><h3 id="17c7aacb-2d23-809b-92ef-fa01cdf18c5f" class=""><strong>Internet Protocol (IP)</strong></h3><ul id="17c7aacb-2d23-80f8-9fbb-fc94df170946" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Handles addressing and routing of packets across networks.</li></ul><ul id="17c7aacb-2d23-80dd-906c-e71e33e3736b" class="bulleted-list"><li style="list-style-type:disc"><strong>Features</strong>:<ul id="17c7aacb-2d23-8061-ab37-cba181c96827" class="bulleted-list"><li style="list-style-type:circle"><strong>Addressing</strong>: Assigns unique IP addresses to devices for identification.<ul id="17c7aacb-2d23-8047-a843-ee8db6c94e60" class="bulleted-list"><li style="list-style-type:square"><strong>IPv4</strong>: 32-bit addresses (e.g., <code>192.168.1.1</code>).</li></ul><ul id="17c7aacb-2d23-8002-9317-f9787db3f652" class="bulleted-list"><li style="list-style-type:square"><strong>IPv6</strong>: 128-bit addresses (e.g., <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>).</li></ul></li></ul><ul id="17c7aacb-2d23-804e-bd29-dc231921acd0" class="bulleted-list"><li style="list-style-type:circle"><strong>Routing</strong>: Directs packets from source to destination using routers.</li></ul><ul id="17c7aacb-2d23-80c5-a348-f8e663193b45" class="bulleted-list"><li style="list-style-type:circle"><strong>Connectionless</strong>: Operates independently of transport protocols like TCP or UDP.</li></ul><ul id="17c7aacb-2d23-8086-8fe1-df158128c1ee" class="bulleted-list"><li style="list-style-type:circle"><strong>Fragmentation</strong>: Splits large packets into smaller ones to fit the network’s maximum transmission unit (MTU).</li></ul><ul id="17c7aacb-2d23-80cb-94d5-e05e40819c36" class="bulleted-list"><li style="list-style-type:circle"><strong>Protocol Suite</strong>: Works with protocols like TCP and UDP to provide end-to-end communication.</li></ul></li></ul><hr id="17c7aacb-2d23-807d-a433-d7aca92e23ea"/><h3 id="17c7aacb-2d23-8016-b866-cd847128ac1f" class=""><strong>Comparison: TCP vs. UDP</strong></h3><table id="17c7aacb-2d23-801d-8dfb-c38b982596bc" class="simple-table"><tbody><tr id="17c7aacb-2d23-804d-8a31-d2c76a1e9b04"><td id="&gt;TTk" class="">Feature</td><td id="aURy" class="">TCP</td><td id="^\y|" class="">UDP</td></tr><tr id="17c7aacb-2d23-8081-af72-d17f392a383b"><td id="&gt;TTk" class="">Connection Type</td><td id="aURy" class="">Connection-oriented</td><td id="^\y|" class="">Connectionless</td></tr><tr id="17c7aacb-2d23-80a3-9937-efaf3b896854"><td id="&gt;TTk" class="">Reliability</td><td id="aURy" class="">Reliable</td><td id="^\y|" class="">Unreliable</td></tr><tr id="17c7aacb-2d23-80d5-b9f5-e737ea1303d0"><td id="&gt;TTk" class="">Speed</td><td id="aURy" class="">Slower (more overhead)</td><td id="^\y|" class="">Faster (minimal overhead)</td></tr><tr id="17c7aacb-2d23-8001-98a9-e2afba424589"><td id="&gt;TTk" class="">Use Case</td><td id="aURy" class="">File transfers, emails</td><td id="^\y|" class="">Streaming, DNS, gaming</td></tr><tr id="17c7aacb-2d23-801a-ae7a-d2da02083b8c"><td id="&gt;TTk" class="">Ordered Delivery</td><td id="aURy" class="">Yes</td><td id="^\y|" class="">No</td></tr><tr id="17c7aacb-2d23-8063-8bd6-ff45db7f2982"><td id="&gt;TTk" class="">Error Checking</td><td id="aURy" class="">Yes</td><td id="^\y|" class="">Limited (checksum only)</td></tr></tbody></table><figure id="17c7aacb-2d23-80db-940e-d7fb914cd4f1" class="image"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-15_at_6.29.27_AM.png"><img style="width:565.9921875px" src="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-15_at_6.29.27_AM.png"/></a></figure><p id="17c7aacb-2d23-803e-a68d-e715f0606e24" class=""><a href="https://www.ietf.org/rfc/rfc793.txt">RFC for TCP</a></p><figure id="17c7aacb-2d23-8052-8895-cf99059464ba" class="link-to-page"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Questions%20on%20TCP,%20UDP,%20and%20IP%2017c7aacb2d2380528895cf99059464ba.html">Questions on TCP, UDP, and IP</a></figure><h2 id="17c7aacb-2d23-806c-892b-f9b3c8315ee5" class="">Three Way Handshake</h2><p id="17c7aacb-2d23-8057-af1b-c0a528c1523f" class="">A process used by TCP to establish a reliable connection</p><h3 id="17c7aacb-2d23-80e8-8714-d0f3563cfe93" class=""><strong>Steps of the Three-Way Handshake</strong></h3><ol type="1" id="17c7aacb-2d23-80cd-aa16-e07072f36e1e" class="numbered-list" start="1"><li><strong>SYN (Synchronize)</strong><ul id="17c7aacb-2d23-80a6-8279-ef2ae96b8aa7" class="bulleted-list"><li style="list-style-type:disc">The client initiates the connection by sending a <strong>SYN</strong> packet to the server.</li></ul><ul id="17c7aacb-2d23-8009-a01e-d3fd6b19bf40" class="bulleted-list"><li style="list-style-type:disc">This packet includes the <strong>initial sequence number (ISN)</strong>, which the client will use to track data transmission.</li></ul><p id="17c7aacb-2d23-80ed-802d-e8c9d15ef44b" class=""><strong>Purpose</strong>: Request to establish a connection.</p></li></ol><ol type="1" id="17c7aacb-2d23-8027-8a10-f5635b88423a" class="numbered-list" start="2"><li><strong>SYN-ACK (Synchronize-Acknowledge)</strong><ul id="17c7aacb-2d23-8086-b778-f82195212a54" class="bulleted-list"><li style="list-style-type:disc">The server responds to the client’s SYN with a <strong>SYN-ACK</strong> packet.</li></ul><ul id="17c7aacb-2d23-8027-9782-e70cfae2e6ec" class="bulleted-list"><li style="list-style-type:disc">This packet acknowledges the client’s SYN request and provides the server’s <strong>ISN</strong> for the client to track the server’s data.</li></ul><p id="17c7aacb-2d23-804f-9918-cb68158d1ac6" class=""><strong>Purpose</strong>: Acknowledge the connection request and send synchronization details.</p></li></ol><ol type="1" id="17c7aacb-2d23-8064-abfe-f22a707f0ddd" class="numbered-list" start="3"><li><strong>ACK (Acknowledge)</strong><ul id="17c7aacb-2d23-80da-b439-c2392e86500c" class="bulleted-list"><li style="list-style-type:disc">The client sends an <strong>ACK</strong> packet back to the server, acknowledging receipt of the server’s SYN-ACK.</li></ul><ul id="17c7aacb-2d23-80cd-98e2-ecc438ab5d65" class="bulleted-list"><li style="list-style-type:disc">After this step, the connection is established, and data transfer can begin.</li></ul><p id="17c7aacb-2d23-80b4-98a3-ec44612105ce" class=""><strong>Purpose</strong>: Confirm the connection setup.</p></li></ol><hr id="17c7aacb-2d23-80cb-afe6-d7af90242133"/><h3 id="17c7aacb-2d23-8065-a335-e7adb9b8f659" class=""><strong>Illustration</strong></h3><ol type="1" id="17c7aacb-2d23-80ff-8177-dd6648d39fe6" class="numbered-list" start="1"><li><strong>Client → Server</strong>: <code>SYN (Seq = X)</code></li></ol><ol type="1" id="17c7aacb-2d23-8076-8e4a-d57981a94e10" class="numbered-list" start="2"><li><strong>Server → Client</strong>: <code>SYN-ACK (Seq = Y, Ack = X+1)</code></li></ol><ol type="1" id="17c7aacb-2d23-80d8-aae5-e9882a3f1f6b" class="numbered-list" start="3"><li><strong>Client → Server</strong>: <code>ACK (Seq = X+1, Ack = Y+1)</code></li></ol><hr id="17c7aacb-2d23-8037-906e-f478ca221988"/><h3 id="17c7aacb-2d23-805f-82fd-ca6218346de9" class=""><strong>Key Features</strong></h3><ul id="17c7aacb-2d23-8007-9451-f30cea1cf880" class="bulleted-list"><li style="list-style-type:disc"><strong>Sequence Numbers</strong>: Used to track the order of packets and ensure reliable delivery.</li></ul><ul id="17c7aacb-2d23-8037-954d-f8aed51936e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Acknowledgments</strong>: Indicate successful receipt of data.</li></ul><ul id="17c7aacb-2d23-80cb-abe0-fa176127bdd8" class="bulleted-list"><li style="list-style-type:disc"><strong>Reliable Connection</strong>: Guarantees both parties agree to start communication with specific parameters.</li></ul><hr id="17c7aacb-2d23-8098-abfa-d8122e2ea09f"/><h3 id="17c7aacb-2d23-80bb-b5c1-c31876babcf9" class=""><strong>Importance of the Three-Way Handshake</strong></h3><ol type="1" id="17c7aacb-2d23-80ce-9dcf-fa0a29ba45f4" class="numbered-list" start="1"><li><strong>Establishes a Reliable Connection</strong>: Ensures both the client and server are ready to communicate.</li></ol><ol type="1" id="17c7aacb-2d23-807f-95b7-d9e4b1180418" class="numbered-list" start="2"><li><strong>Synchronization</strong>: Helps both parties agree on initial sequence numbers.</li></ol><ol type="1" id="17c7aacb-2d23-8010-a6d0-dcc5e7a90a19" class="numbered-list" start="3"><li><strong>Prevents Connection Hijacking</strong>: Confirms the identity and readiness of both the sender and receiver.</li></ol><hr id="17c7aacb-2d23-80b0-b448-f09fb34fca90"/><h3 id="17c7aacb-2d23-8016-a193-eed5cfd4db42" class=""><strong>Common Issues</strong></h3><ul id="17c7aacb-2d23-807f-8a06-e7280daac9bc" class="bulleted-list"><li style="list-style-type:disc"><strong>SYN Flood Attacks</strong>: A form of DoS (Denial of Service) attack where an attacker sends a large number of SYN requests without completing the handshake, overwhelming the server.</li></ul><ul id="17c7aacb-2d23-809c-8028-fa37d3d10445" class="bulleted-list"><li style="list-style-type:disc"><strong>Timeouts</strong>: If one party doesn’t respond, the connection attempt may fail due to a timeout.</li></ul><h1 id="17c7aacb-2d23-80b6-9b38-dc224784149a" class="">Network Layer</h1><p id="17c7aacb-2d23-8049-a657-cbf62da05b4d" class="">Transport layer isn’t concerned with the physical, but the Network Layer is concerned. IP address and routing.</p><p id="17c7aacb-2d23-8083-b773-ebcc2e8a9721" class="">The Router: Forwards data packets between computer networks</p><h2 id="17e7aacb-2d23-80d4-823b-fa0438041cf6" class="">Subnetting</h2><p id="17e7aacb-2d23-80bb-b489-d485097cf3eb" class="">ubnetting is a fundamental networking concept used to divide a larger network into smaller, more manageable subnetworks. It helps optimize the use of IP addresses, enhance network performance, and improve security. Let’s break it down step-by-step.</p><hr id="17e7aacb-2d23-80a5-8ec9-ef54d9d83843"/><h3 id="17e7aacb-2d23-805f-9693-eda2d345cd7c" class=""><strong>1. IP Address Basics</strong></h3><ul id="17e7aacb-2d23-80e7-863b-e0324c134b6e" class="bulleted-list"><li style="list-style-type:disc">An <strong>IP address</strong> is a 32-bit number divided into four octets (e.g., <code>192.168.1.1</code>).</li></ul><ul id="17e7aacb-2d23-80c0-9006-c6109cddf835" class="bulleted-list"><li style="list-style-type:disc">Each octet is separated by dots and can range from 0 to 255.</li></ul><ul id="17e7aacb-2d23-80d6-98c7-d9fcd5abbfcc" class="bulleted-list"><li style="list-style-type:disc">IP addresses have two parts:<ul id="17e7aacb-2d23-80a1-aac7-ec24557fc454" class="bulleted-list"><li style="list-style-type:circle"><strong>Network part:</strong> Identifies the network.</li></ul><ul id="17e7aacb-2d23-8057-b99c-c6d954087775" class="bulleted-list"><li style="list-style-type:circle"><strong>Host part:</strong> Identifies a device within the network.</li></ul></li></ul><hr id="17e7aacb-2d23-8060-99be-f512ccc4ecf4"/><h3 id="17e7aacb-2d23-8053-b8d5-dec579d6d612" class=""><strong>2. Subnet Masks</strong></h3><ul id="17e7aacb-2d23-80bb-9d40-d0b20e6424e5" class="bulleted-list"><li style="list-style-type:disc">A <strong>subnet mask</strong> defines how the IP address is split into the network and host parts.</li></ul><ul id="17e7aacb-2d23-80d1-a2bd-f86e669facb4" class="bulleted-list"><li style="list-style-type:disc">Example: <code>255.255.255.0</code> (CIDR notation: <code>/24</code>).<ul id="17e7aacb-2d23-809d-bcbf-e81439126654" class="bulleted-list"><li style="list-style-type:circle">Each <code>255</code> in the subnet mask represents bits used for the <strong>network part</strong>.</li></ul><ul id="17e7aacb-2d23-8075-a2ac-d2e43076145f" class="bulleted-list"><li style="list-style-type:circle">Remaining bits (0s) represent the <strong>host part</strong>.</li></ul></li></ul><hr id="17e7aacb-2d23-8077-b8e0-d90da9993145"/><h3 id="17e7aacb-2d23-80c1-a036-c14d79766665" class=""><strong>3. Why Subnet?</strong></h3><ul id="17e7aacb-2d23-807d-b085-d9e39d73ec46" class="bulleted-list"><li style="list-style-type:disc"><strong>Efficient IP usage:</strong> Prevents wasting IP addresses.</li></ul><ul id="17e7aacb-2d23-8019-944e-e547190a173e" class="bulleted-list"><li style="list-style-type:disc"><strong>Improved performance:</strong> Reduces traffic within a subnet.</li></ul><ul id="17e7aacb-2d23-80b6-81af-fb7b467d5e5d" class="bulleted-list"><li style="list-style-type:disc"><strong>Enhanced security:</strong> Segments networks for better control.</li></ul><hr id="17e7aacb-2d23-80fc-9d8d-f9bd71c9e41e"/><h3 id="17e7aacb-2d23-806c-9c5e-d39da834c17e" class=""><strong>4. Calculating Subnets</strong></h3><h3 id="17e7aacb-2d23-80ff-a6fc-fe95eb90e63f" class="">Example Scenario:</h3><p id="17e7aacb-2d23-80d6-9f51-fd95abb2d4d5" class="">Network: <code>192.168.1.0/24</code></p><p id="17e7aacb-2d23-80f0-a045-c6907f8cbc3b" class="">You want to create <strong>4 subnets</strong>.</p><h3 id="17e7aacb-2d23-8031-8ac8-fc3c7c47f01c" class="">Step 1: Determine the number of subnets</h3><ul id="17e7aacb-2d23-808c-aad9-d8e9155bdf24" class="bulleted-list"><li style="list-style-type:disc">Formula: 2n, where n is the number of bits borrowed from the host portion.<p id="17e7aacb-2d23-80b0-ab69-e29ffe6b9616" class="">2n2^n</p><p id="17e7aacb-2d23-801e-8c8a-fb8ea7c401c4" class="">nn</p></li></ul><ul id="17e7aacb-2d23-80c0-a9aa-f29ae9a4250a" class="bulleted-list"><li style="list-style-type:disc">Borrow enough bits to accommodate your required subnets.<ul id="17e7aacb-2d23-802d-95e3-ed600c082994" class="bulleted-list"><li style="list-style-type:circle">22=42^2 = 422=4 (2 bits needed for 4 subnets).</li></ul></li></ul><h3 id="17e7aacb-2d23-8030-bf1f-e2fd68d1332d" class="">Step 2: Update the subnet mask</h3><ul id="17e7aacb-2d23-80ad-afa8-f4ff2aa23a66" class="bulleted-list"><li style="list-style-type:disc">Original mask: <code>/24</code> (255.255.255.0).</li></ul><ul id="17e7aacb-2d23-80c2-8a84-ea05d4f7ba17" class="bulleted-list"><li style="list-style-type:disc">Borrow 2 bits for subnets: <code>/26</code> (255.255.255.192).</li></ul><h3 id="17e7aacb-2d23-80dc-a1d5-c36abe0778d5" class="">Step 3: Calculate subnet ranges</h3><ul id="17e7aacb-2d23-80eb-a189-ccd511547938" class="bulleted-list"><li style="list-style-type:disc">Each subnet increment is based on the block size: 2(32−subnet mask).<p id="17e7aacb-2d23-8023-aca6-e37b07c35cd8" class="">2(32−subnet mask)2^{(32 - \text{subnet mask})}</p></li></ul><ul id="17e7aacb-2d23-80b1-ac8b-dcb76609cfd0" class="bulleted-list"><li style="list-style-type:disc">Block size for <code>/26</code>: 26=64 IPs per subnet.<p id="17e7aacb-2d23-80f9-91f3-f79c4801052a" class="">26=642^{6} = 64</p></li></ul><p id="17e7aacb-2d23-8054-932e-e7f7cfcff5f7" class="">Subnets:</p><ol type="1" id="17e7aacb-2d23-80a8-834e-c5d36833c481" class="numbered-list" start="1"><li><code>192.168.1.0 - 192.168.1.63</code></li></ol><ol type="1" id="17e7aacb-2d23-8042-ae89-e5431bbb0cc5" class="numbered-list" start="2"><li><code>192.168.1.64 - 192.168.1.127</code></li></ol><ol type="1" id="17e7aacb-2d23-807c-be46-c0fffac02a68" class="numbered-list" start="3"><li><code>192.168.1.128 - 192.168.1.191</code></li></ol><ol type="1" id="17e7aacb-2d23-807e-9d98-cf8806a36f6a" class="numbered-list" start="4"><li><code>192.168.1.192 - 192.168.1.255</code></li></ol><hr id="17e7aacb-2d23-800e-8629-f384b55b2abc"/><h3 id="17e7aacb-2d23-807c-8759-e46905db1018" class=""><strong>5. Key Terms</strong></h3><ul id="17e7aacb-2d23-8007-8751-ed76c3bb54df" class="bulleted-list"><li style="list-style-type:disc"><strong>Subnet ID:</strong> The first IP in a range (e.g., <code>192.168.1.0</code>).</li></ul><ul id="17e7aacb-2d23-8054-a06e-e7266e75efe2" class="bulleted-list"><li style="list-style-type:disc"><strong>Broadcast Address:</strong> The last IP in a range (e.g., <code>192.168.1.63</code>).</li></ul><ul id="17e7aacb-2d23-8016-8af9-f4a42f7398b0" class="bulleted-list"><li style="list-style-type:disc"><strong>Usable IPs:</strong> Exclude the subnet ID and broadcast address. For <code>/26</code>, there are 64−2=62 usable IPs.<p id="17e7aacb-2d23-8058-ba4b-e575d29e4840" class="">64−2=6264 - 2 = 62</p></li></ul><figure id="17e7aacb-2d23-80c5-8b4c-e37e118a0439" class="image"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/image.png"><img style="width:324px" src="Udemy%2017c7aacb2d238068b2bac08079540867/image.png"/></a></figure><h1 id="17e7aacb-2d23-80d9-b36b-d946e4be2252" class="">DHCP</h1><p id="17e7aacb-2d23-8034-994e-c94362bba1ec" class="">The Dynamic Host Configuration Protocol is a network managemenet protocol used in computer networks for automatically assigning IP Addresses and other communication parameters to devices connected to the network.</p><p id="17e7aacb-2d23-8083-ac5a-e45a607af389" class="">DHCP uses a client-server architecture</p><figure id="17e7aacb-2d23-80ff-94ca-df732675e66a" class="image"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-17_at_6.22.26_AM.png"><img style="width:543.984375px" src="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-17_at_6.22.26_AM.png"/></a></figure><h1 id="17e7aacb-2d23-80e3-a6c8-ff8339fe91a3" class="">The Ping</h1><p id="17e7aacb-2d23-809c-9193-ef2d9ad9ec16" class="">ICMP - a network layer protocol used by network devices to diagnose network communication issues.</p><p id="17e7aacb-2d23-80b8-bf88-c48bc0d33b3e" class="">Traceroute<div class="indented"><p id="17e7aacb-2d23-80e3-96cd-fdd9ab36be2a" class="">ICMP tools used to map the routing path</p><p id="17e7aacb-2d23-807b-89b3-d0df4bbacb97" class="">Helps admins find link interruptions and othern etwork issues</p><p id="17e7aacb-2d23-804d-93cb-f08e49cd7912" class="">Windows: tracert</p><p id="17e7aacb-2d23-8044-866d-db04e7399818" class="">Linux/Mac: traceroute</p></div></p><p id="17e7aacb-2d23-800e-85b7-c5c9a0e7b3d1" class="">Ping<div class="indented"><p id="17e7aacb-2d23-806a-93e1-ca564f6a3247" class="">Simpler than traceroute, sends out pings and then measures the amount of time it takes the message to reach its destination</p></div></p><p id="17e7aacb-2d23-80e7-ab70-e673e37c395c" class="">Security</p><p id="17e7aacb-2d23-8080-be62-d4e4d809fdf3" class="">There are multiple ways an attacker can use ICMP to execute DDoS attacks<div class="indented"><p id="17e7aacb-2d23-8084-b1bf-dcf6b5d24dde" class="">Ping of Death: The hacker sends a large ICMP packet, larger than the packet allowed</p><p id="17e7aacb-2d23-8062-b99b-dc96777474dc" class="">Smurf</p></div></p><h1 id="17e7aacb-2d23-8091-9443-ec7f35e3b1ac" class="">NAT</h1><p id="17e7aacb-2d23-80e9-bc18-d49cdf9223f3" class="">Network Address Translation - maps multiple private IP addresses to a public IP address</p><p id="17e7aacb-2d23-80fd-a5f8-fadf715802c1" class="">Private Addresses: </p><p id="17e7aacb-2d23-80a7-8c68-dc9e71393b81" class="">10.0.0.0 to 10.255.255.255, 172.16.0.0 to 172.31.255.255, and 192.168.0.0 to 192.168.255.255.</p><p id="17e7aacb-2d23-8019-a6c7-cc508a28c39c" class="">
+</p><h1 id="17e7aacb-2d23-8007-af4e-ccdf3b57a8a4" class="">IPv6</h1><p id="17e7aacb-2d23-80c8-ac74-ce480099cd66" class="">NAT is one solution to the lack of IP addresses available</p><p id="17e7aacb-2d23-8026-8f52-eb1910679bd6" class="">2^32 IPv4</p><p id="17e7aacb-2d23-80e3-b7fe-d4aae877ba7e" class="">2^128 IPv6 - 340 undecillion</p><p id="17e7aacb-2d23-805b-8a20-e406095a6f42" class="">
+</p><h1 id="17e7aacb-2d23-80f7-a719-df32c5bb666e" class="">Routing</h1><figure id="17e7aacb-2d23-8098-8fe7-c03e279a8be5" class="image"><a href="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-17_at_6.52.44_AM.png"><img style="width:543.9921875px" src="Udemy%2017c7aacb2d238068b2bac08079540867/Screenshot_2025-01-17_at_6.52.44_AM.png"/></a></figure><h1 id="17f7aacb-2d23-80a1-b4c5-fd14d25584b9" class="">ARP</h1><p id="17f7aacb-2d23-80c3-8b94-eff0140aefcb" class="">Address Resolution Protocol - Mapping IP to Mac addresses</p><p id="17f7aacb-2d23-802d-b63d-f3ede98bfe33" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

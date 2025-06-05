@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Wireless Attacks</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1807aacb-2d23-804c-a5f3-ed1beadb264f" class="page sans"><header><h1 class="page-title">Wireless Attacks</h1><p class="page-description"></p></header><div class="page-body"><p id="1807aacb-2d23-80b9-b11f-d4453e6ec92f" class="">Imagine you’re on your wireless network and then you keep getting dropped, connecting, and getting dropped again - Wireless Deauthentication</p><p id="1817aacb-2d23-8063-a9bb-d50c8e0f6fe1" class="">
+</p><p id="1817aacb-2d23-80bc-b66f-e03e45afbdf7" class="">
+</p><h3 id="1817aacb-2d23-80dc-9564-ef58408823fc" class=""><strong>Wireless Attacks Overview</strong></h3><p id="1817aacb-2d23-80d2-a7fd-c07fe7120399" class="">Wireless networks are vulnerable to various attacks due to their open nature, reliance on shared radio frequencies, and weaknesses in older security protocols.</p><hr id="1817aacb-2d23-8029-b87f-c8643b7faa9a"/><h3 id="1817aacb-2d23-80c0-916a-c175593fae52" class=""><strong>Common Wireless Attacks</strong></h3><ol type="1" id="1817aacb-2d23-8038-b683-fc91a45a8db5" class="numbered-list" start="1"><li><strong>Eavesdropping (Packet Sniffing):</strong><ul id="1817aacb-2d23-8084-b191-e0853132fe88" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Intercepting unencrypted wireless communication to capture sensitive data.</li></ul><ul id="1817aacb-2d23-8036-bb40-edd3204509e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Wireshark, Aircrack-ng, Kismet.</li></ul><ul id="1817aacb-2d23-80a3-b04f-e877bae16fcc" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Use WPA3 encryption, HTTPS, and VPNs to secure data.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80d9-8212-caf2d8653ec9" class="numbered-list" start="2"><li><strong>Rogue Access Points (Evil Twin):</strong><ul id="1817aacb-2d23-80e2-8e1c-f2559f3da797" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> An attacker sets up a fake access point (AP) that mimics a legitimate network to capture user credentials.</li></ul><ul id="1817aacb-2d23-8050-a335-c01e816963f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Wifiphisher, Fluxion.</li></ul><ul id="1817aacb-2d23-80e6-be68-ec6e471acb76" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Educate users to verify network names and avoid connecting to unfamiliar networks.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80ea-99bb-d09b2cb482b3" class="numbered-list" start="3"><li><strong>Man-in-the-Middle (MITM):</strong><ul id="1817aacb-2d23-80be-8e28-c51723c0731a" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> An attacker intercepts communication between devices to steal or manipulate data.</li></ul><ul id="1817aacb-2d23-8056-bf3c-fc7fe600b874" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Bettercap, Ettercap.</li></ul><ul id="1817aacb-2d23-805e-8bae-fc21dac0e64f" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Enable mutual authentication, enforce HTTPS, and use certificate pinning.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-8097-9db3-c583e9301e10" class="numbered-list" start="4"><li><strong>Deauthentication Attack:</strong><ul id="1817aacb-2d23-8076-890b-c61ec03702b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Forcing devices off a legitimate AP by sending deauth frames, often to capture reconnection traffic.</li></ul><ul id="1817aacb-2d23-8003-b79b-f3251142a94e" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Aireplay-ng.</li></ul><ul id="1817aacb-2d23-8059-ab6b-edf9252cd071" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Use WPA3 with Management Frame Protection (MFP).</li></ul></li></ol><ol type="1" id="1817aacb-2d23-8050-900c-d64b9665f2bf" class="numbered-list" start="5"><li><strong>WPS Attack (PIN Brute-Forcing):</strong><ul id="1817aacb-2d23-802d-a395-feeadeb0d7ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Exploiting weaknesses in the Wi-Fi Protected Setup (WPS) protocol to gain network access.</li></ul><ul id="1817aacb-2d23-806c-873f-d9e7a8f76d5b" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Reaver, Bully.</li></ul><ul id="1817aacb-2d23-8098-88a0-da8197ef0bfd" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Disable WPS in router settings.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80d0-93c1-f9a35cfe1da1" class="numbered-list" start="6"><li><strong>Jamming and Denial of Service (DoS):</strong><ul id="1817aacb-2d23-8012-b7a2-f61841ae9113" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Overwhelming wireless channels with interference or requests, disrupting communication.</li></ul><ul id="1817aacb-2d23-80b0-a257-c95cdaf0f9df" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Jammer devices, MDK3.</li></ul><ul id="1817aacb-2d23-80cb-a872-fbdbc0491b00" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Use directional antennas, frequency hopping, and monitor spectrum usage.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80c8-abb2-e2549340bb7c" class="numbered-list" start="7"><li><strong>Key Reinstallation Attacks (KRACK):</strong><ul id="1817aacb-2d23-80b2-9fc8-c51d31136eb4" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Exploiting flaws in WPA2’s four-way handshake to decrypt data.</li></ul><ul id="1817aacb-2d23-802e-a472-db8f78833f16" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Custom scripts based on KRACK PoC.</li></ul><ul id="1817aacb-2d23-8064-ba4c-f0426ab85064" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Update firmware to fix WPA2 vulnerabilities or switch to WPA3.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80ef-83eb-c648c2203d4d" class="numbered-list" start="8"><li><strong>Bluetooth Attacks:</strong><ul id="1817aacb-2d23-80c8-857c-dab2ea65b70b" class="bulleted-list"><li style="list-style-type:disc"><strong>Types:</strong><ul id="1817aacb-2d23-8055-83bf-f9af394f18c7" class="bulleted-list"><li style="list-style-type:circle"><strong>Bluejacking:</strong> Sending unsolicited messages to devices.</li></ul><ul id="1817aacb-2d23-8023-ad18-ccf4587f49ec" class="bulleted-list"><li style="list-style-type:circle"><strong>Bluesnarfing:</strong> Accessing sensitive information.</li></ul><ul id="1817aacb-2d23-804f-8571-f4204d9a2df9" class="bulleted-list"><li style="list-style-type:circle"><strong>Bluebugging:</strong> Taking control of a device.</li></ul></li></ul><ul id="1817aacb-2d23-8092-bb58-e7e0e3d66755" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools:</strong> Bluesnarfer, BTScanner.</li></ul><ul id="1817aacb-2d23-80b0-b7dd-f9c89d948446" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures:</strong> Disable Bluetooth when not in use, use non-discoverable mode, and enforce strong pairing codes.</li></ul></li></ol><hr id="1817aacb-2d23-805d-9c35-ce5a6df31496"/><h3 id="1817aacb-2d23-801d-ba97-dd661032981b" class=""><strong>General Wireless Attack Prevention Measures</strong></h3><ol type="1" id="1817aacb-2d23-809b-8763-e91d1685f8df" class="numbered-list" start="1"><li><strong>Secure Configuration:</strong><ul id="1817aacb-2d23-808f-8f07-c99797a830ca" class="bulleted-list"><li style="list-style-type:disc">Use strong, unique passphrases.</li></ul><ul id="1817aacb-2d23-8020-97a1-d78cf1f17b42" class="bulleted-list"><li style="list-style-type:disc">Enable WPA3 or WPA2 with AES encryption.</li></ul><ul id="1817aacb-2d23-8032-8700-d84034696b73" class="bulleted-list"><li style="list-style-type:disc">Disable SSID broadcasting if possible.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-8022-a542-cbaddf8aaf9f" class="numbered-list" start="2"><li><strong>Network Segmentation:</strong><ul id="1817aacb-2d23-808d-9a3a-def504859cbe" class="bulleted-list"><li style="list-style-type:disc">Isolate guest networks from internal systems.</li></ul><ul id="1817aacb-2d23-8053-9c98-ed552bb9134f" class="bulleted-list"><li style="list-style-type:disc">Use VLANs for better traffic management.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-8005-88aa-d17d90440ce1" class="numbered-list" start="3"><li><strong>Regular Monitoring:</strong><ul id="1817aacb-2d23-802a-8053-ec44f4bb11b0" class="bulleted-list"><li style="list-style-type:disc">Deploy wireless intrusion detection systems (WIDS) or wireless intrusion prevention systems (WIPS).</li></ul><ul id="1817aacb-2d23-8095-a97a-fbb46d95dbe0" class="bulleted-list"><li style="list-style-type:disc">Use tools like AirMon-ng and NetStumbler for network audits.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80fa-9661-cda42ec7d72e" class="numbered-list" start="4"><li><strong>Updates and Patches:</strong><ul id="1817aacb-2d23-8089-9638-f8e5e576d3a3" class="bulleted-list"><li style="list-style-type:disc">Keep firmware and software updated to patch known vulnerabilities.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-80ad-8120-e2c77e75c528" class="numbered-list" start="5"><li><strong>User Awareness Training:</strong><ul id="1817aacb-2d23-8068-b107-f0459f34616d" class="bulleted-list"><li style="list-style-type:disc">Educate users about phishing, rogue APs, and safe wireless practices.</li></ul></li></ol><ol type="1" id="1817aacb-2d23-803a-9b14-fc33ad5a114e" class="numbered-list" start="6"><li><strong>Device Hardening:</strong><ul id="1817aacb-2d23-80d7-a0b4-c18962ccb3a1" class="bulleted-list"><li style="list-style-type:disc">Disable unused wireless protocols (e.g., WEP, WPS).</li></ul><ul id="1817aacb-2d23-8058-be5e-cd7003bab7e4" class="bulleted-list"><li style="list-style-type:disc">Restrict MAC addresses through filtering.</li></ul></li></ol><hr id="1817aacb-2d23-8037-86bd-df3d320b6de3"/><h3 id="1817aacb-2d23-8053-99c5-dd2dafbd3efc" class=""><strong>Key Tools for Wireless Security Testing</strong></h3><ol type="1" id="1817aacb-2d23-80e9-80c9-c474503ccff2" class="numbered-list" start="1"><li><strong>Aircrack-ng Suite:</strong> Comprehensive tool for sniffing, cracking WEP/WPA keys, and monitoring networks.</li></ol><ol type="1" id="1817aacb-2d23-804d-aef8-f33b73d8e171" class="numbered-list" start="2"><li><strong>Kismet:</strong> Wireless network detector and intrusion detection system.</li></ol><ol type="1" id="1817aacb-2d23-80b8-ae5b-e72b8a0e7bb0" class="numbered-list" start="3"><li><strong>WiFi Pineapple:</strong> Penetration testing hardware for simulating attacks.</li></ol><ol type="1" id="1817aacb-2d23-8032-924c-dd959673d2c0" class="numbered-list" start="4"><li><strong>Metasploit:</strong> Exploit development and payload delivery platform.</li></ol><ol type="1" id="1817aacb-2d23-8007-8c74-c650024c37f3" class="numbered-list" start="5"><li><strong>CommView for WiFi:</strong> Packet capture and analysis tool.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

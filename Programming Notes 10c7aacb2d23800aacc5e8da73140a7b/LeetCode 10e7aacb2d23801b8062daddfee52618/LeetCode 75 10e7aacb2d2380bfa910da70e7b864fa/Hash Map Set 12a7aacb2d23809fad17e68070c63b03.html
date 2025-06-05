@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hash Map/Set</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="12a7aacb-2d23-809f-ad17-e68070c63b03" class="page sans"><header><h1 class="page-title">Hash Map/Set</h1><p class="page-description"></p></header><div class="page-body"><h2 id="12d7aacb-2d23-8077-a180-c7204dbd2931" class="">Find the Difference of Two Arrays</h2><p id="12d7aacb-2d23-8070-8c75-c462c0a82d0c" class="">Given two <strong>0-indexed</strong> integer arrays <code>nums1</code> and <code>nums2</code>, return <em>a list</em> <code>answer</code> <em>of size</em> <code>2</code> <em>where:</em></p><ul id="12d7aacb-2d23-800f-ac33-df94d67a86f5" class="bulleted-list"><li style="list-style-type:disc"><code>answer[0]</code> <em>is a list of all </em><em><strong>distinct</strong></em><em> integers in</em> <code>nums1</code> <em>which are </em><em><strong>not</strong></em><em> present in</em> <code>nums2</code><em>.</em></li></ul><ul id="12d7aacb-2d23-80ff-ae9a-ee54a50deb09" class="bulleted-list"><li style="list-style-type:disc"><code>answer[1]</code> <em>is a list of all </em><em><strong>distinct</strong></em><em> integers in</em> <code>nums2</code> <em>which are </em><em><strong>not</strong></em><em> present in</em> <code>nums1</code>.</li></ul><p id="12d7aacb-2d23-8047-89ea-ef024dd4b213" class=""><strong>Note</strong> that the integers in the lists may be returned in <strong>any</strong> order.</p><p id="12d7aacb-2d23-8096-9356-ceb6b48121fa" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12d7aacb-2d23-80d3-99a8-ea9d0610bed0" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums1 = [1,2,3], nums2 = [2,4,6]
+Output: [[1,3],[4,6]]
+Explanation:
+For nums1, nums1[1] = 2 is present at index 0 of nums2, whereas nums1[0] = 1 and nums1[2] = 3 are not present in nums2. Therefore, answer[0] = [1,3].
+For nums2, nums2[0] = 2 is present at index 1 of nums1, whereas nums2[1] = 4 and nums2[2] = 6 are not present in nums2. Therefore, answer[1] = [4,6].</code></pre><p id="12d7aacb-2d23-8060-a6fb-c8091e1ab9b1" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12d7aacb-2d23-808f-8448-c7b2a93bc9c7" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums1 = [1,2,3,3], nums2 = [1,1,2,2]
+Output: [[3],[]]
+Explanation:
+For nums1, nums1[2] and nums1[3] are not present in nums2. Since nums1[2] == nums1[3], their value is only included once and answer[0] = [3].
+Every integer in nums2 is present in nums1. Therefore, answer[1] = [].
+</code></pre><p id="12d7aacb-2d23-80f3-8b22-ce3a5c2849d7" class=""><strong>Constraints:</strong></p><ul id="12d7aacb-2d23-8031-a4c8-cb9c85e868ee" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li></ul><ul id="12d7aacb-2d23-807d-ba6e-c06237cce742" class="bulleted-list"><li style="list-style-type:disc"><code>1000 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li></ul><p id="12d7aacb-2d23-8083-b72f-e74bdba46960" class="">My Solution</p><p id="12d7aacb-2d23-80f3-ac2b-f644be4160a2" class="">n = nums1.size</p><p id="12d7aacb-2d23-8000-836a-cb56facd0b28" class=""><em>m = nums2.size</em></p><p id="12d7aacb-2d23-809d-a21e-f34f79791df4" class="">declare result[0][0]</p><p id="12d7aacb-2d23-8090-9b84-c4e6f59fbd1a" class="">create unordered set for nums1 - a</p><p id="12d7aacb-2d23-80a9-924d-c97e095881ba" class="">create unordered set for nums2 - b</p><p id="12d7aacb-2d23-8098-aa5e-c35f38949ab3" class="">for loop in a: for int i = 0 to a.end:<div class="indented"><p id="12d7aacb-2d23-80b1-bda7-f182e3d921ea" class="">if b.find(i) == b.end:<div class="indented"><p id="12d7aacb-2d23-80b6-af70-e4c4d9f6899c" class="">result[0].push_back(i)</p></div></p></div></p><p id="12d7aacb-2d23-800e-ba01-e0f8bee39378" class="">endloop</p><p id="12d7aacb-2d23-8095-b860-e42a889ee285" class="">for loop in b: for int j = 0 to b.end:<div class="indented"><p id="12d7aacb-2d23-8024-af3f-d5bce1ea47b2" class="">if a.find(i) == a.end():<div class="indented"><p id="12d7aacb-2d23-8031-b2d9-e788c3b78820" class="">result[1].push_back(j)</p></div></p></div></p><p id="12d7aacb-2d23-800c-8a83-c384de6f573f" class="">endloop</p><p id="12d7aacb-2d23-805c-9c82-fae9104909b0" class="">return result</p><p id="12d7aacb-2d23-8017-bee1-e852eae98fcf" class="">Time Complexity: O(N+M)</p><h2 id="12e7aacb-2d23-80d9-9f25-f5d07a31bcf8" class="">Unique Number of Occurrences</h2><p id="12e7aacb-2d23-8098-8705-f552bbf44a15" class="">Given an array of integers <code>arr</code>, return <code>true</code> <em>if the number of occurrences of each value in the array is </em><em><strong>unique</strong></em><em> or </em><code>false</code><em> otherwise</em>.</p><p id="12e7aacb-2d23-80f8-8496-c10ca4c48b9c" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12e7aacb-2d23-8062-9b63-cda043a6d06f" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.</code></pre><p id="12e7aacb-2d23-80ef-9030-cb1ddec68371" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12e7aacb-2d23-80b4-a79a-cd4807ed7d67" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: arr = [1,2]
+Output: false
+</code></pre><p id="12e7aacb-2d23-8050-9e6f-d101022d9fd8" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12e7aacb-2d23-802c-9369-ffae22a84cd5" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
+Output: true
+</code></pre><p id="12e7aacb-2d23-804b-8728-cb7d4f14a395" class=""><strong>Constraints:</strong></p><ul id="12e7aacb-2d23-8010-a87a-cccd4335e237" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= arr.length &lt;= 1000</code></li></ul><ul id="12e7aacb-2d23-8053-bfa6-ef0183a372d7" class="bulleted-list"><li style="list-style-type:disc"><code>1000 &lt;= arr[i] &lt;= 1000</code></li></ul><p id="12e7aacb-2d23-807b-a353-eb043de3c98d" class="">My Solution:</p><p id="12e7aacb-2d23-80ff-b2ef-f0763ee14e60" class="">declare <em>map &lt;int, int&gt;</em></p><p id="12e7aacb-2d23-80b4-8232-f0cb94d7b6d9" class="">for int i = 0 to arr.length:<div class="indented"><p id="12e7aacb-2d23-80da-a15c-ca29affda9c3" class="">if arr[i] in map:<div class="indented"><p id="12e7aacb-2d23-8035-9f3d-e6d138e1a4ec" class="">map[arr[i]]++</p></div></p><p id="12e7aacb-2d23-8031-9087-eb22089c22f3" class="">else<div class="indented"><p id="12e7aacb-2d23-809c-8026-eacd7242c991" class="">map[arr[i]] = 1</p></div></p></div></p><p id="12e7aacb-2d23-80c8-b262-eede935b9620" class="">endloop</p><p id="12e7aacb-2d23-8024-ab9d-c8e86e32fb8f" class="">declare <em>set&lt;int&gt;freq</em></p><p id="12e7aacb-2d23-80db-9647-d5a7ba833a32" class="">for <em>it in map:</em><div class="indented"><p id="12e7aacb-2d23-80e0-894d-d4f5a97e5428" class="">if (freq.find(it.value) ≠ freq.end:<div class="indented"><p id="12e7aacb-2d23-802e-b800-caf9047ca9a9" class="">return false</p></div></p><p id="12e7aacb-2d23-80c5-b406-d54a2c7a6290" class="">freq.insert(it.value)</p></div></p><p id="12e7aacb-2d23-807d-85fb-e2f21d78ce7b" class="">endloop</p><p id="12e7aacb-2d23-803d-9327-f7d5f4ba49c0" class="">return true</p><p id="12e7aacb-2d23-801a-a891-cc1a6166c56b" class="">Runtime: O(N)</p><h2 id="12f7aacb-2d23-8096-b34e-d0f5d9f332b0" class="">Determine if Two Strings are Close</h2><p id="12f7aacb-2d23-803e-ad3a-e6248fb350b1" class="">Two strings are considered <strong>close</strong> if you can attain one from the other using the following operations:</p><ul id="12f7aacb-2d23-801b-b655-e09b559d136e" class="bulleted-list"><li style="list-style-type:disc">Operation 1: Swap any two <strong>existing</strong> characters.<ul id="12f7aacb-2d23-80ef-b4c2-f9baf8143067" class="bulleted-list"><li style="list-style-type:circle">For example, <code>a</code><code><span style="border-bottom:0.05em solid">b</span></code><code>cd</code><code><span style="border-bottom:0.05em solid">e</span></code><code> -&gt; a</code><code><span style="border-bottom:0.05em solid">e</span></code><code>cd</code><code><span style="border-bottom:0.05em solid">b</span></code></li></ul></li></ul><ul id="12f7aacb-2d23-8079-84cd-d3422f870f19" class="bulleted-list"><li style="list-style-type:disc">Operation 2: Transform <strong>every</strong> occurrence of one <strong>existing</strong> character into another <strong>existing</strong> character, and do the same with the other character.<ul id="12f7aacb-2d23-8098-a669-cb5a75655c59" class="bulleted-list"><li style="list-style-type:circle">For example, <code><span style="border-bottom:0.05em solid">aa</span></code><code>c</code><code><span style="border-bottom:0.05em solid">abb</span></code><code> -&gt; </code><code><span style="border-bottom:0.05em solid">bb</span></code><code>c</code><code><span style="border-bottom:0.05em solid">baa</span></code> (all <code>a</code>&#x27;s turn into <code>b</code>&#x27;s, and all <code>b</code>&#x27;s turn into <code>a</code>&#x27;s)</li></ul></li></ul><p id="12f7aacb-2d23-806e-a7e2-dfba1c199c0d" class="">You can use the operations on either string as many times as necessary.</p><p id="12f7aacb-2d23-80a8-9626-eee9eb860941" class="">Given two strings, <code>word1</code> and <code>word2</code>, return <code>true</code><em> if </em><code>word1</code><em> and </em><code>word2</code><em> are </em><em><strong>close</strong></em><em>, and </em><code>false</code><em> otherwise.</em></p><p id="12f7aacb-2d23-80c8-8789-cabacad807f3" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12f7aacb-2d23-8053-aff0-c6796508ed28" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;abc&quot;, word2 = &quot;bca&quot;
+Output: true
+Explanation: You can attain word2 from word1 in 2 operations.
+Apply Operation 1: &quot;abc&quot; -&gt; &quot;acb&quot;
+Apply Operation 1: &quot;acb&quot; -&gt; &quot;bca&quot;
+</code></pre><p id="12f7aacb-2d23-8099-94f9-f6a376e5dc03" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12f7aacb-2d23-803a-a805-e0587bf882a9" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;a&quot;, word2 = &quot;aa&quot;
+Output: false
+Explanation:It is impossible to attain word2 from word1, or vice versa, in any number of operations.
+</code></pre><p id="12f7aacb-2d23-808a-b351-e1741c3340c0" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12f7aacb-2d23-804b-9a48-e2d27eb4540a" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;cabbba&quot;, word2 = &quot;abbccc&quot;
+Output: true
+Explanation: You can attain word2 from word1 in 3 operations.
+Apply Operation 1: &quot;cabbba&quot; -&gt; &quot;caabbb&quot;
+Apply Operation 2: &quot;caabbb&quot; -&gt; &quot;baaccc&quot;
+Apply Operation 2: &quot;baaccc&quot; -&gt; &quot;abbccc&quot;
+</code></pre><p id="12f7aacb-2d23-8020-ac17-d564eadd0880" class=""><strong>Constraints:</strong></p><ul id="12f7aacb-2d23-80ee-8926-e007bfbf1874" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= word1.length, word2.length &lt;= 10^5</code></li></ul><ul id="12f7aacb-2d23-8087-bf16-f00d7c093a13" class="bulleted-list"><li style="list-style-type:disc"><code>word1</code> and <code>word2</code> contain only lowercase English letters.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12f7aacb-2d23-8048-a3fd-e11e28ac39fa" class="code"><code class="language-C++">class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        if (word1.size() != word2.size()) {
+            return false;
+        }
+        unordered_map&lt;int,vector&lt;char&gt;&gt; m1;
+        unordered_map&lt;int,vector&lt;char&gt;&gt; m2;
+        unordered_map&lt;char, int&gt; mp1;
+        unordered_map&lt;char, int&gt; mp2;
+
+        for (int i = 0; i &lt; word1.size(); i++) {
+            mp1[word1[i]]++;
+        }
+        for (int i = 0; i &lt; word2.size(); i++) {
+            mp2[word2[i]]++;
+        }
+        bool flag1 = true;
+        for (auto it:mp1) {
+            if (mp2.find(it.first) == mp2.end()) {
+                return false;
+            }
+            if (it.second!=mp2[it.first]) {
+                flag1 = false;
+            }
+        }
+        if (flag1) {
+            return true;
+        }
+
+        for (auto it:mp1) {
+            m1[it.second].push_back(it.first);
+        }
+        for (auto it:mp2) {
+            m2[it.second].push_back(it.first);
+        }
+        flag1 = true;
+        for (auto it:m1) {
+            if(m2.find(it.first) == m2.end()) {
+                return false;
+            } else if (m2[it.first].size() != it.second.size()) {
+                return false;
+            }
+        }
+        return true;
+    }
+};</code></pre><p id="12f7aacb-2d23-80e1-b1fc-cfe37db399e5" class="">Time Complexity: O(N)</p><p id="12f7aacb-2d23-8069-a763-e626f4879882" class="">Space Complexity: O(N)</p><h2 id="1307aacb-2d23-809e-9efb-c05256623181" class="">Equal Row and Column Pairs</h2><p id="1307aacb-2d23-8078-87ef-c7b699a74813" class="">Given a <strong>0-indexed</strong> <code>n x n</code> integer matrix <code>grid</code>, <em>return the number of pairs </em><code>(ri, cj)</code><em> such that row </em><code>ri</code><em> and column </em><code>cj</code><em> are equal</em>.</p><p id="1307aacb-2d23-8078-8112-edf745954b30" class="">A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).</p><p id="1307aacb-2d23-80b0-a27f-f6044bc0f1d5" class=""><strong>Example 1:</strong></p><figure id="1307aacb-2d23-8016-b12c-d08c415d2319" class="image"><a href="https://assets.leetcode.com/uploads/2022/06/01/ex1.jpg"><img style="width:150px" src="https://assets.leetcode.com/uploads/2022/06/01/ex1.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1307aacb-2d23-809c-9d8c-e80623954e24" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: grid = [[3,2,1],[1,7,6],[2,7,7]]
+Output: 1
+Explanation: There is 1 equal row and column pair:
+- (Row 2, Column 1): [2,7,7]
+</code></pre><p id="1307aacb-2d23-801f-bd41-e1467dc2ebdd" class=""><strong>Example 2:</strong></p><figure id="1307aacb-2d23-80c8-929c-c1ff884d3b3f" class="image"><a href="https://assets.leetcode.com/uploads/2022/06/01/ex2.jpg"><img style="width:200px" src="https://assets.leetcode.com/uploads/2022/06/01/ex2.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1307aacb-2d23-8062-8fa5-c021fcdb16d1" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: grid = [[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]
+Output: 3
+Explanation: There are 3 equal row and column pairs:
+- (Row 0, Column 0): [3,1,2,2]
+- (Row 2, Column 2): [2,4,2,2]
+- (Row 3, Column 2): [2,4,2,2]
+</code></pre><p id="1307aacb-2d23-8097-a7ea-c55c65ac7111" class=""><strong>Constraints:</strong></p><ul id="1307aacb-2d23-801e-8bb9-dd9c55ef084f" class="bulleted-list"><li style="list-style-type:disc"><code>n == grid.length == grid[i].length</code></li></ul><ul id="1307aacb-2d23-80fa-9183-f0cbdde6f0f0" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= n &lt;= 200</code></li></ul><ul id="1307aacb-2d23-8052-8a9e-e123e4cc57e8" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= grid[i][j] &lt;= 10^5</code></li></ul><p id="1307aacb-2d23-806f-a0cf-e483a3459630" class="">My Solution:<br/><br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1307aacb-2d23-8081-9d25-d1a28705718c" class="code"><code class="language-C++">class Solution {
+public:
+    int equalPairs(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {
+        unordered_map&lt;string,int&gt;row;
+        string temp;
+        for(int i=0;i&lt;grid.size();i++){
+            temp=&quot;&quot;;
+            for(int j=0;j&lt;grid[0].size();j++){
+                temp+=to_string(grid[i][j]);
+                temp+=&quot; &quot;;
+            }
+            row[temp]+=1;
+        }
+        int ans=0;
+        for(auto x:row){
+            cout&lt;&lt;x.first&lt;&lt;&quot; &quot;;
+        }
+        cout&lt;&lt;endl;
+        for(int i=0;i&lt;grid.size();++i){
+            temp=&quot;&quot;;
+            for(int j=0;j&lt;grid[0].size();j++){
+                temp+=to_string(grid[j][i]);
+                temp+=&quot; &quot;;
+            }
+            cout&lt;&lt;temp&lt;&lt;&quot; &quot;;
+            if(row[temp]) ans+=row[temp];
+        }
+        return ans;
+    }
+};</code></pre><p id="1307aacb-2d23-80d5-b0f3-e75fb31bf70e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

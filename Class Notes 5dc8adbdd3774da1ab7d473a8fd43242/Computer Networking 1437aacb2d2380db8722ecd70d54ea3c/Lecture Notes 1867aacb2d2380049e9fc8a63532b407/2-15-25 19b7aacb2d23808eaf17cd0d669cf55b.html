@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2-15-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19b7aacb-2d23-808e-af17-cd0d669cf55b" class="page sans"><header><h1 class="page-title">2-15-25</h1><p class="page-description"></p></header><div class="page-body"><p id="19b7aacb-2d23-80b1-84de-e0ddb083237f" class="">
+</p><h2 id="19b7aacb-2d23-8041-8921-f253e19136db" class="">Mail Acces Protocols</h2><p id="19b7aacb-2d23-8035-9110-da6cf20c65cb" class="">SMTP - delivery/ storage of e-mail messages to receiver’s server</p><p id="19b7aacb-2d23-8009-8338-d48329d37038" class="">POP </p><p id="19b7aacb-2d23-804f-9ebd-ce23d4251e39" class="">IMAP - retrieval of messages stored on server</p><p id="19b7aacb-2d23-80df-82fe-c21fe908a526" class="">HTTP</p><p id="19b7aacb-2d23-8093-9363-f11d4d8f868e" class="">
+</p><h1 id="19b7aacb-2d23-80a0-b897-d26043ce09f7" class="">DNS - The Domain Name System</h1><p id="19b7aacb-2d23-80d1-b5d1-cadbba9584ac" class="">DNS is a distributed databaase implemented in hierarchy of many name servers</p><p id="19b7aacb-2d23-80b3-990f-f6b565303104" class="">Application-layer protocol - hosts, name servers communicate to resolve names (address/name translation)</p><p id="19b7aacb-2d23-8085-bb61-f4175d8c27e1" class="">It makes it easier for people to remember identify hosts</p><p id="19b7aacb-2d23-80b0-b1a5-e74d57b38504" class="">How to map between IP address and name, and vice versa?</p><p id="19b7aacb-2d23-8079-a084-c1d03cb4ab11" class="">
+</p><p id="19b7aacb-2d23-80d9-a316-f2def98c3dab" class="">DNS Services</p><p id="19b7aacb-2d23-8078-8bd5-f72bf15a0aac" class="">Hostname to IP address translation</p><p id="19b7aacb-2d23-80e3-82d3-eb5ca2780b9b" class="">Host aliasing<div class="indented"><p id="19b7aacb-2d23-80a2-aa25-e9f1237bdb26" class="">Canonical, alias names</p></div></p><p id="19b7aacb-2d23-80a1-b8ee-cb6ad2b3365f" class="">Mail server aliasing</p><p id="19b7aacb-2d23-801f-8029-c6bba47c4626" class="">load distribution<div class="indented"><p id="19b7aacb-2d23-80fd-8022-fefd124630f8" class="">replicated Web Servers: many IP addresses correspond to one name</p></div></p><p id="19b7aacb-2d23-80b4-9c11-fbf8d2087681" class="">
+</p><p id="19b7aacb-2d23-803e-a43e-e1b11c037efb" class="">We don’t centralize DNS because it would be a single point of failure. There are</p><p id="19b7aacb-2d23-8027-ab5e-ea613039730c" class="">
+</p><figure id="19b7aacb-2d23-8067-9744-eca2a04655ef" class="image"><a href="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.01.36_AM.png"><img style="width:642.9921875px" src="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.01.36_AM.png"/></a></figure><p id="19b7aacb-2d23-809f-a3ae-e16d6827f4f2" class="">
+</p><p id="19b7aacb-2d23-8036-9b7e-dfd5c2e55f75" class="">In this hierarchy, there is Local DNS<div class="indented"><p id="19b7aacb-2d23-802c-afb3-f4086040acf8" class="">
+</p></div></p><p id="19b7aacb-2d23-80b2-a314-d6fc50620609" class="">
+</p><p id="19b7aacb-2d23-800e-9f70-c3e25f9f56a7" class="">DNS: root-name servers<div class="indented"><p id="19b7aacb-2d23-80a0-8ed9-fb87b70483eb" class="">Official, contact of last resort by name servers that can not resolve name</p><p id="19b7aacb-2d23-8058-aa4f-fb192faa13bc" class="">Incredibly Important Internet function - Internet couldn’t function without it!</p><p id="19b7aacb-2d23-8020-9bec-f25ae6457508" class="">ICANN manages root DNS domain</p></div></p><p id="19b7aacb-2d23-809b-a76b-eda5addd8527" class="">TLD servers - responsible for .com, .org, .net, .edu, .aero, .jobs, .museums, and all the top-level country domains (.uk, .fr)<div class="indented"><p id="19b7aacb-2d23-8030-83f2-dc49172b3536" class="">Network Solutions: authoritative registry for .com, .net TLD</p></div></p><p id="19b7aacb-2d23-802d-a773-ee3cdc70865c" class="">
+</p><p id="19b7aacb-2d23-8027-b51c-e7c3be076325" class="">Authoritative DNS servers:<div class="indented"><p id="19b7aacb-2d23-807b-bfc0-fd627ebd358e" class="">Organization’s own DNS server(s), providing authoritative hostname to IP mappings for organization’s named hosts<div class="indented"><p id="19b7aacb-2d23-80d6-be0f-fc0a48a485ac" class="">Can be maintained by organization or service provider</p></div></p></div></p><figure id="19b7aacb-2d23-8044-9173-fff0266627e4" class="image"><a href="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.20.35_AM.png"><img style="width:642.984375px" src="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.20.35_AM.png"/></a></figure><p id="19b7aacb-2d23-805f-aa2a-f1b48f915792" class="">Iterated Query</p><ol type="1" id="19b7aacb-2d23-80e0-af52-ec854d9b5f76" class="numbered-list" start="1"><li><strong>You (the Resolver)</strong> ask the first server (Root Server), “Where is google.com?”</li></ol><ol type="1" id="19b7aacb-2d23-809a-877b-dbb91fc9623d" class="numbered-list" start="2"><li><strong>Root Server</strong> doesn’t know the exact address but points you to the <code>.com</code> TLD server.</li></ol><ol type="1" id="19b7aacb-2d23-80ca-b57c-d27edf6638cb" class="numbered-list" start="3"><li><strong>TLD Server</strong> then directs you to Google’s Authoritative Name Server.</li></ol><ol type="1" id="19b7aacb-2d23-8021-8f21-df33bf5d0c9c" class="numbered-list" start="4"><li><strong>Authoritative Name Server</strong> finally gives you the exact IP address.</li></ol><ol type="1" id="19b7aacb-2d23-806d-8fc8-c1aa127f5fa4" class="numbered-list" start="5"><li><strong>You (the Resolver)</strong> take that IP and go to the website.</li></ol><p id="19b7aacb-2d23-80bd-8afc-c9f5c1cba5d9" class="">
+</p><figure id="19b7aacb-2d23-807c-b0e4-ffb223d57fba" class="image"><a href="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.21.10_AM.png"><img style="width:642.984375px" src="2-15-25%2019b7aacb2d23808eaf17cd0d669cf55b/Screenshot_2025-02-15_at_9.21.10_AM.png"/></a></figure><p id="19b7aacb-2d23-80e5-98d4-c092fa8f78cd" class="">Recursive Query</p><ol type="1" id="19b7aacb-2d23-800e-b0cf-db04d77cd866" class="numbered-list" start="1"><li>You (your computer) ask a <strong>Recursive Resolver</strong>, “Where is google.com?”</li></ol><ol type="1" id="19b7aacb-2d23-80a8-8415-ef8649159b13" class="numbered-list" start="2"><li>The <strong>Recursive Resolver</strong> does all the searching for you!<ul id="19b7aacb-2d23-80f9-b006-d2a3bb30237a" class="bulleted-list"><li style="list-style-type:disc">It asks the <strong>Root Server</strong>, which points to the <strong>TLD Server</strong>.</li></ul><ul id="19b7aacb-2d23-802a-93bc-c53c41b1f754" class="bulleted-list"><li style="list-style-type:disc">The <strong>TLD Server</strong> directs it to the <strong>Authoritative Name Server</strong>, which gives the final IP address.</li></ul></li></ol><ol type="1" id="19b7aacb-2d23-800b-b79f-d382c93f75f1" class="numbered-list" start="3"><li>The <strong>Recursive Resolver</strong> then gives you the final answer.</li></ol><ol type="1" id="19b7aacb-2d23-808f-8861-cf33ba12dbaf" class="numbered-list" start="4"><li>Your browser uses the IP to load the website.</li></ol><p id="19b7aacb-2d23-80e9-a573-cb23ce526c0b" class="">
+</p><h1 id="19b7aacb-2d23-8015-8cc0-f1c15a655ce5" class="">P2P Applications</h1><p id="19b7aacb-2d23-801f-b5e5-d76662bfee9a" class="">No alwayso n server</p><p id="19b7aacb-2d23-80f8-9331-f4da03150bea" class="">arbitrary edn systems directly communicate</p><p id="19b7aacb-2d23-8095-bcd6-c3740fa427e3" class="">Peers request service from other peers, provide service in return to other peers<div class="indented"><p id="19b7aacb-2d23-80b0-b853-d2d881f8446e" class="">Self scalability - new peers bring new service capacity, and new service demands</p></div></p><p id="19b7aacb-2d23-80d8-8397-c7e0fb93a8ba" class="">Peers are intermittenrtly connected and change IP addresses</p><p id="19b7aacb-2d23-80d5-bddf-c9a098204495" class="">ex: BitTorrent, streaming, VoIP</p><p id="19b7aacb-2d23-80be-b963-cf14a95de699" class="">
+</p><h1 id="19b7aacb-2d23-808c-926a-ed58c8d84690" class="">Video Streaming and CDNs: Context</h1><p id="19b7aacb-2d23-80b7-b069-dac108069cef" class="">Stream video traffic: major consumer of Internet bandwidth<div class="indented"><p id="19b7aacb-2d23-8058-a5ce-df36970d7869" class="">Netflix, YouTube, Amazon Prime: 80% of residential ISP traffic</p></div></p><p id="19b7aacb-2d23-800f-9e68-c74b0730c8af" class="">Challenge: scale - how to reach ~1 biillion users?<div class="indented"><p id="19b7aacb-2d23-801c-9f37-c0fe6e1ce644" class="">Single mega-video server won’t work</p></div></p><p id="19b7aacb-2d23-80e4-af9c-ccef1a11c7aa" class="">Challenge: heterogeneity<div class="indented"><p id="19b7aacb-2d23-804c-81a6-cfd67a3ea772" class="">Different users have different capabilities</p><p id="19b7aacb-2d23-808e-9ba8-d5141408b490" class="">(e.g., wired versus mobile; bandwidth rich versus bandwidth poor)</p></div></p><p id="19b7aacb-2d23-80e3-8097-e9a4012a0d59" class="">Solution: distributed, application-level infrastructure</p><p id="19b7aacb-2d23-800b-b88c-df79bc42e8e9" class="">Video: sequence of images displayed at constant rate: eg 24 - 30 images/sec</p><p id="19b7aacb-2d23-8022-82ca-fd5cf6271e38" class="">Digital Image: array of pixels, each pixel represented by bits</p><p id="19b7aacb-2d23-80d2-a091-f37d6a6bd510" class="">Coding: use reduandncy within and between images to decrease # of bits used to encode image<div class="indented"><p id="19b7aacb-2d23-80ea-9346-d8f921d9d687" class="">Spatial (within image)</p><p id="19b7aacb-2d23-80aa-a8ed-eabf8613fe4b" class="">Temporal (from one image to next)</p></div></p><p id="19b7aacb-2d23-8093-85cc-da5f17c7f52f" class="">Constant Bit Rate: video encoding rate fixed</p><p id="19b7aacb-2d23-808e-83de-cf007eb6e203" class="">VBR - video encoding rate changes as amount of spatial, temporal coding changes</p><p id="19b7aacb-2d23-80a2-b474-fe70954e1942" class="">
+</p><p id="19b7aacb-2d23-8073-b917-edcc6361cfe0" class="">DASH - Dynamic Adaptive Streaming over HTTP<div class="indented"><p id="19b7aacb-2d23-80d5-a729-dd2c7b495967" class="">On the server, we take a video and break it into chunks.</p><p id="19b7aacb-2d23-8032-9eae-feee3043c7cb" class="">Each chunk is stored and encoded at different rates</p><p id="19b7aacb-2d23-80ca-9d9e-c01005023842" class="">On the client side, it periodically measures server-to-client bandwidth.<div class="indented"><p id="19b7aacb-2d23-80ec-a9f5-cf3a697acd68" class="">Consulting manifest, requests one chunk at a time.</p><p id="19b7aacb-2d23-80bb-a64e-dd527d29b266" class="">Can choose different coding rates at different points in time.</p></div></p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

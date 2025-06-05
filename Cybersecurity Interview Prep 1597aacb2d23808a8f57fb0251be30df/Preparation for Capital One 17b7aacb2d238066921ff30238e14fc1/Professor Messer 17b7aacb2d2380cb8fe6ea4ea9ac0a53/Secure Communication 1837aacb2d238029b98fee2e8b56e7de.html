@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Secure Communication</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1837aacb-2d23-8029-b98f-ee2e8b56e7de" class="page sans"><header><h1 class="page-title">Secure Communication</h1><p class="page-description"></p></header><div class="page-body"><p id="1837aacb-2d23-806f-a562-f48b4fd10a1e" class="">VPNs - Virtual Private Networks - secure form of communication<div class="indented"><p id="1837aacb-2d23-8013-a04f-d6e71619acf3" class="">Concentrator - endpoint to be connected to</p></div></p><p id="1837aacb-2d23-8076-9c4b-d8827898c5fa" class="">Encrypted Tunnel</p><h3 id="1837aacb-2d23-806b-87df-dfe26cf0e822" class=""><strong>What is Secure Communication?</strong></h3><p id="1837aacb-2d23-8036-920d-d17e2b7e85c8" class="">Secure communication ensures the confidentiality, integrity, and authenticity of information exchanged between parties. It protects data from unauthorized access, tampering, and impersonation.</p><hr id="1837aacb-2d23-8040-862b-e00e84ea123b"/><h3 id="1837aacb-2d23-80ee-bdea-d814a300204e" class=""><strong>Key Principles of Secure Communication</strong></h3><ol type="1" id="1837aacb-2d23-80fa-97c0-dfa0c027ebfb" class="numbered-list" start="1"><li><strong>Confidentiality</strong><ul id="1837aacb-2d23-8060-b6ab-f6fd29792925" class="bulleted-list"><li style="list-style-type:disc">Ensures that information is accessible only to authorized individuals.</li></ul><ul id="1837aacb-2d23-803d-b0f0-da7eaa0c5b77" class="bulleted-list"><li style="list-style-type:disc">Achieved through encryption methods like AES (Advanced Encryption Standard).</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8075-a101-c99baa5917dc" class="numbered-list" start="2"><li><strong>Integrity</strong><ul id="1837aacb-2d23-808b-acd7-e32ba49b1710" class="bulleted-list"><li style="list-style-type:disc">Protects data from being altered during transmission.</li></ul><ul id="1837aacb-2d23-803b-b17f-fcf12d585de6" class="bulleted-list"><li style="list-style-type:disc">Verified using hashing algorithms like SHA-256 and mechanisms like Message Authentication Codes (MAC).</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8089-87f9-f95c0df667a6" class="numbered-list" start="3"><li><strong>Authentication</strong><ul id="1837aacb-2d23-80a5-b385-d3d2e871a6e1" class="bulleted-list"><li style="list-style-type:disc">Confirms the identities of the communicating parties.</li></ul><ul id="1837aacb-2d23-8065-af86-f83812b69f4e" class="bulleted-list"><li style="list-style-type:disc">Implemented using digital certificates, passwords, or biometric systems.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-808f-bfde-e949e9d0d3f8" class="numbered-list" start="4"><li><strong>Non-repudiation</strong><ul id="1837aacb-2d23-80f9-a219-e5367f8bdbe9" class="bulleted-list"><li style="list-style-type:disc">Ensures that the sender cannot deny sending the message.</li></ul><ul id="1837aacb-2d23-8011-82ef-d3136ccb4f1f" class="bulleted-list"><li style="list-style-type:disc">Achieved through digital signatures.</li></ul></li></ol><hr id="1837aacb-2d23-8031-a088-d0602c6f1991"/><h3 id="1837aacb-2d23-800b-867c-cfe1f4963597" class=""><strong>Key Technologies for Secure Communication</strong></h3><ol type="1" id="1837aacb-2d23-808f-835a-d9928dcad771" class="numbered-list" start="1"><li><strong>Encryption</strong><ul id="1837aacb-2d23-803b-a828-f6bdc7aa08d3" class="bulleted-list"><li style="list-style-type:disc">Symmetric Encryption: Uses one key for encryption and decryption (e.g., AES, DES).</li></ul><ul id="1837aacb-2d23-80b3-824b-e4a75a790cda" class="bulleted-list"><li style="list-style-type:disc">Asymmetric Encryption: Uses a pair of public and private keys (e.g., RSA, ECC).</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80e7-8692-e2a45f1d6b78" class="numbered-list" start="2"><li><strong>TLS/SSL (Transport Layer Security/Secure Sockets Layer)</strong><ul id="1837aacb-2d23-80ce-a831-c4edb8c87253" class="bulleted-list"><li style="list-style-type:disc">Encrypts data transmitted over the web.</li></ul><ul id="1837aacb-2d23-80b6-b318-da239eea4e02" class="bulleted-list"><li style="list-style-type:disc">Establishes a secure channel between a client and a server.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80df-a0f1-eabcd98dd082" class="numbered-list" start="3"><li><strong>VPN (Virtual Private Network)</strong><ul id="1837aacb-2d23-80aa-8796-c2468263e509" class="bulleted-list"><li style="list-style-type:disc">Creates a secure, encrypted tunnel for transmitting data over public networks.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80fc-a5b4-cb21be1e0346" class="numbered-list" start="4"><li><strong>PGP (Pretty Good Privacy)</strong><ul id="1837aacb-2d23-80ea-9ca8-de1266f9728a" class="bulleted-list"><li style="list-style-type:disc">Encrypts emails and files using public key cryptography.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8071-b29e-d8740ab851bd" class="numbered-list" start="5"><li><strong>End-to-End Encryption (E2EE)</strong><ul id="1837aacb-2d23-806b-8b1e-f17efd5fd84b" class="bulleted-list"><li style="list-style-type:disc">Ensures that only the sender and receiver can access the content of the communication (e.g., Signal, WhatsApp).</li></ul></li></ol><ol type="1" id="1837aacb-2d23-809f-9dee-d60667b4b93a" class="numbered-list" start="6"><li><strong>Hashing</strong><ul id="1837aacb-2d23-80f0-b45d-dc1a9fb5c9c9" class="bulleted-list"><li style="list-style-type:disc">Ensures data integrity by creating a fixed-size hash value from data (e.g., MD5, SHA-256).</li></ul></li></ol><ol type="1" id="1837aacb-2d23-804a-8ba3-e28daa8b15fb" class="numbered-list" start="7"><li><strong>Two-Factor Authentication (2FA)</strong><ul id="1837aacb-2d23-802a-806d-c57a49c562f2" class="bulleted-list"><li style="list-style-type:disc">Adds an extra layer of security by requiring a second factor beyond just a password.</li></ul></li></ol><hr id="1837aacb-2d23-80b0-9d48-fe2ffa83735c"/><h3 id="1837aacb-2d23-8022-8766-dfcb99f6c3cd" class=""><strong>Common Threats to Secure Communication</strong></h3><ol type="1" id="1837aacb-2d23-80dc-9335-cc2aca0e9074" class="numbered-list" start="1"><li><strong>Man-in-the-Middle (MITM) Attacks</strong><ul id="1837aacb-2d23-80d7-bf50-f6d929b1e736" class="bulleted-list"><li style="list-style-type:disc">An attacker intercepts communication between two parties.</li></ul><ul id="1837aacb-2d23-80c7-9f84-fcb2e412b9b3" class="bulleted-list"><li style="list-style-type:disc">Mitigated with TLS and strong encryption.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80c0-ab1d-da1b080895ed" class="numbered-list" start="2"><li><strong>Phishing</strong><ul id="1837aacb-2d23-80bd-9a1a-d34abab7b07d" class="bulleted-list"><li style="list-style-type:disc">Tricks users into revealing sensitive information.</li></ul><ul id="1837aacb-2d23-8070-84c1-da015277b2e2" class="bulleted-list"><li style="list-style-type:disc">Prevented by user education and anti-phishing technologies.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8091-9f48-dd4c7772aa4b" class="numbered-list" start="3"><li><strong>Replay Attacks</strong><ul id="1837aacb-2d23-80ab-ad58-da35d48ee75c" class="bulleted-list"><li style="list-style-type:disc">An attacker intercepts and replays a communication to deceive the receiver.</li></ul><ul id="1837aacb-2d23-80a9-a6d1-f1d1047ab1d4" class="bulleted-list"><li style="list-style-type:disc">Prevented with timestamps and nonce values.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8007-9db5-e58f7ba7372c" class="numbered-list" start="4"><li><strong>Eavesdropping</strong><ul id="1837aacb-2d23-80fc-9fcb-c33557fe4c2d" class="bulleted-list"><li style="list-style-type:disc">Unauthorized listening to communication channels.</li></ul><ul id="1837aacb-2d23-80a5-b3ca-eac2c3604e4e" class="bulleted-list"><li style="list-style-type:disc">Prevented with encryption and secure channels.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80aa-97ae-d1ea0247984a" class="numbered-list" start="5"><li><strong>Spoofing</strong><ul id="1837aacb-2d23-80b7-b1e1-e9e1137ff77c" class="bulleted-list"><li style="list-style-type:disc">Impersonation of one party to deceive the other.</li></ul><ul id="1837aacb-2d23-8094-8e93-d26fd2f911a7" class="bulleted-list"><li style="list-style-type:disc">Prevented with authentication mechanisms.</li></ul></li></ol><hr id="1837aacb-2d23-80c8-8eb5-c708d1af074e"/><h3 id="1837aacb-2d23-80e9-b82f-ccd2164a1e82" class=""><strong>Best Practices for Secure Communication</strong></h3><ol type="1" id="1837aacb-2d23-8093-9cfe-e9efe1d64401" class="numbered-list" start="1"><li><strong>Use Strong Passwords and Multi-Factor Authentication</strong><ul id="1837aacb-2d23-80d4-80a4-d54e0099e5fe" class="bulleted-list"><li style="list-style-type:disc">Reduces the risk of unauthorized access.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8095-9876-eb3127df2f27" class="numbered-list" start="2"><li><strong>Employ Encryption for All Sensitive Data</strong><ul id="1837aacb-2d23-8006-91f1-d220a5868ee7" class="bulleted-list"><li style="list-style-type:disc">Use up-to-date protocols like TLS 1.3 for web communications.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8032-b56b-d6b3c887e5be" class="numbered-list" start="3"><li><strong>Verify Digital Certificates</strong><ul id="1837aacb-2d23-80b3-97b5-c13db9709e58" class="bulleted-list"><li style="list-style-type:disc">Ensure the server&#x27;s SSL certificate is valid and trusted.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8053-a8ff-ec5a3689e39e" class="numbered-list" start="4"><li><strong>Keep Software and Devices Updated</strong><ul id="1837aacb-2d23-80ff-9e2f-fa3dcfdde61e" class="bulleted-list"><li style="list-style-type:disc">Protects against known vulnerabilities.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80d4-92f7-daa6b9189258" class="numbered-list" start="5"><li><strong>Limit Access Based on Need-to-Know</strong><ul id="1837aacb-2d23-8080-96dc-fe4505e68d43" class="bulleted-list"><li style="list-style-type:disc">Enforce strict access control to reduce exposure to sensitive information.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-8066-b8b9-f9e1e9517411" class="numbered-list" start="6"><li><strong>Educate Users</strong><ul id="1837aacb-2d23-8074-8d26-e22232618d4b" class="bulleted-list"><li style="list-style-type:disc">Raise awareness about phishing, spoofing, and social engineering tactics.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-805c-aa91-d69ce2a59dc8" class="numbered-list" start="7"><li><strong>Monitor and Log Communications</strong><ul id="1837aacb-2d23-80ef-8390-e81436bf0e69" class="bulleted-list"><li style="list-style-type:disc">Use SIEM (Security Information and Event Management) tools to detect suspicious activities.</li></ul></li></ol><ol type="1" id="1837aacb-2d23-80bd-a847-f5ab748ce35d" class="numbered-list" start="8"><li><strong>Test Security Regularly</strong><ul id="1837aacb-2d23-80c2-aa41-eda4fa3d619c" class="bulleted-list"><li style="list-style-type:disc">Perform penetration testing and vulnerability assessments.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

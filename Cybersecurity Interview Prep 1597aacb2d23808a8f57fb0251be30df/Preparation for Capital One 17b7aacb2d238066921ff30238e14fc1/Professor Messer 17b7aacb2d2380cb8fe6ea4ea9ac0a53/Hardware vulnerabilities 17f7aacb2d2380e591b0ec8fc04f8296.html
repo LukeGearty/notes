@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hardware vulnerabilities</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17f7aacb-2d23-80e5-91b0-ec8fc04f8296" class="page sans"><header><h1 class="page-title">Hardware vulnerabilities</h1><p class="page-description"></p></header><div class="page-body"><p id="17f7aacb-2d23-80d9-a909-e69cf6f64f75" class="">We are surrounded by hardware devices - many do not have accessible operating systems - but they are there and since they are connected to the network there is always a risk<div class="indented"><p id="17f7aacb-2d23-80e8-95fc-fa78d1922dbc" class="">IoT</p></div></p><p id="17f7aacb-2d23-8074-9adc-c68f81e3720f" class="">Firmware - the software inside of the hardware - the operating system of the hardware device<div class="indented"><p id="17f7aacb-2d23-80a4-ac83-c925857f0a40" class="">Vendors are the only ones who can fix their hardware</p><p id="17f7aacb-2d23-804f-a1e7-de43c98be37d" class="">Trane Comfortlink II thermostats - control the temperature from the phone. April 2014 Trane was notified of security vulnerabilities. April 2015 - they patched the vulnerability, and January 2016 received another patch</p></div></p><p id="17f7aacb-2d23-807a-9471-d99136db4135" class="">
+</p><p id="17f7aacb-2d23-8096-af6d-e56f82307f0a" class="">End-of-Life - EOL - manufacturer stops selling a product - may continue supporting the product (security patches and updates)</p><p id="17f7aacb-2d23-808f-854d-d36811325d6d" class="">End-of-service-life EOSL - stops selling and no longer supporting the product</p><p id="17f7aacb-2d23-80f2-a663-c27294a58692" class="">Legacy platforms - some devices remain installed for a long time</p><p id="17f7aacb-2d23-806c-aa35-fdad29014289" class="">Hardware vulnerabilities are security weaknesses or flaws in physical components of a computer system (e.g., CPUs, memory, or peripherals) that attackers can exploit to compromise system integrity, confidentiality, or availability. Unlike software vulnerabilities, hardware vulnerabilities often require firmware or hardware updates to fix.</p><hr id="17f7aacb-2d23-8083-9ccf-ffd59f0fe1ac"/><h3 id="17f7aacb-2d23-805a-b65d-da1984a4cd8d" class=""><strong>2. Common Types of Hardware Vulnerabilities</strong></h3><ol type="1" id="17f7aacb-2d23-80f1-b390-e6481c94fe88" class="numbered-list" start="1"><li><strong>Firmware Vulnerabilities</strong><ul id="17f7aacb-2d23-80c7-ac13-f6f2890f819b" class="bulleted-list"><li style="list-style-type:disc">Exploitable flaws in the firmware (software embedded in hardware components).</li></ul><ul id="17f7aacb-2d23-80c5-9798-ea8e69f1cfa2" class="bulleted-list"><li style="list-style-type:disc">Example: Vulnerabilities in BIOS/UEFI or device drivers that can allow attackers to persist malware.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80ab-9a67-fb157c7d4d33" class="numbered-list" start="2"><li><strong>Side-Channel Attacks</strong><ul id="17f7aacb-2d23-8002-b3fa-d58e40b47283" class="bulleted-list"><li style="list-style-type:disc">Exploiting unintended information leaks, such as power consumption, electromagnetic emissions, or execution timing.</li></ul><ul id="17f7aacb-2d23-80a0-9e96-c85c22c04aec" class="bulleted-list"><li style="list-style-type:disc">Examples:<ul id="17f7aacb-2d23-8062-b8cd-c6832e2a07e5" class="bulleted-list"><li style="list-style-type:circle"><strong>Meltdown</strong>: Exploits CPU privilege escalation issues.</li></ul><ul id="17f7aacb-2d23-8040-8630-f566a2caa9a0" class="bulleted-list"><li style="list-style-type:circle"><strong>Spectre</strong>: Exploits speculative execution to read sensitive data.</li></ul><ul id="17f7aacb-2d23-8072-b86a-dd641328fa2d" class="bulleted-list"><li style="list-style-type:circle"><strong>Rowhammer</strong>: Exploits memory cells in DRAM to flip bits in adjacent rows.</li></ul></li></ul></li></ol><ol type="1" id="17f7aacb-2d23-806b-8373-d5aabe3309cf" class="numbered-list" start="3"><li><strong>Hardware Trojans</strong><ul id="17f7aacb-2d23-80cd-b190-d1381cc0f540" class="bulleted-list"><li style="list-style-type:disc">Malicious modifications made to hardware during manufacturing or after deployment.</li></ul><ul id="17f7aacb-2d23-804f-992a-f386af8c0dbd" class="bulleted-list"><li style="list-style-type:disc">Example: Backdoors in network devices allowing remote attackers to gain control.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8060-8de3-deec52f1b46f" class="numbered-list" start="4"><li><strong>Physical Access Attacks</strong><ul id="17f7aacb-2d23-8048-ad4f-d82f1661743b" class="bulleted-list"><li style="list-style-type:disc">Exploits that require direct physical access to the device.</li></ul><ul id="17f7aacb-2d23-8045-b7bb-d6338fb0dfec" class="bulleted-list"><li style="list-style-type:disc">Examples:<ul id="17f7aacb-2d23-803b-8edb-f9333094329f" class="bulleted-list"><li style="list-style-type:circle">Accessing a locked computer by bypassing BIOS passwords.</li></ul><ul id="17f7aacb-2d23-8043-a3ed-ecd4809c117d" class="bulleted-list"><li style="list-style-type:circle">Using USB-based attacks like BadUSB.</li></ul></li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8093-8949-d68312aaaa93" class="numbered-list" start="5"><li><strong>Trusted Platform Module (TPM) Exploits</strong><ul id="17f7aacb-2d23-80d5-98ae-dbe8e7ec6caf" class="bulleted-list"><li style="list-style-type:disc">Weaknesses in TPM chips, which are used for encryption and secure boot processes.</li></ul><ul id="17f7aacb-2d23-80c2-b95c-ecda65f5bf69" class="bulleted-list"><li style="list-style-type:disc">Example: Exploiting vulnerabilities to extract private encryption keys.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80d9-9647-ca6a0a5631cb" class="numbered-list" start="6"><li><strong>Peripheral Device Exploits</strong><ul id="17f7aacb-2d23-80f0-9ce8-d3b569a08a7c" class="bulleted-list"><li style="list-style-type:disc">Attacks targeting external devices like keyboards, printers, or webcams.</li></ul><ul id="17f7aacb-2d23-8031-9180-e96c10a4e684" class="bulleted-list"><li style="list-style-type:disc">Example: Malicious USB devices mimicking legitimate peripherals.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80cb-a7ef-d6e851a6470b" class="numbered-list" start="7"><li><strong>Supply Chain Attacks</strong><ul id="17f7aacb-2d23-8030-ae0c-d5c2875001dc" class="bulleted-list"><li style="list-style-type:disc">Tampering with hardware components during the manufacturing or distribution process.</li></ul><ul id="17f7aacb-2d23-801d-a151-f0af60e407a1" class="bulleted-list"><li style="list-style-type:disc">Example: Adding malicious chips to motherboards.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8026-967f-fc91a4615fa8" class="numbered-list" start="8"><li><strong>IoT Device Vulnerabilities</strong><ul id="17f7aacb-2d23-8020-970f-c4b187b9c2be" class="bulleted-list"><li style="list-style-type:disc">Flaws in embedded systems or IoT devices that lack proper security mechanisms.</li></ul><ul id="17f7aacb-2d23-8076-be2c-f376f4003803" class="bulleted-list"><li style="list-style-type:disc">Example: Exploiting default credentials or outdated firmware.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8085-9720-e00e6e32f34b" class="numbered-list" start="9"><li><strong>Backdoor Access via Debug Interfaces</strong><ul id="17f7aacb-2d23-803a-80a6-cfb181e5c840" class="bulleted-list"><li style="list-style-type:disc">Exploiting debugging or maintenance ports left accessible on hardware.</li></ul><ul id="17f7aacb-2d23-80a0-800d-d66daac727ff" class="bulleted-list"><li style="list-style-type:disc">Example: Using JTAG or UART interfaces to bypass authentication.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8090-972b-f8309d1839ad" class="numbered-list" start="10"><li><strong>Weak Random Number Generators (RNG)</strong><ul id="17f7aacb-2d23-806d-bc83-e37a0177fdca" class="bulleted-list"><li style="list-style-type:disc">Hardware RNG flaws that can compromise cryptographic operations.</li></ul><ul id="17f7aacb-2d23-8062-86f6-f749e08e1121" class="bulleted-list"><li style="list-style-type:disc">Example: Predictable random numbers used in encryption keys.</li></ul></li></ol><hr id="17f7aacb-2d23-80da-96c0-ee66910c0f7c"/><h3 id="17f7aacb-2d23-807c-85cf-f30a336ca3bf" class=""><strong>3. Impacts of Hardware Vulnerabilities</strong></h3><ul id="17f7aacb-2d23-8050-a4b0-c0a0736ba9e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Breaches</strong>: Sensitive information can be leaked, including encryption keys, passwords, or personal data.</li></ul><ul id="17f7aacb-2d23-80a0-9a43-ef34eeff131a" class="bulleted-list"><li style="list-style-type:disc"><strong>System Compromise</strong>: Attackers may gain unauthorized control of systems.</li></ul><ul id="17f7aacb-2d23-8001-9456-e6bc865c7903" class="bulleted-list"><li style="list-style-type:disc"><strong>Denial of Service</strong>: Exploiting hardware flaws can lead to system crashes or failures.</li></ul><ul id="17f7aacb-2d23-80bc-87f9-fadd4b0944bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Persistent Malware</strong>: Malware stored in firmware can survive OS reinstallation.</li></ul><ul id="17f7aacb-2d23-8035-b538-e6375148fe79" class="bulleted-list"><li style="list-style-type:disc"><strong>Nation-State Espionage</strong>: Sophisticated hardware vulnerabilities are often exploited for long-term espionage.</li></ul><hr id="17f7aacb-2d23-80f5-8760-fb17f49b6853"/><h3 id="17f7aacb-2d23-808f-900d-efa4abffb969" class=""><strong>4. Preventing Hardware Vulnerabilities</strong></h3><ol type="1" id="17f7aacb-2d23-80ed-935d-f46f68828f25" class="numbered-list" start="1"><li><strong>Firmware and BIOS Updates</strong><ul id="17f7aacb-2d23-80f3-83c7-e3896595297f" class="bulleted-list"><li style="list-style-type:disc">Regularly update firmware and BIOS/UEFI to patch known vulnerabilities.</li></ul><ul id="17f7aacb-2d23-8016-8d0f-f4226befcda2" class="bulleted-list"><li style="list-style-type:disc">Use signed firmware to ensure authenticity.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8088-a299-fc2286373f78" class="numbered-list" start="2"><li><strong>Hardware Security Features</strong><ul id="17f7aacb-2d23-80dd-aa95-fa2f2575ea24" class="bulleted-list"><li style="list-style-type:disc">Enable features like Secure Boot, TPM, and virtualization-based security.</li></ul><ul id="17f7aacb-2d23-80db-bdc0-fc6dc22f4016" class="bulleted-list"><li style="list-style-type:disc">Use modern hardware with built-in mitigations (e.g., CPUs with Spectre/Meltdown protections).</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8038-9d7d-d72b98a339c5" class="numbered-list" start="3"><li><strong>Physical Security</strong><ul id="17f7aacb-2d23-80d6-b203-ead5abd5a5e1" class="bulleted-list"><li style="list-style-type:disc">Secure devices in tamper-proof cases or locked environments.</li></ul><ul id="17f7aacb-2d23-80f0-8ae6-f0d463fc5d28" class="bulleted-list"><li style="list-style-type:disc">Limit physical access to trusted individuals.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-809a-a59e-eb8eea2d77d9" class="numbered-list" start="4"><li><strong>Device Hardening</strong><ul id="17f7aacb-2d23-8052-8699-fd99b278c20c" class="bulleted-list"><li style="list-style-type:disc">Disable unused ports (e.g., USB, JTAG).</li></ul><ul id="17f7aacb-2d23-80ba-9143-ebf16064c736" class="bulleted-list"><li style="list-style-type:disc">Configure hardware to limit unauthorized access (e.g., BIOS/UEFI passwords).</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80bb-b672-e30b48e87198" class="numbered-list" start="5"><li><strong>Supply Chain Security</strong><ul id="17f7aacb-2d23-806d-83d3-de8e2b672fcd" class="bulleted-list"><li style="list-style-type:disc">Purchase hardware from trusted vendors.</li></ul><ul id="17f7aacb-2d23-80c3-be23-c195a500bd1b" class="bulleted-list"><li style="list-style-type:disc">Verify the authenticity of components to avoid supply chain tampering.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8009-9bec-f1fe09159207" class="numbered-list" start="6"><li><strong>IoT Security</strong><ul id="17f7aacb-2d23-8016-9f81-da1ff366b72b" class="bulleted-list"><li style="list-style-type:disc">Change default credentials and update firmware regularly.</li></ul><ul id="17f7aacb-2d23-8082-9377-e54121cfa184" class="bulleted-list"><li style="list-style-type:disc">Isolate IoT devices on separate network segments.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80f3-b041-d9b2a8ce0e25" class="numbered-list" start="7"><li><strong>Monitoring and Detection</strong><ul id="17f7aacb-2d23-80d0-a537-deeaf5787603" class="bulleted-list"><li style="list-style-type:disc">Use tools to monitor unusual hardware behavior or side-channel leaks.</li></ul><ul id="17f7aacb-2d23-808f-966d-dedb5237ed19" class="bulleted-list"><li style="list-style-type:disc">Implement hardware-specific intrusion detection systems.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8058-af93-d1592e6615c2" class="numbered-list" start="8"><li><strong>Secure Development Practices</strong><ul id="17f7aacb-2d23-80eb-bc1f-f1d861862946" class="bulleted-list"><li style="list-style-type:disc">Manufacturers should implement secure design principles, rigorous testing, and regular updates to reduce vulnerabilities.</li></ul></li></ol><hr id="17f7aacb-2d23-8045-84c2-e0d824925282"/><h3 id="17f7aacb-2d23-8098-aa3b-ea23ab155955" class=""><strong>5. Examples of Historical Hardware Vulnerabilities</strong></h3><ol type="1" id="17f7aacb-2d23-8095-9404-f161581f136e" class="numbered-list" start="1"><li><strong>Meltdown (2018)</strong><ul id="17f7aacb-2d23-80d4-ae49-fb56eff97616" class="bulleted-list"><li style="list-style-type:disc">A CPU vulnerability allowing attackers to read kernel memory from user space.</li></ul><ul id="17f7aacb-2d23-809f-9488-d5e711e802b8" class="bulleted-list"><li style="list-style-type:disc">Affected Intel CPUs primarily.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80fa-84b9-fbaa06015cff" class="numbered-list" start="2"><li><strong>Spectre (2018)</strong><ul id="17f7aacb-2d23-80c8-90c0-e31c2a7c59fc" class="bulleted-list"><li style="list-style-type:disc">Exploits speculative execution in modern CPUs to leak sensitive data.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8076-83bb-e354adc891fa" class="numbered-list" start="3"><li><strong>Rowhammer (2014)</strong><ul id="17f7aacb-2d23-8000-a732-de374c485998" class="bulleted-list"><li style="list-style-type:disc">A DRAM vulnerability where repeatedly accessing one row of memory causes bit flips in adjacent rows.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-805c-bc04-dfe5353b9b72" class="numbered-list" start="4"><li><strong>BadUSB</strong><ul id="17f7aacb-2d23-8095-978c-d34476ac3907" class="bulleted-list"><li style="list-style-type:disc">Exploits the reprogrammable firmware in USB devices to execute malicious actions.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-806a-9d43-e9cecea2a87c" class="numbered-list" start="5"><li><strong>Cold Boot Attack</strong><ul id="17f7aacb-2d23-80cf-aa79-e4e8c67052db" class="bulleted-list"><li style="list-style-type:disc">Extracting data from RAM by cooling the memory chips and reading residual data.</li></ul></li></ol><hr id="17f7aacb-2d23-809f-869e-de6c885548d3"/><h3 id="17f7aacb-2d23-803f-852b-c2442eb6c4c5" class=""><strong>6. Tools for Testing Hardware Vulnerabilities</strong></h3><ul id="17f7aacb-2d23-802e-8579-f9a6e3742949" class="bulleted-list"><li style="list-style-type:disc"><strong>ChipWhisperer</strong>: For analyzing and testing side-channel vulnerabilities.</li></ul><ul id="17f7aacb-2d23-8074-8fa2-ffddbfa09721" class="bulleted-list"><li style="list-style-type:disc"><strong>Volatility Framework</strong>: For memory forensics to detect hardware attacks.</li></ul><ul id="17f7aacb-2d23-8057-8845-c4a1f55d57f5" class="bulleted-list"><li style="list-style-type:disc"><strong>OpenVAS</strong>: For scanning devices and identifying hardware vulnerabilities.</li></ul><ul id="17f7aacb-2d23-80d2-8476-e916f72f2a6d" class="bulleted-list"><li style="list-style-type:disc"><strong>PCI DSS Compliance Tools</strong>: To ensure hardware security in payment systems.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

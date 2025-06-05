@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Day 7</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1567aacb-2d23-8027-ae06-ebc890869520" class="page sans"><header><h1 class="page-title">Day 7</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1567aacb-2d23-80f8-b9cb-d33227d5843f" class=""><strong>Background: Care4Wares Incident</strong></h3><ul id="1567aacb-2d23-809a-94e9-d52d8477192c" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Donations stopped after the first day due to incorrect account number in the flyer.</li></ul><ul id="1567aacb-2d23-808c-81c6-db65f4181e51" class="bulleted-list"><li style="list-style-type:disc"><strong>Findings so far:</strong><ul id="1567aacb-2d23-805c-b587-c0982521abab" class="bulleted-list"><li style="list-style-type:circle">Digital flyer was uploaded as <code>wareville-bank-account-qr.png</code> to an S3 bucket: <code>wareville-care4wares</code>.</li></ul><ul id="1567aacb-2d23-803d-8ea7-fc7448f20e66" class="bulleted-list"><li style="list-style-type:circle">Link to the flyer remained unchanged, but donations ceased after the first day.</li></ul><ul id="1567aacb-2d23-8047-b4c7-c7808f790c07" class="bulleted-list"><li style="list-style-type:circle">Donor transaction logs revealed an incorrect account number.</li></ul></li></ul><hr id="1567aacb-2d23-8028-b614-cbbbc1c6d96c"/><h3 id="1567aacb-2d23-803f-b782-e1685ff91c3f" class=""><strong>Monitoring in an AWS Environment</strong></h3><ul id="1567aacb-2d23-8074-a736-d3d65ed03f78" class="bulleted-list"><li style="list-style-type:disc"><strong>AWS Cloud Service Provider (CSP):</strong> Care4Wares runs infrastructure on AWS (cloud environment).</li></ul><ul id="1567aacb-2d23-8061-a2c7-ff9250a8800f" class="bulleted-list"><li style="list-style-type:disc"><strong>Key AWS Tools for Investigation:</strong><ul id="1567aacb-2d23-8018-a674-e3709543fa8e" class="bulleted-list"><li style="list-style-type:circle"><strong>CloudWatch:</strong> Monitors and aggregates logs for applications.</li></ul><ul id="1567aacb-2d23-808f-b58a-e1769299d41f" class="bulleted-list"><li style="list-style-type:circle"><strong>CloudTrail:</strong> Tracks user/service actions within AWS.</li></ul></li></ul><hr id="1567aacb-2d23-8052-a643-d9b8b2f0fab5"/><h3 id="1567aacb-2d23-8013-998d-ed4c875ea036" class=""><strong>CloudWatch Overview</strong></h3><ul id="1567aacb-2d23-80da-af73-c995d2ccece1" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Centralized monitoring for metrics and logs.</li></ul><ul id="1567aacb-2d23-80ec-a2ff-db318cdc57fa" class="bulleted-list"><li style="list-style-type:disc"><strong>Components:</strong><ul id="1567aacb-2d23-8007-80a6-e60809e3a648" class="bulleted-list"><li style="list-style-type:circle"><strong>Log Events:</strong> Single log entries (timestamped, with metadata).</li></ul><ul id="1567aacb-2d23-80de-a699-c5f1e315a7ec" class="bulleted-list"><li style="list-style-type:circle"><strong>Log Streams:</strong> Collection of log events from one source.</li></ul><ul id="1567aacb-2d23-808a-8fff-fcfa7d625c3b" class="bulleted-list"><li style="list-style-type:circle"><strong>Log Groups:</strong> Logical groupings of log streams (e.g., logs from services running across hosts).</li></ul></li></ul><ul id="1567aacb-2d23-8067-9751-e4909b137ddc" class="bulleted-list"><li style="list-style-type:disc"><strong>Requirement:</strong> CloudWatch agent must be installed to collect logs.</li></ul><hr id="1567aacb-2d23-8098-b5c1-cb9ff0c9f70c"/><h3 id="1567aacb-2d23-808f-bf05-d948e8298231" class=""><strong>CloudTrail Overview</strong></h3><ul id="1567aacb-2d23-80f2-9247-def1f6c6352e" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Tracks actions performed by users, roles, or services.</li></ul><ul id="1567aacb-2d23-8005-b304-c4a69b56d4b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Features:</strong><ul id="1567aacb-2d23-8046-a079-f0db3c84196d" class="bulleted-list"><li style="list-style-type:circle"><strong>Always On:</strong> Enabled by default for all users.</li></ul><ul id="1567aacb-2d23-80d6-8890-c1629668e707" class="bulleted-list"><li style="list-style-type:circle"><strong>JSON-Formatted Logs:</strong> Events are recorded in JSON format.</li></ul><ul id="1567aacb-2d23-80d4-ac23-f169ebaf1c97" class="bulleted-list"><li style="list-style-type:circle"><strong>Event History:</strong> Tracks 90 days of actions; custom trails allow extended retention.</li></ul><ul id="1567aacb-2d23-8045-a384-eafbf6c570be" class="bulleted-list"><li style="list-style-type:circle"><strong>Deliverable Logs:</strong> Can forward logs to CloudWatch for unified analysis.</li></ul></li></ul><hr id="1567aacb-2d23-8078-98ae-f5d27f47e375"/><h3 id="1567aacb-2d23-80e9-8440-e97b9a4d883d" class=""><strong>Log Analysis Tools: JQ</strong></h3><ul id="1567aacb-2d23-80b1-9b2a-cd15a2fd81b4" class="bulleted-list"><li style="list-style-type:disc"><strong>What is JQ?</strong> Command-line JSON processor for filtering and transforming JSON data.</li></ul><ul id="1567aacb-2d23-80ba-b585-e57adadc9260" class="bulleted-list"><li style="list-style-type:disc"><strong>Basic Syntax:</strong><ul id="1567aacb-2d23-8053-9fd8-f7cb5fa13fef" class="bulleted-list"><li style="list-style-type:circle">View entire JSON array: <code>jq &#x27;.[]&#x27; filename.json</code></li></ul><ul id="1567aacb-2d23-8093-a892-f1e452fa681e" class="bulleted-list"><li style="list-style-type:circle">Extract specific fields: <code>jq &#x27;.[] | .field_name&#x27; filename.json</code></li></ul></li></ul><ul id="1567aacb-2d23-802b-8ed8-f79a17cbfdec" class="bulleted-list"><li style="list-style-type:disc"><strong>Application in Investigation:</strong> Extract meaningful information from CloudTrail logs.</li></ul><hr id="1567aacb-2d23-8081-9154-dae28ce24721"/><h3 id="1567aacb-2d23-806f-9bdc-f53fdfd65552" class=""><strong>Case Investigation Steps</strong></h3><ol type="1" id="1567aacb-2d23-804e-a95b-db2805241c07" class="numbered-list" start="1"><li><strong>Review Provided Details:</strong><ul id="1567aacb-2d23-80dd-bc42-c7614cfff90a" class="bulleted-list"><li style="list-style-type:disc">Donations ceased after Day 1.</li></ul><ul id="1567aacb-2d23-8004-9da4-d9f95f997a67" class="bulleted-list"><li style="list-style-type:disc">Evidence of tampering in the account number used for transactions.</li></ul><ul id="1567aacb-2d23-8054-b98f-dfdab2e24b52" class="bulleted-list"><li style="list-style-type:disc">Flyer was stored in an S3 bucket.</li></ul></li></ol><ol type="1" id="1567aacb-2d23-8012-ab3e-f374c2061ca1" class="numbered-list" start="2"><li><strong>Investigate S3 Bucket Activity:</strong><ul id="1567aacb-2d23-80d8-bae4-f0151865940b" class="bulleted-list"><li style="list-style-type:disc">Examine CloudTrail logs for <code>wareville-care4wares</code> bucket.</li></ul><ul id="1567aacb-2d23-80c9-88d0-fc71ed4582fd" class="bulleted-list"><li style="list-style-type:disc">Focus on:<ul id="1567aacb-2d23-80e3-8e3f-e75adb60b7d7" class="bulleted-list"><li style="list-style-type:circle"><strong>userIdentity:</strong> Who accessed/modified the flyer.</li></ul><ul id="1567aacb-2d23-80db-b4da-d5a424f88484" class="bulleted-list"><li style="list-style-type:circle"><strong>eventTime:</strong> Timestamp of actions.</li></ul><ul id="1567aacb-2d23-80fa-bb88-c144b1c70ef0" class="bulleted-list"><li style="list-style-type:circle"><strong>eventType:</strong> Type of event (e.g., <code>AwsApiCall</code>, <code>Data</code>).</li></ul><ul id="1567aacb-2d23-80f4-bb0d-f3ab6c498c36" class="bulleted-list"><li style="list-style-type:circle"><strong>eventName:</strong> Specific actions (e.g., <code>GetObject</code>, <code>PutObject</code>).</li></ul><ul id="1567aacb-2d23-8052-bc83-f837742e113f" class="bulleted-list"><li style="list-style-type:circle"><strong>sourceIPAddress:</strong> IP of the actor.</li></ul></li></ul></li></ol><hr id="1567aacb-2d23-8047-9ba8-cf389922398a"/><h3 id="1567aacb-2d23-80f4-8e79-feca7cdeb387" class=""><strong>Example Log Entry Analysis</strong></h3><ul id="1567aacb-2d23-80a3-b3da-fca681f8d13b" class="bulleted-list"><li style="list-style-type:disc"><strong>Relevant Fields:</strong><ul id="1567aacb-2d23-8083-9c6d-e529d5160c8c" class="bulleted-list"><li style="list-style-type:circle"><code>userIdentity</code>: IAM user details.</li></ul><ul id="1567aacb-2d23-80f0-bd52-c24bbcabca9b" class="bulleted-list"><li style="list-style-type:circle"><code>eventTime</code>: Timestamp of the action.</li></ul><ul id="1567aacb-2d23-80ce-94fc-f95980920555" class="bulleted-list"><li style="list-style-type:circle"><code>eventName</code>: Action performed (e.g., <code>ListObjects</code>, <code>PutObject</code>).</li></ul><ul id="1567aacb-2d23-802c-a0ba-e0318c3193d4" class="bulleted-list"><li style="list-style-type:circle"><code>sourceIPAddress</code>: Indicates the actor’s origin.</li></ul><ul id="1567aacb-2d23-80c2-99b4-f7a04b246880" class="bulleted-list"><li style="list-style-type:circle"><code>requestParameters</code>: Parameters like <code>bucketName</code> and object details.</li></ul></li></ul><hr id="1567aacb-2d23-80e0-bfaa-c9a8f88deac7"/><h3 id="1567aacb-2d23-80e5-a274-f7649a4ddde5" class=""><strong>Potential Findings</strong></h3><ul id="1567aacb-2d23-80c0-831b-c5187f769d61" class="bulleted-list"><li style="list-style-type:disc">Look for unauthorized <code>PutObject</code> events targeting the flyer (<code>wareville-bank-account-qr.png</code>).</li></ul><ul id="1567aacb-2d23-806d-909c-cea213bd855d" class="bulleted-list"><li style="list-style-type:disc">Verify if the IP address corresponds to an internal or external actor.</li></ul><ul id="1567aacb-2d23-80fd-b5e7-e403a27a35be" class="bulleted-list"><li style="list-style-type:disc">Identify if the <code>userIdentity</code> has appropriate permissions.</li></ul><hr id="1567aacb-2d23-80c7-a4b9-c0966b5e3188"/><h3 id="1567aacb-2d23-806f-ba29-c32a8886248f" class=""><strong>Next Steps</strong></h3><ol type="1" id="1567aacb-2d23-8087-9c62-f68a576b95bd" class="numbered-list" start="1"><li>Use JQ to parse CloudTrail logs for actionable insights.</li></ol><ol type="1" id="1567aacb-2d23-804c-9fb7-fbc59ea8b896" class="numbered-list" start="2"><li>Correlate findings with the timeline (e.g., activity on/after Day 1).</li></ol><ol type="1" id="1567aacb-2d23-8048-99e6-f42889d91af0" class="numbered-list" start="3"><li>Report on unauthorized access or modifications.</li></ol><ol type="1" id="1567aacb-2d23-80cf-a28c-d42534af0974" class="numbered-list" start="4"><li>Implement security measures:<ul id="1567aacb-2d23-8080-9299-e3260a37c119" class="bulleted-list"><li style="list-style-type:disc">Review S3 bucket policies.</li></ul><ul id="1567aacb-2d23-80bb-ad1b-dab2dc5366eb" class="bulleted-list"><li style="list-style-type:disc">Restrict access using AWS IAM roles.</li></ul><ul id="1567aacb-2d23-8075-904a-df5a0e1b8588" class="bulleted-list"><li style="list-style-type:disc">Enable detailed monitoring for critical assets.</li></ul></li></ol><h3 id="1567aacb-2d23-80b3-b1e6-c5403adee4d8" class=""><strong>AWS CloudTrail Log Investigation Notes</strong></h3><h3 id="1567aacb-2d23-80ce-a5e8-f4e6534f8c5c" class=""><strong>1. Initial Observations</strong></h3><ul id="1567aacb-2d23-8098-99e1-fc24a453ae4c" class="bulleted-list"><li style="list-style-type:disc"><strong>Example Log Entry Breakdown</strong>:<ul id="1567aacb-2d23-80e0-9e74-d928092c7389" class="bulleted-list"><li style="list-style-type:circle">User <strong>wareville_collector</strong> listed objects in the S3 bucket <strong>aoc-cloudtrail-wareville</strong>.</li></ul><ul id="1567aacb-2d23-80aa-9a8e-e6e2ffecd3b5" class="bulleted-list"><li style="list-style-type:circle">Request originated from IP <strong>34.247.218.56</strong> via AWS SDK for Go.</li></ul></li></ul><h3 id="1567aacb-2d23-80c0-994e-c3e6a1113124" class=""><strong>2. Directory Navigation</strong></h3><ul id="1567aacb-2d23-802d-a64b-fbd5ab948d23" class="bulleted-list"><li style="list-style-type:disc">Navigate to log directory and list files:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-8086-a233-f7c01b996bef" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+cd wareville_logs
+ls
+
+</code></pre></li></ul><h3 id="1567aacb-2d23-803b-89f5-c0369e8ce1c8" class=""><strong>3. Filtering CloudTrail Logs with </strong><code><strong>jq</strong></code></h3><ul id="1567aacb-2d23-80e6-8dda-c492ec1bb1b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Basic Filter</strong>: Extract all S3 events for the <strong>wareville-care4wares</strong> bucket.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-800c-a02b-d5b425019503" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq -r &#x27;.Records[] | select(.eventSource == &quot;s3.amazonaws.com&quot; and .requestParameters.bucketName==&quot;wareville-care4wares&quot;)&#x27; cloudtrail_log.json
+
+</code></pre></li></ul><ul id="1567aacb-2d23-8046-9e06-e6975780caac" class="bulleted-list"><li style="list-style-type:disc"><strong>Refine Output</strong>: Include specific fields and format with <code>@tsv</code>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-809c-b012-e18172880f63" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq -r &#x27;.Records[] | select(.eventSource == &quot;s3.amazonaws.com&quot; and .requestParameters.bucketName==&quot;wareville-care4wares&quot;) | [.eventTime, .eventName, .userIdentity.userName // &quot;N/A&quot;, .requestParameters.bucketName // &quot;N/A&quot;, .requestParameters.key // &quot;N/A&quot;, .sourceIPAddress // &quot;N/A&quot;]&#x27; cloudtrail_log.json
+
+</code></pre></li></ul><ul id="1567aacb-2d23-800e-bb0b-dcb21b038f81" class="bulleted-list"><li style="list-style-type:disc"><strong>Generate Tabular Output</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-80e2-9fe5-dc4d91599812" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq -r &#x27;[&quot;Event_Time&quot;, &quot;Event_Name&quot;, &quot;User_Name&quot;, &quot;Bucket_Name&quot;, &quot;Key&quot;, &quot;Source_IP&quot;], (.Records[] | select(.eventSource == &quot;s3.amazonaws.com&quot; and .requestParameters.bucketName==&quot;wareville-care4wares&quot;) | [.eventTime, .eventName, .userIdentity.userName // &quot;N/A&quot;, .requestParameters.bucketName // &quot;N/A&quot;, .requestParameters.key // &quot;N/A&quot;, .sourceIPAddress // &quot;N/A&quot;]) | @tsv&#x27; cloudtrail_log.json | column -t
+
+</code></pre></li></ul><h3 id="1567aacb-2d23-80a3-bf8b-db541dc8f7e0" class=""><strong>4. Key Findings</strong></h3><ul id="1567aacb-2d23-8024-b9a3-df4b3766fed9" class="bulleted-list"><li style="list-style-type:disc"><strong>Anomalous User: glitch</strong>:<ul id="1567aacb-2d23-8001-823d-f21e9b03bb39" class="bulleted-list"><li style="list-style-type:circle">Uploaded file <code>wareville-bank-account-qr.png</code>.</li></ul><ul id="1567aacb-2d23-806d-ad85-e20bdc8312c6" class="bulleted-list"><li style="list-style-type:circle">Used IP <strong>53.94.201.69</strong>, which was also used by <strong>mcskidy</strong> to create the user.</li></ul><ul id="1567aacb-2d23-800b-8502-f9739b2068ce" class="bulleted-list"><li style="list-style-type:circle">Accessed AWS Management Console from <strong>MacOS</strong> using Google Chrome.</li></ul></li></ul><h3 id="1567aacb-2d23-804c-a0c8-f005b68b1e93" class=""><strong>5. Further Investigations</strong></h3><ul id="1567aacb-2d23-80b7-ac2f-f3bff8aa89db" class="bulleted-list"><li style="list-style-type:disc"><strong>IAM Events</strong>:<ul id="1567aacb-2d23-809e-9084-feff6782f5ab" class="bulleted-list"><li style="list-style-type:circle">Check who created the anomalous user:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-80d2-959f-c1ffbf05e621" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq &#x27;.Records[] | select(.eventSource==&quot;iam.amazonaws.com&quot; and .eventName==&quot;CreateUser&quot;)&#x27; cloudtrail_log.json
+
+</code></pre></li></ul><ul id="1567aacb-2d23-807b-a328-ff589c31c54b" class="bulleted-list"><li style="list-style-type:circle">Identify permissions applied to the user:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-8047-aea4-c106e270464b" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq &#x27;.Records[] | select(.eventSource==&quot;iam.amazonaws.com&quot; and .eventName==&quot;AttachUserPolicy&quot;)&#x27; cloudtrail_log.json
+
+</code></pre></li></ul></li></ul><ul id="1567aacb-2d23-8081-a3c4-ef7fd377775e" class="bulleted-list"><li style="list-style-type:disc"><strong>Source IP Analysis</strong>:<ul id="1567aacb-2d23-80c9-b6cd-d2a1678763c4" class="bulleted-list"><li style="list-style-type:circle">Identify all events from <strong>53.94.201.69</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-80d2-828f-c41c52cec288" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">bash
+Copy code
+jq -r &#x27;[&quot;Event_Time&quot;, &quot;Event_Source&quot;, &quot;Event_Name&quot;, &quot;User_Name&quot;, &quot;Source_IP&quot;], (.Records[] | select(.sourceIPAddress==&quot;53.94.201.69&quot;) | [.eventTime, .eventSource, .eventName, .userIdentity.userName // &quot;N/A&quot;, .sourceIPAddress // &quot;N/A&quot;]) | @tsv&#x27; cloudtrail_log.json | column -t
+
+</code></pre></li></ul></li></ul><h3 id="1567aacb-2d23-8007-91e8-ef6f8b31ebf7" class=""><strong>6. Questions to Address</strong></h3><ul id="1567aacb-2d23-80d0-9467-f01fca0ad687" class="bulleted-list"><li style="list-style-type:disc">How many events are related to the <strong>wareville-care4wares</strong> bucket?</li></ul><ul id="1567aacb-2d23-8064-a629-f218f6cfb91e" class="bulleted-list"><li style="list-style-type:disc">Which user performed most actions?</li></ul><ul id="1567aacb-2d23-80cf-955d-dfb7c4863c35" class="bulleted-list"><li style="list-style-type:disc">Which files were affected?</li></ul><ul id="1567aacb-2d23-8003-a8c8-f99249fac59e" class="bulleted-list"><li style="list-style-type:disc">Are there consistent IP and user-agent patterns for the anomalous user?</li></ul><h3 id="1567aacb-2d23-80b2-a123-e2d4328979f7" class=""><strong>7. Insights</strong></h3><ul id="1567aacb-2d23-800a-86ea-c27749ab6f6c" class="bulleted-list"><li style="list-style-type:disc"><strong>User Behavior</strong>:<ul id="1567aacb-2d23-80e0-b337-f4da3569fead" class="bulleted-list"><li style="list-style-type:circle">Anomalous user <strong>glitch</strong> was created and granted access via suspicious activities from IP <strong>53.94.201.69</strong>.</li></ul><ul id="1567aacb-2d23-802f-aa8f-f34b786b02da" class="bulleted-list"><li style="list-style-type:circle">Both <strong>mcskidy</strong> and <strong>glitch</strong> shared the same IP, suggesting potential compromise or spoofing.</li></ul></li></ul><ul id="1567aacb-2d23-806f-b623-e9f0bcca692d" class="bulleted-list"><li style="list-style-type:disc"><strong>Permissions</strong>:<ul id="1567aacb-2d23-80ef-8d7e-c7aabe28919d" class="bulleted-list"><li style="list-style-type:circle">Elevated permissions attached to <strong>glitch</strong>, granting sensitive access.</li></ul></li></ul><h3 id="1567aacb-2d23-80fb-a6f9-d70fc46bd425" class=""><strong>Next Steps</strong></h3><ul id="1567aacb-2d23-80cf-9893-f1229984a00f" class="bulleted-list"><li style="list-style-type:disc">Investigate how IP <strong>53.94.201.69</strong> is linked to these activities.</li></ul><ul id="1567aacb-2d23-80ed-9203-d66dc8fc8d5b" class="bulleted-list"><li style="list-style-type:disc">Correlate timestamps to identify potential gaps in security monitoring.</li></ul><ul id="1567aacb-2d23-80c0-b410-d23d0ce0ec99" class="bulleted-list"><li style="list-style-type:disc">Review IAM policies and revoke unnecessary privileges.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

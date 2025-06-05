@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter One</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1ab7aacb-2d23-8097-9349-dad010493b09" class="page sans"><header><h1 class="page-title">Chapter One</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1ab7aacb-2d23-80cd-b01d-f48dfcdd1e23" class="">What is the Internet?</h1><p id="1ab7aacb-2d23-8095-b7bb-f82e678207f7" class="">An engineered artifact</p><p id="1ab7aacb-2d23-8020-9ef7-ce868109b2a8" class=""><strong>A Nuts and Bolts View:</strong></p><p id="1ab7aacb-2d23-801d-8c30-e5ca42824adf" class="">At the edge of the network, there are billions of connected computing devices called hosts/end systems</p><p id="1ab7aacb-2d23-80e9-952d-d1d22b65297e" class="">These hosts are running network apps at the Internet’s “edge”</p><p id="1ab7aacb-2d23-8004-be9f-c3cf5bf1e720" class="">Moving towards the center, we find <em>Packet Switches </em>- they forward packets - routers, switches</p><p id="1ab7aacb-2d23-8045-b661-e2f63a635d69" class="">And then there are communication links - fiber, copper, radio, satellite, that have a transmission rate called bandwidth</p><p id="1ab7aacb-2d23-8075-b313-ee5ade7cceaa" class="">Networks - collection of devices, routers, links: managed by an organization</p><p id="1ab7aacb-2d23-8004-953e-d79817352aec" class="">These networks give rise to the saying “network of networks” - interconnected ISPs.</p><p id="1ab7aacb-2d23-8022-b041-c2f9d6a88b6a" class="">The communication is governed by protocols that control sending, receiving of messages</p><p id="1ab7aacb-2d23-8093-8986-d49a4c4e2dd8" class="">They define a standard way of doing things - the IETF govern the standards, and those standards are known as RFCs</p><p id="1ab7aacb-2d23-80c5-b50b-f6cac575b1c4" class=""><strong>Services POV:</strong></p><p id="1ab7aacb-2d23-8022-b53f-e6576e7aff89" class="">The internet is an infrastructure that provides services to applications: Web, streaming video, multimedia teleconferencing, email, games, e-commerce, social media, interconnected appliances…etc</p><p id="1ab7aacb-2d23-8025-819b-fbd905659ca5" class="">Provides programming interface to distributed applications</p><p id="1ab7aacb-2d23-80f3-ba7b-f9ead8e78d78" class="">A protocol is a defined way of hosts talking to each other . There are rules for specific messages sent, specific actions taken when message received, or other events. They define the format, order of messages sent and received and actions taken on receipt. </p><h2 id="1ab7aacb-2d23-804b-8256-e68c193d4d8e" class="">The Network Edge</h2><p id="1ab7aacb-2d23-8056-bff2-e774181de9f9" class="">The network edge consists of the hosts: clients and servers (very precise meanings in ch 2)</p><p id="1ab7aacb-2d23-8012-8551-d445e02b3f27" class="">The question becomes how to connect end systems to edge routers.</p><p id="1ab7aacb-2d23-80b6-a3e3-d0d0d1911261" class="">Resident access nets, institutional access networks (school, company)</p><p id="1ab7aacb-2d23-805d-a85d-ebbc4da8e9fe" class="">Mobil Access Networks (WiFi, 4G/5G)</p><p id="1ab7aacb-2d23-806a-b249-cc0c47a56458" class="">Things in an access network to look for is transmission rate (in bits per seconds) and shared or dedicated access among users (what degree do users share)</p><p id="1ab7aacb-2d23-8081-9ec8-d75163343438" class="">Cable-based access - a physical cable connects multiple homes to a cable headend. Signals are sent to these homes in different frequencies so they don’t interfere with each other. This is called Frequency division multiplexing (FDM). Users often have to share the frequency.</p><p id="1ab7aacb-2d23-80ff-90d6-eda294f162d8" class="">These are asymmetric: up to 40 Mbps - 1.2 Gbps downstream, but 30-100 Mbps upstream.</p><p id="1ab7aacb-2d23-8038-91f7-dbc28afa57e9" class="">Network of cable, fiber attaches home to ISP router. </p><p id="1ab7aacb-2d23-80fe-baa8-c0d661dec8ca" class="">Digital Subscriber Line - DSL - use existing phone line to central office DSLAM</p><p id="1ab7aacb-2d23-803c-adba-d5e6a6460c9e" class="">like cable networks, they are asymmetric<div class="indented"><p id="1ab7aacb-2d23-80d8-a832-fbc23e2dfc89" class="">24-52 Mbps dedicated downstream</p><p id="1ab7aacb-2d23-801d-bc4d-eb5eff3f9a42" class="">3.5-16 Mbps upstream</p></div></p><p id="1ab7aacb-2d23-8076-abf9-cc661fdb9f8e" class="">A home network will have a link coming in from their provider, a cable or DSL modem. The router, firewall, NAT connects to the modem.<div class="indented"><p id="1ab7aacb-2d23-8042-bc5d-f0aa8e10b25f" class="">WiFi runs at 54 - 450 Mbps. Wired Ethernet runs at 1 Gbps</p></div></p><p id="1ab7aacb-2d23-807b-b791-f14bb83e7133" class="">Wireless Access Networks - wireless LANs - 10 to 100 meters within a building<div class="indented"><p id="1ab7aacb-2d23-804a-a667-d402be441744" class="">802.11b - WiFi - 11, 54, 450 Mbps</p></div></p><p id="1ab7aacb-2d23-80e1-a448-fff058923b89" class="">Wide Area cellular access networks:<div class="indented"><p id="1ab7aacb-2d23-80f0-acae-d62e3f8f6d0e" class="">provided by mobile, cellular network operators</p><p id="1ab7aacb-2d23-8044-b958-e784538ac83f" class="">10’s Mbps</p><p id="1ab7aacb-2d23-80cc-9582-e52537700421" class="">4G Cellular</p></div></p><p id="1ab7aacb-2d23-80df-88db-f6e7d21cd1ca" class="">Access Networks: enterprise networks - companies, universities, etc. </p><p id="1ab7aacb-2d23-8026-8a6c-e367883dcad9" class="">Mix of wired, wireless link technologies, connecting a mix of switches and routers<div class="indented"><p id="1ab7aacb-2d23-809c-9325-c710c3b27594" class="">Ethernet: wired access at 100 Mbps, 1 Gbps, 10 Gbps</p><p id="1ab7aacb-2d23-80f1-ab45-d16d5816b042" class="">WiFi - wireless access points at 11, 54, 450 Mbps</p></div></p><p id="1ab7aacb-2d23-8061-8064-dc95b3bdde49" class="">Host sending packets of data</p><p id="1ab7aacb-2d23-8008-af11-d65aeaeabd2c" class="">Host takes application message and breaks it down into a packet of length <em>L </em>bits, and transmits packet into access network at transmission rate R</p><p id="1ab7aacb-2d23-804e-a75e-d30e9b3b49e0" class="">Packet transmission delay = time needed to transmit L bit packet into link = L / R</p><p id="1ab7aacb-2d23-80bc-9a09-e77cd86a9b8c" class="">The Physical Media:</p><p id="1ab7aacb-2d23-8061-a342-c0b539dfe0af" class="">We send physical bits (propagates between transmitter/receiver pairs) over some kind of physical link that lies between transmitter &amp; receiver.</p><p id="1ab7aacb-2d23-8085-885d-f143eceeef9b" class="">This is over guided media - signals propagate in solid media - copper ,fiber, coax</p><p id="1ab7aacb-2d23-8010-8a81-d9321f9fe13a" class="">Unguided media - signals propagate freely like radio</p><p id="1ab7aacb-2d23-804f-afa1-dacb510d68b6" class="">Twisted Pair - two insulated copper wires - susceptible to electromagnetic noise<div class="indented"><p id="1ab7aacb-2d23-808b-a5d6-d2595f1e967c" class="">Category 5 - 100 Mbps, 1 Gpbs Ethernet</p><p id="1ab7aacb-2d23-80ad-8d93-d89595447664" class="">Category 6 - 10 Gbps Ethernet</p></div></p><p id="1ab7aacb-2d23-802f-b6dc-fc1810a1977b" class="">Coaxial Cable - two concentric copper conductors, bidirectional, broadband.<div class="indented"><p id="1ab7aacb-2d23-8025-a5db-c377359c4b1d" class="">Multiple frequency channels on cable</p><p id="1ab7aacb-2d23-80c3-9115-f2d4ee256da1" class="">100’s Mbps per channel</p></div></p><p id="1ab7aacb-2d23-80b1-8752-ff843aea96f1" class="">Fiber Optic Cable: glass fiber carrying light pulses, each pulse a bit. High speed operation: high-speed point-to-point transmission (10’s-100’s Gbps) Low error rate: repeaters spaced far apart, immune to electromagnetic noise</p><p id="1ab7aacb-2d23-80bb-9231-e8d2a2d92de2" class="">Wireless Radio<div class="indented"><p id="1ab7aacb-2d23-8034-89fe-c19248a46dab" class="">Signal carried in various “bands” in electromagnetic spectrum. No physical wire. broadcast, “half-duplex” sender t oreceiver.</p><p id="1ab7aacb-2d23-80d6-8ea7-f6d239ca8b9b" class="">Propagation environment effects: reflection, obstruction by objects, interference/noise</p></div></p><p id="1ab7aacb-2d23-80b1-939f-fb3902e3d59c" class="">Radio link types: wireless LAN (WiFi) 10 - 100’s Mbps, 10’s of meters</p><p id="1ab7aacb-2d23-80d5-b9cf-caa49e371749" class="">Wide area - 10’s Mbps over ~10 Km - this is 4G cellular</p><p id="1ab7aacb-2d23-803f-a20c-d5104cab5c1a" class="">Bluetooth - cable replacement - short distances ,limited rates</p><p id="1ab7aacb-2d23-8066-8dc4-d27772f1a9db" class="">Terrestrial microwave - point to point, 45 Mbps channels</p><p id="1ab7aacb-2d23-808f-8b88-f44c0f4fc3c5" class="">satellite - up to 45 Mbps per channel, 270 msec end-end delay</p><p id="1ab7aacb-2d23-80b7-8139-c6d400eb8e9b" class=""><br/><br/></p><h1 id="1ab7aacb-2d23-8050-b947-c0a7349278d6" class="">The Network Core</h1><p id="1ab7aacb-2d23-8004-9922-ea4a71735388" class="">The Network core is the mesh of interconnected routers that are connected via communication links</p><p id="1ab7aacb-2d23-80ac-a116-ecc0ac11d503" class="">It is based on packet-switching: The end hosts break application-layers into chunks of data and put them into packets, and send them into the internet. The network forwards packets from one router to the next, across links on path from source to destination</p><p id="1ab7aacb-2d23-800a-95c3-e7c23edaa90c" class="">Forwarding and Routing are the two key network-core functions</p><p id="1ab7aacb-2d23-80dc-9545-cc9ee91d8971" class="">Forwarding - moving an incoming packet from input link to output link. A local action that utilizes the forwarding table.</p><p id="1ab7aacb-2d23-80f3-8388-ce43931eaf3d" class="">Routing: global action - determines source-destination paths taken by packets. A routing algorithm plots the path. </p><p id="1ab7aacb-2d23-803a-88d3-fe5d4bed8bc8" class=""><strong>Packet-Switching</strong></p><p id="1ab7aacb-2d23-80f8-b2a7-f1466c3975ec" class="">Packet transmission delay: takes L / R seconds to transmit L-bit packet into link at R bps</p><p id="1ab7aacb-2d23-80c8-9380-cdbee3fc0d94" class="">Store and forward: entire packet must arrive at router before it can be transmitted on next link</p><p id="1ab7aacb-2d23-8046-bc80-e60611411191" class="">Queuing:  If packets arrive faster than a router can transmit, than a queue forms as packets wait to be forwarded. Packet loss can happen if the queue is too large (larger than queue buffer)</p><p id="1ab7aacb-2d23-80d3-b583-c0ef40b13e77" class=""><strong>Circuit Switching</strong></p><p id="1ab7aacb-2d23-809f-8cf2-ca2db0a1b316" class="">End-to-end resources are allocated to, reserved for “call” between source and destination</p><p id="1ab7aacb-2d23-8094-a41b-d7fdc78a6898" class="">There is dedicated resources not shared between users - no delays, no loss.</p><p id="1ab7aacb-2d23-8037-8ce1-e111bfa3ebf7" class="">The resources are used for the exclusive use of the call, but if the call goes idle, then the circuit-segment resources are lost - no other calls can use it.</p><p id="1ab7aacb-2d23-80b5-a7f8-c259420a667d" class="">This is done by FDM or TDM.</p><p id="1ab7aacb-2d23-8023-9f38-c74af603e733" class="">FDM - Frequency Division Multiplexing - electromagnetic frequencies are divided into narrow frequency bands. Each call is allocated its own band, can transmit at max rate of that narrow band.</p><p id="1ab7aacb-2d23-803f-9df2-c8199f848ad8" class="">Time Division Multiplexing - time divided into slots - each call is allocated a period of slots, can transmit at maximum rate of wider frequency band only during its time slots</p><p id="1ab7aacb-2d23-806f-90b5-e43a5b603e98" class=""><strong>Packet switching versus circuit switching</strong></p><p id="1ab7aacb-2d23-8058-9e4c-e417fa1d1195" class="">1 Gb/s link</p><p id="1ab7aacb-2d23-80c0-9505-e2f713eee33f" class="">Each user: 100 Mb/s when active, active 10% of time</p><p id="1ab7aacb-2d23-80ff-8d90-cd9543f3da82" class="">How many users can use this network under circuit-switching and packet switching?</p><p id="1ab7aacb-2d23-8024-8be2-c316cfeb7b57" class="">Circuit-switching: Can support 10 users at a time</p><p id="1ab7aacb-2d23-808e-b007-c643d9df0da7" class="">Packet switching: with 35 users, probability &gt; 10 active at same time is less than .0004 </p><p id="1ab7aacb-2d23-802d-8143-c85c935c8a73" class="">
+</p><p id="1ab7aacb-2d23-8097-9150-c794b5efd948" class="">Telephone networks carry data in packet-switching</p><p id="1ab7aacb-2d23-80ae-87b8-fc669cdcc5da" class="">It is especially great for bursty data - sometimes has data, sometimes not</p><p id="1ab7aacb-2d23-8011-a318-d8c06f7094b4" class="">Resource sharing, simpler, no call setup</p><p id="1ab7aacb-2d23-80d0-a994-edfa9fe7647c" class="">But there is excessive congestion possible: packet delay and loss due to buffer overflow</p><p id="1ab7aacb-2d23-808c-8ea3-dc1023c31b9e" class="">protocols needed for reliable data transfer, congestion control</p><p id="1ab7aacb-2d23-80f7-b658-f26c3419a2ce" class="">Its possible to provide circuit like behavior with packet switching</p><p id="1ab7aacb-2d23-8080-9ca3-d78b9d70fbfe" class="">
+</p><p id="1ab7aacb-2d23-80c2-a66c-f77514ead40f" class=""><strong>A “Network of Networks”</strong></p><p id="1ab7aacb-2d23-8037-9168-f1d94c9a6bdb" class="">How do millions of access ISPs connect together</p><p id="1ab7aacb-2d23-8030-b9c6-d17cb484c7ee" class="">We can connect them all together - that isn’t feasible as that would be a Big O (n^2)</p><p id="1ab7aacb-2d23-8039-bcd3-f03b97edab20" class="">We can create a global transit ISP where each ISP connects to the global transit network, where one access ISP would connect to another</p><p id="1ab7aacb-2d23-80ee-ac98-cd83e46b0bcb" class="">If one global ISP is a viable business, there will be competitors. There are multiple global ISPs that are interconnected at Internet Exchange Points. Regional ISPs form that connect to the ISPs, and content providers (google, microsoft) run their own networks to bring services, content close to end users.</p><h1 id="1ab7aacb-2d23-80fe-a58d-f817f3e53c46" class="">Performance</h1><p id="1ab7aacb-2d23-80de-ba4f-d8ac064c6f7c" class="">Packets queue in router buffers, waiting for turn for transmission</p><p id="1ab7aacb-2d23-803b-9f4e-e6d03cb328f5" class="">Packet loss occurs when memory to hold queued packets fills up</p><p id="1ab7aacb-2d23-8063-9d6f-c9b13b828502" class="">Processing Delay - nodal processing:<div class="indented"><p id="1ab7aacb-2d23-8099-a67d-d77f76cf26be" class="">Check bit errors, determine output link. Typically less than microseconds.</p></div></p><p id="1ab7aacb-2d23-808d-8826-c82f75d665e6" class="">Queuing Delay:<div class="indented"><p id="1ab7aacb-2d23-8053-8580-e5d765ce8ced" class="">time waiting at output link for transmission</p><p id="1ab7aacb-2d23-80d3-ad57-cfc6fda1967c" class="">depends on congestion level for router</p></div></p><p id="1ab7aacb-2d23-8066-a304-caa1fd04505e" class="">Transmission Delay: L packet length (bits), R: Link transmission rate (bps). Transmission delay is L/R</p><p id="1ab7aacb-2d23-80d6-b267-c2a9a2eaf820" class="">Propagation Delay:<div class="indented"><p id="1ab7aacb-2d23-80a1-9d04-d28502ef56f3" class="">d - length of physical link</p><p id="1ab7aacb-2d23-80b2-85ac-cd273fc4a260" class="">s = propagation speed (~2x10^8 m/sec)</p><p id="1ab7aacb-2d23-8040-802b-e55e511e3b1b" class="">propagation delay = d / s</p></div></p><p id="1ab7aacb-2d23-8078-abf8-ec7ff2144c61" class=""><strong>Packet Queuing Delay</strong></p><p id="1ab7aacb-2d23-8093-8d13-c93073f140ce" class=""><strong>a: average packet arrival rate</strong></p><p id="1ab7aacb-2d23-80b6-a903-c4847219ca79" class="">L: Packet length (bits)</p><p id="1ab7aacb-2d23-8050-8f79-dd30f55e5f86" class="">R: Link bandwidth (bit transmission rate)</p><p id="1ab7aacb-2d23-80d9-98dc-f4d16eeb2a82" class="">L * a = arrival rate of bits</p><p id="1ab7aacb-2d23-80f0-a859-dd482e3b728b" class="">Traffic intensity = (L * a) / R</p><p id="1ab7aacb-2d23-806d-a9d9-ef98fbd8a844" class="">La/R = ~0: avg queuing delay small</p><p id="1ab7aacb-2d23-80d6-9072-ef92ed647951" class="">La/R  &gt; 1 : avg queuing delay large</p><p id="1ab7aacb-2d23-80e3-a682-df3acc41f719" class="">Delay is infinite - more work arriving is more than can be serviced</p><p id="1ab7aacb-2d23-8020-9ac8-f5d23a2ba7ae" class=""><strong>Throughput : the rate in bits/time unit at which bits are being sent from sender to receiver</strong></p><p id="1ab7aacb-2d23-80e1-8b18-d0e69c82b06a" class="">instantaneous: rate at given point in time</p><p id="1ab7aacb-2d23-8054-b719-f6fc993b7525" class="">average: rate over longer period of time</p><p id="1ab7aacb-2d23-801a-8566-c4fa77134b48" class="">Bottleneck Link - the link on end-end path that constrains end-end throughput</p><h1 id="1ab7aacb-2d23-801e-b822-d86ba9e1d467" class="">Layering, Encapsulation</h1><p id="1ab7aacb-2d23-80f2-832d-fcec8dc1d224" class="">A complex system - think of airline travel (getting to the airport, gates, baggage claim, different classes, etc). You can think of this as a series of steps.</p><ol type="1" id="1ab7aacb-2d23-80c0-a4de-db1c1f50ef44" class="numbered-list" start="1"><li>You get the ticket</li></ol><ol type="1" id="1ab7aacb-2d23-808f-a92b-c2999fc6206a" class="numbered-list" start="2"><li>You put the baggage</li></ol><ol type="1" id="1ab7aacb-2d23-80fe-991e-f35d3f0fd4c9" class="numbered-list" start="3"><li>Get the gates</li></ol><ol type="1" id="1ab7aacb-2d23-8068-ae74-ed08a13e77bf" class="numbered-list" start="4"><li>Runway takeoff </li></ol><ol type="1" id="1ab7aacb-2d23-8042-b3d2-e1c139e65660" class="numbered-list" start="5"><li>airplane takes off</li></ol><ol type="1" id="1ab7aacb-2d23-8071-91c9-f48a05cfa660" class="numbered-list" start="6"><li>Airplane flies</li></ol><ol type="1" id="1ab7aacb-2d23-8079-ac0c-dca29058876b" class="numbered-list" start="7"><li>Airplane lands</li></ol><ol type="1" id="1ab7aacb-2d23-80d6-99e1-f30c104d2a3b" class="numbered-list" start="8"><li>Gates (unload)</li></ol><ol type="1" id="1ab7aacb-2d23-8087-9b10-d0348583b682" class="numbered-list" start="9"><li>Get the baggage</li></ol><ol type="1" id="1ab7aacb-2d23-806f-95cf-edfba3c58fe3" class="numbered-list" start="10"><li>You arrive</li></ol><p id="1ab7aacb-2d23-80d9-853a-d93cf040ff9b" class="">Why layer this?</p><p id="1ab7aacb-2d23-80fe-80c3-ce68c9a3654b" class="">Explicit structure allows identification, relationship of system’s pieces<div class="indented"><p id="1ab7aacb-2d23-8028-8196-d56176c906ff" class="">Layered reference model</p></div></p><p id="1ab7aacb-2d23-80d4-ba9f-d797043cd651" class="">Modularization eases maintenance, updating of system<div class="indented"><p id="1ab7aacb-2d23-8090-a4d2-cd92eb7edcc2" class="">Change in layer’s service implementation: transparent to rest of system</p><p id="1ab7aacb-2d23-805c-b170-e8fd71602104" class="">Change in gate procedure doesn’t affect rest of system</p></div></p><p id="1ab7aacb-2d23-80cb-becb-de64b88b4efd" class=""><strong>Layered Internet Protocol Stack</strong><div class="indented"><ol type="1" id="1ab7aacb-2d23-8024-9496-c163f5a5afc2" class="numbered-list" start="1"><li>Application: Supporting network applications<ol type="a" id="1ab7aacb-2d23-80b4-98bc-e97cafc7237c" class="numbered-list" start="1"><li>HTTP, IMAP, SMTP, DNS</li></ol></li></ol><ol type="1" id="1ab7aacb-2d23-80e7-bdaa-fb3a29c810db" class="numbered-list" start="2"><li>Transport: process-process data transfer<ol type="a" id="1ab7aacb-2d23-80f9-9e9b-fe97d957204e" class="numbered-list" start="1"><li>TCP, UDP</li></ol></li></ol><ol type="1" id="1ab7aacb-2d23-808f-a921-e41b0313b362" class="numbered-list" start="3"><li>Network:routing of datagrams from source to destination<ol type="a" id="1ab7aacb-2d23-80b5-bf92-f19993b5be81" class="numbered-list" start="1"><li>IP, routing, protocols</li></ol></li></ol><ol type="1" id="1ab7aacb-2d23-804c-b523-f53ed779a5ec" class="numbered-list" start="4"><li>Link: Data transfer between neighboring network elements<ol type="a" id="1ab7aacb-2d23-80bf-af9c-fcef49e6ca61" class="numbered-list" start="1"><li>Ethernet, 802.11, PPP</li></ol></li></ol><ol type="1" id="1ab7aacb-2d23-80e0-a4ed-cd2d6cbfc086" class="numbered-list" start="5"><li>Physical: the “bits on the wire”</li></ol></div></p><p id="1ab7aacb-2d23-80f6-abf0-d59e6f531d91" class="">
+</p><p id="1ab7aacb-2d23-80d2-b2a2-d32c9b3f4462" class="">Applications exchange<strong> “messages” </strong>with each other. It sends it to the transport-layer, which adds header to the message to create a <strong>segment</strong>.  Network layer protocol encapsulates transport-layer segment with network-layer header to create a <strong>datagram.</strong></p><p id="1ab7aacb-2d23-803c-a09e-d605d3edaed8" class="">As data flows down the stack, headers are added. As they flow up, the headers are acted upon and removed.</p><h1 id="1ab7aacb-2d23-80e1-bc96-f6566789114a" class="">Networks Under Attack</h1><p id="1ab7aacb-2d23-809b-91ca-e9e7e3a4e98e" class="">Network Security - what can bad actors do, what defenses are designed and deployed?</p><p id="1ab7aacb-2d23-8023-ad13-faaf0a3626a0" class="">The internet wasn’t originally designed with security in mind - the original vision was a group of mutually trusting users attached to a transparent network. </p><p id="1ab7aacb-2d23-80d0-bd4d-c8752bd55490" class="">Packet Interception - getting copies of packets - packet “sniffing”</p><p id="1ab7aacb-2d23-802f-bbf1-fff429d5368d" class="">IP spoofing - injection of packet with false source address - pretending a packet came from a source it didn’t come from</p><p id="1ab7aacb-2d23-803b-b59f-c084c1bdb035" class="">Denial of Service - attackers make resources unavailable to legitimate traffic by overwhelming resource with bogus traffic</p><p id="1ab7aacb-2d23-8024-ba49-dfb2d9e7ef0d" class="">Lines of defense:</p><ol type="1" id="1ab7aacb-2d23-809b-bd5d-ebcfb3ed4955" class="numbered-list" start="1"><li>Authentication: proving who you are</li></ol><ol type="1" id="1ab7aacb-2d23-8023-97d2-e842ba485f22" class="numbered-list" start="2"><li>Confidentiality: via encryption</li></ol><ol type="1" id="1ab7aacb-2d23-8034-9a33-e763ddf85a81" class="numbered-list" start="3"><li>Integrity checks: digital signatures prevent/detect tampering</li></ol><ol type="1" id="1ab7aacb-2d23-80d5-ab27-c3adf5c4a0bc" class="numbered-list" start="4"><li>access restrictions: password-protected VPNs</li></ol><ol type="1" id="1ab7aacb-2d23-80ab-b022-d926c6eab4a8" class="numbered-list" start="5"><li>Firewalls: specialized “middleboxes” in access and core networks:<ol type="a" id="1ab7aacb-2d23-8071-ba28-c9a857b3a08f" class="numbered-list" start="1"><li>off-by-default</li></ol><ol type="a" id="1ab7aacb-2d23-80a4-bec6-f77458ab8bb3" class="numbered-list" start="2"><li>detecting DOS attacks</li></ol></li></ol><p id="1ab7aacb-2d23-8091-9141-c070c82c656a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

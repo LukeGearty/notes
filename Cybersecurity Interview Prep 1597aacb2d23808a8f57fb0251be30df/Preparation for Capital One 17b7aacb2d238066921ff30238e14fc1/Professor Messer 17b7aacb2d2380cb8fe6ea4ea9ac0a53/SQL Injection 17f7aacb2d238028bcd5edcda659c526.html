@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SQL Injection</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17f7aacb-2d23-8028-bcd5-edcda659c526" class="page sans"><header><h1 class="page-title">SQL Injection</h1><p class="page-description"></p></header><div class="page-body"><p id="17f7aacb-2d23-80d4-93bf-ce86714a8a85" class="">Structured Query Language<div class="indented"><p id="17f7aacb-2d23-800c-9447-f50346cbaa61" class="">The most common database management system language</p></div></p><p id="17f7aacb-2d23-8064-b809-ea70d96812da" class="">SQL injection - the attacker puts their own SQL requests into an existing application</p><p id="17f7aacb-2d23-80f6-8774-e986554ba5fe" class="">The application shouldn’t allow</p><p id="17f7aacb-2d23-80b9-9917-e0f3b8af42aa" class="">Can often be executed in a web browser</p><h3 id="17f7aacb-2d23-80d9-a9e8-cada5364d99c" class=""><strong>1. What is SQL Injection?</strong></h3><p id="17f7aacb-2d23-8042-b84b-ccdd0ff709ad" class="">SQL Injection (SQLi) is a web security vulnerability that allows attackers to interfere with the queries that an application makes to its database. By injecting malicious SQL code into inputs, attackers can manipulate the database to:</p><ul id="17f7aacb-2d23-8083-a14f-e14052fe4520" class="bulleted-list"><li style="list-style-type:disc">Access unauthorized data.</li></ul><ul id="17f7aacb-2d23-803d-bc88-e6e9a80decbf" class="bulleted-list"><li style="list-style-type:disc">Modify, delete, or destroy data.</li></ul><ul id="17f7aacb-2d23-8009-a7e2-f98fb8b67993" class="bulleted-list"><li style="list-style-type:disc">Execute administrative operations.</li></ul><ul id="17f7aacb-2d23-8003-940c-dfdc9b6fc1a8" class="bulleted-list"><li style="list-style-type:disc">Escalate privileges.</li></ul><hr id="17f7aacb-2d23-80da-9701-c22fcef26d1a"/><h3 id="17f7aacb-2d23-80b2-b1ce-f593ec420f6c" class=""><strong>2. Types of SQL Injection</strong></h3><ul id="17f7aacb-2d23-806e-ab37-c386795bf4e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Classic SQL Injection</strong><ul id="17f7aacb-2d23-80ee-8cb8-d12335bf95ab" class="bulleted-list"><li style="list-style-type:circle">Injecting SQL payloads into input fields or URL parameters.</li></ul><ul id="17f7aacb-2d23-8066-b326-cd44d21f9036" class="bulleted-list"><li style="list-style-type:circle">Example: <code>&#x27;; DROP TABLE users;--</code></li></ul></li></ul><ul id="17f7aacb-2d23-80f4-9097-ca0446e088f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Blind SQL Injection</strong><ul id="17f7aacb-2d23-80b3-924d-d90c028b5f28" class="bulleted-list"><li style="list-style-type:circle">The attacker receives no direct feedback from the database.</li></ul><ul id="17f7aacb-2d23-8001-866a-c0470827a50c" class="bulleted-list"><li style="list-style-type:circle">Results are inferred through side effects or Boolean responses.</li></ul><ul id="17f7aacb-2d23-8004-b2c6-c0195c260f13" class="bulleted-list"><li style="list-style-type:circle"><strong>Boolean-based</strong>: Exploits conditions like <code>OR 1=1</code>.</li></ul><ul id="17f7aacb-2d23-80ef-94ac-e120b01469f0" class="bulleted-list"><li style="list-style-type:circle"><strong>Time-based</strong>: Uses database delays to infer results (e.g., <code>SLEEP(5)</code>).</li></ul></li></ul><ul id="17f7aacb-2d23-8084-8c0c-d63d3d736ebf" class="bulleted-list"><li style="list-style-type:disc"><strong>Error-Based SQL Injection</strong><ul id="17f7aacb-2d23-8004-8e63-c28a936751b6" class="bulleted-list"><li style="list-style-type:circle">Exploits database error messages to retrieve data.</li></ul><ul id="17f7aacb-2d23-8066-b1fd-cc8cfbfa1b2c" class="bulleted-list"><li style="list-style-type:circle">Example: Injecting invalid syntax to force the database to reveal information.</li></ul></li></ul><ul id="17f7aacb-2d23-80ec-b959-e6dbe2e48f88" class="bulleted-list"><li style="list-style-type:disc"><strong>Union-Based SQL Injection</strong><ul id="17f7aacb-2d23-8052-8263-f80769c48f50" class="bulleted-list"><li style="list-style-type:circle">Uses the <code>UNION</code> operator to combine malicious queries with legitimate ones to extract data.</li></ul><ul id="17f7aacb-2d23-8037-a2b6-c664897c444a" class="bulleted-list"><li style="list-style-type:circle">Example: <code>UNION SELECT username, password FROM users</code>.</li></ul></li></ul><hr id="17f7aacb-2d23-80b0-8c0e-f2d3aa3eccc8"/><h3 id="17f7aacb-2d23-8032-a55e-f4e3774add73" class=""><strong>3. Impacts of SQL Injection</strong></h3><ul id="17f7aacb-2d23-80ad-a504-d54f442aade4" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Theft</strong>: Exposing sensitive information like user credentials, financial data, or personal details.</li></ul><ul id="17f7aacb-2d23-8079-aa43-c681bb43af9a" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Tampering</strong>: Modifying or deleting data.</li></ul><ul id="17f7aacb-2d23-80db-b2af-cbdbe0f18bc9" class="bulleted-list"><li style="list-style-type:disc"><strong>Account Takeover</strong>: Exploiting admin accounts or resetting user credentials.</li></ul><ul id="17f7aacb-2d23-80df-a083-c6b98d61d915" class="bulleted-list"><li style="list-style-type:disc"><strong>Denial of Service</strong>: Dropping tables or overloading the database.</li></ul><ul id="17f7aacb-2d23-80cb-a278-cac5cfba76ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Privilege Escalation</strong>: Gaining administrative access to the database or system.</li></ul><hr id="17f7aacb-2d23-800c-a61c-f6d3a95e643b"/><h3 id="17f7aacb-2d23-8041-a402-fa7ae80ded47" class=""><strong>4. How SQL Injection Works</strong></h3><ol type="1" id="17f7aacb-2d23-80c8-b4a8-e776c371c29b" class="numbered-list" start="1"><li><strong>Injection</strong>: The attacker supplies malicious SQL code via input fields, cookies, headers, or URLs.</li></ol><ol type="1" id="17f7aacb-2d23-8002-9b20-d56258ac9841" class="numbered-list" start="2"><li><strong>Execution</strong>: The vulnerable application incorporates the input into a query without validation or sanitization.</li></ol><ol type="1" id="17f7aacb-2d23-80ee-84f3-ed93383cd274" class="numbered-list" start="3"><li><strong>Impact</strong>: The database executes the malicious query, leading to data compromise.</li></ol><hr id="17f7aacb-2d23-8029-b21c-d5311ff3a884"/><h3 id="17f7aacb-2d23-80cc-9948-e5b8aaa11a4d" class=""><strong>5. Example of SQL Injection</strong></h3><p id="17f7aacb-2d23-8003-9e1a-c4aa7d9539db" class=""><strong>Vulnerable Query:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-80b4-9cd7-f5398ddf0504" class="code"><code class="language-SQL" style="white-space:pre-wrap;word-break:break-all">sql
+CopyEdit
+SELECT * FROM users WHERE username = &#x27;$username&#x27; AND password = &#x27;$password&#x27;;
+
+</code></pre><p id="17f7aacb-2d23-806c-8e61-ed33ab9f2cbc" class=""><strong>Injected Input:</strong></p><ul id="17f7aacb-2d23-80f5-8372-d161f42602ac" class="bulleted-list"><li style="list-style-type:disc">Username: <code>admin&#x27;--</code></li></ul><ul id="17f7aacb-2d23-804b-9f8b-ef716966dd4f" class="bulleted-list"><li style="list-style-type:disc">Password: (empty)</li></ul><p id="17f7aacb-2d23-800d-8895-dfef2785b78d" class=""><strong>Resulting Query:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-80e0-804e-f72c2f3882e4" class="code"><code class="language-SQL" style="white-space:pre-wrap;word-break:break-all">sql
+CopyEdit
+SELECT * FROM users WHERE username = &#x27;admin&#x27;--&#x27; AND password = &#x27;&#x27;;
+
+</code></pre><ul id="17f7aacb-2d23-80a7-a3aa-eed035345799" class="bulleted-list"><li style="list-style-type:disc">The <code>-</code> comments out the rest of the query, bypassing password checks.</li></ul><hr id="17f7aacb-2d23-80b2-a5d5-f89134a52208"/><h3 id="17f7aacb-2d23-80f2-8527-e69aadedc979" class=""><strong>6. Preventing SQL Injection</strong></h3><ul id="17f7aacb-2d23-8005-8d40-c072058f3560" class="bulleted-list"><li style="list-style-type:disc"><strong>Parameterized Queries/Prepared Statements</strong><ul id="17f7aacb-2d23-8078-ae77-d2f276869a69" class="bulleted-list"><li style="list-style-type:circle">Use placeholders in queries instead of directly concatenating user input.</li></ul><ul id="17f7aacb-2d23-80ff-9fa4-cc0e9aa09ada" class="bulleted-list"><li style="list-style-type:circle">Example (Python with SQLite):<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-806f-9257-ee2c3f131af8" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">python
+CopyEdit
+cursor.execute(&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;, (username, password))
+
+</code></pre></li></ul></li></ul><ul id="17f7aacb-2d23-80c8-8db6-c180dd29a19f" class="bulleted-list"><li style="list-style-type:disc"><strong>Input Validation and Sanitization</strong><ul id="17f7aacb-2d23-80f9-b440-f63fa0d46505" class="bulleted-list"><li style="list-style-type:circle">Validate input to ensure it matches expected patterns (e.g., alphanumeric usernames).</li></ul><ul id="17f7aacb-2d23-802c-9c43-f951bdfd1d8a" class="bulleted-list"><li style="list-style-type:circle">Reject or sanitize input with special characters (<code>&#x27;</code>, <code>;</code>, <code>-</code>, etc.).</li></ul></li></ul><ul id="17f7aacb-2d23-80c4-b468-c3b92946346f" class="bulleted-list"><li style="list-style-type:disc"><strong>Use ORM Tools</strong><ul id="17f7aacb-2d23-8050-b7b7-e26b676a5ff8" class="bulleted-list"><li style="list-style-type:circle">Object-Relational Mapping (ORM) frameworks like SQLAlchemy or Django ORM abstract queries and reduce SQL injection risks.</li></ul></li></ul><ul id="17f7aacb-2d23-8015-b7e7-e80bb491a440" class="bulleted-list"><li style="list-style-type:disc"><strong>Limit Database Privileges</strong><ul id="17f7aacb-2d23-80c8-b5ec-ceefc8d34a72" class="bulleted-list"><li style="list-style-type:circle">Grant applications only the minimum privileges needed to operate.</li></ul></li></ul><ul id="17f7aacb-2d23-80d9-8569-d9909abf34e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Error Handling</strong><ul id="17f7aacb-2d23-8089-bc83-f9f01641b88d" class="bulleted-list"><li style="list-style-type:circle">Do not expose database error messages to users; use generic error pages instead.</li></ul></li></ul><ul id="17f7aacb-2d23-8093-8a3f-d6f48657aaa1" class="bulleted-list"><li style="list-style-type:disc"><strong>Use a Web Application Firewall (WAF)</strong><ul id="17f7aacb-2d23-80e2-ae79-dd0a139fea70" class="bulleted-list"><li style="list-style-type:circle">A WAF can detect and block common SQL injection patterns.</li></ul></li></ul><ul id="17f7aacb-2d23-80ff-83c9-d5598f25c7c7" class="bulleted-list"><li style="list-style-type:disc"><strong>Keep Software Updated</strong><ul id="17f7aacb-2d23-806b-b158-ffdcac1893c9" class="bulleted-list"><li style="list-style-type:circle">Regularly patch database management systems and web application software to address known vulnerabilities.</li></ul></li></ul><hr id="17f7aacb-2d23-8027-b8a1-fc3488482880"/><h3 id="17f7aacb-2d23-80d8-8c89-e0c1c2c198e2" class=""><strong>7. Tools for Testing SQL Injection</strong></h3><ul id="17f7aacb-2d23-80dc-b16b-dc0fbcdd86a3" class="bulleted-list"><li style="list-style-type:disc"><strong>Manual Testing</strong><ul id="17f7aacb-2d23-8073-9cb5-c8327bd18e97" class="bulleted-list"><li style="list-style-type:circle">Insert common payloads like <code>&#x27; OR &#x27;1&#x27;=&#x27;1</code>.</li></ul><ul id="17f7aacb-2d23-806a-964b-f6bde1a86ea3" class="bulleted-list"><li style="list-style-type:circle">Observe changes in behavior or responses.</li></ul></li></ul><ul id="17f7aacb-2d23-8005-b50f-cc37306468a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Automated Tools</strong><ul id="17f7aacb-2d23-802f-b17e-fc0eb7956caf" class="bulleted-list"><li style="list-style-type:circle"><strong>SQLmap</strong>: A powerful open-source tool for detecting and exploiting SQL injection.</li></ul><ul id="17f7aacb-2d23-80dd-aeba-d293dd072bc0" class="bulleted-list"><li style="list-style-type:circle"><strong>Burp Suite</strong>: Useful for analyzing and testing requests.</li></ul><ul id="17f7aacb-2d23-805f-a6c4-f5107fc68d9f" class="bulleted-list"><li style="list-style-type:circle"><strong>OWASP ZAP</strong>: A security scanner for identifying SQLi and other vulnerabilities.</li></ul></li></ul><hr id="17f7aacb-2d23-801e-8978-cad69945cbbf"/><h3 id="17f7aacb-2d23-8094-a9f8-d1ee0939077f" class=""><strong>8. Common SQL Injection Payloads</strong></h3><ul id="17f7aacb-2d23-805e-93c5-fb3f2bffab8d" class="bulleted-list"><li style="list-style-type:disc">Bypass Authentication:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-80f4-9685-e6809f8f62d7" class="code"><code class="language-SQL" style="white-space:pre-wrap;word-break:break-all">sql
+CopyEdit
+&#x27; OR &#x27;1&#x27;=&#x27;1&#x27;--
+
+</code></pre></li></ul><ul id="17f7aacb-2d23-80e0-a28d-dfee8fc0f1de" class="bulleted-list"><li style="list-style-type:disc">Extract Data:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-80b6-aae1-e93d2c5011fa" class="code"><code class="language-SQL" style="white-space:pre-wrap;word-break:break-all">sql
+CopyEdit
+&#x27; UNION SELECT username, password FROM users--
+
+</code></pre></li></ul><ul id="17f7aacb-2d23-80f8-8816-e7ffa1e44a7f" class="bulleted-list"><li style="list-style-type:disc">Time-Based Blind SQLi:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17f7aacb-2d23-806a-931d-c89e120da7b2" class="code"><code class="language-SQL" style="white-space:pre-wrap;word-break:break-all">sql
+CopyEdit
+&#x27; OR IF(1=1, SLEEP(5), 0)--
+
+</code></pre></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

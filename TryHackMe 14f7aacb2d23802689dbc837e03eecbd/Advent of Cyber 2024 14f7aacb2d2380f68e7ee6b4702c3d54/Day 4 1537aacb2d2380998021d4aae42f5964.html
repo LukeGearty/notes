@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Day 4</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1537aacb-2d23-8099-8021-d4aae42f5964" class="page sans"><header><h1 class="page-title">Day 4</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1537aacb-2d23-80b9-8005-c41ae4c8d854" class=""><strong>The Story Overview</strong></h3><ul id="1537aacb-2d23-8029-b353-f35159b93116" class="bulleted-list"><li style="list-style-type:disc"><strong>Context:</strong> The town of Wareville prepares for SOC-mas celebrations.</li></ul><ul id="1537aacb-2d23-8077-b9a0-d2bdfb419a47" class="bulleted-list"><li style="list-style-type:disc"><strong>Main Character:</strong> Glitch, a talented SOC engineer, anticipates security threats and fortifies the town&#x27;s defenses.</li></ul><ul id="1537aacb-2d23-8012-981b-edefc43e8dba" class="bulleted-list"><li style="list-style-type:disc"><strong>Actions Taken:</strong><ul id="1537aacb-2d23-80d0-9341-f76b3d0780bc" class="bulleted-list"><li style="list-style-type:circle">Implemented a protective firewall.</li></ul><ul id="1537aacb-2d23-80cf-a1ec-f03b074ee020" class="bulleted-list"><li style="list-style-type:circle">Patched vulnerabilities and accessed endpoints for updates.</li></ul><ul id="1537aacb-2d23-803b-a757-c71cf36ad853" class="bulleted-list"><li style="list-style-type:circle">Left &quot;breadcrumbs&quot; of activity, unintentionally triggering SOC team investigations.</li></ul></li></ul><ul id="1537aacb-2d23-80d3-9b50-c965cd244675" class="bulleted-list"><li style="list-style-type:disc"><strong>SOC Team Reaction:</strong><ul id="1537aacb-2d23-8022-998a-df58de2f6494" class="bulleted-list"><li style="list-style-type:circle">Noticed anomalies like admin access and privilege escalation.</li></ul><ul id="1537aacb-2d23-8076-96fe-eae56caaa147" class="bulleted-list"><li style="list-style-type:circle">Interpreted them as an insider threat.</li></ul><ul id="1537aacb-2d23-8075-ae00-f4aa08cc7cfb" class="bulleted-list"><li style="list-style-type:circle">Launched an investigation using the Atomic Red Team framework.</li></ul></li></ul><hr id="1537aacb-2d23-806e-a004-f62c287c5d45"/><h3 id="1537aacb-2d23-8082-bf13-fc106f57c10c" class=""><strong>Learning Objectives</strong></h3><ol type="1" id="1537aacb-2d23-80a8-8e5b-c221d62a6e0e" class="numbered-list" start="1"><li><strong>MITRE ATT&amp;CK Framework:</strong> Identify malicious techniques.</li></ol><ol type="1" id="1537aacb-2d23-80c1-a860-dee95589078c" class="numbered-list" start="2"><li><strong>Attack Simulations:</strong> Use Atomic Red Team tests to emulate attacks.</li></ol><ol type="1" id="1537aacb-2d23-80df-bd1e-ff95f51da954" class="numbered-list" start="3"><li><strong>Detection Rules:</strong> Create alerts and rules based on tests.</li></ol><hr id="1537aacb-2d23-802d-9856-cde03e20e89e"/><h3 id="1537aacb-2d23-80db-a4b3-cc13bd2b68e7" class=""><strong>Practical Setup</strong></h3><ul id="1537aacb-2d23-80a1-aef4-f2e2f8cc1247" class="bulleted-list"><li style="list-style-type:disc"><strong>Virtual Machine (VM) Details:</strong><ul id="1537aacb-2d23-80aa-bbb1-d32aa499e1a1" class="bulleted-list"><li style="list-style-type:circle">Pre-installed with Atomic Red Team and Sysmon.</li></ul><ul id="1537aacb-2d23-809d-b41c-f7fba9f9ac4b" class="bulleted-list"><li style="list-style-type:circle">Credentials:<ul id="1537aacb-2d23-80a6-a5a4-e3d27494b0fb" class="bulleted-list"><li style="list-style-type:square">Username: <code>Administrator</code></li></ul><ul id="1537aacb-2d23-80e3-8c53-d0d0737fa44b" class="bulleted-list"><li style="list-style-type:square">Password: <code>Emulation101!</code></li></ul><ul id="1537aacb-2d23-80ef-90a3-db6019c2c940" class="bulleted-list"><li style="list-style-type:square">IP: <code>MACHINE_IP</code></li></ul></li></ul></li></ul><ul id="1537aacb-2d23-8008-af5d-f383486b07b0" class="bulleted-list"><li style="list-style-type:disc"><strong>Connection Options:</strong><ul id="1537aacb-2d23-808b-aeb2-d34bc83a16f1" class="bulleted-list"><li style="list-style-type:circle">Split-screen view.</li></ul><ul id="1537aacb-2d23-802c-a5d6-efa1d9d1a9fe" class="bulleted-list"><li style="list-style-type:circle">Remote Desktop Protocol (RDP).</li></ul></li></ul><hr id="1537aacb-2d23-8093-8a19-e0464459dfbb"/><h3 id="1537aacb-2d23-8086-bdb4-f2ce43118e86" class=""><strong>Key Concepts</strong></h3><h3 id="1537aacb-2d23-8057-a1cf-f1a8358cda0b" class=""><strong>Detection Gaps</strong></h3><ol type="1" id="1537aacb-2d23-804b-8a42-e8b2aab1a1e3" class="numbered-list" start="1"><li><strong>Challenges:</strong><ul id="1537aacb-2d23-80cf-9fe9-e849ce588efd" class="bulleted-list"><li style="list-style-type:disc">Evolving threat techniques bypass detection.</li></ul><ul id="1537aacb-2d23-80a2-afbf-e35a1d60d73c" class="bulleted-list"><li style="list-style-type:disc">Fine line between normal and malicious behaviors.</li></ul></li></ol><ol type="1" id="1537aacb-2d23-8064-81d9-cfa74a55123d" class="numbered-list" start="2"><li><strong>Solutions:</strong><ul id="1537aacb-2d23-80a0-ae4f-ecd37a18ca6f" class="bulleted-list"><li style="list-style-type:disc">Refine detection rules continually.</li></ul><ul id="1537aacb-2d23-80d3-ae09-db5bdec72ce7" class="bulleted-list"><li style="list-style-type:disc">Cover gaps across the cyber kill chain phases.</li></ul></li></ol><h3 id="1537aacb-2d23-800c-9167-fe5b002eee07" class=""><strong>Cyber Kill Chain</strong></h3><ul id="1537aacb-2d23-8031-bfac-e25d203cfd4c" class="bulleted-list"><li style="list-style-type:disc">Standard attack phases:<ul id="1537aacb-2d23-80ab-93d2-fdc42f298a0b" class="bulleted-list"><li style="list-style-type:circle">Reconnaissance → Execution → Exploitation → Goal Execution.</li></ul></li></ul><ul id="1537aacb-2d23-8064-8e8b-cd0afc008fda" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal for Blue Teamers:</strong><ul id="1537aacb-2d23-8097-955d-dbc3b0cda710" class="bulleted-list"><li style="list-style-type:circle">Detect threats early or at multiple phases to prevent successful execution.</li></ul></li></ul><hr id="1537aacb-2d23-8083-8e6a-de49a4a97016"/><h3 id="1537aacb-2d23-80d7-be3b-fedb8beba9e0" class=""><strong>Frameworks and Tools</strong></h3><h3 id="1537aacb-2d23-80ee-8e0f-dd78bfd92a67" class=""><strong>MITRE ATT&amp;CK Framework</strong></h3><ul id="1537aacb-2d23-8040-a163-da84e9ecc6d8" class="bulleted-list"><li style="list-style-type:disc">Catalog of real-world tactics, techniques, and procedures (TTPs).</li></ul><ul id="1537aacb-2d23-804e-bec0-c6c01e9e0980" class="bulleted-list"><li style="list-style-type:disc">Provides theoretical insights but lacks practical testing guidance.</li></ul><h3 id="1537aacb-2d23-805e-9ef2-e96e9825dec2" class=""><strong>Atomic Red Team</strong></h3><ul id="1537aacb-2d23-8010-bd5b-dbd5d64e6a60" class="bulleted-list"><li style="list-style-type:disc">A library of practical, executable test cases mapped to MITRE ATT&amp;CK TTPs.</li></ul><ul id="1537aacb-2d23-8036-a790-e37d84869fa0" class="bulleted-list"><li style="list-style-type:disc">Features:<ul id="1537aacb-2d23-805e-b0c1-e7d4a6e1a0d0" class="bulleted-list"><li style="list-style-type:circle">Manual and automated execution.</li></ul><ul id="1537aacb-2d23-80e0-aa31-c26adc125b90" class="bulleted-list"><li style="list-style-type:circle">Identifies detection gaps and helps refine detection rules.</li></ul></li></ul><hr id="1537aacb-2d23-8064-903a-dd80b5263793"/><h3 id="1537aacb-2d23-8037-8ed0-e02ac83a354e" class=""><strong>Practical Exercise</strong></h3><ol type="1" id="1537aacb-2d23-805b-a981-e4ca415abff1" class="numbered-list" start="1"><li><strong>Scenario:</strong> Investigate suspected misuse of the Atomic Red Team tool.</li></ol><ol type="1" id="1537aacb-2d23-802d-b74c-c3caa134a02d" class="numbered-list" start="2"><li><strong>Technique Tested:</strong> MITRE ATT&amp;CK T1566.001 (Spearphishing with an Attachment).</li></ol><ol type="1" id="1537aacb-2d23-80f8-b966-d2fb591eaefa" class="numbered-list" start="3"><li><strong>Steps:</strong><ul id="1537aacb-2d23-80e3-a728-dbaaa67ad11f" class="bulleted-list"><li style="list-style-type:disc">Launch a PowerShell prompt as Administrator.</li></ul><ul id="1537aacb-2d23-80b1-a4da-fa8b02899e21" class="bulleted-list"><li style="list-style-type:disc">Use the <code>Invoke-AtomicTest</code> command with parameters:<ul id="1537aacb-2d23-8004-83c5-f274eaa95a13" class="bulleted-list"><li style="list-style-type:circle"><code>AtomicTechnique</code>: Specify the technique to test (e.g., <code>T1566.001</code>).</li></ul><ul id="1537aacb-2d23-80e4-aa9c-f2e234f5962c" class="bulleted-list"><li style="list-style-type:circle"><code>ShowDetails</code>: Display detailed information about the test.</li></ul></li></ul><ul id="1537aacb-2d23-8066-a5ca-cd49071ff727" class="bulleted-list"><li style="list-style-type:disc">Simulate phishing attachment downloads and detect artifacts.</li></ul></li></ol><h3 id="1537aacb-2d23-806a-b0cb-f7ae33878837" class=""><strong>Command Example:</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1537aacb-2d23-80ec-b8a5-fe5a17bd71c9" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+Invoke-AtomicTest T1566.001 -ShowDetails
+
+</code></pre><hr id="1537aacb-2d23-8085-a52a-f5e25d8859a0"/><h3 id="1537aacb-2d23-802c-bbed-ca29bd14286b" class=""><strong>Detailed Test Breakdown</strong></h3><h3 id="1537aacb-2d23-802e-8df0-f847ba313872" class=""><strong>Test 1: Download Macro-Enabled Phishing Attachment</strong></h3><ul id="1537aacb-2d23-804e-b763-dec4f8a8352f" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> Downloaded <code>PhishingAttachment.xlsm</code> to <code>%temp%</code> directory.</li></ul><ul id="1537aacb-2d23-806f-a6a5-cd7b0ce7ec29" class="bulleted-list"><li style="list-style-type:disc"><strong>Cleanup Command:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1537aacb-2d23-80b0-9df2-cca12394bab7" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+Remove-Item $env:TEMP\PhishingAttachment.xlsm -ErrorAction Ignore
+
+</code></pre></li></ul><h3 id="1537aacb-2d23-804e-9ba3-cd2b5bec4c06" class=""><strong>Test 2: Word Spawned Command Shell</strong></h3><ul id="1537aacb-2d23-8073-92fc-d51cb445a74e" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> Simulated Word executing commands with an IP in the command line.</li></ul><ul id="1537aacb-2d23-80d1-8bd7-e2752507d666" class="bulleted-list"><li style="list-style-type:disc"><strong>Dependencies:</strong> Requires Microsoft Word.</li></ul><ul id="1537aacb-2d23-80b9-bf77-f672704d8278" class="bulleted-list"><li style="list-style-type:disc"><strong>Cleanup Command:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1537aacb-2d23-80fd-bfcf-dee8994cbfc7" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+Remove-Item C:\Users\Public\art.jse -ErrorAction Ignore
+
+</code></pre></li></ul><hr id="1537aacb-2d23-8008-8a54-f69c608d32ed"/><h3 id="1537aacb-2d23-801e-847b-fd7ec1eb7ec5" class=""><strong>Key Takeaways</strong></h3><ul id="1537aacb-2d23-80d0-98ea-c40e4e4bc0d8" class="bulleted-list"><li style="list-style-type:disc">The <strong>Unified Cyber Kill Chain</strong> emphasizes phased detection.</li></ul><ul id="1537aacb-2d23-8077-a803-e93426bdd1f3" class="bulleted-list"><li style="list-style-type:disc">The <strong>MITRE ATT&amp;CK</strong> framework categorizes TTPs but requires complementary tools like Atomic Red Team for implementation.</li></ul><ul id="1537aacb-2d23-809e-86eb-d61009d8ca90" class="bulleted-list"><li style="list-style-type:disc">Simulated attack scenarios using Atomic Red Team provide actionable insights for refining detection and response strategies.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

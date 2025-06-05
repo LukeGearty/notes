@@ -1,0 +1,695 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2-1-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18d7aacb-2d23-8099-ac87-cb535ecafd9e" class="page sans"><header><h1 class="page-title">2-1-25</h1><p class="page-description"></p></header><div class="page-body"><h1 id="18d7aacb-2d23-8020-b663-d8aab663d5fd" class="">Network Edge</h1><p id="18d7aacb-2d23-806d-9af3-fe2265ddc356" class="">At the network edge, you have hosts: clients and servers</p><p id="18d7aacb-2d23-8073-be16-e7c22c7049a2" class="">clients are our personal devices</p><p id="18d7aacb-2d23-80da-85e3-dfa9a119cac9" class="">servers are also at the edge - maybe at the opposite sides of the edge</p><h1 id="18d7aacb-2d23-80c8-9e34-ec9cf5fc3d01" class="">Network Core</h1><p id="18d7aacb-2d23-803f-a8a2-fea2593c7fac" class="">A series/mesh of interconnected routers - nothing but routers</p><p id="18d7aacb-2d23-80e2-a6d2-dbeaa23fafae" class="">Packet-Switching: hosts break application-layer messages into packets (digitized into bits)<div class="indented"><p id="18d7aacb-2d23-8033-a132-c4a9a896da19" class="">The network core forwards packets from one router to the next, across links on path from source to destination</p><p id="18d7aacb-2d23-8089-9348-cdcc0b82ae8b" class="">Each packet is transmitted at full link capacity</p><p id="18d7aacb-2d23-80e6-9e81-c1aac001ea90" class="">Packets cannot travel along the same link simultaneously<div class="indented"><p id="18d7aacb-2d23-801f-82f9-fe0c0be46f26" class="">They can if there is a different frequency, but not along the same frequency</p></div></p></div></p><p id="18d7aacb-2d23-80b1-8ad9-feb4cee249f1" class="">Routers operate at layer 3, whether they are in the edge or core</p><h2 id="18d7aacb-2d23-803a-8ed4-c1ae99638dbe" class="">Store-and-Forward</h2><p id="18d7aacb-2d23-8028-9653-d3bf6f86c68c" class="">The entire packet (all of its bits) must arrive at the router before it can be transmitted on next link<div class="indented"><p id="18d7aacb-2d23-80a0-8ec9-dfc1c9dbe105" class="">If we have a packet of L bits leaving from one computer to another, all L bits must arrive att he router before being transmitted</p></div></p><p id="18d7aacb-2d23-80c2-8bcb-dc7456f67145" class="">Transmission Delay: takes L/R seconds to transmit (push-out) L bit packet into link at R bps</p><h2 id="18d7aacb-2d23-8045-81fb-f719aca271f5" class="">Packet-Switching: queuing delay, loss</h2><p id="18d7aacb-2d23-80a7-8eb0-e1091f26da7f" class="">Packet queuing and loss: if arrival rate (in bps) to link exceeds transmission rate (bps) of link for a period of time<div class="indented"><p id="18d7aacb-2d23-8014-a2dc-ef2ba68b9a9e" class="">Packets will queue, waiting to be transmitted on output link</p><p id="18d7aacb-2d23-8013-9935-ee88880c4f62" class="">Packets can be dropped (lost) if memory (buffer) in router fills up</p></div></p><p id="18d7aacb-2d23-80d4-8119-c7676b0ac74d" class="">
+</p><h2 id="18d7aacb-2d23-806d-898a-cea70e3c9767" class="">Two Key network-core functions</h2><p id="18d7aacb-2d23-809d-879d-c6fa27859809" class=""><div class="indented"><p id="18d7aacb-2d23-80a3-b409-c103ceb93f1a" class="">Forwarding: <div class="indented"><p id="18d7aacb-2d23-802b-8bb6-c8e3a28992b4" class="">Each input interface has a forwarding table that has a header value and the output link the packet needs to leave from</p><p id="18d7aacb-2d23-801a-a369-d10699b1143a" class="">Local action: move arriving packets from router’s input link to appropriate router output link</p></div></p><p id="18d7aacb-2d23-80ed-b50a-d1e8ee303169" class="">Routing:<div class="indented"><p id="18d7aacb-2d23-803e-8c09-cf374db580e5" class="">Global action: determine source-destination paths taken by packets</p><p id="18d7aacb-2d23-806b-b15e-e545c69d93e2" class="">Routing algorithm</p></div></p></div></p><p id="18d7aacb-2d23-80b2-b0f9-dc18c38107eb" class="">
+</p><h2 id="18d7aacb-2d23-8028-a01e-e945a6541d34" class="">Alternative to packet switching: circuit switching</h2><p id="18d7aacb-2d23-8068-aba8-cfe86813ca8e" class="">end-end resources are allocated to, reserved for “call” between source and destination</p><p id="18d7aacb-2d23-8040-ab61-e4c3702f5851" class="">Dedicated resources: no sharing<div class="indented"><p id="18d7aacb-2d23-8020-9530-d39db29bff27" class="">Circuit-like guaranteed performance</p></div></p><p id="18d7aacb-2d23-80c4-b3e8-e7294cf9e79f" class="">If there are no resources, then they need to wait</p><p id="18d7aacb-2d23-801b-9a08-ffddb0450012" class="">FDM and TDM</p><p id="18d7aacb-2d23-809d-b73f-eb83b7eaacc8" class="">Frequency Divison Multiplexing:<div class="indented"><p id="18d7aacb-2d23-8014-b147-eed1c893b6d8" class="">optical, electromagnetic frequencies are divided into narrow frequency bands</p><p id="18d7aacb-2d23-80d7-af4e-fade80bf3c97" class="">Each call allocated its own band, can transmit at max rate of that narrow band<div class="indented"><p id="18d7aacb-2d23-805e-b919-d65a8c0dd652" class="">If the transmission frequency is 8 Mbps, and there are 4 users, each band will transmit 2 Mbps</p></div></p><p id="18d7aacb-2d23-804d-aab9-cab4e05d4849" class="">Since there is a continuous need for transmission, things like VoIP, police radio, streaming can be good for FDM</p></div></p><p id="18d7aacb-2d23-80c7-8eba-d0dbfbbb8e51" class="">Time Division Multiplexing (TDM)<div class="indented"><p id="18d7aacb-2d23-809d-b7aa-f16b278de207" class="">Time divided into slots</p><p id="18d7aacb-2d23-803a-ae30-c4e03763e67a" class="">Each call allocated periodic slot(s), can transmit at maximum rate of (wider) frequency band, but only during its time slot(s)</p><p id="18d7aacb-2d23-8014-9554-d9e0ccfb9ca3" class="">Email can used TDM - something that doesn’t require ongoing communication - something that is asynchronous </p></div></p><figure id="18d7aacb-2d23-80d2-be8f-dc22eaa2a311" class="image"><a href="2-1-25%2018d7aacb2d238099ac87cb535ecafd9e/Screenshot_2025-02-01_at_9.16.09_AM.png"><img style="width:413.9921875px" src="2-1-25%2018d7aacb2d238099ac87cb535ecafd9e/Screenshot_2025-02-01_at_9.16.09_AM.png"/></a></figure><p id="18d7aacb-2d23-8057-b568-c84da48860dc" class="">
+</p><h2 id="18d7aacb-2d23-80ee-a6b3-ce0d2c08f89c" class="">Packet-Switching versus Circuit Switching</h2><p id="18d7aacb-2d23-8079-bcfc-c017ac23bd60" class="">Packet switching allows more users to use network</p><p id="18d7aacb-2d23-80b7-8eca-f29a1af885f5" class="">1 Gb/s link</p><p id="18d7aacb-2d23-8034-9677-dc6c2b8cc34a" class="">Each user uses 100 Mb/s when active</p><p id="18d7aacb-2d23-80e4-9af6-cdd84a1d827f" class="">active 10% of the time</p><p id="18d7aacb-2d23-807d-b7fb-fb0a587eaedc" class="">Circuit Switching: 10 users</p><p id="18d7aacb-2d23-802b-9d19-ed046c360360" class="">Packet Switching: with 35 users, probability &gt; 10 active at same time is less. than .0004 *</p><p id="18d7aacb-2d23-8087-86ad-d6d7886cf352" class="">Packet switching is  great for bursty daya - sometimes has data to send, other times not<div class="indented"><p id="18d7aacb-2d23-80b3-9803-e6bb1d8a3d0f" class="">Resource sharing</p><p id="18d7aacb-2d23-80a3-b87d-dd72c135fab7" class="">Simpler, no call setup</p></div></p><p id="18d7aacb-2d23-80b4-9168-ca3576890c79" class="">With packet switching, excessive congestion is possible: packet delay and loss due to buffer overflow<div class="indented"><p id="18d7aacb-2d23-804b-9d17-d763c6e49611" class="">Protocols needed for reliable data transfer, congestion control</p></div></p><h2 id="18d7aacb-2d23-80e9-9779-c0eb0a516c1e" class="">Internet Structure: a “network of networks”</h2><p id="18d7aacb-2d23-8044-932e-e6fa0dd66741" class="">Hosts connect to internet via access Internet Service Providers (ISPs)<div class="indented"><p id="18d7aacb-2d23-80c7-9608-c0cf2efff7ad" class="">Residential, enterprise ISPs</p></div></p><p id="18d7aacb-2d23-807c-b12d-de94d1072079" class="">Access ISPs in turn must be interconnected so that any two hosts can send packets to each other</p><p id="18d7aacb-2d23-80c9-8734-ff94f71d0fba" class="">Resulting network of networks is very complex - evolution was driven by economics and national policies</p><p id="18d7aacb-2d23-80ba-bb25-d7886f19e064" class="">How do we connect millions of access ISPs together?</p><p id="18d7aacb-2d23-80c4-b99d-c99a7c7c76a9" class="">Connecting each access ISP to each other doesn’t scale - Big O (N^2)</p><p id="18d7aacb-2d23-80c6-bf0d-ff95e01b3b0e" class="">Multiple ISPs with multiple competitors</p><p id="18d7aacb-2d23-8009-83b4-dcfd40040a68" class="">Each country can have multiple ISPs</p><p id="18d7aacb-2d23-8044-b8c1-cd6e36d06ffc" class="">We establish IXP (<a href="https://en.wikipedia.org/wiki/Internet_exchange_point">Internet Exchange Points</a>) and Peering Links (<strong> direct link between two networks that allows them to exchange data without going through other networks</strong>) to connect them together</p><figure id="18d7aacb-2d23-8045-bca0-d9771bbedd54" class="image"><a href="2-1-25%2018d7aacb2d238099ac87cb535ecafd9e/Screenshot_2025-02-01_at_9.26.17_AM.png"><img style="width:624px" src="2-1-25%2018d7aacb2d238099ac87cb535ecafd9e/Screenshot_2025-02-01_at_9.26.17_AM.png"/></a></figure><p id="18d7aacb-2d23-80d1-8e9c-ce15cfed61c8" class="">We as consumers need to pay for access to the internet, and the ISPs then allocate for us resources to do that.</p><p id="18d7aacb-2d23-8085-9380-ea216fd02b73" class="">Content Provider Networks - <strong> distributed network of servers strategically located around the world that store copies of website content</strong>- Google, Microsoft, Akamai, etc that can charge consumers directly to run their own network, to bring services, content close to end users</p><p id="18e7aacb-2d23-80cc-ba01-ec3ac9929131" class="">ISPs still need to carry all our traffic, and content providers don’t need to pay anything to the ISPs.<div class="indented"><p id="18e7aacb-2d23-80fb-bb35-ed3a614c8482" class="">Is this fair? No</p><p id="18e7aacb-2d23-80b5-a750-e85350365ad8" class="">It puts all the cost on the consumers</p></div></p><p id="18d7aacb-2d23-804b-9ec2-fdb2eee3468f" class="">Point-of-presence: similar to IXPs, but just for Sprint</p><p id="18e7aacb-2d23-80f4-8fbf-f86633ddbd64" class="">
+</p><p id="18d7aacb-2d23-801c-a18f-ef9e5243c99c" class="">Transmission Delay:<div class="indented"><p id="18e7aacb-2d23-802d-9084-ccb1447a7585" class="">Packet Length (bits) = L </p><p id="18e7aacb-2d23-80b7-8418-d766d04f3589" class="">Transmission Rate over link (bits per second) = R</p><p id="18e7aacb-2d23-8013-b55c-f7cd85205f28" class="">L/R</p></div></p><p id="18e7aacb-2d23-80d4-82f6-d1b0d526b336" class="">
+</p><p id="18e7aacb-2d23-8029-94f9-e592590fc49c" class="">Propagation delay:<div class="indented"><p id="18e7aacb-2d23-80f2-a58a-fce2b4a52ed4" class="">Length of physical link = d</p><p id="18e7aacb-2d23-8022-a53b-c6ccdc828e5a" class="">Propagation speed = s (2 * 10^8 meters / sec)</p><p id="18e7aacb-2d23-8051-aaac-f4d18691c58b" class="">d/s</p></div></p><p id="18e7aacb-2d23-801e-af8b-cf97ca03a40c" class="">
+</p><p id="18e7aacb-2d23-8075-90ff-d65b39ba8b19" class="">Ten car caravan - 10 bit packet</p><p id="18e7aacb-2d23-8028-8ecb-f582660033f4" class="">Cars propagate at 100 km/hr - 100km in between toll booths</p><p id="18e7aacb-2d23-802e-933b-d4dc53ff336b" class="">Toll booth takes 12 sec to service car (bit transmission time)</p><p id="18e7aacb-2d23-8037-96b3-f4da5de19588" class="">How long until the caravan is lined up before 2nd toll booth?</p><p id="18e7aacb-2d23-80d3-bf76-f5d223dc8707" class="">
+</p><p id="18e7aacb-2d23-8013-9b55-d56e217f42f6" class="">Transmission Delay = 1 / 12 = 12 seconds. Total = 120 seconds</p><p id="18e7aacb-2d23-806b-8045-e40e942b8bca" class="">Propagation Delay = 100 km / 100 km/hr = 1 hour</p><p id="18e7aacb-2d23-80a2-9f78-ee82cbd23c56" class="">1 hour + 120 seconds = 62 minutes</p><p id="18e7aacb-2d23-80fd-a40a-d8d2faf8e6b2" class="">
+</p><p id="18e7aacb-2d23-8050-a7e8-e096277be925" class="">If cars “propagate” at 1000 km / hr</p><p id="18e7aacb-2d23-8090-be5f-c7e949583dd3" class="">And suppose toll booth now takes one min to service a car</p><p id="18e7aacb-2d23-80f3-abdd-e8e5aac4e010" class="">
+</p><p id="18e7aacb-2d23-8038-b0c1-fbe1c065adba" class="">Will cars arrive to 2nd booth before all cars serviced at first booth</p><p id="18e7aacb-2d23-80fb-967b-e877c1425d02" class="">Propagation Delay = 100 / 1000 = 1/10 = 6 minutes</p><p id="18e7aacb-2d23-80ba-868b-e7ba00f442d9" class="">Transmission Delay = 1 / 60 = 60 seconds</p><p id="18e7aacb-2d23-808d-9edc-fa62ef83238d" class="">
+</p><p id="18e7aacb-2d23-8013-a1be-ec5a0e32cdd2" class="">Throughput - rate (bits/ time unit) at which bits are being sent from sender to receiver<div class="indented"><p id="18e7aacb-2d23-8007-8dd2-fcf54837c165" class="">Mbps</p><p id="18e7aacb-2d23-809e-a6a4-f6df62e905c4" class="">Bps</p><p id="18e7aacb-2d23-802a-96af-f12391d62494" class="">Instantaneous - rate at given point in time</p><p id="18e7aacb-2d23-804f-be19-e9a17e905473" class="">Average - rate over long period of time</p><p id="18e7aacb-2d23-8066-8856-e6b1410e6728" class="">Our network is as fast as the slowest link</p></div></p><p id="18e7aacb-2d23-80f9-9af5-df259a586978" class="">
+</p><p id="18e7aacb-2d23-804c-b7f4-d71fb1deb692" class="">Bad Guys: Malware<div class="indented"><p id="18e7aacb-2d23-80ca-9e1f-f0d4151dcc35" class="">Virus - self-replicating infection by receiving/executing object (e.g., e-mail attachment)</p><p id="18e7aacb-2d23-80f4-bcec-dbaec38a9434" class="">Worm - self-replicating infection by passively receiving object that gets itself executed</p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

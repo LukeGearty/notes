@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1857aacb-2d23-806d-83af-ca7117f7c871" class="page sans"><header><h1 class="page-title">Chapter 1</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1857aacb-2d23-8011-8204-c9b520a8014e" class="">1.1 What is the Internet?</h1><p id="1857aacb-2d23-8095-8e1b-f85a8fe8df48" class="">Nuts and Bolt Description - A computer network that interconnects billions of computers, workstations, servers, mobile devices, gaming consoles, IoT devices, and others together. These devices are called hosts/end systems. </p><p id="1a67aacb-2d23-80f3-bce7-c22a45b52715" class="">A network can be a mobile network, connecting together cars, traffic lights, smartphones, and laptops. </p><p id="1a67aacb-2d23-8032-a1fb-cf9be64a2a67" class="">Or it can be a home network connecting desktops, a laptop, and IoT devices.</p><p id="1a67aacb-2d23-800f-9b14-db3efd287e48" class="">It can be an enterprise network connecting together hundreds of desktops, laptops, tablets, and servers.</p><p id="1a67aacb-2d23-8031-b6b1-dc357c02ff83" class="">It can be a content provider network that connects Datacenter networks.</p><p id="1a67aacb-2d23-8070-875c-f7ae27dc43d5" class="">All are connected to a local or regional ISP, which is connected to a national or global ISP.</p><p id="1a67aacb-2d23-8016-b6d3-fd1cdc089fda" class="">
+</p><p id="1857aacb-2d23-80b4-83c6-c162805bc18b" class="">How do these systems connect together? <div class="indented"><p id="1857aacb-2d23-807d-ac53-f38ec0dc9ec7" class="">Through communication links - physical cables and radio signals that can transmit data at different rates measured in bits/second. The bits of information are called packets.<div class="indented"><p id="1a67aacb-2d23-8068-ba43-d1cc5f869d0c" class="">Different links can transmit data at different rates, with the <strong>transmission </strong>rate of a link measured in bits/second. </p><p id="1a67aacb-2d23-8025-aed5-f2a3963d926b" class="">When data is being sent to another end system, the sender segments the data and adds header bytes to each system to make a packet.</p></div></p><p id="1857aacb-2d23-80de-84bd-df703727ad34" class="">Packet Switches - take a packet arriving on one of its incoming communication links and forwars the packets on one of its outgoing communication links. There are routers and link-layer switches. <div class="indented"><p id="1a67aacb-2d23-80f3-9ab5-f41974bbe257" class="">Link layer switches are used in access networks, while routers are used in the network core.</p><p id="1a67aacb-2d23-80c3-9ebe-dae2f9bfef54" class="">The sequence of links and packet switches traversed by a packet from the sending end system to the receiving end system is known as a route or path through the network.</p></div></p></div></p><p id="1857aacb-2d23-807d-a7ff-d86cfec585cc" class="">End systems access the Internet through ISPs. Residential ISPs (local cable or phone companies), corporate ISPs, university ISPs, ISPs that provide WiFi access in places like airports or hotels or shops, and cellular data ISPs. </p><p id="1a67aacb-2d23-809c-8886-e64b5690e052" class="">Pieces of the Intern run protocols that control the sending and receiving of information within the Internet.</p><p id="1857aacb-2d23-80dd-a8cb-cd7a23623e7b" class="">Services Description - a view of the internet as an infrastructure that provides services to applications.<div class="indented"><p id="1a67aacb-2d23-80ef-9297-ebde2c85b810" class="">Distributed Applications involve multipel end systems that exchange data with each other. </p><p id="1857aacb-2d23-80dc-af0b-c9cee0b5466e" class="">Applications are typically written on one end system. How does it instruct the internet to deliver data to another program running on another end system?</p><p id="1857aacb-2d23-8000-af5b-c811f70ed4fb" class="">Through the use of socket interfaces, which specifies how a program running on one end system asks the Internet infrastructure to deliver data to a specific destination program running on another end system. </p><p id="1857aacb-2d23-800d-93ba-f5f002d71e6f" class="">As an analogy - when sending a letter, you need to put a letter in an envelope, write the full name and address and zip code on the envelope, seal the envelope, put a stamp on the envelope in a specific location, and drop the envelope into a mailbox. </p></div></p><h2 id="1857aacb-2d23-80a3-9ecd-e9906440a3de" class="">What is a Protocol?</h2><p id="1857aacb-2d23-8060-a910-d20e7abd52f1" class="">A network protocol is a way for computers to talk to each other - it defines the format and the order of messages exchanged between two communication entities, as well as the actions taken on the transmission and/or receipt of a message</p><p id="1857aacb-2d23-80e1-8fc8-cea42ee63630" class="">As an analogy, take asking a person for time. You say hi, the other person says hi back, you ask for the time, they reply the time (1:23 PM as of this writing).</p><p id="1a67aacb-2d23-80da-8fde-d563381721bf" class="">
+</p><h1 id="1857aacb-2d23-804e-8054-dc8b8da8c9b4" class="">1.2 The Network Edge</h1><p id="1857aacb-2d23-808e-9acd-fed653c0123a" class="">The ‘edge’ of the network refers to the systems sitting at the edge of the internet - the end systems/hosts that are connected to the internet</p><p id="1a77aacb-2d23-8080-a8b3-f2f3b1ecdb65" class="">They are called end systems because they sit at the edge of the internet. These are computers and laptops, and mobile devices, and things that are connected to the internet but really shouldn’t be (IoT). </p><p id="1857aacb-2d23-80ff-98e5-d93ca8c7a02e" class="">Hosts can be divided into clients and servers. Clients are desktops, laptops, smartphones, etc. Servers store and distribute web pages, stream video, relay e-mail, etc. Today, most of the servers are in data centers.</p><p id="1857aacb-2d23-807f-b173-fc4406a6b023" class="">The access network - the network that physically connects an end system to the first router on a path from the end system to any other distant end system. </p><p id="1857aacb-2d23-80cb-9f1a-f27cf0653f19" class="">How do homes connect to the Internet?<div class="indented"><ol type="1" id="1857aacb-2d23-801e-8e3e-c510593fbd4d" class="numbered-list" start="1"><li>Digital Subscriber Line (DSL) - a home typically obtains DSL Internet access from the same local telephone company that provides its wired local phone access. When DSL is used, the customer’s telephone company is also its ISP. The telephone line caries both data and traditional telephone signals simultaneously (high speed downstream channel in the 50 kHz to 1 MHz band, medium speed upstream channel, in the 4 kHz to 50 kHz band, an ordinary two-way telephone channel, in the 0 to 4 kHz band).<br/>DSL - The phone company is the ISP. <br/>Each customer’s DSL modem uses the existing telephone line exchange data with a digital subscriber line access multiplexer (DSLAM) located in the telco’s local central office (CO).<br/>The residential telephone line carries both data and traditional telephone signals. This is typically:<br/>0 to 4 kHz is for the two-way telephone channel<br/>4 kHz to 50 kHz is for upstream<br/>50 to 1 kHz is for downstream<br/>Typically asymmetric - downstream is faster than in upstream - we are more typically consumers of data than producers of data<br/>A splitter separates the data and telephone signals coming in to the home and forwards the data to the DSL modem. <br/>On the telco side, the DSLAM separates the data and phone signals and sends the data into the Internet.<br/>DSL standards define downstream transmission rates of 24 Mbs and 52 Mbs and upstream rates of 3.5 Mbps and 16 Mbps<br/></li></ol><ol type="1" id="1857aacb-2d23-80bd-a0f0-c44f8110d5cf" class="numbered-list" start="2"><li>Cable Internet access makes use a cable television company - the internet is provided by the same company that provides its cable television<br/>Fiber optics connect the cable head end to neighborhood-level junctions, then traditional coaxial cables are used to reach individual houses and apartments.  It is a hybrid fiber coax (HFC)<br/>Cable Modems - like DSL modems, typically an external device and connects to the home PC through an Ethernet port<br/>Cable modems divide the HFC network into two channels - a downstream and an upstream channel<br/>Access is typically asymmetric<br/>DOCSIS 2.0 and 3.0 define downstream bitrates of 40 Mbps and 1.2 Gbps, and upstream rates of 30 Mbps and 100 Mbps respectively.<br/>Shared broadcast medium - every packet sent by the head end travels downstream on every link to every home and every packet sent by a home travels on the upstream channel to the head end. <br/></li></ol><ol type="1" id="1857aacb-2d23-8055-bee2-e274f01f654b" class="numbered-list" start="3"><li>An upcoming technology - fiber to the home (FTTH) - provide an optical fiber path from the CO directly to the home</li></ol><ol type="1" id="1a77aacb-2d23-8029-936d-f2c28c18987f" class="numbered-list" start="4"><li>5G Fixed wireless - promises high-speed residential access without installing costly and failure-prone cabling from the telco’s central office to the home. Data is sent wirelessly from a provider’s base station to a modem in the home.</li></ol></div></p><p id="1857aacb-2d23-808f-b0c5-fde8e2209e11" class="">Local Area Networks are used to connect an end system to the edge router. Ethernet is the most prevalent access technology in corporate, university, and home networks. Ethernet uses twisted-pair copper wire to connect to an Ethernet switch.  Ethernet typically gives users 100 Mbps to tens of Gbps. Servers may have 1 Gbps 10 Gbps access.</p><p id="1857aacb-2d23-801b-9820-db2d8b308c3b" class="">Wireless LAN - WiFi - wireless users transmit/receive packets to/from an access point that is connected into the enterprise’s network which in turn is connected to the wired Internet.</p><p id="1857aacb-2d23-8021-b5ac-cb2080be899d" class="">Wide-Area Wireless Access: 3G and LTE 4G and 5G</p><p id="1857aacb-2d23-8088-9d5c-e8f773e76163" class="">Physical Mediums - bits travel through transmitter-receiver pairs by propagating electromagnetic waves or optical pulses across a physical medium. </p><p id="1857aacb-2d23-8006-aea3-fd110cb3d83a" class="">Guided Media - waves travel across a solid medium - fiber-optic cable, twisted-pair copper wire, coaxial cable.</p><p id="1857aacb-2d23-8074-a1ac-cb783d683a5c" class="">Unguided Media - waves travel across the atmosphere and in outer space - wireless LAN, digital satellite</p><p id="1857aacb-2d23-80e7-a4f1-daade0331337" class="">Twisted Pair Copper Wire - the least expensice and most commonly used - two insulated copper wires, each about 1 mm thick, arranged in a spiral pattern. </p><p id="1857aacb-2d23-8082-8421-e29cbaf35c79" class="">Coaxial Cable - Two copper conductors that are concentric. </p><p id="1857aacb-2d23-8086-8276-eadc48dd2a8c" class="">Fiber Optics - a thin, flexible medium that conducts pulses of light, with each pulse representing a bit. Supports tremendous bit rates. Immune to electromagnetic interference</p><p id="1857aacb-2d23-804c-abba-ccf064441274" class="">Terrestrial Radio Channels - signals in the electromagnetic spectrum</p><p id="1857aacb-2d23-8097-af28-c1924f9f30bf" class="">satellite radio channels - receive transmissions on one frequency band, regenerates the signal using a repeater, and transmits the signal on another frequency. Two types of satellites are usd in communications: geostationary satellites and low-earth orbiting satellites.</p><p id="1a77aacb-2d23-8030-b470-d067419165a8" class="">
+</p><p id="1857aacb-2d23-8032-b37a-c215d68f8100" class="">
+</p><ul id="1857aacb-2d23-8024-b65a-d936249f11b0" class="bulleted-list"><li style="list-style-type:disc"><strong>Ethernet:</strong> Wired. Up to 100&#x27;s Gbps per link</li></ul><ul id="1857aacb-2d23-8037-af54-fdca9e0120b8" class="bulleted-list"><li style="list-style-type:disc"><strong>802.11 WiFi:</strong> Wireless. 10&#x27;s to 100&#x27;s of Mbps per device</li></ul><ul id="1857aacb-2d23-80e5-b95d-eb60e4814b38" class="bulleted-list"><li style="list-style-type:disc"><strong>Cable access network:</strong> Wired. Up to 10&#x27;s to 100&#x27;s of Mbps downstream per user</li></ul><ul id="1857aacb-2d23-80e7-8f66-ea37222bd228" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital Subscriber Line (DSL):</strong> Wired. Up to 10&#x27;s of Mbps downstream per user</li></ul><ul id="1857aacb-2d23-805f-bb4b-c2b7934b501c" class="bulleted-list"><li style="list-style-type:disc"><strong>4G cellular LTE:</strong> Wireless. Up to 10&#x27;s Mbps per device</li></ul><p id="1857aacb-2d23-8002-a967-c0ee3ac360ef" class=""><strong>Explanation:</strong></p><ul id="1857aacb-2d23-8040-9ba3-d3772ee8ad42" class="bulleted-list"><li style="list-style-type:disc"><strong>Ethernet:</strong>This is a wired network technology known for its high speeds. It is commonly used in local area networks (LANs) and wide area networks (WANs).</li></ul><ul id="1857aacb-2d23-80e7-9f8d-ed33bc901ec6" class="bulleted-list"><li style="list-style-type:disc"><strong>802.11 WiFi:</strong>This is a wireless networking technology that allows devices to connect to the internet without the need for physical cables. Different versions of WiFi exist, such as 802.11g and 802.11ac, with varying speeds.</li></ul><ul id="1857aacb-2d23-80c1-a9fb-faa2a3581529" class="bulleted-list"><li style="list-style-type:disc"><strong>Cable access network:</strong><p id="1857aacb-2d23-80f4-83e1-d4bb259a2ed0" class="">This is a type of broadband internet service that utilizes existing cable television infrastructure. It offers relatively high speeds compared to DSL but is typically slower than dedicated fiber optic connections.</p></li></ul><ul id="1857aacb-2d23-8063-8716-d1662b354ccd" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital Subscriber Line (DSL):</strong><p id="1857aacb-2d23-80c7-864f-ee85443b2734" class="">This is a broadband internet technology that uses existing telephone lines to deliver internet access. It offers slower speeds than cable access but is widely available.</p></li></ul><ul id="1857aacb-2d23-808d-8d03-fa9a44e76099" class="bulleted-list"><li style="list-style-type:disc"><strong>4G cellular LTE:</strong><p id="1857aacb-2d23-80db-913b-d946fb865344" class="">This is a wireless technology used for mobile broadband internet access. It provides relatively high speeds and is commonly used for smartphones and other portable devices.</p></li></ul><h1 id="1857aacb-2d23-801b-a0f7-ff8e9347b130" class="">The Network Core</h1><p id="1857aacb-2d23-80fe-aef0-d36fcf402416" class="">The network core is the mesh of packet switches and links that interconnect the internet’s end systems</p><p id="1857aacb-2d23-8063-b433-d044c763b350" class="">Packet switching - the hosts break application-layer messages into packets - routers and link-layer switches.<div class="indented"><p id="1a87aacb-2d23-8067-9a28-c3b34834ad95" class="">Transmitted over each communication link at a rate equal to the full transmission rate of the link. A packet of <em>L </em>bits with a transmission rate <em>R </em>bits/sec, the time to transmit the packet is L/R seconds.</p></div></p><p id="1857aacb-2d23-8027-ad5d-d9bb1c71f91c" class="">Forwarding - a local action, all about moving arriving packet from router’s input link to appropriate router output link</p><p id="1857aacb-2d23-805e-a4b7-d3e64327f9e8" class="">Routing - a global action to determine source-destination taken by packets</p><p id="1a87aacb-2d23-80a0-81f8-c1c6cc38eb52" class="">
+</p><p id="1857aacb-2d23-80a3-bd9b-e34cf19450ee" class="">As an analogy:<div class="indented"><p id="1857aacb-2d23-8041-bc25-c6393d426d7f" class="">Forwarding: Taking a long trip across the country - New York to Los Angeles - you will pass through cities (input) and need to get out of the city (output). The route from NY to LA is the routing. </p></div></p><p id="1857aacb-2d23-80a1-9e75-e77597b80813" class="">Packet transmission delay: if a packet is L bits long, and the transmission rate is R bits/sec, then it will take L/R seconds to transmit (push out) L-bit packet into link at R bps</p><p id="1857aacb-2d23-8088-82b8-f4d0ed66c937" class="">Store and forward - entire packet must arrive at router before it can be transmitted onto next link <div class="indented"><p id="1a87aacb-2d23-80de-8dc3-dabcfbd6ca15" class="">With a network that consists of a source, a router, and a destination:<div class="indented"><p id="1a87aacb-2d23-8017-98ac-ee41e70bd523" class="">Source sends packets of L bits at a transmission rate of R bits/sec.</p><p id="1a87aacb-2d23-807c-9afc-d81d5fb72169" class="">At time 0, the source starts sending the first packet.</p><p id="1a87aacb-2d23-80f5-8dcc-ef9d1e85b135" class="">At time L/R seconds, the full packet arrives at the router.</p><p id="1a87aacb-2d23-803e-91d8-e43bd4bca5d0" class="">The router must wait until it gets the full packet before sending it out.</p><p id="1a87aacb-2d23-801e-a284-ff2fe9ac802d" class="">At time 2L/R, the full packet reaches the destination.</p><p id="1a87aacb-2d23-8049-a333-d080b8fe070e" class="">Sending one packet from one source to destination over a path of N links each at rate R, the end-to-end delay is N (L/R)</p></div></p></div></p><p id="1857aacb-2d23-802b-9fd0-d22714ea4faa" class="">Queueing occurs when work arrives faster than it can be serviced</p><p id="1857aacb-2d23-8000-878c-d238255207e6" class="">Packet queues arrive at the router’s outbound link - if arrival rate in bps to link exceeds transmission rate (bps) of link for some period of time<div class="indented"><p id="1857aacb-2d23-807d-85d1-e95dde331418" class="">Packets can be dropped if memory in router fills up (lost, buffer)</p></div></p><p id="1887aacb-2d23-809f-8c1e-ebc548596945" class="">Packet Switching - messages are exchanged with end systems over network applications. Sending a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as packets. Packets travel through communication links and packet switches (routers and link-layer switches). The rate is equal to the full transmission rate of the link. L bits over a link with transmission rate R bits/sec, the time to transmit the  packet is L/R<div class="indented"><p id="1a87aacb-2d23-801c-8742-ef8e5f3c706e" class="">Messages can be anything the application designer wants. </p></div></p><p id="1887aacb-2d23-8025-884a-ff81162fc22d" class="">Store-And-Forward transmission: The packet switch must receive the entire packet before it can begin to transmit the first bit of the packet onto the outbound link. Only after all the bits have been received can the router transmit (”forward”) the packet onto the outbound link.<div class="indented"><p id="1887aacb-2d23-80e1-b337-dae11e83b3f7" class="">If it takes L/R seconds to send one full packet, the total time for one packet to get from the source to the destination through the router is 2L/R. </p><ol type="1" id="1887aacb-2d23-804a-85a6-c1097940b7f5" class="numbered-list" start="1"><li><strong>L/R seconds</strong> for the source to send the packet to the router.</li></ol><ol type="1" id="1887aacb-2d23-8034-b7fc-d0896a900a3c" class="numbered-list" start="2"><li>Another <strong>L/R seconds</strong> for the router to send it to the destination.</li></ol></div></p><p id="1a57aacb-2d23-8032-b320-d1ec0851a691" class="">If the router forwarded them as soon as they arrived, then it would just be L/R.</p><p id="1a57aacb-2d23-8060-bfab-d6a0362d0bed" class="">The general case of sending one packet from source to destination over a path consisting of N links each of rate R. The end-to-end delay is N (L/R).</p><p id="1a57aacb-2d23-80c1-b3d5-d73411de657b" class="">
+</p><p id="1a57aacb-2d23-80f1-9e68-c67e815d37e1" class="">
+</p><p id="1887aacb-2d23-8026-aa14-d7fc25e3e197" class="">Each packet switch has multiple links attached to it - for each attached link, the packet switch has an output bufer/output queue that stores packets that the router is about to send into that link. <div class="indented"><p id="1897aacb-2d23-8004-b644-ecae7e237b65" class="">The amount of buffer space is finite. Arriving packets may be dropped (called packet loss) if the buffer is full</p></div></p><p id="1897aacb-2d23-8077-8214-d6916e549f78" class="">Each router has a forwarding table that maps destination addresses (or portions of the destination addresses ) to that router’s outbound links. When a packet arrives at a router, the router examines the address and searches its forwarding table, using this destination address, to find the appropriate outbound link. The router then directs the packet to this outbound link. </p><p id="1a87aacb-2d23-8056-955a-fedf3de6577f" class="">In the internet, every end system has an address called an IP address. When a source wants to send a packet to a destination, the source includes the destination’s IP address in the packet’s header. When a packet arrives at arouter in the network, the router examines a portion of the packet’s destination address and forwards the packet to an adjacent router. The router has a forwarding table that maps destination addresses to that router’s outbound links. <div class="indented"><p id="1a87aacb-2d23-800e-8f54-dcadac6cecdb" class="">An analogy of a car driver who prefers to ask for directions instead of using maps.</p><p id="1a87aacb-2d23-80cd-a84a-d835fd4a0eaa" class="">The internet has a number of special routing protocols that are used to automatically set the forwarding tables. </p></div></p><p id="1857aacb-2d23-80d5-afff-f4adc0bef05f" class="">Circuit Switching - the resources needed along a path (buffers, link transmission rate) to provide for communication between the end systems are reserved for the duration of the communication session.<div class="indented"><p id="1897aacb-2d23-8025-975e-e890d1b72ee8" class="">Before a communication occurs, the end-end resources are allocated</p><p id="1897aacb-2d23-8037-83ea-dc5a7026b11e" class="">Circuits aren’t shared between users</p><p id="1897aacb-2d23-805b-9c45-c93aa75d7dbc" class="">Think of the difference between a restaurant that needs reservations versus one that does not</p><p id="1897aacb-2d23-80d8-b382-f3810e880d49" class="">A circuit in a link is implemented with Frequency Division Multiplexing or Time Division Multiplexing<div class="indented"><p id="1897aacb-2d23-80c6-b4f8-cae68de30af9" class="">FDM - The frequency spectrum of a link is divided up among the connections established across the link<div class="indented"><p id="1897aacb-2d23-8087-b4f1-ed93bbfb8fee" class="">The electromagnetic frequencies are divided into narrow frequency bands</p><p id="1897aacb-2d23-8082-ba50-fe8e188b8019" class="">Each call allocated its own band</p></div></p><p id="1897aacb-2d23-8000-8136-dd552dc1405a" class="">TDM - time is divided into frames of fixed duration, and each frame is divided into a fixed number of time slots. <div class="indented"><p id="1897aacb-2d23-80cb-8fcd-f8ec7a1b3288" class="">time is divided into slots</p><p id="1897aacb-2d23-80b7-9f0e-f06cc91b7723" class="">each call allocated periodic slots, can transmit at maximum rate of (wider) frequency band (only) during its time slots</p></div></p></div></p><p id="1897aacb-2d23-8072-807c-ffff19fc4366" class="">Dedicated circuits are idle if there is no communication happening, and no other users can use that circuit.</p><p id="1a87aacb-2d23-8010-8cc2-f372ce853fe2" class="">Potentially wasteful. </p></div></p><p id="1897aacb-2d23-80a2-8496-cb534fc3aed5" class="">Packet Switching versus circuit switching:<div class="indented"><p id="1897aacb-2d23-80fa-aa91-f6d284d538e9" class="">If there is 1 Gb/s link, each user uses 100 Mb/s when active, and it is active 10% of the time, how many user does packet switching support? How many circuit switching supports?<div class="indented"><p id="1897aacb-2d23-8076-a0ac-ea5a4c309a68" class="">Circuit Switch Users: At most 10 users at a time</p><p id="1897aacb-2d23-80b9-b688-dc2d0db53c9f" class="">Packet Switching: 35 users</p></div></p></div></p><h2 id="1897aacb-2d23-80f8-ae35-cfad7692173e" class="">A Network of Networks</h2><p id="1897aacb-2d23-80c1-9222-c0a2f89de36f" class="">You get internet access from an ISP, and ISPs must be interconnected - called a network of networks. </p><p id="1a87aacb-2d23-80ed-b405-f1085b6351c0" class="">Building a series of networking structures:</p><p id="1a87aacb-2d23-8069-9529-d026554358e1" class="">The overarching goal is to interconnect the access ISPs, so all end systems can communicate with each other.</p><p id="1a87aacb-2d23-803b-958d-eaf9da7799fb" class="">One naive approach is to connect every access ISP directly. It is extremely costly, and would require each access ISP to have a separate communication link to each of the hundreds of thousands of other access ISPs all over the world. </p><p id="1a87aacb-2d23-8074-8e24-d49c1a6d9934" class="">Network Structure 1 - interconnects all the access ISP with a single global transit ISP. It spans the globe and also has at least one router near each of the hundreds of thousnads of access ISPs. If some company builds this, then it is natural for other companies to build their own, which leads us to the next one.</p><p id="1a87aacb-2d23-80d0-aa53-dca70d86f029" class="">Network Structure 2 - hundreds of thousands of access ISPs and multiple global transit ISPs. Two-tiered hierarchy with global transit providers resiing at the top tier and access ISPs at the bottom tier. <div class="indented"><p id="1a87aacb-2d23-807f-9dad-f659996ea826" class="">Assumes that global transit ISPs are not only capable of getting close to each and every access ISP, but also find it economically desirable to do so. </p><p id="1a87aacb-2d23-8015-92a8-ee39965726ad" class="">In reality, no ISP has presence in each and every city in the world. In any given region, there is a regional ISP to which the access ISPs in the region connect. Each regional ISP then connects to tier-1 ISPs. </p></div></p><p id="1a87aacb-2d23-8055-8dbc-d4c219edd2be" class="">There may be multiple competing regional ISPs in a region. Each access ISP pays the regional ISP and each regional ISP pays the tier-1 ISP to which it connects. </p><p id="1a87aacb-2d23-809e-a9be-dcac39565e95" class="">Adding points of presence - a group of one or more routers in the provider’s network where customer ISPs can connect into the provider ISP. </p><p id="1a87aacb-2d23-801a-ae7c-f7c2de3b722a" class="">Multi-home - connect to two or more provider ISPs. </p><p id="1a87aacb-2d23-8049-9dd3-e9fdb8d9a7bc" class="">Internet Exchange Point - a meeting point where multiple ISPs can peer together.</p><p id="1a87aacb-2d23-809d-b2b1-d74d6da24357" class="">Content-provider networks - companies like Google</p><h1 id="1897aacb-2d23-8085-8921-ed1abce0895f" class="">Delay, Loss, and Throughput In Packet-Switched Networks</h1><p id="1897aacb-2d23-8011-a19f-f229a1d8815e" class="">Throughput - the amount of data per second that can be transferred</p><p id="1897aacb-2d23-80f1-a2bc-c7d6bc7e7999" class="">
+</p><p id="1897aacb-2d23-800a-ab88-e2fb3ed01b3e" class="">As a packet starts in a host (the source), passes through a number of nodes (host or routers) to the next node, the packet suffers from several types of delays at each node along the path.</p><p id="1897aacb-2d23-8098-b888-e818d0097375" class="">When a packet goes through Router A to Router B, Router A must examine the packet’s head to decide the correct outbound link. The packet can only be transmitted if the link is idle and no other packets are in the queue.  If the link is busy or other packets are queued, then the new packet must wait in the queue.</p><p id="1897aacb-2d23-80ae-aa62-d1c51f221004" class="">Processing Delay - the time required to examine the packet’s header and determine where to direct the packet.<div class="indented"><p id="1897aacb-2d23-8024-a6b6-d3872b659f51" class="">The time it takes to actually process a packet as it gets to the router</p><p id="1897aacb-2d23-8009-9772-fefa9943ee79" class="">Microseconds in practice</p></div></p><p id="1897aacb-2d23-80d5-a755-dff4cbd6829b" class="">Queuing Delay - The packet is waiting to be transmitted on the link<div class="indented"><p id="1897aacb-2d23-800c-a719-ccf9eac74448" class="">Can be 0 if there is no queue, if traffic is heavy, can be on the order of microseconds to milliseconds</p></div></p><p id="1897aacb-2d23-8031-85a1-f38eee3cdd33" class="">Transmission Delay - The amount of time required to push (transmit) all of the packet’s bits into the link<div class="indented"><p id="1897aacb-2d23-8005-b01a-ce49c0d570f2" class="">Length of packet by L bits, transmission rate from Router A to router B by R bits/sec. For a 10 Mbps Ethernet link, the rate is R= 10 Mbps. The transmission delay is L/R. </p></div></p><p id="1897aacb-2d23-807f-9af7-cb88e61b6e68" class="">Propagation Delay - Once a bit is pushed into the link, it needs to propagate (transmit) to router B. Propagation delay is the time required to propagate from the beginning of the link to router B. Depends on the physical medium of the link (fiber optics, twisted-pair copper wire, etc) and is in the range of :<div class="indented"><p id="1897aacb-2d23-806f-8423-c0223ce957bf" class="">2 * 10^8 meters/sec to 3 * 10^8 meters/sec</p><p id="1897aacb-2d23-8040-be9f-e5059f22fa32" class="">Equal to or less than the speed of light</p><p id="1897aacb-2d23-80f4-a0a3-c40051b56bf1" class="">The distance between two routers divided by the propagation speed</p><p id="1a57aacb-2d23-8073-a52f-f3a9a5a7f6f5" class=""><em>d/s</em></p></div></p><p id="1897aacb-2d23-80ba-8d4b-e5236240b013" class="">The difference between transmission delay and propagation delay:<div class="indented"><p id="1897aacb-2d23-8024-8b36-f56c48fc0d05" class="">transmission delay is the time it takes for a router to “push out” the entire packet onto the link. It depends on the packet length and transmission rate but not the physical distance.</p><p id="1897aacb-2d23-8037-95e9-d0a8e993ee64" class="">Propagation Delay is the time it takes for a bit to physically travel from one router to the next over the link. It depends on the distance between routers and the speed of signal propagation, not the packet length. </p></div></p><p id="1897aacb-2d23-807a-80da-ec6da6750290" class="">Total node delay is equal to the processing, queuing, transmission, and propagation delays combined.</p><h2 id="1897aacb-2d23-8093-b828-c000f0ab207c" class="">Queuing Delay and Packet Loss</h2><p id="1897aacb-2d23-805c-8294-fd02acb08f18" class="">Unlike processing, transmission, and propagation delay, queueing delay can vary from packet to packet. If 10 packets arrive at an empty buffer, the first packet will experience 0 delay, while the last packet will experience the most delay. <div class="indented"><p id="1aa7aacb-2d23-802e-9c46-f2418e3a489a" class="">When characterizing queuing delay, one typically uses statistical measures such as average queuing delay.</p></div></p><p id="1aa7aacb-2d23-80d0-984b-d0a5d5be5d77" class="">L = packet length in bits</p><p id="1aa7aacb-2d23-8081-a7e5-cdf70c571077" class="">a = average rate at which packets arrive (units of packets/sec)</p><p id="1aa7aacb-2d23-80d6-aca5-c817272564a9" class="">R = transmission rate.</p><p id="1aa7aacb-2d23-8004-9bb5-fff47e9482e5" class="">Average rate at which bits arrive at the queue is La bits/sec. La/R is the traffic intensity. if La/R &gt; 1, the average rate at which bits arrive at the queue exceeds the rate at which bits can be transmitted from the queue.</p><p id="1897aacb-2d23-80ca-9bc9-cfac671efbf6" class="">Packet Loss - A queue preceding a link has a finite capacity for packets. Packet delays do not really approach infinity because of that finite capacity. If there is no place to store the packets, then the packet is dropped - the packet is loss. </p><p id="18a7aacb-2d23-80c8-b360-e76c11e120e7" class="">Total Delay from source to destination - end to end delay<div class="indented"><p id="18a7aacb-2d23-80f0-98fb-c15f6ea6d6da" class="">Suppose there are N - 1 routers with minimal network congestion. The total delay will be N(processing delay + transmission delay + propagation delay)</p></div></p><p id="18a7aacb-2d23-8049-8e6b-c9a1c9dc852f" class="">Throughput - the rate (bits/time unit) at which bits are being sent from sender to receiver<div class="indented"><p id="18a7aacb-2d23-8008-89a2-cf743e2e36ee" class="">Instantaneous: rate at given point in bits/sec - real-time data transfer</p><p id="18a7aacb-2d23-804e-98af-cb717c5b3328" class="">Average: rate over longer period of time - calculated as Total file size F divided by transfer time T</p><p id="18a7aacb-2d23-8020-82d7-c322d37222a7" class="">Think of water flowing through a pipe<div class="indented"><p id="18a7aacb-2d23-80cc-9297-feea8b610adb" class="">When an end-to-end flow carries packets over ‘pipes’ (transmission link) serially, how does the maximum rate of each pipe at which a pipe can carry the packets determine the overall end-to-end throughput? </p></div></p></div></p><p id="1ab7aacb-2d23-806f-b26e-e14a11e7136b" class="">
+</p><h1 id="1ab7aacb-2d23-804a-88f9-fe14e79a974a" class="">Protocol Layers and Their Service Models</h1><p id="18a7aacb-2d23-8018-9b72-d67c983ed7b3" class="">Network designers organize protocols in layers. Each protocol belongs to one of the layers.</p><p id="18a7aacb-2d23-80bb-ab9c-f13d64b4bee3" class="">A protocol layer can be implemented in software, hardware or a combination of the two.<div class="indented"><p id="18a7aacb-2d23-8040-afff-d9dcc2ea9613" class="">Physical and data link layers are responsible for handling communication over a given link. </p></div></p><p id="18a7aacb-2d23-80ba-824c-cdfa73b199de" class="">The Internet Protocol Stack<div class="indented"><p id="18a7aacb-2d23-8067-8bc8-d96cdba68068" class="">Application - where network applications and their application-layer protocols reside<div class="indented"><p id="18a7aacb-2d23-8085-a6b8-d3623449a15c" class="">HTTP, SMTP, FTP</p><p id="18a7aacb-2d23-807b-bb9d-e08fae5d2555" class="">An application layer protocol is distributed over multiple end systems</p><p id="18a7aacb-2d23-8085-8c2c-ef4e7d0d595a" class="">Packet of information is called a <strong>message</strong></p></div></p><p id="18a7aacb-2d23-805a-b826-fded82b369b9" class="">Transport - transports application-layer messages between application endpoints<div class="indented"><p id="18a7aacb-2d23-800f-bece-ffb40cdb3e2d" class="">TCP - provides a connection-oriented service to its applications - guaranteed delivery</p><p id="18a7aacb-2d23-80a3-a431-c873d9d5303e" class="">UDP - connectionless service - no reliability, no flow, no congestion control</p><p id="18a7aacb-2d23-807f-808e-c1cc94c651bf" class="">Packet of information is called a <strong>segment</strong></p></div></p><p id="18a7aacb-2d23-8009-a83e-c264b4425e32" class="">Network Layer - responsbile for moving network-layer packets known as <strong>datagrams </strong>from one host to another. Responsible for the actual routing.<div class="indented"><p id="18a7aacb-2d23-808a-a344-f93d3b70241b" class="">IP protocol</p></div></p><p id="18a7aacb-2d23-8038-8f0d-d3fbf9fd9031" class="">Link Layer - Moves the datagrams from one node (host or router) to the next node in the router. <div class="indented"><p id="18a7aacb-2d23-800a-87c5-e1ef90dbb51f" class="">Packet of information is called a <strong>frame</strong></p></div></p><p id="18a7aacb-2d23-8044-a732-dd9897a41add" class="">Physical Layer - the job of the physical layer is to move individual bits within a frame from one node to the next. The protocols in this layer are link dependent - Ethernet has many different protocols for twisted-pair copper wire, coaxial cable, etc. </p></div></p><h2 id="18c7aacb-2d23-80f4-a477-e97f35eb21e9" class="">Encapsulation</h2><p id="18c7aacb-2d23-8093-8426-dbeccfeeafbe" class="">Each layer of the protocol stack adds its own header information to the data before passing it to the next layer. </p><p id="18c7aacb-2d23-8028-a6ff-fa35337ce7d9" class="">Encapsulation happens everywhere in the internet</p><p id="1ab7aacb-2d23-8039-b00d-c92d8608199c" class="">At the sending host, an application layer message is passed to the transport layer. The transport layer adds its own information to form a transport-layer segments, and then pass it to the network layer. The networ-layer adds its own information to form a datagram. Then it passes it to the link layer which adds its own information to form a a frame. </p><p id="1ac7aacb-2d23-800a-9416-f5c7d2b402c8" class="">
+</p><h1 id="1ac7aacb-2d23-801d-9cb7-d0554567d8de" class="">Networks Under Attack</h1><p id="1ac7aacb-2d23-80c4-a173-f2a1431d1abe" class="">The internet is critical for many institutions today.</p><p id="1ac7aacb-2d23-804a-bade-ce8c5dffb403" class="">Bad Guys attempt to attack computer networks. </p><h3 id="1ac7aacb-2d23-80e7-b5fd-e7afb543bf42" class="">The Bad Guys Can Put Malware into Your Host Via the Internet</h3><p id="1ac7aacb-2d23-80af-b396-d69f9d353459" class="">Malware - malicious software that can infect hosts and do a lot of things that are bad like deleting files, installing spyware to collect private information. Compromised hosts may be enrolled in a <strong>botnet, </strong>which is where bad guys control and leverage the host for further terrible things.</p><p id="1ac7aacb-2d23-8034-a2f3-ed692fb495d7" class="">Malware is self replicating - once it infects one host, from that host it seeks entry to other hosts over the Internet.</p><h3 id="1ac7aacb-2d23-80fd-bdae-f230c39b2491" class="">The Bad Guys Can Attack Servers and Network Infrastructure</h3><p id="1ac7aacb-2d23-8048-8f0f-c701678b2520" class="">A denial-of-service attack is when a network is intentionally overwhelmed with traffic, with the goal of shutting down the network. These can fall into three categories:</p><ol type="1" id="1ac7aacb-2d23-80b9-bd47-f8ec3e43f917" class="numbered-list" start="1"><li>Vulnerability Attack - a few well-crafted messages are sent to a vulnerable application or operating system running on the target host. If there is the right sequence of packets, then the service can stop/host can crash.</li></ol><ol type="1" id="1ac7aacb-2d23-80d0-83d2-f364028d70c0" class="numbered-list" start="2"><li>Bandwidth flooding - the attacker sends a deluge of packets to the targeted host - so many packets that the target’s access link becomes clogged</li></ol><ol type="1" id="1ac7aacb-2d23-8079-ada3-c4203862dfd6" class="numbered-list" start="3"><li>Connection flooding - the attacker establishes a large number of half-open or fully open TCP connections at the target host, in order to bog down the host with these connections.</li></ol><p id="1ac7aacb-2d23-80c2-a56d-f57598e2ef90" class="">If a server has an acess rate of R bps, then there will need to be traffic at approximately R bps to cause damage. Attackers can utilize a botnet to conduct a <strong>distributed Denial of Service </strong>attack to cause that traffic.</p><h3 id="1ac7aacb-2d23-8015-8086-c70da842ddd5" class="">The Bad Guys Can Sniff Packets</h3><p id="1ac7aacb-2d23-80a5-ae32-f814ae11f9cd" class="">A packet sniffer is a passive receiver that records a copy of every packet that flies by.</p><h3 id="1ac7aacb-2d23-80ba-afa7-f3c06fd4971e" class="">The Bad Guys Can Masquerade as Someone You Trust</h3><p id="1ac7aacb-2d23-80c1-a793-ccaa2da4305e" class="">IP Spoofing - faking the IP address for someone the target would trust.</p><p id="1ac7aacb-2d23-8040-bd6b-d9bd5802472a" class="">
+</p><p id="1ac7aacb-2d23-807d-a568-f369d0835a11" class="">The Internet was originally designed with the model of “a group of mutually trusting users attached to a transparent network.” By definition, that makes it insecure. </p><p id="18c7aacb-2d23-80f0-9da4-f34025dfde7d" class="">
+</p><figure id="18c7aacb-2d23-8095-b25b-f85fa391b851" class="link-to-page"><a href="Chapter%201%201857aacb2d23806d83afca7117f7c871/Questions%2018c7aacb2d238095b25bf85fa391b851.html">Questions</a></figure><figure id="19a7aacb-2d23-8049-88f9-e3c0f05e498a" class="link-to-page"><a href="Chapter%201%201857aacb2d23806d83afca7117f7c871/Problems%2019a7aacb2d23804988f9e3c0f05e498a.html">Problems</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

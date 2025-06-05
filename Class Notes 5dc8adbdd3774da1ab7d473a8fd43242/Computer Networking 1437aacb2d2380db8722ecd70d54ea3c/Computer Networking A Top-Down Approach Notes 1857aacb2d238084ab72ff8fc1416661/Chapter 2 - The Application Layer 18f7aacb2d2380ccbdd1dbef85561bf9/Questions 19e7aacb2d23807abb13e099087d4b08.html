@@ -1,0 +1,960 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19e7aacb-2d23-807a-bb13-e099087d4b08" class="page sans"><header><h1 class="page-title">Questions</h1><p class="page-description"></p></header><div class="page-body"><h2 id="19e7aacb-2d23-80cf-bcfd-e9fa3fcf4ab6" class="">Section 2.1</h2><p id="19e7aacb-2d23-8090-99d2-c097673bbdec" class="">R1.  List five nonproprietary Internet applications and the application-layer proto-<br/>cols that they use.<br/></p><p id="19e7aacb-2d23-8043-9f97-c7cc4624f2f9" class="">World Wide Web - HTTP</p><p id="19e7aacb-2d23-80ac-896c-e98189a74b18" class="">file transfer - FTP</p><p id="19e7aacb-2d23-80dc-b1d2-f652fc794665" class="">file transfer  - Telnet</p><p id="19e7aacb-2d23-806a-860a-f6179b8e40c7" class="">BitTorrent file sharing - BitTorrent</p><p id="19e7aacb-2d23-80ae-857d-f3a6af516b71" class="">email - SMTP</p><p id="19e7aacb-2d23-80bd-8307-dea76edae877" class="">
+</p><p id="19e7aacb-2d23-805a-ac6b-d90d0dcdb5e0" class=""><br/>R2. What is the difference between network architecture and application architecture?<br/></p><p id="19e7aacb-2d23-8049-ab43-e7b09ca60d97" class="">Network architecture is how the network is designed and organized. Application architecture is how the application is structured and organized and is designed by the programmer.</p><p id="19e7aacb-2d23-8081-8dc9-d45062e76afd" class="">
+</p><p id="19e7aacb-2d23-800c-896e-fc56590e88ba" class=""><br/>R3.  For a communication session between a pair of processes, which process is<br/>the client and which is the server?<br/></p><p id="19e7aacb-2d23-807d-b26b-da95cd37ce22" class="">The client is the process that requests something, while the server is the process that is waiting to be contacted.</p><p id="19e7aacb-2d23-800a-8bc7-f12a2e09e11d" class="">
+</p><p id="19e7aacb-2d23-80bf-935c-c9cdd46f712e" class=""><br/>R4.  For a P2P file-sharing application, do you agree with the statement, “There is no<br/>notion of client and server sides of a communication session”? Why or why not?<br/></p><p id="19e7aacb-2d23-8020-9547-e823c475234c" class="">No - there is a client and a server in a P2P file-sharing application - the client is typically receiving the file and the server is sending the file</p><p id="19e7aacb-2d23-8058-bad3-de7c41cc9df5" class="">
+</p><p id="19e7aacb-2d23-80dd-9214-ed8ddbf2352e" class=""><br/>R5.  What information is used by a process running on one host to identify a pro-<br/>cess running on another host?<br/></p><p id="19e7aacb-2d23-803f-9284-dd00deb1f7fc" class="">IP address and port number</p><p id="19e7aacb-2d23-8014-8249-f86f07a594b9" class="">
+</p><p id="19e7aacb-2d23-80b6-a48b-dba31a05ba4c" class="">R6.  Suppose you wanted to do a transaction from a remote client to a server as<br/>fast as possible. Would you use UDP or TCP? Why?	<br/></p><p id="19e7aacb-2d23-8055-bc1d-cb9fa8176cac" class="">For just speed, UDP would be the answer. The transaction can be completed in one roundtrip time (RTT). The client sends the transaction request into a UDP socket and the server sends the reply back to the client’s UDP socket. With TCP, a minimum of two RTTs are needed - one to set up the connection, and another to send the request and for the server to send back the reply. </p><p id="19e7aacb-2d23-8053-a7d8-c04bd72d56fe" class="">
+</p><p id="19e7aacb-2d23-8086-a939-eb40a1dc67cd" class=""><br/>R7.  Referring to Figure 2.4, we see that none of the applications listed in Figure<br/>2.4 requires both no data loss and timing. Can you conceive of an application<br/>that requires no data loss and that is also highly time-sensitive?<br/></p><p id="19e7aacb-2d23-80af-a62a-c86d0b86ebda" class="">Real time financial trading system - miliseconds matter in high-frequency trading, and there can be no data loss</p><p id="19e7aacb-2d23-8088-b2f4-f18b4921607f" class="">Air traffic control systems</p><p id="19e7aacb-2d23-80bc-ba69-c13ffb0b12f4" class="">Emergency medical systems</p><p id="19e7aacb-2d23-802e-b197-d95c9c2bb89a" class=""><br/><br/>R8.  List the four broad classes of services that a transport protocol can provide.<br/>For each of the service classes, indicate if either UDP or TCP (or both) pro-<br/>vides such a service.<br/><br/>Reliable Data Transfer - TCP provides reliable data transfer<br/></p><p id="19e7aacb-2d23-80e1-b23c-d7a13e1d6d14" class="">Throughput - the rate at which the sending process can deliver bits to the receiving process - neither TCP or UDP gives this</p><p id="19e7aacb-2d23-80d5-8170-db1a2661dfdb" class="">Timing - Neither TCP nor UDP guarantees timing</p><p id="19e7aacb-2d23-80a5-a93b-e73da61ce086" class="">Security - Neither UDP nor TCP provide security</p><p id="19e7aacb-2d23-80c4-a8d9-e37965b46b5b" class="">
+</p><p id="19e7aacb-2d23-8025-95f4-ca3489c7f6a6" class=""><br/>R9.  Recall that TCP can be enhanced with TLS to provide process-to-process<br/>security services, including encryption. Does TLS operate at the transport<br/>layer or the application layer? If the application developer wants TCP to be<br/>enhanced with TLS, what does the developer have to do?<br/></p><p id="19e7aacb-2d23-800a-843c-d65e7843db1f" class="">SSL/TLS operates at the application layer. The SSL socket takes unencrypted data from the application layer and encrypts it before passing it on tot he TCP socket. If the application developer wants TCP to be enhanced with SSL, they have to include the SSL code in the application. </p><h2 id="19e7aacb-2d23-8064-8759-faacd657af76" class="">Section 2.2-2.5</h2><p id="19f7aacb-2d23-804a-a2b8-fbe754ef88b5" class="">R10.  What is meant by a handshaking protocol?</p><p id="19f7aacb-2d23-80ef-ba74-c8fdf6e047dd" class="">
+</p><p id="19f7aacb-2d23-80e3-abd5-d32a132b8190" class="">Before initiating a conversation, the two systems exchange packets before sending data to each other.</p><p id="19f7aacb-2d23-80bb-9b05-f55e342ce647" class="">
+</p><p id="19f7aacb-2d23-80f9-96b1-e63c2c87eee1" class="">R11.  Why do HTTP, SMTP, and IMAP run on top of TCP rather than on UDP?</p><p id="19f7aacb-2d23-80f7-b41c-e5c3b90fc79f" class="">
+</p><p id="19f7aacb-2d23-8001-8349-f2e4ffc0dcbd" class="">In those applications, data loss is less acceptable, and the packets must be received in the correct order.</p><p id="19f7aacb-2d23-80bc-8d03-f88ca5327aa7" class="">
+</p><p id="19f7aacb-2d23-80be-867a-c6ef9f881a37" class="">R12.  Consider an e-commerce site that wants to keep a purchase record for each of<br/>its customers. Describe how this can be done with cookies.<br/></p><p id="19f7aacb-2d23-8075-9819-d67f57d5075e" class="">At a high level, the cookies will hold the customer information. The customer information will probably include a unique identifier for the customer so that the back-end database knows who the customer is.</p><p id="19f7aacb-2d23-80c0-a36f-e18b576e47f2" class="">
+</p><p id="19f7aacb-2d23-8023-80e4-f05f19106596" class="">R13.  Describe how Web caching can reduce the delay in receiving a requested<br/>object. Will Web caching reduce the delay for all objects requested by a user<br/>or for only some of the objects? Why?<br/></p><p id="19f7aacb-2d23-80bf-99dc-ebf1bd13b01f" class="">Web caching is when the desired content is closer to the user, reducing the delay when the user wants to GET a web page. It will  reduce delays for objects requested that are in the cache, and it will reduce delays overall for the website, so yes it will reduce delays for all objects. </p><p id="19f7aacb-2d23-807b-888a-c1b92cf366d7" class="">
+</p><p id="19f7aacb-2d23-809f-915f-f30697aed393" class=""><br/>R15.  List several popular messaging apps. Do they use the same protocols as SMS?<br/></p><p id="19f7aacb-2d23-8018-a4d2-dc9833a8b675" class="">WhatsApp, Messenger, Snapchat. They use different protocols than SMS.</p><p id="19f7aacb-2d23-80cb-8804-fc23ec39a7c8" class="">
+</p><p id="19f7aacb-2d23-80f0-9cb2-d64f057ba6cf" class=""><br/>R16.  Suppose Alice, with a Web-based e-mail account (such as Hotmail or Gmail),<br/>sends a message to Bob, who accesses his mail from his mail server using<br/>IMAP. Discuss how the message gets from Alice’s host to Bob’s host. Be<br/>sure to list the series of application-layer protocols that are used to move the<br/>message between the two hosts.<br/><br/>Alice crafts her message and sends the message to her mail server using HTTP. The Mail server uses SMTP to send the message to Bob’s mail server. Bob uses IMAP to retrieve the message from the mail server.<br/>	<br/><br/></p><p id="19f7aacb-2d23-806d-9236-d82a18a7d717" class=""><br/>R17.  Print out the header of an e-mail message you have recently received. How<br/>many Received: header lines are there? Analyze each of the header lines<br/>in the message.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19f7aacb-2d23-8040-9f48-c7ed1dd6a5fe" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Delivered-To: lukegearty@gmail.com
+Received: by 2002:a50:31d6:0:b0:27c:685d:42f8 with SMTP id d22csp3127699ecb;
+        Thu, 21 Nov 2024 07:26:13 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXtya5P7vAw9iDnN19BT4RB33M2MCs30EkxvancXarJmjfmUPWguaYr/WMJqvRLA0BtFpxsL/So0uDa@gmail.com
+X-Google-Smtp-Source: AGHT+IFbYcvXgPqWMqLI6L3SaYbdcGbelsHXwxgGAnZPEbU5SajKuJhYGQiD6b5dutTZb3Z8ldUi
+X-Received: by 2002:a17:90b:4a07:b0:2ea:a3fc:b948 with SMTP id 98e67ed59e1d1-2eaca7e65e1mr7534279a91.36.1732202772700;
+        Thu, 21 Nov 2024 07:26:12 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1732202772; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=FfmAh1WCUK4xVqFIq48/49H6D2HywIaKu/qIMzmXaNmqGIUmN9gVw5hw2xDkC/B3ja
+         i2Ke3zwioKobDTZKHARbbreZUpKyWU+rj8BpxgM7xd9ujioYE+90QNkvHbSEnVunUyKe
+         nDoKl9WHuzyjJ9FSyYvyKdS/xMXUU+C7foW7cdsLsAzBIP58vyt2xVxfE38Jwg9Z/Ude
+         Jv9NKVyA8tI/HErpq+0CsSkFVuGnxpZMrzMOS3mYOw7BicM9I2Kn4tA96ICxoqcfce+X
+         JdldiFWHGKkCkZmCvmKruvpo9T7cDVoDGP2HU1V8rEb7RZ37FklFonMg5Vpa+C8jFdC3
+         paBw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:from:dkim-signature;
+        bh=EmOFxxQ1I2Uo5VrRl1CpmIO5JgoNOAEit46TlmRdyZg=;
+        fh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+        b=EcQf44d/a3WNi2/gaHiEf9JA+kd8vBSsOYsMGwBH4oSF5DiJ00zQMVtPJ71ONEHsr5
+         RtOt6n8OIpm2indSbG3gnOyM0mABNTNTgbAFXQez157YH7JUkIgUB8uGYSqGa9+4KPNb
+         mfizt+Hv8wQtMReY/FNy6yAC+jtogoSNHLfGEBq6xSnDRV94jPyHUiMM6jbdtGpejK7k
+         nIf7y6sT1l4HavTQdGpJvyeKe0gwzCu+RA0tGtYhwFXSkYGluy1OeVOITHBSpf3eTYpl
+         j6b9VA4i3oIcy6rAQ5mzxxP7P537z2hnBckA+xFDhgunhQoMNDmz1Qrl24X20zop97JQ
+         Z05A==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@nypd.org header.s=selector2 header.b=z9EYDeEO;
+       arc=pass (i=1 spf=pass spfdomain=nypd.org dkim=pass dkdomain=nypd.org dmarc=pass fromdomain=nypd.org);
+       spf=pass (google.com: domain of samantha.alexander@nypd.org designates 2a01:111:f403:c110::5 as permitted sender) smtp.mailfrom=SAMANTHA.ALEXANDER@nypd.org;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nypd.org
+Return-Path: &lt;SAMANTHA.ALEXANDER@nypd.org&gt;
+Received: from BN8PR09CU001.outbound.protection.outlook.com (mail-eastus2azlp170120005.outbound.protection.outlook.com. [2a01:111:f403:c110::5])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2ead02eab76si4193457a91.35.2024.11.21.07.25.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Nov 2024 07:26:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of samantha.alexander@nypd.org designates 2a01:111:f403:c110::5 as permitted sender) client-ip=2a01:111:f403:c110::5;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nypd.org header.s=selector2 header.b=z9EYDeEO;
+       arc=pass (i=1 spf=pass spfdomain=nypd.org dkim=pass dkdomain=nypd.org dmarc=pass fromdomain=nypd.org);
+       spf=pass (google.com: domain of samantha.alexander@nypd.org designates 2a01:111:f403:c110::5 as permitted sender) smtp.mailfrom=SAMANTHA.ALEXANDER@nypd.org;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nypd.org
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=ffPXLu7EmaZPuByn3Wr7A7oo36UsqO0vCgE2wNR1g1/vTx1eXIff9g8kZCTYTVSOm9mjcoQTJgOZyvyJUpVtIPw5Y+jFIxqMLXlnNj5PTm3jabsi5GNxS7a5vtfDxMvQVtlw6c2bL+snCAe4oR0YRT1C/iPEzaaqzBYcfwvYXbDyHcYZ3jG9avgJdBFEpeDkddOlct6NkEzgCaNAd0iWUZR8n09nGm/lYM13trGtpY80gWlLEXZh1kkfdk9q1pof6IqiLGmyx04XwiZMWeyZ6PBvX34bzEHuuqm/hvAi5DCPDZY5lGmHPM4YWcnj111lx7Mkixe83SND4m1DL369Sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=EmOFxxQ1I2Uo5VrRl1CpmIO5JgoNOAEit46TlmRdyZg=; b=jFmV4nCb8K7/tOyjZ0DadodKAVQ8B4y82VluKZw04+8ScMeeHim+S0qgQKrs9/M4DfS5HaIaTbaWO6djqVCUiriylpBN/VesA0LQrNlxT5ztFlMjlgd5hdV7U/dHPXA/Y3OuGIixKIInBGpq3xSO0kifFzLL2yeU9Mui4n32ZJrpTFEtrTvBly7pveUgT+OFtD7Bc4ip4ikmqb2SvWW86k4/ZTg3CMEC6JsVIaAKSkFpM5R89UtoJ+vp/Vhrn9y1rpjG0PPRwZaG762Gv5weE0d8hYyEpx5+zk3MqYQa2gIY8OLVixXMh3zM0UxnxeLQOxZ2Df56ChKPpyCHmM0c2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass smtp.mailfrom=nypd.org; dmarc=pass action=none header.from=nypd.org; dkim=pass header.d=nypd.org; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nypd.org; s=selector2; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=EmOFxxQ1I2Uo5VrRl1CpmIO5JgoNOAEit46TlmRdyZg=; b=z9EYDeEOznI2JVExq3S8TcWJvMI43BwSGidudijrFn0SwCMk1CtMkbdvKVkAt6qUNyl9jP6zhuJZgSqymXo42oBaonkfpWaNZdT7WeLaklDDyTNbzqmP0aoIeAQwWMTdWZixMjSkNZZpWvYwNHBHHtRLD/5LaIYVLCpoF8VQgsk=
+Received: from PH0PR09MB8378.namprd09.prod.outlook.com (2603:10b6:510:6d::18) by MW4PR09MB10106.namprd09.prod.outlook.com (2603:10b6:303:1f7::21) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8158.27; Thu, 21 Nov 2024 15:25:37 +0000
+Received: from PH0PR09MB8378.namprd09.prod.outlook.com ([fe80::5753:bd4f:ffcb:77c8]) by PH0PR09MB8378.namprd09.prod.outlook.com ([fe80::5753:bd4f:ffcb:77c8%4]) with mapi id 15.20.8182.014; Thu, 21 Nov 2024 15:25:37 +0000
+From: &quot;ALEXANDER, SAMANTHA&quot; &lt;SAMANTHA.ALEXANDER@nypd.org&gt;
+Subject: Paralegal Aide I Job Vacancy, Job ID: 638126 (NYPD)
+Thread-Topic: Paralegal Aide I Job Vacancy, Job ID: 638126 (NYPD)
+Thread-Index: Ads8JjyCdJ3J5PF3SzSZ4qm+7lRXIg==
+Date: Thu, 21 Nov 2024 15:25:37 +0000
+Message-ID: &lt;PH0PR09MB837886F5639B00CE4BCC5A3CE2222@PH0PR09MB8378.namprd09.prod.outlook.com&gt;
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=nypd.org;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR09MB8378:EE_|MW4PR09MB10106:EE_
+x-ms-office365-filtering-correlation-id: 686e389e-9731-46c7-e02d-08dd0a40c01a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|8096899003|38070700018;
+x-microsoft-antispam-message-info: sfbnXv0xdKFfQIxUPHfGdBgT167iZRtua9HX457ZaiyegNDzQs++cKJaW/e9sEzEce5vNH9ZtSUQwwycgLJiNeGwCYyQvsTYeVxstTbGi51ihoFzfxASa5oe18v/uTR9eSmWmWf6ioMnF7fgIOu+oI64x6JGd+WWS2ddhuS0mk9lwdpeucRW2XupWjOqYxOPwZKZgwWnNorK804YoBYiJfaOSMsAM2BYqmvCyQZjdn06Lfq/pbMPD1SD1QP7rxJwZdXl8gMNGOCX8q0+rUGu2xwdeERCsCjm22jpGDH+1aAGuSic4nLeiDgHD9T5/dNVY95evJFG6y7AIOfprcoyjYfRSkuDV9LpOhB1vmYtaEz+SlJ67CXjzR7FsOHFL2a8xGT5CDhePvT11Aa73CZcbSTDkXGohz5MLXUsjBbran+wgenMICxZpCv8F1awHkRYWld0D54aZDjI8gjzdq8vPjXJ5wfvv5XfNuS3IUDD2D+MhDfjpIKiUaT4EwlU8SfxPOGtR0NIeVybr3KTDRP9Q4NBGfw7APZj1b0djN7ytBi36upOFP1yv9CBdJHMXLu+Im6oPYpGGBy7rkY151twbxuOLsS1e7aRtWVSH0MYZiXzcyRV3b1nxyxxh+4783Em5rag54xx4HthAjE+d/tucwq+FDWOjk9lnbSI/4GLO0+cV7Z7PhovzVeOZuRb47Wbq0FqNU3K3+qWpIGgARr0A7jG3sRiQeyCirTWT8FZggf0ViD1n07MqTRsv1hoB3mj4lQ7QKTiDkrQEk+2x7j0EyTWpddiWDUmeO6w9GyC1XLczWdetjGyZgpgjgdQ7BcbxOY3BKxMzxRrMZo7Xq3hS+XQeOT2LKC8CLbxDLeucFoB2U3CXPDCFadCUbCjfcgaPL9HZdycr4MDTAOiLKzJSkcDUyZ0AMgRZlGMrjLKWQuhDQQ9Zdq6YLCUGIzTDC6mX8R/fBK4rCuzvZAHpOA2GS+iFQGgdLP5LOaNtZDXn5J5iOmXKlZMs9LxxniwQ7KK7wUfrkAqNuLPPS3XLeH6eXmE9N0FgMPVoSuRq7NFUaaeWY44Nv6iITu0IViTIP0XhWmMY55tNfyo01/fFhpL8OkJ7LZazi5wXV/V1cNRbTEwywJRFcl21K3zoUMzfzMEw+1OZ3TNsCys4oQ2+iv237bohE3GsvMnTOTYL6qKvhBzFRs4WI/i4YKxZsvqS00WOF+of77BxzNTR7J22wV4hJsUUuQryfb5GfzK7/WApTZ9ytljaycfI21J88mGrP9W74/5fCr2apCmpJVIHTaa3wDchiUtrtt4PDfc9Esa08kyQonHi6LP9k/ylRasGsnKdvKpMrxb0EbaA2SdgkCuwjxl/MR+5tI+dLtUpx4g1gMwm0MZ7SCQIkfXiguZoLwp
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR09MB8378.namprd09.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(8096899003)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: s24NuJBLmdbUbakS8zU8HARFMUFQ0KP2iA6LZPgxorDCC9Sn0gsIKueUeDkuQ/LQvouiBykG5Q8oL/9hLnI8o7CFkfUhP0s8p/AG7cQp+zZiX50Nj5aG2hXC3BTfyDkbDpam83/4RauuSbRBKQ5SHqt/7HBOjm6H9VLoj6wMCyc4/QiYPhCRh+wI9NoJaeJ3WL9WZj/GHk9U4++iMyEZMlEjLJgcCh57d/vZGeOzy5SKHMuwNHQr/mMj+ZN3tDDEi5B6A5nMCdXjAzQHknF6O1BwsEhL2P/pGpjMI5yrFApK9y9jlbMuDb1hWzgviGKSa+5OfKG7QnqN54to2815UjdPrU8lK4c7bGLW8dkRagvzNhhItNilglL11Yfx7YPsHgnwYZlu2REu41Ch2mZoVYrRPlGvcXaFOKYxTBbq12T1zz0Hu4aPxEKaihIQJg2ShmJPgRAoR+gGqbuST9wfm+PAO8Fkdgi1eXPa+2DslV/N0I4J8FNpP569f9W/tr6Zv383vi40Pr6cyUkYQRmXGqPSckHy0V9h2y5Zgg2vF/5+SH99bekpmW3x1ej8JH9B4VZzHK0GuQ50VvcegadpK2hfdriGmv0VW0gccWhQeq86ekkaY/x+s//+1YxdKlImA1CPlIBLUJNVl2Zn0Ww3znomFIDVqHg4y+4jWnbVmx0zHPL12tiysuG3Jncq9+6SfAq5HUFXjHEBrJ06g37qbQ4clQv95XzhexXOkM+MEZwLVdSclwswnh3pntVSg0/9PXyDT+A+JipC14QycDHp6eTKs8k0ZhZrDWoZV4ydHV7AnkqPgdFgA6Ve2WfTIoFShsMConqzDALm14ihSdASFQc3f3/K3/ezq6ZHLAcGXbDmeb6FBKMLF6Qcm5Ei2XjjEY6nYt1NSHFPtSRuBlI/pNRCXLIFdJOZd4P2bO9VjVtBg/vNgkXgOtYcWIPM5Xe8NC4w9cN+/RAOB64cGO6XA9weRlmHSttKiRoqa97jLetdHTtV3Nd3TJfgyk0yDXeWNe/GdTdNVOwrzW91+2Tcl3rV+cx5/zqeEI+fEapPUVzCtmRbwP2/0l5iF9yAr86KBYOChc5jJtFkzZb+BSP7iob7lBoc+oxje+HAwIiGDPJA+fLDYKemOZHNkRJYuO8PQj8FFHhfpwZRtbx5tv+gbrgZ1kE+NYuEKkL54MjOQHtgE+MnCtIkeJNogZrynUSFsvul8h1asORC4EQzj2DDizn6wwc3lRULBm8/+Z23YIZzhicVfy4L+9hjeLMLrh6yis9j2OBM5UHLICabuGQa1tcZbov+qJW16LakT8JmYex70sVROduWENLCXvHN2TEEox6pXa1yx3eamxB8tw2ahEmdN5pkR2JpqSrDh66LJt8WtTw13/ChhSzD7W8CYNhDWV8yroewUKzgJd/VD/BxkgdQrY2GT4B0UEjoH4MCmGnh4H7BLxYnUTpkUmVG13ltNmeHQDYB9ElYzRofZyifsNaIz8w93BwGeRakYnjSRRrbnUw5sFJ0B5YgT5KGq8TPlZU0mvHGI2rNKsY84gCAmZr+RuA57e1d3Rm8ENPfWyilLTWy4hM8zcZXljmM3A5+
+Content-Type: multipart/related; boundary=&quot;_004_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_&quot;; type=&quot;multipart/alternative&quot;
+MIME-Version: 1.0
+X-OriginatorOrg: nypd.org
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR09MB8378.namprd09.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 686e389e-9731-46c7-e02d-08dd0a40c01a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2024 15:25:37.3523 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2b9f57eb-78d1-46fb-be83-a2afdd7c6043
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR09MB10106
+
+--_004_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_
+Content-Type: multipart/alternative; boundary=&quot;_000_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_&quot;
+
+--_000_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_
+Content-Type: text/plain; charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+
+
+This email is being sent to you as we have received notification you have t=
+aken and passed DCAS&#x27; Paralegal Aide exam #4070. We would like to inform yo=
+u about an exciting opportunity within our Legal Bureau. Please review the =
+job posting and if interested in the position, apply online using the follo=
+wing link: Paralegal Aide | City of New York Jobs&lt;https://cityjobs.nyc.gov/=
+job/paralegal-aide-in-nyc-all-boros-jid-27855&gt;.
+
+
+
+If you are deemed qualified and the hiring Command has selected you for an =
+interview, you will be contacted directly.
+
+
+
+Best of luck!
+
+
+Samantha Alexander
+Human Resources Division
+
+[PERSONNEL BUREAU]
+
+--_000_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_
+Content-Type: text/html; charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;html xmlns:v=3D&quot;urn:schemas-microsoft-com:vml&quot; xmlns:o=3D&quot;urn:schemas-micr=
+osoft-com:office:office&quot; xmlns:w=3D&quot;urn:schemas-microsoft-com:office:word&quot; =
+xmlns:m=3D&quot;http://schemas.microsoft.com/office/2004/12/omml&quot; xmlns=3D&quot;http:=
+//www.w3.org/TR/REC-html40&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=3D&quot;Content-Type&quot; content=3D&quot;text/html; charset=3Dus-ascii&quot;=
+&gt;
+&lt;meta name=3D&quot;Generator&quot; content=3D&quot;Microsoft Word 15 (filtered medium)&quot;&gt;
+&lt;!--[if !mso]&gt;&lt;style&gt;v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+&lt;/style&gt;&lt;![endif]--&gt;&lt;style&gt;&lt;!--
+/* Font Definitions */
+@font-face
+=09{font-family:Calibri;
+=09panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+=09{margin:0in;
+=09margin-bottom:.0001pt;
+=09font-size:11.0pt;
+=09font-family:&quot;Calibri&quot;,sans-serif;}
+a:link, span.MsoHyperlink
+=09{mso-style-priority:99;
+=09color:#0563C1;
+=09text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+=09{mso-style-priority:99;
+=09color:#954F72;
+=09text-decoration:underline;}
+p.msonormal0, li.msonormal0, div.msonormal0
+=09{mso-style-name:msonormal;
+=09mso-margin-top-alt:auto;
+=09margin-right:0in;
+=09mso-margin-bottom-alt:auto;
+=09margin-left:0in;
+=09font-size:12.0pt;
+=09font-family:&quot;Times New Roman&quot;,serif;}
+p.xmsonormal, li.xmsonormal, div.xmsonormal
+=09{mso-style-name:x_msonormal;
+=09margin:0in;
+=09margin-bottom:.0001pt;
+=09font-size:12.0pt;
+=09font-family:&quot;Times New Roman&quot;,serif;}
+span.EmailStyle19
+=09{mso-style-type:personal;
+=09font-family:&quot;Arial&quot;,sans-serif;
+=09color:windowtext;
+=09font-weight:normal;
+=09font-style:normal;}
+span.EmailStyle20
+=09{mso-style-type:personal;
+=09font-family:&quot;Arial&quot;,sans-serif;
+=09color:windowtext;
+=09font-weight:normal;
+=09font-style:normal;}
+span.EmailStyle21
+=09{mso-style-type:personal-compose;
+=09font-family:&quot;Arial&quot;,sans-serif;
+=09color:windowtext;
+=09font-weight:normal;
+=09font-style:normal;}
+.MsoChpDefault
+=09{mso-style-type:export-only;
+=09font-size:10.0pt;}
+@page WordSection1
+=09{size:8.5in 11.0in;
+=09margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+=09{page:WordSection1;}
+--&gt;&lt;/style&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;
+&lt;o:shapedefaults v:ext=3D&quot;edit&quot; spidmax=3D&quot;1026&quot; /&gt;
+&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;
+&lt;o:shapelayout v:ext=3D&quot;edit&quot;&gt;
+&lt;o:idmap v:ext=3D&quot;edit&quot; data=3D&quot;1&quot; /&gt;
+&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body lang=3D&quot;EN-US&quot; link=3D&quot;#0563C1&quot; vlink=3D&quot;#954F72&quot;&gt;
+&lt;div class=3D&quot;WordSection1&quot;&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif;color:black&quot;&gt;Hello,&lt;/span&gt;&lt;span style=3D&quot;font-size:11=
+.0pt;font-family:&amp;quot;Arial&amp;quot;,sans-serif&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif;color:black&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=3D&quot;font-size:11=
+.0pt;font-family:&amp;quot;Arial&amp;quot;,sans-serif&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif;color:black&quot;&gt;This email is being sent to you as we ha=
+ve received notification you have taken and passed DCAS&amp;#8217;&lt;/span&gt;&lt;span =
+style=3D&quot;font-size:11.0pt;font-family:&amp;quot;Arial&amp;quot;,sans-serif&quot;&gt;
+ Paralegal Aide&lt;span style=3D&quot;color:black&quot;&gt; exam #&lt;/span&gt;4070&lt;span style=3D=
+&quot;color:black&quot;&gt;. We would like to inform you about an exciting opportunity w=
+ithin
+&lt;/span&gt;our&lt;span style=3D&quot;color:black&quot;&gt; &lt;/span&gt;Legal Bureau&lt;span style=3D&quot;co=
+lor:black&quot;&gt;. Please review the job posting and if interested in the positio=
+n, apply online using the following link:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;Calibri&amp;quo=
+t;,sans-serif&quot;&gt;&lt;a href=3D&quot;https://cityjobs.nyc.gov/job/paralegal-aide-in-ny=
+c-all-boros-jid-27855&quot;&gt;&lt;span style=3D&quot;color:blue&quot;&gt;Paralegal Aide | City of =
+New York Jobs&lt;/span&gt;&lt;/a&gt;.&lt;/span&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family=
+:&amp;quot;Arial&amp;quot;,sans-serif;color:black&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif;color:black&quot;&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif;color:black&quot;&gt;If you are deemed qualified and the hiri=
+ng Command has selected you for an interview, you will be contacted directl=
+y.&lt;/span&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;Arial&amp;quot;,sans=
+-serif&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif&quot;&gt;&amp;nbsp;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;xmsonormal&quot;&gt;&lt;span style=3D&quot;font-size:11.0pt;font-family:&amp;quot;A=
+rial&amp;quot;,sans-serif&quot;&gt;Best of luck!&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;span style=3D&quot;font-family:&amp;quot;Arial&amp;quot;,sans-se=
+rif&quot;&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;span style=3D&quot;font-family:&amp;quot;Arial&amp;quot;,sans-se=
+rif;color:black&quot;&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;span style=3D&quot;font-family:&amp;quot;Arial&amp;quot;,sans-se=
+rif;color:black&quot;&gt;Samantha Alexander&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;span style=3D&quot;font-family:&amp;quot;Arial&amp;quot;,sans-se=
+rif;color:black&quot;&gt;Human Resources Division&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;span style=3D&quot;font-family:&amp;quot;Arial&amp;quot;,sans-se=
+rif;color:black&quot;&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class=3D&quot;MsoNormal&quot;&gt;&lt;img border=3D&quot;0&quot; width=3D&quot;165&quot; height=3D&quot;165&quot; style=
+=3D&quot;width:1.7187in;height:1.7187in&quot; id=3D&quot;Picture_x0020_1&quot; src=3D&quot;cid:image=
+003.png@01DB083D.EB7D8260&quot; alt=3D&quot;PERSONNEL BUREAU&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+--_000_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_--
+--_004_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_
+Content-Type: image/png; name=&quot;image003.png&quot;
+Content-Description: image003.png
+Content-Disposition: inline; filename=&quot;image003.png&quot;; size=58617; creation-date=&quot;Mon, 16 Sep 2024 17:39:59 GMT&quot;; modification-date=&quot;Thu, 21 Nov 2024 15:25:36 GMT&quot;
+Content-ID: &lt;image003.png@01DB083D.EB7D8260&gt;
+Content-Transfer-Encoding: base64
+
+
+--_004_PH0PR09MB837886F5639B00CE4BCC5A3CE2222PH0PR09MB8378namp_--</code></pre><p id="19f7aacb-2d23-80ff-8ff0-ede7dda33254" class="">
+</p><p id="19f7aacb-2d23-8027-8fc5-f32e1edd300f" class="">
+</p><p id="19f7aacb-2d23-8019-87d3-c0e00072acd6" class=""><br/>R18.  What is the HOL blocking issue in HTTP/1.1? How does HTTP/2 attempt to<br/>solve it?<br/>Head-of-Line blocking - a single, slow request on a connection delays all subsequent requests on that same connection, even if they can be processed faster. <br/></p><p id="19f7aacb-2d23-8010-ba88-fce9a6efc9a8" class="">HTTP/2 solves it by breaking each message into small frames, and interleave the request and response messages on the same TCP connection.</p><p id="19f7aacb-2d23-801d-9672-eec8c42606e1" class="">
+</p><p id="19f7aacb-2d23-8009-9a1a-c0679d22e08e" class=""><br/>R19.  Is it possible for an organization’s Web server and mail server to have<br/>exactly the same alias for a hostname (for example, foo.com)? What would<br/>be the type for the RR that contains the hostname of the mail server?<br/><br/>Yes it is possible for the mail server and web server to have the same alias for a hostname. The type for the RR that contains the hostname of the mail server would be the MX record.<br/></p><p id="19f7aacb-2d23-805b-8ce1-d9d019776aaf" class=""><br/>R20.  Look over your received e-mails, and examine the header of a message sent from a user with a .edu e-mail address. Is it possible to determine from the header the IP address of the host from which the message was sent? Do the same for a message sent from a Gmail account.<br/></p><p id="19f7aacb-2d23-8047-91ae-ec004feb30a1" class="">You will be able to determine the IP address of the host with an edu email, but not a Gmail account.</p><h1 id="19f7aacb-2d23-806c-b4e2-eda83c1daf0b" class="">Section 2.5</h1><p id="1a07aacb-2d23-80f9-9422-d4a83621bf8a" class="">R21.  In BitTorrent, suppose Alice provides chunks to Bob throughout a 30-second<br/>interval. Will Bob necessarily return the favor and provide chunks to Alice in<br/>this same interval? Why or why not?<br/></p><p id="1a07aacb-2d23-800e-ae58-ff8016300035" class="">It won’t necessarily occur, as Alice would have to be in the top 4 neighbors of Bob for Bob to send out chunks to her.</p><p id="1a07aacb-2d23-80fb-bfdf-ca6b17925117" class="">
+</p><p id="1a07aacb-2d23-80d1-9ba5-ce20faa79460" class="">R22.  Consider a new peer Alice that joins BitTorrent without possessing any chunks.<br/>Without any chunks, she cannot become a top-four uploader for any of the other<br/>peers, since she has nothing to upload. How then will Alice get her first chunk?<br/></p><p id="1a07aacb-2d23-80cc-bc99-f5403c4da5b1" class="">She must receive chunks from one of her neighbors - she will eventually be chosen</p><p id="1a07aacb-2d23-80a5-854a-c7f1470692b8" class="">
+</p><p id="1a07aacb-2d23-808f-94d5-ceb524854258" class="">R23.  What is an overlay network? Does it include routers? What are the edges in<br/>the overlay network?<br/>An overlay network in a P2P file sharing system consists of the nodes participating in the file sharing system and the logical links between the nodes. There is a logical link from node A to node B if there is a semi-permanent TCP connection between A and B. An overlay network does not include routers. <br/>	<br/></p><h1 id="1a47aacb-2d23-806d-accc-ef2eb1a8c097" class="">Section 2.6</h1><p id="1a47aacb-2d23-80c8-a442-c6873f582f73" class=""><br/>R24.  CDNs typically adopt one of two different server placement philosophies.<br/>Name and briefly describe them.<br/></p><p id="1a47aacb-2d23-80d2-94a6-c405da4a25ed" class="">Enter Deep: Deploying server clsuters in access ISPs all over the world. The goal is to get close to end usrs, therby improving user-perceived dealy and throughput by decreasing the number of links and routers between the end user and the CDN server from which it receives content.</p><p id="1a47aacb-2d23-80cb-a124-d6b132b9a69b" class="">Bring Deep: Bring the ISPs home by building large clusters at a smaller number of sites. Instead of getting inside the access ISPs, these CDNs typically place their clusters in IXPs.</p><p id="1a47aacb-2d23-807b-9a13-f065ab6bb641" class=""><br/>R25.  Besides network-related considerations such as delay, loss, and bandwidth<br/>performance, there are other important factors that go into designing a CDN<br/>server selection strategy. What are they?<br/><br/>	<br/>Load-balancing, diurnal effects, variations across DNS servers within a network.<br/><br/></p><h1 id="1a47aacb-2d23-8012-8525-c1838aac8bed" class="">Section 2.7</h1><p id="1a47aacb-2d23-807b-a5e5-ddb8100cecef" class="">R26. In Section 2.7, the UDP server described needed only one socket, whereas<br/>the TCP server needed two sockets. Why? If the TCP server were to support<br/><br/><em>n </em>simultaneous connections, each from a different client host, how many<br/>sockets would the TCP server need?<br/>All data from different clients enters through the same socket in a UDP connection. If there were <br/><em>n </em>simultaneous connections, the TCP server would need <em>n+1 sockets.</em></p><p id="1a47aacb-2d23-80ed-a1d0-fb7146b5bcc6" class="">
+</p><p id="1a47aacb-2d23-808a-91b0-c01e004d9a4e" class="">R27. For the client-server application over TCP described in Section 2.7, why must the server program be executed before the client program? For the client-server application over UDP, why may the client program be executed before the server program?</p><p id="1a47aacb-2d23-80bb-a3db-efa792f7463f" class="">If the server isn’t running, the client won’t be able to make the connection. In UDP the client does not initiate connections immediately upon executio. </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Viruses and Worms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17f7aacb-2d23-802e-b2b5-d3b3d89c9524" class="page sans"><header><h1 class="page-title">Viruses and Worms</h1><p class="page-description"></p></header><div class="page-body"><p id="17f7aacb-2d23-8035-9c3c-f0fd42576b50" class="">Viruses are able to reproduce themselves</p><p id="17f7aacb-2d23-8032-a65c-d75df7893a38" class="">Reproduces through the file systems</p><p id="17f7aacb-2d23-800a-8440-f064ef132e27" class="">Can be bad or just annoying</p><p id="17f7aacb-2d23-80d4-ad35-d8f0b2716a6e" class="">Program viruses - its part of the application</p><p id="17f7aacb-2d23-80ea-a6aa-f3754f658317" class="">Boot sector viruses - sit in the boot sector</p><p id="17f7aacb-2d23-80e2-beb1-cbba21549360" class="">Script viruses - operating system and browser-based</p><p id="17f7aacb-2d23-808e-9f58-dcc5470e8d1d" class="">Macro viruses - common in Microsoft Office</p><p id="17f7aacb-2d23-8063-9a9c-c5af87be6372" class="">Fileless virus - a stealth attack - does a good job of avoiding anti-virus detection</p><p id="17f7aacb-2d23-80cc-ba3b-d532aba28c9a" class="">
+</p><p id="17f7aacb-2d23-8091-851d-c522cd1d0972" class="">
+</p><h3 id="17f7aacb-2d23-808c-8fc6-d87faeaca73f" class=""><strong>1. What is a Virus?</strong></h3><p id="17f7aacb-2d23-80b2-a1e6-cacd357b3edb" class="">A <strong>virus</strong> is a type of malicious code or software that attaches itself to legitimate programs, files, or boot sectors. It requires user interaction, such as opening a file or running a program, to spread and infect systems. Viruses often perform harmful activities such as corrupting files, consuming system resources, and compromising security.</p><hr id="17f7aacb-2d23-8025-a233-cc62872666f9"/><h3 id="17f7aacb-2d23-8093-8b93-faa82dd08f90" class=""><strong>2. Characteristics of a Virus</strong></h3><ul id="17f7aacb-2d23-80e2-a4da-eaad02f3c6ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Replication</strong>: Self-replicates by infecting other programs or files.</li></ul><ul id="17f7aacb-2d23-805f-87bb-d4991b32bdd1" class="bulleted-list"><li style="list-style-type:disc"><strong>Activation</strong>: Executes its malicious payload when a specific condition or event is triggered.</li></ul><ul id="17f7aacb-2d23-8082-902b-de3ce3278876" class="bulleted-list"><li style="list-style-type:disc"><strong>Host Dependency</strong>: Needs a host file or program to propagate.</li></ul><ul id="17f7aacb-2d23-8047-a4ac-c86d18f56fb4" class="bulleted-list"><li style="list-style-type:disc"><strong>Spread Mechanism</strong>: Relies on user actions (e.g., sharing files, connecting to infected drives).</li></ul><hr id="17f7aacb-2d23-80cb-aa4b-ccf63d1299d7"/><h3 id="17f7aacb-2d23-80a2-a462-fa4a615f667d" class=""><strong>3. Lifecycle of a Virus</strong></h3><ol type="1" id="17f7aacb-2d23-808f-885b-e219d778e3e2" class="numbered-list" start="1"><li><strong>Infection</strong>: The virus attaches itself to a host file or program.</li></ol><ol type="1" id="17f7aacb-2d23-8058-aa8e-eb3ff9697c48" class="numbered-list" start="2"><li><strong>Replication</strong>: It spreads to other files or systems when the infected program or file is accessed.</li></ol><ol type="1" id="17f7aacb-2d23-80fe-aa5b-ef1b309d2076" class="numbered-list" start="3"><li><strong>Activation</strong>: Triggered by specific actions (e.g., opening a file, specific dates, or conditions).</li></ol><ol type="1" id="17f7aacb-2d23-807c-b866-c35983451d80" class="numbered-list" start="4"><li><strong>Payload Execution</strong>: Carries out its intended malicious function (e.g., data deletion, spreading further).</li></ol><hr id="17f7aacb-2d23-80ce-be32-f0e0c058d3c7"/><h3 id="17f7aacb-2d23-8015-990b-e57f6bbb8d73" class=""><strong>4. Types of Viruses</strong></h3><ol type="1" id="17f7aacb-2d23-800d-a2d0-c4538249158e" class="numbered-list" start="1"><li><strong>File Infectors</strong><ul id="17f7aacb-2d23-8016-893a-d4b108401c0e" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Attaches itself to executable files (.exe, .dll).</li></ul><ul id="17f7aacb-2d23-8020-ba01-ff0b50ae4596" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Parasitic viruses infect files and spread when the file is executed.</li></ul><ul id="17f7aacb-2d23-8031-89c3-f9d9726a8711" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Corrupts or modifies files, leading to program failures.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-802d-a236-c1e3fc1c9909" class="numbered-list" start="2"><li><strong>Boot Sector Viruses</strong><ul id="17f7aacb-2d23-8013-beb1-ef181bc74742" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Infects the master boot record (MBR) or boot sector of storage devices.</li></ul><ul id="17f7aacb-2d23-8082-9e12-fadff51b7058" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Michelangelo virus.</li></ul><ul id="17f7aacb-2d23-80fc-9020-fcfa1b202e2d" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Prevents the operating system from booting correctly.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8084-914c-f7b03e80449f" class="numbered-list" start="3"><li><strong>Macro Viruses</strong><ul id="17f7aacb-2d23-8015-9e5f-fda0217a4582" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Targets macro-enabled applications like Microsoft Office (e.g., .doc, .xls).</li></ul><ul id="17f7aacb-2d23-80c4-81c5-e00f3d793526" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Melissa virus.</li></ul><ul id="17f7aacb-2d23-8089-b03d-c0c09515b23b" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Automates malicious actions within documents, spreads via email attachments.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80e1-beef-c4fc273ac211" class="numbered-list" start="4"><li><strong>Polymorphic Viruses</strong><ul id="17f7aacb-2d23-806f-858f-d811fbf56ea9" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Alters its code to evade detection by signature-based antivirus tools.</li></ul><ul id="17f7aacb-2d23-80b3-b3f3-c828a054ff38" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Storm Worm.</li></ul><ul id="17f7aacb-2d23-807c-a3e0-f18656b4fc32" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Harder to detect, leading to prolonged infection.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80a0-880d-e8e4fc2ca7c6" class="numbered-list" start="5"><li><strong>Metamorphic Viruses</strong><ul id="17f7aacb-2d23-808f-98c4-f08145d487d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Rewrites its own code entirely upon replication.</li></ul><ul id="17f7aacb-2d23-8038-9fb4-e1245aa6cd1b" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Simile virus.</li></ul><ul id="17f7aacb-2d23-80c1-86cc-c9bd718fe4a9" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Makes detection even more difficult than polymorphic viruses.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80cb-b5e0-ee4a34d7b1d2" class="numbered-list" start="6"><li><strong>Resident Viruses</strong><ul id="17f7aacb-2d23-8073-9d49-dafc58723008" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Stays in memory, infecting other files when executed.</li></ul><ul id="17f7aacb-2d23-8094-a9ef-f8e2ecb9607a" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Randex virus.</li></ul><ul id="17f7aacb-2d23-80bb-827d-f858e9b98b44" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Increases infection risk as long as the system is running.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8068-b613-e092f4dd2c24" class="numbered-list" start="7"><li><strong>Non-Resident Viruses</strong><ul id="17f7aacb-2d23-80ed-b56a-dab500a4334b" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Does not remain in memory and infects files only when executed.</li></ul><ul id="17f7aacb-2d23-8069-9c35-ce33e6b7d070" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Cascade virus.</li></ul><ul id="17f7aacb-2d23-8069-8cfd-c78af2340350" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Typically easier to detect and remove.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8098-bff2-cf82b015f254" class="numbered-list" start="8"><li><strong>Multipartite Viruses</strong><ul id="17f7aacb-2d23-8098-87be-f08383bb751d" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Infects multiple parts of the system (e.g., files, boot sectors).</li></ul><ul id="17f7aacb-2d23-80f7-92b7-d3554b072abd" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Tequila virus.</li></ul><ul id="17f7aacb-2d23-80dd-b0e7-d8fc26b7e0d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Harder to eradicate due to multiple infection points.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-807b-8aef-cab16974a4a5" class="numbered-list" start="9"><li><strong>Email Viruses</strong><ul id="17f7aacb-2d23-8003-b1e1-f9c107887f2e" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Spreads through email attachments or links.</li></ul><ul id="17f7aacb-2d23-800d-8d9c-cf3d532098ec" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: ILOVEYOU virus.</li></ul><ul id="17f7aacb-2d23-80f0-8a5d-dcd591079aca" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Can spread rapidly across networks and steal sensitive information.</li></ul></li></ol><hr id="17f7aacb-2d23-80ef-9210-e41deb1bd5f6"/><h3 id="17f7aacb-2d23-80ce-8425-df435fd5fe9f" class=""><strong>5. Virus Payloads</strong></h3><ul id="17f7aacb-2d23-8011-a6cd-ebb41188143d" class="bulleted-list"><li style="list-style-type:disc"><strong>Destructive Payloads</strong>: Delete or corrupt files and system data.</li></ul><ul id="17f7aacb-2d23-80e4-a814-d1152b01c886" class="bulleted-list"><li style="list-style-type:disc"><strong>Payloads with Propagation Intent</strong>: Spread the virus without causing immediate harm.</li></ul><ul id="17f7aacb-2d23-802c-87ed-d215b56dab41" class="bulleted-list"><li style="list-style-type:disc"><strong>Surveillance Payloads</strong>: Monitor user behavior or system activities.</li></ul><ul id="17f7aacb-2d23-8042-85cd-c7b6aa2cc21a" class="bulleted-list"><li style="list-style-type:disc"><strong>Disruptive Payloads</strong>: Slow down systems or cause operational interruptions.</li></ul><hr id="17f7aacb-2d23-801f-bf88-d2dce71b0cf4"/><h3 id="17f7aacb-2d23-800c-974d-e657e10c44b8" class=""><strong>6. How Viruses Spread</strong></h3><ul id="17f7aacb-2d23-80fa-aaf4-c6f21dc8b593" class="bulleted-list"><li style="list-style-type:disc"><strong>Infected Attachments</strong>: Email or chat attachments containing viruses.</li></ul><ul id="17f7aacb-2d23-80fa-be14-dc4aa6c281f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Removable Media</strong>: USB drives or external storage with infected files.</li></ul><ul id="17f7aacb-2d23-809d-8774-cec9e5c9f0c9" class="bulleted-list"><li style="list-style-type:disc"><strong>File Downloads</strong>: From untrusted sources or websites.</li></ul><ul id="17f7aacb-2d23-80e7-ac3a-c7561a1fd1bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Network Shares</strong>: Spread across shared drives or folders.</li></ul><ul id="17f7aacb-2d23-808f-86e8-ec4172120a13" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploit Kits</strong>: Leverage vulnerabilities to deliver viruses.</li></ul><hr id="17f7aacb-2d23-8093-a653-dc929ad0a2cc"/><h3 id="17f7aacb-2d23-80ab-a881-d5e3dc57e3d3" class=""><strong>7. Symptoms of a Virus Infection</strong></h3><ul id="17f7aacb-2d23-80cf-bede-cc5b360b31ed" class="bulleted-list"><li style="list-style-type:disc">Slower system performance.</li></ul><ul id="17f7aacb-2d23-8036-b9e2-e3860340288d" class="bulleted-list"><li style="list-style-type:disc">Frequent crashes or freezes.</li></ul><ul id="17f7aacb-2d23-8020-be14-fcb31021b3da" class="bulleted-list"><li style="list-style-type:disc">Unexpected pop-ups or error messages.</li></ul><ul id="17f7aacb-2d23-80a3-a952-efaf5a38a80d" class="bulleted-list"><li style="list-style-type:disc">Unusual file modifications or corruptions.</li></ul><ul id="17f7aacb-2d23-8060-be0a-c78fbd0e6ecb" class="bulleted-list"><li style="list-style-type:disc">Increased network activity without user action.</li></ul><ul id="17f7aacb-2d23-8049-b615-ffa6c35b5f85" class="bulleted-list"><li style="list-style-type:disc">Missing files or folders.</li></ul><ul id="17f7aacb-2d23-805d-9efd-f55a951e5a99" class="bulleted-list"><li style="list-style-type:disc">Unrecognized programs running in the background.</li></ul><hr id="17f7aacb-2d23-80cf-945a-f6e261d63924"/><h3 id="17f7aacb-2d23-80dc-81cd-cdfd66e5ce8d" class=""><strong>8. Prevention of Viruses</strong></h3><ol type="1" id="17f7aacb-2d23-8006-a62f-d375ced1fa31" class="numbered-list" start="1"><li><strong>Antivirus Software</strong>: Use reputable antivirus programs and keep them updated.</li></ol><ol type="1" id="17f7aacb-2d23-807c-ad5a-c5af5918e2eb" class="numbered-list" start="2"><li><strong>Regular Updates</strong>: Keep operating systems, applications, and firmware patched.</li></ol><ol type="1" id="17f7aacb-2d23-807e-b39a-d13608e8fc39" class="numbered-list" start="3"><li><strong>Email Security</strong>: Avoid opening unexpected email attachments or clicking unknown links.</li></ol><ol type="1" id="17f7aacb-2d23-8007-b07e-f120eb8e6d6c" class="numbered-list" start="4"><li><strong>Safe Browsing</strong>: Avoid visiting suspicious websites or downloading from untrusted sources.</li></ol><ol type="1" id="17f7aacb-2d23-80ea-a2a4-f62e54ddf7b9" class="numbered-list" start="5"><li><strong>Backup Data</strong>: Maintain regular backups to minimize data loss in case of infection.</li></ol><ol type="1" id="17f7aacb-2d23-8053-9320-d87e78cec45e" class="numbered-list" start="6"><li><strong>Disable Macros</strong>: In Office applications, disable macros by default unless absolutely necessary.</li></ol><ol type="1" id="17f7aacb-2d23-8085-bb58-e98daab1c967" class="numbered-list" start="7"><li><strong>Use Firewalls</strong>: Protect against unauthorized access to networks.</li></ol><hr id="17f7aacb-2d23-80f7-8cf9-e170f7a27f06"/><h3 id="17f7aacb-2d23-8034-a47c-d1022097f823" class=""><strong>9. Detection and Removal</strong></h3><ul id="17f7aacb-2d23-8085-9ec0-e8c1368074f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Signature-Based Detection</strong>: Scans for known virus patterns.</li></ul><ul id="17f7aacb-2d23-8034-94ed-d9168a6efaaa" class="bulleted-list"><li style="list-style-type:disc"><strong>Behavioral Analysis</strong>: Monitors unusual activities like unexpected file modifications.</li></ul><ul id="17f7aacb-2d23-80d1-b474-eb46ec061b64" class="bulleted-list"><li style="list-style-type:disc"><strong>Heuristic Analysis</strong>: Identifies new viruses by analyzing code behavior.</li></ul><ul id="17f7aacb-2d23-805c-b689-f3bff59fc287" class="bulleted-list"><li style="list-style-type:disc"><strong>System Restoration</strong>: Use backups or system restore points to recover.</li></ul><ul id="17f7aacb-2d23-805d-8c0c-f7445e28b46c" class="bulleted-list"><li style="list-style-type:disc"><strong>Manual Removal</strong>: In extreme cases, manually delete infected files or format the system.</li></ul><p id="17f7aacb-2d23-8049-992e-c9571721735b" class="">
+</p><h3 id="17f7aacb-2d23-8004-9ad1-d79c2a9e59eb" class=""><strong>1. What is a Worm?</strong></h3><p id="17f7aacb-2d23-80ff-b3c9-e39381037bc4" class="">A <strong>worm</strong> is a type of self-replicating malware that spreads independently across networks and systems without needing to attach itself to a host file or program. Unlike viruses, worms are standalone malicious programs and primarily exploit vulnerabilities or weaknesses in network protocols, operating systems, or applications.</p><hr id="17f7aacb-2d23-80ba-b6d2-f83a4eb027ad"/><h3 id="17f7aacb-2d23-8026-847c-f8ece9ba3aeb" class=""><strong>2. Characteristics of Worms</strong></h3><ul id="17f7aacb-2d23-80f6-bc92-eb49df540269" class="bulleted-list"><li style="list-style-type:disc"><strong>Self-Replication</strong>: Worms can replicate autonomously without user intervention.</li></ul><ul id="17f7aacb-2d23-8047-bae1-ed56d14f6c92" class="bulleted-list"><li style="list-style-type:disc"><strong>Network Propagation</strong>: Spread rapidly across networks by exploiting vulnerabilities.</li></ul><ul id="17f7aacb-2d23-805d-81e7-cbfdd167d058" class="bulleted-list"><li style="list-style-type:disc"><strong>Standalone Nature</strong>: Do not require a host file or program to function or spread.</li></ul><ul id="17f7aacb-2d23-80df-9961-e245bca57bf2" class="bulleted-list"><li style="list-style-type:disc"><strong>Payloads</strong>: May carry malicious payloads like backdoors, ransomware, or spyware.</li></ul><hr id="17f7aacb-2d23-8012-9eb5-c0d3554fe5c2"/><h3 id="17f7aacb-2d23-8041-ba69-df62d16730c0" class=""><strong>3. Lifecycle of a Worm</strong></h3><ol type="1" id="17f7aacb-2d23-8013-b41e-f0e1f9346dd1" class="numbered-list" start="1"><li><strong>Infection</strong>: Initial entry into a system through a vulnerability, email, or file.</li></ol><ol type="1" id="17f7aacb-2d23-80a9-b89b-c013b6de04b6" class="numbered-list" start="2"><li><strong>Replication</strong>: Creates copies of itself and spreads to other systems or networks.</li></ol><ol type="1" id="17f7aacb-2d23-802e-95e8-c234e4c172fa" class="numbered-list" start="3"><li><strong>Propagation</strong>: Exploits vulnerabilities to infiltrate other devices.</li></ol><ol type="1" id="17f7aacb-2d23-8014-84b9-d94a9a2b7030" class="numbered-list" start="4"><li><strong>Activation</strong>: Executes its malicious payload or continues spreading.</li></ol><hr id="17f7aacb-2d23-807e-a86e-d7d5abe344da"/><h3 id="17f7aacb-2d23-8006-9b9c-e90105ef1ffc" class=""><strong>4. Types of Worms</strong></h3><ol type="1" id="17f7aacb-2d23-8003-994c-ef942dc2eeb3" class="numbered-list" start="1"><li><strong>Email Worms</strong><ul id="17f7aacb-2d23-80f1-9e25-fadd04b7b338" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Spread via email attachments or malicious links.</li></ul><ul id="17f7aacb-2d23-8025-8793-f6019336b6f3" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: LoveLetter Worm (ILOVEYOU).</li></ul><ul id="17f7aacb-2d23-800c-9799-de1ed15cbc5d" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Infects the recipient’s device and sends copies of itself to the user’s contacts.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8083-8009-cdd35d8b65d6" class="numbered-list" start="2"><li><strong>Internet Worms</strong><ul id="17f7aacb-2d23-80e9-8611-cf2362b428e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Exploit internet vulnerabilities to propagate.</li></ul><ul id="17f7aacb-2d23-804e-a983-fa0ce480a5e6" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Code Red Worm.</li></ul><ul id="17f7aacb-2d23-8001-a729-ef74cad6db0c" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Targets web servers and spreads across the internet rapidly.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8035-b4ea-c4521f48eaf1" class="numbered-list" start="3"><li><strong>Network Worms</strong><ul id="17f7aacb-2d23-803d-adff-c2f679f2c425" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Use network connections to spread.</li></ul><ul id="17f7aacb-2d23-8082-9512-e76b31ab61f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: SQL Slammer.</li></ul><ul id="17f7aacb-2d23-8077-8477-d840cb33a4fc" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Causes network congestion and denial of service (DoS).</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-808e-a2d3-dbfb47194961" class="numbered-list" start="4"><li><strong>File-Sharing Worms</strong><ul id="17f7aacb-2d23-808b-a9ba-e8d61e75dee9" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Spread through file-sharing platforms or peer-to-peer (P2P) networks.</li></ul><ul id="17f7aacb-2d23-805f-9fb3-cf64628905dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Kazaa Worm.</li></ul><ul id="17f7aacb-2d23-805b-af02-ca8eb1894240" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Infects shared files, compromising multiple users in the network.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-809b-8e2c-ca3b3f01ff25" class="numbered-list" start="5"><li><strong>Instant Messaging Worms</strong><ul id="17f7aacb-2d23-8001-9363-cf92940947f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Spread through instant messaging platforms.</li></ul><ul id="17f7aacb-2d23-809a-ad8d-d90a629b5d8c" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Bropia Worm.</li></ul><ul id="17f7aacb-2d23-801b-a03e-ca02de778cdd" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Infects contacts by sending malicious links or files.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8072-9c84-dd8923bf1c6b" class="numbered-list" start="6"><li><strong>Mobile Worms</strong><ul id="17f7aacb-2d23-809c-953a-db1bb99d5d01" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Target mobile devices using SMS, MMS, or Bluetooth.</li></ul><ul id="17f7aacb-2d23-8032-bff0-de6b64e5f62d" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Cabir Worm.</li></ul><ul id="17f7aacb-2d23-8065-b486-db6b1aa75769" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Infects mobile devices and spreads to others in proximity.</li></ul></li></ol><hr id="17f7aacb-2d23-80e5-8a37-c6f55a1f364a"/><h3 id="17f7aacb-2d23-8036-82af-fbdba033be76" class=""><strong>5. How Worms Spread</strong></h3><ul id="17f7aacb-2d23-80db-96c9-ee2ac8cf998a" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploiting Vulnerabilities</strong>: Use unpatched software or misconfigurations to infiltrate systems.</li></ul><ul id="17f7aacb-2d23-807d-b579-ee2aa9af7f69" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Attachments</strong>: Malicious attachments or links that, when opened, execute the worm.</li></ul><ul id="17f7aacb-2d23-8050-b82c-f895ee1de5e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Removable Media</strong>: USB drives or external storage devices carrying the worm.</li></ul><ul id="17f7aacb-2d23-8077-9432-f1746414f6d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Peer-to-Peer Networks</strong>: Files shared on P2P platforms infected with the worm.</li></ul><ul id="17f7aacb-2d23-801f-9a27-dc6c1c4b9b53" class="bulleted-list"><li style="list-style-type:disc"><strong>Network Scanning</strong>: Scan for vulnerable systems or devices on the network to propagate.</li></ul><hr id="17f7aacb-2d23-80f2-afce-d4d1f83e7c4b"/><h3 id="17f7aacb-2d23-8058-9ef9-c6b796502fef" class=""><strong>6. Symptoms of a Worm Infection</strong></h3><ul id="17f7aacb-2d23-8091-8723-ff7b9f878b5c" class="bulleted-list"><li style="list-style-type:disc">Unusually high network traffic or bandwidth consumption.</li></ul><ul id="17f7aacb-2d23-80aa-8153-eef7b5a6c13d" class="bulleted-list"><li style="list-style-type:disc">Slow system performance due to resource consumption.</li></ul><ul id="17f7aacb-2d23-808e-b340-ded0380f7a12" class="bulleted-list"><li style="list-style-type:disc">Unexpected system crashes or instability.</li></ul><ul id="17f7aacb-2d23-80d1-afb5-d09c1d160595" class="bulleted-list"><li style="list-style-type:disc">Creation of unexpected files or processes.</li></ul><ul id="17f7aacb-2d23-809a-bb1d-e3852a7c67b3" class="bulleted-list"><li style="list-style-type:disc">Unauthorized emails or messages sent from the infected account.</li></ul><ul id="17f7aacb-2d23-80fc-b1e6-f39126dabc19" class="bulleted-list"><li style="list-style-type:disc">Frequent pop-ups or error messages.</li></ul><ul id="17f7aacb-2d23-8056-9856-e457516709a3" class="bulleted-list"><li style="list-style-type:disc">Inability to access certain files or programs.</li></ul><hr id="17f7aacb-2d23-8086-815f-ec960eae9f96"/><h3 id="17f7aacb-2d23-80ee-a542-e4fc93bb57bb" class=""><strong>7. Famous Worm Examples</strong></h3><ol type="1" id="17f7aacb-2d23-80e1-9011-faec51bbf8f1" class="numbered-list" start="1"><li><strong>Morris Worm (1988)</strong>:<ul id="17f7aacb-2d23-80b5-8a49-ebe46b0b671b" class="bulleted-list"><li style="list-style-type:disc">One of the first internet worms, caused widespread network disruptions.</li></ul><ul id="17f7aacb-2d23-8062-8c95-ee8d78abb1fc" class="bulleted-list"><li style="list-style-type:disc">Exploited UNIX systems using weak passwords and software vulnerabilities.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-80ad-b5a9-c31c1e362131" class="numbered-list" start="2"><li><strong>ILOVEYOU Worm (2000)</strong>:<ul id="17f7aacb-2d23-80a5-8cb0-da88d0f22f30" class="bulleted-list"><li style="list-style-type:disc">Spread via email with a subject line &quot;I LOVE YOU.&quot;</li></ul><ul id="17f7aacb-2d23-8096-8065-dace85d13bbf" class="bulleted-list"><li style="list-style-type:disc">Caused widespread data loss and financial damage.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-8026-a72c-daf73ac190d2" class="numbered-list" start="3"><li><strong>SQL Slammer (2003)</strong>:<ul id="17f7aacb-2d23-8078-8a78-f1796922e9cf" class="bulleted-list"><li style="list-style-type:disc">Spread rapidly, causing network slowdowns and DoS attacks.</li></ul><ul id="17f7aacb-2d23-8081-b47c-dc63dcbad7eb" class="bulleted-list"><li style="list-style-type:disc">Exploited a vulnerability in Microsoft SQL Server.</li></ul></li></ol><ol type="1" id="17f7aacb-2d23-807b-ad40-ed5433b1c636" class="numbered-list" start="4"><li><strong>Conficker Worm (2008)</strong>:<ul id="17f7aacb-2d23-80ce-b617-e07a3f560cba" class="bulleted-list"><li style="list-style-type:disc">Targeted Windows systems, creating botnets and disabling security features.</li></ul><ul id="17f7aacb-2d23-803a-a4c9-cab1dfcdd18d" class="bulleted-list"><li style="list-style-type:disc">Spread via network shares and removable drives.</li></ul></li></ol><hr id="17f7aacb-2d23-80b0-bd41-fc57e724d13b"/><h3 id="17f7aacb-2d23-80ca-8fe0-c1aab160a6de" class=""><strong>8. Prevention of Worm Infections</strong></h3><ol type="1" id="17f7aacb-2d23-801f-9c5f-cf24db308ba0" class="numbered-list" start="1"><li><strong>Update and Patch Systems</strong>: Regularly apply updates to fix vulnerabilities.</li></ol><ol type="1" id="17f7aacb-2d23-80a7-a0fe-f1f1c3c29d4e" class="numbered-list" start="2"><li><strong>Firewalls</strong>: Use firewalls to monitor and control incoming and outgoing network traffic.</li></ol><ol type="1" id="17f7aacb-2d23-804d-a7cc-df3380963862" class="numbered-list" start="3"><li><strong>Antivirus and Anti-Malware Software</strong>: Install reputable security tools and keep them updated.</li></ol><ol type="1" id="17f7aacb-2d23-8049-b29f-d7bbee38c3b0" class="numbered-list" start="4"><li><strong>Network Segmentation</strong>: Isolate critical systems to minimize spread in case of infection.</li></ol><ol type="1" id="17f7aacb-2d23-803e-ab7b-cdae8c4962ee" class="numbered-list" start="5"><li><strong>Email Security</strong>: Avoid opening suspicious attachments or links.</li></ol><ol type="1" id="17f7aacb-2d23-800a-8788-ff52f8043aa5" class="numbered-list" start="6"><li><strong>Secure Passwords</strong>: Use strong, unique passwords and implement multi-factor authentication (MFA).</li></ol><ol type="1" id="17f7aacb-2d23-8078-9e37-da3ccdecc46e" class="numbered-list" start="7"><li><strong>Disable Auto-Run</strong>: Prevent removable media from auto-executing programs.</li></ol><ol type="1" id="17f7aacb-2d23-80e3-8936-ef889ca1be37" class="numbered-list" start="8"><li><strong>User Education</strong>: Train users to recognize phishing attempts and malicious behavior.</li></ol><hr id="17f7aacb-2d23-8020-9c73-fc4e54a85c7a"/><h3 id="17f7aacb-2d23-80f0-a57e-d9ce66a7f32e" class=""><strong>9. Detection and Removal</strong></h3><ul id="17f7aacb-2d23-8022-8985-f945abc6bdf2" class="bulleted-list"><li style="list-style-type:disc"><strong>Network Monitoring</strong>: Identify unusual traffic patterns that could indicate worm activity.</li></ul><ul id="17f7aacb-2d23-80b6-a0a3-e75472f88fc1" class="bulleted-list"><li style="list-style-type:disc"><strong>Behavioral Analysis</strong>: Analyze processes for replication or unauthorized access attempts.</li></ul><ul id="17f7aacb-2d23-80fb-b4db-dcfde55e92e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Antivirus Scans</strong>: Use security software to detect and remove worms.</li></ul><ul id="17f7aacb-2d23-8001-985f-d88def252f06" class="bulleted-list"><li style="list-style-type:disc"><strong>Quarantine</strong>: Isolate infected systems to prevent further spread.</li></ul><ul id="17f7aacb-2d23-80f8-b17a-fab17a2f7b3d" class="bulleted-list"><li style="list-style-type:disc"><strong>System Restoration</strong>: Use backups or system restore points to recover affected systems.</li></ul><ul id="17f7aacb-2d23-801c-8f80-d60322a2b9b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Patch Vulnerabilities</strong>: Fix exploited vulnerabilities to stop reinfection.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

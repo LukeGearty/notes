@@ -1,0 +1,781 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Array/String</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1137aacb-2d23-8089-bcd6-fe594748a1ad" class="page sans"><header><h1 class="page-title">Array/String</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1137aacb-2d23-8039-a36d-fefefddb37d2" class="">Merge Two String Alternately</h2><p id="1137aacb-2d23-806a-ae65-f1d01544b096" class="">You are given two strings <code>word1</code> and <code>word2</code>. Merge the strings by adding letters in alternating order, starting with <code>word1</code>. If a string is longer than the other, append the additional letters onto the end of the merged string.</p><p id="1137aacb-2d23-8023-8ba1-c21cecb6a275" class="">Return <em>the merged string.</em></p><p id="1137aacb-2d23-80aa-a71d-eeaefbae4d17" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-80ee-82d3-f4b54ad41f1d" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;abc&quot;, word2 = &quot;pqr&quot;
+Output: &quot;apbqcr&quot;
+Explanation: The merged string will be merged as so:
+word1:  a   b   c
+word2:    p   q   r
+merged: a p b q c r
+</code></pre><p id="1137aacb-2d23-80c4-99a1-c98f4209dcbd" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-80e8-8e0d-f1a271c33802" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;ab&quot;, word2 = &quot;pqrs&quot;
+Output: &quot;apbqrs&quot;
+Explanation: Notice that as word2 is longer, &quot;rs&quot; is appended to the end.
+word1:  a   b
+word2:    p   q   r   s
+merged: a p b q   r   s
+</code></pre><p id="1137aacb-2d23-801c-a4e9-d4ffc38bf0c8" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-800d-ba77-da9e5fa37b7e" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: word1 = &quot;abcd&quot;, word2 = &quot;pq&quot;
+Output: &quot;apbqcd&quot;
+Explanation: Notice that as word1 is longer, &quot;cd&quot; is appended to the end.
+word1:  a   b   c   d
+word2:    p   q
+merged: a p b q c   d
+</code></pre><p id="1137aacb-2d23-8007-8de5-ca99f85ea971" class=""><strong>Constraints:</strong></p><ul id="1137aacb-2d23-804f-aaff-e530ad700af8" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= word1.length, word2.length &lt;= 100</code></li></ul><ul id="1137aacb-2d23-8033-bf63-c5397e8a2706" class="bulleted-list"><li style="list-style-type:disc"><code>word1</code> and <code>word2</code> consist of lowercase English letters.</li></ul><p id="1137aacb-2d23-803c-889a-c1fec178de08" class="">My Solution:</p><p id="1137aacb-2d23-80c7-b23f-f572a9fa022f" class="">set an integer variable to 0, and string variable to be empty</p><p id="1137aacb-2d23-8068-ba30-c9ae14918e9b" class="">while that integer is less than the length of word1 or less than length of word2 - boolean logic, so that both conditions need to be false so the entire statement is false. So if one condition is false, the while loop will still keep going. <br/>if i is less than the length of word1, add word1 at index of i to the result<br/>If i is less than the length of word2, add word2 at index of i to the result<br/>Do not use else if, use if to keep it alternating<br/></p><p id="1137aacb-2d23-80da-b8bc-f02976b907b3" class="">Increment i on each round</p><p id="1137aacb-2d23-80af-96de-c659d4ba2a7d" class="">Return result<br/>Time Complexity: O(N)<br/></p><h2 id="1137aacb-2d23-8069-9d26-efc918cc0a09" class="">Greatest Common Divisor of Strings</h2><p id="1137aacb-2d23-809e-9dac-ec66184dbfb7" class="">For two strings <code>s</code> and <code>t</code>, we say &quot;<code>t</code> divides <code>s</code>&quot; if and only if <code>s = t + t + t + ... + t + t</code> (i.e., <code>t</code> is concatenated with itself one or more times).</p><p id="1137aacb-2d23-80d0-af30-eb3df395623a" class="">Given two strings <code>str1</code> and <code>str2</code>, return <em>the largest string </em><code>x</code><em> such that </em><code>x</code><em> divides both </em><code>str1</code><em> and </em><code>str2</code>.</p><p id="1137aacb-2d23-80d1-aa46-f302d55eb630" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-8008-8219-cfc360dbd632" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: str1 = &quot;ABCABC&quot;, str2 = &quot;ABC&quot;
+Output: &quot;ABC&quot;
+</code></pre><p id="1137aacb-2d23-80e2-ab61-e0c1f4c39d76" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-8073-add7-c00d31c448d7" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: str1 = &quot;ABABAB&quot;, str2 = &quot;ABAB&quot;
+Output: &quot;AB&quot;
+</code></pre><p id="1137aacb-2d23-8017-9d2a-f3d101f8673f" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-8074-b110-e1f6391c6fec" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: str1 = &quot;LEET&quot;, str2 = &quot;CODE&quot;
+Output: &quot;&quot;
+</code></pre><p id="1137aacb-2d23-809e-8889-f0db6dd38d06" class=""><strong>Constraints:</strong></p><ul id="1137aacb-2d23-8019-89ab-d82e2ae5cf28" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= str1.length, str2.length &lt;= 1000</code></li></ul><ul id="1137aacb-2d23-8085-9887-cefc795a1f32" class="bulleted-list"><li style="list-style-type:disc"><code>str1</code> and <code>str2</code> consist of English uppercase letters.</li></ul><p id="1137aacb-2d23-802b-8ac6-e06a528408a6" class="">My Solution:<br/>If str1 + str2 does not equal str2 + str1, then there is no greatest common denominator. <br/></p><p id="1137aacb-2d23-800b-8ccf-e90f021d016b" class="">Find the GCD of the lengths of the two string</p><p id="1137aacb-2d23-8071-bfb4-fac35c120d52" class="">a = length of str1</p><p id="1137aacb-2d23-80d0-86eb-f3899c7b268e" class="">b = length of str2</p><p id="1137aacb-2d23-806b-abae-e4fcb1b6d9d8" class="">while b ≠ 0:</p><p id="1137aacb-2d23-809d-ad11-e37a7d4d9e9d" class="">temp = b</p><p id="1137aacb-2d23-80ac-b697-c38d66c8d382" class="">b = a % b</p><p id="1137aacb-2d23-8084-8ada-cca4c037ef68" class="">a = temp</p><p id="1137aacb-2d23-8093-904b-d0612c0ea0b8" class="">When the while loop ends, a is now the value of the GCD of the two numbers</p><p id="1137aacb-2d23-8021-a016-ce5feee62eee" class="">return str1 substring from beginning up to the new value of A</p><h2 id="1137aacb-2d23-8056-b58e-d35cca6b0103" class=""><strong>Kids With the Greatest Number of Candies</strong></h2><p id="1137aacb-2d23-805c-80c2-d8dff595b428" class="">There are <code>n</code> kids with candies. You are given an integer array <code>candies</code>, where each <code>candies[i]</code> represents the number of candies the <code>ith</code> kid has, and an integer <code>extraCandies</code>, denoting the number of extra candies that you have.</p><p id="1137aacb-2d23-802f-8ff1-d715278a52a8" class="">Return <em>a boolean array </em><code>result</code><em> of length </em><code>n</code><em>, where </em><code>result[i]</code><em> is </em><code>true</code><em> if, after giving the </em><code>ith</code><em> kid all the </em><code>extraCandies</code><em>, they will have the </em><em><strong>greatest</strong></em><em> number of candies among all the kids, or </em><code>false</code><em> otherwise</em>.</p><p id="1137aacb-2d23-80e0-9c42-ea4a203993ac" class="">Note that <strong>multiple</strong> kids can have the <strong>greatest</strong> number of candies.</p><p id="1137aacb-2d23-808d-8f72-ee5ffa69c9f4" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-8010-b255-dea0a8a40498" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: candies = [2,3,5,1,3], extraCandies = 3
+Output: [true,true,true,false,true]
+Explanation: If you give all extraCandies to:
+- Kid 1, they will have 2 + 3 = 5 candies, which is the greatest among the kids.
+- Kid 2, they will have 3 + 3 = 6 candies, which is the greatest among the kids.
+- Kid 3, they will have 5 + 3 = 8 candies, which is the greatest among the kids.
+- Kid 4, they will have 1 + 3 = 4 candies, which is not the greatest among the kids.
+- Kid 5, they will have 3 + 3 = 6 candies, which is the greatest among the kids.
+</code></pre><p id="1137aacb-2d23-8074-b4e3-eb58328e9cac" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-80e0-b416-d888bda144cc" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: candies = [4,2,1,1,2], extraCandies = 1
+Output: [true,false,false,false,false]
+Explanation: There is only 1 extra candy.
+Kid 1 will always have the greatest number of candies, even if a different kid is given the extra candy.
+</code></pre><p id="1137aacb-2d23-80fe-818b-f5af33c7dd7a" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-80ee-aaf4-e71c9e358be5" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: candies = [12,1,12], extraCandies = 10
+Output: [true,false,true]
+</code></pre><p id="1137aacb-2d23-809c-b5c1-d5ed48a42cb2" class="">My Solution:<br/>first, set a result vector/array <br/></p><p id="1137aacb-2d23-80f8-84ab-da77c03e109e" class="">second, find the greatest amount of candies and set it to a variable</p><p id="1137aacb-2d23-80d7-8776-ce273fd886b3" class="">third, loop through candies array again, and compare the candies at index <em>i + extraCandies </em>to greatest. If it is greater or equal to greatest, add a true to the result. If not, add a false.</p><p id="1137aacb-2d23-8004-8bbf-e762fcfe66bf" class="">Return result vectorapp</p><p id="1137aacb-2d23-80dd-8b7a-c5d27ac5075b" class="">Time Complexity: O(n)</p><h2 id="1137aacb-2d23-80f8-bf96-e5e3a2d684dd" class="">Can Place Flowers</h2><p id="1137aacb-2d23-804c-b614-c4cf9387102e" class="">You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in <strong>adjacent</strong> plots.</p><p id="1137aacb-2d23-80ed-94c4-dd7798487713" class="">Given an integer array <code>flowerbed</code> containing <code>0</code>&#x27;s and <code>1</code>&#x27;s, where <code>0</code> means empty and <code>1</code> means not empty, and an integer <code>n</code>, return <code>true</code> <em>if</em> <code>n</code> <em>new flowers can be planted in the</em> <code>flowerbed</code> <em>without violating the no-adjacent-flowers rule and</em> <code>false</code> <em>otherwise</em>.</p><p id="1137aacb-2d23-806e-bb55-facdf2c6a8e4" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-80e0-847f-f1a2ea6bd792" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: flowerbed = [1,0,0,0,1], n = 1
+Output: true
+</code></pre><p id="1137aacb-2d23-8002-9fd7-cba1e2ad153b" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-808a-a215-f4f3c9b4148b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: flowerbed = [1,0,0,0,1], n = 2
+Output: false
+</code></pre><p id="1137aacb-2d23-8018-9a63-eca7016d9339" class=""><strong>Constraints:</strong></p><ul id="1137aacb-2d23-8097-bf7f-e0ed65d13c06" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= flowerbed.length &lt;= 2 * 104</code></li></ul><ul id="1137aacb-2d23-8084-a6c0-d9964cd82870" class="bulleted-list"><li style="list-style-type:disc"><code>flowerbed[i]</code> is <code>0</code> or <code>1</code>.</li></ul><ul id="1137aacb-2d23-80aa-86f1-f8faf7266d67" class="bulleted-list"><li style="list-style-type:disc">There are no two adjacent flowers in <code>flowerbed</code>.</li></ul><ul id="1137aacb-2d23-8020-949c-f1423ff297f9" class="bulleted-list"><li style="list-style-type:disc"><code>0 &lt;= n &lt;= flowerbed.length</code></li></ul><p id="1137aacb-2d23-804e-be96-ea888af9871a" class="">My Solution:</p><p id="1137aacb-2d23-8065-8172-dda1e7210bc6" class="">Initialize a variable <em>amount </em>to be 0</p><p id="1137aacb-2d23-80bf-8ad2-c6ae4ee5659c" class="">Initialize the size of the flowerbed array into <em>size</em></p><p id="1137aacb-2d23-8078-94ae-c77b3f0effa5" class="">Loop through the array:<br/>if flowerbed[i] is 0:<br/></p><p id="1137aacb-2d23-80dc-83b2-cb5d06d0a279" class="">initialize a variable to check whether the left of <em>i </em>is empty. It will be true if i == 0 or flowerbed[i - 1] == 0</p><p id="1137aacb-2d23-8014-b8ff-ee8006a1bd08" class="">Initialize a variable to check whether the right of i is empty. It will be true if i == <em>size - 1 </em>(end of array) or flowerbed[i + 1] == 0</p><p id="1137aacb-2d23-8074-be83-d0adef8e7a4d" class="">If both the left and right are empty:</p><p id="1137aacb-2d23-80ce-a484-cc44be7bc93c" class="">change flowerbed[i] to be 1.</p><p id="1137aacb-2d23-807f-adeb-ea5953b3f0fd" class="">Increment <em>amount</em></p><p id="1137aacb-2d23-80c0-beae-dece702e0c89" class="">If amount ≥ n: return true</p><p id="1137aacb-2d23-8074-9051-e4b5c45c408a" class="">End loop</p><p id="1137aacb-2d23-80e7-90df-ff88ae571763" class="">If amount ≥ n return true, else return falser</p><h2 id="1137aacb-2d23-80af-a2c3-d66a756f0ba3" class="">Reverse Vowels of a String</h2><p id="1137aacb-2d23-8091-9615-f4b147b8b0a4" class="">Given a string <code>s</code>, reverse only all the vowels in the string and return it.</p><p id="1137aacb-2d23-8048-bfda-c8441a775eeb" class="">The vowels are <code>&#x27;a&#x27;</code>, <code>&#x27;e&#x27;</code>, <code>&#x27;i&#x27;</code>, <code>&#x27;o&#x27;</code>, and <code>&#x27;u&#x27;</code>, and they can appear in both lower and upper cases, more than once.</p><p id="1137aacb-2d23-80b0-b392-dc2493243d63" class=""><strong>Example 1:</strong></p><p id="1137aacb-2d23-80fb-a8bd-e057c4d84945" class=""><strong>Input:</strong> s = &quot;IceCreAm&quot;</p><p id="1137aacb-2d23-808f-9fe1-f1412b395bb4" class=""><strong>Output:</strong> &quot;AceCreIm&quot;</p><p id="1137aacb-2d23-804c-9553-d2c5a2aab46c" class=""><strong>Explanation:</strong></p><p id="1137aacb-2d23-8021-88e1-cde50085b34b" class="">The vowels in <code>s</code> are <code>[&#x27;I&#x27;, &#x27;e&#x27;, &#x27;e&#x27;, &#x27;A&#x27;]</code>. On reversing the vowels, s becomes <code>&quot;AceCreIm&quot;</code>.</p><p id="1137aacb-2d23-80e3-a836-ec6f061c264b" class=""><strong>Example 2:</strong></p><p id="1137aacb-2d23-80e1-9c4d-f140a7ae62d1" class=""><strong>Input:</strong> s = &quot;leetcode&quot;</p><p id="1137aacb-2d23-806c-acfb-f28a1ae84345" class=""><strong>Output:</strong> &quot;leotcede&quot;</p><p id="1137aacb-2d23-800a-91f0-e9c6cfae9978" class=""><strong>Constraints:</strong></p><ul id="1137aacb-2d23-80b1-bb50-c1145a92457e" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= s.length &lt;= 3 * 105</code></li></ul><ul id="1137aacb-2d23-80bc-899d-e18c37bfe893" class="bulleted-list"><li style="list-style-type:disc"><code>s</code> consist of <strong>printable ASCII</strong> characters.</li></ul><p id="1137aacb-2d23-8063-a2a0-ffbd6dc80549" class="">My solution:</p><p id="1137aacb-2d23-80b3-9106-f5db8bfd69aa" class="">Initialize an array of vowels uppercase and lowercase</p><p id="1137aacb-2d23-80e1-9b29-d54d7072a80b" class="">Initialize an array to store the vowels in the string, <em>vowels_in_string</em></p><p id="1137aacb-2d23-80f7-94bf-ee124e7c4cb8" class="">Initialize an integer variable to be the length of the input string, <em>length</em></p><p id="1137aacb-2d23-8080-b74b-d474d25a44a6" class="">Initialize the empty string <em>result</em></p><p id="1137aacb-2d23-8006-a65f-c2d8698d40e3" class="">Loop through the string:</p><p id="1137aacb-2d23-80c8-8ffc-d87ff78feba8" class="">If the current index is a vowel, add it to the list of vowels in the string</p><p id="1137aacb-2d23-8081-8db4-c37c912665fa" class="">end loop</p><p id="1137aacb-2d23-80c4-b233-c7c7473ca4b4" class="">Initialize an <em>index </em>variable to be the length of the <em>vowels_in_string </em>array</p><p id="1137aacb-2d23-8095-b2e9-c20e16ad3c9b" class="">Loop from 0 to <em>length - 1:</em></p><p id="1137aacb-2d23-80cc-8829-c31f335b0c71" class="">If s[i] is a vowel, result adds vowels_in_string[index], decrement index</p><p id="1137aacb-2d23-80fd-89e0-c4e42ca2e9d9" class="">else, result adds s[i]</p><p id="1137aacb-2d23-80c5-a5a8-c7aa81777fd4" class="">End loop</p><p id="1137aacb-2d23-80c4-9e54-d8841b323461" class="">return result</p><p id="1137aacb-2d23-8033-868d-da1420930717" class="">Time Complexity: O(n)</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1137aacb-2d23-8017-89aa-e551b46dea3a" class="code"><code class="language-C++">class Solution {
+public:
+    string reverseVowels(string s) {
+        int length = s.length();
+        string vowels = &quot;&quot;;
+        string result = &quot;&quot;;
+        for (int i = 0; i &lt; length; i++) {
+            if (s[i] == &#x27;A&#x27; || s[i] == &#x27;E&#x27; || s[i] == &#x27;I&#x27; || s[i] == &#x27;O&#x27; || s[i] == &#x27;U&#x27; || s[i] == &#x27;a&#x27; || s[i] == &#x27;e&#x27; || s[i] == &#x27;i&#x27;|| s[i] == &#x27;o&#x27; || s[i] == &#x27;u&#x27;) {
+                vowels+=s[i];
+            }
+    }
+
+    int indexVowels = vowels.length() - 1;
+
+    for (int i = 0; i &lt; length; i++) {
+        if (s[i] == &#x27;A&#x27; || s[i] == &#x27;E&#x27; || s[i] == &#x27;I&#x27; || s[i] == &#x27;O&#x27; || s[i] == &#x27;U&#x27; || s[i] == &#x27;a&#x27; || s[i] == &#x27;e&#x27; || s[i] == &#x27;i&#x27;|| s[i] == &#x27;o&#x27; || s[i] == &#x27;u&#x27;) {
+            result+=vowels[indexVowels--];
+        }
+        else {
+            result+=s[i];
+        }
+    
+    }
+
+    return result;
+    }
+};</code></pre><h2 id="1147aacb-2d23-809d-9a83-f09a3872e65a" class=""><strong>Reverse Words in a String</strong></h2><p id="1147aacb-2d23-80e0-a8fb-e31d1aaee91a" class="">Given an input string <code>s</code>, reverse the order of the <strong>words</strong>.</p><p id="1147aacb-2d23-806a-b072-e1b487bab905" class="">A <strong>word</strong> is defined as a sequence of non-space characters. The <strong>words</strong> in <code>s</code> will be separated by at least one space.</p><p id="1147aacb-2d23-80c5-a44a-c42630e69caf" class="">Return <em>a string of the words in reverse order concatenated by a single space.</em></p><p id="1147aacb-2d23-80a5-ac9f-ec501a8610dd" class=""><strong>Note</strong> that <code>s</code> may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.</p><p id="1147aacb-2d23-8057-9cf1-f892216fc214" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1147aacb-2d23-8017-aa05-db702b833785" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: s = &quot;the sky is blue&quot;
+Output: &quot;blue is sky the&quot;
+</code></pre><p id="1147aacb-2d23-8028-8688-db1bd18708d0" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1147aacb-2d23-80e4-af2c-ef8794a9a830" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: s = &quot;  hello world  &quot;
+Output: &quot;world hello&quot;
+Explanation: Your reversed string should not contain leading or trailing spaces.
+</code></pre><p id="1147aacb-2d23-8006-95b5-c90f7577a417" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1147aacb-2d23-80f0-8275-efafc6b6dcc4" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: s = &quot;a good   example&quot;
+Output: &quot;example good a&quot;
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+</code></pre><p id="1147aacb-2d23-80d6-b4d0-c88daf05fd0b" class=""><strong>Constraints:</strong></p><ul id="1147aacb-2d23-804e-9c8f-f05dce98934e" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= s.length &lt;= 104</code></li></ul><ul id="1147aacb-2d23-8068-a4fb-c29f801e9424" class="bulleted-list"><li style="list-style-type:disc"><code>s</code> contains English letters (upper-case and lower-case), digits, and spaces <code>&#x27; &#x27;</code>.</li></ul><ul id="1147aacb-2d23-807e-93c6-fc4bf5337653" class="bulleted-list"><li style="list-style-type:disc">There is <strong>at least one</strong> word in <code>s</code>.</li></ul><p id="1147aacb-2d23-8078-99bd-d03adb0b6c04" class="">My solution:<br/>Non Python:<br/></p><p id="1147aacb-2d23-80ae-a6d5-cae2d5da4b8e" class="">Reverse the entire string</p><p id="1147aacb-2d23-8090-8ff0-d6ecc35d5174" class="">Initialize pointers to left, right, and i. Left and right will be start and end of each word</p><p id="1147aacb-2d23-8060-babe-d3fe9912ce58" class="">Skip leading spaces: The outer <code>while</code> loop iterates over the string. The inner loop <code>while(i&lt;n &amp;&amp; s[i]==&#x27; &#x27;) i++;</code> skips any leading spaces.</p><p id="1147aacb-2d23-8069-b266-c2d114b4bf7e" class=""><strong>4) Process each word:</strong></p><ul id="1147aacb-2d23-80fb-9089-cfb24841446d" class="bulleted-list"><li style="list-style-type:disc"><strong>Identify word boundaries:</strong> Once the leading spaces are skipped, the second inner loop <code>while(i&lt;n &amp;&amp; s[i]!=&#x27; &#x27;)</code> identifies the current word and assigns characters to the correct position in the string starting from <code>right</code>.</li></ul><ul id="1147aacb-2d23-8039-ab6a-c365f9fa1471" class="bulleted-list"><li style="list-style-type:disc"><strong>Reverse the current word:</strong> After identifying the word, it is reversed back to its original order within the reversed string. This reversal is done using the <code>reverse</code> function on the substring from <code>left</code> to <code>right</code>.</li></ul><ul id="1147aacb-2d23-8015-b892-ea4012b55cde" class="bulleted-list"><li style="list-style-type:disc"><strong>Add space after the word:</strong> A space is added after the word to separate it from the next word.</li></ul><p id="1147aacb-2d23-8056-bdd0-d2e9d55990c1" class=""><strong>5) Resize the string:</strong> After all words are processed, the string is resized to remove the trailing space added after the last word.</p><p id="1147aacb-2d23-808c-9211-e4cacdce5234" class="">Python:</p><p id="1147aacb-2d23-8055-81df-f154829909c9" class="">split s into a list with no parameters .split()</p><p id="1147aacb-2d23-807e-bffd-ffba42b33859" class="">Reverse list_s</p><p id="1147aacb-2d23-80ae-bf6b-ed5ddadd6fe4" class="">return ‘ ‘.join(list_s)</p><h2 id="1187aacb-2d23-80c7-b1cd-f821482a667f" class=""><strong>Product of Array Except Self</strong></h2><p id="1187aacb-2d23-808b-8b56-e62af6b48714" class="">Given an integer array <code>nums</code>, return <em>an array</em> <code>answer</code> <em>such that</em> <code>answer[i]</code> <em>is equal to the product of all the elements of</em> <code>nums</code> <em>except</em> <code>nums[i]</code>.</p><p id="1187aacb-2d23-8014-95c8-da2eecd87489" class="">The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</p><p id="1187aacb-2d23-8078-b7b8-ff8e268a05f6" class="">You must write an algorithm that runs in <code>O(n)</code> time and without using the division operation.</p><p id="1187aacb-2d23-8008-905a-d0d780146378" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1187aacb-2d23-8003-af36-f882ce2d93a0" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+</code></pre><p id="1187aacb-2d23-8019-9535-da332b52c13c" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1187aacb-2d23-8010-ae9f-ef71fe709808" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+</code></pre><p id="1187aacb-2d23-806c-867e-f82577d722a6" class=""><strong>Constraints:</strong></p><ul id="1187aacb-2d23-8033-98a6-c574569faa34" class="bulleted-list"><li style="list-style-type:disc"><code>2 &lt;= nums.length &lt;= 105</code></li></ul><ul id="1187aacb-2d23-80af-ac77-dc3e3c65b674" class="bulleted-list"><li style="list-style-type:disc"><code>30 &lt;= nums[i] &lt;= 30</code></li></ul><ul id="1187aacb-2d23-8090-937f-e9a3b3f8738e" class="bulleted-list"><li style="list-style-type:disc">The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li></ul><p id="1187aacb-2d23-8092-9ecc-cfcf6581a9ef" class="">My Solution:</p><p id="1187aacb-2d23-8084-bd2e-caf3be5cd198" class="">Initialize a variable <em>size </em></p><p id="1187aacb-2d23-8083-91b0-ddd42247d3f5" class="">Initialize the results vector to be <em>size </em>and all 1s initially.</p><p id="1187aacb-2d23-8058-be5c-ce261aee9a87" class=""><em>Initialize left = 1</em></p><p id="1187aacb-2d23-80d8-a831-e665667ab310" class="">for loop from 0 to size:</p><p id="1187aacb-2d23-8071-8a2a-d80cb62f13cb" class="">results[i] *= left</p><p id="1187aacb-2d23-8021-ad23-c054cb3c6180" class="">left *= nums[i]<div class="indented"><p id="1187aacb-2d23-8030-8756-da0497252659" class="">Let’s say nums = [1, 2, 3, 4]<br/>First Run:<br/>results[0] (1) *= left(1) = 1<br/><div class="indented"><p id="1187aacb-2d23-80fd-b464-d337fd6445ca" class="">left(1} *= nums[0] (1)</p><p id="1187aacb-2d23-8058-b4ab-cad1bd8d7789" class="">Second Run:<br/>results[1] (1) *= left(1) = 1<br/></p><p id="1187aacb-2d23-80cd-87b6-e46f253755d2" class="">left(1) *= nums[1] (2) = 2</p><p id="1187aacb-2d23-80ff-954d-cedfa8f8864b" class="">Third Run:</p><p id="1187aacb-2d23-80f7-8eb4-eebae5dc880e" class="">results[2] (1) *= left (2) = 2</p><p id="1187aacb-2d23-806e-8ada-ed4b57e571de" class="">left(2) *= nums[2] (3) = 6</p><p id="1187aacb-2d23-805c-b21f-f318fa4b7e87" class="">Fourth Run: </p><p id="1187aacb-2d23-80c7-bd9f-fdbb03985cd1" class="">results[3] (1) *= left (6) = 6</p><p id="1187aacb-2d23-80ef-adbd-f899bff509ab" class="">left(6) *= nums[3] (4) = 24</p><p id="1187aacb-2d23-80d0-8627-da382e6ad594" class="">Results = [1, 1, 2, 6]</p></div></p></div></p><p id="1187aacb-2d23-80b9-8c53-defe7ca30716" class=""><em>Initialize right = 1</em></p><p id="1187aacb-2d23-80dc-9ad6-dd88d6115975" class=""><em>for loop from size - 1 to 0, decremeting by 1:</em></p><p id="1187aacb-2d23-8044-a18c-dd1e0526daad" class="">results[i] *= right</p><p id="1187aacb-2d23-80b0-a615-db0683d78b0d" class="">right *= nums[i]<div class="indented"><p id="1187aacb-2d23-80e6-bef6-d106d8231796" class="">nums = [1, 2, 3, 4]</p><p id="1187aacb-2d23-802b-bad5-fe637715c411" class="">First Run:</p><p id="1187aacb-2d23-80f4-bbb2-ca79e9109b16" class="">results[3] *= right (1) = 6</p><p id="1187aacb-2d23-8078-86bf-e3d93a1f3238" class="">right (1) *= nums[3] (4) = 4</p><p id="1187aacb-2d23-8067-9be1-c207f5cd5b5e" class="">Second Run:</p><p id="1187aacb-2d23-8065-b809-f9aac7d9e990" class="">results[2] (2) *= right(4) = 8</p><p id="1187aacb-2d23-8067-97d5-ea18b78c15bc" class="">right (4) *= nums[2] (3) = 12</p><p id="1187aacb-2d23-8044-a50b-cf88bbcadd0d" class="">Third Run</p><p id="1187aacb-2d23-8047-a852-c40b8497898a" class="">results[1] (1) *= right (12) = 12</p><p id="1187aacb-2d23-8096-8cbf-e2e0e3427bac" class="">right (12) *= nums[1] = 24</p><p id="1187aacb-2d23-8006-917b-d719ecf21e21" class="">Fourth Run:</p><p id="1187aacb-2d23-80e1-84e1-d995aeb02966" class="">results[0] (1) *= right(24) = 24</p><p id="1187aacb-2d23-8029-96b1-ff63d81d8b1c" class="">right(24) *= nums[0] = 24</p></div></p><p id="1187aacb-2d23-80db-ab42-f1a86f83a16d" class="">Final Result = [24, 12, 8, 6]</p><h2 id="1197aacb-2d23-8065-8680-df732081c078" class="">Increasing Triplet Subsequence</h2><p id="1197aacb-2d23-80b0-bd32-e2383dde2561" class="">Given an integer array <code>nums</code>, return <code>true</code><em> if there exists a triple of indices </em><code>(i, j, k)</code><em> such that </em><code>i &lt; j &lt; k</code><em> and </em><code>nums[i] &lt; nums[j] &lt; nums[k]</code>. If no such indices exists, return <code>false</code>.</p><p id="1197aacb-2d23-8031-a62b-ca9437d28983" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1197aacb-2d23-80de-acd1-f4d3137ae3b3" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [1,2,3,4,5]
+Output: true
+Explanation: Any triplet where i &lt; j &lt; k is valid.
+</code></pre><p id="1197aacb-2d23-8054-9003-f1ce73b022e6" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1197aacb-2d23-80bc-a70e-f63cc7cc0c0d" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [5,4,3,2,1]
+Output: false
+Explanation: No triplet exists.
+</code></pre><p id="1197aacb-2d23-805a-8fc4-e117304f0f28" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1197aacb-2d23-8095-9d29-ca580fb1dc50" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [2,1,5,0,4,6]
+Output: true
+Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 &lt; nums[4] == 4 &lt; nums[5] == 6.
+</code></pre><p id="1197aacb-2d23-80fe-af84-f3283cca6c31" class=""><strong>Constraints:</strong></p><ul id="1197aacb-2d23-809d-951a-d26816099c54" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= nums.length &lt;= 5 * 105</code></li></ul><ul id="1197aacb-2d23-8074-ae52-e99f84a49078" class="bulleted-list"><li style="list-style-type:disc"><code>231 &lt;= nums[i] &lt;= 231 - 1</code></li></ul><p id="1187aacb-2d23-80bb-b254-e8a7c8a10ccb" class="">My Solution:</p><p id="1197aacb-2d23-80f2-b3d2-fe0cc738ee66" class="">Initialize 2 variables, <em>max1 </em>and <em>max2 </em>to be the maximum possible integer variables originally</p><p id="1197aacb-2d23-802b-81d8-efe687131983" class="">Loop through <em>nums:</em></p><p id="1197aacb-2d23-8056-9169-cc8d3f7a5d9b" class="">If nums[i] ≤ max1:<div class="indented"><p id="1197aacb-2d23-8003-b810-d6efd05de2c0" class="">max1 = nums[i]</p></div></p><p id="1197aacb-2d23-8043-b536-e153f32e6b4e" class="">else if nums[i] ≤ nums[i]:<div class="indented"><p id="1197aacb-2d23-80c2-809e-e74135368ba5" class="">max2 = nums[i]</p></div></p><p id="1197aacb-2d23-804d-a4d3-e3e841d4a90a" class="">else <div class="indented"><p id="1197aacb-2d23-8033-80e6-f18dd645c953" class="">return true</p></div></p><p id="1197aacb-2d23-8084-ac5a-d931aded926b" class="">endloop</p><p id="1197aacb-2d23-8053-b54b-ed53b39bf170" class="">if no number was found, then return false</p><h2 id="11a7aacb-2d23-8032-93df-f17660e0f4e2" class="">String Compression</h2><p id="11a7aacb-2d23-80a1-930a-e0e9c97cb51f" class="">Given an array of characters <code>chars</code>, compress it using the following algorithm:</p><p id="11a7aacb-2d23-805c-bb4d-ecd49e6c6ffa" class="">Begin with an empty string <code>s</code>. For each group of <strong>consecutive repeating characters</strong> in <code>chars</code>:</p><ul id="11a7aacb-2d23-80d5-b0c0-ff95f1cef35b" class="bulleted-list"><li style="list-style-type:disc">If the group&#x27;s length is <code>1</code>, append the character to <code>s</code>.</li></ul><ul id="11a7aacb-2d23-80ad-b171-e20c44a38841" class="bulleted-list"><li style="list-style-type:disc">Otherwise, append the character followed by the group&#x27;s length.</li></ul><p id="11a7aacb-2d23-803a-8236-e3f7522c9b83" class="">The compressed string <code>s</code> <strong>should not be returned separately</strong>, but instead, be stored <strong>in the input character array </strong><code><strong>chars</strong></code>. Note that group lengths that are <code>10</code> or longer will be split into multiple characters in <code>chars</code>.</p><p id="11a7aacb-2d23-8033-8dcf-d3f92d709a65" class="">After you are done <strong>modifying the input array,</strong> return <em>the new length of the array</em>.</p><p id="11a7aacb-2d23-80c9-ad03-ea15efed61a1" class="">You must write an algorithm that uses only constant extra space.</p><p id="11a7aacb-2d23-8038-9c22-d36a91df109f" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11a7aacb-2d23-80a0-ad1f-de2da1129f57" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: chars = [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;c&quot;,&quot;c&quot;,&quot;c&quot;]
+Output: Return 6, and the first 6 characters of the input array should be: [&quot;a&quot;,&quot;2&quot;,&quot;b&quot;,&quot;2&quot;,&quot;c&quot;,&quot;3&quot;]
+Explanation: The groups are &quot;aa&quot;, &quot;bb&quot;, and &quot;ccc&quot;. This compresses to &quot;a2b2c3&quot;.
+</code></pre><p id="11a7aacb-2d23-80cf-aa05-edc1f7d2f9b6" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11a7aacb-2d23-80a5-9a92-cfa688d3caed" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: chars = [&quot;a&quot;]
+Output: Return 1, and the first character of the input array should be: [&quot;a&quot;]
+Explanation: The only group is &quot;a&quot;, which remains uncompressed since it&#x27;s a single character.
+</code></pre><p id="11a7aacb-2d23-80ca-ac2d-f5cd20651993" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11a7aacb-2d23-804f-a631-dce950011333" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: chars = [&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;]
+Output: Return 4, and the first 4 characters of the input array should be: [&quot;a&quot;,&quot;b&quot;,&quot;1&quot;,&quot;2&quot;].
+Explanation: The groups are &quot;a&quot; and &quot;bbbbbbbbbbbb&quot;. This compresses to &quot;ab12&quot;.</code></pre><p id="11a7aacb-2d23-8065-9585-c664cd03fbee" class=""><strong>Constraints:</strong></p><ul id="11a7aacb-2d23-80fc-ba8e-f38a939f4a74" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= chars.length &lt;= 2000</code></li></ul><ul id="11a7aacb-2d23-80db-a4b9-dc4d9d27646e" class="bulleted-list"><li style="list-style-type:disc"><code>chars[i]</code> is a lowercase English letter, uppercase English letter, digit, or symbol.</li></ul><p id="11a7aacb-2d23-808c-a53d-e9da5e3c29eb" class="">My Solution:</p><p id="11a7aacb-2d23-809b-88e8-fb6671fc44c0" class="">Set up 2 indicies, <em>i and j</em></p><p id="11a7aacb-2d23-80cf-b7be-e7e7ce663a56" class="">Initialize helper function to count consecutive adjacents in the string</p><p id="11a7aacb-2d23-8056-b9ef-ed03252c293f" class="">Loop through <em>chars</em><div class="indented"><p id="11a7aacb-2d23-8025-8eef-e0b3dc6c285e" class="">set chars[i] = chars[j]</p><p id="11a7aacb-2d23-80e0-85b4-c8ee3d435ec7" class="">count = adjacentFunction(chars, i)</p><p id="11a7aacb-2d23-80d6-a877-e384f9a21b8d" class="">if (count &gt; 1)<div class="indented"><p id="11a7aacb-2d23-809b-bf1b-e386f64072b1" class="">string countStr = to_string(count)</p><p id="11a7aacb-2d23-8051-8b27-c2ab7e314f2b" class="">loop through countStr:<div class="indented"><p id="11a7aacb-2d23-8066-aad0-e3109b2315d8" class="">char[++j] = digit</p></div></p></div></p><p id="11a7aacb-2d23-8016-8ca0-c668e0b289fc" class="">i+=count</p><p id="11a7aacb-2d23-80b3-84ec-dfdf0b12fa4f" class="">j++</p></div></p><p id="11a7aacb-2d23-8018-afd8-f710c1f10af9" class="">resize chars to be the size of j</p><p id="11a7aacb-2d23-809d-aa1e-c5d2c6d77866" class="">return the size of chars</p><p id="11a7aacb-2d23-8044-9fd7-e7cd675b4b53" class="">Time Complexity: O(N)</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

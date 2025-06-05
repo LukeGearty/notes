@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Questions on Email</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1577aacb-2d23-8005-a0b7-d39b48be6a76" class="page sans"><header><h1 class="page-title">Questions on Email</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1577aacb-2d23-808d-ba6c-fb6e85a2c5de" class=""><strong>Basic Email Concepts</strong></h3><ol type="1" id="1577aacb-2d23-80de-9261-c37df07f02be" class="numbered-list" start="1"><li><strong>What is the primary purpose of SMTP?</strong><ul id="1577aacb-2d23-80c8-9daf-d1b215e399b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: SMTP (Simple Mail Transfer Protocol) is used for sending emails from a client to a mail server or between mail servers.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-80a8-a0a9-f59262277af6" class="numbered-list" start="2"><li><strong>What are the differences between POP3 and IMAP?</strong><ul id="1577aacb-2d23-80b0-937b-dbf0c74664c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-809c-b3eb-d611056c938f" class="bulleted-list"><li style="list-style-type:circle"><strong>POP3</strong>: Downloads emails to the client and often removes them from the server. Best for single-device use and offline access.</li></ul><ul id="1577aacb-2d23-80a1-8560-c9e198fe0caf" class="bulleted-list"><li style="list-style-type:circle"><strong>IMAP</strong>: Synchronizes emails between the client and the server, leaving emails on the server. Best for accessing emails from multiple devices.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-803b-9b73-f904d5c7aa10" class="numbered-list" start="3"><li><strong>What is web mail?</strong><ul id="1577aacb-2d23-8069-a721-e29ad673b5eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: Web mail is a method of accessing email through a web browser, using services like Gmail, Outlook.com, or Yahoo Mail.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8075-a889-f0005855deb7" class="numbered-list" start="4"><li><strong>What ports are used by SMTP?</strong><ul id="1577aacb-2d23-8043-845a-fbd84875bba1" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-80cf-bb2a-fba2f3ec7012" class="bulleted-list"><li style="list-style-type:circle"><strong>Port 25</strong>: Default SMTP port for server-to-server communication (may be blocked by ISPs).</li></ul><ul id="1577aacb-2d23-807c-ad6e-ed92b69e23c5" class="bulleted-list"><li style="list-style-type:circle"><strong>Port 587</strong>: Used for submitting emails securely (STARTTLS encryption).</li></ul><ul id="1577aacb-2d23-80a5-beee-d6c8ab5a2341" class="bulleted-list"><li style="list-style-type:circle"><strong>Port 465</strong>: Legacy port for SMTP with SSL encryption.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-800f-be71-c795863eceb6" class="numbered-list" start="5"><li><strong>What does STARTTLS do?</strong><ul id="1577aacb-2d23-8059-b2c9-e71a00f0c408" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: STARTTLS upgrades a plain text email connection to an encrypted connection using TLS, ensuring data security.</li></ul></li></ol><hr id="1577aacb-2d23-80c9-945b-e951f913b5a7"/><h3 id="1577aacb-2d23-8077-a867-c5b39283cf12" class=""><strong>Email Security</strong></h3><ol type="1" id="1577aacb-2d23-804b-b082-e653cf64bbe7" class="numbered-list" start="1"><li><strong>Why is encryption important for email protocols?</strong><ul id="1577aacb-2d23-80e2-98ea-cdbaecb99c66" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: Encryption protects sensitive data, such as login credentials and email contents, from being intercepted by attackers.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8075-b86a-efa67d1174bb" class="numbered-list" start="2"><li><strong>What are some secure alternatives to basic SMTP, POP3, and IMAP?</strong><ul id="1577aacb-2d23-80a4-b1a8-f3a46807122d" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-8087-be47-fa0dd3e81d38" class="bulleted-list"><li style="list-style-type:circle"><strong>SMTP with STARTTLS</strong> or SSL.</li></ul><ul id="1577aacb-2d23-807d-aea2-e432ad39b087" class="bulleted-list"><li style="list-style-type:circle"><strong>POP3S (POP3 with SSL/TLS)</strong>.</li></ul><ul id="1577aacb-2d23-80f9-9d19-e447286cb407" class="bulleted-list"><li style="list-style-type:circle"><strong>IMAPS (IMAP with SSL/TLS)</strong>.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-808f-9cc8-f05bf7578732" class="numbered-list" start="3"><li><strong>What is the purpose of SPF, DKIM, and DMARC in email security?</strong><ul id="1577aacb-2d23-8058-9622-d34f3af5a7d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-8096-b44b-f6b0c44a127b" class="bulleted-list"><li style="list-style-type:circle"><strong>SPF (Sender Policy Framework)</strong>: Verifies that the sender&#x27;s IP address is authorized to send emails for a domain.</li></ul><ul id="1577aacb-2d23-8019-ba56-f39223c71afa" class="bulleted-list"><li style="list-style-type:circle"><strong>DKIM (DomainKeys Identified Mail)</strong>: Adds a digital signature to emails to ensure they haven&#x27;t been tampered with.</li></ul><ul id="1577aacb-2d23-80a6-9cdc-f96c67d87f98" class="bulleted-list"><li style="list-style-type:circle"><strong>DMARC (Domain-based Message Authentication, Reporting, and Conformance)</strong>: Combines SPF and DKIM to help prevent email spoofing.</li></ul></li></ul></li></ol><hr id="1577aacb-2d23-80ed-ac7d-e9cda285964d"/><h3 id="1577aacb-2d23-80cb-ad4a-e33a1369321f" class=""><strong>Technical Scenarios</strong></h3><ol type="1" id="1577aacb-2d23-80a2-ad5a-d2c86db4704b" class="numbered-list" start="1"><li><strong>What happens if you configure an email client to use POP3 on multiple devices?</strong><ul id="1577aacb-2d23-807b-b2c6-c4bdb02bd6b3" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: Each device downloads its own copy of the email. Unless configured to leave copies on the server, emails may not be accessible on other devices after being downloaded.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8083-8c15-c66175e16da6" class="numbered-list" start="2"><li><strong>How does IMAP handle folders differently than POP3?</strong><ul id="1577aacb-2d23-80c4-869e-c86e31ff0c10" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: IMAP synchronizes folders and their contents between the server and client, while POP3 does not support folder synchronization.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8001-9851-f188fecbbf14" class="numbered-list" start="3"><li><strong>What is the default port for IMAP, and what port is used for secure IMAP?</strong><ul id="1577aacb-2d23-806c-96b9-e05e302c01b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-8078-a0d9-e4628483c7e5" class="bulleted-list"><li style="list-style-type:circle">Default: Port <strong>143</strong>.</li></ul><ul id="1577aacb-2d23-80bb-901a-c7263d9ced9d" class="bulleted-list"><li style="list-style-type:circle">Secure (IMAPS): Port <strong>993</strong>.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-8029-b903-dea2b80d9cd3" class="numbered-list" start="4"><li><strong>If an email fails to send, what troubleshooting steps can you take?</strong><ul id="1577aacb-2d23-8096-ad7f-d06de484e059" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-805b-b6b2-cd3454abcfed" class="bulleted-list"><li style="list-style-type:circle">Check the SMTP server settings.</li></ul><ul id="1577aacb-2d23-807a-aef7-d2377002a115" class="bulleted-list"><li style="list-style-type:circle">Verify the port and encryption settings.</li></ul><ul id="1577aacb-2d23-809a-9fe4-f9db70c5ade7" class="bulleted-list"><li style="list-style-type:circle">Ensure the internet connection is active.</li></ul><ul id="1577aacb-2d23-80d9-9ec3-cd76f86c2f71" class="bulleted-list"><li style="list-style-type:circle">Confirm that the username and password are correct.</li></ul><ul id="1577aacb-2d23-803f-ac7f-e6ab5d7c03f6" class="bulleted-list"><li style="list-style-type:circle">Look for error messages or logs from the email client.</li></ul></li></ul></li></ol><hr id="1577aacb-2d23-80c9-a7d4-d9be98d4ddf6"/><h3 id="1577aacb-2d23-80be-86d0-fec2e81ba5fd" class=""><strong>Practical Usage</strong></h3><ol type="1" id="1577aacb-2d23-80c7-9ecc-d86cc10f2ecd" class="numbered-list" start="1"><li><strong>How do email clients like Thunderbird or Outlook use SMTP, POP3, and IMAP together?</strong><ul id="1577aacb-2d23-8034-b517-fff9479058db" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>:<ul id="1577aacb-2d23-80dd-8de4-fd27907a39c3" class="bulleted-list"><li style="list-style-type:circle">SMTP: Sends outgoing messages.</li></ul><ul id="1577aacb-2d23-8022-b942-d349ab1c51f2" class="bulleted-list"><li style="list-style-type:circle">POP3/IMAP: Retrieves incoming messages.</li></ul><ul id="1577aacb-2d23-804c-8920-eb25cecba2f0" class="bulleted-list"><li style="list-style-type:circle">The client synchronizes or downloads emails based on the protocol configuration.</li></ul></li></ul></li></ol><ol type="1" id="1577aacb-2d23-80a1-a0de-effbc9cb2002" class="numbered-list" start="2"><li><strong>What is the role of the mail server in email communication?</strong><ul id="1577aacb-2d23-8071-a445-faea47bf8fc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: The mail server handles storing, sending, and receiving emails, acting as an intermediary between the sender and recipient.</li></ul></li></ol><ol type="1" id="1577aacb-2d23-8059-8e2a-ced371ee1fa6" class="numbered-list" start="3"><li><strong>Why might an organization prefer IMAP over POP3 for its employees?</strong><ul id="1577aacb-2d23-8073-91ae-c2a6e2fc13f6" class="bulleted-list"><li style="list-style-type:disc"><strong>Answer</strong>: IMAP allows employees to access their emails from multiple devices and ensures emails remain synchronized, which is ideal for modern, mobile work environments.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

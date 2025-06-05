@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Two Pointers</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="11a7aacb-2d23-808e-b892-fd889c276a65" class="page sans"><header><h1 class="page-title">Two Pointers</h1><p class="page-description"></p></header><div class="page-body"><p id="1217aacb-2d23-804e-b3da-dce711302e4e" class="">
+</p><h2 id="11b7aacb-2d23-8005-b4fd-f5adb0c4e45b" class="">Move Zeroes</h2><p id="11b7aacb-2d23-8032-92e4-d58e1d0264bc" class="">Given an integer array <code>nums</code>, move all <code>0</code>&#x27;s to the end of it while maintaining the relative order of the non-zero elements.</p><p id="11b7aacb-2d23-80b8-9997-f5bd2f50ee7c" class=""><strong>Note</strong> that you must do this in-place without making a copy of the array.</p><p id="11b7aacb-2d23-80da-8453-cd36864e69ca" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11b7aacb-2d23-80bf-b3ee-fb20ec2af015" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+</code></pre><p id="11b7aacb-2d23-80d4-b8ff-e1f8a30a0852" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11b7aacb-2d23-80dd-a080-f1f7d443b1dc" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [0]
+Output: [0]
+</code></pre><p id="11b7aacb-2d23-80ed-b57f-d3abc4a8a544" class=""><strong>Constraints:</strong></p><ul id="11b7aacb-2d23-80b8-a763-e11a1cbfc04f" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= nums.length &lt;= 104</code></li></ul><ul id="11b7aacb-2d23-80d4-bf3b-ff319af037dc" class="bulleted-list"><li style="list-style-type:disc"><code>231 &lt;= nums[i] &lt;= 231 - 1</code></li></ul><p id="11b7aacb-2d23-8062-923d-e1bcd9504dbd" class="">My Solution:</p><p id="11b7aacb-2d23-800d-9aa4-ec464c31f4e8" class="">Set two pointers, <em>i </em>and <em>j, </em>to 0</p><p id="11c7aacb-2d23-80fb-851b-c18a401009b7" class="">Loop through <em>nums, </em>from i to nums.length:<div class="indented"><p id="4e279f4a-f1ac-4731-9138-e0c713c0ade8" class="">if nums[i] ≠ 0:<div class="indented"><p id="9d24be38-8d72-4b16-b3fc-80e1cf1dc649" class="">swap(nums[i], nums[j])</p><p id="e2a070f7-909f-466c-9b3e-102e9d9ef1db" class="">j++</p></div></p></div></p><p id="11c7aacb-2d23-8073-af8f-d34b7f0e639d" class="">Runtime - O(N)</p><h2 id="11c7aacb-2d23-80e7-ad5a-d484ccb67b59" class="">Is Subsequence</h2><p id="11c7aacb-2d23-805b-884e-fe31f06fe242" class="">Given two strings <code>s</code> and <code>t</code>, return <code>true</code><em> if </em><code>s</code><em> is a </em><em><strong>subsequence</strong></em><em> of </em><code>t</code><em>, or </em><code>false</code><em> otherwise</em>.</p><p id="11c7aacb-2d23-8051-a9b7-c672a0469b73" class="">A <strong>subsequence</strong> of a string is a new string that is <br/>formed from the original string by deleting some (can be none) of the <br/>characters without disturbing the relative positions of the remaining <br/>characters. (i.e., <br/><code>&quot;ace&quot;</code> is a subsequence of <code>&quot;</code><code><span style="border-bottom:0.05em solid">a</span></code><code>b</code><code><span style="border-bottom:0.05em solid">c</span></code><code>d</code><code><span style="border-bottom:0.05em solid">e</span></code><code>&quot;</code> while <code>&quot;aec&quot;</code> is not).</p><p id="11c7aacb-2d23-802c-baee-ced6a3cef694" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11c7aacb-2d23-80ea-8e7c-e4e805594b52" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: s = &quot;abc&quot;, t = &quot;ahbgdc&quot;
+Output: true
+</code></pre><p id="11c7aacb-2d23-805a-b9e2-f133effb4d30" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="11c7aacb-2d23-802c-9925-d5e1e122cfc4" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: s = &quot;axc&quot;, t = &quot;ahbgdc&quot;
+Output: false
+</code></pre><p id="11c7aacb-2d23-80ae-95cd-c5a0ef956959" class=""><strong>Constraints:</strong></p><ul id="11c7aacb-2d23-80ae-b5ac-f6a519a54da9" class="bulleted-list"><li style="list-style-type:disc"><code>0 &lt;= s.length &lt;= 100</code></li></ul><ul id="11c7aacb-2d23-8029-ab35-c1229943a909" class="bulleted-list"><li style="list-style-type:disc"><code>0 &lt;= t.length &lt;= 104</code></li></ul><ul id="11c7aacb-2d23-8092-ab14-d82b9a2bd870" class="bulleted-list"><li style="list-style-type:disc"><code>s</code> and <code>t</code> consist only of lowercase English letters.</li></ul><p id="11b7aacb-2d23-808d-a566-c8d93e18f174" class="">My Solution:</p><p id="11c7aacb-2d23-80b8-a72f-e299d38edbf9" class="">Initialize two variables, <em>i </em>to track <em>s, </em>and <em>j </em>to track <em>t. i and j </em>both equal 0</p><p id="11c7aacb-2d23-806c-93d3-c01306791aa5" class="">while j &lt; length(t):<div class="indented"><p id="11c7aacb-2d23-80fc-9c0c-d42491fb1110" class="">if t[j] == s[i]<div class="indented"><p id="11c7aacb-2d23-80ed-b5cd-ce73f956e760" class="">i++</p></div></p><p id="11c7aacb-2d23-80c6-a60a-f6db62a9809c" class="">j++</p></div></p><p id="11c7aacb-2d23-80f2-ae74-e9c4636d2bb7" class="">End loop</p><p id="11c7aacb-2d23-800e-88bb-cea830ce51aa" class="">if i == length(s) return true</p><p id="11c7aacb-2d23-803e-846f-c5408bdf7e64" class="">else return false</p><h2 id="1207aacb-2d23-8082-914b-d5ac8ace2b93" class="">Container With Most Water</h2><p id="1207aacb-2d23-80c1-8b99-ff30cd2f81ed" class="">You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>ith</code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p><p id="1207aacb-2d23-801d-add2-e679789a9430" class="">Find two lines that together with the x-axis form a container, such that the container contains the most water.</p><p id="1207aacb-2d23-80e2-a2c3-ea627f3ad229" class="">Return <em>the maximum amount of water a container can store</em>.</p><p id="1207aacb-2d23-807e-879c-fc947b07c0ce" class=""><strong>Notice</strong> that you may not slant the container.</p><p id="1207aacb-2d23-80e4-b572-cf8c12b0b715" class=""><strong>Example 1:</strong></p><figure id="1207aacb-2d23-8082-8a9f-edd70ddf14e4" class="image"><a href="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg"><img style="width:600px" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1207aacb-2d23-802c-aab4-dd328872b1ca" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+</code></pre><p id="1207aacb-2d23-80a5-b2a5-ceb3780da8af" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1207aacb-2d23-809c-85c1-f796fd385869" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: height = [1,1]
+Output: 1
+</code></pre><p id="1207aacb-2d23-8048-b18e-fdad1efd414f" class=""><strong>Constraints:</strong></p><ul id="1207aacb-2d23-805f-9920-fd81e0895cdd" class="bulleted-list"><li style="list-style-type:disc"><code>n == height.length</code></li></ul><ul id="1207aacb-2d23-80bd-9d96-f8ec1f8b048a" class="bulleted-list"><li style="list-style-type:disc"><code>2 &lt;= n &lt;= 105</code></li></ul><ul id="1207aacb-2d23-8055-ba13-f94ea1c2a667" class="bulleted-list"><li style="list-style-type:disc"><code>0 &lt;= height[i] &lt;= 104</code></li></ul><p id="11b7aacb-2d23-808f-a4f3-d3338f24a8da" class="">My Solution:</p><p id="1207aacb-2d23-801d-a280-f3abe22b5cec" class="">Initialize two variables, <em>left</em> to be the beginning of the array. <em>Right </em>to be the end of the array.</p><p id="1207aacb-2d23-8025-be6f-d59151883c05" class="">Initialize <em>maxArea </em>to keep track of the maximum area found, initially set to 0.</p><p id="1207aacb-2d23-8056-87ba-cfe922e648ad" class="">while left &lt; right:<div class="indented"><p id="1207aacb-2d23-8066-8306-d1ed23ac2505" class="">Find the minimum height differences between left and right pointers</p><p id="1207aacb-2d23-8042-a1b2-cc788e085513" class="">Multiply minimum height by width, right - left indices.</p><p id="1207aacb-2d23-8098-b34e-f1c3d4501f39" class="">Store that value in <em>currentArea</em></p><p id="1207aacb-2d23-80b8-8b0d-ef1d36f6b96d" class="">maxArea = max(maxArea, currentArea)</p><p id="1207aacb-2d23-8052-9b5f-f87ab8615348" class="">
+</p><p id="1207aacb-2d23-8045-9412-e60291112f10" class="">if height[left] &lt; height[right]:<div class="indented"><p id="1207aacb-2d23-8044-b9d7-dd31e5cb2261" class="">left++</p></div></p><p id="1207aacb-2d23-806c-b899-c4bd885c6cea" class="">else:<div class="indented"><p id="1207aacb-2d23-80f2-81cd-ca15e8c4c718" class="">right—;</p></div></p></div></p><p id="1207aacb-2d23-80fd-ab72-ea8355a3aec1" class="">endloop</p><p id="1207aacb-2d23-809a-a416-e60d214d46b1" class="">return maxArea</p><h2 id="1217aacb-2d23-806d-b732-f56caf6b0296" class="">Max Number of K-Sum Pairs</h2><p id="1217aacb-2d23-80b8-bd3b-c3229fe49098" class="">You are given an integer array <code>nums</code> and an integer <code>k</code>.</p><p id="1217aacb-2d23-80f0-806f-e093ce9425b1" class="">In one operation, you can pick two numbers from the array whose sum equals <code>k</code> and remove them from the array.</p><p id="1217aacb-2d23-8024-90fe-e183f13b965c" class="">Return <em>the maximum number of operations you can perform on the array</em>.</p><p id="1217aacb-2d23-80f7-9883-f91a8e19aa58" class=""><strong>Example 1:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1217aacb-2d23-8008-9831-cbc31bd152c8" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [1,2,3,4], k = 5
+Output: 2
+Explanation: Starting with nums = [1,2,3,4]:
+- Remove numbers 1 and 4, then nums = [2,3]
+- Remove numbers 2 and 3, then nums = []
+There are no more pairs that sum up to 5, hence a total of 2 operations.</code></pre><p id="1217aacb-2d23-80d8-89e1-e180c44f44d0" class=""><strong>Example 2:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1217aacb-2d23-808f-8407-da73abe07fae" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: nums = [3,1,3,4,3], k = 6
+Output: 1
+Explanation: Starting with nums = [3,1,3,4,3]:
+- Remove the first two 3&#x27;s, then nums = [1,4,3]
+There are no more pairs that sum up to 6, hence a total of 1 operation.</code></pre><p id="1217aacb-2d23-800e-8491-d0676d86cb23" class=""><strong>Constraints:</strong></p><ul id="1217aacb-2d23-807e-8656-ece0ef38fb5c" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= nums.length &lt;= 105</code></li></ul><ul id="1217aacb-2d23-80ff-8ce3-ce975d9f787d" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= nums[i] &lt;= 109</code></li></ul><ul id="1217aacb-2d23-8042-9d20-e9fd6a323d83" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= k &lt;= 109</code></li></ul><p id="1217aacb-2d23-80ce-ba6f-d50ffc5c8f12" class="">My Solution:</p><p id="1217aacb-2d23-80dc-88bb-ed9d5e0744dd" class="">Declare <em>result </em>to be 0, <em>i = 0, j = nums.size</em></p><p id="1217aacb-2d23-80c7-a856-e50f87c42275" class="">sort nums</p><p id="1217aacb-2d23-8033-ba84-cddc2ab8e3d1" class="">while (i &lt; j)<div class="indented"><p id="1217aacb-2d23-80c1-8cd5-c4da1627574b" class="">if nums[i] + nums[j] == k<div class="indented"><p id="1217aacb-2d23-8010-9ddb-e71f570688a6" class="">result++</p><p id="1217aacb-2d23-8037-a578-d5a7a99af5a5" class="">i++</p><p id="1217aacb-2d23-80f9-8a18-d4c01e585012" class="">j—</p></div></p><p id="1217aacb-2d23-80ff-ae73-de1146e96b8c" class="">else if nums[i] + nums[j] &gt; k<div class="indented"><p id="1217aacb-2d23-8008-8a90-d33c9096c64b" class="">j—</p></div></p><p id="1217aacb-2d23-80a1-9795-d482148caf2a" class="">else if nums[i] + nums[j] &lt; k<div class="indented"><p id="1217aacb-2d23-8074-b0b4-ee5ef6757113" class="">i++</p></div></p></div></p><p id="1217aacb-2d23-8024-9481-d97b88f699ad" class="">endloop</p><p id="1217aacb-2d23-80d4-8636-cdad5e1af539" class="">return result</p><p id="1217aacb-2d23-80c6-8e45-d6b0c8ca4fce" class="">Time complexity: O(n log n) due to sorting the nums</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

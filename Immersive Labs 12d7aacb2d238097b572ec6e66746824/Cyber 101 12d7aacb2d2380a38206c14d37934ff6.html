@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cyber 101</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="12d7aacb-2d23-80a3-8206-c14d37934ff6" class="page sans"><header><h1 class="page-title">Cyber 101</h1><p class="page-description"></p></header><div class="page-body"><h2 id="12d7aacb-2d23-80c1-965c-d332ceddbd56" class="">Cyber 101: Information Security<br/><br/></h2><ul id="12d7aacb-2d23-8031-b3fa-d327ad1ef095" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Information Security, or InfoSec, refers to practices, components, and processes used to protect information, especially data containing personally identifiable information (PII).</li></ul><ul id="12d7aacb-2d23-807d-bc8a-f9b95111e5f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Prevents unauthorized access, use, manipulation, and destruction of information. Ensures data remains confidential, accurate, and accessible.</li></ul><h3 id="12d7aacb-2d23-809d-a631-ec99cd10f3d1" class="">Core Principle: CIA Triad</h3><ol type="1" id="12d7aacb-2d23-8087-839f-d098664b3db0" class="numbered-list" start="1"><li><strong>Confidentiality</strong>:<ul id="12d7aacb-2d23-80b0-aa0b-c22b9a6abd46" class="bulleted-list"><li style="list-style-type:disc">Limits access to authorized users only.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-8037-b2b1-d8545255fc22" class="numbered-list" start="2"><li><strong>Integrity</strong>:<ul id="12d7aacb-2d23-80c1-9bac-f45e7a3909eb" class="bulleted-list"><li style="list-style-type:disc">Ensures data remains accurate and untampered.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80d2-a14e-c535565059fb" class="numbered-list" start="3"><li><strong>Availability</strong>:<ul id="12d7aacb-2d23-8005-ac1c-f48b14f92eca" class="bulleted-list"><li style="list-style-type:disc">Ensures information and resources are accessible to the right people when needed.</li></ul></li></ol><h3 id="12d7aacb-2d23-8035-97cb-ee6f4b1240d0" class="">Information Security vs. Cybersecurity</h3><ul id="12d7aacb-2d23-8060-8bbc-c0bf514b6583" class="bulleted-list"><li style="list-style-type:disc"><strong>Information Security</strong>: Broader focus on data protection, including non-digital threats like environmental hazards and physical theft.</li></ul><ul id="12d7aacb-2d23-80f1-ad68-c6379072062a" class="bulleted-list"><li style="list-style-type:disc"><strong>Cybersecurity</strong>: Subset of InfoSec focused on protecting systems, networks, and programs from digital attacks.</li></ul><h3 id="12d7aacb-2d23-8061-b8a8-cde85762b618" class="">Key Concepts in Information Security</h3><ol type="1" id="12d7aacb-2d23-806e-bb3d-f972b11b02c7" class="numbered-list" start="1"><li><strong>Non-repudiation</strong>:<ul id="12d7aacb-2d23-8096-bbb5-e3eaaa7e046a" class="bulleted-list"><li style="list-style-type:disc">Guarantees proof of delivery and proof of sender’s identity.</li></ul><ul id="12d7aacb-2d23-8061-b7eb-c29372b9e5ff" class="bulleted-list"><li style="list-style-type:disc">Example: Like a signed-for parcel, digital signatures confirm receipt and sender authenticity.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-801c-92e7-cb37e6e8d08b" class="numbered-list" start="2"><li><strong>Authentication</strong>:<ul id="12d7aacb-2d23-80e3-bd9b-dbd7149a4192" class="bulleted-list"><li style="list-style-type:disc">Verifies the identity of users and data authenticity.</li></ul><ul id="12d7aacb-2d23-8074-b0c3-fd17fa1d5d54" class="bulleted-list"><li style="list-style-type:disc">Example: A parcel requiring ID verification upon delivery to ensure it’s genuine.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-808e-aff1-fb2882d27e6e" class="numbered-list" start="3"><li><strong>Accountability</strong>:<ul id="12d7aacb-2d23-8016-a049-e90af9b6d70b" class="bulleted-list"><li style="list-style-type:disc">Traces each activity to a specific individual or ID, ensuring proper permissions and roles.</li></ul><ul id="12d7aacb-2d23-8065-9677-c0bdbcdbf730" class="bulleted-list"><li style="list-style-type:disc">Example: In a postal system, each stage of delivery is logged to ensure responsibility can be traced if issues arise.</li></ul></li></ol><h3 id="12d7aacb-2d23-8099-9845-df266777bf07" class="">Lab Overview</h3><ul id="12d7aacb-2d23-8002-b64d-f5c898fa8370" class="bulleted-list"><li style="list-style-type:disc"><strong>Prerequisite Labs</strong>:<ul id="12d7aacb-2d23-8013-9bf4-ef8158617d5f" class="bulleted-list"><li style="list-style-type:circle"><em>Secure Fundamentals: The CIA Triad</em> - Level 2 difficulty, estimated 10 minutes, yet to be started.</li></ul></li></ul><ul id="12d7aacb-2d23-80f6-87bb-c7c1447bcaf8" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Activity</strong>: Involves matching statements related to InfoSec principles by dragging from left to right.</li></ul><p id="12d7aacb-2d23-806b-b270-f8207a353c38" class="">These notes cover the essentials of InfoSec and provide an overview of the CIA Triad and related security concepts.</p><h2 id="12d7aacb-2d23-80f4-b001-e8f4d3c4a301" class="">Security Champions</h2><h3 id="12d7aacb-2d23-80f6-8c5a-e0b50644b657" class="">Security Champions Overview</h3><ul id="12d7aacb-2d23-804b-8c86-d0ab2bdcfece" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Security champions are team members who advocate for security awareness and best practices within their teams, acting as a bridge between technical security experts and other employees.</li></ul><ul id="12d7aacb-2d23-8093-ad21-fd4eff698a87" class="bulleted-list"><li style="list-style-type:disc"><strong>Role Expansion</strong>: Security champions are no longer exclusive to technical teams. They now appear across departments, including non-technical ones, to promote secure behaviors and answer basic security queries.</li></ul><h3 id="12d7aacb-2d23-803d-932e-d6442d09fe35" class="">Types of Security Champions</h3><ol type="1" id="12d7aacb-2d23-80bb-b68b-d01a67f1bce6" class="numbered-list" start="1"><li><strong>Technical Security Champions</strong>:<ul id="12d7aacb-2d23-80db-b826-edbf03dfc691" class="bulleted-list"><li style="list-style-type:disc">Typically embedded in IT or engineering teams.</li></ul><ul id="12d7aacb-2d23-80cc-a9ca-ca057728f82e" class="bulleted-list"><li style="list-style-type:disc">Responsibilities:<ul id="12d7aacb-2d23-80c6-9071-c2dbf5f03afd" class="bulleted-list"><li style="list-style-type:circle">Amplify security priorities within the team.</li></ul><ul id="12d7aacb-2d23-80e5-b1f6-c57c60f73dff" class="bulleted-list"><li style="list-style-type:circle">Highlight security concerns to relevant departments.</li></ul><ul id="12d7aacb-2d23-80bf-9d06-c63222ad2900" class="bulleted-list"><li style="list-style-type:circle">Assist with code and infrastructure reviews (if skilled).</li></ul><ul id="12d7aacb-2d23-80bd-8def-ea90dd1f7658" class="bulleted-list"><li style="list-style-type:circle">Aid in incident response by collaborating with security teams.</li></ul></li></ul></li></ol><ol type="1" id="12d7aacb-2d23-8027-80ef-c95aa59df20c" class="numbered-list" start="2"><li><strong>Non-Technical Security Champions</strong>:<ul id="12d7aacb-2d23-80df-8e06-f5421c602e27" class="bulleted-list"><li style="list-style-type:disc">Serve in non-technical teams as primary security advocates.</li></ul><ul id="12d7aacb-2d23-80a7-ae79-d07723b78ee6" class="bulleted-list"><li style="list-style-type:disc">Responsibilities:<ul id="12d7aacb-2d23-803c-85f9-e44c75ddce2d" class="bulleted-list"><li style="list-style-type:circle">Act as the first point of contact for security issues.</li></ul><ul id="12d7aacb-2d23-8026-8be5-e0788056f386" class="bulleted-list"><li style="list-style-type:circle">Proactively improve team security practices.</li></ul><ul id="12d7aacb-2d23-80ae-911a-f1f45a4f6fd1" class="bulleted-list"><li style="list-style-type:circle">Raise awareness and ensure adherence to secure behavior.</li></ul></li></ul></li></ol><h3 id="12d7aacb-2d23-8053-9596-da9ef057c777" class="">Key Responsibilities of All Security Champions</h3><ul id="12d7aacb-2d23-80c8-87ab-e51d6bf44df4" class="bulleted-list"><li style="list-style-type:disc"><strong>Awareness &amp; Training</strong>: Encourage security training like phishing simulations and crisis scenarios.</li></ul><ul id="12d7aacb-2d23-8097-a38e-f642eb473e48" class="bulleted-list"><li style="list-style-type:disc"><strong>Information Sharing</strong>: Facilitate the exchange of security information across teams to improve organizational security.</li></ul><ul id="12d7aacb-2d23-8089-930f-d5b9d9c0aa83" class="bulleted-list"><li style="list-style-type:disc"><strong>Process Review</strong>: Stay updated on best practices and assess team processes for potential security issues.</li></ul><ul id="12d7aacb-2d23-8025-8ac5-cccbbcc49f49" class="bulleted-list"><li style="list-style-type:disc"><strong>Approachability</strong>: Champions should be approachable, so colleagues feel comfortable discussing security concerns.</li></ul><h3 id="12d7aacb-2d23-8022-ab06-eb538c9fd9be" class="">Importance of Security Champions</h3><ul id="12d7aacb-2d23-8011-8d2f-e9c34c688c68" class="bulleted-list"><li style="list-style-type:disc"><strong>Preparedness</strong>: Helps ensure teams are equipped to handle security needs and respond to incidents.</li></ul><ul id="12d7aacb-2d23-80f0-890a-c8436df82dc3" class="bulleted-list"><li style="list-style-type:disc"><strong>Organizational Security Posture</strong>: Security champions enhance the company’s security culture, making security a shared responsibility.</li></ul><h3 id="12d7aacb-2d23-8051-8eca-f18be9fd6489" class="">Lab Overview</h3><ul id="12d7aacb-2d23-80ba-a13c-e5d1fce4d1cf" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Activity</strong>: Answer questions to solidify understanding of security champions&#x27; roles, with a goal of answering eight questions correctly to complete the lab.</li></ul><h2 id="12d7aacb-2d23-8018-8cee-f4d17b80d7b4" class="">Cyber Kill Chain</h2><h3 id="12d7aacb-2d23-80e0-94b2-cf83652d8462" class="">Cyber Kill Chain Overview</h3><ul id="12d7aacb-2d23-80da-9eb3-c41a2d086ba0" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: The cyber kill chain is a cybersecurity model that breaks down the steps used by attackers to conduct cyberattacks. It helps security professionals understand attacker strategies, enhance defenses, and inform response actions during an incident.</li></ul><h3 id="12d7aacb-2d23-8009-a256-d32c0b6b4a47" class="">The Seven Steps of the Cyber Kill Chain</h3><p id="12d7aacb-2d23-80e4-a215-ca7367032d20" class="">Each step builds upon the previous one, forming a sequential flow required to complete the attack.</p><ol type="1" id="12d7aacb-2d23-804f-8304-d2eac02c8561" class="numbered-list" start="1"><li><strong>Reconnaissance</strong>:<ul id="12d7aacb-2d23-8017-b0a7-c0fbe03a236b" class="bulleted-list"><li style="list-style-type:disc">Attackers gather information about targets and identify possible vulnerabilities or attack methods.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80b5-a25b-dd1797e67e25" class="numbered-list" start="2"><li><strong>Weaponization</strong>:<ul id="12d7aacb-2d23-808c-9d40-c773a29b9372" class="bulleted-list"><li style="list-style-type:disc">Attack preparation, often involving creating or obtaining malware or exploiting known vulnerabilities.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-805b-a615-c995361c511f" class="numbered-list" start="3"><li><strong>Delivery</strong>:<ul id="12d7aacb-2d23-80cc-9bd2-e76a1c65c8d7" class="bulleted-list"><li style="list-style-type:disc">The stage where malware is delivered to the target, usually through methods like phishing emails or malicious downloads.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-8016-9cd2-ec0cfdaa1fc9" class="numbered-list" start="4"><li><strong>Exploitation</strong>:<ul id="12d7aacb-2d23-80b9-9ff3-f4b722292fe7" class="bulleted-list"><li style="list-style-type:disc">Attackers exploit vulnerabilities by running malware or code to gain unauthorized access.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80b9-a348-c7e39fe8844d" class="numbered-list" start="5"><li><strong>Installation</strong>:<ul id="12d7aacb-2d23-8056-b205-f4131a78c4f5" class="bulleted-list"><li style="list-style-type:disc">Attackers install tools or software to maintain persistence, such as remote access tools.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-802f-9115-d011756b7d88" class="numbered-list" start="6"><li><strong>Command and Control (C2)</strong>:<ul id="12d7aacb-2d23-8045-9f43-d17d780d0755" class="bulleted-list"><li style="list-style-type:disc">Attackers establish control over the compromised system and potentially exfiltrate sensitive data.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-8067-94f6-f1d367c87221" class="numbered-list" start="7"><li><strong>Actions on Objectives</strong>:<ul id="12d7aacb-2d23-802f-aa1a-eccebf666bf2" class="bulleted-list"><li style="list-style-type:disc">Attackers complete their intended goals, which can vary (e.g., data theft, system disruption).</li></ul></li></ol><h3 id="12d7aacb-2d23-806b-a0c7-ecd6c8ef515c" class="">Using the Cyber Kill Chain to Improve Security</h3><ul id="12d7aacb-2d23-80ba-997f-c2621b64e56b" class="bulleted-list"><li style="list-style-type:disc"><strong>Identify and Fix Security Gaps</strong>: Organizations can review each stage to find and address weaknesses in their defenses.</li></ul><ul id="12d7aacb-2d23-80ae-9272-d966a98fbcc5" class="bulleted-list"><li style="list-style-type:disc"><strong>Simulate Cyberattacks</strong>: Simulations of realistic attacks (e.g., phishing, social engineering) help pinpoint vulnerabilities and threats.</li></ul><ul id="12d7aacb-2d23-80c9-9107-e02756ecfe8d" class="bulleted-list"><li style="list-style-type:disc"><strong>Evaluate Security Controls</strong>: Analyze simulations and assign risk scores, creating reports to identify gaps and areas for improvement.</li></ul><ul id="12d7aacb-2d23-8084-a2fd-e61045b97568" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigate Security Gaps</strong>: Implement fixes, such as patches or additional security tools (e.g., VPNs), to reduce exposure to threats.</li></ul><h3 id="12d7aacb-2d23-8079-bbf1-c527eb1751b0" class="">Lab Overview</h3><ul id="12d7aacb-2d23-8008-b7c2-ce4381b66fe1" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Activity</strong>: Complete dropdown selections to fill in sentences about the cyber kill chain, aiming for eight correct answers to pass. All required information is available in the lab content.</li></ul><h3 id="12f7aacb-2d23-80bb-a035-cfa1b3a6621c" class="">Who are the Hackers?</h3><h3 id="12f7aacb-2d23-800c-84fb-c41eb3c3512e" class="">Criminal Hacker</h3><ul id="12f7aacb-2d23-80d8-beee-c0e36fdde5a5" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: Criminal hackers are financially motivated and are the most common type of hacker affecting everyday users. They target data such as bank details or credit card information for monetary gain.</li></ul><ul id="12f7aacb-2d23-8060-bf8f-ec94497d34d4" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Criminal Hacker</strong>: Albert Gonzalez</li></ul><hr id="12f7aacb-2d23-80ff-8846-db1a619a2376"/><h3 id="12f7aacb-2d23-8029-94ef-dbf37b90950b" class="">Nation/State-Sponsored Hacker</h3><ul id="12f7aacb-2d23-80a4-a27b-dbed29ce0028" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: State-sponsored hackers are well-funded and supported by government power, focusing on large corporations, other governments, or national infrastructure rather than individuals.</li></ul><ul id="12f7aacb-2d23-806b-a924-f7802bdcea4f" class="bulleted-list"><li style="list-style-type:disc"><strong>State-Sponsored Group</strong>: PLA Unit 61398</li></ul><hr id="12f7aacb-2d23-804d-87c1-e33a9745cfe9"/><h3 id="12f7aacb-2d23-80f5-ba2b-e53ccc86b2a4" class="">Hacktivist</h3><ul id="12f7aacb-2d23-80e3-a8de-ca9dce7d924e" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: Hacktivists hack for political or ideological reasons, targeting entities like corporations or governments with conflicting views.</li></ul><ul id="12f7aacb-2d23-80d4-abf4-cca1372cfb8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Hacktivist Group</strong>: Anonymous Collective</li></ul><hr id="12f7aacb-2d23-80b1-93d3-d243c9a7ddc1"/><h3 id="12f7aacb-2d23-807c-a80b-d3dc0991a232" class="">Terrorist Hacker</h3><ul id="12f7aacb-2d23-8017-86dc-f074b4b73861" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: These hackers may overlap with hacktivist goals but are particularly concerning when attempting cyberterrorist attacks, like targeting national infrastructure (e.g., power grids).</li></ul><ul id="12f7aacb-2d23-80c3-be3e-d22f126961f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Further Reading</strong>: More information on cyberterrorism and involved groups is available.</li></ul><hr id="12f7aacb-2d23-801a-80c6-d1db05f8b598"/><h3 id="12f7aacb-2d23-80ab-b10c-e81e8c5bf4e2" class="">Insider Threat</h3><ul id="12f7aacb-2d23-80a1-8933-dd5b1af0f4dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: An insider threat is an employee who attacks their own organization. They are becoming increasingly common.</li></ul><ul id="12f7aacb-2d23-803a-b4a2-ea2f0100e1d8" class="bulleted-list"><li style="list-style-type:disc"><strong>Statistics</strong>: In 2021, 57% of organizations reported increased insider threats. Technology, financial services, and healthcare are the most affected industries.</li></ul><ul id="12f7aacb-2d23-80e9-8c17-ef8540acdb55" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Insider Threat</strong>: Edward Snowden</li></ul><hr id="12f7aacb-2d23-8008-a3b4-ccb688f14fb0"/><h3 id="12f7aacb-2d23-80c4-9c16-f43a88a3a839" class="">Lone Wolf</h3><ul id="12f7aacb-2d23-8061-9100-c1c4ab07ce17" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: Lone wolves work independently, making them harder to detect as there are no whistleblowers. Their solitary approach can make them particularly dangerous.</li></ul><ul id="12f7aacb-2d23-8084-94d0-d5b689ca1d26" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Lone Wolf</strong>: Jonathan James</li></ul><hr id="12f7aacb-2d23-80a7-acf7-d18e602c9194"/><h3 id="12f7aacb-2d23-80e1-88ef-d006d9c83d0d" class="">Script Kiddie</h3><ul id="12f7aacb-2d23-8063-9960-f14048e64103" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: Script kiddies are inexperienced hackers who rely on scripts written by others. They may cause significant unintentional damage due to a lack of understanding.</li></ul><ul id="12f7aacb-2d23-8009-937a-d0cee8da35c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Unlike experienced hackers who may plan calculated damage for leverage, script kiddies could unintentionally cause severe disruption.</li></ul><ul id="12f7aacb-2d23-8082-8ebf-cfb7c5fc7f05" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Script Kiddie</strong>: Gary McKinnon</li></ul><hr id="12f7aacb-2d23-80b8-ab60-f0295b201ce7"/><h3 id="12f7aacb-2d23-8070-a1cd-fa30af787fb0" class="">Ethical Hacker</h3><ul id="12f7aacb-2d23-80b7-b004-eb58e5a7eb04" class="bulleted-list"><li style="list-style-type:disc"><strong>Overview</strong>: Ethical hackers operate with permission to identify and fix vulnerabilities in systems, often earning bug bounties from companies for their work.</li></ul><ul id="12f7aacb-2d23-80d4-9113-e45a156749e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Famous Ethical Hacker</strong>: Charlie Miller</li></ul><h2 id="12f7aacb-2d23-80db-aa36-d73a4b9bc216" class="">Why Hackers Hack</h2><h3 id="12f7aacb-2d23-8077-b1aa-d52852769406" class="">Motivations Behind Hacking</h3><ol type="1" id="12f7aacb-2d23-8011-bb5b-edbbaaab474a" class="numbered-list" start="1"><li><strong>Financial</strong><ul id="12f7aacb-2d23-8051-a459-ce5a21603704" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Many hackers, especially criminal groups, are motivated by monetary gain. Techniques include ATM theft, phishing, and selling stolen credit card numbers on the darknet.</li></ul><ul id="12f7aacb-2d23-802f-9274-e99a3769c1fa" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>: Converting cyber skills into financial profit.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-80c0-819b-f90e54996f17" class="numbered-list" start="2"><li><strong>Information Theft</strong><ul id="12f7aacb-2d23-80c2-ac37-cbf1427ae09f" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Common among state-sponsored groups aiming to gather sensitive information to boost national defense capabilities or gain a competitive edge.</li></ul><ul id="12f7aacb-2d23-802f-874b-e6de697919bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Reports of Chinese-backed groups targeting defense companies for military technology information.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-802f-bbe0-e52ee08816d4" class="numbered-list" start="3"><li><strong>Political/Ideological</strong><ul id="12f7aacb-2d23-80ad-b743-ea843be41abf" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Motivated by political beliefs or ideologies, some hackers release damaging information or conduct attacks to influence public opinion or political outcomes.</li></ul><ul id="12f7aacb-2d23-80f2-af73-f8375c74634e" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Russian-backed sources allegedly hacked emails of US Democratic Party members in 2016, affecting polling for the Clinton campaign.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-80e1-bf57-c34d85826aea" class="numbered-list" start="4"><li><strong>Religion</strong><ul id="12f7aacb-2d23-805b-bcad-c870ebb5633d" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Some hacks are religiously motivated, often in retaliation for perceived offenses.</li></ul><ul id="12f7aacb-2d23-803e-a410-d5533f6f662b" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: In Paris, 19,000 French websites were attacked by extremists following the attack on a satirical newspaper.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-806d-b091-d9183692d598" class="numbered-list" start="5"><li><strong>Disruption</strong><ul id="12f7aacb-2d23-80a8-8566-fd420c107225" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Motivated by revenge, resentment, or the desire to make a statement, these hackers cause service disruptions using methods like DoS (Denial of Service) attacks.</li></ul><ul id="12f7aacb-2d23-80ab-bb2a-f8029c9f59d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>: Bringing down servers and disrupting company services temporarily.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-8030-9205-d3123440d83e" class="numbered-list" start="6"><li><strong>The ‘Fun’ Hacker</strong><ul id="12f7aacb-2d23-808f-b82b-e64b55166494" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Some hackers are driven by curiosity or enjoyment, exploring vulnerabilities for amusement or to show off. Often, these hackers start with a desire to understand systems or make playful statements.</li></ul><ul id="12f7aacb-2d23-8081-9137-fdd9fb208c66" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>: The rebranding of Burger King’s Twitter to McDonald&#x27;s, or Rickrolling. A 17-year-old hacked TalkTalk to impress friends.</li></ul></li></ol><h2 id="12f7aacb-2d23-80bc-b59a-dc32fb8967e5" class="">Cookies</h2><h3 id="12f7aacb-2d23-800f-a0da-fa81f03d2f6d" class="">Types of Cookies</h3><ol type="1" id="12f7aacb-2d23-8096-9ef8-f678732a16fb" class="numbered-list" start="1"><li><strong>Session Cookies (Transient Cookies)</strong><ul id="12f7aacb-2d23-80a4-8c12-f0f8e8418670" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Temporarily store information about your browsing session.</li></ul><ul id="12f7aacb-2d23-80be-b210-e7eddcdc1fcf" class="bulleted-list"><li style="list-style-type:disc"><strong>Behavior</strong>: Erased when the browser is closed; does not store personal information.</li></ul><ul id="12f7aacb-2d23-8034-959d-edb6933de497" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Online shopping carts; session cookies help retain items in your cart until checkout. However, session cookies can be a vulnerability if hijacked.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-803b-8648-f9a7c74deab1" class="numbered-list" start="2"><li><strong>Authentication Cookies</strong><ul id="12f7aacb-2d23-8093-81c7-e8417dcfe117" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Verify user login status and allow access to user accounts.</li></ul><ul id="12f7aacb-2d23-807a-a3eb-fe75fc250130" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Keeps users logged in, so they don’t have to re-enter login credentials repeatedly.</li></ul><ul id="12f7aacb-2d23-80e5-aaa7-c79e528621c7" class="bulleted-list"><li style="list-style-type:disc"><strong>Usage</strong>: Commonly used by websites requiring account access, like email or social media platforms.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-80c7-ac55-d9db5ff5fbee" class="numbered-list" start="3"><li><strong>Persistent (Permanent) Cookies</strong><ul id="12f7aacb-2d23-800e-b352-caf0f65bc10c" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Stores information long-term; can last months or even years.</li></ul><ul id="12f7aacb-2d23-8022-91a7-fe614798ada4" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Recognizes returning users and helps customize website experiences.</li></ul><ul id="12f7aacb-2d23-8060-a3ce-d3c398175344" class="bulleted-list"><li style="list-style-type:disc"><strong>Alternative Name</strong>: Often called &quot;tracking cookies&quot; due to use by advertisers to track browsing habits.</li></ul></li></ol><ol type="1" id="12f7aacb-2d23-80c4-bccc-d8f7f2dec63c" class="numbered-list" start="4"><li><strong>Third-Party Cookies</strong><ul id="12f7aacb-2d23-803c-aea7-e4443361f644" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Created by external sites, usually for advertising.</li></ul><ul id="12f7aacb-2d23-80dc-b160-eb4e122161df" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Tracks user activity across websites for targeted ads.</li></ul><ul id="12f7aacb-2d23-806c-b922-dec9a37e14da" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Ads for products you searched on Amazon appearing on unrelated sites.</li></ul></li></ol><hr id="12f7aacb-2d23-806b-bca2-f383a87b0190"/><h3 id="12f7aacb-2d23-8047-9a05-cd998212dc53" class="">Cookies and GDPR</h3><ul id="12f7aacb-2d23-800a-9b84-f3ca78d87397" class="bulleted-list"><li style="list-style-type:disc"><strong>Privacy Compliance</strong>: Cookies are regulated under the EU&#x27;s GDPR due to privacy concerns. Websites must now show cookie consent banners to inform users about data collection and request permission.</li></ul><h3 id="1307aacb-2d23-8083-9a47-eed01a6ba73c" class="">Geolocation Overview</h3><ul id="1307aacb-2d23-801d-8abb-c2fd4e2278c8" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Geolocation determines a device&#x27;s physical location using latitudinal and longitudinal coordinates. Example uses include tracking fitness activities, tagging locations on social media, and receiving local weather updates.</li></ul><ul id="1307aacb-2d23-8045-bedf-cafafcb9bb75" class="bulleted-list"><li style="list-style-type:disc"><strong>Uses</strong>: Helps users find nearby stores, tag social media images, or get location-based information (e.g., local news or events).</li></ul><ul id="1307aacb-2d23-8055-a7f1-d9d6eef82dc3" class="bulleted-list"><li style="list-style-type:disc"><strong>Risks</strong>: Attackers may misuse geolocation data for harassment, stalking, or burglary.</li></ul><hr id="1307aacb-2d23-809e-abf1-fb556d237101"/><h3 id="1307aacb-2d23-804b-b63a-fc6a9ea2c834" class="">Types of Geolocation</h3><ol type="1" id="1307aacb-2d23-80c9-9b53-c97310d2135d" class="numbered-list" start="1"><li><strong>Device-Based Geolocation</strong><ul id="1307aacb-2d23-8037-a56a-cd29cc4f4846" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Uses the device’s GPS and cellular networks for location tracking.</li></ul><ul id="1307aacb-2d23-80e3-819d-c1e040a513e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Accuracy</strong>: High accuracy in populated areas; less accurate in remote regions.</li></ul><ul id="1307aacb-2d23-8097-9817-e058f5aa9c80" class="bulleted-list"><li style="list-style-type:disc"><strong>Permissions</strong>: Apps and websites may request location data access to enhance user experience (e.g., Instagram location tags).</li></ul><ul id="1307aacb-2d23-8013-b7c7-c2c095ef53de" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>: Strava, Sat Nav systems like Google Maps.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-8022-9d12-c9f5062f6cbe" class="numbered-list" start="2"><li><strong>Wi-Fi-Based Geolocation (Wi-Fi Positioning System, WPS)</strong><ul id="1307aacb-2d23-8030-bb42-e160738e02ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Uses Wi-Fi networks for location when GPS is inaccurate or unavailable.</li></ul><ul id="1307aacb-2d23-8008-88b5-cec55b1b0b89" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Collection</strong>: Organizations like Google, Apple, and Microsoft collect Wi-Fi network data for this purpose.</li></ul><ul id="1307aacb-2d23-802d-9a83-d991f4497f69" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: WiGLE, a database tracking Wi-Fi hotspots worldwide.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-80f0-882c-d844fb7dbf52" class="numbered-list" start="3"><li><strong>Server-Based Geolocation</strong><ul id="1307aacb-2d23-8085-873e-ef7aff74a2eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Uses IP addresses from wired/wireless connections to estimate device location.</li></ul><ul id="1307aacb-2d23-80c4-8161-ee28f16578ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Accuracy</strong>: Depends on third-party data mining; generally less precise than GPS.</li></ul><ul id="1307aacb-2d23-80aa-8c30-c2bcd9c681ec" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Websites like whatismyipaddress.com.</li></ul></li></ol><hr id="1307aacb-2d23-8073-9280-c30f5673f8f0"/><h3 id="1307aacb-2d23-80fd-803d-c76b29c3c81f" class="">Privacy and Security Considerations</h3><ul id="1307aacb-2d23-800e-8fff-e598a7da3c30" class="bulleted-list"><li style="list-style-type:disc"><strong>Privacy Risks</strong>: Location history may be accessible to apps and websites, allowing detailed tracking of travel routes and frequent locations.</li></ul><ul id="1307aacb-2d23-8087-be26-da0461f57a8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Precautions</strong>: Users can review location history settings (e.g., on Google Maps) and decide which applications can access location data.</li></ul><ul id="1307aacb-2d23-80cb-8d81-e006213c5208" class="bulleted-list"><li style="list-style-type:disc"><strong>VPN Use</strong>: VPNs hide IP addresses for server-based geolocation, but device-based geolocation must be disabled manually for full protection.</li></ul><h3 id="1307aacb-2d23-808d-8cb9-f27e7ef4155c" class="">Fake News Overview</h3><ul id="1307aacb-2d23-8002-adb3-cbcdb2f1616b" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Fake news includes misleading information, hoaxes, or fabricated stories presented as legitimate news. It aims to misinform readers, manipulate opinions, or advance political agendas.</li></ul><ul id="1307aacb-2d23-804e-a539-fb9731ca58b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Motivations</strong>: Often used for profit, as controversial or sensational news attracts attention, boosting readership and revenue for publishers.</li></ul><hr id="1307aacb-2d23-8030-9768-ee385ad40c05"/><h3 id="1307aacb-2d23-8054-9947-c7cef3286d42" class="">Methods of Manipulation</h3><ul id="1307aacb-2d23-8044-a0df-fad8384b6d92" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Breaches</strong>: Stolen data is sold online to criminals, who use it to identify biases and target specific audiences.</li></ul><ul id="1307aacb-2d23-80f1-89a3-f86289d5d35f" class="bulleted-list"><li style="list-style-type:disc"><strong>Troll and Botnet Farms</strong>: Fake users spread false stories and provoke reactions by tapping into fears and biases.</li></ul><ul id="1307aacb-2d23-801e-aaa0-c2bae68b3716" class="bulleted-list"><li style="list-style-type:disc"><strong>Propaganda</strong>: Misinformation can be weaponized to create distrust and division, influencing public sentiment and opinion.</li></ul><hr id="1307aacb-2d23-80ae-8a7c-f83fa154549c"/><h3 id="1307aacb-2d23-80e2-acb5-c2a244298440" class="">Real vs. Fake News</h3><ul id="1307aacb-2d23-806f-9b61-ead698f78a6d" class="bulleted-list"><li style="list-style-type:disc"><strong>Detection Challenges</strong>: Many people find it hard to differentiate between real and fake news, often accepting familiar headlines as true.</li></ul><ul id="1307aacb-2d23-80ad-a407-d0cfb4edb6d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact Example</strong>: During the 2016 U.S. election, fake news spread rapidly on social media, potentially impacting voter decisions.</li></ul><ul id="1307aacb-2d23-8036-b5bb-eb339161f9e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Fact-Checking</strong>: To verify news credibility, use reputable fact-checking sites like Associated Press, Factcheck.org, and Snopes.</li></ul><hr id="1307aacb-2d23-80f7-8aee-d2ed9c23ffae"/><h3 id="1307aacb-2d23-80cb-aaf1-eee6f1d67101" class="">Types of Fake News</h3><ol type="1" id="1307aacb-2d23-8024-93fe-cd04ad6a1186" class="numbered-list" start="1"><li><strong>Clickbait</strong><ul id="1307aacb-2d23-8009-a6b6-ef98e5b0b8c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Uses sensational titles to attract clicks and increase revenue, often with exaggerated or misleading claims.</li></ul><ul id="1307aacb-2d23-8036-96ba-cbaeaf0ba468" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Articles promoting products with fabricated headlines.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-8089-bf6c-e5426946ebcf" class="numbered-list" start="2"><li><strong>Propaganda</strong><ul id="1307aacb-2d23-8050-b0cf-cf484775dd70" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Content deliberately designed to sway opinions, often used in politically charged topics or government campaigns.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-80cc-a629-e9416f5f2e11" class="numbered-list" start="3"><li><strong>Satire/Parody</strong><ul id="1307aacb-2d23-80f6-aadc-ca07cb7ee739" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Humorous content that mocks current events, trends, or figures, usually intended for entertainment rather than deception.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-80a4-8ded-dd00d6693046" class="numbered-list" start="4"><li><strong>Biased News</strong><ul id="1307aacb-2d23-804b-aa03-c5ba0b0aaf44" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Articles crafted to appeal to readers’ existing beliefs or biases. Algorithms may reinforce this by showing similar content in social media feeds.</li></ul></li></ol><hr id="1307aacb-2d23-80c5-86ff-f7ea97226588"/><h3 id="1307aacb-2d23-80d2-a97b-f873af57c9a2" class="">Practical Application</h3><ul id="1307aacb-2d23-8048-b54d-d4eb6c36b8f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Critical Reading</strong>: Question the validity of online news and consider its impact on personal views and decisions.</li></ul><ul id="1307aacb-2d23-80df-b05d-eebf411f5b98" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Exercise</strong>: Identifying real and fake news headlines to build skills in discerning credible sources.</li></ul><h3 id="1307aacb-2d23-801b-82ee-c870a1cba831" class="">Keylogger Overview</h3><ul id="1307aacb-2d23-808d-a031-c9aed28d0cac" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: A keylogger is an application or device that records keystrokes on a user&#x27;s device, often used secretly to capture sensitive information.</li></ul><ul id="1307aacb-2d23-80e4-911b-c76c5f0a9231" class="bulleted-list"><li style="list-style-type:disc"><strong>Legitimate Uses</strong>: Sometimes used by parents, law enforcement, or IT technicians for monitoring or troubleshooting.</li></ul><ul id="1307aacb-2d23-80d6-a0c9-f6c83dabaf57" class="bulleted-list"><li style="list-style-type:disc"><strong>Malicious Uses</strong>: Attackers use keyloggers to steal passwords, banking details, capture screenshots, and monitor browsing activities, then send this data to a remote server.</li></ul><hr id="1307aacb-2d23-8093-a8c2-d185ebcb72b4"/><h3 id="1307aacb-2d23-80e8-8db2-c872297f13ad" class="">Types of Keyloggers</h3><ol type="1" id="1307aacb-2d23-80b2-902b-d9c9a703461e" class="numbered-list" start="1"><li><strong>Software-Based Keyloggers</strong><ul id="1307aacb-2d23-8097-9d2d-e152254cfbee" class="bulleted-list"><li style="list-style-type:disc"><strong>Functionality</strong>: Capture keystrokes and may also record on-screen keyboard input and track websites where login details are entered.</li></ul><ul id="1307aacb-2d23-808d-99c4-d3e10d760259" class="bulleted-list"><li style="list-style-type:disc"><strong>Distribution</strong>: Often spread through malware, phishing emails, or malicious websites and can be bundled with other spyware.</li></ul><ul id="1307aacb-2d23-803d-8f7f-efab8a5e1eea" class="bulleted-list"><li style="list-style-type:disc"><strong>Legitimate Uses</strong>: Used by IT technicians for diagnostics and by researchers to study writing processes (e.g., programs like Inputlog and Scriptlog).</li></ul><ul id="1307aacb-2d23-803f-b106-cab64e6f7203" class="bulleted-list"><li style="list-style-type:disc"><strong>Prevalence</strong>: More common than hardware-based keyloggers due to ease of distribution.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-8030-8c17-ec33f547af15" class="numbered-list" start="2"><li><strong>Hardware-Based Keyloggers</strong><ul id="1307aacb-2d23-80a6-b4fe-f8894d05814a" class="bulleted-list"><li style="list-style-type:disc"><strong>Functionality</strong>: Operate independently of software by being physically connected to the device (e.g., USB drive).</li></ul><ul id="1307aacb-2d23-80de-9db3-c56456c0d399" class="bulleted-list"><li style="list-style-type:disc"><strong>Usage</strong>: Can be discreetly plugged into a device and left until the attacker retrieves the stored data.</li></ul><ul id="1307aacb-2d23-802e-8f6d-c49484b96ca2" class="bulleted-list"><li style="list-style-type:disc"><strong>Prevalence</strong>: Less common now due to the availability of software-based keyloggers, but still in use by attackers.</li></ul></li></ol><hr id="1307aacb-2d23-8036-9f12-ce54fe02b685"/><h3 id="1307aacb-2d23-807d-bc23-d2f4dedd5947" class="">Protection Against Keyloggers</h3><ul id="1307aacb-2d23-8083-b2d2-cd58b5564d97" class="bulleted-list"><li style="list-style-type:disc"><strong>System Security</strong>: Regularly update system and antivirus software to detect and block known keylogging threats.</li></ul><ul id="1307aacb-2d23-8025-9e66-c5ba2a233576" class="bulleted-list"><li style="list-style-type:disc"><strong>Use of Multi-Factor Authentication (MFA)</strong>: MFA adds a layer of protection, requiring a second factor (e.g., phone or biometrics) that attackers cannot easily capture with a keylogger.</li></ul><ul id="1307aacb-2d23-80e1-a0b8-e112b6cdce92" class="bulleted-list"><li style="list-style-type:disc"><strong>One-Time Passwords (OTP)</strong>: Some websites offer OTP logins, which send a temporary password to a trusted device, reducing the risk of reuse by attackers.</li></ul><hr id="1307aacb-2d23-809e-9361-d5eea071ed17"/><h3 id="1307aacb-2d23-80d1-830e-f9e39bb8dc54" class="">Practical Application</h3><ul id="1307aacb-2d23-8053-b49a-c649bfe442b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Exercise</strong>: Apply knowledge of keyloggers to identify threats and complete security-related questions, reinforcing understanding of keylogger types and defenses.</li></ul><h3 id="1307aacb-2d23-80f2-a2a9-ddfd967ee012" class="">Darknets Overview</h3><ul id="1307aacb-2d23-8084-adc7-eee68c724cbc" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Darknets (or the dark web) are networks of websites that require specialized software to access. They enable private and anonymous internet activity, which can be used legally or illegally.</li></ul><ul id="1307aacb-2d23-8098-b18d-d56285d179ca" class="bulleted-list"><li style="list-style-type:disc"><strong>Access</strong>: Not accessible with standard web browsers; require technology like Tor, which uses multiple proxies and encryption to conceal user identities.</li></ul><hr id="1307aacb-2d23-80ef-8fa1-e65b0d4a0dd0"/><h3 id="1307aacb-2d23-80b1-96b7-d4ac3f780677" class="">Major Darknets</h3><ol type="1" id="1307aacb-2d23-80ed-b4a5-ea4b28400e2a" class="numbered-list" start="1"><li><strong>Tor</strong>: The largest and best-known darknet, though limited to about 10,000 active sites. Tor obscures user and site identities, offering high anonymity.</li></ol><ol type="1" id="1307aacb-2d23-80a6-8187-f30971dc3726" class="numbered-list" start="2"><li><strong>Other Darknets</strong>: Include networks like I2P, Freenet, GNUnet, and ZeroNet, which provide similar privacy protections but are smaller than Tor.</li></ol><hr id="1307aacb-2d23-8002-8169-fd7ee3a795fc"/><h3 id="1307aacb-2d23-8013-8fdf-d13623f8db16" class="">Content on Darknets</h3><ul id="1307aacb-2d23-8030-8189-f321ca17addb" class="bulleted-list"><li style="list-style-type:disc"><strong>Illegal Goods and Services</strong>: Often include narcotics, weapons, stolen financial information, fake IDs, hacking services, and even assassinations.</li></ul><ul id="1307aacb-2d23-8042-9476-c74d25c72657" class="bulleted-list"><li style="list-style-type:disc"><strong>Legal Content</strong>: Can range from forums for tech discussions, websites for human rights activists, to general, innocuous sites like those sharing pictures or supporting political dissent.</li></ul><hr id="1307aacb-2d23-8014-ae2f-d31d99b07508"/><h3 id="1307aacb-2d23-8045-ab6f-ff2b00cc24f1" class="">Legal Status of Darknets</h3><ul id="1307aacb-2d23-8008-a3f3-e846f516449b" class="bulleted-list"><li style="list-style-type:disc"><strong>Legality</strong>: Accessing darknets is generally legal, but transactions or services purchased there may be illegal, depending on local laws.</li></ul><ul id="1307aacb-2d23-809d-9f61-c41055004f2c" class="bulleted-list"><li style="list-style-type:disc"><strong>Caution</strong>: Users should be cautious due to potential exposure to disturbing or harmful content.</li></ul><hr id="1307aacb-2d23-806b-ba3d-fc22d4b59d31"/><h3 id="1307aacb-2d23-80a1-bac7-dfb2e8324f44" class="">Benefits of Using Darknets</h3><ol type="1" id="1307aacb-2d23-80bf-9edf-fc9b52e0a6f5" class="numbered-list" start="1"><li><strong>Anonymity</strong>: Enables users to remain anonymous, often bypassing standard surveillance.</li></ol><ol type="1" id="1307aacb-2d23-80b6-ba51-ee8a9825261d" class="numbered-list" start="2"><li><strong>Untraceability</strong>: Protects users from being easily located or identified.</li></ol><ol type="1" id="1307aacb-2d23-80e1-b883-e5e446d30950" class="numbered-list" start="3"><li><strong>Illegal Opportunities</strong>: Provides a space for activities that would be restricted or illegal on the open web.</li></ol><hr id="1307aacb-2d23-80e1-9a24-c9b4cbfadc4f"/><h3 id="1307aacb-2d23-80dd-a7d0-e2f8b8134b53" class="">Threats on Darknets</h3><p id="1307aacb-2d23-8059-ba4a-cda11e723400" class="">Users face multiple security risks, including:</p><ul id="1307aacb-2d23-800c-9bc9-f3245ffe3e17" class="bulleted-list"><li style="list-style-type:disc"><strong>Keyloggers</strong></li></ul><ul id="1307aacb-2d23-806d-b824-f0cfaa8dab57" class="bulleted-list"><li style="list-style-type:disc"><strong>Ransomware</strong></li></ul><ul id="1307aacb-2d23-8033-9eef-cb47022d6976" class="bulleted-list"><li style="list-style-type:disc"><strong>Phishing and malware</strong></li></ul><ul id="1307aacb-2d23-805f-bfb2-ee4e6dbbf572" class="bulleted-list"><li style="list-style-type:disc"><strong>Scams</strong></li></ul><p id="1307aacb-2d23-8010-af18-d7442dec8acc" class="">Browsing darknets exposes users to risks from hackers and criminals who use the dark web’s anonymity for malicious activities.</p><hr id="1307aacb-2d23-8017-b8d4-c1db32f3a296"/><h3 id="1307aacb-2d23-80b2-b3b9-f38528a7641d" class="">Practical Application</h3><ul id="1307aacb-2d23-80ab-94d3-e912649a748e" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Exercise</strong>: Apply knowledge of darknets to answer questions and complete a related game, reinforcing understanding of darknet access, legal considerations, and risks.</li></ul><h3 id="1307aacb-2d23-801f-b832-e48efbeca289" class="">Overview of USB Devices</h3><ul id="1307aacb-2d23-80b0-badd-d5f2ff0c9230" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: USB (Universal Serial Bus) devices are commonly used to connect peripherals (e.g., keyboards, mice) and charge mobile devices.</li></ul><ul id="1307aacb-2d23-80ae-842b-c43fa3e0b7ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerability</strong>: The widespread use of USB devices provides opportunities for malicious actors to exploit them, leading to serious security risks.</li></ul><hr id="1307aacb-2d23-80ed-99cd-d90a4bc904ec"/><h3 id="1307aacb-2d23-80df-a082-cafc5cd69540" class="">USB Attack Techniques</h3><ol type="1" id="1307aacb-2d23-80f0-9db3-eb6df1392b8c" class="numbered-list" start="1"><li><strong>Keystroke Injection Attacks</strong><ul id="1307aacb-2d23-8033-ba74-d06620e688b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Uses malware to input commands on a victim&#x27;s device, potentially installing further malware or stealing data.</li></ul><ul id="1307aacb-2d23-802f-ba01-ee0296562f91" class="bulleted-list"><li style="list-style-type:disc"><strong>Implementation</strong>: Often executed through rogue USB devices connected physically to a target device.</li></ul></li></ol><hr id="1307aacb-2d23-80a9-97c4-eccbf58fd1e3"/><h3 id="1307aacb-2d23-8066-8281-ca1fc5a40708" class="">Types of Malicious USB Devices</h3><ol type="1" id="1307aacb-2d23-80e8-8363-ecff927623c5" class="numbered-list" start="1"><li><strong>Rubber Ducky</strong><ul id="1307aacb-2d23-80a2-82c2-c4b87753e043" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: A USB device that mimics a keyboard to perform keystroke injection attacks.</li></ul><ul id="1307aacb-2d23-8035-accf-d92024a672a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Capabilities</strong>: Can execute and dump malicious payloads, including keylogging to capture sensitive data like credentials.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-8077-8ffb-c4210a6e005c" class="numbered-list" start="2"><li><strong>BadUSB</strong><ul id="1307aacb-2d23-8022-a850-c6da6a221f70" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: A cheaper variant of Rubber Ducky that disguises itself as a harmless device (e.g., mouse or keyboard).</li></ul><ul id="1307aacb-2d23-80f1-a150-e9b94e70b2d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Mimics human interface devices (HID) and gains trusted access to a target computer, making it more challenging to detect.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-809e-a0c6-c9abf340cbc1" class="numbered-list" start="3"><li><strong>Bash Bunny</strong><ul id="1307aacb-2d23-8009-90c2-ddb179529bfb" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: A USB device capable of multiple emulations, including keyboard and Ethernet adaptor.</li></ul><ul id="1307aacb-2d23-8071-8fa1-e735922f0188" class="bulleted-list"><li style="list-style-type:disc"><strong>Features</strong>: Has an LED indicator and a three-position switch to manage multiple payloads; can provide access to Ethernet networks (LAN).</li></ul></li></ol><ol type="1" id="1307aacb-2d23-80de-8df2-f983bf27271d" class="numbered-list" start="4"><li><strong>O.MG Cable</strong><ul id="1307aacb-2d23-80be-ae04-e98cbf3f2d09" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: A cable that resembles a standard charging cable but includes a remote-controlled chip for attacks.</li></ul><ul id="1307aacb-2d23-80d3-92da-fe81ac423943" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics</strong>: Allows data and power transfer to appear normal, making it harder for victims to detect malicious actions.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-80ae-b74c-c319f6bfff84" class="numbered-list" start="5"><li><strong>Killer USB</strong><ul id="1307aacb-2d23-80d4-820b-cdb478351fcd" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Unlike other devices, it&#x27;s designed solely to destroy devices by releasing a high voltage, causing damage to internal components.</li></ul><ul id="1307aacb-2d23-808a-95e5-edfda354aa77" class="bulleted-list"><li style="list-style-type:disc"><strong>Mechanism</strong>: Charges capacitors and discharges electricity back into the device, damaging sensitive parts.</li></ul></li></ol><hr id="1307aacb-2d23-8033-9d2f-f20a19f21c03"/><h3 id="1307aacb-2d23-806c-866a-db2fdb515b8e" class="">Protection Against Malicious USB Devices</h3><ul id="1307aacb-2d23-80f4-bb54-ec5b6b1f8f6f" class="bulleted-list"><li style="list-style-type:disc"><strong>Avoid Unknown Devices</strong>: Never plug in unfamiliar USB devices you find.</li></ul><ul id="1307aacb-2d23-80b4-ac68-f5e5bc1ad0a5" class="bulleted-list"><li style="list-style-type:disc"><strong>Organizational Policies</strong>: Some organizations disable USB ports via software policies to mitigate USB-based attacks.</li></ul><ul id="1307aacb-2d23-800d-a293-ee6fb43cd350" class="bulleted-list"><li style="list-style-type:disc"><strong>USB Blockers</strong>: Physical blockers can be installed in USB ports to prevent unauthorized access.</li></ul><hr id="1307aacb-2d23-80b4-8d2a-fafe4a02570a"/><h3 id="1307aacb-2d23-80bf-b8ab-f50829618da6" class="">Practical Application</h3><ul id="1307aacb-2d23-8012-9df3-cc7717524d91" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Exercise</strong>: Find and identify rogue USB devices in the lab, with a focus on recognizing USBs designed to blend in with ordinary devices.</li></ul><h3 id="1307aacb-2d23-8040-8e70-c6efcf370598" class="">Overview of Virtual Card Numbers</h3><ul id="1307aacb-2d23-8050-ae46-c1f4f7479701" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Virtual credit cards are digital equivalents of physical credit cards, featuring a 16-digit card number and CVV but without a physical form.</li></ul><ul id="1307aacb-2d23-802b-91be-fecc2b464b38" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: They provide an additional layer of security by using unique card numbers that can be specific to a single merchant or set to expire after a brief time.</li></ul><hr id="1307aacb-2d23-8004-a461-e1adb30e5969"/><h3 id="1307aacb-2d23-800a-911d-f6f7c03bcc1e" class="">Types of Virtual Card Numbers</h3><ol type="1" id="1307aacb-2d23-8051-9c70-d702ad176ccd" class="numbered-list" start="1"><li><strong>Merchant-Specific Virtual Cards</strong><ul id="1307aacb-2d23-802d-b7f4-da02ce9d7265" class="bulleted-list"><li style="list-style-type:disc"><strong>Usage</strong>: Can be used repeatedly with a specific merchant, linking back to the user&#x27;s main bank account.</li></ul><ul id="1307aacb-2d23-8024-8704-e4b9b2c17434" class="bulleted-list"><li style="list-style-type:disc"><strong>Benefit</strong>: Limits potential fraud to only that merchant if card details are compromised, making it easier to track the source of any breach.</li></ul></li></ol><ol type="1" id="1307aacb-2d23-8021-bca7-fe700148c255" class="numbered-list" start="2"><li><strong>Timed Virtual Cards</strong><ul id="1307aacb-2d23-80c4-8a9f-f4a9f1de657b" class="bulleted-list"><li style="list-style-type:disc"><strong>Usage</strong>: Designed for single transactions on sites or with companies the user might not fully trust.</li></ul><ul id="1307aacb-2d23-8009-b528-db510a6349da" class="bulleted-list"><li style="list-style-type:disc"><strong>Expiry</strong>: Typically expire after 2-10 minutes, providing security against unauthorized reuse.</li></ul></li></ol><hr id="1307aacb-2d23-8028-82e6-c88afc53265b"/><h3 id="1307aacb-2d23-80b9-869d-c34621ac7b0a" class="">Benefits of Virtual Card Numbers</h3><ul id="1307aacb-2d23-8071-b28d-c00307223acc" class="bulleted-list"><li style="list-style-type:disc"><strong>Enhanced Security</strong>: Helps prevent fraud by isolating transactions and limiting the scope of exposure.</li></ul><ul id="1307aacb-2d23-80f4-ab0d-f1d10bf2d021" class="bulleted-list"><li style="list-style-type:disc"><strong>Protection in E-commerce</strong>: Useful for online transactions, where the risk of fraud from data breaches is higher.</li></ul><ul id="1307aacb-2d23-8023-b658-c9912e9d35a6" class="bulleted-list"><li style="list-style-type:disc"><strong>Easily Monitored</strong>: Each merchant has a unique virtual card, allowing for quick detection of compromised information.</li></ul><hr id="1307aacb-2d23-80c9-ba14-de1c62a8961b"/><h3 id="1307aacb-2d23-80f7-8f62-ca9c60be5abf" class="">Limitations</h3><ul id="1307aacb-2d23-8024-a049-de147cf95ab4" class="bulleted-list"><li style="list-style-type:disc"><strong>Not Effective Against</strong>:<ul id="1307aacb-2d23-80ec-a213-de46372fd53e" class="bulleted-list"><li style="list-style-type:circle"><strong>Phishing Attacks</strong>: Virtual card numbers don&#x27;t prevent phishing scams.</li></ul><ul id="1307aacb-2d23-8014-a6cb-e2dbed6e1908" class="bulleted-list"><li style="list-style-type:circle"><strong>Malware</strong>: Cannot stop malware attacks that might steal information from a device.</li></ul><ul id="1307aacb-2d23-80c9-bfde-defc8995845d" class="bulleted-list"><li style="list-style-type:circle"><strong>In-Store Transactions</strong>: Virtual cards aren’t usable in physical stores, making physical credit cards still necessary.</li></ul></li></ul><h3 id="1307aacb-2d23-8045-8f4d-eb8610dab0d9" class="">Examples of Providers for Virtual Card Services</h3><ol type="1" id="1307aacb-2d23-80df-8aa9-e2484c76b780" class="numbered-list" start="1"><li><strong>Privacy.com</strong>: Provides virtual cards linked to bank accounts or debit cards (U.S. only).</li></ol><ol type="1" id="1307aacb-2d23-800b-8b43-fe04ba359172" class="numbered-list" start="2"><li><strong>Revolut</strong>: Offers disposable virtual cards that generate new card details after each transaction.</li></ol><ol type="1" id="1307aacb-2d23-8014-9e3f-d03b62ffefbd" class="numbered-list" start="3"><li><strong>Apple Pay and Google Pay</strong>: Use randomly generated card numbers for contactless payment, though card details don’t change with each use.</li></ol><ol type="1" id="1307aacb-2d23-8023-b4c5-dac993f6a852" class="numbered-list" start="4"><li><strong>PayPal</strong>: Offers a virtual credit card with additional security features, but without disposable numbers.</li></ol><hr id="1307aacb-2d23-80df-9237-dfeb8e66a1ad"/><h3 id="1307aacb-2d23-80ea-8466-d7a2434f6635" class="">Practical Application</h3><ul id="1307aacb-2d23-8089-94fb-c767c184099d" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Exercise</strong>: Complete a true/false question game to test understanding of virtual card numbers by answering eight questions correctly.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

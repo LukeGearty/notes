@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3-22-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1be7aacb-2d23-8005-8b4d-e4f512a1458c" class="page sans"><header><h1 class="page-title">3-22-25</h1><p class="page-description"></p></header><div class="page-body"><p id="1be7aacb-2d23-803d-86c8-d36b30479fcd" class="">Network Layer, IP encapsulation exists in every single Internet device. The transport segment from sending to receiving host, the sender encapsulates segments into datagrams passes to link layer, the receiver delivers segments to transport layer protocol.</p><p id="1be7aacb-2d23-8061-ae2d-d0360404fb63" class="">Routers: examines header fields in all IP datagrams passing through it. Moves datagrams from input ports to output ports to transfer datagrams along end-end path</p><p id="1d57aacb-2d23-8073-9dee-e46ca95a8019" class="">Does Network Layer support TCP or UDP? - It doesn’t matter - network layer is the truck that moves along the way, it takes whatever contents the transport layer pushes down and moves it across. It is aware, but it just doesn’t really care.</p><p id="1be7aacb-2d23-8054-a724-df11a7e1029b" class="">Network-layer functions:</p><p id="1be7aacb-2d23-80c6-b894-de6b4fd3755b" class="">Forwarding: move packets from a router’s input link to appropriate router output link</p><p id="1be7aacb-2d23-801b-b5ba-f700123136f1" class="">Routing: determine route taken by packets from source to destination</p><p id="1be7aacb-2d23-808b-81bd-f1fe402befb9" class="">-Routing Algorithms</p><p id="1be7aacb-2d23-800b-ad32-e7ed47c1f40a" class="">Analogy: taking a trip<div class="indented"><p id="1be7aacb-2d23-8059-a28f-ff687b88c716" class="">Forwarding is the process of getting through single interchange</p><p id="1be7aacb-2d23-80e9-8ba6-dc8bfcc051c9" class="">routing: getting from the beginning to the destination (for example, NYC → Miami)</p></div></p><p id="1be7aacb-2d23-80e7-8940-f9058f781ce2" class="">Data Plane:<div class="indented"><p id="1be7aacb-2d23-80a6-970d-e2798c5e611b" class="">-Local, per-router function, determines how datagram arriving on router input port is forwarded to router output port<div class="indented"><p id="1d67aacb-2d23-802c-8cc3-d725d39a759c" class="">-It looks at headers in the datagram</p></div></p></div></p><p id="1be7aacb-2d23-800f-8533-db38dd4bc229" class="">Control Plane:<div class="indented"><p id="1be7aacb-2d23-80fe-ba04-f1cc020bb04c" class="">-Network wide logic, determines how datagram is routed among routers along end-end path from source host to destination host</p><p id="1be7aacb-2d23-80ae-a8cb-c1e21ec8e72c" class="">-Two control-plane approaches: <div class="indented"><p id="1d67aacb-2d23-8041-b2b5-f986e2279a4e" class="">-traditional routing algoirhtms, implemented in routers</p><p id="1be7aacb-2d23-8063-a271-c52cad121a64" class="">-Software defined networking (SDN) - implemented somewhere in the cloud (remote server)</p></div></p></div></p><p id="1be7aacb-2d23-80e2-9888-d317df2dce7e" class="">Per-router control plane: Individual routing algorithm components in each and every router interact in the control plane<div class="indented"><p id="1d57aacb-2d23-80c3-8371-ccb544de9d73" class="">The control plane is in the router ,configured by network engineers ,so that they can talk to each other in a common language. In a traditional routing approach.</p></div></p><p id="1be7aacb-2d23-8031-9c86-c30978a86dff" class="">Software-Defined Networking (SDN) Control Plane:<div class="indented"><p id="1be7aacb-2d23-808e-bbf0-c343d91b6901" class="">Remote controller computes, installs forwarding table in routers. The remote controller pushes the information to the routers, and all the routing decisions are done in the remote controller. </p></div></p><p id="1d67aacb-2d23-80b1-8e2c-f69c364486a2" class="">
+</p><p id="1be7aacb-2d23-8081-b238-daba1131de5e" class=""><strong>Network Service Model</strong></p><p id="1be7aacb-2d23-8042-9844-d29a6b7f56ea" class="">What service model for “channel” transporting datagrams from sender to receiver?</p><p id="1be7aacb-2d23-80d8-9148-de6555dba6c5" class="">For example, guaranteed delivery, guaranteed delivery with less than 4 msec delay</p><p id="1be7aacb-2d23-800b-baf7-ca0113c0fb7a" class="">The Network Layer supports both TCP and UDP, something gets put in the truck and gets delivered. It is within TCP that guaranteed delivery is made. </p><p id="1d67aacb-2d23-8086-b19e-e7d2efb008ed" class="">
+</p><p id="1d57aacb-2d23-80b7-954f-d70fb69d2527" class=""><strong>Internet : “Best Effort”</strong></p><p id="1d67aacb-2d23-8032-96d1-f93cec6940b0" class="">No guarantees on: <div class="indented"><p id="1d67aacb-2d23-80fb-9473-f7bffb374935" class="">successful datagram delivery to destination</p><p id="1d67aacb-2d23-80bd-9c25-ce863885f660" class="">timing or order of delivery</p><p id="1d67aacb-2d23-8055-9e78-ea11f8c15d05" class="">bandwidth available to end-end flow</p></div></p><p id="1d67aacb-2d23-806d-8a0f-e1aa597e4c00" class="">As an analogy, the USPS truck goes from house to house dropping off letters. Other protocols make sure the messages get delivered.</p><p id="1d67aacb-2d23-80c5-a2c8-f8686549ee64" class="">There are other architecture that do guarantee some of this</p><p id="1d67aacb-2d23-8074-a967-fc8afdba334a" class="">
+</p><p id="1be7aacb-2d23-8039-9e08-e309830fcbe4" class="">Whats Inside the Router?</p><p id="1be7aacb-2d23-80f5-b9c4-c0638edaeaac" class="">Routing Processor - (software) is the management that operates in milliseconds</p><p id="1be7aacb-2d23-800e-9706-c4b36ae3a90e" class="">forwarding data plane - (hardware) operates in nanosecond time frame - router input ports, router output pots, high speed switching fabric</p><p id="1be7aacb-2d23-809b-a5a8-dba908d263a8" class="">Input Port functions:<div class="indented"><p id="1be7aacb-2d23-807d-8ee2-e1ddc1b7b922" class="">Line termination - physically terminates the bits</p><p id="1be7aacb-2d23-800a-b485-fc02b8725bec" class="">Link Layer protocol (receive) eg Ethernet</p><p id="1be7aacb-2d23-806f-b3a3-e831b45e770f" class="">Lookup forwarding queuing</p></div></p><p id="1be7aacb-2d23-8052-adb9-c3f779149383" class="">Decentralized switching: <div class="indented"><p id="1be7aacb-2d23-80bb-be6b-eb8bb0f9c541" class="">Using header field values, lookup output port using forwarding table in input port memory</p><p id="1be7aacb-2d23-80d5-a943-ec97806b882b" class="">Goal: complete input port processing at ‘line speed’</p><p id="1be7aacb-2d23-8007-899a-e887c8d520cf" class="">Input port queuing: If datagrams arrive faster than forwarding rate into switch fabric</p></div></p><p id="1be7aacb-2d23-8025-8d32-d48af8ca7182" class="">Longest Prefix matching - when looking for forwarding table entry, use longest address prefix that matches destination address<div class="indented"><p id="1be7aacb-2d23-80ea-bfb9-e2303623b180" class="">Performed using ternary content addressable memories</p></div></p><p id="1be7aacb-2d23-8086-bdbb-ef7909f7f7da" class="">Switching Fabric: Transfer packet from input link to appropriate link to appropriate output link</p><p id="1be7aacb-2d23-80ca-b16c-fc2fac514ac2" class="">If we have packets coming in at 100 Mbps, and the switching fabric is switching at 100 Mbps, is that sufficient?<div class="indented"><p id="1be7aacb-2d23-806a-867b-ce85e384f0cf" class="">No. It needs to be <em>N </em>times faster, where N = number of input ports</p></div></p><p id="1be7aacb-2d23-802e-8705-e20a63634b78" class="">N inputs: Switching rate N times line rate desirable</p><p id="1be7aacb-2d23-809f-817d-c492d7f847e3" class="">Switching via memory:</p><p id="1be7aacb-2d23-8066-9f33-d939fa7a21dc" class="">first generation routers:<div class="indented"><p id="1be7aacb-2d23-80fb-8b6e-e1348a5fad00" class="">traditional computers with switching under direct control of CPU</p><p id="1be7aacb-2d23-80ab-985b-c24df0e28c36" class="">Packet copied to system’s memory</p><p id="1be7aacb-2d23-802b-b0e9-d51069cc978f" class="">Speed limited by memory bandwidth (2 bus crossing per datagram)</p></div></p><p id="1be7aacb-2d23-80c8-a5c2-f6cbbbd67818" class="">Switching via a bus:<div class="indented"><p id="1be7aacb-2d23-808a-9aa9-cbd44bec55b2" class="">datagram from input port memory to output port memory via a shared bus</p><p id="1be7aacb-2d23-80a2-b0fc-f55a86efdfee" class="">bus contention: switching speed limited by bus bandwidth</p><p id="1be7aacb-2d23-808b-a7c7-e6f535be95b0" class="">32 Gbps bus, Cisco 5600: sufficient speed for access routers</p><p id="1be7aacb-2d23-80a7-b8ad-d6c17a42f688" class="">16 1gb ports, 1gb per port, input output side</p></div></p><p id="1be7aacb-2d23-805d-bb1f-d16064a8ea59" class="">Switching via interconnection network:<div class="indented"><p id="1be7aacb-2d23-80d3-8003-cce5f522d827" class="">Crossbar, Clos networks, other interconnection nets initially developed to connect processors in multiprocessor</p><p id="1be7aacb-2d23-803e-8368-ef6517d3c06a" class="">Multistage switch: nxn switch from multiple stages of smaller switches</p><p id="1be7aacb-2d23-80b7-830e-e88a554d3ebc" class="">Exploiting parallelism:<div class="indented"><p id="1be7aacb-2d23-8093-848e-ed41ae77ef51" class="">fragment datagram into fixed length cells on entry</p></div></p></div></p><p id="1d77aacb-2d23-80cb-ad4b-f081617168b9" class="">
+</p><p id="1be7aacb-2d23-805a-bc9e-c5f5b19a0573" class="">Output Port Queueing</p><p id="1d77aacb-2d23-8085-b125-f6b600dde1b6" class="">Buffering required when datagrams arrive from fabric faster than link transmission rate. Drop policy: which datagrams to drop if no free buffers?<div class="indented"><p id="1d77aacb-2d23-80fe-979a-eb9ad40f5f36" class="">Datagrams can be lost due to congestion, lack of buffer space</p></div></p><p id="1d77aacb-2d23-80a7-a94f-f084bf574dd7" class="">Scheduling discipline chooses among queued datagrams for transmission<div class="indented"><p id="1d77aacb-2d23-80a3-8fe1-c97485340f58" class="">Priority schedling - who gets best performance, network neutrality</p></div></p><p id="1d77aacb-2d23-8015-95a8-d2f5200818f4" class="">
+</p><p id="1d77aacb-2d23-80a3-a1c0-e7ab66d7c104" class="">Buffering when arrival rate via switch exceeds output line speed</p><p id="1d77aacb-2d23-80ff-9bec-f7ccbe1183bd" class="">buffering equal to “Typical” RTT times link capacity C</p><p id="1d77aacb-2d23-808b-b809-f4450a4993cb" class="">with N flows, bufering is equal</p><p id="1d77aacb-2d23-8044-933a-e5d755a4b98a" class="">(RTT * C) / sqrt(N)</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

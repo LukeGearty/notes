@@ -1,0 +1,792 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Linked List</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1457aacb-2d23-80eb-9536-ea7a018d0d75" class="page sans"><header><h1 class="page-title">Linked List</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1457aacb-2d23-8018-9d2f-c7c8a09739ea" class="">Delete the Middle Node of a Linked List</h2><p id="1457aacb-2d23-800e-b613-e6e8ecba5545" class="">You are given the <code>head</code> of a linked list. <strong>Delete</strong> the <strong>middle node</strong>, and return <em>the</em> <code>head</code> <em>of the modified linked list</em>.</p><p id="1457aacb-2d23-8043-b450-c1707291afb5" class="">The <strong>middle node</strong> of a linked list of size <code>n</code> is the <code>⌊n / 2⌋th</code> node from the <strong>start</strong> using <strong>0-based indexing</strong>, where <code>⌊x⌋</code> denotes the largest integer less than or equal to <code>x</code>.</p><ul id="1457aacb-2d23-803f-b06e-dc92b90bb622" class="bulleted-list"><li style="list-style-type:disc">For <code>n</code> = <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, and <code>5</code>, the middle nodes are <code>0</code>, <code>1</code>, <code>1</code>, <code>2</code>, and <code>2</code>, respectively.</li></ul><p id="1457aacb-2d23-8005-b037-fdf0a7a80f8c" class=""><strong>Example 1:</strong></p><figure id="1457aacb-2d23-8055-bbba-da0c8afa87ea" class="image"><a href="https://assets.leetcode.com/uploads/2021/11/16/eg1drawio.png"><img style="width:500px" src="https://assets.leetcode.com/uploads/2021/11/16/eg1drawio.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-801f-8e3a-dc63e2773b19" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [1,3,4,7,1,2,6]
+Output: [1,3,4,1,2,6]
+Explanation:
+The above figure represents the given linked list. The indices of the nodes are written below.
+Since n = 7, node 3 with value 7 is the middle node, which is marked in red.
+We return the new list after removing this node.
+</code></pre><p id="1457aacb-2d23-8003-a8ee-d816c357d8cf" class=""><strong>Example 2:</strong></p><figure id="1457aacb-2d23-8056-ac53-ef89141256c9" class="image"><a href="https://assets.leetcode.com/uploads/2021/11/16/eg2drawio.png"><img style="width:250px" src="https://assets.leetcode.com/uploads/2021/11/16/eg2drawio.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-8013-8421-f68397598b24" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [1,2,3,4]
+Output: [1,2,4]
+Explanation:
+The above figure represents the given linked list.
+For n = 4, node 2 with value 3 is the middle node, which is marked in red.
+</code></pre><p id="1457aacb-2d23-8075-a7a2-fe642b6717d3" class=""><strong>Example 3:</strong></p><figure id="1457aacb-2d23-800f-852a-c6491997067d" class="image"><a href="https://assets.leetcode.com/uploads/2021/11/16/eg3drawio.png"><img style="width:150px" src="https://assets.leetcode.com/uploads/2021/11/16/eg3drawio.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-80ca-8bc9-d2dbb1a8119e" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [2,1]
+Output: [2]
+Explanation:
+The above figure represents the given linked list.
+For n = 2, node 1 with value 1 is the middle node, which is marked in red.
+Node 0 with value 2 is the only node remaining after removing node 1.</code></pre><p id="1457aacb-2d23-8020-8a6f-cc4bf82726c9" class=""><strong>Constraints:</strong></p><ul id="1457aacb-2d23-80f9-8099-dc3427f079a2" class="bulleted-list"><li style="list-style-type:disc">The number of nodes in the list is in the range <code>[1, 105]</code>.</li></ul><ul id="1457aacb-2d23-80ef-81a4-f161b33362c0" class="bulleted-list"><li style="list-style-type:disc"><code>1 &lt;= Node.val &lt;= 105</code></li></ul><p id="1457aacb-2d23-8066-8f29-f912b29a16a1" class="">My solution:<br/>Explanation:<br/><br/></p><p id="1457aacb-2d23-80c0-9596-e0939e555f0d" class="">This code is a C++ implementation to delete the middle node of a singly linked list. Here&#x27;s an explanation of its components:</p><h3 id="1457aacb-2d23-80e7-9f7b-c0b9c241d703" class="">Structure of the ListNode</h3><p id="1457aacb-2d23-80be-83f5-e34c59e5e1f0" class="">The <code>ListNode</code> struct represents a node in the singly linked list:</p><ul id="1457aacb-2d23-8077-ac5d-f07af336d848" class="bulleted-list"><li style="list-style-type:disc"><code><strong>int val</strong></code>: Holds the value of the node.</li></ul><ul id="1457aacb-2d23-8012-b644-d32139201e78" class="bulleted-list"><li style="list-style-type:disc"><code><strong>ListNode* next</strong></code>: A pointer to the next node in the list.</li></ul><ul id="1457aacb-2d23-8044-b6c3-e571f61e2ef3" class="bulleted-list"><li style="list-style-type:disc"><strong>Constructors</strong>:<ul id="1457aacb-2d23-80d3-96ec-e7d3fb9bbdbf" class="bulleted-list"><li style="list-style-type:circle"><code>ListNode()</code>: Initializes a node with value <code>0</code> and no next node (<code>next</code> is set to <code>nullptr</code>).</li></ul><ul id="1457aacb-2d23-80ca-96f3-fe379c52fc68" class="bulleted-list"><li style="list-style-type:circle"><code>ListNode(int x)</code>: Initializes a node with a specified value <code>x</code> and no next node.</li></ul><ul id="1457aacb-2d23-80ac-aa84-c0424cd06699" class="bulleted-list"><li style="list-style-type:circle"><code>ListNode(int x, ListNode *next)</code>: Initializes a node with a value <code>x</code> and a pointer to the next node.</li></ul></li></ul><h3 id="1457aacb-2d23-802a-aefe-d08f6eb90f5f" class="">Function: <code>deleteMiddle</code></h3><p id="1457aacb-2d23-8013-af8c-de0b40c9a037" class="">This method deletes the middle node of a singly linked list and returns the modified list&#x27;s head.</p><h3 id="1457aacb-2d23-8025-aa2a-c89aea5b2b72" class="">Key Steps:</h3><ol type="1" id="1457aacb-2d23-806a-9b6c-c785bb0885bd" class="numbered-list" start="1"><li><strong>Handle edge case for empty list</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-8001-8063-d580111e67dc" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+if (head == NULL) {
+    return NULL;
+}
+
+</code></pre><p id="1457aacb-2d23-808b-aeb7-e729ac77dc84" class="">If the list is empty (<code>head == NULL</code>), return <code>NULL</code>.</p></li></ol><ol type="1" id="1457aacb-2d23-8007-935a-e9f642f5a7d1" class="numbered-list" start="2"><li><strong>Create a dummy node</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-801e-ac82-c636f12b568e" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+ListNode* prev = new ListNode(0);
+prev-&gt;next = head;
+
+</code></pre><p id="1457aacb-2d23-80f6-b5a4-f892840cbb8c" class="">A dummy node (<code>prev</code>) is created and linked to the head. This simplifies handling edge cases (e.g., deleting the first node).</p></li></ol><ol type="1" id="1457aacb-2d23-8030-80a0-fe489b474041" class="numbered-list" start="3"><li><strong>Initialize two pointers</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-807e-9d8c-f516b3fe1cfa" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+ListNode* slow = prev;
+ListNode* fast = head;
+
+</code></pre><ul id="1457aacb-2d23-8076-9996-c667dcf68ab5" class="bulleted-list"><li style="list-style-type:disc"><code>slow</code> is initially set to the dummy node.</li></ul><ul id="1457aacb-2d23-80d7-8894-e55a5f83884e" class="bulleted-list"><li style="list-style-type:disc"><code>fast</code> is set to the head of the list.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-8099-ad77-de9651c37de4" class="numbered-list" start="4"><li><strong>Find the middle node</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-8051-991e-fb074bb14a6f" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+while (fast != NULL &amp;&amp; fast-&gt;next != NULL) {
+    slow = slow-&gt;next;
+    fast = fast-&gt;next-&gt;next;
+}
+
+</code></pre><ul id="1457aacb-2d23-8054-8024-ca57fed760db" class="bulleted-list"><li style="list-style-type:disc"><code>fast</code> moves two steps at a time, while <code>slow</code> moves one step at a time.</li></ul><ul id="1457aacb-2d23-80b9-aa14-e3739d3e5e23" class="bulleted-list"><li style="list-style-type:disc">When <code>fast</code> reaches the end of the list, <code>slow</code> is at the node <em>before</em> the middle node.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-80bd-97c0-e04b159c4573" class="numbered-list" start="5"><li><strong>Delete the middle node</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-80b6-aa9e-ed6efa84860d" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+slow-&gt;next = slow-&gt;next-&gt;next;
+
+</code></pre><ul id="1457aacb-2d23-80a5-9857-d353e4f4fdbc" class="bulleted-list"><li style="list-style-type:disc">The <code>next</code> pointer of the node before the middle (<code>slow</code>) is updated to skip the middle node, effectively deleting it.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-8071-bf99-e6dca635b6d1" class="numbered-list" start="6"><li><strong>Return the modified list</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1457aacb-2d23-80d3-b806-f2352a54ec5a" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+return prev-&gt;next;
+
+</code></pre><ul id="1457aacb-2d23-80be-b0a8-c804876c6ae6" class="bulleted-list"><li style="list-style-type:disc">Return the list starting from the original head, ignoring the dummy node.</li></ul></li></ol><h3 id="1457aacb-2d23-808d-8edd-dac6a8bf97a1" class="">Example Walkthrough</h3><h3 id="1457aacb-2d23-8091-a051-e8912c2d3df0" class="">Input: 1 → 2 → 3 → 4 → 5</h3><ul id="1457aacb-2d23-8024-97e2-f1f0295688d9" class="bulleted-list"><li style="list-style-type:disc">Dummy list: <code>0 → 1 → 2 → 3 → 4 → 5</code></li></ul><ul id="1457aacb-2d23-802e-8d98-f48bbd71667f" class="bulleted-list"><li style="list-style-type:disc">Pointer movement:<ul id="1457aacb-2d23-80ff-b127-f79df09a59aa" class="bulleted-list"><li style="list-style-type:circle">Initial: <code>slow = 0</code>, <code>fast = 1</code></li></ul><ul id="1457aacb-2d23-8065-bb3a-d593401a4eb0" class="bulleted-list"><li style="list-style-type:circle">1st iteration: <code>slow = 1</code>, <code>fast = 3</code></li></ul><ul id="1457aacb-2d23-8064-883a-e8827be57f3c" class="bulleted-list"><li style="list-style-type:circle">2nd iteration: <code>slow = 2</code>, <code>fast = 5</code></li></ul><ul id="1457aacb-2d23-8022-993a-eeb9cfe71f53" class="bulleted-list"><li style="list-style-type:circle"><code>fast</code> reaches the end, <code>slow</code> is at <code>2</code> (node before the middle).</li></ul></li></ul><ul id="1457aacb-2d23-8073-95ee-d771f537d08f" class="bulleted-list"><li style="list-style-type:disc">Delete <code>3</code>: Update <code>slow-&gt;next</code> to skip <code>3</code>, resulting in <code>1 → 2 → 4 → 5</code>.</li></ul><h3 id="1457aacb-2d23-80ab-bebf-c83c683102f9" class="">Output: 1 → 2 → 4 → 5</h3><h3 id="1457aacb-2d23-8068-b1e8-ec3de47363f3" class="">Edge Cases</h3><ol type="1" id="1457aacb-2d23-80b9-a605-d3e35e26ee0d" class="numbered-list" start="1"><li><strong>Single-node list</strong>:<ul id="1457aacb-2d23-8016-9774-e56298237b04" class="bulleted-list"><li style="list-style-type:disc"><code>head = [1]</code>: The middle is the only node. After deletion, the list becomes empty (<code>NULL</code>).</li></ul></li></ol><ol type="1" id="1457aacb-2d23-80a4-98ed-e3a710ec8e6c" class="numbered-list" start="2"><li><strong>Two-node list</strong>:<ul id="1457aacb-2d23-8036-a165-e00ed1ab4053" class="bulleted-list"><li style="list-style-type:disc"><code>head = [1, 2]</code>: The first node is treated as the middle. After deletion, the result is <code>[2]</code>.</li></ul></li></ol><h3 id="1457aacb-2d23-80de-bd3f-fd8cdf380d2c" class="">Complexity</h3><ul id="1457aacb-2d23-8087-a94d-f0eb9f65d4e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Time complexity</strong>: O(n), where n is the number of nodes in the list. The <code>fast</code> pointer traverses the list once.<p id="1457aacb-2d23-8011-bbca-c6c336b0f205" class="">O(n)O(n)</p><p id="1457aacb-2d23-80c2-9b34-e1c32a793496" class="">nn</p></li></ul><ul id="1457aacb-2d23-80b0-baed-d743a57a2cbe" class="bulleted-list"><li style="list-style-type:disc"><strong>Space complexity</strong>: O(1), as no extra space (except pointers) is used.<p id="1457aacb-2d23-8002-9f9b-eb440fb4cb7f" class="">O(1)O(1)</p></li></ul><h2 id="1467aacb-2d23-8001-a6b1-de60fec0dd94" class="">Odd Even Linked List</h2><p id="1467aacb-2d23-80a1-a450-c3fb83d26bfb" class="">Given the <code>head</code> of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return <em>the reordered list</em>.</p><p id="1467aacb-2d23-8039-a811-ea16b6da7bf4" class="">The <strong>first</strong> node is considered <strong>odd</strong>, and the <strong>second</strong> node is <strong>even</strong>, and so on.</p><p id="1467aacb-2d23-80b7-85ea-f4e0817d9c0d" class="">Note that the relative order inside both the even and odd groups should remain as it was in the input.</p><p id="1467aacb-2d23-80dc-a243-e643409b9b40" class="">You must solve the problem in <code>O(1)</code> extra space complexity and <code>O(n)</code> time complexity.</p><p id="1467aacb-2d23-8068-844c-de89aba4f86f" class=""><strong>Example 1:</strong></p><figure id="1467aacb-2d23-80a0-a00c-f9a9f9810d73" class="image"><a href="https://assets.leetcode.com/uploads/2021/03/10/oddeven-linked-list.jpg"><img style="width:300px" src="https://assets.leetcode.com/uploads/2021/03/10/oddeven-linked-list.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-80b9-a53a-e5774369a265" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [1,2,3,4,5]
+Output: [1,3,5,2,4]
+</code></pre><p id="1467aacb-2d23-8025-9411-d28782f365c4" class=""><strong>Example 2:</strong></p><figure id="1467aacb-2d23-80c2-8c50-daf525b47087" class="image"><a href="https://assets.leetcode.com/uploads/2021/03/10/oddeven2-linked-list.jpg"><img style="width:500px" src="https://assets.leetcode.com/uploads/2021/03/10/oddeven2-linked-list.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-80aa-9c9a-d14d7f816c7e" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [2,1,3,5,6,4,7]
+Output: [2,3,6,7,1,5,4]
+</code></pre><p id="1467aacb-2d23-8089-b2ab-eacf20d349b3" class=""><strong>Constraints:</strong></p><ul id="1467aacb-2d23-80e3-8c17-c508b0b34734" class="bulleted-list"><li style="list-style-type:disc">The number of nodes in the linked list is in the range <code>[0, 10^4]</code>.</li></ul><ul id="1467aacb-2d23-80ba-b93d-d4f7906f2d1c" class="bulleted-list"><li style="list-style-type:disc"><code>106 &lt;= Node.val &lt;= 106</code></li></ul><p id="1467aacb-2d23-8096-aca7-dd7ec1311977" class="">My Solution:<br/><br/></p><p id="1467aacb-2d23-80f4-a530-f7ca5d0ccfe5" class="">The given code defines a solution to rearrange a singly linked list so that all nodes at odd indices come before all nodes at even indices, while preserving their relative order within their respective groups. Here’s a breakdown of the code:</p><h3 id="1467aacb-2d23-809b-92bc-fe020fe17636" class="">Code Explanation</h3><ol type="1" id="1467aacb-2d23-8068-a342-f0168628db76" class="numbered-list" start="1"><li><strong>Struct Definition</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-803a-9915-d73c03f4a1fb" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+</code></pre><p id="1467aacb-2d23-801e-af9f-e6c815f16bd5" class="">This defines the <code>ListNode</code> structure used for nodes in the singly linked list.</p><ul id="1467aacb-2d23-80a6-8dd8-f852f6510bb0" class="bulleted-list"><li style="list-style-type:disc">Each node has:<ul id="1467aacb-2d23-80a6-b567-e0b0beff8adc" class="bulleted-list"><li style="list-style-type:circle"><code>val</code>: The value stored in the node.</li></ul><ul id="1467aacb-2d23-806b-8a9c-cd33c418cbf2" class="bulleted-list"><li style="list-style-type:circle"><code>next</code>: A pointer to the next node in the list.</li></ul></li></ul><ul id="1467aacb-2d23-803a-85ee-e0fac266689b" class="bulleted-list"><li style="list-style-type:disc">Three constructors are provided for initialization.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-8003-9beb-d92e88cfb7a0" class="numbered-list" start="2"><li><strong>Function </strong><code><strong>oddEvenList</strong></code>:<ul id="1467aacb-2d23-801f-83ea-d6d753cee1b0" class="bulleted-list"><li style="list-style-type:disc">This function reorders the list based on odd and even indices.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-8039-a479-d903cfe08b64" class="numbered-list" start="3"><li><strong>Base Cases</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-80b7-8188-daf87075b1d1" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+if (head == NULL || head-&gt;next == NULL) {
+    return head;
+}
+
+</code></pre><ul id="1467aacb-2d23-8002-8f12-dc91cbdeabce" class="bulleted-list"><li style="list-style-type:disc">If the list is empty (<code>head == NULL</code>) or has only one node (<code>head-&gt;next == NULL</code>), no rearrangement is needed. The function simply returns the <code>head</code>.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-8069-bdbc-eecd5259e97c" class="numbered-list" start="4"><li><strong>Initialization</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-8092-bf99-d1accd841d79" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+ListNode* oddnode = head;
+ListNode* evennode = head-&gt;next;
+ListNode* temp = evennode;
+
+</code></pre><ul id="1467aacb-2d23-80a4-9da5-ea57eb8da9a5" class="bulleted-list"><li style="list-style-type:disc"><code>oddnode</code> starts at the head of the list.</li></ul><ul id="1467aacb-2d23-8097-a3dc-d156da51da2a" class="bulleted-list"><li style="list-style-type:disc"><code>evennode</code> starts at the second node (<code>head-&gt;next</code>).</li></ul><ul id="1467aacb-2d23-80d8-bb3c-c1c9e2e3b8fe" class="bulleted-list"><li style="list-style-type:disc"><code>temp</code> is used to store the start of the even list for later reconnection.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-804a-8a7e-f793eda0040c" class="numbered-list" start="5"><li><strong>Reordering Loop</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-806d-9cba-ca10e8ece162" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+while (evennode &amp;&amp; evennode-&gt;next) {
+    oddnode-&gt;next = oddnode-&gt;next-&gt;next;
+    evennode-&gt;next = evennode-&gt;next-&gt;next;
+    oddnode = oddnode-&gt;next;
+    evennode = evennode-&gt;next;
+}
+
+</code></pre><ul id="1467aacb-2d23-80b1-8a8e-cc17f4525087" class="bulleted-list"><li style="list-style-type:disc">The loop runs as long as there are both odd and even nodes to process (<code>evennode &amp;&amp; evennode-&gt;next</code>).</li></ul><ul id="1467aacb-2d23-8062-8eeb-e6796ff4d8d2" class="bulleted-list"><li style="list-style-type:disc">Inside the loop:<ol type="1" id="1467aacb-2d23-805e-823b-d1f497bb235d" class="numbered-list" start="1"><li>Link the <code>oddnode</code> to the next odd-indexed node (<code>oddnode-&gt;next-&gt;next</code>).</li></ol><ol type="1" id="1467aacb-2d23-80d6-b7f0-e1e2f5c88cd4" class="numbered-list" start="2"><li>Link the <code>evennode</code> to the next even-indexed node (<code>evennode-&gt;next-&gt;next</code>).</li></ol><ol type="1" id="1467aacb-2d23-8023-8b26-f8d24a949b28" class="numbered-list" start="3"><li>Move <code>oddnode</code> and <code>evennode</code> pointers forward to their respective next nodes.</li></ol></li></ul></li></ol><ol type="1" id="1467aacb-2d23-8074-8184-d0234ca65ce4" class="numbered-list" start="6"><li><strong>Reconnecting Odd and Even Lists</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-80a1-b64d-f1e1bd873d6d" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+oddnode-&gt;next = temp;
+
+</code></pre><ul id="1467aacb-2d23-8013-85be-c45e6fc50349" class="bulleted-list"><li style="list-style-type:disc">After exiting the loop, the odd list ends at <code>oddnode</code>. The function reconnects it to the start of the even list (<code>temp</code>).</li></ul></li></ol><ol type="1" id="1467aacb-2d23-8015-a334-d4e6fc43a86c" class="numbered-list" start="7"><li><strong>Return</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1467aacb-2d23-80eb-a6a0-e2ceb6f13c7d" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">
+return head;
+
+</code></pre><ul id="1467aacb-2d23-80b3-8a79-f1d50813710d" class="bulleted-list"><li style="list-style-type:disc">The rearranged list starts at <code>head</code>.</li></ul></li></ol><h3 id="1467aacb-2d23-8058-8e43-dc372b45392e" class="">Example Walkthrough</h3><p id="1467aacb-2d23-8027-9f81-ff18e5783236" class=""><strong>Input Linked List</strong>:<br/><br/><code>1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5</code></p><p id="1467aacb-2d23-809e-bc74-d35ba2b29b33" class=""><strong>Steps</strong>:</p><ol type="1" id="1467aacb-2d23-803f-a4ab-ef3def277dc7" class="numbered-list" start="1"><li>Initialize:<ul id="1467aacb-2d23-809f-9461-e564e6a7c4d1" class="bulleted-list"><li style="list-style-type:disc"><code>oddnode</code> → 1</li></ul><ul id="1467aacb-2d23-80d0-b5f2-f80880380a65" class="bulleted-list"><li style="list-style-type:disc"><code>evennode</code> → 2</li></ul><ul id="1467aacb-2d23-807c-becd-fffff0d510e1" class="bulleted-list"><li style="list-style-type:disc"><code>temp</code> → 2</li></ul></li></ol><ol type="1" id="1467aacb-2d23-80fd-a561-fd39ba1afc25" class="numbered-list" start="2"><li>First Iteration:<ul id="1467aacb-2d23-80c0-964f-ec7c07ca8858" class="bulleted-list"><li style="list-style-type:disc"><code>oddnode-&gt;next</code> → 3 (link 1 → 3)</li></ul><ul id="1467aacb-2d23-809c-bab0-f3bedc338312" class="bulleted-list"><li style="list-style-type:disc"><code>evennode-&gt;next</code> → 4 (link 2 → 4)</li></ul><ul id="1467aacb-2d23-8031-9a5d-fdbdfe8bee8f" class="bulleted-list"><li style="list-style-type:disc">Move <code>oddnode</code> to 3 and <code>evennode</code> to 4.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-8067-89c9-d0a7407e79b6" class="numbered-list" start="3"><li>Second Iteration:<ul id="1467aacb-2d23-80f2-9bc8-ff272bc94d3e" class="bulleted-list"><li style="list-style-type:disc"><code>oddnode-&gt;next</code> → 5 (link 3 → 5)</li></ul><ul id="1467aacb-2d23-807d-b12c-c5ae8c3a9190" class="bulleted-list"><li style="list-style-type:disc"><code>evennode-&gt;next</code> → NULL (end of even list)</li></ul><ul id="1467aacb-2d23-807e-8319-faf821e5bd85" class="bulleted-list"><li style="list-style-type:disc">Move <code>oddnode</code> to 5 and <code>evennode</code> to NULL.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-80ec-aeca-d75561a2c5d6" class="numbered-list" start="4"><li>Reconnect:<ul id="1467aacb-2d23-80db-8192-e023899bfbf2" class="bulleted-list"><li style="list-style-type:disc">Link 5 → 2 (<code>oddnode-&gt;next = temp</code>).</li></ul></li></ol><p id="1467aacb-2d23-8033-8dea-f0b78471a6ef" class=""><strong>Output Linked List</strong>:<br/><br/><code>1 -&gt; 3 -&gt; 5 -&gt; 2 -&gt; 4</code></p><h3 id="1467aacb-2d23-8027-84b8-d49e8c521d5f" class="">Complexity</h3><ol type="1" id="1467aacb-2d23-80d3-badf-e92d2ff4e840" class="numbered-list" start="1"><li><strong>Time Complexity</strong>: O(n)O(n)O(n)<ul id="1467aacb-2d23-807e-81c9-e4b788a3aa99" class="bulleted-list"><li style="list-style-type:disc">Each node is processed exactly once.</li></ul></li></ol><ol type="1" id="1467aacb-2d23-806a-81d7-c74dbc595647" class="numbered-list" start="2"><li><strong>Space Complexity</strong>: O(1)O(1)O(1)<ul id="1467aacb-2d23-80c0-82f2-e2d318625dcb" class="bulleted-list"><li style="list-style-type:disc">Only a few pointers are used; no additional data structures are needed.</li></ul></li></ol><h2 id="1497aacb-2d23-802b-b3b6-e507e18894ff" class="">Reverse Linked List</h2><p id="1497aacb-2d23-8015-b7b8-f1a7e8495a13" class="">Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p><p id="1497aacb-2d23-8095-a4ec-dd24ffbe9d46" class=""><strong>Example 1:</strong></p><figure id="1497aacb-2d23-8082-b991-e5e15a9dff05" class="image"><a href="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg"><img style="width:542px" src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1497aacb-2d23-8003-991a-f1b7521a384d" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+</code></pre><p id="1497aacb-2d23-800f-915d-d411adf01469" class=""><strong>Example 2:</strong></p><figure id="1497aacb-2d23-80d0-ba12-d11afcaf87a6" class="image"><a href="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg"><img style="width:182px" src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1497aacb-2d23-80f2-8dfc-f7826f2a2a9e" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = [1,2]
+Output: [2,1]
+</code></pre><p id="1497aacb-2d23-80f6-ad5e-db2ffb7e6437" class=""><strong>Example 3:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1497aacb-2d23-8059-9a93-fad93347672c" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Input: head = []
+Output: []
+</code></pre><p id="1497aacb-2d23-8028-9d70-e26ebbce56d0" class=""><strong>Constraints:</strong></p><ul id="1497aacb-2d23-8067-80ae-e3f70fceda69" class="bulleted-list"><li style="list-style-type:disc">The number of nodes in the list is the range <code>[0, 5000]</code>.</li></ul><ul id="1497aacb-2d23-80f6-a307-f020c5601c7d" class="bulleted-list"><li style="list-style-type:disc"><code>5000 &lt;= Node.val &lt;= 5000</code></li></ul><p id="1497aacb-2d23-80c4-9fad-f3e21d3410e6" class=""><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p><p id="1497aacb-2d23-80a2-aca7-d63e80ad779e" class="">My solution:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1497aacb-2d23-80ab-bb5f-cd728fc2a237" class="code"><code class="language-C++">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* node = nullptr;
+
+        while (head != nullptr) {
+            ListNode* temp = head-&gt;next;
+            head-&gt;next = node;
+            node = head;
+            head = temp;
+        }
+        return node;
+    }
+};</code></pre><p id="1497aacb-2d23-80c8-9d06-ee18a09e6775" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

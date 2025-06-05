@@ -1,0 +1,707 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2-22-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1a27aacb-2d23-8023-b2cf-c79c22ca2720" class="page sans"><header><h1 class="page-title">2-22-25</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1a27aacb-2d23-80ca-9535-e467a74819d5" class="">Midterm</h2><p id="1a27aacb-2d23-8072-a3c9-f2fd8ac24517" class="">Next Saturday - Due UDP, DNS, TCP, Python - SMTP Mail Client, and a quiz</p><p id="1a27aacb-2d23-80b5-9dcd-dc3ac2e4871e" class="">Midterm - March 8th, March 9th, March 10th - first 3 chapters (Introduction, Application Layer, Transport Layer)</p><p id="1a27aacb-2d23-80ca-9ff6-d96bef08be94" class="">Then Spring Break</p><p id="1a27aacb-2d23-80aa-bb66-ca38416d7def" class="">The next class after is March 15th</p><p id="1a27aacb-2d23-8001-a5ff-f28f81014c6e" class="">
+</p><p id="1a27aacb-2d23-8012-95e0-cfcfb627405b" class="">Midterm will consist of multiple choice questions, true/false questions, and calculations parallel to back of chapter exercises</p><p id="1a27aacb-2d23-8055-93c2-d5a47f886277" class="">Test ability to look at Wireshark packets</p><p id="1a27aacb-2d23-80ef-a77f-ea21ab52e411" class="">Test ability to look at Python code</p><p id="1a27aacb-2d23-80d0-9090-f315c0e5a52f" class="">Calculations about delays</p><p id="1a27aacb-2d23-80e6-9fba-d9a44717645e" class="">Questions from the book/concepts</p><p id="1a27aacb-2d23-8035-8e27-dae5667743c6" class="">Basic calculations</p><p id="1a27aacb-2d23-809d-ac54-c1cdaa4fd367" class="">
+</p><p id="1a27aacb-2d23-800c-b109-fb9316722380" class="">You can start on any of those days</p><p id="1a27aacb-2d23-8092-bf72-efd7952ec99b" class="">Lockdown Browser - 1 computer with one screen - show ID, show room</p><p id="1a27aacb-2d23-8025-a250-dd7a8ebf6016" class="">Everything is closed book</p><p id="1a27aacb-2d23-80c9-9746-ceefca5cd0d4" class="">1 piece of paper 8x11 - Take a picture of piece of paper with supporting notes, plus a copy of the notes - send to professor’s email</p><p id="1a27aacb-2d23-80ec-9794-e2351840288d" class="">As many blank pages as you want</p><p id="1a27aacb-2d23-80a6-88b8-e9babff1d213" class="">Can make a cheat sheet - double sided - send a picture right after the test</p><p id="1a27aacb-2d23-808e-925c-c0989761e85b" class="">
+</p><h1 id="1a27aacb-2d23-80fd-8896-f9dc1de4b9c0" class="">Class Notes</h1><p id="1a27aacb-2d23-80e1-b6e0-d381ad3de6d2" class="">Transport Layer protocol processes TCP - routers DO NOT PROCESS TCP - routers aren’t aware of TCP</p><p id="1a27aacb-2d23-8094-828f-dae85dad239c" class="">Multicast - talking to multiple different people, can correspond directly</p><p id="1a27aacb-2d23-8028-ae35-f321c65cf6e7" class="">
+</p><h2 id="1a27aacb-2d23-80b9-a63e-c24febc09a05" class="">Transport Services and Protocols</h2><p id="1a27aacb-2d23-807e-9450-c1ad4d4de79b" class="">Provide logical communication between applicatin processes running on different hosts</p><p id="1a27aacb-2d23-80fc-8752-ff27c3efad3c" class="">Transport protocols in end systems: <div class="indented"><p id="1a27aacb-2d23-80c9-a54a-e5b272075076" class="">sender: breaks application messages into segments, passes to network layer</p><p id="1a27aacb-2d23-80ea-9606-efffc6c75f0b" class="">Receiver: reassembles segments into messages, passes to application layer</p></div></p><p id="1a27aacb-2d23-80bf-acb6-d8910f5dd89e" class="">Two transport protocols available to Internet applications: TCP and UDP</p><p id="1a27aacb-2d23-80ea-a444-e2700817f73f" class="">network layer: logical communication between hosts</p><p id="1a27aacb-2d23-8057-ae80-dbf5f507bc31" class="">transport layer: logical communication between processes</p><figure id="1a27aacb-2d23-8094-98a1-e4f877c9981f" class="image"><a href="2-22-25%201a27aacb2d238023b2cfc79c22ca2720/Screenshot_2025-02-22_at_9.03.51_AM.png"><img style="width:455px" src="2-22-25%201a27aacb2d238023b2cfc79c22ca2720/Screenshot_2025-02-22_at_9.03.51_AM.png"/></a></figure><p id="1a27aacb-2d23-801f-b4eb-f4349f6561d0" class="">
+</p><p id="1a27aacb-2d23-80dd-8981-e2c443d81430" class="">The transport layer takes the application message and adds its headers to create a segment, then sends it down to network layer</p><p id="1a27aacb-2d23-809c-9b6f-d5bec562b94b" class="">Two Principal Internet Transport Protocols:</p><p id="1a27aacb-2d23-8044-b053-cfcd4b0c3652" class="">TCP - reliable, in-order delivery with congestion control, flow control, and connection setup</p><p id="1a27aacb-2d23-804f-b683-c0a95e6e42bb" class="">UDP - unreliable, unordered delivery, with no-frills extension of “best-effort” IP</p><p id="1a27aacb-2d23-80f0-bf41-d8faee204eb1" class="">services that are not available are delay guarantees and bandwidth guarantees</p><p id="1a27aacb-2d23-807d-bde0-ea2ee31e6198" class="">Multiplexing at sender: handle data from multiple sockets, add transport layer headers</p><p id="1a27aacb-2d23-808e-9f65-e9b8befc445a" class="">Demultiplexing at sender: uses header to send data to correct socket</p><p id="1a27aacb-2d23-80ef-8dfc-c1f4a4f8adcd" class="">Host receives IP datagrams, each datagram has source IP address, destination IP address</p><p id="1a27aacb-2d23-80e8-ad1a-e08aa7b149e2" class="">Each datagram carries ONLY ONE transport-layer segment</p><p id="1a27aacb-2d23-8017-939b-dd1b6f19508b" class="">Each segment has source, destination port number</p><p id="1a27aacb-2d23-80bb-90f3-c418111ae81a" class="">host uses IP addresses &amp; port numbrs to direct segment to appropriate socket</p><p id="1a27aacb-2d23-80a3-b149-ea1681bd2c8c" class="">
+</p><p id="1a27aacb-2d23-80be-8742-fd5387abee64" class="">Connectionless Demultiplexing</p><p id="1a27aacb-2d23-805e-bf3a-f228f8fcaa9e" class="">When creating socket, must specify host-local port #</p><p id="1a27aacb-2d23-8002-af80-e8e5db2bb6ec" class="">When creating datagram to send into UDP socket, must specify: destination IP address and port number</p><p id="1a27aacb-2d23-804e-8387-fab66597af41" class="">
+</p><p id="1a27aacb-2d23-800f-bedf-e75fd7154653" class="">When receiving host receives UDP segment it checks destination port #, and directs UDP segment to socket with that port #.</p><p id="1a27aacb-2d23-80f4-938f-d0673a1d9876" class="">IP/UDP datagrams with same dest. port # but different source IP addresses and/or source port numbers will be directed to same socket at receiving host.</p><p id="1a27aacb-2d23-80b1-bd5d-ca48f3505057" class="">Sometimes for UDP the socket will run out of memory.</p><p id="1a27aacb-2d23-8018-9c24-e75f8f9d1f53" class="">
+</p><p id="1a27aacb-2d23-80e0-9e32-d89ac5f976df" class="">Connection-Oriented Demultiplexing</p><p id="1a27aacb-2d23-8037-85b1-f53204640cef" class="">TCP socket is identified by a 4-tuple: source IP address and source port number, dest IP address and dest port number</p><p id="1a27aacb-2d23-8083-b8d5-f97888f940bf" class="">The receiver uses all four value to direct segment to appropriate socket</p><p id="1a27aacb-2d23-8035-b501-ccf672777e72" class="">Server may support many simultaneous TCP sockets: each socket identified by its own 4-tuple, each socket associated with a different connecting client</p><p id="1a27aacb-2d23-8078-b40b-fa99cbae5e5b" class="">Different browsers will have different source ports (if you have Edge and Chrome going to the same site for example)</p><p id="1a27aacb-2d23-8061-b0e7-eb0907220ae7" class="">Different tabs will have different source ports</p><p id="1a27aacb-2d23-8016-97b1-f7dcf6ffa5e7" class="">
+</p><p id="1a27aacb-2d23-8069-b3f2-ed61ba86b75f" class="">UDP Demultiplexes using destination port number (only)</p><p id="1a27aacb-2d23-8032-afe3-d4aa8d44bc50" class="">TCP demultiplexes using 4-tuple, source and destination IP addresses and port numbers</p><p id="1a27aacb-2d23-800d-ad96-fb714ffeab95" class="">In connectionless, there is only a single socket on the server handling all inbound traffic to that port. For connection-oriented, each inbound connection gets it&#x27;s own dedicated socket on the server</p><p id="1a27aacb-2d23-8034-9367-c9d99948ddba" class="">
+</p><p id="1a27aacb-2d23-8032-a640-e2605d57bd30" class="">Note to self: review connectionless</p><p id="1a27aacb-2d23-807c-a3f3-c42b0948d221" class="">
+</p><h1 id="1a27aacb-2d23-801a-8360-d70e1369d6fa" class="">UDP - User Datagram Protocol</h1><p id="1a27aacb-2d23-80eb-8ae7-fc095bcad84e" class="">RFC 768</p><p id="1a27aacb-2d23-804e-9364-c59d16e1344d" class="">
+</p><p id="1a27aacb-2d23-80f6-8cf8-fb8a29286d34" class="">The checksum:</p><figure id="1a27aacb-2d23-8084-89ff-d5ef5b7b2da4" class="image"><a href="2-22-25%201a27aacb2d238023b2cfc79c22ca2720/Screenshot_2025-02-22_at_9.46.54_AM.png"><img style="width:654px" src="2-22-25%201a27aacb2d238023b2cfc79c22ca2720/Screenshot_2025-02-22_at_9.46.54_AM.png"/></a></figure><p id="1a27aacb-2d23-805a-89ab-f6e6021ffb9b" class="">
+</p><h1 id="1a27aacb-2d23-8068-b2c8-d71cd9f96507" class="">Principles of Reliable Data Transfer</h1><p id="1a27aacb-2d23-805f-b009-d9b2d00b608b" class="">In an abstracted service, the channel is always reliable.</p><p id="1a27aacb-2d23-80de-899c-c132b0571798" class="">In the implementation, it is sending it over an unreliable channel - IP - it can lose, corrupt, or reorder data</p><p id="1a27aacb-2d23-8006-823f-cb79be3c2ce7" class="">Sender, receiver do not know the “state” of each other (was the message received)</p><p id="1a27aacb-2d23-802c-927c-ddcfbe7038c6" class="">Interfaces:</p><p id="1a27aacb-2d23-8017-ae82-cfa41b6ef3b2" class="">The sending process sends some kind of data, it creates a process (rdt_send()) and passes it over to the transport layer (udt_send()), which needs to reliably transport it. it sends it through an unreliable channel. When it arrives, the receiving host calls rdt_rcv() and uses deliver_data() to give it to the upper layer</p><p id="1a27aacb-2d23-80c0-968a-d0556b29541a" class="">
+</p><h2 id="1a27aacb-2d23-80ff-83ca-c92b77aa6061" class="">rdt1.0</h2><p id="1a27aacb-2d23-8045-8322-e4f111e7e993" class="">Reliable transfer over a reliable channel</p><p id="1a27aacb-2d23-8054-b4ef-c55574e5a601" class="">Underlying channel is perfectly reliable - there are no bit errors and no loss of packets</p><p id="1a27aacb-2d23-80a4-927f-c876859a2490" class="">
+</p><h2 id="1a27aacb-2d23-8008-ac1b-d20b9f2d48ea" class="">rdt2.0</h2><p id="1a27aacb-2d23-8095-a3e3-d19d22ae8dc8" class="">If the underlying channel flips bits in packet - checksum to detect bit errors</p><p id="1a27aacb-2d23-8025-8cfa-f3ef9c8fc44f" class="">How to recover from errors?</p><p id="1a27aacb-2d23-8089-8bb6-e54231efc6d9" class="">The concepts of ACKS and NAKS - ACKS tells sender that the packet was received, the NAKS tell the receiver that the packet had errors</p><p id="1a27aacb-2d23-805e-8529-dfaba3bbbd88" class="">Sender retransmits packet on receipt of a NAK</p><p id="1a27aacb-2d23-8001-b708-f103d2b5a092" class="">The sender stops and waits for recieving an ACK or NAK</p><p id="1a27aacb-2d23-8031-949f-e5e3922f0501" class="">What happens if ACK/NAK is corrupted?</p><p id="1a27aacb-2d23-801f-9be7-fe496888a793" class="">Sender adds sequence numbers to each packet - receiver discards duplicate packet</p><h3 id="1a27aacb-2d23-805e-91e1-e39430530c0c" class="">rdt2.1</h3><p id="1a27aacb-2d23-808d-a205-f8ec78e616ea" class="">Sender:<div class="indented"><p id="1a27aacb-2d23-8084-acdb-e5ccb6e4b6d5" class="">Seq # added to pkt</p><p id="1a27aacb-2d23-809b-9675-c8b7c2e11aa6" class="">Two seq #s (0, 1) will suffice. Why?</p><p id="1a27aacb-2d23-80b7-8554-dab146c6bfa4" class="">Must check if received ACK/NAK corrupted</p><p id="1a27aacb-2d23-80eb-b2ca-c2a00161a360" class="">Twice as many states - state must “remember” whether expected pkt should have seq # of 0 or 1</p></div></p><p id="1a27aacb-2d23-8049-96b8-fc51de2d9d86" class="">Receiver:<div class="indented"><p id="1a27aacb-2d23-806f-bd04-d788ffb632ba" class="">Must check if received packet is duplicate<div class="indented"><p id="1a27aacb-2d23-80fc-ad30-e100ec826e6e" class="">State indicates whether 0 or 1 is expected packet sequence #</p></div></p><p id="1a27aacb-2d23-8057-99f1-cfb699805396" class="">Note: receiver can not know if its last ACK/NAK received OK at sender</p></div></p><h3 id="1a27aacb-2d23-8072-938b-cc0e005fde18" class="">rdt2.2</h3><p id="1a27aacb-2d23-80a6-bc5a-e3056c60c2ce" class="">same functionality as rdt2.1, using ACKs only</p><p id="1a27aacb-2d23-808e-9332-eb0cde3642c9" class="">Instead of NAK, receiver sends ACK for last packet received OK<div class="indented"><p id="1a27aacb-2d23-8076-bdd3-cf32ed03dba0" class="">Receiver must explicityl include seq # of pkt being ACKed</p><p id="1a27aacb-2d23-8015-ada7-ea72b2a59905" class="">Duplicate ACK at sender results in same action as NAK: retransmits current pkt</p></div></p><p id="1a27aacb-2d23-805a-b65a-fc009f9830ca" class="">
+</p><h3 id="1a27aacb-2d23-8059-8798-c46952df5bc6" class="">rdt3.0</h3><p id="1a27aacb-2d23-806c-ba69-dc948c78cd70" class="">New channel assumptions: underlying channels can also lose packets</p><p id="1a27aacb-2d23-8096-82f7-fd8ffa45f544" class="">Sender waits a “reasonable” amount of time for ACK<div class="indented"><p id="1a27aacb-2d23-8048-99ea-c7c461ef1f25" class="">retransmits if no ACK received in this time</p><p id="1a27aacb-2d23-80b3-8202-c6e67bbfe361" class="">If packet is just delayed: retransmission will be duplicate, but seq #s already handles this</p><p id="1a27aacb-2d23-80f8-a0f2-f64991ab12fa" class="">receiver must specify seq # of packet being ACKed</p></div></p><p id="1a27aacb-2d23-80c9-aab7-db67d4f90cca" class="">Use countdown timer to interrupt after “reasonable” amount of time</p><p id="1a27aacb-2d23-8044-8fa0-f8720b387aba" class="">
+</p><p id="1a27aacb-2d23-8097-b771-ce8529043402" class="">The utilization is significantly slowed down by waiting for the next packet </p><p id="1a27aacb-2d23-80a3-ae50-cdcc91eb3959" class="">
+</p><h3 id="1a27aacb-2d23-809e-9d5f-c85e1419a7f7" class="">Pipelining</h3><p id="1a27aacb-2d23-8069-872c-f68ffd1d0f9f" class="">Sender allows multiple, in-flight but not yet acknowledged packets<div class="indented"><p id="1a27aacb-2d23-8001-bcb8-fe76a0807184" class="">Range of sequence numbers must be increased</p><p id="1a27aacb-2d23-80f2-9e8a-d50d6f0cfcc7" class="">Buffering at sending and/or receiver</p></div></p><p id="1a27aacb-2d23-8067-9c55-f68841305e64" class="">
+</p><h3 id="1a27aacb-2d23-8052-81c8-f3613a98ad49" class="">Go-Back-N</h3><p id="1a27aacb-2d23-8019-a509-c803c8651166" class="">sender “window” of up to N, consecutive transmitted but unACKed packets<div class="indented"><p id="1a27aacb-2d23-802c-80a5-c8e023f1a87e" class="">k-bit seq # in packet header</p><p id="1a27aacb-2d23-8041-a124-f3b15dbcb65c" class="">cumulative ACK - ACks all packets up to, including seq # n<div class="indented"><p id="1a27aacb-2d23-80b9-b85a-f58e5da64047" class="">On receiving ACK(n): move window forward to begin at n+1</p></div></p><p id="1a27aacb-2d23-8008-b425-fb2210a7f41e" class="">timer for oldest in-flight packet</p><p id="1a27aacb-2d23-8002-84d6-d7d963a740a6" class="">timeout (n): retransmit packet n and all higher seq # packets in window</p></div></p><p id="1a27aacb-2d23-80a1-b644-d9e5b10f0930" class="">
+</p><p id="1a27aacb-2d23-80a8-a261-ed47043efc5b" class="">*If the last ACK for the transmission is lost, the whole thing is sent again</p><p id="1a27aacb-2d23-80a6-9926-f35964a5c69c" class="">
+</p><p id="1a27aacb-2d23-80b7-9b64-d95a91ace6ba" class="">On receipt of out-of-order packet:<div class="indented"><p id="1a27aacb-2d23-8015-b3ce-cc97c38f4c1a" class="">can discard or buffer: an implementation decision (buffer means store in this case)</p></div></p><p id="1a27aacb-2d23-80c2-bcc3-f1bc179cd926" class="">
+</p><h3 id="1a27aacb-2d23-8099-96c1-d307aa19aeb8" class="">Selective Repeat</h3><p id="1a27aacb-2d23-806e-8753-e4d829979691" class="">The receiver individual acknowledges all correctly received packets<div class="indented"><p id="1a27aacb-2d23-8062-aa46-ffd814121255" class="">Buffer packets, as needed, for eventual in-order delivery to upper layer</p></div></p><p id="1a27aacb-2d23-807f-8378-cfab87adb6ff" class="">Sender times-out/retransmits individually for unACKed packets<div class="indented"><p id="1a27aacb-2d23-80fa-ae75-c2dd5617d05f" class="">Sender maintains timer for each unACKed packet</p></div></p><p id="1a27aacb-2d23-80d5-a00f-f7e8b3936928" class="">Sender window<div class="indented"><p id="1a27aacb-2d23-8027-baca-d23bdd2e71f0" class="">N consecutive seq #s</p><p id="1a27aacb-2d23-80ec-b252-db4b132afee3" class="">limits seq #s of sent, unACKed packets</p></div></p><p id="1a27aacb-2d23-8022-897d-c67240458179" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

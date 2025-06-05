@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4-19-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1da7aacb-2d23-80d9-ad41-ec087f5e003b" class="page sans"><header><h1 class="page-title">4-19-25</h1><p class="page-description"></p></header><div class="page-body"><p id="1da7aacb-2d23-8097-8c00-eb73402fd330" class="">Link Layer has the responsibility of transferring a datagram from one node to a physically adjacent node over a link</p><p id="1da7aacb-2d23-8003-90d3-d3788b712078" class="">
+</p><p id="1da7aacb-2d23-8057-a5ff-ecccd1549ed9" class="">Terminology:<div class="indented"><p id="1da7aacb-2d23-8060-b533-c0fba0f281b3" class="">Hosts and routers: nodes</p><p id="1da7aacb-2d23-8099-a0ad-f5d2cff29927" class="">Communication channels that connect adjacent nodes along communication path: links<div class="indented"><p id="1da7aacb-2d23-80a1-87b9-cfbc98eddca9" class="">wired</p><p id="1da7aacb-2d23-806c-9e5b-d07bc561e324" class="">wireless</p><p id="1da7aacb-2d23-8096-bbe0-c3024943030f" class="">LANs</p></div></p><p id="1da7aacb-2d23-8064-b319-d41d4e5a8824" class="">Layer-2 packet: frame, encapsulates datagram</p></div></p><p id="1da7aacb-2d23-80b8-8367-c7bc9064b1d1" class="">
+</p><p id="1da7aacb-2d23-801b-bc8c-e2485c270ee4" class="">Datagram transferred by different link protocols over different links: <div class="indented"><p id="1da7aacb-2d23-8008-858c-cd5dff4064c0" class="">WiFi on first link, Ethernet on next for example</p></div></p><p id="1da7aacb-2d23-8095-b171-ce41df6c711b" class="">Each linl orotocol provides different services<div class="indented"><p id="1da7aacb-2d23-80dd-becb-e7233f36c229" class="">May or may not provide reliable data transfer over link</p></div></p><p id="1da7aacb-2d23-804a-bf7e-dc2703372e76" class="">
+</p><p id="1da7aacb-2d23-80b9-96bf-c5445a3a7129" class="">Services:<div class="indented"><p id="1da7aacb-2d23-80f7-8dd5-c6ac672b1fd6" class="">framing, link access: encapsulate datagram into frame, adding header, trailer<div class="indented"><p id="1da7aacb-2d23-806f-ae6c-c24080254c67" class="">Channel access if shared medium</p><p id="1da7aacb-2d23-802f-a3f0-f48ebb811235" class="">MAC addresses in frame headers identify source, destination</p></div></p><p id="1da7aacb-2d23-80e7-8761-f8d0c3327f02" class="">reliable delivery between adjacent nodes<div class="indented"><p id="1da7aacb-2d23-8011-9109-d1f86a6e9cd6" class="">seldom used on low bit-error links, wireless links have high error rates</p></div></p><p id="1da7aacb-2d23-800f-ab0c-fc4a22bfa796" class="">flow control<div class="indented"><p id="1da7aacb-2d23-801b-b8fa-d65bfd662d72" class="">pacing between adjacent sending and receiving nodes</p></div></p><p id="1da7aacb-2d23-80c4-9712-c55a703fb37d" class="">error detection:<div class="indented"><p id="1da7aacb-2d23-8002-b7d5-cea49a4a7375" class="">errors caused by signal attentuation, noise</p><p id="1da7aacb-2d23-8043-8546-edd3c4b38824" class="">receiver detects errors, signals retransmission, or drops frame</p></div></p><p id="1da7aacb-2d23-80cb-9074-d4c461581138" class="">half-duplex and full-duplex:<div class="indented"><p id="1da7aacb-2d23-8064-a55b-e72905fb36c9" class="">with half duplex, nodes at both ends of link can transmit but not at same time</p></div></p></div></p><p id="1da7aacb-2d23-8082-b69a-fa809f29a4bd" class="">
+</p><p id="1da7aacb-2d23-80af-8eb8-ffca3306a58b" class="">Where is the link layer implemented? It is implemented in the network interface Card, or on a chip<div class="indented"><p id="1da7aacb-2d23-80bc-b186-e440792e3ab3" class="">Ethernet, WiFi card or chip</p><p id="1da7aacb-2d23-8092-a4a2-c15b0cba36ec" class="">implements link, physical layer</p></div></p><p id="1da7aacb-2d23-8068-8459-c0dd2cc7940d" class="">attaches into host’s system buses</p><p id="1da7aacb-2d23-8079-937c-cb296857a2c9" class="">combination of hardware, software, firmware</p><p id="1da7aacb-2d23-80d8-8650-eadbf6094303" class="">
+</p><p id="1da7aacb-2d23-80c6-807d-f47a3dfc0210" class="">Interfaces Communication:<div class="indented"><p id="1da7aacb-2d23-80e7-ac64-f8f6ee076e60" class="">On the sending side, it encapsulates datagram into frame, adds error checking bits, reliable data transfer, flow control, etc.</p><p id="1da7aacb-2d23-808c-83cc-d427579879d2" class="">On the receiving side: it looks for errors, rdt, flow control, extracts datagram and passes it to upper layer</p></div></p><p id="1da7aacb-2d23-80c5-8008-f1f4f4321da6" class="">
+</p><p id="1da7aacb-2d23-80f3-946e-d7795321da02" class=""><strong>Error Detection:</strong></p><p id="1da7aacb-2d23-8010-9897-f7eacdae10dc" class="">EDC: Error detection and correction bits (eg. redundancy)</p><p id="1da7aacb-2d23-8016-93ac-f5cc310255ec" class="">D: data protected by error checking, may include header fields</p><p id="1da7aacb-2d23-805c-8fdf-cd439fcf5c84" class="">
+</p><p id="1da7aacb-2d23-80ab-90d5-c9d6c56c7434" class="">Parity Checking:</p><p id="1da7aacb-2d23-8007-b5e3-d90be2554ce0" class="">a single bit parity detects single bit errors</p><p id="1da7aacb-2d23-8021-b815-d0224069a95e" class="">2D bit parity detects and corrects single bit error</p><p id="1da7aacb-2d23-801b-80d0-eb90de92d915" class="">
+</p><p id="1da7aacb-2d23-80f4-baef-e6f2e33a9602" class="">Internet Checksum</p><p id="1da7aacb-2d23-80c3-b6d6-dff8f3f92585" class="">Cyclic Redundancy Check (CRC): more powerful error-detection coding<div class="indented"><p id="1da7aacb-2d23-80bd-8e82-d7ed30922461" class="">D: data bits (think of it is a binary number)</p><p id="1da7aacb-2d23-802b-9a31-e52c4286ec64" class="">G: bit pattern (geenerator) of r + 1 bits</p><p id="1da7aacb-2d23-806e-8606-e44858ec20f0" class="">goal: choose r CRC bits, R, such that &lt;D,R&gt; exactly divisible by G (mod 2)<br/>• receiver knows G, divides &lt;D,R&gt; by G. If non-zero remainder: error detected!<br/>• can detect all burst errors less than r+1 bits<br/>• widely used in practice (Ethernet, 802.11 WiFi)<br/></p></div></p><p id="1da7aacb-2d23-8021-8b8b-c4be43b9fcaa" class="">
+</p><p id="1da7aacb-2d23-80da-ba1d-df7ea93e37bd" class="">Multiple Access Protocols</p><p id="1da7aacb-2d23-805c-b659-e3dd5f6f70e9" class="">Two types of links:<div class="indented"><p id="1da7aacb-2d23-8089-a821-c6e011115344" class="">Point to point link between Ethernet Switch, host</p><p id="1da7aacb-2d23-80a0-8a8a-db2f592fdf51" class="">broadcast (shared wire or medium)</p></div></p><p id="1da7aacb-2d23-80ac-8e15-f6261f23397d" class="">
+</p><p id="1da7aacb-2d23-8054-b0c7-da90fcc6f615" class="">Single shared broadcast channel</p><p id="1da7aacb-2d23-80ca-ae89-dfb6eded7860" class="">two or more simultaneous transmissions by nodes: interference<div class="indented"><p id="1da7aacb-2d23-80e6-90e7-d457ec8fa562" class="">collision if node receives two or more signals at the same time</p></div></p><p id="1da7aacb-2d23-8064-9370-e186f83bd512" class="">
+</p><p id="1da7aacb-2d23-80d6-8885-cbaad311a157" class="">multiple access protocol<div class="indented"><p id="1da7aacb-2d23-80fb-b02d-d302311acc48" class="">distributed algorithm that determines how nodes share channel, i.e., determine when node can transmit</p><p id="1da7aacb-2d23-80fd-94ea-eb77d6bdedc0" class="">communication about channel sharing must use channel itself!<div class="indented"><p id="1da7aacb-2d23-80ca-bd59-c602eb47d39e" class="">no out-of-band channel for coordination</p></div></p></div></p><p id="1da7aacb-2d23-80ad-85bf-d2103c960bcd" class="">
+</p><p id="1da7aacb-2d23-802d-8492-f863f6b9e85b" class="">An ideal multiple access channel (MAC) of rate R bps</p><ol type="1" id="1da7aacb-2d23-8001-8017-e7382804f55b" class="numbered-list" start="1"><li>when one node wants to transmit, it can send at rate R.</li></ol><ol type="1" id="1da7aacb-2d23-802f-ad0b-fd0f985a6ec4" class="numbered-list" start="2"><li>when M nodes want to transmit, each can send at average<br/>rate R/M<br/></li></ol><ol type="1" id="1da7aacb-2d23-80d5-a32c-d1cc37bc0c39" class="numbered-list" start="3"><li>fully decentralized:<br/>• no special node to coordinate transmissions<br/>• no synchronization of clocks, slots<br/></li></ol><ol type="1" id="1da7aacb-2d23-80ae-8ed0-e3be84d7a8dc" class="numbered-list" start="4"><li>simple</li></ol><p id="1da7aacb-2d23-805a-8ac4-ef19b05244ae" class="">
+</p><p id="1da7aacb-2d23-808a-bc7b-c96dc42c7315" class="">Three broad classes of MAC protocols:</p><p id="1da7aacb-2d23-801e-b40a-ecf7509c69bb" class="">channel partitioning: divides channels into smaller “pieces” (time slots, freqency, code)<div class="indented"><p id="1da7aacb-2d23-80ea-9747-cd5ee2da3b2f" class="">allocate piece to node for exclusive use</p></div></p><p id="1da7aacb-2d23-8075-9f79-d698824e7693" class="">random access<div class="indented"><p id="1da7aacb-2d23-80f4-8f3d-c089389c93bd" class="">channel not divided, allow collisions</p><p id="1da7aacb-2d23-80bf-b98b-c620a6ebe284" class="">recover from collisions</p></div></p><p id="1da7aacb-2d23-8048-ab28-ea8ca696d556" class="">taking turns<div class="indented"><p id="1da7aacb-2d23-807d-a52e-d0d99c4d04a7" class="">nodes take turns, but nodes with more to send can take longer turns</p></div></p><p id="1da7aacb-2d23-8014-93d2-d1f0281c33f3" class="">
+</p><p id="1da7aacb-2d23-804a-bdb6-d3a0cb5b73eb" class="">Channel partitioning: TDMA<div class="indented"><p id="1da7aacb-2d23-80c8-af8a-e149cb6f0640" class="">access to channel in “rounds”</p><p id="1da7aacb-2d23-8022-9737-cfb8d1aa21b0" class="">each station gets fixed length slot (length = packet transmission time) in each round</p><p id="1da7aacb-2d23-8019-a185-ea1b256ac8b6" class="">unused slots go idel</p><p id="1da7aacb-2d23-80b3-b84d-fc7932f54b1a" class="">example: 6-station LAN, 1,3,4 have packets to send, slots 2,5,6 idle</p></div></p><p id="1da7aacb-2d23-80b2-8005-d405ad14755e" class="">FDMA<div class="indented"><p id="1da7aacb-2d23-8076-84a4-cba256827eeb" class="">channel spectrum divided into frequency bands</p><p id="1da7aacb-2d23-80c5-9d10-cc1a1d8f8811" class="">each station assigned fixed frequency band</p><p id="1da7aacb-2d23-80af-9cb4-c9c72055f539" class="">unused transmission time in frequency bands go idle</p></div></p><p id="1da7aacb-2d23-80ac-a0ff-c755a8b155b4" class="">
+</p><p id="1da7aacb-2d23-8077-88fc-ffc0a506367f" class="">Random Access Protocols:<div class="indented"><p id="1da7aacb-2d23-8032-b872-eb7776e1ffba" class="">When node has packet to send:<div class="indented"><p id="1da7aacb-2d23-8010-974e-c7b0dbcc5b7a" class="">transmit at full channel data rate R</p><p id="1da7aacb-2d23-80f6-b38b-c063b2de3671" class="">no a priori coordination among nodes</p></div></p><p id="1da7aacb-2d23-80d5-ab91-f60088339a2e" class="">two or more transmitting nodes experience a collision</p><p id="1da7aacb-2d23-80d3-87fc-d914c941f76f" class="">random access MAC protocol specifies:<div class="indented"><p id="1da7aacb-2d23-8060-a051-f35dd9f325d8" class="">how to detect collisions</p><p id="1da7aacb-2d23-8036-b731-fe4cb564854e" class="">how to recover from collisions</p></div></p></div></p><p id="1da7aacb-2d23-80f4-a8e1-ef145035522a" class="">
+</p><p id="1da7aacb-2d23-8089-952b-ef0c66db8051" class="">Slotted ALOHA<div class="indented"><p id="1da7aacb-2d23-80b6-8d33-fbcf2a0a74be" class="">Assumptions:<div class="indented"><p id="1da7aacb-2d23-80a5-95ea-c4a514cfc68e" class="">All frames same size</p><p id="1da7aacb-2d23-808d-95c4-d27061060f72" class="">Time divided into equal size slots (time to transmit 1 frame)</p><p id="1da7aacb-2d23-8041-ac11-f4b8664b3d71" class="">Nodes start to transmit only slot beginning</p><p id="1da7aacb-2d23-80b8-95e4-d40322b5d0b2" class="">Nodes are synchronized</p><p id="1da7aacb-2d23-80c3-bbeb-cc6764e7dfdd" class="">if 2 or more nodes transmit in slot, all nodes detect collision</p></div></p><p id="1da7aacb-2d23-8041-bac8-f141d9d3d898" class="">Operation:<div class="indented"><p id="1da7aacb-2d23-8085-85ec-ec21b41a323a" class="">when node obtains fresh frame, transmits in next slot<div class="indented"><p id="1da7aacb-2d23-80d1-8ec8-e5a3a9c9abfa" class="">if no collision: node can send new frame in next slot</p><p id="1da7aacb-2d23-80f4-ab77-c936da88a3cd" class="">if collision: node retransmits frame in each subsequent slot with probability p until success</p></div></p></div></p><p id="1da7aacb-2d23-806c-9ea1-d3e8c540c374" class="">
+</p><p id="1da7aacb-2d23-8008-bb29-f6ca903c2d43" class="">Carrier Sense Multiple Access</p><p id="1da7aacb-2d23-8098-af75-ce6b8ef0fe78" class="">simple CSMA: listen before transmit<div class="indented"><p id="1da7aacb-2d23-80da-bf0c-d787592bb681" class="">if channel sensed idel: transmit entire frame</p><p id="1da7aacb-2d23-804a-b92b-e84e6d271ea2" class="">if channel sensed busy: defer transmission</p></div></p><p id="1da7aacb-2d23-805a-9de8-f884e5afc487" class="">human analogy: don’t interrupt others</p><p id="1da7aacb-2d23-80fa-b724-dbb9f81aa8ad" class="">
+</p><p id="1da7aacb-2d23-8013-86da-c670536ddd2b" class="">CSMA/CD: CSMA with collision detection<div class="indented"><p id="1da7aacb-2d23-80c4-b4b1-fcdbe3c4c07c" class="">collisions detected within short time</p><p id="1da7aacb-2d23-8085-9974-f13a7b9561e0" class="">colliding transmissions aborted, reducing channel wastage</p><p id="1da7aacb-2d23-8036-9401-deabf6772d2a" class="">collision detection easy in wired, difficult with wireless</p></div></p><p id="1da7aacb-2d23-809d-aa22-e5b4770d8125" class="">human analogy: the polite conversationalist</p></div></p><p id="1da7aacb-2d23-80b8-9cdb-c493cb333d59" class="">
+</p><p id="1da7aacb-2d23-80dd-90f8-c54369ffb5e8" class="">
+</p><p id="1da7aacb-2d23-80bb-ba30-dcaf794bec0d" class=""><strong>LANS</strong></p><p id="1da7aacb-2d23-8064-8f99-e4a6446944a9" class="">MAC Addresses:</p><p id="1da7aacb-2d23-808f-a7d4-c53a0ba2b792" class="">IP addresses specifies the network-layer address the network interface</p><p id="1da7aacb-2d23-8082-a579-f70f3ee0d8ea" class="">MAC address is used locally to get frame from one interface to another physically connected interface (same subnet, in IP addressing sense)</p><p id="1da7aacb-2d23-809e-8ec9-d6f252830c7c" class="">48-bit MAC address burtned in NIC ROM, also sometimes software settable</p><p id="1da7aacb-2d23-8051-b832-eecf22224b29" class="">Each interface on LAN has a unique MAC address and has a locally unique 32-bit IP address</p><p id="1da7aacb-2d23-805c-afc0-de9be27b3229" class="">
+</p><p id="1da7aacb-2d23-80e9-8420-e27713ee2a9f" class="">MAC address is allocated by IEEE. The manufacturer has to buy portion of MAC address space to assure uniqueness<div class="indented"><p id="1da7aacb-2d23-800f-b053-ea00f4962272" class="">Analogy:</p><p id="1da7aacb-2d23-80a9-9656-fda663ed8bbc" class="">MAC Address is like a social security number</p><p id="1da7aacb-2d23-80e8-ac6c-cb590a49ee3f" class="">IP address is like postal address</p></div></p><p id="1da7aacb-2d23-804f-86cf-e87ff0745961" class="">
+</p><p id="1da7aacb-2d23-809f-aedc-e8cdfc66f0b3" class="">ARP: address resolution protocol maps interface’s MAC address to the IP address<div class="indented"><p id="1da7aacb-2d23-8084-89a9-f22608bea7f6" class="">ARP table: each IP node (host, router) on LAN has table</p><p id="1da7aacb-2d23-80d2-8b76-c396ff910c3d" class="">IP/MAC addres mappings for some LAN nodes:<div class="indented"><p id="1da7aacb-2d23-8036-ac1c-c125c422ea30" class="">&lt;IP address; MAC address; TTL&gt;</p></div></p></div></p><p id="1da7aacb-2d23-8035-ba0f-e62477d33c59" class="">On the link layer, we only communicate through MAC addresses</p><p id="1da7aacb-2d23-8079-8550-ffdea9e1555d" class="">Application layer protocols don’t communicate with MAC</p><p id="1da7aacb-2d23-802d-949d-e93dbf445cdb" class="">
+</p><p id="1da7aacb-2d23-80d0-b071-d2601980c0b4" class=""><strong>Ethernet</strong></p><p id="1da7aacb-2d23-808f-acfb-c4ab2cb36528" class="">The dominant wired LAN technology</p><p id="1da7aacb-2d23-8076-98a0-c7a6ae5c1c58" class="">first widely used LAN technology</p><p id="1da7aacb-2d23-80c4-aa39-d96d9d01f564" class="">simpler, cheap</p><p id="1da7aacb-2d23-80f9-8e6f-c8dd600aada7" class="">kept up with speed race: 10 Mbps - 400 Gbps</p><p id="1da7aacb-2d23-80ed-87a2-dbd36a10d30c" class="">Single chip, multiple speeds (e.g., Broadcom BCM5761)</p><p id="1da7aacb-2d23-80f9-b8e7-e8dc2ffcbcc8" class="">Bus: popular through mid 90s<div class="indented"><p id="1da7aacb-2d23-80dc-b353-d48bf19b1be7" class="">all nodes in same collision domain (can colldie with each other)</p></div></p><p id="1da7aacb-2d23-8088-9be1-e86131815f04" class="">Switched: prevails today<div class="indented"><p id="1da7aacb-2d23-80d2-8905-f791cbbc7d4f" class="">Active link-layer 2 switch in center</p><p id="1da7aacb-2d23-8098-90de-fc4c09b60460" class="">Each “spoke” runs a (separate) ethernet protocol (nodes do not collide with each other)</p><p id="1da7aacb-2d23-80fe-97cd-efbcce4caf98" class="">
+</p></div></p><p id="1da7aacb-2d23-8035-b1df-eda99067a92d" class=""><strong>Ethernet Switch</strong></p><p id="1da7aacb-2d23-802c-b5e8-ce0107707635" class="">Switch is a link-layer device: takes an active role<div class="indented"><p id="1da7aacb-2d23-8019-a8f1-f4224b069f59" class="">store, forward Ethernet frames</p><p id="1da7aacb-2d23-809c-81e7-ce694d4bbb2c" class="">Examine incoming frame’s MAC address, selectively forward frame to one-or-more outgoing links when frame is to be forwarded on segment, uses CSMA/CD to access segment</p></div></p><p id="1da7aacb-2d23-8054-b9f0-e34e048ca91d" class="">Transparent: hosts unaware of presence of switches</p><p id="1da7aacb-2d23-80f3-b62d-fa4b83448486" class="">Plug and play, self-learning<div class="indented"><p id="1da7aacb-2d23-8069-9e19-d5ff07f25657" class="">switches do not need to be configured</p></div></p><p id="1da7aacb-2d23-80e7-a6b8-e214afdac77b" class="">
+</p><p id="1da7aacb-2d23-803f-a50d-df25e4d3f31f" class="">Switches vs Routers</p><p id="1da7aacb-2d23-80d6-870e-fce79a4558ed" class="">both are store-and-forward:<br/> routers: network-layer devices (examine<br/>network-layer headers)<br/> switches: link-layer devices (examine<br/>link-layer headers)<br/>both have forwarding tables:<br/> routers: compute tables using routing<br/>algorithms, IP addresses<br/> switches: learn forwarding table using<br/>flooding, learning, MAC addresses<br/></p><p id="1da7aacb-2d23-802a-8110-e77f397ebe82" class="">
+</p><p id="1da7aacb-2d23-803f-9e09-dd23f7b99744" class=""><strong>VLANs</strong></p><p id="1da7aacb-2d23-8038-b463-e8d4d99cc8d9" class="">What happens as LAN sizes scale, users change point of attachment?</p><p id="1da7aacb-2d23-8077-94fc-e99496628aef" class="">single broadcast domain:<div class="indented"><p id="1da7aacb-2d23-80df-9771-f90d31ca9e56" class="">scaling: all layer-2 broadcast traffic (ARP, DHCP, unknown MAC) must cross entire LAN</p><p id="1da7aacb-2d23-800d-bec3-cdef50d86844" class="">efficiency, security, privacy issues</p></div></p><p id="1da7aacb-2d23-8063-ab73-de020d635367" class="">VLANs: switches supporting VLAN capabilities can be configured to define multiple virtual LANS over single physical LAN infrastructure</p><p id="1da7aacb-2d23-80fb-9e19-c9a706a0ac3d" class="">port-based VLAN: switch ports grouped so that single physical switch operates as multiple virtual switches</p><p id="1da7aacb-2d23-800b-9c94-c661da901b8a" class="">
+</p><p id="1da7aacb-2d23-8015-9685-d888137bcc38" class="">Multiprotocol Label Switch (MPLS)</p><p id="1da7aacb-2d23-80df-bbcb-dabe91bb8a3d" class="">goal: high-speed IP forwarding among network of MPLS-capable routers, using fixed length label (instead of shortest prefix matching)<div class="indented"><p id="1da7aacb-2d23-80b9-9e33-dbd92d2f9126" class="">faster lookup using fixed length identifier</p><p id="1da7aacb-2d23-801a-8be2-f7df624082d6" class="">borrowing ideas from Virtual Circuit approach</p><p id="1da7aacb-2d23-807b-9ead-e463aa099de5" class="">but IP datagram still keeps IP address</p></div></p><p id="1da7aacb-2d23-80f0-9d93-e5eabdec91af" class="">
+</p><p id="1da7aacb-2d23-80f5-9fb6-ebe117cc65b4" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

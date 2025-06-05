@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OSINT</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13b7aacb-2d23-800d-943a-e2fb15dd0b55" class="page sans"><header><h1 class="page-title">OSINT</h1><p class="page-description"></p></header><div class="page-body"><figure id="13b7aacb-2d23-80d5-aabb-d03acd26afb4" class="image"><a href="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/Screenshot_2024-11-11_at_9.46.36_AM.png"><img style="width:707.953125px" src="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/Screenshot_2024-11-11_at_9.46.36_AM.png"/></a></figure><p id="13b7aacb-2d23-8005-bf34-deca2dfa25e8" class="">Intelligence Life Cycle<br/>Planning and Direction - The who, what, when, where, and why<br/><div class="indented"><p id="13b7aacb-2d23-807d-b71e-f096b11a0092" class="">Who is the target</p><p id="13b7aacb-2d23-80ab-9969-ff5e164e0738" class="">What are we going to target</p><p id="13b7aacb-2d23-80ff-b79c-dd856d51263f" class="">When are we going to target</p><p id="13b7aacb-2d23-80fb-ae89-fddd80236a1c" class="">Where are we going to target</p><p id="13b7aacb-2d23-80bc-9192-e23a00a35e32" class="">Why are we targeting?</p></div></p><p id="13b7aacb-2d23-80e4-8448-c1bbecb9353a" class="">Collection - gathering information, how the information is gathered</p><figure id="13b7aacb-2d23-80bc-88e8-e78b878ab2cd" class="image"><a href="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/image.png"><img style="width:336px" src="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/image.png"/></a></figure><p id="13b7aacb-2d23-80e6-ad62-d4a0480edbf5" class="">Sock Puppet - a fake social media persona</p><p id="13b7aacb-2d23-80f0-a862-e5f87f909527" class=""><a href="https://csbygb.gitbook.io/pentips/osint/sock-puppets">Creating Sock Puppets</a></p><p id="13b7aacb-2d23-803e-b4d1-f6e7ad412500" class=""><a href="https://www.secjuice.com/the-art-of-the-sock-osint-humint/">Sock Puppet</a></p><p id="13b7aacb-2d23-803b-9c29-e26ea08ab400" class=""><a href="https://web.archive.org/web/20210307173507/https://jakecreps.com/sock-puppets/">Jake Creps</a></p><p id="13b7aacb-2d23-80fb-8528-ee37f6490a30" class=""><a href="http://privacy.com">privacy.com</a> - you can create virtual credit cards that does not tie to you or your card</p><p id="13b7aacb-2d23-80f7-b9f5-ddfb79eb0135" class="">From reddit:</p><figure id="13b7aacb-2d23-807e-8d5d-f378a0ca3266" class="image"><a href="https://web.archive.org/web/20241004121657im_/https://styles.redditmedia.com/t5_2qln3/styles/communityIcon_jgrege6lcr0c1.png"><img style="width:32px" src="https://web.archive.org/web/20241004121657im_/https://styles.redditmedia.com/t5_2qln3/styles/communityIcon_jgrege6lcr0c1.png"/></a></figure><h1 id="13b7aacb-2d23-80aa-aaf3-f330fe5160c3" class=""><strong>My process for setting up anonymous sockpuppet accounts.</strong></h1><p id="13b7aacb-2d23-8060-83f1-f1cfdd0145ac" class="">This is my process for setting up an anonymous sockpuppet account.</p><ol type="1" id="13b7aacb-2d23-808a-919b-eff4992677e8" class="numbered-list" start="1"><li>Come up with a persona for the sockpuppet account.</li></ol><ol type="1" id="13b7aacb-2d23-806a-9bb1-c244498018dc" class="numbered-list" start="2"><li>Use <a href="https://web.archive.org/web/20241004121657/https://www.fakenamegenerator.com/">Fake Name Generator</a> to create a person whom you feel fits your sockpuppet persona.</li></ol><ol type="1" id="13b7aacb-2d23-80e8-8daa-fe0a18387214" class="numbered-list" start="3"><li>Use <a href="https://web.archive.org/web/20241004121657/https://www.thispersondoesnotexist.com/">This Person Does Not Exist</a> to generate an image. Make sure you inspect the image closely and get one that doesn&#x27;t have any obvious flaws, as they often do. It is worth picking up some Photoshop, GIMP, Affinity Photo or Designer, or other basic image manipulation skills to fix them and change the background of the image.</li></ol><ol type="1" id="13b7aacb-2d23-8055-9dae-db6350e99758" class="numbered-list" start="4"><li>Get a burner phone, completely wiped and fresh. Can be any brand that will accept a Mint Mobile SIM card.</li></ol><ol type="1" id="13b7aacb-2d23-806d-b640-e1fe21d85566" class="numbered-list" start="5"><li>Get a burner credit card from <a href="https://web.archive.org/web/20241004121657/https://privacy.com/">Privacy.com</a> to use for on Amazon and possible the Mint Mobile setup. They might need it to set up the account.</li></ol><ol type="1" id="13b7aacb-2d23-8025-8ad4-d9e0a261b4aa" class="numbered-list" start="6"><li>Set up a burner Amazon account. We&#x27;re only going to use it once.</li></ol><ol type="1" id="13b7aacb-2d23-80d5-92e5-d27ffa93391d" class="numbered-list" start="7"><li>Buy two Mint Mobile SIM cards. You can find them various places online and in stores near you, but you can get two of them for $5 on Amazon. They also give you 1 week free trial with something like 100 text messages, which we&#x27;re going to use. This gives you two cards for two sockpuppet accounts for only $5.</li></ol><ol type="1" id="13b7aacb-2d23-80ff-9517-c87b9634b4e7" class="numbered-list" start="8"><li>I like to use Amazon to have the card sent to an Amazon pickup box, which can be anonymous.</li></ol><ol type="1" id="13b7aacb-2d23-80a1-aec4-d21b2edad6e6" class="numbered-list" start="9"><li>Get a VPN that you can set to the physical area in which you want your sockpuppet to &quot;exist.&quot;</li></ol><ol type="1" id="13b7aacb-2d23-80ad-8f91-c33d8181664b" class="numbered-list" start="10"><li>Set up the Mint Mobile trial account somewhere away from your home; as far as you&#x27;re willing to go.</li></ol><ol type="1" id="13b7aacb-2d23-802c-b02b-e1ccee692e73" class="numbered-list" start="11"><li>Use this Mint Mobile trial phone number to set up all of the websites you need.</li></ol><ol type="1" id="13b7aacb-2d23-80ae-a3c1-e8b21ca6aa21" class="numbered-list" start="12"><li>I recommend at least set up a Google account and Protonmail account. Both will come in handy at different times.</li></ol><ol type="1" id="13b7aacb-2d23-809a-9674-f8165ff0081f" class="numbered-list" start="13"><li>Once you&#x27;ve set up all the accounts with your trial Mint SIM, set up 2FA on all of the accounts.</li></ol><ol type="1" id="13b7aacb-2d23-809b-a72b-ebee6ca10c56" class="numbered-list" start="14"><li>After setting up 2FA on all of the accounts, change the phone number to one you have more permanent access to, such as MySudo or Google Voice.</li></ol><ol type="1" id="13b7aacb-2d23-803d-b87a-c1f7bb3bde9d" class="numbered-list" start="15"><li>Make sure everything works!</li></ol><ol type="1" id="13b7aacb-2d23-8033-a5b8-d92cb76b5356" class="numbered-list" start="16"><li>Destroy the SIM card.</li></ol><ol type="1" id="13b7aacb-2d23-806c-b1b0-e4ed3d376e11" class="numbered-list" start="17"><li>Wipe the phone.</li></ol><p id="13b7aacb-2d23-80d6-87a0-ed0766cb0c85" class="">A lot of these websites are blocking MySudo, Google Voice, and other VoIP numbers. That&#x27;s why we go through the Mint phone number first.</p><p id="13b7aacb-2d23-8059-b720-d19de83b98b0" class="">They should be less stringent now.</p><p id="13b7aacb-2d23-804d-a59f-e08f523d4984" class="">As always, feedback is welcome! This was originally posted on my blog where I also talk about the <a href="https://web.archive.org/web/20241004121657/https://garrettmickley.com/sockpuppet-account-creation/">ethics of sockpuppet accounts</a>.</p><h2 id="13b7aacb-2d23-80bc-8555-f6ede7f9b8e9" class="">Search Engine Operators</h2><p id="13b7aacb-2d23-8023-826b-c61dee7f4971" class=""><a href="http://google.com">google.com</a></p><p id="13b7aacb-2d23-8023-9c7f-c12f5c98209f" class=""><a href="https://duckduckgo.com/">https://duckduckgo.com/</a></p><p id="13b7aacb-2d23-801f-92ff-d5522a06946f" class=""><a href="http://bing.com">bing.com</a></p><p id="13b7aacb-2d23-80aa-b3fb-c81378a24527" class=""><a href="https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06">Google Dorks</a></p><figure id="13b7aacb-2d23-8076-85a2-e2c7401c2b27"><div class="source"><a href="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/GoogleCheatSheet.pdf">GoogleCheatSheet.pdf</a></div></figure><h1 id="13b7aacb-2d23-80a2-83cf-c70d85ffd27d" class="">Summary of Google Hacking and Defense Cheat Sheet</h1><h1 id="13b7aacb-2d23-8063-a2dd-fbde43625e6d" class="">Overview</h1><p id="13b7aacb-2d23-80c5-85a3-d56a02c4dd6c" class="">This PDF is a comprehensive cheat sheet for Google Hacking and Defense, providing a quick reference for various Google search operators and techniques.</p><h2 id="13b7aacb-2d23-8070-a1f2-f0967f50af42" class="">Key Sections</h2><ul id="13b7aacb-2d23-808a-a4fc-cd3887c2bef6" class="bulleted-list"><li style="list-style-type:disc">Operator Examples</li></ul><ul id="13b7aacb-2d23-80d8-a550-e8e153f8036d" class="bulleted-list"><li style="list-style-type:disc">Advanced Operators</li></ul><ul id="13b7aacb-2d23-8063-80cc-d376876d3fcd" class="bulleted-list"><li style="list-style-type:disc">Number Searching</li></ul><ul id="13b7aacb-2d23-808c-a4a7-ee460da49dab" class="bulleted-list"><li style="list-style-type:disc">Calculator Operators</li></ul><ul id="13b7aacb-2d23-80fb-999d-d3917ef79cad" class="bulleted-list"><li style="list-style-type:disc">Search Parameters</li></ul><h2 id="13b7aacb-2d23-8011-854f-c2ce2fbd1f19" class="">Operator Examples</h2><p id="13b7aacb-2d23-8035-896e-fb107bf5191a" class="">This section provides examples of basic Google search operators, such as:</p><ul id="13b7aacb-2d23-80bc-bc02-c09628a10ebe" class="bulleted-list"><li style="list-style-type:disc">Using quotes for exact phrase searches</li></ul><ul id="13b7aacb-2d23-806c-9cc8-f22c2dfb06a6" class="bulleted-list"><li style="list-style-type:disc">Using + and - to include or exclude terms</li></ul><ul id="13b7aacb-2d23-8022-b16a-fd5687937dcb" class="bulleted-list"><li style="list-style-type:disc">Using OR for alternative terms</li></ul><ul id="13b7aacb-2d23-80de-ab77-c6aa1c8bcfba" class="bulleted-list"><li style="list-style-type:disc">Using ~ for synonym searches</li></ul><h2 id="13b7aacb-2d23-80ba-a3d5-dc7560157e2b" class="">Advanced Operators</h2><p id="13b7aacb-2d23-8053-96d5-f57c229cc49b" class="">Detailed explanations of advanced search operators, including:</p><ul id="13b7aacb-2d23-80ff-ae4a-f0c7bf0cd1e8" class="bulleted-list"><li style="list-style-type:disc">site: - Search within a specific website</li></ul><ul id="13b7aacb-2d23-801c-8491-d6d89e9aa20b" class="bulleted-list"><li style="list-style-type:disc">filetype: or ext: - Search for specific file types</li></ul><ul id="13b7aacb-2d23-8087-9c7f-daaa620bd17f" class="bulleted-list"><li style="list-style-type:disc">intitle: and allintitle: - Search within page titles</li></ul><ul id="13b7aacb-2d23-80df-9478-ed323d5cc0bf" class="bulleted-list"><li style="list-style-type:disc">inurl: and allinurl: - Search within URLs</li></ul><ul id="13b7aacb-2d23-80c7-a878-ca74260f1690" class="bulleted-list"><li style="list-style-type:disc">link: - Find pages linking to a specific URL</li></ul><ul id="13b7aacb-2d23-8066-9ed1-db035eb56b23" class="bulleted-list"><li style="list-style-type:disc">cache: - View Google&#x27;s cached version of a page</li></ul><h2 id="13b7aacb-2d23-804f-8549-f7f4f5ea1d20" class="">Number Searching</h2><p id="13b7aacb-2d23-802d-b3a5-e9e05d1578c2" class="">Techniques for searching specific types of numbers, such as:</p><ul id="13b7aacb-2d23-804d-8250-db1644f9c791" class="bulleted-list"><li style="list-style-type:disc">Tracking numbers (UPS, FedEx, USPS)</li></ul><ul id="13b7aacb-2d23-80bd-85dc-ed5497a9a923" class="bulleted-list"><li style="list-style-type:disc">Vehicle Identification Numbers (VIN)</li></ul><ul id="13b7aacb-2d23-80e4-aa0e-e54ce53e38d3" class="bulleted-list"><li style="list-style-type:disc">UPC codes</li></ul><ul id="13b7aacb-2d23-80cb-96e1-f6cd9e468a0e" class="bulleted-list"><li style="list-style-type:disc">Patent numbers</li></ul><ul id="13b7aacb-2d23-8089-8cc1-cf5ea7d3bb2c" class="bulleted-list"><li style="list-style-type:disc">FAA airplane registration numbers</li></ul><h2 id="13b7aacb-2d23-80c2-9bde-e17de1ca4df1" class="">Calculator Operators</h2><p id="13b7aacb-2d23-8095-abc1-e19c23eac1a1" class="">A list of mathematical operators that can be used in Google searches for quick calculations.</p><h2 id="13b7aacb-2d23-808d-b788-f52c8129df1d" class="">Search Parameters</h2><p id="13b7aacb-2d23-803e-9006-e22ea3f2b5cc" class="">Advanced search parameters that can be used in the Google search URL to refine results, including:</p><ul id="13b7aacb-2d23-80c3-8ab1-c914655fabe9" class="bulleted-list"><li style="list-style-type:disc">Filtering duplicate results</li></ul><ul id="13b7aacb-2d23-807e-90e8-f824364b5a18" class="bulleted-list"><li style="list-style-type:disc">Specifying file types</li></ul><ul id="13b7aacb-2d23-802c-b21a-d4d346014a53" class="bulleted-list"><li style="list-style-type:disc">Limiting searches to specific parts of web pages</li></ul><ul id="13b7aacb-2d23-80f9-a8a5-e9469b4f77dd" class="bulleted-list"><li style="list-style-type:disc">Date restrictions</li></ul><h2 id="13b7aacb-2d23-80b4-ba31-ee4b58be4ba4" class="">Purpose and Usage</h2><p id="13b7aacb-2d23-8038-83c6-d09ce98879fb" class="">The document is designed as a quick reference for the Google Hacking and Defense course, helping users perform advanced searches and build innovative operator combinations.</p><h2 id="13c7aacb-2d23-803a-a84d-c95b8684f417" class="">Reverse Image Search</h2><p id="13c7aacb-2d23-8098-ba48-d11b861fa8a1" class=""><a href="https://images.google.com/">google</a></p><p id="13c7aacb-2d23-8089-af41-c50e07de71a1" class=""><a href="https://yandex.com/">Yandex</a> - for similar images of that picture</p><p id="13c7aacb-2d23-80b3-a4dc-f041924c042a" class=""><a href="https://tineye.com/">Tineye</a></p><h2 id="13c7aacb-2d23-8006-b1dc-fd8c990191f2" class="">EXIF Data</h2><p id="13c7aacb-2d23-80ca-bd04-c433d6e952eb" class="">EXIF (Exchangeable Image File Format) data is metadata embedded within digital photos or other media files that stores information about how, when, and where the file was created. It&#x27;s commonly found in images taken by digital cameras or smartphones.</p><p id="13c7aacb-2d23-8062-85eb-c464d506f6fc" class="">Some of the details EXIF data may include:</p><ul id="13c7aacb-2d23-8047-b0ab-ce95879d296e" class="bulleted-list"><li style="list-style-type:disc"><strong>Camera settings</strong>: Shutter speed, aperture, ISO, flash settings, white balance, etc.</li></ul><ul id="13c7aacb-2d23-803e-81ad-cf2c3e54bbcf" class="bulleted-list"><li style="list-style-type:disc"><strong>Device details</strong>: Camera or smartphone model, lens type, and sometimes the firmware version.</li></ul><ul id="13c7aacb-2d23-80ab-9074-ec40910ed8ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Timestamp</strong>: Date and time the image was taken.</li></ul><ul id="13c7aacb-2d23-8008-b3ba-dbce3d87f069" class="bulleted-list"><li style="list-style-type:disc"><strong>Location</strong>: GPS coordinates if location services were enabled (useful for tracking where the photo was taken).</li></ul><ul id="13c7aacb-2d23-8039-a977-fd14c1b8afb6" class="bulleted-list"><li style="list-style-type:disc"><strong>Orientation</strong>: Whether the image is landscape or portrait.</li></ul><p id="13c7aacb-2d23-8023-98f6-edb1a583abb5" class="">EXIF data can provide valuable context but can also raise privacy concerns if it exposes sensitive information, like location data. For security and privacy reasons, people sometimes strip EXIF data from images before sharing them online.</p><h2 id="13c7aacb-2d23-80da-85ed-c6f27f354be5" class="">Physical Location OSINT</h2><p id="13c7aacb-2d23-80bc-97af-f834316bab51" class="">Using google maps to look at places</p><p id="13c7aacb-2d23-80af-bc0e-daf8fcf042d5" class=""><a href="https://www.geoguessr.com/">Geoguessr</a></p><h2 id="13c7aacb-2d23-8093-aa28-c34d8b72fe59" class="">Email Addresses OSINT</h2><p id="13c7aacb-2d23-80fb-9e55-f07953642fd9" class=""><a href="http://hunter.io">hunter.io</a></p><p id="13c7aacb-2d23-80a9-a89f-c109a371ef62" class=""><a href="https://www.voilanorbert.com/">https://www.voilanorbert.com/</a></p><p id="13c7aacb-2d23-803e-b2ab-e8820d160aa8" class=""><a href="https://phonebook.cz/">https://phonebook.cz/</a></p><p id="13d7aacb-2d23-80ff-ae61-dd35c9be858e" class="">Clearbit Connect - <a href="https://chromewebstore.google.com/detail/clearbit-connect-free-ver/pmnhcgfcafcnkbengdcanjablaabjplo?hl=en">https://chromewebstore.google.com/detail/clearbit-connect-free-ver/pmnhcgfcafcnkbengdcanjablaabjplo?hl=en</a></p><p id="13d7aacb-2d23-80e1-a364-e2afd290a6d1" class="">Clearbit - Chrome extension</p><p id="13d7aacb-2d23-8007-9f53-f5a788065960" class=""><a href="https://tools.emailhippo.com/">https://tools.emailhippo.com/</a></p><p id="13d7aacb-2d23-80aa-8100-f091de093ec9" class="">Email Hippo - verify email addresses</p><p id="13d7aacb-2d23-8071-88e2-d698aa185168" class="">When doing email OSINT, keep these in mind:</p><h3 id="13d7aacb-2d23-8051-80bb-e2e4a42e4c96" class="">1. <strong>Legality and Ethics</strong></h3><ul id="13d7aacb-2d23-8070-8308-f84e9b4634ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Know the Laws</strong>: Ensure that the OSINT methods you use comply with applicable laws and regulations, such as privacy laws. Avoid unauthorized access or any illegal activities.</li></ul><ul id="13d7aacb-2d23-8034-8ed1-dae78871cdff" class="bulleted-list"><li style="list-style-type:disc"><strong>Respect Privacy</strong>: Only gather publicly available information, and avoid data that the owner has not consented to be public.</li></ul><ul id="13d7aacb-2d23-8026-a907-e53ad3292298" class="bulleted-list"><li style="list-style-type:disc"><strong>Disclosure and Intent</strong>: If working professionally, be transparent with clients about the techniques you’ll be using and the type of information being collected.</li></ul><h3 id="13d7aacb-2d23-8087-9b37-d706a90303eb" class="">2. <strong>Identify the Source and Verify Information</strong></h3><ul id="13d7aacb-2d23-80f4-bc61-deed558111d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Format</strong>: Verify the structure of the email address, looking for common signs of illegitimacy, such as random strings or misspellings.</li></ul><ul id="13d7aacb-2d23-800f-a625-d3b96db43019" class="bulleted-list"><li style="list-style-type:disc"><strong>Verify Data Points</strong>: Cross-check data from multiple sources to ensure accuracy. OSINT data can sometimes be outdated or incorrect, so correlating findings from different platforms is critical.</li></ul><ul id="13d7aacb-2d23-8024-83d1-e8ba9e7e1434" class="bulleted-list"><li style="list-style-type:disc"><strong>Metadata Analysis</strong>: If you have access to an email from the address, check its headers to extract information such as IP addresses, which can reveal geolocation and sender details.</li></ul><h3 id="13d7aacb-2d23-8014-837e-cd13a57d9801" class="">3. <strong>Assess Potential Social Media and Data Breach Links</strong></h3><ul id="13d7aacb-2d23-80ca-8549-f39f1ea4402b" class="bulleted-list"><li style="list-style-type:disc"><strong>Social Media Accounts</strong>: Email addresses are often associated with social media profiles. Use OSINT tools or manual searches to locate public profiles connected to the email.</li></ul><ul id="13d7aacb-2d23-80dc-8ecb-c3cacbcd8378" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Breaches</strong>: Check if the email has been part of any data breaches. Breach data can reveal important information like usernames, passwords, or other associated emails.</li></ul><ul id="13d7aacb-2d23-80fe-b8cc-eba03d17b10f" class="bulleted-list"><li style="list-style-type:disc"><strong>Password Reuse</strong>: For red team assessments or threat analysis, note that individuals often reuse passwords across accounts. Data breaches may indicate the likelihood of this vulnerability.</li></ul><h3 id="13d7aacb-2d23-80dc-bfc4-cf7a12a79b9c" class="">4. <strong>Use of OSINT Tools and Methods</strong></h3><ul id="13d7aacb-2d23-80dc-aaf4-e87e866e36e0" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Lookup Tools</strong>: Use reputable tools like Hunter.io, EmailRep, or Sherlock to uncover social profiles, location data, and more. Tools vary widely in their data sources and reliability, so cross-verify results.</li></ul><ul id="13d7aacb-2d23-8037-a6b2-c30eaf1c5144" class="bulleted-list"><li style="list-style-type:disc"><strong>Search Engines</strong>: Conduct a thorough search using operators (e.g., <code>&quot;email@example.com&quot;</code>) to find mentions on forums, blogs, or other indexed websites.</li></ul><ul id="13d7aacb-2d23-8076-bd28-c942b2e21867" class="bulleted-list"><li style="list-style-type:disc"><strong>WHOIS and Domain Info</strong>: For emails associated with domains, check domain registration information, which can provide details about the organization or individual behind it.</li></ul><h3 id="13d7aacb-2d23-8039-99ef-fc9e1474c2ca" class="">5. <strong>Understand Metadata and Domain Reputation</strong></h3><ul id="13d7aacb-2d23-80c3-985f-e2be9feb07d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Domain Age and Reputation</strong>: For corporate emails, the age and reputation of the domain can provide insight. Older domains with high reputation scores are more likely to be legitimate.</li></ul><ul id="13d7aacb-2d23-80f8-92a7-f320bc9d089d" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Headers</strong>: Analyzing headers can provide insights into the sender’s server and location, or even suggest phishing tactics if inconsistencies are found.</li></ul><h3 id="13d7aacb-2d23-8087-b7c8-cc0d99be6a10" class="">6. <strong>Document Findings and Avoid Unnecessary Interaction</strong></h3><ul id="13d7aacb-2d23-80a0-8720-d5b3765cb16f" class="bulleted-list"><li style="list-style-type:disc"><strong>Passive Reconnaissance</strong>: Avoid direct interaction with the email address. Sending a message to the address can alert the target or raise suspicion.</li></ul><ul id="13d7aacb-2d23-80fb-8c55-ea409bd0600e" class="bulleted-list"><li style="list-style-type:disc"><strong>Documentation</strong>: Keep a detailed log of sources and findings. This is especially important in professional or investigative contexts to ensure findings are accurate and traceable.</li></ul><h3 id="13d7aacb-2d23-8099-946c-dbfd394e1e0b" class="">7. <strong>Use Public Tools with Caution</strong></h3><ul id="13d7aacb-2d23-8040-926a-e07d70faaed2" class="bulleted-list"><li style="list-style-type:disc"><strong>Limit Dependence on Free Tools</strong>: Many free OSINT tools may have limited or outdated data. For more reliable findings, consider professional tools that aggregate data from verified sources.</li></ul><ul id="13d7aacb-2d23-808d-aa20-ffd8baa2cdf3" class="bulleted-list"><li style="list-style-type:disc"><strong>Protect Your Identity</strong>: Use a VPN or other privacy tools when performing OSINT to avoid detection and protect your own information.</li></ul><h2 id="13e7aacb-2d23-807f-800c-dbf890b9cd62" class="">Searching For People</h2><p id="13e7aacb-2d23-8076-a60c-dbdf1b344c5e" class=""><a href="http://whitepages.com">whitepages.com</a></p><p id="13e7aacb-2d23-8097-a22e-db184dc889f4" class=""><a href="http://fastbackgroundcheck.com">fastbackgroundcheck.com</a></p><p id="13e7aacb-2d23-800c-964d-d57ff2c8cf83" class=""><a href="http://webmii.com">webmii.com</a></p><p id="13e7aacb-2d23-802c-bfaf-d930f8bd5a9a" class=""><a href="https://thatsthem.com/">https://thatsthem.com/</a></p><p id="13e7aacb-2d23-802e-a087-f5d93fc864ae" class=""><a href="https://voterrecords.com/">https://voterrecords.com/</a></p><p id="13f7aacb-2d23-8079-bb38-cf4d321426d8" class=""><a href="https://www.truecaller.com/">https://www.truecaller.com/</a></p><p id="13f7aacb-2d23-8031-aa7c-f04bd4421324" class=""><a href="https://www.spydialer.com/">https://www.spydialer.com/</a></p><p id="13f7aacb-2d23-80bb-9a8e-d20b3ea2152c" class="">Think about outside the box - password resets for example</p><p id="13f7aacb-2d23-804b-a73b-f7b9835c2374" class="">OSINT is a lot of thinking outside the box</p><p id="13f7aacb-2d23-805b-aa75-ea74bdc71a19" class="">
+</p><figure id="13f7aacb-2d23-802a-8827-e72c2212c7bc" class="image"><a href="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/Screenshot_2024-11-15_144031.png"><img style="width:708px" src="OSINT%2013b7aacb2d23800d943ae2fb15dd0b55/Screenshot_2024-11-15_144031.png"/></a></figure><p id="13f7aacb-2d23-801e-bd1a-e3c782aba11c" class=""><a href="https://stackoverflow.com/questions/41802729/how-to-find-out-date-in-which-url-was-shortened">https://stackoverflow.com/questions/41802729/how-to-find-out-date-in-which-url-was-shortened</a></p><p id="13f7aacb-2d23-804f-b169-d3c03ebabe2c" class=""><a href="https://osintframework.com/">https://osintframework.com/</a></p><p id="13f7aacb-2d23-804c-a397-fa52096b8895" class=""><a href="https://whatsmyname.app/">https://whatsmyname.app/</a></p><p id="13f7aacb-2d23-8038-8e6c-f78c3da7bd1a" class=""><a href="https://urlscan.io/">https://urlscan.io/</a> - check if websites are safe - change over to private so they don’t see it</p><p id="1427aacb-2d23-80d3-bb4e-e23426efd393" class="">
+</p><p id="1427aacb-2d23-8057-bef2-c668cca2e660" class="">Other resources:<br/><br/><a href="https://www.spamhaus.org/">https://www.spamhaus.org/</a></p><p id="1427aacb-2d23-8014-8691-ced7f17c1083" class=""><a href="https://www.abuseipdb.com/">https://www.abuseipdb.com/</a></p><p id="1427aacb-2d23-80dc-a899-c9bde79de9b6" class=""><a href="https://www.phishtank.com/">https://www.phishtank.com/</a></p><p id="1427aacb-2d23-8074-807d-d65bbb81725c" class="">
+</p><p id="1427aacb-2d23-8004-a7f8-e573973331f8" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

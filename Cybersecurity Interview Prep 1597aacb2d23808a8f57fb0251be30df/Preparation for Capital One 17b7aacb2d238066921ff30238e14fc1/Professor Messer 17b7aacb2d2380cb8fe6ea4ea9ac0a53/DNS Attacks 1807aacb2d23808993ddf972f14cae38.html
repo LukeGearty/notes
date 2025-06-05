@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DNS Attacks</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1807aacb-2d23-8089-93dd-f972f14cae38" class="page sans"><header><h1 class="page-title">DNS Attacks</h1><p class="page-description"></p></header><div class="page-body"><p id="1807aacb-2d23-80e2-94e2-fab03be8f505" class="">DNS Poisoning - modify the DNS server - requires some crafty hacking</p><p id="1807aacb-2d23-80fa-a208-c6ebd88d822f" class="">Modify the client host file</p><p id="1807aacb-2d23-8020-8340-f4cb9739e5d3" class="">Sneds a fake response to a valid DNS request</p><p id="1807aacb-2d23-80a3-9a77-eb1061f655bf" class="">
+</p><p id="1807aacb-2d23-8056-89fd-f00fcaa36794" class="">
+</p><p id="1807aacb-2d23-80a4-8211-c87307f89500" class="">
+</p><p id="1807aacb-2d23-806a-a55e-c3497f4cff69" class="">
+</p><p id="1807aacb-2d23-80e4-a5cf-f19ffa9e675a" class="">DNS (Domain Name System) attacks target the infrastructure that resolves domain names into IP addresses. These attacks can disrupt services, redirect users to malicious sites, or harvest sensitive information.</p><hr id="1807aacb-2d23-8009-b245-ef5b45d4996f"/><h3 id="1807aacb-2d23-804d-a455-e938229c47ec" class="">Types of DNS Attacks</h3><h3 id="1807aacb-2d23-80f3-9ffd-caacf2898ddf" class="">1. <strong>DNS Spoofing (Cache Poisoning)</strong></h3><ul id="1807aacb-2d23-8047-887d-f9e8c4b50246" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Manipulates DNS cache to redirect users to malicious websites.</li></ul><ul id="1807aacb-2d23-80f3-b674-ddbeb07af297" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-8006-9648-d5dabd3120b0" class="bulleted-list"><li style="list-style-type:circle">Attacker injects fake DNS responses into the resolver&#x27;s cache.</li></ul><ul id="1807aacb-2d23-80de-91b4-d03739abe072" class="bulleted-list"><li style="list-style-type:circle">Victim&#x27;s queries are resolved with incorrect IP addresses.</li></ul></li></ul><ul id="1807aacb-2d23-8055-addc-d65d6a277e58" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-80c6-aa19-c2ecf744ddc1" class="bulleted-list"><li style="list-style-type:circle">Phishing attacks.</li></ul><ul id="1807aacb-2d23-80a5-a35a-fa6123f7c572" class="bulleted-list"><li style="list-style-type:circle">Man-in-the-Middle (MitM) attacks.</li></ul></li></ul><ul id="1807aacb-2d23-8039-9093-f2479b279868" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-8041-82dc-fc2b4de432e9" class="bulleted-list"><li style="list-style-type:circle">Enable DNSSEC (DNS Security Extensions).</li></ul><ul id="1807aacb-2d23-80ce-a6bc-f7d57ba8532f" class="bulleted-list"><li style="list-style-type:circle">Clear DNS cache regularly.</li></ul><ul id="1807aacb-2d23-8016-b2c2-e9f24722bbf5" class="bulleted-list"><li style="list-style-type:circle">Use secure recursive DNS resolvers.</li></ul></li></ul><hr id="1807aacb-2d23-801b-ada7-ec82af1e0b8d"/><h3 id="1807aacb-2d23-80eb-960b-e551524a65c9" class="">2. <strong>DNS Tunneling</strong></h3><ul id="1807aacb-2d23-8002-8a96-d87bb653c300" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Encodes malicious data or commands in DNS queries to bypass security controls.</li></ul><ul id="1807aacb-2d23-8038-b915-eec12bb56111" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-8051-9531-ed65887319a3" class="bulleted-list"><li style="list-style-type:circle">Uses DNS traffic to transmit data to an external server controlled by the attacker.</li></ul><ul id="1807aacb-2d23-80c0-aa9b-eac78771730c" class="bulleted-list"><li style="list-style-type:circle">Often used for data exfiltration or C2 (Command and Control) communication.</li></ul></li></ul><ul id="1807aacb-2d23-8047-acda-d3fe0e35067b" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-8064-b3cf-e19104f65aec" class="bulleted-list"><li style="list-style-type:circle">Data theft.</li></ul><ul id="1807aacb-2d23-801b-b245-e760bbd5a878" class="bulleted-list"><li style="list-style-type:circle">Malware communication.</li></ul></li></ul><ul id="1807aacb-2d23-8045-bcc7-d35c2ce62117" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-8008-bb96-f4a65ef78d36" class="bulleted-list"><li style="list-style-type:circle">Monitor DNS traffic for anomalies.</li></ul><ul id="1807aacb-2d23-80bc-9372-d581f0d33d99" class="bulleted-list"><li style="list-style-type:circle">Use DNS filtering solutions.</li></ul><ul id="1807aacb-2d23-80be-adb4-fe97109d7edd" class="bulleted-list"><li style="list-style-type:circle">Block unnecessary outbound DNS queries.</li></ul></li></ul><hr id="1807aacb-2d23-8043-9f8c-dfb6c214ec76"/><h3 id="1807aacb-2d23-80f2-b703-ed6b1c48ca72" class="">3. <strong>DNS Amplification (DDoS)</strong></h3><ul id="1807aacb-2d23-8062-a05b-da76dc4b2d5a" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Exploits open DNS resolvers to generate a large amount of traffic, overwhelming the target.</li></ul><ul id="1807aacb-2d23-807e-a919-f3ae1cb1fe26" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-8001-9447-c63eeb6748df" class="bulleted-list"><li style="list-style-type:circle">Attacker sends DNS queries with a spoofed IP (the victim’s IP).</li></ul><ul id="1807aacb-2d23-807e-92c7-c29fdfd93723" class="bulleted-list"><li style="list-style-type:circle">The DNS server responds with large responses to the victim’s IP.</li></ul></li></ul><ul id="1807aacb-2d23-8069-9391-fb8896f21f8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-80f6-9467-ebc7930e1e41" class="bulleted-list"><li style="list-style-type:circle">Denial of service to the victim’s network.</li></ul></li></ul><ul id="1807aacb-2d23-800c-80d4-d4a9e230a8ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-8050-b3ee-d607485b9a9d" class="bulleted-list"><li style="list-style-type:circle">Configure DNS servers to prevent recursion for unauthorized users.</li></ul><ul id="1807aacb-2d23-8041-9e62-e8fc915f1687" class="bulleted-list"><li style="list-style-type:circle">Implement rate limiting.</li></ul><ul id="1807aacb-2d23-8048-81e2-f79fa99f99c5" class="bulleted-list"><li style="list-style-type:circle">Use DDoS protection services.</li></ul></li></ul><hr id="1807aacb-2d23-80a4-add1-ce8b9792f09d"/><h3 id="1807aacb-2d23-80b8-93d5-db7616d24cbe" class="">4. <strong>Domain Hijacking</strong></h3><ul id="1807aacb-2d23-8062-a24e-d5e096ba511b" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Attacker gains control of a domain name by compromising domain registration systems.</li></ul><ul id="1807aacb-2d23-80c3-9adc-cc746d29ee81" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-802a-83fe-dd33aba1ac0c" class="bulleted-list"><li style="list-style-type:circle">Attacker exploits weak credentials or social engineering to access the domain registrar account.</li></ul><ul id="1807aacb-2d23-80a7-89aa-d46258e7746b" class="bulleted-list"><li style="list-style-type:circle">Changes DNS records to redirect traffic.</li></ul></li></ul><ul id="1807aacb-2d23-80e5-b06d-ce418a3c8569" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-807c-9e87-f23885ff5654" class="bulleted-list"><li style="list-style-type:circle">Loss of domain control.</li></ul><ul id="1807aacb-2d23-808c-a297-eb8362b826da" class="bulleted-list"><li style="list-style-type:circle">Traffic redirection to malicious sites.</li></ul></li></ul><ul id="1807aacb-2d23-8089-ab74-edc611ff2e6a" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-8026-b79d-de8b9d48c729" class="bulleted-list"><li style="list-style-type:circle">Use strong, unique passwords and enable multi-factor authentication (MFA) for domain registrar accounts.</li></ul><ul id="1807aacb-2d23-8079-9b19-f8571aacc8d1" class="bulleted-list"><li style="list-style-type:circle">Monitor domain name changes.</li></ul></li></ul><hr id="1807aacb-2d23-804e-aa25-da091eeef4d8"/><h3 id="1807aacb-2d23-8031-9f2f-d141a6edc1f0" class="">5. <strong>DNS Hijacking</strong></h3><ul id="1807aacb-2d23-80fb-851e-e95de2312737" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Redirects DNS queries to an attacker-controlled DNS server.</li></ul><ul id="1807aacb-2d23-8095-b5aa-f83bd938bb79" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-8056-ad8d-cbf0d2860ccf" class="bulleted-list"><li style="list-style-type:circle">Modifies DNS settings on a victim’s router or device.</li></ul><ul id="1807aacb-2d23-803c-ab8a-e72a12771725" class="bulleted-list"><li style="list-style-type:circle">Redirects users to malicious sites.</li></ul></li></ul><ul id="1807aacb-2d23-809e-a385-f27cd5f60e40" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-8000-9920-f6dceec9de39" class="bulleted-list"><li style="list-style-type:circle">Phishing and credential theft.</li></ul></li></ul><ul id="1807aacb-2d23-808a-9112-e6a8041ebb80" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-804b-8710-dd7aabf8c971" class="bulleted-list"><li style="list-style-type:circle">Secure routers with strong passwords and firmware updates.</li></ul><ul id="1807aacb-2d23-8092-8484-c2c14f55295e" class="bulleted-list"><li style="list-style-type:circle">Monitor DNS settings for unauthorized changes.</li></ul></li></ul><hr id="1807aacb-2d23-8016-b6eb-f2ebd51e0eb2"/><h3 id="1807aacb-2d23-80d0-b353-e2f10c691ab8" class="">6. <strong>Typosquatting</strong></h3><ul id="1807aacb-2d23-80e4-bb0e-c2f96d7cad0b" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Exploits user typos in domain names to lead them to malicious sites.</li></ul><ul id="1807aacb-2d23-80f1-9a85-f16c87e45299" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works:</strong><ul id="1807aacb-2d23-8098-b4a4-c8e5b28cc1e9" class="bulleted-list"><li style="list-style-type:circle">Registers domains similar to legitimate ones (e.g., &quot;gogle.com&quot; instead of &quot;google.com&quot;).</li></ul><ul id="1807aacb-2d23-804d-8c56-fd30665232b5" class="bulleted-list"><li style="list-style-type:circle">Users are redirected to phishing or ad-laden sites.</li></ul></li></ul><ul id="1807aacb-2d23-805b-957f-cfe3adf9a183" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact:</strong><ul id="1807aacb-2d23-80cb-90bc-ccb6772a2452" class="bulleted-list"><li style="list-style-type:circle">Phishing attacks.</li></ul><ul id="1807aacb-2d23-8042-aea6-ca409c86584b" class="bulleted-list"><li style="list-style-type:circle">Ad revenue fraud.</li></ul></li></ul><ul id="1807aacb-2d23-8000-be12-c7b9a9e3e3dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation:</strong><ul id="1807aacb-2d23-80f9-903c-dca15921b841" class="bulleted-list"><li style="list-style-type:circle">Educate users to verify URLs carefully.</li></ul><ul id="1807aacb-2d23-8035-aa0b-e6253cb65478" class="bulleted-list"><li style="list-style-type:circle">Monitor for similar domain registrations to your organization&#x27;s domain.</li></ul></li></ul><hr id="1807aacb-2d23-800b-80e4-e45c41954126"/><h3 id="1807aacb-2d23-8057-befc-c828904c40de" class="">General Mitigation Strategies</h3><ol type="1" id="1807aacb-2d23-80d3-ae08-e953708d4a3f" class="numbered-list" start="1"><li><strong>DNSSEC:</strong><ul id="1807aacb-2d23-80cb-9bf7-eae6274b5af2" class="bulleted-list"><li style="list-style-type:disc">Adds authentication to DNS responses, preventing spoofing and cache poisoning.</li></ul></li></ol><ol type="1" id="1807aacb-2d23-80ae-8868-d142c558a46d" class="numbered-list" start="2"><li><strong>Network Monitoring:</strong><ul id="1807aacb-2d23-804e-a1a0-c03c4825f5b4" class="bulleted-list"><li style="list-style-type:disc">Detect unusual DNS traffic patterns that may indicate an attack.</li></ul></li></ol><ol type="1" id="1807aacb-2d23-807e-9ca3-cf3690233424" class="numbered-list" start="3"><li><strong>Firewall Rules:</strong><ul id="1807aacb-2d23-8036-9957-ed28f9cfeb97" class="bulleted-list"><li style="list-style-type:disc">Restrict DNS queries to authorized servers.</li></ul></li></ol><ol type="1" id="1807aacb-2d23-805a-b669-ef738e35f81f" class="numbered-list" start="4"><li><strong>Regular Updates:</strong><ul id="1807aacb-2d23-8029-9f57-f6392d93d72d" class="bulleted-list"><li style="list-style-type:disc">Keep DNS server software and configurations up to date.</li></ul></li></ol><ol type="1" id="1807aacb-2d23-80ad-b399-c4e619cf15c9" class="numbered-list" start="5"><li><strong>Third-Party DNS Providers:</strong><ul id="1807aacb-2d23-8076-8691-d1a6d954661e" class="bulleted-list"><li style="list-style-type:disc">Use reliable DNS providers with built-in security measures (e.g., Cloudflare, Google DNS).</li></ul></li></ol><hr id="1807aacb-2d23-800b-aea2-d163186aca4a"/><h3 id="1807aacb-2d23-8061-8b0d-fa5e717f9ff4" class="">Why DNS Attacks Matter</h3><ul id="1807aacb-2d23-8075-b221-e5ac66026044" class="bulleted-list"><li style="list-style-type:disc">DNS is a critical component of the internet, and attacks can disrupt communication and trust.</li></ul><ul id="1807aacb-2d23-8004-a762-e0dfb1c61e85" class="bulleted-list"><li style="list-style-type:disc">Successful attacks can lead to data theft, malware infections, and financial losses.</li></ul><ul id="1807aacb-2d23-80d8-a2b9-f53d966073c9" class="bulleted-list"><li style="list-style-type:disc">Mitigating DNS attacks is vital for ensuring the availability, confidentiality, and integrity of online services.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

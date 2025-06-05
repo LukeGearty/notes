@@ -1,0 +1,731 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter Five</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c07aacb-2d23-806c-89bd-e911a6913195" class="page sans"><header><h1 class="page-title">Chapter Five</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1c07aacb-2d23-8039-a7ad-de94c1a644af" class="">Introduction</h1><p id="1c07aacb-2d23-80a6-a6b4-c1d4d38b66ba" class="">The forwarding table (in destination-based forwarding) and the flow table (generalized forwarding) were the principle elements that linked the network layer’s data and control planes. Those forwarding tables are computed, maintained and installed in two approaches:</p><ul id="1c07aacb-2d23-8002-af24-c6a1cd9501ab" class="bulleted-list"><li style="list-style-type:disc">Per-router control: A routing algorithm runs in each and every router, the forwarding and routing operations are contained within the router. </li></ul><ul id="1c07aacb-2d23-8011-8624-eeaa93e94378" class="bulleted-list"><li style="list-style-type:disc">Logically centralized control: a remote centralized controller computes and distributes the forwarding tables to be used by each and every router. <ul id="1c07aacb-2d23-8017-8b02-d86b17d4082a" class="bulleted-list"><li style="list-style-type:circle">In this approach, the controller interacts with a control agent in each of the routers via a protocol to configure that router’s flow table. The CA’s job is just to interact with the the controller and to do as the controller commands.</li></ul><ul id="1c07aacb-2d23-8083-95f2-ff65963e3c5d" class="bulleted-list"><li style="list-style-type:circle">Logically centralized menas that the routing control service is accessed as if it were a single central service point, even though the service is likely to be implemented via multiple servers for fault tolerance and performance. </li></ul></li></ul><h1 id="1c07aacb-2d23-804c-925c-fe448ae69df6" class="">Routing Algorithms</h1><p id="1c07aacb-2d23-80d9-a83f-ea2e33a0b4da" class="">Routing Algorithms determine good paths (routes) from senders to receivers through the network of routers. A good path is the path that has the least cost.<div class="indented"><ul id="1c07aacb-2d23-8029-8e38-fb3ad341b857" class="bulleted-list"><li style="list-style-type:disc">Policy issues can affect the route. For example, “router x belonging to organization Y should not forward any packets that originate from organization Z”.</li></ul><ul id="1c07aacb-2d23-8093-b545-c257a660f56a" class="bulleted-list"><li style="list-style-type:disc">Whether the network control plane adopts a per-router control approach or a logically centralized control approach, there must always be a well-defined sequence of routers that a packet will cross in traveling from sending to receiving host. </li></ul></div></p><p id="1c07aacb-2d23-8017-9951-c8dee9ac60ce" class="">Graphs are used to formulate routing problems. Graph G = (N, E) is a set of <em>N </em>nodes and a collection <em>E </em>of edges, where each edge is a pair of nodes from <em>N. </em>The nodes in the graph represent routers, and the edges connecting these nodes represent the physical links between these routers. </p><figure id="1c07aacb-2d23-802f-a707-ce46ccbec2fb" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/Screenshot_2025-03-24_at_4.20.13_PM.png"><img style="width:413.96875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/Screenshot_2025-03-24_at_4.20.13_PM.png"/></a></figure><p id="1c07aacb-2d23-807a-9afa-dd51328c7ef1" class="">An edge has a value representing its cost. This cost can reflect the physical length of the corresponding link, link speed, or the monetary cost associated with a link. For any edge, (<em>x, y) </em>in <em>E (</em>The set of edges), <em>c(x, y) </em>is the cost of the edge between nodes <em>x </em>and y. For example, in the above image, the nodes x and w have an edge. <em>c(x, w) = 3. </em>This is an undirected graph, so c(x, w) = c(w, x). <em> </em></p><p id="1c07aacb-2d23-80e7-b07c-fe325bd998bb" class="">If the pair <em>(x, y) </em>does not belong to <em>E, </em>we set <em>c(x, y) = ∞. </em></p><p id="1c07aacb-2d23-80a2-b795-e64fd8cd53cc" class="">A path in a graph G = (N, E) is a sequence of nodes (x_1, x_2, ….x_p) such that each of the pairs (x_1, x_2), (x_2, x_3), … (x_p-1, x_p) are edges in E. The cost of a path (x_1, x_2,…x_p) is simply the sum of all the edge costs along the path, that is <em>c(x_1, x_2) + c(x_2, x_3) + … + c(x_p-1, x_p). </em>For any two nodes x and y, there are typically many paths between the two nodes, with each path having a cost. One or more of these paths is a least-cost path, so the problem is clear: find the path between source and destination that has least cost. If they have the same cost, then the least-cost path is also the shortest path. </p><ul id="1c07aacb-2d23-806e-a212-ed338aa37377" class="bulleted-list"><li style="list-style-type:disc">Centralized Routing Algorithms compute the least-cost path between a source and destination using complete, global knowledge about the network. <ul id="1c07aacb-2d23-8092-bec8-f28975ec5a58" class="bulleted-list"><li style="list-style-type:circle">The algorithm takes the connectivity between all nodes and all link costs as inputs. This then requires that the algorithm somehow obtain this information before actually performing the calculation. This can be done either at one site (logically centralized controller) or could be replicated in the routing component of each and every router. </li></ul><ul id="1c07aacb-2d23-8075-9acc-e35f29936764" class="bulleted-list"><li style="list-style-type:circle">The key distinguishing feature is the algorithm has complete information about connectivity and link costs. </li></ul><ul id="1c07aacb-2d23-80ff-99cf-eeb5c5c65f89" class="bulleted-list"><li style="list-style-type:circle">Algorithms with global state information - aware of the costs of each link in the network - are also referred to as <strong>link-state algorithms</strong>. </li></ul></li></ul><ul id="1c07aacb-2d23-8039-b153-e3f3bb37bcec" class="bulleted-list"><li style="list-style-type:disc">Decentralized Routing algorithms calculate the least-cost path in an iterative, distributed manner by the routers. No node has complete information about the costs of all network links. <ul id="1c07aacb-2d23-8021-ab15-c979236b1529" class="bulleted-list"><li style="list-style-type:circle">Through an iterative process of calculation and exchange of information with its neighboring nodes, a node gradually calculates the least-cost path to a destination or set of destinations. <ul id="1c07aacb-2d23-8022-ade8-c59a5d4a4121" class="bulleted-list"><li style="list-style-type:square">Distance Vector algoirthm - each node maintains a vector of estimates of the costs to all other nodes in the network. </li></ul></li></ul></li></ul><p id="1c07aacb-2d23-804d-9aaf-dabcf9fd3bbd" class="">Another way to categorize routing algorithms is in static versus dynamic.</p><p id="1c07aacb-2d23-8017-b22a-c3ebe0e06a1e" class=""><strong>Static </strong>- routes change very slowly over time, often as a result of human intervention.</p><p id="1c07aacb-2d23-80ea-a4e6-cb22b9fc0dbf" class=""><strong>Dynamic - </strong>routes change as the network traffic loads or topology changes. </p><p id="1c07aacb-2d23-80d8-8662-c81340142a23" class="">A third way to classify routing algorithms is according to whether they are load-sensitive or load-insensitive.</p><p id="1c07aacb-2d23-80d0-b336-e7a7507cb298" class=""><strong>Load-senstiive: </strong>link costs vary dynamically to reflect the current level of congestion in the underlying link. </p><p id="1c07aacb-2d23-803d-b8ea-cbec0c3b5b79" class=""><strong>Load-insensitive: </strong>a link’s cost does not explicity reflect its current level of congestion. </p><p id="1c07aacb-2d23-8038-9bdc-df68b4974fb9" class="">
+</p><h2 id="1c07aacb-2d23-8059-a906-e015dc79012a" class="">The Link-State Routing Algorithm</h2><p id="1c07aacb-2d23-80e3-8824-e0a3fad93ab0" class="">The network topology and all link costs are known to the LS algorithm. This is accomplished by having each node broadcast link-state packets to all other nodes in the network, with each link-state packet containing the identities and costs of its attached links.</p><p id="1c07aacb-2d23-8076-9229-d0858bc3ad14" class="">This is often accomplished by a link-state broadcast algorithm - all nodes will have an identical and complete view of the network. </p><p id="1c07aacb-2d23-809f-a73f-c2aac2b3becf" class="">Dijkstra’s Algorithm computes the least-cost path from one node to all other nodes in the network.</p><p id="1c07aacb-2d23-80ce-b816-ca0be3d50464" class="">Dijkstra’s algorithm is iterative and has the property that after the <em>k</em>th iteration of the algorithm, the least-cost paths are known to <em>k </em>destination nodes, and among the least-cost paths to all destination nodes, these <em>k </em>paths will have the <em>k </em>smallest costs. </p><ul id="1c07aacb-2d23-8054-b00f-cc3f4fda7ab6" class="bulleted-list"><li style="list-style-type:disc">D(v) is the cost of the last-cost path from the source node to destination v as of this iteration of the algorithm</li></ul><ul id="1c07aacb-2d23-80b9-aa7c-e09a98937c6a" class="bulleted-list"><li style="list-style-type:disc">p(v) is the previous node (neighbor of v) along the current least-cost path from the source to v.</li></ul><ul id="1c07aacb-2d23-80b1-8c84-efa4596adc43" class="bulleted-list"><li style="list-style-type:disc">N’ is a subset of nodes; v is in N’ if the least-cost path from the source to v is indefinitely known. </li></ul><p id="1c07aacb-2d23-8017-9070-ddb75aa18852" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1c07aacb-2d23-8071-98aa-e29f8bb93565" class="code"><code class="language-Plain Text">Initialization
+N&#x27; = {u}
+for all nodes v
+	if v is a neighbor of us
+		then D(v) = c(u,v)
+	else D(v) = ∞
+
+Loop
+find w not in N&#x27; such that D(w) is a minimum
+add w to N&#x27;
+update D(v) for each neighbor v of w and not in N&#x27;:
+	D(v) = min(D(v), D(w) + c(w,v))
+	/*new cost to v is either old cost to v or known least path cost to v or known
+	least path cost to W plus cost from w to v */
+until N&#x27; = N</code></pre><p id="1c07aacb-2d23-804e-9aac-c72ee6a8f282" class="">N’ starts with just containing u</p><p id="1c27aacb-2d23-801f-b9a7-d7d96da77512" class="">for all nodes v, if v is next to u, then D(v) is set to c(u,v)</p><p id="1c27aacb-2d23-8057-9b40-d4b6533a9a67" class="">else D(v) is ∞, indicating no known path yet.</p><p id="1c27aacb-2d23-80aa-a748-dacc99c97a89" class="">find w not in N’ such that D(w) is a minimum - find the node <em>w</em> not in N’ that has the minimum distance, and add it to N’.</p><p id="1c27aacb-2d23-8053-a03b-f101ec4419ad" class="">Update D(v) for each neighbor v of w and not in N’: D(v) = min(D(v), D(w) + c(w,v))</p><p id="1c27aacb-2d23-80d0-8d8a-df424e97bbb8" class="">D(v) will store the minimum cost to reach v.</p><p id="1c27aacb-2d23-8040-bbaf-c28498a6f782" class="">It ends when we have reached all nodes, meaning we have found the shortest path.</p><p id="1c27aacb-2d23-80ad-a465-cb5877610380" class="">
+</p><p id="1c27aacb-2d23-80c3-9c69-ddbc06f8b9f3" class="">The computational complexity (Big O):<div class="indented"><p id="1c27aacb-2d23-8081-9987-f82dc3838493" class="">In the first iteration, we check n-1</p><p id="1c27aacb-2d23-80a4-ae24-fa145e42045e" class="">Then we check n-2, and so on</p><p id="1c27aacb-2d23-80e8-9779-d2acd46d40c6" class="">Overall, the total number of nodes we need to search through over all the iterations is n(n+1) / 2</p><p id="1c27aacb-2d23-80a0-b79d-f36bce0e3d8b" class="">Thus the worst case scenario, Big O, is O(n^2).</p></div></p><p id="1d07aacb-2d23-80f2-b228-ecb06c3815b4" class="">
+</p><figure id="1d07aacb-2d23-80c5-8b9f-d6711ae1745c" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9081.jpg"><img style="width:709.984375px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9081.jpg"/></a></figure><figure id="1d07aacb-2d23-8060-810f-eb59b17f1f08" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9083.jpg"><img style="width:709.984375px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9083.jpg"/></a></figure><h2 id="1c27aacb-2d23-8018-b7ad-c5bc5614c68b" class="">Distance-Vector (DV) Routing Algorithm</h2><p id="1c27aacb-2d23-80f2-8f16-ee7eb94ea433" class="">The LS algorithm is an algorithm using global information. The distance-vector algorithm is iterative, asynchronous, and distributed. Distributed means that each nodes receives information from one or more of its directly attached neighbors. </p><p id="1c77aacb-2d23-800a-b7f5-f1c5e30a831f" class="">Iterative in that this process continues on until no more information is exchanged between neighbors.</p><p id="1c77aacb-2d23-80d1-aa26-c226470c94a2" class="">Asynchronous in that it does not require all of the nodes to operate in lockstep with each other. </p><p id="1c27aacb-2d23-80b2-bc6c-e86d694d7f94" class="">Let d_x(y) = the cost of the least-cost path from node x to node y. The least costs are related by this equation:<div class="indented"><p id="1c27aacb-2d23-805d-a7e2-d68bc6461137" class="">d_x(y) = min_v { c(x, v) + d_v(y) }</p></div></p><p id="1c27aacb-2d23-8024-b27a-eb1e7ee218fd" class="">min_v in the equation is taken over all of x’s neighbors. </p><p id="1c27aacb-2d23-803b-8d19-e10b9a0f9397" class="">This is the Bellman-Ford equation.</p><p id="1c77aacb-2d23-80e9-90a4-d60e563093d7" class="">After traveling from x to v, if we then take the least-cost path from v to y, the path cost will be </p><p id="1c77aacb-2d23-80ee-b8f0-c71257ec2894" class="">c(x, v) + d_v(y). </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1c27aacb-2d23-807a-9101-eb0ea5bf4892" class="code"><code class="language-Plain Text">Initialization
+for all destination y in N:
+D_x(y) = c(x,y) /* if y is not a neighbor than c(x, y) = ∞ */
+for each neighbor w
+	D_w(y) = ? for all destinations y in N
+for each neighbor w
+	send distance vector D_x = [D_x(y) : y in N] to w
+
+loop
+	wait (until I see a link cost change to some neighbor w or until 
+				I receive a distance vector from some neighbor w)
+	for each y in N:
+		D_x(y) = min_v{c(x,v) + D_v(y) }
+if D_x(y) changed for any destination y
+	send distance vector D_x = [D_x(y): y in N] to all neighbors
+	
+forever</code></pre><figure id="1d07aacb-2d23-8002-95e0-d9d1cccf26ab" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9082.jpg"><img style="width:709.984375px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9082.jpg"/></a></figure><h3 id="1d07aacb-2d23-80ca-8b44-d5d0a073a60e" class="">Distance-Vector Algorithm: Link-Cost Changes and Link Failure</h3><p id="1d07aacb-2d23-807e-a9c1-ee3bbb545ef9" class="">When a node running the DV detects a change in the link cost from itself to a neighbor, it updates its DV if there’s a change in the cost of the least-cost path, it informs its neighbors.  When a cost goes down, it propagates through the network quickly.</p><p id="1d07aacb-2d23-8091-a7f7-c90a5f488a53" class="">But imagine a network like this:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1d07aacb-2d23-804e-a8d2-c9148e51c4e3" class="code"><code class="language-Plain Text">						y
+				 4 /  \ 1
+				  /    \
+				 x ______z
+						50</code></pre><p id="1d07aacb-2d23-802b-acbc-eec489f7b328" class="">D_y(x) = 4 (direct link)</p><p id="1d07aacb-2d23-8097-9dd0-d43a80fd797a" class="">D_y(z) = 1 (direct link)</p><p id="1d07aacb-2d23-8068-95f4-d582ada29360" class="">D_z(y) = 1</p><p id="1d07aacb-2d23-8027-bded-f0d5fa78ffc0" class="">D_z(x) = 5 (going through y)</p><p id="1d07aacb-2d23-80ac-a93f-dd263a6d199e" class="">All these values are shared with each other.</p><p id="1d07aacb-2d23-80a9-b5f2-db5283dc3c1e" class="">Imagine that C(y, x) increases from 4 to 60. y then computes a new value for D_y(x). It knows that D_z(x) has a route to x that is 5, but it doesn’t know it goes through y. So the new value D_y(x) takes the value of D_z(x) of 5 ands adds 1 to it (c(y,z)), making the new value D_y(x) = 6. </p><p id="1d07aacb-2d23-80e7-8828-cefb613957a7" class="">Which is wrong, looking at the entire network.</p><p id="1d07aacb-2d23-80bc-9702-e46f1d062e19" class="">This causes a routing loop - in order to get to x, y routes through z. In order to get to x, z routes through y.</p><p id="1d07aacb-2d23-8028-a441-e12ba4c9cd86" class="">Since node y has computed a new minimum cost to x, it informs z of its new distance vector.</p><p id="1d07aacb-2d23-80e4-ae2e-fd0cbe862257" class="">So z “knows” y can get to x with a cost of 6, and it knows it can get to y with a cost of 1, so it recalculates D_z(x) = min {50 + 0, 1 + 6} = 7. Since z’s least cost to x has increased, it then informs it’s neighbors, including y.</p><p id="1d07aacb-2d23-807e-b6ad-c4ebaa9569a6" class="">Y receives the new DV from Z, and adjusts accordingly — it now knows that Z can get to x with a path of 7. D_y(x) = min {60 + 0, 7 + 1}. it’s new D_y(x) = 8.</p><p id="1d07aacb-2d23-80d8-8269-d041137de9b9" class="">And this keeps repeating until z eventually computes the cost of its path via y to be greater than 50 (44 times if you’re interested). </p><p id="1d07aacb-2d23-80df-b8d0-e937a703f280" class="">In short, good news travels fast in DV, bad news travel slowly. This is called the count to infinity problem.</p><h3 id="1d07aacb-2d23-8047-a766-cdace3a4f29d" class="">Distance-Vector Algorithm: Adding Poisoned Reverse</h3><p id="1d07aacb-2d23-80e5-8b3f-ceebcf0837f7" class="">This looping scenario can be avoided using a technqiue known as poisoned reverse. </p><p id="1d07aacb-2d23-8007-81a7-e61a7a616acf" class="">If z routes through y to get to destination x, then z will advertise to y that its distance to x is infinity - D_z(x) = ∞. Z will continue telling this to y as long as it routes t ox via y. Since y believes that z has now path to x, y will never attempt to route to x via z, as long as z continues to route to x via y. </p><p id="1d07aacb-2d23-8029-9637-ec27c6f9277f" class="">By telling the neighbor, the node prevents the neighbor from thinking that node is a viable path.</p><p id="1d07aacb-2d23-80bb-9263-cefab0371a61" class="">This only prevents a routing loop between two nodes. Three or more nodes, this will not solve the count to infinity problem.</p><h3 id="1d07aacb-2d23-803e-be85-c2e56a237395" class="">A Comparison of LS and DV Routing Algorithms</h3><p id="1d07aacb-2d23-80b3-9396-e6415052ba0f" class="">Message Complexity: LS requires each node to know the cost of each link in the network. O(|N| |E|) messages to be sent. When a link cost changes, new link cost must be sent to all nodes. The DV algorithm requires message exchanges between directly connected neighbors at each iteration. When Link costs change, the DV algorithm will propagate the results of the changed link cost only if the new link cost results in a changed least-cost path for one of the nodes attached to that link.</p><p id="1d07aacb-2d23-8049-82f8-c398a48f5edd" class="">Speed of Convergence: LS is O(|N|^2) required O(|N| |E|). DV algorithm can converge slowly and can have routing loops while the algorithm is converging — count-to-infinity.</p><p id="1d07aacb-2d23-80e3-9a70-eeeb761a3422" class="">Robustness: Under LS, a router could broadcast an incorrect cost for one of its attached links (but no others). An LS node is computing only its own forwarding tables, other nodes are performing similar calculations for themselves. DV can advertise incorrect least-cost paths to any or all destinations. At each iteration, a node’s calculation in DV is passed on to its neighbor and then indirectly to its neighbor’s neighbors on the next iteration. </p><h1 id="1c27aacb-2d23-80fb-8679-c45ffe10af26" class="">Intra-AS Routing in the Internet: OSPF</h1><p id="1c27aacb-2d23-803c-93e5-ca4eee5ab852" class="">The previous sections viewed routers as indistinguishable in the sense that all routers executed the same routing algorithm to compute routing paths through the entire network. In reality, a homogenous set of routers all executing the same routing algorithm is simplistic for these reasons:</p><ul id="1c37aacb-2d23-80b6-983d-e192f3e38238" class="bulleted-list"><li style="list-style-type:disc">Scale: the internet is huge, and storing routing information for possible destinations at each router would require a ton of overhead. A DV algorithm that iterated among every single router would never converge.</li></ul><ul id="1c37aacb-2d23-806f-9da4-c8d857e8b291" class="bulleted-list"><li style="list-style-type:disc">Administrative Autonomy: ISPs will want to operate its network as it pleases or hide aspects of its network’s internal organization from the outside. </li></ul><p id="1c37aacb-2d23-80f4-bc5d-c94a99141013" class="">This is solved by organizing routers into <strong>autonomous systems, </strong>with each AS consisting of a group of routers that are under the same administrative control. The routers in an ISP and the links that interconnect them constitute a single AS. </p><p id="1c37aacb-2d23-808d-a4ab-e78a6c146c53" class="">Routers within the same AS all run the same routing algorithm and have information about each other - these algorithms running within an AS are called <strong>intra-autonomous system routing protocol. </strong></p><h3 id="1c37aacb-2d23-8031-901c-daa281ab5a8a" class="">Open Shortest Path First (OSPF)</h3><p id="1c37aacb-2d23-80ff-98c5-f986b0d816b0" class="">This routing protocol’s specification is publicly available, as opposed to something like EIGRP (proprietary until recently).</p><p id="1c37aacb-2d23-80cf-b4c7-fc48867786ed" class="">OSPF is link-state (has global information of the entire network) and it uses flooding of link-state information and a Dijkstra’s least-cost path algorithm. Each router constructs a complete topological map (graph) of the entire autonomous system. The router then locally runs Dijkstra’ shortest-path algorithm to determine a shortest-path tree to all subnets with itself as the root node. </p><p id="1c37aacb-2d23-802c-a087-f97f0729effe" class="">Router broadcasts routing information to all other routers in the autonomous system, not just to its neighboring routers. It broadcast’s a link’s state periodically (at least once every 30 minutes) even if the link’s state has not changed.</p><p id="1c37aacb-2d23-80d3-bd3a-c8d72478c62c" class="">OSPF advertisements are contained in OSPF messages that are carried directly by IP, with the upper-layer protocol of 89 for OSPF. </p><p id="1ce7aacb-2d23-8059-95d6-edc170dd1fb0" class="">OSPF also sends HELLO messages to check if links are still active and to sync link-state databases between neighboring routers.</p><p id="1c37aacb-2d23-80fa-9447-ca43d0cfb4cb" class="">Some advances embodied in OSPF include:</p><ul id="1c37aacb-2d23-8007-959c-f5b48ce61498" class="bulleted-list"><li style="list-style-type:disc">Security: OSPF routers exchanges can be authenticated - only trusted routers can participate in the OSPF protocol within an AS. </li></ul><ul id="1c37aacb-2d23-80a3-97cc-deb31a82a1a7" class="bulleted-list"><li style="list-style-type:disc">Multiple same-cost paths: When multiple paths to a destination have the same cost, OSPF will allow multiple paths to be used.</li></ul><ul id="1c37aacb-2d23-80ad-8cf4-cf71db694c32" class="bulleted-list"><li style="list-style-type:disc">Integrated support for unicast and multicast routing</li></ul><ul id="1c37aacb-2d23-8009-8fdd-c535ce676c7a" class="bulleted-list"><li style="list-style-type:disc">support for hierarchy within a single AS.</li></ul><figure id="1d07aacb-2d23-80f6-8c8c-c58218a596f1" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9084.jpg"><img style="width:710px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9084.jpg"/></a></figure><h1 id="1c37aacb-2d23-8040-a8ab-fab6a1e564f8" class="">Routing Among the ISPs: BGP</h1><p id="1c37aacb-2d23-80f0-87fe-dd61af745617" class="">To route packets aross multiple ASs, we need an <strong>inter-autonomous system routing protocols. </strong>An inter-AS routing protocol involves coordination among multiple ASs, communicating ASs must run the same inter-AS routing protocol. In the internet, all ASs run the same inter-AS routing protocol, called the Border Gateway Protocol - <strong>BGP. </strong></p><p id="1c37aacb-2d23-80f4-bac4-dc99bfb26bb8" class="">BGP is arguably the most important of all Internet protocols, the only other contender being IP. </p><h2 id="1c37aacb-2d23-809d-a9c4-d65728271ff6" class="">The Role of BGP</h2><p id="1c37aacb-2d23-805c-a2b6-cea69e6e429a" class="">Consider an AS and an arbitrary router in that AS. For Destinations within the same AS, the rentries in that router’s forwarding table are determined by the AS’s intra-AS routing protocol. For destinations outside the AS, that is where BGP comes in. </p><p id="1c37aacb-2d23-8028-8118-e2ca2276217d" class="">In BGP, packets are not routed to a specific destination address, but instead to CIDRized prefixes, with each prefix representing a subnet or a collection of subnets. A destination can have the form 138.16.68/22.</p><p id="1c37aacb-2d23-80a8-b16d-c405e8475d02" class="">A router’s forwarding table will have entries in the form (<em>x, I) </em>where x is a prefix (like 138.16.68/22) and <em>I </em>is an interface number for one of the router’s interfaces.</p><p id="1c37aacb-2d23-806b-ae00-ec3bdf878f50" class="">BGP provides each router a means to:</p><ul id="1c37aacb-2d23-8090-8f37-dff13438b640" class="bulleted-list"><li style="list-style-type:disc">Obtain prefix reachability information from neighboring ASs. BGP allows each subnet to advertise its existence to the rest of the Internet. Without BGP, each subnet would be an isolated island.</li></ul><ul id="1c37aacb-2d23-8025-b5c0-e9e55c98baef" class="bulleted-list"><li style="list-style-type:disc">Determine the “best” routes to the prefixes. A router may learn about more than one route to a specific prefix. To determine the best route, the router locally runs a BGP route-selection procedure. </li></ul><p id="1d17aacb-2d23-8052-a412-ec1b656f273d" class="">
+</p><figure id="1d17aacb-2d23-804a-a5d8-d5fe0b34b7ba" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9087.jpg"><img style="width:710px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9087.jpg"/></a></figure><h2 id="1c37aacb-2d23-80a3-813a-f98150c98aab" class="">Advertising BGP Route Information</h2><p id="1c37aacb-2d23-80f2-bc56-f561a627cad1" class="">For each AS, each router is either a <strong>gateway router</strong> or an <strong>internal router</strong>. </p><p id="1c37aacb-2d23-8008-8dc7-ce545dbd49cb" class="">Gateway Router: a router is a router on the edge of an AS that directly connects to one or more routers in other ASs. </p><p id="1c37aacb-2d23-80ba-a763-fefe0c5b8189" class="">Internal Router: connects only to hosts and routers within its own AS. </p><p id="1c37aacb-2d23-80cf-8cd3-e3151cbe7f53" class="">For a subnet within an Autonomous system, at a high level view, the AS that has the subnet just basically tells other ASs that the subnet exists, which tells other ASs that the subnet exists, etc. Each autonomous system will not only learn about the existence of the subnet but also learn about a path of autonomous systems that lead to the subnet.</p><p id="1c37aacb-2d23-80e6-bad7-d49950be254f" class="">That isn’t the most precise thing, because ASs don’t talk to each other, routers do. In BGP, pairs of routers exchange routing info over a semi-permanent TCP connection using port 179. This is called a <strong>BGP connection. </strong></p><p id="1c37aacb-2d23-8096-b0f0-cd70c6796d01" class="">A BGP connection that spans two ASs is called an <strong>external BGP (eBGP) connection </strong>and a BGP session between routers in the same AS is called an <strong>internal BGP (iBGP) connection. </strong></p><p id="1c97aacb-2d23-80df-a9b4-d6b716337a87" class="">There is typiclaly one eBGP connection for each link that directly connects gateway routers in different ASs. There are also iBGP connections betwen routers within each of the ASs.</p><h2 id="1c37aacb-2d23-8037-8fe8-da2f28d40c83" class="">Determining the Best Routes</h2><p id="1c37aacb-2d23-80d6-b1a7-faec8a9d352b" class="">When a router advertises a prefix across a BGP connection, it includes with the prefix several <strong>BGP attributes. </strong>A prefix along with its attributes is called a route. The most important attributes are AS-PATH and NEXT-HOP. </p><p id="1c47aacb-2d23-8034-b8b2-c1c97184b0c5" class="">AS-PATH contains the list of ASs through which the advertisement has passed. When a prefix is passed to an AS, the AS adds its ASN to the existing list in the AS-PATH. </p><p id="1c47aacb-2d23-80ab-86b9-e37b81b86c85" class="">The NEXT-HOP provides the critical link between the inter-AS and intra-AS routing protocols. The NEXT-HOP is the IP address of the router interface that begins the AS-PATH. </p><figure id="1d17aacb-2d23-8026-83f1-cfc5b3fc5664" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9088.jpg"><img style="width:710px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9088.jpg"/></a></figure><h3 id="1c47aacb-2d23-8006-aae3-d96d683d647a" class="">Hot Potato Routing</h3><p id="1c47aacb-2d23-80e9-b22b-c153f0906c4d" class="">In Hot Potato Routing, the route chosen from all possible routes is the route with the least cost to the NEXT-HOP router beginning that route. </p><p id="1c47aacb-2d23-80b9-ac9c-cd40e1dba7c5" class="">The goal is to reduce the burden on the local AS rather than optimize for the best global route.</p><p id="1cf7aacb-2d23-8001-b2a5-dbc5f6b0000a" class="">Hot Potato Routing doesn’t select the actual best path, it’s analogous to </p><h3 id="1c47aacb-2d23-8080-8870-d9124822c23e" class="">Route Selection Algorithm</h3><p id="1c47aacb-2d23-809c-8ddc-fbbcd12917b5" class="">BGP uses an algorithm that is more complicated than hot potato routing, but nevertheless incorporates it. The input into BGP’s route-selection algorithm is the set of all routes to that prefix that have been learned and accepted by the router. If there is only one such route, BGP selects that route. If there are two or more routes, BGP sequentially invokes the following elmination rules:</p><ol type="1" id="1c47aacb-2d23-80a1-b5a5-f000516af33e" class="numbered-list" start="1"><li>A route is assigned a local preference value as one of its attributes. This could have been set by the router or could have been learned from another router. The routes with the highest local preference values are selected.</li></ol><ol type="1" id="1c47aacb-2d23-8060-ad52-efdc2572d10a" class="numbered-list" start="2"><li>From the remaining routes, the route with the shortest AS-PATH is selected. </li></ol><ol type="1" id="1c47aacb-2d23-8074-a6d5-f85ed67aafa1" class="numbered-list" start="3"><li>From the remaining routes, hot potato routing is used.</li></ol><ol type="1" id="1c47aacb-2d23-80b0-9c0a-e622ddaa3eb6" class="numbered-list" start="4"><li>If more than one route still remains, the router uses BGP identifiers to select the route.</li></ol><p id="1d17aacb-2d23-80cc-b8f1-c733d8ddb58b" class="">
+</p><figure id="1d17aacb-2d23-800c-b161-e5cebabe18f2" class="image"><a href="https://www.notion.so"><img style="width:3024px" src="https://www.notion.so"/></a></figure><h2 id="1c47aacb-2d23-804e-b3ab-f94d86df5f74" class="">IP-Anycast</h2><p id="1c47aacb-2d23-8006-86a2-c260db4b0960" class="">IP-anycast is commonly used in DNS and CDNs. </p><p id="1cf7aacb-2d23-800f-afe8-de183ba03e6b" class="">Anycast is a networking method where multiple servers share the same IP address, and your request is automatically sent to the nearest one</p><p id="1c47aacb-2d23-80e4-bcbf-d1ef9ab41589" class="">The need for IP-Anycast is to replicate the same content on different servers in different dispersed geographic location, and we want to have each user access the content from the server that is closest.</p><p id="1c47aacb-2d23-8049-bb34-cea4b7cfaa83" class="">A CDN would use IP-Anycast by configuring the same IP address to each of its servers, and use standard BGP to advertise this IP address from each of the servers. When a BGP router receives multiple route advertisements for this IP address, it treats these advertisements as providing different paths to the same physical location. </p><h2 id="1c47aacb-2d23-8034-9d38-d78f4061acb0" class="">Routing Policy</h2><p id="1c47aacb-2d23-8059-aa3f-c280cae9566a" class="">When a router selects a route to a destination, the AS routing policy can trump all other considerations. </p><p id="1c47aacb-2d23-8014-9c36-f571873d9438" class="">
+</p><h1 id="1c47aacb-2d23-80b2-9b3e-e97677b4d2b5" class="">The SDN Control Plane</h1><p id="1c47aacb-2d23-8010-9c24-e73bc4c6f3b7" class="">Four key characteristics of an SDN architecture can be identified:</p><ul id="1c47aacb-2d23-80af-9b14-d28e343fd12d" class="bulleted-list"><li style="list-style-type:disc">Flow-based forwarding: Packet forwarding by SDN-controlled switches can be based on any number of header field values in the transport-layer, network-layer, or link-layer header. <ul id="1ce7aacb-2d23-80cb-a4d1-e75b6ccd6169" class="bulleted-list"><li style="list-style-type:circle">SDN-controlled switches can forward based on a number of fields in the header, whereas traditional approach is just destination based.  These rules are defined in the flow table.</li></ul><ul id="1c47aacb-2d23-8051-b931-f52d469f04a1" class="bulleted-list"><li style="list-style-type:circle">Contrast with traditional approach, where forwarding of IP datagrams was based solely on a datagram’s destination.</li></ul></li></ul><ul id="1c47aacb-2d23-80b0-8c78-c3c980c905d8" class="bulleted-list"><li style="list-style-type:disc">Separation of data plane and control plane: The data plane consists of the network’s switches. The control plane consists of servers and software that determine and manage the switches’ flow tables.<ul id="1ce7aacb-2d23-803a-945e-f4e73cc3cfa9" class="bulleted-list"><li style="list-style-type:circle">The control plane writes the rules, the data plane executes the rules.</li></ul></li></ul><ul id="1c47aacb-2d23-803d-8063-f93adc69b739" class="bulleted-list"><li style="list-style-type:disc">Network Control functions: external to data-plane switches. Software executes on servers distinct and remote from network switches. <ul id="1ce7aacb-2d23-8066-9411-f1b8ee150c29" class="bulleted-list"><li style="list-style-type:circle">The “software” in Software Defined Networks are executed on servers that are separated from the network’s switches. </li></ul></li></ul><ul id="1c47aacb-2d23-80c7-a854-d2c90c75a6cc" class="bulleted-list"><li style="list-style-type:disc">A programmable network. The network is programmable through the network control applications running in the control plane. </li></ul><figure id="1d27aacb-2d23-80b4-bea2-de7dd5005187" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9096.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9096.jpg"/></a></figure><h2 id="1c47aacb-2d23-8056-b865-e06cbcf9a306" class="">The SDN Control Plane: SDN Controller and SDN Network-control Applications</h2><p id="1c47aacb-2d23-802f-8957-f20dfb86def7" class="">The SDN control plane divides broadly into two components - the SDN controller and the SDN network-control applications.</p><p id="1c47aacb-2d23-801c-81ea-f8114879b11b" class="">Many SDN controllers have been developed since the earliest SDN controller. A controller’s functionality can be broadly organized into three layers.</p><ul id="1c47aacb-2d23-8063-897c-e6c4caebda84" class="bulleted-list"><li style="list-style-type:disc">A communication layer: communicating between the SDN controller and controlled network devices. The SDN controller needs to send instructions to devices to control network behavior. And the devices need to update the controller back.<ul id="1c47aacb-2d23-8034-8c77-d71615aa49b7" class="bulleted-list"><li style="list-style-type:circle">The communication between controller and device cross the “southbound” interface.</li></ul><ul id="1ce7aacb-2d23-8046-aeb3-e8cf2e5161cf" class="bulleted-list"><li style="list-style-type:circle">The SDN controller needs some way to talk to the devices in the network in order to actually control it.</li></ul></li></ul><ul id="1c47aacb-2d23-80b8-8c03-f52368368eba" class="bulleted-list"><li style="list-style-type:disc">A network-wide state-management layer. Everything that the SDN controller does requires that the controller have up to date information about the state of the network and its hosts, links, switches, and other devices. <ul id="1ce7aacb-2d23-803f-bfdf-ed7e8073fe03" class="bulleted-list"><li style="list-style-type:circle">State means the current information or status of various components within the network.</li></ul></li></ul><ul id="1c47aacb-2d23-805f-8ee9-eb133548596f" class="bulleted-list"><li style="list-style-type:disc">The interface to the network-control application layer. The controller interacts with network-control applications through its “northbound” interface.</li></ul><p id="1c47aacb-2d23-8099-831b-c6604db94ce6" class="">An SDN controller can be considered to be “logically centralized” - the controller may be viewed externally as a single, monolithic service. However, these services and the databases used to hold state information are implemented in practice by a distributed set of servers for fault tolerance, high availability, or for performance reasons.</p><figure id="1d27aacb-2d23-80d1-87e6-d5b5a6552a08" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9098.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9098.jpg"/></a></figure><h2 id="1c47aacb-2d23-80eb-a5ee-cdab53f5c7ca" class="">OpenFlow Protocol</h2><p id="1c47aacb-2d23-80dd-a2ab-c5ea0d9a457f" class="">The OpenFlow protocl operates between an SDN controller and an SDN-controlled switch or other device implementing the OpenFlow API. The OpenFlow protocol operates over TCP, with a default port number of 6653.</p><p id="1c47aacb-2d23-80be-8e3a-cef855c26f08" class="">Important messages flowing from controller to controlled switch:</p><ul id="1c47aacb-2d23-809e-9e26-db5e6f396b3b" class="bulleted-list"><li style="list-style-type:disc">Configuration. This message allows the controller to query and set a switch’s configuration parameters.</li></ul><ul id="1c47aacb-2d23-8053-9339-cea7dc288fc3" class="bulleted-list"><li style="list-style-type:disc">Modify-State. This message is used by a controller to add/delete or modify entries in the switch’s flow table, and to set switch port properties.</li></ul><ul id="1c47aacb-2d23-8079-b330-c7266b39d7f7" class="bulleted-list"><li style="list-style-type:disc">Read-State. This message is used by a controller to collect statistics and counter values</li></ul><ul id="1c47aacb-2d23-8053-8029-d1356c13d2ea" class="bulleted-list"><li style="list-style-type:disc">Send-Packet. This message is used by the controller to send a specific packet out of a specified port at the controlled switch.</li></ul><p id="1c47aacb-2d23-80ad-9c70-ec6e41925186" class="">
+</p><p id="1c47aacb-2d23-8060-a9ed-e01c1f1b5c6b" class="">Among the messages flowing from the SDN-controlled switch to the controller:</p><ul id="1c47aacb-2d23-80f0-87a8-d704551abc9a" class="bulleted-list"><li style="list-style-type:disc">Flow-Removed: Informs the controller that a flow table entry has been removed, for example by a timeout or as the result of a received modifiy-state message. </li></ul><ul id="1c47aacb-2d23-80e4-bbd3-c52ef6681787" class="bulleted-list"><li style="list-style-type:disc">Port-status: This message is used by a switch to inform the controller of a change in port status.</li></ul><ul id="1c47aacb-2d23-8037-bb5d-e43711e1e1f9" class="bulleted-list"><li style="list-style-type:disc">Packet-in: A packet arriving at a switch port and not matching any flow table entry is sent to the controller for additional processing. </li></ul><figure id="1d27aacb-2d23-808b-b5e2-fdf325bda02e" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9099.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9099.jpg"/></a></figure><p id="1c47aacb-2d23-8090-9e6f-fdc5a8c696a6" class="">
+</p><h1 id="1c47aacb-2d23-804d-8060-c2fde9cbaaff" class="">ICMP: The Internet message Protocol</h1><p id="1c47aacb-2d23-8006-b6e7-f9a37a31e738" class="">ICMP is used by hosts and routers to communicate network-layer information to each other. Error reporting is common. For example: running an HTTP session, if you encounter the error message like “Destination network unreachable”, that means an IP router was unable to find a path to the host specified in your HTTP request. </p><p id="1c47aacb-2d23-80b0-b5fd-efcf18a0116a" class="">ICMP architecturally lies just above IP, as ICMP messages are carried inside IP datagrams. ICMP messages are carried as IP payloads. When a host receives an IP datagram with ICMP specified as the upper-layer protocol, it demultiplexes the datagram’s contents to ICMP. </p><h1 id="1c47aacb-2d23-806c-9254-ea1c4dc3ea7b" class="">Network Management and SNMP, NETCONF/YANG</h1><p id="1c47aacb-2d23-80bb-9a1f-cc97035ff416" class="">When hundreds or thousands of components are brought together to form a network, the job of the network administrator is complicated. A logically centralized controller can help with this process in an SDN context, but network management has been around long before SDN. </p><p id="1c97aacb-2d23-80f8-ae82-ed10f7240c65" class=""><em>Network management includes the deployment, integration, and coordination of<br/>the hardware, software, and human elements to monitor, test, poll, configure, ana-<br/>lyze, evaluate, and control the network and element resources to meet the real-time,<br/>operational performance, and Quality of Service requirements at a reasonable cost.<br/><br/></em><br/><br/></p><h2 id="1c97aacb-2d23-80a4-a5e4-f67d711c2700" class="">The Network Management Framework</h2><ul id="1c97aacb-2d23-8022-ac0f-f76900699de0" class="bulleted-list"><li style="list-style-type:disc">Managing Server: The managing server is an application, typically with network managers (humans) in the loop, running in a centralized network maangement station in the network operations center. This is the center of activity for network management.</li></ul><ul id="1c97aacb-2d23-80b0-8844-fe48a9d2f7bc" class="bulleted-list"><li style="list-style-type:disc">Managed Device: A  piece of network equipment (including its software) that resides on a managed network.</li></ul><ul id="1c97aacb-2d23-80e7-a4ef-f60c653b6bb1" class="bulleted-list"><li style="list-style-type:disc">Data: Each manged device will have a state -the data associated with it. <strong>Configuration Data </strong>is device info explicity configured by the network manager. <strong>Operational Data </strong>is information that the device acquires as it operates. <strong>Device statistics </strong>are status indicators and counts that are updated as the device operators.</li></ul><ul id="1c97aacb-2d23-8039-b29c-c97443ea58a1" class="bulleted-list"><li style="list-style-type:disc">Network Maangement Agent: A software process running in the managed device that communicates with the managing server.</li></ul><ul id="1c97aacb-2d23-80fc-9ad5-d1a4795dd16b" class="bulleted-list"><li style="list-style-type:disc">Network management protocol: The protocol runs between the managing server and the managed devices, and allows the server to query the status of managed devices and take actions at these devices via its agents.</li></ul><p id="1d27aacb-2d23-8073-96ab-d24517336f1d" class="">
+</p><figure id="1d27aacb-2d23-8046-974d-ffb5a1bade3e" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9100.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9100.jpg"/></a></figure><p id="1c97aacb-2d23-806d-9760-d0476239422d" class="">
+</p><p id="1c97aacb-2d23-802c-be3e-c7a717a5344f" class="">There are three commonly used ways in a network operator can manage the network:</p><ul id="1c97aacb-2d23-8014-89b9-f845806b246f" class="bulleted-list"><li style="list-style-type:disc">Network operator may issue direct CLI commands to the device. It can be over Telnet or SSH connection, possibly via scripting, between the server and device</li></ul><ul id="1c97aacb-2d23-8063-8ae5-edbfed26bfbf" class="bulleted-list"><li style="list-style-type:disc">SNMP/MIB: the network operator can query/set the data contained in a device’s Management Information Base objects using the SNMP. </li></ul><ul id="1c97aacb-2d23-80f6-8f1a-ec552c0bb481" class="bulleted-list"><li style="list-style-type:disc">NETCONF/YANG: More abstract, network-wide, and holistic view, with strong emphasis on configuration management. </li></ul><p id="1c97aacb-2d23-808b-a0e3-e702dd02b4d6" class="">
+</p><p id="1c97aacb-2d23-808e-a720-ca85ffb381e5" class=""> </p><h2 id="1c97aacb-2d23-80d4-983a-d974739d5ade" class="">The Simple Network Maangement Protocol (SNMP) and the Management Information Base (MIB)</h2><p id="1c97aacb-2d23-80ec-a184-c4d7e8cc5c8a" class="">SNMP is an application-layer protocol used to convey network-management control and information messages between a managing server and an agent executing on behalf of that managing server. </p><p id="1ce7aacb-2d23-8050-94ef-fa0a13359619" class="">The most common usage of SNMP is request-response mode: An SNMP managng server sends a request to an SNMP agent, who receives the request, performs some action, and sends a reply. </p><figure id="1d27aacb-2d23-806d-bd65-d2a422ab4322" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9101.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9101.jpg"/></a></figure><h3 id="1ce7aacb-2d23-8027-99d2-d73008a8fff6" class="">The Management Information Base</h3><p id="1ce7aacb-2d23-80fc-9b73-c8ae67b0d4fe" class="">In SNMP, a managed device’s operational state data in the SNMP/MIB approach to network management are represented as objects that are gathered</p><figure id="1d27aacb-2d23-80ca-9677-ec22c66bd8a7" class="image"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9101%201.jpg"><img style="width:709.9921875px" src="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/IMG_9101%201.jpg"/></a></figure><h2 id="1ce7aacb-2d23-8010-b458-d1e1799573e8" class="">The Network Configuration Protocol and YANG</h2><p id="1ce7aacb-2d23-80e9-97b1-eeceb50a1286" class="">NETCONF protocol operates between the managing server and the managed network devices, providing messaging to retrieve, set, and modify configuration devices at managed <a href="http://devices.It">devices.It</a> allows to query operational data and statistics from the devices, and subscribe to notifications from the devices.</p><p id="1ce7aacb-2d23-80fb-b7a2-d410c7f1f85b" class="">NETCONF uses XML to specify and exchange configuration data, and messages are exhcnaged between the managing server and managed device over a secure connection-oriented session such as the TLS protocol. </p><p id="1c77aacb-2d23-80a4-a1c6-d57f3379e610" class="">
+</p><figure id="1c77aacb-2d23-8062-b6f5-ff589404f2fe" class="link-to-page"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/Questions%201c77aacb2d238062b6f5ff589404f2fe.html">Questions</a></figure><figure id="1d17aacb-2d23-8092-ac35-dc1116284a1e" class="link-to-page"><a href="Chapter%20Five%201c07aacb2d23806c89bde911a6913195/Problems%201d17aacb2d238092ac35dc1116284a1e.html">Problems</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

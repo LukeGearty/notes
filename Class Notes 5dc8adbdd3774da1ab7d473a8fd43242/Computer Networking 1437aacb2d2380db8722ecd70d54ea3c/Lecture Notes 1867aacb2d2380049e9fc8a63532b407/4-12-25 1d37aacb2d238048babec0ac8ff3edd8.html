@@ -1,0 +1,699 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4-12-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1d37aacb-2d23-8048-babe-c0ac8ff3edd8" class="page sans"><header><h1 class="page-title">4-12-25</h1><p class="page-description"></p></header><div class="page-body"><p id="1d37aacb-2d23-809a-8ca5-f043f0fe769c" class=""><strong>Logistics:</strong></p><p id="1d37aacb-2d23-80e8-9635-eba9970ed10b" class="">Next Saturday, there will be a long lecture to cover chapter 6</p><p id="1d37aacb-2d23-8011-b795-ef4803152716" class="">No Lecture on 5-3</p><p id="1d37aacb-2d23-8091-9f7b-fd07f2c7cff8" class="">Even though Chapter 6 is on one date, the quiz will still not change dates (no quiz for 4-19, quiz for 4-26)</p><p id="1d37aacb-2d23-8062-805e-fbaf73814c5d" class="">
+</p><p id="1d37aacb-2d23-80cf-b630-d414be5392df" class=""><strong>Prev</strong></p><p id="1d37aacb-2d23-801e-ac20-d251737ea20a" class="">Dijkstra’s Calculations will be on the final - look at Dominique’s TA session about Dijkstra’s algorithm</p><h1 id="1d37aacb-2d23-8048-b972-e2711ca5f4a8" class="">Intra-ISP Routing: OSPF</h1><p id="1d37aacb-2d23-804b-9d04-c405e920a2d5" class="">Forwarding and routing are two key functions - forwarding is in hardware (data plane), routing is in software (control plane)</p><p id="1d37aacb-2d23-806b-a982-f32dd479a5ce" class="">Forwarding still requires forwarding table - a forwarding table with every possible location on planet Earth will have billions of entries, not a very practical implementation</p><p id="1d37aacb-2d23-803e-a7d6-da4baa6e0360" class="">There is also administrative autonomy - each network admin for each network will want to control routing</p><p id="1d37aacb-2d23-80e4-adea-ff88874952d6" class="">The solution to this is to aggregate routers into regions known as “autonomous systems” (AS) aka (”domains”)</p><p id="1d37aacb-2d23-801c-91bb-d1aaf651b251" class="">Intra-AS: routing within the same AS, where all routers in AS must run same intra-domain protocol</p><p id="1d37aacb-2d23-80fc-a297-e1bc04957177" class="">routers in different AS can run different intra-domain routing protocols</p><p id="1d37aacb-2d23-8068-b23e-df6ddd73b8ff" class="">gateway routers sits at the edge of its own AS and has links to routers in other AS’es - this needs to run two different protocols - the intra-AS and inter-AS</p><p id="1d37aacb-2d23-8021-a0a5-d6ac677ef556" class="">The Inter-AS is routing among AS’es, where the gateway routers perform the inter-AS routing</p><p id="1d37aacb-2d23-8063-ace0-cf75ac3e7985" class="">
+</p><p id="1d37aacb-2d23-80df-bd3f-e804197e8ba2" class="">Forwarding Tables for routers are configured by intra- and inter-AS routing algorithms</p><p id="1d37aacb-2d23-8059-b315-d3daa18b358c" class="">Forwarding table sits at the input interface for the routers</p><p id="1d37aacb-2d23-80a4-9e32-fb5788d283a0" class="">Intra-AS routing determine entries for destinations within AS</p><p id="1d37aacb-2d23-8001-9afe-d06f53ad5f4a" class="">inter-AS routing determine entries for destinations within AS</p><p id="1d37aacb-2d23-80d6-b68f-e9a3bf935f90" class="">If a router in an AS receives a datagram destined outside of AS1, the inter-domain routing must learn which destinations are reachable, and propagate this reachability info to all routers in AS1</p><p id="1d37aacb-2d23-8026-9fd2-c8c7c5d64519" class="">
+</p><p id="1d37aacb-2d23-8095-bba1-edd585aaec76" class="">Most common intra-AS routing protocols;</p><p id="1d37aacb-2d23-80bb-97cd-cd475888e7e5" class="">RIP: Routing Information Protocol<div class="indented"><p id="1d37aacb-2d23-80d6-acd4-d9045e79f67f" class="">classic DV exhcanged every 30 secs</p><p id="1d37aacb-2d23-80ea-b6ea-c4a523b2a326" class="">no longer used</p></div></p><p id="1d37aacb-2d23-8017-80e3-fbf3bc9eeba6" class="">EIGRP:<div class="indented"><p id="1d37aacb-2d23-8045-9f5e-d8198d2b31fb" class="">DV based</p><p id="1d37aacb-2d23-80a5-9c9e-c3d9fd5ace8d" class="">formerly CISCO-proprietary for decades before becoming open in 2013</p></div></p><p id="1d37aacb-2d23-80b6-8f3d-dc0db92285c9" class="">OSPF:<div class="indented"><p id="1d37aacb-2d23-802a-82f3-cddce370f323" class="">link-state routing</p><p id="1d37aacb-2d23-8079-8de3-d711c773c79f" class="">IS-IS protocol essentially the same as OSPF</p></div></p><p id="1d37aacb-2d23-809f-842a-e4ec3476e463" class="">
+</p><p id="1d37aacb-2d23-800c-88b6-feb96e850c3b" class=""><strong>OSPF</strong></p><p id="1d37aacb-2d23-804f-a16b-f9ad3459a331" class="">Open - publicly available</p><p id="1d37aacb-2d23-803c-a379-eac604b744bb" class="">Each router floods OSPF link-state advertisements directly over IP to all other routers in entire AS</p><p id="1d37aacb-2d23-8072-8e84-f12854b4845a" class="">Multiple link costs metrics possible: bandwidth, delay</p><p id="1d37aacb-2d23-8070-837c-c06514bd1ec2" class="">Each router has full topology, uses DIjkstra’s algorithm to compute forwarding table</p><p id="1d37aacb-2d23-80e2-a5a9-f5b004374bd2" class="">Security: all OSPF messages authenticated to prevent malicious intrusion</p><p id="1d37aacb-2d23-80ec-bc0c-e3567eeaadd0" class="">
+</p><p id="1d37aacb-2d23-8031-8375-e3a08c8c0e64" class=""><strong>Hierarchical OSPF</strong></p><p id="1d37aacb-2d23-80db-bb45-f9f441d01ed8" class="">Two-Level hierarchy: local area, backbone<div class="indented"><p id="1d37aacb-2d23-80e2-b938-f4e0a4894c6b" class="">Link state advertisements flooded only in area, or backbone</p><p id="1d37aacb-2d23-8033-b0d0-e0902277c36d" class="">Each node has a detailed area topology; only knows direction to reach other destinations</p></div></p><p id="1d37aacb-2d23-8068-9392-c714cbdde7ef" class="">Area Border Routers: “Summarize’ distances to destinations in own area, advertise in backbone</p><p id="1d37aacb-2d23-80b1-9aae-df8ef2328aa0" class="">Local Routers: flood LS in area only, compute routing within area, forward packets to outside via area border router</p><p id="1d37aacb-2d23-804b-ab59-f9d1dcf18140" class="">Boundary Router: connects to other ASes</p><p id="1d37aacb-2d23-80a5-9657-c9ae3d1d98dd" class="">Backbone Router: runs OSPF limited to backbone</p><p id="1d37aacb-2d23-801c-a3ab-e0a71c2b4fda" class="">
+</p><p id="1d37aacb-2d23-8045-8bdf-d6744885fbcb" class=""><strong>Routing Among ISPs: BGP</strong></p><p id="1d37aacb-2d23-80a9-8983-ef53af8fea8a" class="">BGP is the de facto inter-domain routing protocol - the “Glue that holds the Internet together”</p><p id="1d37aacb-2d23-80ae-8e71-dd846faf61f0" class="">Allows subnets to advertise its existence, and the destinations it can reach, to rest of Internet: “I am here, here is who I can reach, and how”</p><p id="1d37aacb-2d23-8069-b9fc-e3579a80fd2c" class="">BGP provides each AS a means to:<div class="indented"><p id="1d37aacb-2d23-80c4-9e52-e9ecbdd48444" class="">External BGP: obtain subnet reachability information from neighboring ASes</p><p id="1d37aacb-2d23-80f2-8b5a-c464939cb90f" class="">iBGP: Propagate reachability information to all AS-internal routers</p><p id="1d37aacb-2d23-80bf-a8b6-f239be6e9464" class="">determine good route to other networks based on reacability info and policy</p></div></p><p id="1d37aacb-2d23-80e4-89bd-ceb9538a218f" class="">
+</p><p id="1d37aacb-2d23-8065-be2e-e620d93fb830" class=""><strong>BGP basics</strong></p><p id="1d37aacb-2d23-8017-91fd-dde68e5f92bb" class="">BGP Session: Two BGP routers exchange BGP messages over semi-permanent TCP connection:<div class="indented"><p id="1d37aacb-2d23-80af-8ce7-d16674ab7046" class="">advertising paths to different destination network prefixes (BGP is a “Path vector” protocol)</p></div></p><p id="1d37aacb-2d23-80f6-84fe-ff5f545fa0ab" class="">When AS3 gateway 3a advertises path AS3,X to AS2 gateway 2c:<div class="indented"><p id="1d37aacb-2d23-80c2-9fb6-c529065bbefd" class="">AS3 promises to AS2 it will forward datagrams toward X</p></div></p><p id="1d37aacb-2d23-800a-9238-f2957c499dcc" class="">
+</p><p id="1d37aacb-2d23-800a-bdb6-c6f0332379bb" class="">BGP advertised route: prefix + attributes<div class="indented"><p id="1d37aacb-2d23-80bd-a1ea-cc7e7c89d6d1" class="">prefix: destination being advertised</p><p id="1d37aacb-2d23-80f3-84fa-c72ed620afeb" class="">two important attributes:<div class="indented"><p id="1d37aacb-2d23-8018-a5c9-fad3fd7de170" class="">AS-PATH: list of ASes through which prefix advertisement has passed</p><p id="1d37aacb-2d23-8045-a82c-f6c0fd1a1b9b" class="">NEXT-HOP: indicates specific internal-AS router to next-hop AS</p></div></p><p id="1d37aacb-2d23-80e8-9201-de04e8855dcd" class="">policy-based routing:<br/>• gateway receiving route advertisement uses import policy to accept/decline path (e.g., never route through AS Y).<br/>• AS policy also determines whether to advertise path to other other neighboring ASes<br/></p></div></p><p id="1d37aacb-2d23-8024-ad26-e869609e4c6c" class="">
+</p><p id="1d37aacb-2d23-80f7-9066-fa380614c82a" class=""><strong>Why different Intra-, Inter-AS routing? </strong></p><p id="1d37aacb-2d23-8004-951f-f66401ab15a2" class="">policy:<br/>inter-AS: admin wants control over how its traffic routed, who routes through its network<br/></p><p id="1d37aacb-2d23-80df-b1ac-c238a78f5b2c" class="">intra-AS: single admin, so policy less of an issue<br/>scale:<br/>hierarchical routing saves table size, reduced update traffic<br/>performance:<br/>intra-AS: can focus on performance<br/>inter-AS: policy dominates over performance<br/></p><p id="1d37aacb-2d23-80ce-a0bf-cbab5123923b" class="">
+</p><p id="1d37aacb-2d23-8071-a3eb-e28c258050cd" class="">ISPs charge each other and users below them for access</p><p id="1d37aacb-2d23-80a9-9fbd-c2d03d156a74" class="">
+</p><p id="1d37aacb-2d23-802c-8f08-e9a789d69c1b" class="">BGP Route Selection</p><p id="1d37aacb-2d23-80e1-8856-df6d4e7798e5" class="">Routers may learn about more than one route to destination AS, selects route based on:</p><ol type="1" id="1d37aacb-2d23-8029-91a3-fc032c1b0411" class="numbered-list" start="1"><li>Local preference value attribute: policy decision</li></ol><ol type="1" id="1d37aacb-2d23-8075-ae13-fca739e18478" class="numbered-list" start="2"><li>Shortest AS-PATH</li></ol><ol type="1" id="1d37aacb-2d23-804a-adaf-d9c6d42d21e0" class="numbered-list" start="3"><li>Closest NEXT-HOP router: hot potato routing</li></ol><ol type="1" id="1d37aacb-2d23-806d-b7ea-c08e1a963d99" class="numbered-list" start="4"><li>additional criteria</li></ol><p id="1d37aacb-2d23-80b9-a491-ef2aba734429" class="">
+</p><p id="1d37aacb-2d23-8063-8927-daac61e7f58a" class=""><strong>SDN Control Plane</strong></p><p id="1d37aacb-2d23-80e0-900d-c17e788c5a92" class="">Internet network layer: historically implemented via<br/>distributed, per-router control approach:<br/>• monolithic router contains switching hardware, runs proprietary<br/>implementation of Internet standard protocols (IP, RIP, IS-IS, OSPF,<br/>BGP) in proprietary router OS (e.g., Cisco IOS)<br/>• different “middleboxes” for different network layer functions:<br/>firewalls, load balancers, NAT boxes, ..<br/>~2005: renewed interest in rethinking network control plane<br/></p><p id="1d37aacb-2d23-8055-853d-dbc69b39f4ab" class="">
+</p><p id="1d37aacb-2d23-8025-b430-f8a4cff8c6fc" class="">A remote controller is a virtual data center that runs the algorithms, and updates forwarding tables in the control agents in the network devices</p><p id="1d37aacb-2d23-8059-9a9b-c7dbec6aeb44" class="">
+</p><p id="1d37aacb-2d23-80ee-afc0-cadd3008c3b9" class="">Why a logically centralized control plane?</p><p id="1d37aacb-2d23-80b4-bc8c-f2c227d844d1" class="">Easier network management: avoid router misconfigurations, greater flexibility of traffic flows</p><p id="1d37aacb-2d23-80ef-9077-e45999aef75c" class="">Table based forwarding (recall OpenFlow API) allows “programming” routers<div class="indented"><p id="1d37aacb-2d23-8047-8bc9-cb0ba39a32fa" class="">centralized “programming” easier: compute tables centrally and distribute<br/>• distributed “programming” more difficult: compute tables as result of<br/>distributed algorithm (protocol) implemented in each-and-every router<br/></p></div></p><figure id="1d37aacb-2d23-80ea-b1d0-d9fe8ff874bc" class="image"><a href="4-12-25%201d37aacb2d238048babec0ac8ff3edd8/Screenshot_2025-04-12_at_9.41.30_AM.png"><img style="width:709.984375px" src="4-12-25%201d37aacb2d238048babec0ac8ff3edd8/Screenshot_2025-04-12_at_9.41.30_AM.png"/></a></figure><p id="1d37aacb-2d23-806a-92ec-fa3edd5bcc09" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

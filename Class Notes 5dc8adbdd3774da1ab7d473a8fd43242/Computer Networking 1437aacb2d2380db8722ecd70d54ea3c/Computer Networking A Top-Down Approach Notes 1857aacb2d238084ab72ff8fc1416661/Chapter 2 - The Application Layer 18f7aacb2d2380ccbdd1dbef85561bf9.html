@@ -1,0 +1,707 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - The Application Layer</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18f7aacb-2d23-80cc-bdd1-dbef85561bf9" class="page sans"><header><h1 class="page-title">Chapter 2 - The Application Layer</h1><p class="page-description"></p></header><div class="page-body"><p id="18f7aacb-2d23-8035-a10a-f9267f0a5ddb" class="">Network Applications are the reason why a computer network exists - they are the reason why network infrastructure is built, and why protocols are created to support them. </p><h1 id="18f7aacb-2d23-803f-9e03-c3302802005c" class="">Principles of Network Applications</h1><p id="18f7aacb-2d23-8068-bee2-ec3932166dda" class="">At the core of network application development: writing programs that run on different end systems and communicate with each other over the network. </p><p id="18f7aacb-2d23-8083-a67d-f7e1dd3005cf" class="">Software needs to be written on multiple systems - but you do not need to write software that runs on routers or link-layer switches. </p><h2 id="18f7aacb-2d23-8046-8a0f-e01b93ff7a32" class="">Network Application Architectures</h2><p id="18f7aacb-2d23-80c3-8a1a-e3a684a37051" class="">The network architecture - the internet protocol stack (Application, Transport, Network, Link, Physical) - is fixed. Application architecture is designed by the programmers and dictates how the application is structured over the various end systems.</p><p id="18f7aacb-2d23-807a-90ee-ee0a78f8cb76" class="">Client-Server Architecture: <div class="indented"><p id="18f7aacb-2d23-8044-a41f-dce28e0ebe55" class="">An always-on host (server) services requests from other hosts (clients)</p><p id="18f7aacb-2d23-806c-a3e0-e2b5d9f18568" class="">A single-server host is sometimes incapable of keeping up with all the requests from clients (For example: YouTube, google, Facebook). A Data Center houses a large number of hosts - often used to create a powerful virtual server. <div class="indented"><p id="18f7aacb-2d23-80e0-bbe1-ff7251a09381" class="">Google, Bing, Baidu, AMazon, eBay, Instagram, etc all run in Data Centers.</p></div></p></div></p><p id="18f7aacb-2d23-80ef-984f-ceede6dda544" class="">Peer to Peer Architecture:<div class="indented"><p id="18f7aacb-2d23-802c-bde2-ea7edae7c527" class="">Minimal to no reliance on dedicated servers in data centers. Instead, the application exploits direct communication between pairs of intermittently connected hosts - called peers.</p><p id="18f7aacb-2d23-805a-95de-de84cecf89b8" class="">The peers are controlled and owned by users -desktops and laptops - most peers residing in homes, universities, and offices.</p><p id="1a67aacb-2d23-80ea-b439-eb0afd0ff6f5" class="">The most compelling feature of P2P architecture is their self-scalability. <div class="indented"><p id="18f7aacb-2d23-801b-b472-e213a5e93350" class="">Example: BitTorrent</p></div></p></div></p><h2 id="18f7aacb-2d23-806b-8316-ec1896669c84" class="">Processes Communicating</h2><p id="18f7aacb-2d23-8024-bc38-eda26884cae2" class="">Process - an instance of a running program - a program running within an end system.<div class="indented"><p id="18f7aacb-2d23-80a1-8477-e14db5bf582c" class="">When processes run on the same end system, they can communicate with each other through the Interprocess Communication using rules governed by the end system’s operating system. </p><p id="18f7aacb-2d23-80f4-bf3b-f810cbdb4d87" class="">Processes running on different end systems communicate with each other by exchanging <strong>messages </strong>across the computer network.</p></div></p><p id="18f7aacb-2d23-806f-b814-c083288e4bf2" class="">A network application consists of pairs of processes that send messages to each other over a network. <div class="indented"><p id="18f7aacb-2d23-80a7-8d70-e7c36a50e2e1" class="">For example, in the Web Application, a client browser process exchanges messages with a Web server process.</p><p id="18f7aacb-2d23-8089-b5de-f7a46c6b3d48" class="">In a P2P file-sharing system, a file is transferred from a process in one peer to a process in another peer</p><p id="18f7aacb-2d23-80bf-bce1-c12c556b5121" class="">For each pair of communicating processes, we label one of the two processes as the client and the other process as the server.</p><p id="18f7aacb-2d23-80b2-8989-cbde5123acb2" class="">Web - browser is the client process, Web server is a server process</p></div></p><p id="18f7aacb-2d23-8034-8d59-f514755029b5" class="">In the context of a communication session between a pair of processes, the process that initiates the communication is labeled as the client. The process that waits to be connected to begin the session is the server. </p><p id="18f7aacb-2d23-809d-9745-f157ea347db4" class="">Any message that is sent from one process to another must go through the underyling network - a process sends messages into and receives messages from the network through a software interface called a socket. <div class="indented"><p id="18f7aacb-2d23-807e-8854-e1159d252b13" class="">As an analogy - a process is analogous to the house, and a socket is the house’s door </p><p id="18f7aacb-2d23-803e-9ff5-fc0a13958b63" class="">When a process wants to send a message to another process on another host, it shoves the message out its door (socket). The sending process assumes that there is a transportation infrastructure on the other side of its door that will transport the message to the door of the destination process. Once the message arrives at the destination host, the message passes through the receiving process’s door (socket) and the receiving process then acts on the message.</p><p id="18f7aacb-2d23-805c-b034-dc376158c36f" class="">The socket is the API between the application adn the network, since the socket is the programming interface with which network applications are built. </p></div></p><p id="18f7aacb-2d23-80f6-8ab1-f56c77f600b8" class="">Address Processes - <div class="indented"><p id="18f7aacb-2d23-80b9-bbe2-f469333fac75" class="">On the internet, the host is identified by its IP address - a 32-bit quantity that uniquely identifies the host</p><p id="18f7aacb-2d23-80b0-92c7-cf0d7b6df9bc" class="">The sending process must also identify the receiving process and the receiving socket running in the host. This is where the port number is identified.</p></div></p><h2 id="18f7aacb-2d23-80ef-9285-db9bd4544389" class="">Transport Services Available to Applications</h2><p id="18f7aacb-2d23-80aa-83be-e4e91d06ed53" class="">A socket is the interface between the application process and the transport-layer protocol. There are more than one transport-layer protocols available. Many networks provide more than one transport-layer protocols. </p><p id="18f7aacb-2d23-8052-8ee9-de38c9eb376e" class="">There are different services a transport-layer protocol can offer to applications invoking it.</p><h3 id="18f7aacb-2d23-8086-ac80-d682994fbf6f" class="">Reliable Data Transfer</h3><p id="18f7aacb-2d23-805f-aab8-f692946c25f3" class="">A packet can get lost within a computer network - packets can overflow a buffer in a router, or can be discarded by a host or router after having some of its bits corrupted. </p><p id="18f7aacb-2d23-807a-b1c2-f7c63739366e" class="">Some applications cannot have this data loss - Email, financial applications, Web document transfers. </p><p id="18f7aacb-2d23-80ac-bc1b-fc294c0e38f7" class="">To support these applications, something has to be done to guarantee that the data sent by one end of the application is delivered correctly and completely to the other end of the application. </p><p id="18f7aacb-2d23-8024-9f3d-c009c5eb3143" class="">If a protocol guarantees data delivery, it is said to offer reliable data transfer. A sending process can pass data into its socket and guarantee that the data will arrive at the receiving process.</p><p id="18f7aacb-2d23-801e-b66c-ce31bdea00b9" class="">Loss-tolerant applications don’t need reliable data transfer, so some data may never arrive - Streaming, VoIP, etc. This is useful when lost packets won’t bring everything crashing down.</p><h3 id="18f7aacb-2d23-80ca-b63a-e0715cc9bffa" class="">Throughput</h3><p id="18f7aacb-2d23-804d-ac57-d86f95242f5e" class="">Throughput is the rate at which the sending process can deliver bits to the receiving process. <div class="indented"><p id="18f7aacb-2d23-8085-a5eb-d92a0696dbfc" class="">The amount of data per second that can be transferred</p></div></p><p id="18f7aacb-2d23-8048-8aad-f5e0918ab2c2" class="">Because other sessions will be sharing the bandwidth along the network path, and because these other sessions will be coming and going, the available throughput can fluctuate with time. </p><p id="18f7aacb-2d23-80fd-9c2c-e5b58133d071" class="">Because of this, another service a transport-layer protocol could provide is guaranteed available throughput at some specified rate. <div class="indented"><p id="18f7aacb-2d23-8057-939a-c377b471a6c5" class="">The application can request a guaranteed throughput of <em>r </em>bits/sec.</p><p id="18f7aacb-2d23-80d3-8fdf-f489456a6e2e" class="">Applications that have throughput requirements are <strong>bandwidth-sensitive applications</strong></p><p id="18f7aacb-2d23-8071-a070-e6b3b15411df" class="">Elastic applications can make use of as little throughput or as much throughput as happens to be available.<div class="indented"><p id="18f7aacb-2d23-80ae-bd24-f0a637054b1e" class="">Email, file transfer, web transfer.</p><p id="18f7aacb-2d23-8093-85a1-c66852001092" class="">“One cannot be too rich, too thin, or have too much throughput”.</p></div></p></div></p><h3 id="18f7aacb-2d23-80fe-be32-daef2e3247f7" class="">Timing</h3><p id="1917aacb-2d23-803d-840c-cea1d8be2bb5" class="">Some services require sensitive timing - like internet telephony, or virtual conferencing or multiplayer games. </p><h3 id="1917aacb-2d23-80dc-a33f-cab3a889018a" class="">Security</h3><p id="1917aacb-2d23-804f-adc4-dac0c212fd5f" class="">Transport protocols can provide one or more security services - confidentiality (encryption), integrity and end-point authentication.</p><h2 id="1917aacb-2d23-80f5-9c32-ebcd7c3657f6" class="">Transport Services Provided by the Internet</h2><p id="1917aacb-2d23-80b7-b8d6-e817fbcaa5a6" class="">The types of transport services provided by the internet are TCP and UDP.</p><h3 id="1917aacb-2d23-8005-a88b-d95219b0b71b" class="">TCP</h3><p id="1917aacb-2d23-80e7-83fc-f15d07a071a0" class="">Connection-oriented - TCP has the client and server exchange transport-layer control information with each other before the application-level messages begin to flow. This is the TCP handshake/three-way handshake. After the handshake, a TCP connection is said to exist between the sockets of the two processes.</p><p id="1917aacb-2d23-8001-b3c8-f50d53371900" class="">Reliable Data Transfer - the communicating processes can rely on TCP to deliver all data sent without error and in the proper order. </p><p id="1917aacb-2d23-8081-bd12-db01c4bf7f2d" class="">There is congestion control mechanism - it can throttle a sending process when the network is congested between sender and receiver.</p><p id="1917aacb-2d23-80fb-82a9-d31c83c20ee8" class="">To provide security for TCP, TLS was developed to provide security services.</p><h3 id="1917aacb-2d23-800f-9232-c62761d1a6c9" class="">UDP</h3><p id="1917aacb-2d23-8026-9297-e19e5182d0d2" class="">UDP is lightweight transport protocol - it provides minimal services and does not guarantee delivery. There is no handshake. It is unreliable data transfer.</p><h3 id="1917aacb-2d23-80ec-bcf3-f4ceceb02adf" class="">Services Not Provided By Internet Transport Protocols</h3><p id="1917aacb-2d23-80c9-b992-ded69a46b396" class="">Today’s internet can provide satisfactory service to time-sensitive applications, but it cannot provide any timing or throughput guarantees. </p><p id="1a67aacb-2d23-8074-8ad4-d662131363cd" class="">TCP can be easily enhanced at the application layer with TLS to provide security. </p><p id="1917aacb-2d23-8034-bdec-c5ea69d46416" class="">
+</p><h2 id="1917aacb-2d23-8066-9820-efc029d158a9" class="">Application Layer Protocols</h2><p id="1917aacb-2d23-80eb-9064-e53a14aa58c4" class="">Application layer protocols define how an application’s processes, running on different end systems, pass messages to each other. </p><p id="1917aacb-2d23-8089-90da-e1c4b2158c0b" class="">These define:<div class="indented"><p id="1917aacb-2d23-8020-ab97-cbdf2355e3a3" class="">The types of messages exchanged</p><p id="1917aacb-2d23-80bc-8711-e49bd65353ad" class="">The syntax of the various message types</p><p id="1917aacb-2d23-8056-bf87-d339de898090" class="">The semantics of the fields</p><p id="1917aacb-2d23-80e4-a253-ed98d63e53d2" class="">Rules for determining when and how a process sends messages and responds to messages</p></div></p><p id="1917aacb-2d23-804c-bd21-e867fe15cc1e" class="">Some application layer protocols are specified in RFCs - HTTP is RFC 7230.</p><p id="1a67aacb-2d23-807a-b6c8-e1da6c305679" class="">These are public domain protocols.</p><p id="1a67aacb-2d23-80ce-bfbd-dc1550c958bc" class="">Application-layer protocol is only one piece of a network application. </p><p id="1a67aacb-2d23-8023-a034-d1a8066a8ebd" class="">For example:</p><p id="1a67aacb-2d23-8086-9c08-ed11a03641ee" class="">The Web is a client-server application that allows users to obtain documents from Web servers on demand. The Web application consists of many components, including a standard for document formats, Web browsers, servers, and an application-layer protocol, HTTP. </p><p id="1a67aacb-2d23-800c-8f70-d23ac034db8c" class="">HTTP Defines the format and sequence of messages exchanged betwen browser and Web server. Thus, HTTP is only one piece fo the Web application.</p><p id="1a67aacb-2d23-80fb-b073-c208f8efa7ee" class="">
+</p><p id="1917aacb-2d23-8022-b773-e1267760cc37" class="">
+</p><h1 id="1917aacb-2d23-80ef-8123-cae240325b10" class="">The Web and HTTP</h1><p id="1917aacb-2d23-8051-acf4-f4d2d5bf5689" class="">The World Wide Web arrived in the early 1990s. The Internet befoe that was mainly used by researchers and academics.</p><p id="1937aacb-2d23-802e-8b06-fc1d1b32529f" class="">The Web operates on demand, unlike radio and television.</p><p id="1937aacb-2d23-8034-8384-fa0610bea809" class="">
+</p><h2 id="1917aacb-2d23-803f-a59f-e0476b809742" class="">Overview of HTTP</h2><p id="1917aacb-2d23-8093-a4a1-ead0ab24b5de" class="">Hypertext Transfer Protocol - is the heart of the web. Defined in RFC 1945, RFC 7230, and RFC 7540. It is implemented in two programs: a client and a server. These are executed on different end systems.</p><p id="1917aacb-2d23-80bf-b4f2-e0a9feb4e2ea" class="">The client and the server talk to each other by exchanging HTTP messages.</p><p id="1917aacb-2d23-8005-ac8b-f552f7024f2d" class="">Web Page/Document: consists of objects - HTML file, JPEG image, Javascript, CSS file, video, etc - that is addressable by a single URL. Most web pages consist of a base HTML file and several referenced objects.</p><p id="1917aacb-2d23-809b-a264-fb56da9cc7bb" class="">Web Browsers - in the context of Web, they implement the client side</p><p id="1917aacb-2d23-8004-ab05-e5206adc3646" class="">Web Servers - implement the server side of HTTP</p><p id="1917aacb-2d23-807d-b5a4-cea3659f8904" class="">HTTP utilizes TCP as the underlying transport protocol - Reliable data transfer. HTTP doesn’t worry about lost data or the details of TCP.</p><p id="1917aacb-2d23-8036-b855-cb82b678b5d7" class="">The HTTP client initiates a TCP connection with the server. Once the connection is established, the browser and the server processess access TCP through their socket interfaces.<div class="indented"><p id="1917aacb-2d23-80d8-a9fd-c41c84327644" class="">On the client side the socket interface is the door between the client process and the TCP connection</p><p id="1917aacb-2d23-808a-9a8e-e68a0498078f" class="">On the server side it is the door between the server process and the TCP connection</p></div></p><p id="1917aacb-2d23-80c3-a091-cdf1eeba7cf2" class="">HTTP servers retain no information about the clients - HTTP is a stateless protocol</p><h3 id="1917aacb-2d23-8005-a58a-ef6d39332a8a" class="">Non-Persistent and Persistent Connections</h3><ol type="1" id="1917aacb-2d23-804b-be30-d53733a59ddd" class="numbered-list" start="1"><li><strong>Non-Persistent Connections</strong>:<ul id="1917aacb-2d23-80ad-9e98-c893fbf20cf9" class="bulleted-list"><li style="list-style-type:disc">A <strong>new</strong> TCP connection is established for each request-response pair.</li></ul><ul id="1917aacb-2d23-8036-95a1-d69abf369304" class="bulleted-list"><li style="list-style-type:disc">After the server sends the response, the connection is closed.</li></ul><ul id="1917aacb-2d23-80ed-b286-d9b5086be9b3" class="bulleted-list"><li style="list-style-type:disc">If the client needs to send another request, it must establish a new connection again.</li></ul><ul id="1917aacb-2d23-80d0-a7fc-de98237cbc7f" class="bulleted-list"><li style="list-style-type:disc">This approach introduces <strong>extra overhead</strong> due to the repeated TCP connection setup and teardown, which can increase latency.</li></ul></li></ol><ol type="1" id="1917aacb-2d23-8008-b6bf-dd01ca1b7035" class="numbered-list" start="2"><li><strong>Persistent Connections</strong>:<ul id="1917aacb-2d23-8053-b864-db16cfcb4a4f" class="bulleted-list"><li style="list-style-type:disc">A <strong>single</strong> TCP connection is maintained for multiple request-response exchanges.</li></ul><ul id="1917aacb-2d23-8064-bef2-dc1c8a1453be" class="bulleted-list"><li style="list-style-type:disc">The connection stays open after a response is sent, allowing further requests to be sent over the same connection.</li></ul><ul id="1917aacb-2d23-807a-a01e-d7329848b497" class="bulleted-list"><li style="list-style-type:disc">This reduces the overhead of repeatedly opening and closing connections, leading to <strong>better performance</strong> and <strong>lower latency</strong>.</li></ul></li></ol><h3 id="1917aacb-2d23-8095-bdb2-c01cab03256b" class="">HTTP Message Format</h3><p id="1917aacb-2d23-80f8-9ca3-e27d47a879c0" class="">Request:<div class="indented"><p id="1917aacb-2d23-803b-b806-d82b529a8e81" class=""><em>GET /somedir/page.html HTTP/1.1<br/>Host: www.someschool.edu<br/>Connection: close<br/>User-agent: Mozilla/5.0<br/>Accept-language: fr<br/></em></p></div></p><p id="1917aacb-2d23-8006-bbf6-ccad90d7c7f2" class="">First Line: The request Line</p><p id="1917aacb-2d23-808d-abe0-c354e2017ff3" class="">Everything else are called header lines.</p><p id="1917aacb-2d23-806f-96e4-c313c039b64b" class="">Connection: close says to close the connection after sending the requested object</p><p id="1917aacb-2d23-80e3-a058-d0b08c5c56d8" class=""><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">Types of Request Methods</a></p><p id="1917aacb-2d23-805c-bcd0-e00f4ed8a76a" class="">Method Field can be GET, POST, HEAD, PUT, DELETE.</p><p id="1a77aacb-2d23-8037-9315-e02ebd6cdf63" class="">GET is the most common. This is requesting an object. POST is when filling out a form.</p><p id="1a77aacb-2d23-8099-aa4c-eacbf0c9f100" class="">Connection: Close is for non-persistent connections.</p><p id="1917aacb-2d23-8031-a057-e5ccbf0909a0" class="">Response:<div class="indented"><p id="1917aacb-2d23-80ad-8cee-fa64b436e894" class=""><em>HTTP/1.1 200 OK<br/>Connection: close<br/>Date: Tue, 18 Aug 2015 15:44:04 GMT<br/>Server: Apache/2.2.3 (CentOS)<br/>Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT<br/>Content-Length: 6821<br/>Content-Type: text/html<br/></em></p><p id="1917aacb-2d23-8074-ae63-dde29ba3ab24" class=""><em>(data data data data data ...)</em></p></div></p><p id="1917aacb-2d23-8022-9adf-d4ea9b889db8" class="">First line: initial <strong>status line</strong></p><p id="1917aacb-2d23-809a-9f64-eafe2b2fcbef" class="">Then six <strong>header lines</strong></p><p id="1917aacb-2d23-8049-a2f7-d65d0f593fab" class="">Then <strong>entity body -</strong> contains the requested object itself</p><p id="1917aacb-2d23-80b0-aa3c-fe1031f29773" class="">
+</p><p id="1917aacb-2d23-8067-904d-fccc4897b67f" class="">Status Codes:<div class="indented"><p id="1917aacb-2d23-80c9-8cc5-d57bf0dc550c" class="">200 OK: Request succeeded and the information is returned</p><p id="1917aacb-2d23-8082-8270-e90e7b9da165" class="">301 Moved Permanently: Requested object has been permanently moved; new URL is specified in Location Header of response message. Client software automatically retrieves the new URL</p><p id="1917aacb-2d23-8031-934c-c5c15415c4a6" class="">400 Bad Request: Request was not understood</p><p id="1917aacb-2d23-80c7-a4a4-f591d9267ee3" class="">404 Not Found: Requested document does not exist</p><p id="1917aacb-2d23-807d-b8ff-cf4535b2c25d" class="">505 HTTP Version Not Supported: The requested HTTP protocol version is not supported by the server</p></div></p><p id="1917aacb-2d23-8070-bb3a-f162b848c761" class="">
+</p><h3 id="1917aacb-2d23-8067-8734-eb3f201e8a21" class="">User-Server Interaction: Cookies</h3><p id="1917aacb-2d23-807a-a570-d784a5d0b1b1" class="">HTTP server is stateless - it does not remember anything about clients</p><p id="1917aacb-2d23-8097-bb05-fe5e96256fe5" class="">Cookies are used to allow websites to keep track of users</p><p id="1917aacb-2d23-80d7-a7f0-de665805ef59" class="">Cookie technology has four components:<div class="indented"><p id="1917aacb-2d23-808d-b091-cad780488012" class="">Cookie header line in the HTTP response message</p><p id="1917aacb-2d23-8005-b5fe-cf4edf8df946" class="">Cookie header line in the HTTP request message</p><p id="1917aacb-2d23-804c-a5ee-e33410aa3570" class="">A cookie file kept on the user’s end system and managed by the user’s browser</p><p id="1917aacb-2d23-804e-af68-e8abd41b508a" class="">A back-end database at the Web site</p></div></p><p id="1917aacb-2d23-802e-9a9c-c737b2ff1ef6" class="">
+</p><h3 id="1917aacb-2d23-8060-ab43-e2b6ef4052c2" class="">Web Caching</h3><p id="1917aacb-2d23-80c9-b2be-c6a0e0f3bb58" class="">A Web Cache/Proxy Server - a network entity that satisifed HTTP requests on behalf of an origin Web Server.</p><p id="1917aacb-2d23-8081-98ea-e4304a29a1f5" class="">The browser establishes a TCP connection with the Web Cache and sends an HTTP request</p><p id="1917aacb-2d23-80d1-9a30-d6fff758ee9b" class="">The Web Cache checks to see if it has a copy of the object stored locally. If it does it sends it to the client</p><p id="1917aacb-2d23-80f6-a8db-dbc975441abb" class="">If it does not, then the Web Cache opens a TCP connection to the origin server.</p><p id="1917aacb-2d23-80e6-b55c-e89bd2c3ef96" class="">When it receives the object, the web cache stores it locally and sends a copy within an HTTP response message to the client over the same TCP Connection.</p><p id="1927aacb-2d23-80da-81ed-d28b1b14880f" class="">A cache is both a server and client.</p><p id="1a77aacb-2d23-8086-b962-f4dc8a483940" class="">ISPs typically install Web caches. A university might install a cache on its campus network and configure all of the campus browsers to point to the cache.</p><p id="1a77aacb-2d23-8020-a33e-ef7d71f358cf" class="">Web Caching is used for faster load times - to reduce the response time for a client, particularly if the bottleneck bandwidth between client and origin server is much less than between client and web cache. It is used to reduce traffic on an institution’s access link to the internet.</p><p id="1927aacb-2d23-802c-8ad1-fd5f6751ea65" class="">The total response time for loading a web object is the sum of the LAN delay , access delay, and Internet delay.</p><p id="1a77aacb-2d23-807d-aeb1-cd0d5f5bdc1c" class="">Traffic intensity on the LAN is (15 requests/sec) * (1 MBits/request)/100 Mbps = 0.15</p><p id="1a77aacb-2d23-8043-af20-e8f05c745b39" class="">Traffic on the access link is (15 request/sec) * (1 Mbits/request)/(15 Mbps) = 1</p><p id="1a77aacb-2d23-8081-82cc-e75e77594708" class="">LAN delay is negligible.</p><p id="1a77aacb-2d23-8029-98cc-d7a4124bf3a5" class="">As the traffic intensity approaches 1, as in the access link, the delay becomes very large and grows without bound.</p><p id="1a77aacb-2d23-80f8-a776-f431d8aa99bb" class="">We can increase access speed from 15 Mbps to 100 Mbps - that is expensive. </p><p id="1a77aacb-2d23-80d8-945e-eeb0aa2d1efd" class="">Instead, installing a cache solves the issue. If the cache has a hit rate of 40 percent (0.4, typcially in the 0.2 to 0.7 range), 40 percent of the requests will be satisifed within 10 milliseconds. With only 60 percent of the requested objects passing through the access link, the traffic intensity on the link is reduced from 1.0 to 0.6.</p><h3 id="1927aacb-2d23-8037-b95d-ed27f2f78397" class="">The Conditional GET</h3><p id="1927aacb-2d23-8054-851e-f784fa8e21ea" class="">A Way to allow a cache to verify that its objects are up to date. </p><p id="1a77aacb-2d23-80b6-9d08-f24a301b9d6d" class="">
+</p><h2 id="1a77aacb-2d23-80c9-892a-e0909051770c" class="">HTTP/2</h2><p id="1a77aacb-2d23-80e7-8c42-e3294694afa9" class="">The first version since hTTP/1.1 in 1997. The primary goals for HTTP/2 are to reduce perceived latency by enabling request and response multiplexing over a single TCP connection provide request prioritization and serverp ush, and provide efficient compression of HTTP header fields. </p><p id="1a77aacb-2d23-8047-b0a0-c8c2bec7f004" class="">HTTP/1.1 uses persistent TCP connections - 1 connection per page. Develoeprs of Web browsers discovered that sneding all the objects in a Web page over a single TCP connection has a Head of Line Blocking Problem. </p><p id="1a77aacb-2d23-80c5-99b4-d0d02bc15cfc" class="">if a web page has a large file at the top and smaller objects below it, everything is sent over the same connection. If the large file gets stuck, the smaller objects must wait behind it, delaying the page load. HTTP/1.1 browsers work around this by opening multiple parallel TCP connections.</p><p id="1a77aacb-2d23-806f-b3ad-f4431e9f1a9c" class="">HTTP/2 gets rid of parallel TCP connections (or reduces the number). Reduces the number of sockets that need to be opened and maintained at servers, but also allows TCP congestion control to operate as intended. </p><p id="1a77aacb-2d23-8058-82b5-e006d2a78598" class=""> </p><h3 id="1a77aacb-2d23-802c-89e4-ddb9b2cd8992" class="">HTTP/2 Framing</h3><p id="1a77aacb-2d23-80aa-ab3d-f4fef09a66f4" class="">The HTTP/2 method is to break each message into small frames and interleave the request and response messages on the same TCP connection. </p><p id="1a77aacb-2d23-8048-8be7-f8122ad928e9" class="">Suppose a web page contains 1 large video clip and 8 smaller objects</p><p id="1a77aacb-2d23-80e3-97ae-d599db3e1b30" class="">The server will receive 9 concurrent requests from any browser that wants to see this page.</p><p id="1a77aacb-2d23-8044-95c8-f795fc357858" class="">Suppose all frames are of fixed length, the video clip consists of 1000 frames, and each of the smaller objects consists two frames. With fram interleaving, after sending one frame from the video clip, the first frames of each of the small objects are sent. After send the second frame, the last frames of each of the small objects are sent. Thus, all of the smaller objects are ent after sending a total of 18 frames. If it weren’t used, the smaller objects would only be sent after sending 1016 frames.</p><p id="1a77aacb-2d23-8059-931e-cc02be1e6cf3" class="">
+</p><h3 id="1a77aacb-2d23-80e1-bb81-fce72592991d" class="">Response Message Prioritization and Server Pushing</h3><p id="1a77aacb-2d23-8050-b5ee-d33cecddbd0a" class="">HTTP/2 prioritizes messages by assigning each request a priority weight (1 to 256). A higher number means higher priority. Using these weights, the server can send first the frames for the responses with the highest priority. The client also states each message’s dependency on other messages by specifying the ID of the message on which it depends.</p><p id="1a77aacb-2d23-806b-9f14-ce0e17180257" class="">HTTP/2 also allows a server to send multiple responses for a single client. In addition to the original request, the server can push additional objects to the client, without the client having to request each one. </p><h3 id="1a77aacb-2d23-80c5-872d-e3c830be2a35" class="">HTTP/3</h3><p id="1a77aacb-2d23-80d0-9f0e-d55043c30837" class="">QUIC is a new transport protocol implemented over the bare-bones UDP protocol. There is message multiplexing, per-stream flow control, low latency connection establishment. HTTP/3 a new protocol that is designed to operate over QUIC. Many of HTTP/2’s features are used by QUIC. </p><p id="1a77aacb-2d23-800d-b464-ed6fa35d56f3" class="">
+</p><h1 id="1927aacb-2d23-8032-a00f-f1f146db3524" class="">Electronic Mail in the Internet</h1><p id="1927aacb-2d23-8060-a677-e5064d5c8605" class="">Modern email can include attachments, hyperlinks, HTML formatted text, and embedded photos.</p><p id="1927aacb-2d23-8009-ba91-f74c08177fef" class="">Internet Mail System has three major components: User Agents, Mail Servers, and Simple Mail Transfer Protocol (SMTP). </p><p id="1927aacb-2d23-805d-ac90-f52cf52a19f0" class="">User Agents are things like Outlook, Apple Mail, Web-based Gmail, Gmail App on smartphone. They allow users to read, reply to, forward, save, and compose messages.</p><p id="1927aacb-2d23-80ee-bf5d-c45c125b3690" class="">Alice sending a message to Bob: When she is finished, her user agent sends the message to her mail server, where the message is placed in the outgoing message queue. When Bob wants to read a message, his user agent retrieves the message from his mailbox in his mail server.</p><p id="1927aacb-2d23-80b2-ab57-f1343f8e7689" class="">Each recipient has a <strong>mailbox </strong>located in the mail server. If Alice’s mail sever cannot deliver to Bob’s mail server, Alice’s servers the message in a message queue and attempts to transfer the message later.</p><h2 id="1927aacb-2d23-80ba-b9b7-cd729aa37fcf" class="">SMTP</h2><p id="1927aacb-2d23-8012-92ca-e84f2a158ea5" class="">SMTP transfers messages from senders’ mail servers to the recipients’ mail servers.</p><p id="1927aacb-2d23-804a-8bd6-d403709cf337" class="">Originally restrited to 7-bit ASCII, as SMTP was before the time of large file transfers over mail (1982). Now, SMTP requires binary multimedia data to be encoded to ASCII before being sent over SMTP. </p><p id="1927aacb-2d23-80db-89aa-eb0a31402c83" class="">
+</p><p id="1927aacb-2d23-8083-87d6-ed685424e1e8" class="">Alice invokes her user agent for e-mail, provides Bob’s e-mail address (for<br/>example, bob@someschool.edu), composes a message, and instructs the<br/>user agent to send the message.<br/></p><p id="1927aacb-2d23-806a-a668-f41a1ce558a6" class="">Alice’s user agent sends the message to her mail server, where it is placed in a<br/>message queue.<br/></p><p id="1927aacb-2d23-808c-96ac-c53192c2c17e" class="">The client side of SMTP, running on Alice’s mail server, sees the message in the<br/>message queue. It opens a TCP connection to an SMTP server, running on Bob’s<br/>mail server.<br/></p><p id="1927aacb-2d23-8098-a5ca-e3d6c5571e34" class="">After some initial SMTP handshaking, the SMTP client sends Alice’s message<br/>into the TCP connection.<br/></p><p id="1927aacb-2d23-8031-bc2d-ffc3521a1b6a" class="">At Bob’s mail server, the server side of SMTP receives the message. Bob’s mail<br/>server then places the message in Bob’s mailbox.<br/></p><p id="1927aacb-2d23-8065-a996-e5bed280d448" class="">Bob invokes his user agent to read the message at his convenience.</p><p id="1a87aacb-2d23-80c5-a671-cf668c563d8c" class="">
+</p><p id="1a87aacb-2d23-806b-94d3-feff5592fbd6" class="">SMTP does not use intermediary servers - if Alice’s is in Hong Kong and Bob’s is in St Louis, the TCP connection is a direct connection between the Hong Kong and St Louis.</p><p id="1927aacb-2d23-80db-b779-fbaba83f8bef" class="">The client SMTP establishes a TCP connection to port 25 at the server SMTP.When the connection is being established, the SMTP client indicates the email address of the sender and the email address of the recipient. Once the connection is established, the client sends a message. </p><p id="1a87aacb-2d23-807a-b4f0-d60534b5b853" class="">
+</p><h2 id="1a87aacb-2d23-8046-8a06-e5292a510617" class="">Mail Message Formats</h2><p id="1a87aacb-2d23-80f8-8b08-e9b9302ae242" class="">When an email message is sent, a header containing peripheral information precedes the body of the message itself. The header lines and the body of the message are separated by a blank line. </p><p id="1a87aacb-2d23-80a8-9a51-d93de5b369e0" class="">Every header must have a From: header line and a To: header line.</p><p id="1927aacb-2d23-80d6-905d-d6f73564d7a1" class="">
+</p><h2 id="1927aacb-2d23-805e-a145-fc194c8076d3" class="">Mail Access Protocols</h2><p id="1927aacb-2d23-8036-b58f-f682ac306eb3" class="">If a user agent is local, it is tempting to place the mail server locally as well. However, the problem with that is there does need to be an always on mail server exposed to the internet.</p><p id="1927aacb-2d23-808a-915e-d7300906d91f" class="">Alice is sending a message to Bob. Alice’s user agent does not dialogue directly with the recipient’s mail server. Instead the user agent sends the email to the sender’s mail server, and the mail server uses SMTP to send it to the recipient’s mail server.</p><p id="1927aacb-2d23-8039-9793-dff85b1844b8" class="">Alice’s mail server can then try to send the message to Bob’s mail server (for example every 30 minutes) until the server accepts it. </p><p id="1927aacb-2d23-80b9-89db-cf2cb77869bb" class="">Bob will use either HTTP (if he is using something web based like Gmail) to retrieve the email. Mail clients like Outlook use Internet Mail Access Protocol to retreive the email.</p><p id="1927aacb-2d23-80ae-88a1-dfc3179e5ed7" class="">
+</p><h1 id="1927aacb-2d23-80fc-be03-ea06430d9cc4" class="">DNS - The Internet’s Directory Service</h1><p id="1927aacb-2d23-8049-826f-d384ddddaab8" class="">The identifier for a host is its hostname - www.facebook.com, <a href="http://google.com">google.com</a>. Routers cannot processes these - they process IP addresses. 143.45.52.2 for example.</p><h2 id="1927aacb-2d23-8044-af74-d3814b7137ec" class="">Services Provided by DNS</h2><p id="1927aacb-2d23-80bb-9e8d-e40207a10916" class="">Domain Name System - people prefer hostnames over IP addresses. DNS is a directory service that translates hostnames to IP addresses. </p><p id="1927aacb-2d23-8046-9713-f4aeae7cc16b" class="">DNS is a distributed database in a hierarchy of DNS servers and an application layer protocol that allows hosts to query the distributed database. They are often UNIX machines running the Berkeley Internet Name Domain software. DNS runs over UDP and uses port 53.</p><p id="1927aacb-2d23-8006-b4fa-c151a09895da" class="">DNS is commonly employed by other protocols like HTTP and SMTP to translate user-supplied hostnames to IP address.</p><p id="1927aacb-2d23-80bb-b0d4-e2942e4d8edf" class="">A client requests a URL. The users’s host must obtain the server for that URL.<div class="indented"><p id="1927aacb-2d23-8026-b2c9-da28e5a82fd8" class="">The user machine runs the client side of the DNS application.</p><p id="1927aacb-2d23-8044-9ae5-d4e05f60ec71" class="">The browser extracts the hostname from the URL and passes the hostname to the client side of the DNS application.</p><p id="1927aacb-2d23-808a-b3f3-efbeae68bd6a" class="">The DNS client sends a query containing the hostname to a DNS server.</p><p id="1927aacb-2d23-804d-beb4-d06ce60455f3" class="">The DNS client eventually receives a reply, which includes the IP address for the hostname.</p><p id="1927aacb-2d23-809f-bb08-c9975572cd35" class="">Once the browser receives the IP address from DNS, it can initiate a TCP connection to the HTTP server process located at port 80 at that IP address.</p></div></p><p id="1927aacb-2d23-80fc-b08a-f5c8af77c9f8" class="">
+</p><p id="1927aacb-2d23-8062-ae54-ee3729ab2ae4" class="">Other services:<div class="indented"><p id="1927aacb-2d23-80de-b560-ee2c82cad6e3" class=""><strong>Host Aliasing: </strong>A host with a complicated hostname can have an alias. For example, relay1[.]west-coast[.]enterprise[.]com<strong> </strong>can become enterprise[.]com  relay1[.]west-coast[.]enterprise[.]com is the <strong>canonical hostname.</strong></p><p id="1927aacb-2d23-80ec-9988-eb91b515634a" class=""><strong>Mail Server Aliasing: </strong>DNS can be invoked by a mail application to obtain the canonical hostname for a supplied alias name.</p><p id="1927aacb-2d23-80c1-bd47-f1d936003a58" class=""><strong>Load Distribution: </strong>Busy sites like cnn[.]com are replicated over multiple servers, with each server running on a different end system and each having a different IP address.</p></div></p><p id="1927aacb-2d23-807b-a423-c2b0e0aa6a53" class="">
+</p><h2 id="1927aacb-2d23-8099-bf49-d975234a11b8" class="">Overview of How DNS Works </h2><p id="1927aacb-2d23-80aa-8229-df1dbb10fd49" class="">DNS is distributed by Design, since having a centralized database in 1 server wouldn’t scale. </p><p id="1927aacb-2d23-806a-b386-eae5c4fbceb4" class="">There is a large number of servers organized in a hierarchical fashion and distributed around the world. </p><p id="1927aacb-2d23-80be-8a8a-f1fa33bfa372" class="">The hierarchy of DNS servers:<div class="indented"><p id="1927aacb-2d23-809d-bdfc-dd0d64b7877d" class="">Root DNS servers: More than 1000 root servers that are copies of 13 different root servers, managed by 12 different organizations and coordinated through the IANA. ROot DNS servers provide the IP address of the TLD servers.</p><p id="1927aacb-2d23-80bc-bea4-dfc88e9c2633" class="">Top Level Domain Servers - top level domains such as com, org, net, edu, gov, country domains like uk, fr, ca, jp, there is a TLD server.</p><p id="1927aacb-2d23-80b1-8a2c-fc533498ef42" class="">Authoritative DNS Servers - every organization with publicly accessible hosts (web servers and mail servers for example) on the Internet must provide publicly accessible DNS records that map the names of htose hosts to IP addresses. </p></div></p><p id="1927aacb-2d23-8069-b36e-e098077695a9" class="">Then there is the local DNS server - each ISP has a local DNS server. When a host connects to an ISP, the ISP provides the host with the IP addresses of one or more of its local DNS servers.</p><figure id="1927aacb-2d23-80c0-97c1-f4658f3c488c" class="image"><a href="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-02-06_at_3.26.35_PM.png"><img style="width:375.984375px" src="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-02-06_at_3.26.35_PM.png"/></a></figure><p id="1927aacb-2d23-80ab-8ec6-d9d8745c9671" class="">
+</p><h3 id="1927aacb-2d23-80d9-b2df-ee705394452c" class="">DNS Caching</h3><p id="1927aacb-2d23-807f-b686-e0a5b1827f4f" class="">DNS Caching - when a DNS server receives a DNS reply, it can cache the mapping in its local memory. </p><h2 id="1927aacb-2d23-8043-a730-e73cf1790672" class="">DNS Records and Messages</h2><p id="1927aacb-2d23-8079-a55f-e125276851eb" class="">DNS Servers store resource records, including RRs that provide hostname-to-IP address mappings. Each DNS reply message carries one or more Resource Record.</p><p id="1937aacb-2d23-80d3-8edc-df3e2b542a0c" class="">A resource record is a four-tuple that contains the following fields:</p><p id="1937aacb-2d23-80d9-895d-d4356578de34" class="">(Name, Value, Type, TTL)</p><p id="1937aacb-2d23-80d9-9c67-de2f01f4d0c9" class="">Meaning of Name and Value depend on Type<div class="indented"><p id="1937aacb-2d23-80f9-9c54-e8ad0c1f6bc9" class="">If Type=A, Name is a hostname and Value is the IP address for the hostname</p><p id="1937aacb-2d23-801d-acb8-f0e1c6c5f732" class="">If Type=NS, then name is a domain and Value is the hostname of an authoritative DNS server that knows how to obtain the IP addresses for hosts in the domain.</p><p id="1937aacb-2d23-80eb-b900-e974acfc5f72" class="">If Type=CNAME, then Value is a canonical hostname for the alias hostname Name</p><p id="1937aacb-2d23-80c9-9264-fee7fe0c651a" class="">If Type=MX, then Value is the canonical name of a mail server that has an alias hostname Name</p></div></p><h1 id="1937aacb-2d23-80dd-aff1-cc38453d8a1b" class="">Peer to Peer File Distribution</h1><p id="1967aacb-2d23-8032-8c24-f396d819b719" class="">In a P2P, pairs of intermittently connected hosts called peers communicate directly with each other. The peers are not owned by a service provider, but are instead PCs, laptops, and smartphones controlled by users.</p><p id="1967aacb-2d23-8002-937e-dfdab809c304" class="">Example: BitTorrent</p><p id="1ab7aacb-2d23-8099-8fa1-eed9929f866c" class="">The Web, email, DNS, all employ client-server architectures. In a P2P, there is no reliance on always-on infrastructure servers. Instead, pairs of intermittently connected hosts communicate directly with each other. These are PCs, laptops, and smartphone controlled by users.</p><p id="1ab7aacb-2d23-80e0-9513-c365a70a8edd" class="">
+</p><h3 id="1ab7aacb-2d23-8004-955b-d44962efc6fb" class="">Scalability of P2P Architectures</h3><figure id="1ab7aacb-2d23-8007-9f90-d23a19432a40" class="image"><a href="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-03-03_at_6.09.33_AM.png"><img style="width:709.984375px" src="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-03-03_at_6.09.33_AM.png"/></a></figure><p id="1ab7aacb-2d23-8082-bdda-e038acce9b8a" class="">Servrs and peers are connected to the internet.</p><p id="1ab7aacb-2d23-806f-8530-f3977d58ece1" class="">u_s = server’s upload rate</p><p id="1ab7aacb-2d23-80bb-a46d-efc482ffa15b" class="">u_i = the upload rate of the <em>i</em>th peer</p><p id="1ab7aacb-2d23-8059-840c-ca4f952e7589" class="">d_i = the download rate of the <em>i</em>th peer</p><p id="1ab7aacb-2d23-8081-9915-cf06a8da1ff9" class="">F = the size of the file to be distributed in bits</p><p id="1ab7aacb-2d23-80af-b0c8-ea7a70ca702e" class="">N = the number of peers that want to obtain a copy of the file</p><p id="1ab7aacb-2d23-8013-a1d2-d3c6c7993094" class="">Distribution time is the time it takes to get a copy of the file to all N peers.</p><p id="1ab7aacb-2d23-80a1-97c5-d30052e6419f" class="">
+</p><p id="1ab7aacb-2d23-80c1-95c7-e60b2ca730a7" class=""><strong>Client-Server Architecture</strong></p><p id="1ab7aacb-2d23-8078-94dc-d6d07cf6c331" class="">The server must transmit one copy of the file to each of the N peers. Thus the server must transmit NF bits. The time to distribute the file must be at least <em>NF/u_s.</em></p><p id="1ab7aacb-2d23-80b1-90a5-d887aeb226e7" class="">d_min = download rate of the peer with the lowest download rate, the minimum of {d_1, d_p,…,d_n}. The peer wit the lowest download rate cannot obtain all F bits of the file in les than F/d_min seconds. The minimum distribution time is <em>F/d_min</em></p><p id="1ab7aacb-2d23-80ee-aa41-e25de555e6dc" class="">Thus the distribution time in a client-server architecture is the max(<em>NF/u_s, F/d_min</em>).</p><p id="1ab7aacb-2d23-8069-b373-e7554121b934" class="">
+</p><p id="1ab7aacb-2d23-807c-bafd-f07e4b8aeb09" class=""><strong>P2P Architecture</strong></p><p id="1ab7aacb-2d23-806d-b1b9-f7aa588d2889" class="">At the beginning of the distribution, only the server has the file. To get the file into the community of peers, the server must send each bit of the file at least once into its access link. Thus, the minimum distribution time is at least <em>F/u_s.</em></p><p id="1ab7aacb-2d23-8092-95da-f2a57783dad8" class="">The minimum distribution time is at least <em>F/d_min.</em></p><p id="1ab7aacb-2d23-80ff-b828-ca318c1eae65" class="">The total upload capacity of the system as a whole is equal to the the upload rate of the server plus the upload rates of each of the inidividual peers. u_total = u_s + u_1 + u_2 + … + u_n.</p><p id="1ab7aacb-2d23-80be-b4e0-e2f3ad3f265f" class="">The system must deliver <em>F </em>bits to <em>N </em>peers, thus deliver a total of <em>NF</em> bits that cannot be done faster than u_total. <em>The minimum distribution time is also at least </em>NF/u_total.</p><p id="1ab7aacb-2d23-80fe-a53a-e9f16434f4c9" class="">The minimum distribution time for P2P is the max(F/u_s, F/d_min, NF/u_total)</p><figure id="1ab7aacb-2d23-80b3-864d-de0163d7ff0f" class="image"><a href="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-03-03_at_6.22.09_AM.png"><img style="width:709.984375px" src="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Screenshot_2025-03-03_at_6.22.09_AM.png"/></a></figure><h3 id="1ab7aacb-2d23-805c-bfb7-f45d7a307544" class="">BitTorrent</h3><p id="1ab7aacb-2d23-80aa-83f9-d70c76ccec31" class="">The collection of all peers participating in the distribution of a particular file is called a <em>torrent. </em></p><p id="1ab7aacb-2d23-80f9-93c7-c0ba5905c6be" class="">Peers in a torrent download equal-sized chunks of the file from one another, with a typical chunk size of 256 KBytes. When a peer first joins a torrent, it has no chunks. Over time, it accumulates more and more chunks. While it downloads chunks it also uploads chunks to other peers. Once a peer has the file it can leave the torrent or remain and continue to upload chunks to other peers.</p><p id="1ab7aacb-2d23-807e-8938-c4cf0cf835b6" class="">Each torrent has an infrastructure node called a tracker. When a peer joins a torrent, it registers itself with the tracker. The tracker randomly selects a subset of peers from the set of participating peers, and sends the IP address to the new peer. That peer attempts to establish concurrent TCP connections with the ‘neighbors’. </p><p id="1ab7aacb-2d23-803f-81d9-f44ca299c50d" class="">As time goes on, some peers may leave and other peers may establish new connections, so a peer’s neighbors will fluctuate.</p><p id="1ab7aacb-2d23-807c-859e-dca5919991ed" class="">Periodically, a peer will ask neighbors for the list of the chunks they have. If a peer has <em>L</em> different neighbors, they will receive <em>L </em>list of chunks. With this knowledge, the peer will issue requests for chunks they do not have. </p><p id="1ab7aacb-2d23-8023-b8a4-ea495f2c66ca" class="">Rarest First is a technique used to determine the chunks that are the rarest among the neighbors and request those chunks first.</p><p id="1ab7aacb-2d23-806c-b4c5-d4a82a96c179" class="">BitTorrent uses a trading algorithm that gives priority to the neighbors that are currently supplying her data at the highest rate, and then reciprocates by sending chunks to these same four peers. </p><h1 id="1967aacb-2d23-8005-aac5-ca06ecdcb851" class="">Video Streaming and Content Distribution Networks</h1><p id="19e7aacb-2d23-805b-ba16-ee76a1562e11" class="">Straming video accounts for almost 80% of Internet Traffic in 2020. </p><h2 id="1ac7aacb-2d23-800e-b87a-cef84064f0ce" class="">Internet Video</h2><p id="1ac7aacb-2d23-800c-8ee8-f2204f0606a0" class="">In streaming stored video applications, the underlying medium is prerecorded video placed on servers and sent to users to view the videos on demand.</p><p id="1ac7aacb-2d23-809d-878d-c97eecd68555" class="">A video is a sequence of images displayed at a constant rate - 24 or 30 images per second.</p><p id="1ac7aacb-2d23-8050-874c-ea86b4e3b185" class="">From a networking perspective, the most salient characteristic of video is its high bit rate.</p><p id="1ac7aacb-2d23-8032-a70e-c14d6c7d3125" class="">Compressed Internet video typically ranges from 100 kbps for low-quality Video to over 4 Mbps for streaming high-definition movies; 4K streaming envisions a bitrate of more than 10 Mbps. This can translate to a high amount of traffic and storage, particularly for high-end video. To provide continuous playout, the network must provide an average throughput to the streaming application that is at least as large as the bit rate of the compressed video.</p><h2 id="1ac7aacb-2d23-8080-a8d5-da73ac2741b1" class="">HTTP Streaming and DASH</h2><p id="1ac7aacb-2d23-80f5-94d9-d2c1bae440df" class="">In HTTP streaming, the video is simply stored at an HTTP server as an ordinary file with a specific URL. This has a major shortcoming - all client receive the same encoding of the video, despite large variations in the amount of bandwidth available to a client. </p><p id="1ac7aacb-2d23-807f-a73c-e63499d63da7" class="">Dynamic Adaptive Streaming over HTTP - DASH</p><p id="1ac7aacb-2d23-808a-b852-dca01ca182c6" class="">The video is encoded into several different versions, with each version having a different bit rate and correspondingly, a different quality level. The client dynamically requests chunks of video segments of a few seconds in length. </p><p id="1ac7aacb-2d23-809d-a46f-e31c46322ad4" class="">DASH allows clients with different Internet access rates to stream in video at different encoding rates. Clients with low-speed connections can receive a low bit-rate version, and clients with high-speed connections can receive a high-quality version.</p><h2 id="1ac7aacb-2d23-8048-9c3d-de535747b282" class="">Content Distribution Networks</h2><p id="1ac7aacb-2d23-80ba-a837-e0dc99d0f157" class="">Many internet video companies are distributing on-demand multi-Mbps streams to millions of users on a daily basis. This is a challenging task.</p><p id="1ac7aacb-2d23-80a1-a3b5-c047502adf7f" class="">One solution is to build a massive data center. This has some issues. If the client is far from the data center, packets will cross many communication links and likely pass through many ISPs. If one of these links provides a throughput that is less than the video consumption rate, the end-to-end throughput will also be below consumption rate, resulting in annoying freezing delays.</p><p id="1ac7aacb-2d23-80b8-830b-e9f26f006dff" class="">A popular video will likely be sent over the ame communication links - the Internet video company itself will be paying its provider ISP for sending the same bytes into the Internet over and over again.</p><p id="1ac7aacb-2d23-8075-ad11-cf3ffe2c5237" class="">A single data center represents a single point of failure.</p><p id="1ac7aacb-2d23-806c-ad33-ffa71c7b7b69" class="">Almost all major video-streaming companies make use of CDNs - manages servers in multiple geographically distributed locations, stores copies of the videos in its servers, and attempts to direct each user request to a CDN that will provide the best user experience. </p><p id="1ac7aacb-2d23-8073-aa9a-ec51bfd7b6d0" class="">CDNS typically adopt one of the two different server placement philosophies:</p><ol type="1" id="1ac7aacb-2d23-806d-9fe9-edf7c0e54c58" class="numbered-list" start="1"><li>Enter Deep: Deploying server clusters in acces ISPs all around the world.</li></ol><ol type="1" id="1ac7aacb-2d23-80cd-bc4f-e1e4c8b7ce70" class="numbered-list" start="2"><li>Bring Home - Building large clusters at smaller number of sites. Instead of getting into access ISPs, they instead place their clusters in IXPs. </li></ol><h3 id="1ac7aacb-2d23-8042-8403-f050fe2c6366" class="">CDN Operations</h3><p id="1ac7aacb-2d23-8016-9cb8-e3cd99722649" class="">When a browser in a user’s host is instructed to retrieve a specific video, the CDN must intercept the request to determine a suitable CDN server cluster and redirect that client’s request to a server in that cluster. Most CDNs take advantage of DNS to intercept and redirect requests.</p><h3 id="1ac7aacb-2d23-800f-9216-d5c182c87039" class="">Cluster Selection Strategies</h3><p id="1ac7aacb-2d23-80ce-b861-cacc35c31925" class="">Cluster selection strategy - a mechanism for dynamically directing clients to a server cluster or a data center within the CDN.  One strategy is to assign the client to the geographiclaly closest one. </p><p id="1ac7aacb-2d23-80bd-ab97-e157fb8b47cd" class="">Real-time measurements are used to provide the best cluster based on the current traffic conditions. </p><p id="19e7aacb-2d23-8007-9d5a-f3411138024b" class="">
+</p><figure id="19e7aacb-2d23-807a-bb13-e099087d4b08" class="link-to-page"><a href="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Questions%2019e7aacb2d23807abb13e099087d4b08.html">Questions</a></figure><figure id="1a57aacb-2d23-8054-81cb-e681eb2f41a5" class="link-to-page"><a href="Chapter%202%20-%20The%20Application%20Layer%2018f7aacb2d2380ccbdd1dbef85561bf9/Problems%201a57aacb2d23805481cbe681eb2f41a5.html">Problems</a></figure><p id="1ab7aacb-2d23-80d7-8f0f-cda0de321e1b" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

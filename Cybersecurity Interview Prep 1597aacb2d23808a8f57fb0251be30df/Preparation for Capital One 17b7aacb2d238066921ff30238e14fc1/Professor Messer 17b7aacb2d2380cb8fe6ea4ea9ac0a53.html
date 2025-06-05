@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Professor Messer</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17b7aacb-2d23-80cb-8fe6-ea4ea9ac0a53" class="page sans"><header><h1 class="page-title">Professor Messer</h1><p class="page-description"></p></header><div class="page-body"><figure id="17b7aacb-2d23-80a3-bbac-ed6b22cb4332" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Security%20Controls%2017b7aacb2d2380a3bbaced6b22cb4332.html">Security Controls</a></figure><figure id="17b7aacb-2d23-80a5-a954-d1991f20e9aa" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/CIA%20Triad%2017b7aacb2d2380a5a954d1991f20e9aa.html">CIA Triad</a></figure><figure id="17b7aacb-2d23-806f-8e7e-f8963d909453" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Non-repudiation%2017b7aacb2d23806f8e7ef8963d909453.html">Non-repudiation</a></figure><figure id="17b7aacb-2d23-80f4-aa56-ebf2b1df4436" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Authentication,%20Authorization,%20and%20Accounting%2017b7aacb2d2380f4aa56ebf2b1df4436.html">Authentication, Authorization, and Accounting</a></figure><figure id="17b7aacb-2d23-8090-92d4-e1b5c911fd08" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Gap%20Analysis%2017b7aacb2d23809092d4e1b5c911fd08.html">Gap Analysis</a></figure><figure id="17b7aacb-2d23-80ba-81cc-dd537bf7bd56" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Zero%20Trust%2017b7aacb2d2380ba81ccdd537bf7bd56.html">Zero Trust</a></figure><figure id="17b7aacb-2d23-803d-bcff-f8499aa1c021" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Physical%20Security%2017b7aacb2d23803dbcfff8499aa1c021.html">Physical Security</a></figure><figure id="17c7aacb-2d23-80b1-81b2-e41f71400c5c" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Deception%20and%20Disruption%2017c7aacb2d2380b181b2e41f71400c5c.html">Deception and Disruption</a></figure><figure id="17c7aacb-2d23-805f-8fcd-fe4c1abd30e5" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Change%20Management%2017c7aacb2d23805f8fcdfe4c1abd30e5.html">Change Management</a></figure><figure id="17c7aacb-2d23-80f4-b91f-ff476daf18b5" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Technical%20Change%20Management%2017c7aacb2d2380f4b91fff476daf18b5.html">Technical Change Management</a></figure><figure id="17c7aacb-2d23-807c-ab36-d9350c611479" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Public%20Key%20Infrastructure%20(PKI)%2017c7aacb2d23807cab36d9350c611479.html">Public Key Infrastructure (PKI)</a></figure><figure id="17c7aacb-2d23-804f-a174-ccd81ebd5cba" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Encrypting%20Data%2017c7aacb2d23804fa174ccd81ebd5cba.html">Encrypting Data</a></figure><figure id="17c7aacb-2d23-80b8-ae18-dee7f6b029d2" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Key%20Exchange%2017c7aacb2d2380b8ae18dee7f6b029d2.html">Key Exchange</a></figure><figure id="17d7aacb-2d23-8084-8734-c3211e48c1bf" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Encryption%20Technologies%2017d7aacb2d2380848734c3211e48c1bf.html">Encryption Technologies</a></figure><figure id="17d7aacb-2d23-80f0-b14e-de65faa4d73b" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Obfuscation%2017d7aacb2d2380f0b14ede65faa4d73b.html">Obfuscation</a></figure><figure id="17d7aacb-2d23-80fb-b1d5-c51348b10d5f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Hashing%20and%20Digital%20Signatures%2017d7aacb2d2380fbb1d5c51348b10d5f.html">Hashing and Digital Signatures</a></figure><figure id="17d7aacb-2d23-80c5-9f0b-dd9856896baa" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Blockchain%2017d7aacb2d2380c59f0bdd9856896baa.html">Blockchain</a></figure><figure id="17d7aacb-2d23-80db-8af1-c8e154c182fa" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Certificate%2017d7aacb2d2380db8af1c8e154c182fa.html">Certificate</a></figure><figure id="17d7aacb-2d23-8066-b5d5-ea6eacd8bdfd" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Threat%20Actors%2017d7aacb2d238066b5d5ea6eacd8bdfd.html">Threat Actors</a></figure><figure id="17d7aacb-2d23-8063-aa46-dac1193bae15" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Threat%20Vector%2017d7aacb2d238063aa46dac1193bae15.html">Threat Vector</a></figure><figure id="17f7aacb-2d23-80fb-8e77-dfaa5dd70f80" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Phishing%2017f7aacb2d2380fb8e77dfaa5dd70f80.html">Phishing</a></figure><figure id="17f7aacb-2d23-80f3-8b8b-c0391e771700" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Impersonation%2017f7aacb2d2380f38b8bc0391e771700.html">Impersonation</a></figure><figure id="17f7aacb-2d23-805e-bfb9-df7f311cd185" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Watering%20Hole%2017f7aacb2d23805ebfb9df7f311cd185.html">Watering Hole</a></figure><figure id="17f7aacb-2d23-80ea-b042-cfcd7a49ac05" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Other%20Social%20Engineering%2017f7aacb2d2380eab042cfcd7a49ac05.html">Other Social Engineering</a></figure><figure id="17f7aacb-2d23-80e6-97fa-fab7d808290d" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Memory%20Injections%2017f7aacb2d2380e697fafab7d808290d.html">Memory Injections</a></figure><figure id="17f7aacb-2d23-8089-b467-deb5a89aa315" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Buffer%20Overflow%2017f7aacb2d238089b467deb5a89aa315.html">Buffer Overflow</a></figure><figure id="17f7aacb-2d23-80a7-9a45-c48d4c8cf4dc" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Race%20Conditions%2017f7aacb2d2380a79a45c48d4c8cf4dc.html">Race Conditions</a></figure><figure id="17f7aacb-2d23-8069-9a45-c700bd283563" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Malicious%20Updates%2017f7aacb2d2380699a45c700bd283563.html">Malicious Updates</a></figure><figure id="17f7aacb-2d23-80d5-8248-dee416abc189" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Operating%20System%20Vulnerabilities%2017f7aacb2d2380d58248dee416abc189.html">Operating System Vulnerabilities</a></figure><figure id="17f7aacb-2d23-8028-bcd5-edcda659c526" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/SQL%20Injection%2017f7aacb2d238028bcd5edcda659c526.html">SQL Injection</a></figure><figure id="17f7aacb-2d23-80a7-bf5b-f1df79332a23" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Cross-Site%20Scripting%2017f7aacb2d2380a7bf5bf1df79332a23.html">Cross-Site Scripting</a></figure><figure id="17f7aacb-2d23-80e5-91b0-ec8fc04f8296" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Hardware%20vulnerabilities%2017f7aacb2d2380e591b0ec8fc04f8296.html">Hardware vulnerabilities</a></figure><figure id="17f7aacb-2d23-8007-948a-cce01b4b4305" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Virtualization%20Vulnerabilities%2017f7aacb2d238007948acce01b4b4305.html">Virtualization Vulnerabilities</a></figure><figure id="17f7aacb-2d23-8063-af11-dfacc5e60e56" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Cloud-specific%20vulnerabilities%2017f7aacb2d238063af11dfacc5e60e56.html">Cloud-specific vulnerabilities</a></figure><figure id="17f7aacb-2d23-808a-867a-c50a14d6cde1" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Supply-chain%20Vulnerabilities%2017f7aacb2d23808a867ac50a14d6cde1.html">Supply-chain Vulnerabilities</a></figure><figure id="17f7aacb-2d23-80e0-acc3-efbcb2180bd9" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Misconfiguration%20Vulnerabilities%2017f7aacb2d2380e0acc3efbcb2180bd9.html">Misconfiguration Vulnerabilities</a></figure><figure id="17f7aacb-2d23-80a6-9058-c84bde45aea7" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Mobile%20Device%20Vulnerabilities%2017f7aacb2d2380a69058c84bde45aea7.html">Mobile Device Vulnerabilities</a></figure><figure id="17f7aacb-2d23-807a-95e0-ca5e7fe917d3" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Zero-Day%20Vulnerabilities%2017f7aacb2d23807a95e0ca5e7fe917d3.html">Zero-Day Vulnerabilities</a></figure><figure id="17f7aacb-2d23-808f-a439-f11e6aaef756" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/An%20Overview%20of%20Malware%2017f7aacb2d23808fa439f11e6aaef756.html">An Overview of Malware</a></figure><figure id="17f7aacb-2d23-802e-b2b5-d3b3d89c9524" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Viruses%20and%20Worms%2017f7aacb2d23802eb2b5d3b3d89c9524.html">Viruses and Worms</a></figure><figure id="1807aacb-2d23-80b1-8066-fac679a28e86" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Spyware%20and%20Bloatware%201807aacb2d2380b18066fac679a28e86.html">Spyware and Bloatware</a></figure><figure id="1807aacb-2d23-80e7-8246-e6dbd23207c2" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Other%20Malware%20Types%201807aacb2d2380e78246e6dbd23207c2.html">Other Malware Types</a></figure><figure id="1807aacb-2d23-80e2-a7c5-f90a502fe0e7" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Physical%20Attacks%201807aacb2d2380e2a7c5f90a502fe0e7.html">Physical Attacks</a></figure><figure id="1807aacb-2d23-800d-b403-e228f8d96e1e" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Denial%20of%20Service%201807aacb2d23800db403e228f8d96e1e.html">Denial of Service</a></figure><figure id="1807aacb-2d23-8089-93dd-f972f14cae38" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/DNS%20Attacks%201807aacb2d23808993ddf972f14cae38.html">DNS Attacks</a></figure><figure id="1807aacb-2d23-804c-a5f3-ed1beadb264f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Wireless%20Attacks%201807aacb2d23804ca5f3ed1beadb264f.html">Wireless Attacks</a></figure><figure id="1817aacb-2d23-8018-b06d-f35d1641e04e" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/On-Path%20Attack%201817aacb2d238018b06df35d1641e04e.html">On-Path Attack</a></figure><figure id="1817aacb-2d23-80e9-81bd-e3240bedcf85" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Replay%20Attacks%201817aacb2d2380e981bde3240bedcf85.html">Replay Attacks</a></figure><figure id="1817aacb-2d23-80be-a464-d82ef750c392" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Malicious%20Code%201817aacb2d2380bea464d82ef750c392.html">Malicious Code</a></figure><figure id="1817aacb-2d23-8098-9249-c7a66f8f74ec" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Application%20Attacks%201817aacb2d2380989249c7a66f8f74ec.html">Application Attacks</a></figure><figure id="1827aacb-2d23-80ed-894b-fbeac2ada389" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Cryptographic%20Attacks%201827aacb2d2380ed894bfbeac2ada389.html">Cryptographic Attacks</a></figure><figure id="1827aacb-2d23-801a-8ac8-f69043ec73f8" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Password%20Attacks%201827aacb2d23801a8ac8f69043ec73f8.html">Password Attacks</a></figure><figure id="1827aacb-2d23-8089-9a9f-ddb88c55d69e" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Indicators%20of%20Compromise%201827aacb2d2380899a9fddb88c55d69e.html">Indicators of Compromise</a></figure><figure id="1827aacb-2d23-80d5-b1e2-db546610057e" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Segmentation%20and%20Access%20Control%201827aacb2d2380d5b1e2db546610057e.html">Segmentation and Access Control</a></figure><figure id="1827aacb-2d23-8061-8e4d-cf3db4af3f3d" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Mitigation%20Techniques%201827aacb2d2380618e4dcf3db4af3f3d.html">Mitigation Techniques</a></figure><figure id="1827aacb-2d23-8069-b972-d2fcb1f614a9" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Hardening%20Techniques%201827aacb2d238069b972d2fcb1f614a9.html">Hardening Techniques</a></figure><figure id="1827aacb-2d23-80e8-9391-d6c5ba35b8f4" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Cloud%20Infrastructures%201827aacb2d2380e89391d6c5ba35b8f4.html">Cloud Infrastructures</a></figure><figure id="1827aacb-2d23-8009-8041-d1c70e1480bc" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Network%20Infrastructure%20Concepts%201827aacb2d2380098041d1c70e1480bc.html">Network Infrastructure Concepts</a></figure><figure id="1827aacb-2d23-8050-beca-ce46b34b9a0d" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Other%20Infrastructure%20Concepts%201827aacb2d238050becace46b34b9a0d.html">Other Infrastructure Concepts</a></figure><figure id="1837aacb-2d23-80f6-9ca1-ed25aa866273" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Infrastructure%20Considerations%201837aacb2d2380f69ca1ed25aa866273.html">Infrastructure Considerations</a></figure><figure id="1837aacb-2d23-804d-8897-d08f74373065" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Secure%20Infrastructure%201837aacb2d23804d8897d08f74373065.html">Secure Infrastructure</a></figure><figure id="1837aacb-2d23-80e6-a359-c05bea20ceb7" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Intrusion%20Prevention%201837aacb2d2380e6a359c05bea20ceb7.html">Intrusion Prevention</a></figure><figure id="1837aacb-2d23-802b-8405-ea776275319f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Network%20Appliances%201837aacb2d23802b8405ea776275319f.html">Network Appliances</a></figure><figure id="1837aacb-2d23-80ef-b5d4-f9423cc037c2" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Port%20Security%201837aacb2d2380efb5d4f9423cc037c2.html">Port Security</a></figure><figure id="1837aacb-2d23-8029-b17b-fb8f8f69ec21" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Firewall%20Types%201837aacb2d238029b17bfb8f8f69ec21.html">Firewall Types</a></figure><figure id="1837aacb-2d23-8029-b98f-ee2e8b56e7de" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Secure%20Communication%201837aacb2d238029b98fee2e8b56e7de.html">Secure Communication</a></figure><figure id="1837aacb-2d23-809a-beee-f586753f8ba9" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Data%20Classification%20and%20Types%201837aacb2d23809abeeef586753f8ba9.html">Data Classification and Types</a></figure><figure id="1837aacb-2d23-80e2-b15e-d51d5b90a2cc" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/States%20of%20Data%201837aacb2d2380e2b15ed51d5b90a2cc.html">States of Data</a></figure><figure id="1837aacb-2d23-80d1-a0d0-de27c6629cab" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Protecting%20Data%201837aacb2d2380d1a0d0de27c6629cab.html">Protecting Data</a></figure><figure id="1847aacb-2d23-8058-b913-e6f8cadc2ddf" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/resiliency%201847aacb2d238058b913e6f8cadc2ddf.html">resiliency</a></figure><figure id="1847aacb-2d23-8098-82df-e9767721d253" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Capacity%20Planning%201847aacb2d23809882dfe9767721d253.html">Capacity Planning</a></figure><figure id="1847aacb-2d23-807e-9e6d-cfa374a2a761" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Recovery%20Testing%201847aacb2d23807e9e6dcfa374a2a761.html">Recovery Testing</a></figure><figure id="1847aacb-2d23-8058-a26e-c871d9ce5c21" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Backups%201847aacb2d238058a26ec871d9ce5c21.html">Backups</a></figure><figure id="1847aacb-2d23-8087-b8a9-f2f8c5af0710" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Power%20Resiliency%201847aacb2d238087b8a9f2f8c5af0710.html">Power Resiliency</a></figure><figure id="1847aacb-2d23-805f-acef-c8e2b0495f7f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Secure%20resiliency%201847aacb2d23805facefc8e2b0495f7f.html">Secure resiliency</a></figure><figure id="1847aacb-2d23-80c6-9b7b-e364affe81be" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Hardening%20Targets%201847aacb2d2380c69b7be364affe81be.html">Hardening Targets</a></figure><figure id="1857aacb-2d23-80e1-bb73-e8da20b69fd6" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Securing%20Wireless%20and%20Mobile%201857aacb2d2380e1bb73e8da20b69fd6.html">Securing Wireless and Mobile</a></figure><figure id="1857aacb-2d23-8082-b9ee-e7b8ef9cd556" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Wireless%20Security%20Settings%201857aacb2d238082b9eee7b8ef9cd556.html">Wireless Security Settings</a></figure><figure id="1857aacb-2d23-80ca-b8e3-f007b341e9f3" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Application%20Security%201857aacb2d2380cab8e3f007b341e9f3.html">Application Security</a></figure><figure id="1857aacb-2d23-805b-9b23-c4dbc08052ac" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Asset%20Management%201857aacb2d23805b9b23c4dbc08052ac.html">Asset Management</a></figure><figure id="1857aacb-2d23-80a4-9c05-d97426a2cffb" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Vulnerability%20Scanning%201857aacb2d2380a49c05d97426a2cffb.html">Vulnerability Scanning</a></figure><figure id="1857aacb-2d23-8070-80cf-db419cab59fd" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Threat%20Intelligence%201857aacb2d23807080cfdb419cab59fd.html">Threat Intelligence</a></figure><figure id="1857aacb-2d23-80f7-b2bb-f89e2cf8951f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Penetration%20Testing%201857aacb2d2380f7b2bbf89e2cf8951f.html">Penetration Testing</a></figure><figure id="1857aacb-2d23-802d-bcc0-f876ed74447f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Analyzing%20Vulnerabilities%201857aacb2d23802dbcc0f876ed74447f.html">Analyzing Vulnerabilities</a></figure><figure id="1857aacb-2d23-8083-91eb-f723e883be30" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Vulnerability%20Remediation%201857aacb2d23808391ebf723e883be30.html">Vulnerability Remediation</a></figure><figure id="1877aacb-2d23-80fc-9378-c49bf0a46f27" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Security%20Monitoring%201877aacb2d2380fc9378c49bf0a46f27.html">Security Monitoring</a></figure><figure id="1877aacb-2d23-8097-9462-d27d7c0a9c32" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Security%20Tools%201877aacb2d2380979462d27d7c0a9c32.html">Security Tools</a></figure><figure id="1877aacb-2d23-8080-acda-df728618cd81" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Firewall%201877aacb2d238080acdadf728618cd81.html">Firewall</a></figure><figure id="1877aacb-2d23-80bf-acd7-dbece006b891" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Web%20Filtering%201877aacb2d2380bfacd7dbece006b891.html">Web Filtering</a></figure><figure id="1877aacb-2d23-80c5-9e6a-c6940abaefde" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Operating%20System%20Security%201877aacb2d2380c59e6ac6940abaefde.html">Operating System Security</a></figure><figure id="1877aacb-2d23-80e4-b947-f81a3564dff2" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Secure%20Protocols%201877aacb2d2380e4b947f81a3564dff2.html">Secure Protocols</a></figure><figure id="1897aacb-2d23-8058-b8ef-da5278a8ceb0" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Email%20Security%201897aacb2d238058b8efda5278a8ceb0.html">Email Security</a></figure><figure id="1897aacb-2d23-80ff-9c19-c97a33a51fdc" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Monitoring%20Data%201897aacb2d2380ff9c19c97a33a51fdc.html">Monitoring Data</a></figure><figure id="1897aacb-2d23-80ee-9831-eeb6b20f08f5" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Endpoint%20Security%201897aacb2d2380ee9831eeb6b20f08f5.html">Endpoint Security</a></figure><figure id="1897aacb-2d23-800c-b34d-d6ad33bbfd0d" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Identity%20and%20Access%20Management%201897aacb2d23800cb34dd6ad33bbfd0d.html">Identity and Access Management</a></figure><figure id="1897aacb-2d23-802c-bf81-f7cf182e1e6f" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Access%20Control%201897aacb2d23802cbf81f7cf182e1e6f.html">Access Control</a></figure><figure id="1897aacb-2d23-80ee-95e4-dcf1c9ccb488" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Multifactor%20Authentication%201897aacb2d2380ee95e4dcf1c9ccb488.html">Multifactor Authentication</a></figure><figure id="1897aacb-2d23-8059-a180-f70f2d3f9cb9" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Password%20Security%201897aacb2d238059a180f70f2d3f9cb9.html">Password Security</a></figure><figure id="1897aacb-2d23-806a-9a7f-e38d48b1ecc3" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Scripting%20and%20Automation%201897aacb2d23806a9a7fe38d48b1ecc3.html">Scripting and Automation</a></figure><figure id="18a7aacb-2d23-80fe-9093-daf423ec7798" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Incident%20Response%2018a7aacb2d2380fe9093daf423ec7798.html">Incident Response</a></figure><figure id="18a7aacb-2d23-802f-b3b7-ebc0b7f83b89" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Incident%20Planning%2018a7aacb2d23802fb3b7ebc0b7f83b89.html">Incident Planning</a></figure><figure id="18a7aacb-2d23-8029-bebd-e328dfc43ff1" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Digital%20Forensics%2018a7aacb2d238029bebde328dfc43ff1.html">Digital Forensics</a></figure><figure id="18a7aacb-2d23-80d8-add4-d7a1508a0dfa" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Log%20Data%2018a7aacb2d2380d8add4d7a1508a0dfa.html">Log Data</a></figure><figure id="18a7aacb-2d23-801f-9692-ce863320af63" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Security%20Policies%2018a7aacb2d23801f9692ce863320af63.html">Security Policies</a></figure><figure id="18a7aacb-2d23-80fb-a09e-fcd1a72f09c1" class="link-to-page"><a href="Professor%20Messer%2017b7aacb2d2380cb8fe6ea4ea9ac0a53/Security%20Standards%2018a7aacb2d2380fba09efcd1a72f09c1.html">Security Standards</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

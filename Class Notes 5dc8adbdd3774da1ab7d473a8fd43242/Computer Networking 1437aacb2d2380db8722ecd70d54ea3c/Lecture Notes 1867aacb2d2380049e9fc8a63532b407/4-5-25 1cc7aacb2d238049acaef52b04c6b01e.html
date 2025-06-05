@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4-5-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1cc7aacb-2d23-8049-acae-f52b04c6b01e" class="page sans"><header><h1 class="page-title">4-5-25</h1><p class="page-description"></p></header><div class="page-body"><p id="1cc7aacb-2d23-8045-a868-d0ada35f309c" class=""><strong>Logistics</strong></p><p id="1cc7aacb-2d23-8098-bc3e-e52ed5c664ff" class="">Chapter 5 will be this week and next week. Chapter 6 and 8 will be 1 week each. </p><p id="1cc7aacb-2d23-800c-9d7a-c7c839b3bbea" class="">Final will be on 4, 5, 6, and rudimentary questions from chapter 8</p><p id="1cc7aacb-2d23-80ab-95e6-d456a81b1ad3" class=""><strong>Lecture</strong></p><p id="1cc7aacb-2d23-801b-becc-f3efbe85e680" class="">Network Layer Control Plane: Goals</p><p id="1cc7aacb-2d23-80ff-be85-cfb3568a325c" class="">Understand principles behind the control plane:<div class="indented"><p id="1cc7aacb-2d23-8055-bfa1-ccacb7c78c3d" class="">Traditional routing algorithms</p><p id="1cc7aacb-2d23-80e3-81b2-eb78a4d67396" class="">SDN controllers</p><p id="1cc7aacb-2d23-8041-8864-e324f52542be" class="">Network management, configuration</p></div></p><p id="1cc7aacb-2d23-805b-9c3a-d3d45744ac1f" class="">Instantiation, implementation in the Internet:<div class="indented"><p id="1cc7aacb-2d23-8093-8b29-cda951bd6d36" class="">OSPF, BGP</p><p id="1cc7aacb-2d23-80f4-95b4-eae028d029a3" class="">OPenFlow, ODL, and ONOS controllers</p><p id="1cc7aacb-2d23-8063-9951-d7cbfae0858f" class="">Internet Control message Protcool</p><p id="1cc7aacb-2d23-8083-b2e2-f29b41a09254" class="">SNMP, YAN/NETCONF</p></div></p><p id="1cc7aacb-2d23-8088-b7b5-e108065d28ce" class="">
+</p><p id="1cc7aacb-2d23-80f7-9583-c7d91354fc3e" class="">Network-layer functions</p><p id="1cc7aacb-2d23-803c-ac58-f9fc914918ca" class="">forwarding: move packets from router’s input to appropriate router output - this is on the data plane, implemented in hardware</p><p id="1cc7aacb-2d23-80ee-bfa1-f0104bdb6389" class="">routing: determine route taken by packets from source to destination - this is on the control plane, implemented in software. It is fast, but not as fast as the hardware.</p><p id="1cc7aacb-2d23-8012-95ba-d526632017f6" class="">
+</p><p id="1cc7aacb-2d23-80c0-a192-e965e5dc29d8" class="">Two approaches to structuring network control plane:</p><p id="1cc7aacb-2d23-80b6-bd6c-d68b7373c63a" class="">per router control (traditional)</p><p id="1cc7aacb-2d23-80e3-a27d-c1f1a9b1b533" class="">logically centralized control (software defined networking)</p><p id="1cc7aacb-2d23-8052-bb9b-ebcc9b7f8be1" class="">
+</p><p id="1cc7aacb-2d23-80ea-b392-cccb30e79cfa" class="">In the per-router control, there are individual routing algorithm components in each and every router interact in the control plane</p><p id="1cc7aacb-2d23-80a8-a4b3-f30d95203434" class="">In the SDN, remote controller computes, installs forwarding tables in routers</p><p id="1cc7aacb-2d23-80e7-a70d-de9dea5b19d7" class="">
+</p><p id="1cc7aacb-2d23-805f-a992-fe0decd943a2" class=""><strong>Routing Protocols</strong></p><p id="1cc7aacb-2d23-804a-a1dc-c72cb1a89786" class="">The goal is to determine a “good” path from sending hosts to receiving host, through network of rotuers</p><p id="1cc7aacb-2d23-80f8-8353-c5e1372d9412" class="">The path is a sequence of routers packets traverse from given initial source host to final destination host</p><p id="1cc7aacb-2d23-80ca-b9a7-c4d4eeedea64" class="">“good” means least “cost”, “fastest”, “least congested”</p><p id="1cc7aacb-2d23-80e9-933e-f806fc0bf25e" class="">
+</p><p id="1cc7aacb-2d23-80d7-85b2-d246e41c89a9" class=""><strong>Graph Abstraction</strong></p><p id="1cc7aacb-2d23-8030-b032-fdbd6b22f81d" class="">Graph: G = (N, E)</p><p id="1cc7aacb-2d23-801f-bbb1-c84dc2f09b5b" class="">N is a set of routers </p><p id="1cc7aacb-2d23-8003-95ab-fb18cbf3145b" class="">E is the set of links between routers</p><p id="1cc7aacb-2d23-80b1-a61d-f63da68111d3" class="">C(a, b) is the cost of direct links between a and b</p><p id="1cc7aacb-2d23-80b9-a73c-ea505b73e00c" class="">Cost is defined by network operator: could always be 1, or inversely related to bandwidth or congestion</p><p id="1cc7aacb-2d23-809b-92af-c331bd8386c1" class="">
+</p><p id="1cc7aacb-2d23-8055-a0bb-cb166aa12e3b" class="">Routing algorithm classification</p><p id="1cc7aacb-2d23-804e-988d-dadb27385f7d" class="">Global: all routers have complete topology, link cost info. A complete view of the entire network. These are called “link state” algorithms. Good in small networks, not so good in big networks.</p><p id="1cc7aacb-2d23-805a-8136-c6fceb3f1f65" class="">Decentralized: iterative process of computation, exchange of info with neighbors. Routers initially only know link costs to attached neighbors. These are called Distance Vector algorithms. </p><p id="1cc7aacb-2d23-8019-9717-c6fc4527d17d" class="">Static: routes change slowly over time.</p><p id="1cc7aacb-2d23-803c-9d4f-d4325f978caf" class="">Dynamic: rotues change more quickly, periodic updates or in response to link cost changes.</p><p id="1cc7aacb-2d23-8025-8f51-dd7336aeaa95" class="">
+</p><h2 id="1cc7aacb-2d23-8092-8f1a-e643708413e8" class="">Link State</h2><p id="1cc7aacb-2d23-8000-865c-d5eadf43374f" class="">Dijkstra’s Link-State Routing Algorithm</p><p id="1cc7aacb-2d23-808a-bbbf-c45cfa940a26" class="">Centralized: network topology, link costs known to all nodes</p><p id="1cc7aacb-2d23-8056-b54f-cd292843c79f" class="">accomplished via “link state broadcast”</p><p id="1cc7aacb-2d23-804b-80d1-c790c8239f42" class="">all nodes have same info</p><p id="1cc7aacb-2d23-8096-8f01-d0e36334dcbc" class="">computes least cost path from one node (source) to all other nodes</p><p id="1cc7aacb-2d23-8080-889e-d4718a286919" class="">gives forwarding table for that node</p><p id="1cc7aacb-2d23-80ef-afbd-c069c822bf31" class="">iterative: after k iterations, know least cost path to k destinations</p><p id="1cc7aacb-2d23-8060-b003-f4956de03e84" class="">Notation:</p><p id="1cc7aacb-2d23-80e6-b829-ed2594bc3c62" class="">C(x,y) direct link cost from node x to y; =∞ if no direct</p><p id="1cc7aacb-2d23-8041-aa00-ffb908b2ae4e" class="">D(v) current estimate of cost of least-cost path from source to destination v</p><p id="1cc7aacb-2d23-8016-b709-f2af17cfab27" class="">P(v) predecessor node along path from source to v</p><p id="1cc7aacb-2d23-8070-b82c-f437c023f44a" class="">N’: set of nodes whose least-cost-path definitively known</p><p id="1cc7aacb-2d23-802f-8852-f89ffc27f07b" class="">N: set of the network nodes</p><p id="1cc7aacb-2d23-80e0-8443-c294af6b061e" class="">
+</p><p id="1cc7aacb-2d23-804a-9c44-ed740b1b7b1f" class="">N’ is only set to be the source. N’ = {u}</p><p id="1cc7aacb-2d23-8000-94e6-cb98d49f2be3" class="">go through the nodes, <em>v,</em> connected to the source, set D(v) to be C(u, v). else D(v) = ∞</p><p id="1cc7aacb-2d23-806a-bc93-f8ebe9247015" class="">Then, find a node, <em>w, </em>such that D(w) is a minimum.</p><p id="1cc7aacb-2d23-8028-a81e-db761fade8a6" class="">Add <em>w </em>to N’, and update D(v) for all neighbors <em>v </em>of <em>w. </em>D(v) will be the minimum of either the old value of D(v), or D(w) + c(w,v).</p><p id="1cc7aacb-2d23-80a3-ae5c-c681da25a31f" class="">This ends when N’ == N.</p><p id="1cc7aacb-2d23-8026-8c50-ca28be58365c" class="">
+</p><p id="1cc7aacb-2d23-80f7-a4c2-d1693c1ee76f" class="">algorithm complexity: n nodes</p><p id="1cc7aacb-2d23-805f-bbf8-e84b08396904" class="">each of n iterations, need to check all nodes, w, not in N</p><p id="1cc7aacb-2d23-80a4-9db2-c79a95cf80a1" class="">n(n +1) / 2 comparisons: O(n^2)</p><p id="1cc7aacb-2d23-8016-81ab-cbc03cfe44ff" class="">more efficient implementations possible O (n log n)</p><p id="1cc7aacb-2d23-8014-ace0-f6ebb1444627" class="">
+</p><p id="1cc7aacb-2d23-8078-b666-c395036b74fc" class="">Oscillations possible</p><p id="1cc7aacb-2d23-80ef-ac1d-c4a5884593f9" class="">Oscillations means you can have false routing methodology</p><p id="1cc7aacb-2d23-80b7-95b0-eb74cadf5238" class="">When Link costs depend on traffic volume, route oscillations possible</p><p id="1cc7aacb-2d23-8044-8c23-cdd1fb2e6181" class="">Sample Scenario:<div class="indented"><p id="1cc7aacb-2d23-80bf-9952-d8a1ebbbf200" class="">routing to destination a, traffic entering at d, c, e with rates 1, e (&lt;1), 1</p><p id="1cc7aacb-2d23-808b-90dc-e2f7e2d58654" class="">link costs are directional, and volume-dependent</p></div></p><p id="1cc7aacb-2d23-80c8-8fc5-eb97bb06749b" class="">
+</p><h2 id="1cc7aacb-2d23-80bf-ac92-f89947628b61" class="">Distance Vector Algorithm</h2><p id="1cc7aacb-2d23-8093-b12b-c1e8564bbd64" class="">Based on Bellman-Ford (BF) equation (dynamic programming):</p><p id="1cc7aacb-2d23-807c-8b52-ffb8ed883638" class="">Let D_x(y) vbe the cost of least-cost path from x to y</p><p id="1cc7aacb-2d23-8041-bac4-d99fcf0d7022" class="">Then D_x(y) = min { c(x,y) + D_v(y) }</p><p id="1cc7aacb-2d23-805f-97e8-c2e2bb7069fb" class="">D_x(y) is the minimum cost of x to y + the cost of node <em>v </em>to y</p><p id="1cc7aacb-2d23-8016-b7b5-d6ece27cb9df" class="">
+</p><p id="1cc7aacb-2d23-80ed-bd1c-e7dde2627867" class="">Each node: waits for change in local link cost or msg from neighbor → recompute DV estimates using DV received from neighbor → if DV to any destination changes, notify neighbor</p><p id="1cc7aacb-2d23-80ad-99ed-c4f58fd2ff7e" class="">Iterative, asynchronous: each local iteration caused by: local link cost change, DV update message from neighbor</p><p id="1cc7aacb-2d23-8001-b974-e6eb02c6a840" class="">Distributed, self-stopping: each node notifies neighbors only when its DV changes<div class="indented"><p id="1cc7aacb-2d23-806f-8195-f408561949d5" class="">Neighbors then notify their neighbors, only if necessary</p><p id="1cc7aacb-2d23-80e7-a706-fc8efbdadf56" class="">No notification received, no actions taken</p></div></p><p id="1cc7aacb-2d23-80dd-9397-f82402def42d" class="">
+</p><h2 id="1cc7aacb-2d23-809c-aff1-e280c1f968e1" class="">Comparisons between LS and DV</h2><p id="1cc7aacb-2d23-80da-b8e1-f62fcab2b2e8" class="">Message Complexity</p><p id="1cc7aacb-2d23-805e-a3d5-e25cff1a3019" class="">LS: n routers, (n^2) messages sent<br/>DV: exchange between neighbors: convergence time varies<br/></p><p id="1cc7aacb-2d23-80da-88e2-f89efbd00deb" class="">Speed of Convergence</p><p id="1cc7aacb-2d23-8000-9720-c572ec68b060" class="">LS: O(N^2) algorithm, O(n^2) messages<div class="indented"><p id="1cc7aacb-2d23-80e9-8e82-ed5582300244" class="">May have oscillations</p></div></p><p id="1cc7aacb-2d23-80fe-ae64-c24d3b5c841a" class="">DV: Convergence time varies<div class="indented"><p id="1cc7aacb-2d23-801e-8f8c-d081dbd59fd2" class="">May have routing loops</p><p id="1cc7aacb-2d23-80e9-bf16-f901c60075c8" class="">count-to-infinity problem</p></div></p><p id="1cc7aacb-2d23-80bb-a2c5-f0987b4e7a40" class="">Roubstness: What happens if router malfunctions or is compromised?<div class="indented"><p id="1cc7aacb-2d23-8071-a9b3-eeb8e7e5ca2d" class="">LS:  router can advertise incorrect link cost<br/>• each router computes only its own<br/>table<br/></p><p id="1cc7aacb-2d23-80f7-aca8-cfbcd1c44287" class="">DV:<br/>• DV router can advertise incorrect path<br/>cost (“I have a really low cost path to<br/>everywhere”): black-holing<br/>• each router’s table used by others:<br/>error propagate thru network<br/></p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

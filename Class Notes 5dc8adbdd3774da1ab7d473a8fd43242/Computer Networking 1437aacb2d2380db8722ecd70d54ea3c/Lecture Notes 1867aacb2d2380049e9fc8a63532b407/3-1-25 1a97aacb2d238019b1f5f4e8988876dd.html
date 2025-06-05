@@ -1,0 +1,695 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3-1-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1a97aacb-2d23-8019-b1f5-f4e8988876dd" class="page sans"><header><h1 class="page-title">3-1-25</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1a97aacb-2d23-80ad-821c-f12efba45ad7" class="">midterm</h1><p id="1a97aacb-2d23-8024-8d86-fa2d253796bd" class="">Bring in scrap paper, take notes, take pictures of scrap paper and notes to send to professor after the professor</p><p id="1a97aacb-2d23-802c-bd2a-ef86351fd8be" class="">Review:</p><p id="1a97aacb-2d23-80e8-9ee6-ea68b0315d80" class="">UDP only uses Destination Port and IP to flow the data stream. It doesn’t mean the source IP and destination IP is not in the datagram. </p><figure id="1a97aacb-2d23-80db-9519-f50780e152a4" class="image"><a href="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_8.49.09_AM.png"><img style="width:709.984375px" src="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_8.49.09_AM.png"/></a></figure><p id="1a97aacb-2d23-8076-aec4-e5cd4ea197d3" class="">Know the checksum</p><h1 id="1a97aacb-2d23-8068-8f5d-d4b0d96a2f99" class="">Connection-oriented transport: TCP</h1><p id="1a97aacb-2d23-8054-b6c3-c710534e16a7" class="">TCP started really early</p><p id="1a97aacb-2d23-803d-b17f-f08bb92c1cf3" class="">one sender, one receiver</p><p id="1a97aacb-2d23-809a-8c2d-e9143f6dfcdf" class="">reliable, in-order byte stream: no “message boundaries”</p><p id="1a97aacb-2d23-8013-851f-e8d5934d1af9" class="">full duplex - bi-directional data flow in same connection. MSS: Maximum segment size</p><p id="1a97aacb-2d23-80f9-95f3-da521e284f57" class="">TCP uses cumulative ACKs</p><p id="1a97aacb-2d23-80c5-aa32-c2f6c505752f" class="">pipelining: TCP congestion and flow control set window size</p><p id="1a97aacb-2d23-8034-a67d-e6f28e41cbf9" class="">Connection-oriented: handshaking initializes sender, receiver state before data exchange</p><p id="1a97aacb-2d23-8096-8210-d2e23963614c" class="">flow controlled: sender will not overwhelm receiver</p><p id="1a97aacb-2d23-8039-b218-f48327cbece2" class="">Segment Structure:</p><p id="1a97aacb-2d23-8011-b728-d3e51132951c" class="">source port # dest port #</p><p id="1a97aacb-2d23-8030-bb4f-eb2597466f80" class="">sequence number</p><p id="1a97aacb-2d23-80eb-aae2-caf373129564" class="">acknowledgmeent number: seq # of next expected byte; A bit: this is an ACK</p><p id="1a97aacb-2d23-80ee-b0a7-de22feaa828a" class="">length (of TCP header)</p><p id="1a97aacb-2d23-80b5-a464-d4b9845a0192" class="">C, E: Congestion notification</p><p id="1a97aacb-2d23-800b-8031-e9500fd462e0" class="">RST, SY, FIN: connection management</p><p id="1a97aacb-2d23-8024-9c30-c2ef3e678313" class="">receive window: flw control: # bytes receiver willing to accept</p><p id="1a97aacb-2d23-8050-8981-e97c0169a4ef" class="">TCP options</p><p id="1a97aacb-2d23-8057-8662-ef8a0bfd8f10" class="">application data: data sent by application into TCP socket</p><figure id="1a97aacb-2d23-8022-8bb3-d5b36965cbba" class="image"><a href="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_9.09.51_AM.png"><img style="width:709.9921875px" src="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_9.09.51_AM.png"/></a></figure><p id="1a97aacb-2d23-80e1-a41f-fbdbf6c270cb" class="">Sequence number is the first byte of the sequence, the ack is the expected first byte of the next sequence</p><p id="1a97aacb-2d23-80c3-82cc-e06770a2b141" class="">TCP Round trip time, timeout</p><p id="1a97aacb-2d23-8046-a18b-dafbf31715df" class="">How to set TCP timeout value, longer than RTT but RTT varies</p><p id="1a97aacb-2d23-8086-ba13-c2e4091e9cbf" class="">too short, premature timeout and unnecessary retransmissions</p><p id="1a97aacb-2d23-8063-a41f-fd2049c9b255" class="">too long, slow reaction to segment loss</p><p id="1a97aacb-2d23-809e-b572-eccb86942185" class="">how to estimate RTT?</p><p id="1a97aacb-2d23-8010-806f-f7ba7b9ebe43" class="">SampleRTT: measured time from segment transmission until ACK receipt</p><p id="1a97aacb-2d23-802c-83b6-c51eeb2f3cdd" class="">ignore retransmissions</p><p id="1a97aacb-2d23-80d7-81eb-dbc466939599" class="">
+</p><p id="1a97aacb-2d23-80b4-9faa-d883b4854dd7" class="">SampleRTT will vary, want estimated RTT “smoother</p><p id="1a97aacb-2d23-80fe-a823-d2e285e674ca" class="">average several recent measurements, not just current</p><figure id="1a97aacb-2d23-8022-a70d-efe888e0cb8c" class="image"><a href="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_9.19.50_AM.png"><img style="width:709.984375px" src="3-1-25%201a97aacb2d238019b1f5f4e8988876dd/Screenshot_2025-03-01_at_9.19.50_AM.png"/></a></figure><p id="1a97aacb-2d23-80ee-80a4-d12bb078b681" class="">TCP Sender (simplified)</p><p id="1a97aacb-2d23-80dd-82a6-d880a59dcef5" class="">create segment with seq # - byte-stream number of first data byte in segment</p><p id="1a97aacb-2d23-8065-a57b-eaaeb0815cb5" class="">start timer if not already running<div class="indented"><p id="1a97aacb-2d23-80c8-92d2-ff49c4fece5c" class="">timer for oldest unAcked segments</p></div></p><p id="1a97aacb-2d23-80d8-853b-f8c082682f8e" class="">event: timeout<div class="indented"><p id="1a97aacb-2d23-80e7-81cd-c4727341f02c" class="">retransmit segment that caused timeout</p><p id="1a97aacb-2d23-8086-99c5-e25207a5d84a" class="">restart timer</p></div></p><p id="1a97aacb-2d23-8067-b967-d65549a7e65e" class="">event: ACK received<div class="indented"><p id="1a97aacb-2d23-80df-b96d-c99cb304e3a0" class="">if an ACK acknowledges previously unacked segments:<div class="indented"><p id="1a97aacb-2d23-8066-bf25-d8053db6bea2" class="">upate what is known to be acked</p><p id="1a97aacb-2d23-802c-a401-e534a994b96a" class="">start timer if there are still unACKed segments</p></div></p></div></p><p id="1a97aacb-2d23-80ff-bebb-f9085d968a07" class="">
+</p><p id="1a97aacb-2d23-80d5-8be8-e4322b8f1eb4" class="">TCP Receiver:<br/>Event at receiver: arrival of in-order segment with expected seq #. ALl data up to expected seq # already ACKed<br/></p><p id="1a97aacb-2d23-8039-8f0a-e2fd5bc2511a" class="">TCP Receiver Action: Delayed ACK. Wait up to 500ms for next segment. If no next segment, send ACK. </p><p id="1a97aacb-2d23-80c4-991f-c143a7d978ed" class="">Event at receiver: arrival of in-order segment with expected seq #. One other segment has ACK pending.</p><p id="1a97aacb-2d23-8032-87ca-d2d731e98100" class="">TCP receiver action: immediately send single cumulative ACK, ACKing both in-order segments</p><p id="1a97aacb-2d23-806d-9804-d30c6f636a8b" class="">Event at receiver: arrival of out-of-order segment higher-than-expect seq. #. Gap detected</p><p id="1a97aacb-2d23-8052-bb2e-f942574350c6" class="">TCP receiver action: Immediately send duplicate ACK, indicating seq. # of next expected byte</p><p id="1a97aacb-2d23-8023-af74-f6956a954d17" class="">
+</p><p id="1a97aacb-2d23-8064-93b5-fed6877e1339" class="">Fast Retransmit: The receipt of three duplicate ACKs indicate 3 segments received after a missing segmnet - lost segment is likely. So Retransmit</p><p id="1a97aacb-2d23-808c-b6e7-cfe981a2ca54" class="">
+</p><p id="1a97aacb-2d23-80fe-ac89-ec479bb9d719" class="">TCP Flow Control</p><p id="1a97aacb-2d23-80ea-bffe-c1b320962341" class="">Managed between application and operating system. </p><p id="1a97aacb-2d23-80cd-b591-f1a110e49bcf" class="">What happens if network layer delivers data faster than application layer removes data from socket buffers?</p><p id="1a97aacb-2d23-80a9-bcbd-db0f86d8c7fd" class="">There is a receive window: # of bytes receiver is willing to accept</p><p id="1a97aacb-2d23-80d9-8e6d-d50b5cdbe124" class="">TCP receiver advertises free buffer space in rwnd field<div class="indented"><p id="1a97aacb-2d23-80eb-acc9-e1ce33a69aca" class="">RCvBuffer: size set via socket options - typically set to 4096</p><p id="1a97aacb-2d23-80e3-b964-e2f4855afc38" class="">Many operating systems autoadjust RcvBuffer</p></div></p><p id="1a97aacb-2d23-804d-8b1a-cae0d6b56f49" class="">Sender limits amount of unACKed data to received rwnd</p><p id="1a97aacb-2d23-8093-b633-e13b969741ac" class="">guarantees receive buffer will not overflow</p><p id="1a97aacb-2d23-808a-aaea-d09737236940" class="">
+</p><p id="1a97aacb-2d23-801d-9493-f7ca4db1a86e" class="">TCP Connection Management</p><p id="1a97aacb-2d23-80bd-b8a1-dc7183f504ab" class="">2-way handshake - precursor to a denial of service attack, so try a 3 way handshake</p><p id="1a97aacb-2d23-8072-8b5c-ff433834d9f1" class="">3-way handshake is done</p><p id="1a97aacb-2d23-8027-92d5-c4daecb1151b" class="">Closing a TCP connection - closing the connection sends a TCP segment with FIN bit set to 1</p><p id="1a97aacb-2d23-80f8-8fde-feab7745b6e2" class="">Either client or server</p><p id="1a97aacb-2d23-8006-95ee-fe14ca4a49b7" class="">
+</p><p id="1a97aacb-2d23-8017-992b-c1fe72f26d8e" class="">Principles of Congestion Control</p><p id="1a97aacb-2d23-8039-a7d9-cdf1ed62ca28" class="">The network is congested - too many sources sending too much data too fast for network to handle</p><p id="1a97aacb-2d23-8095-9521-fec4256ade58" class="">Flow control is one sender sending too fast for one receiver</p><p id="1a97aacb-2d23-80c9-845f-f09a03ffab06" class="">COngestion control is too many senders sending data</p><p id="1a97aacb-2d23-8003-977b-ec43af06f820" class="">Manifests in long delays and packet loss</p><p id="1a97aacb-2d23-80d7-b394-c24f1225f2ec" class="">
+</p><p id="1a97aacb-2d23-80f7-a943-c4a81d7266f0" class="">In the simplest scenario, there are one router, infinite buffers. Input, output link capacity: R</p><p id="1a97aacb-2d23-80b2-96a4-d145496ac31e" class="">Two flows</p><p id="1a97aacb-2d23-8071-b427-ec7d86c85072" class="">no retransmission</p><p id="1a97aacb-2d23-804f-8fe0-c64045bee375" class="">
+</p><p id="1a97aacb-2d23-80dc-aecc-f883aa434241" class="">What happens as Arrive Rate Aln approaches R / 2?</p><p id="1a97aacb-2d23-807e-bd71-d0f4f0176dc7" class="">The faster the rate of arrival, the more exponential the delay is going to grow</p><p id="1a97aacb-2d23-802b-9ae6-dc91cedb9585" class="">
+</p><p id="1a97aacb-2d23-8071-a16b-fbb2b2175d9e" class="">Scenario 2:</p><p id="1a97aacb-2d23-8004-9f4e-fd58c919f74d" class="">Finite buffers, sender retransmits lost, timed-out packet</p><p id="1a97aacb-2d23-80ab-b49c-c2fc3bc82825" class="">
+</p><p id="1a97aacb-2d23-80cd-be30-f0250cce1327" class="">TCP Congestion Control</p><p id="1a97aacb-2d23-801f-b269-e915da910803" class="">AIMD</p><p id="1a97aacb-2d23-80c7-921a-c88b30e7f76e" class="">Sender can increase sending rate until packet loss occurs (congestion), then decrease sending rate on loss event</p><p id="1a97aacb-2d23-808b-8363-f030d6bed08b" class="">Additive Increase - increase sending rate by 1 maximum segment size every RTT until loss detected</p><p id="1a97aacb-2d23-8059-b252-e175c6509a39" class="">Multiplicative Decrease - cut sending rate in half at each loss event</p><p id="1a97aacb-2d23-8002-a8a3-e3e2895f91ab" class="">
+</p><p id="1a97aacb-2d23-808c-bcb4-c9eb1945eded" class="">TCP Cubic</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

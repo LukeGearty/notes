@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Incident Response</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18a7aacb-2d23-80fe-9093-daf423ec7798" class="page sans"><header><h1 class="page-title">Incident Response</h1><p class="page-description"></p></header><div class="page-body"><p id="18a7aacb-2d23-8033-bc0f-fb504aaebf79" class="">Dealing with security incidents is an important part of cybersecurity</p><p id="18a7aacb-2d23-804e-94e4-ec51544779fa" class="">NIST SP800-61</p><p id="18a7aacb-2d23-8090-b24b-f99852f5be22" class="">Preparing for an incident:<div class="indented"><p id="18a7aacb-2d23-809b-8b04-e17b6bbc6bff" class="">List of Communication Methods - phones and contact info for everyone who should be informed when an incident occurs</p><p id="18a7aacb-2d23-80bd-85c1-dce52c123d8d" class="">Incident handling hardware and software</p><p id="18a7aacb-2d23-80e7-9014-fc4d3733b567" class="">Incident analysis resources</p><p id="18a7aacb-2d23-808c-b85e-ce9f299306ed" class="">Incident mitigation software</p></div></p><p id="18a7aacb-2d23-80b1-a5ac-d14786f96899" class="">The challenge of detection<div class="indented"><p id="18a7aacb-2d23-8072-b381-edce4bf2cdfd" class="">Many different detection sources</p><p id="18a7aacb-2d23-80ed-ab6e-e076144b2025" class="">A large amount of volume</p><p id="18a7aacb-2d23-8017-b60d-e02e03ed980a" class="">Incidents are always complex - extensive knowledge needed</p></div></p><p id="18a7aacb-2d23-80fa-8c90-eadb454c1e05" class="">Analysis<div class="indented"><p id="18a7aacb-2d23-80f2-bd33-cafa831d42f0" class="">An incident might occur in the future</p></div></p><p id="18a7aacb-2d23-8078-8aba-f0aa752b1fc7" class="">Isolation and Containment - Don’t let things run their courses</p><p id="18a7aacb-2d23-80a0-a2d7-c3a47e11aa85" class="">
+</p><p id="18a7aacb-2d23-8078-84db-eb45d67dec02" class="">
+</p><h3 id="18a7aacb-2d23-80be-9e5c-dbb16f9d25c3" class=""><strong>Introduction to Security Incidents</strong></h3><ul id="18a7aacb-2d23-8018-9ca5-e73cd2021a14" class="bulleted-list"><li style="list-style-type:disc">Handling security incidents is a crucial role of a security administrator.</li></ul><ul id="18a7aacb-2d23-80f5-b0e4-dd1abbecb211" class="bulleted-list"><li style="list-style-type:disc">Security incidents can take many forms, including:<ul id="18a7aacb-2d23-8033-9642-f5d99b4e3c7d" class="bulleted-list"><li style="list-style-type:circle">Malware installation via malicious email attachments.</li></ul><ul id="18a7aacb-2d23-80d4-bab3-cd80a0529e5c" class="bulleted-list"><li style="list-style-type:circle">Distributed Denial-of-Service (DDoS) attacks overwhelming a WAN connection.</li></ul><ul id="18a7aacb-2d23-8049-8f83-ecefc61d5f56" class="bulleted-list"><li style="list-style-type:circle">Data exfiltration and ransom threats.</li></ul><ul id="18a7aacb-2d23-809d-9651-cc3a11d604ba" class="bulleted-list"><li style="list-style-type:circle">Unauthorized software installation that allows external access to internal networks.</li></ul></li></ul><ul id="18a7aacb-2d23-8035-b7c1-fc3826ed6330" class="bulleted-list"><li style="list-style-type:disc">Organizations must be prepared to handle various security threats effectively.</li></ul><h3 id="18a7aacb-2d23-8045-94e4-e1a4adfd029f" class=""><strong>NIST Special Publication 800-61 Revision 2</strong></h3><ul id="18a7aacb-2d23-80dc-934a-ebdc1ceb6d60" class="bulleted-list"><li style="list-style-type:disc">Title: <em>Computer Security Incident Handling Guide</em></li></ul><ul id="18a7aacb-2d23-808f-905b-cd7bf8f88e73" class="bulleted-list"><li style="list-style-type:disc">Covers the entire lifecycle of incident handling:<ol type="1" id="18a7aacb-2d23-8004-9d87-deec25c1c1ca" class="numbered-list" start="1"><li><strong>Preparation</strong></li></ol><ol type="1" id="18a7aacb-2d23-807d-bfca-ece644ee9492" class="numbered-list" start="2"><li><strong>Detection and Analysis</strong></li></ol><ol type="1" id="18a7aacb-2d23-807f-9196-f688001f0b4b" class="numbered-list" start="3"><li><strong>Containment, Eradication, and Recovery</strong></li></ol><ol type="1" id="18a7aacb-2d23-809e-b60a-f93e9c4ca4d9" class="numbered-list" start="4"><li><strong>Post-Incident Activities</strong></li></ol></li></ul><h3 id="18a7aacb-2d23-80f6-80a7-f4145bd1f626" class=""><strong>Preparation Phase</strong></h3><ul id="18a7aacb-2d23-80e7-86a7-edb7bf5f8137" class="bulleted-list"><li style="list-style-type:disc"><strong>Communication and Contact Lists</strong>: Maintain up-to-date contacts for incident reporting.</li></ul><ul id="18a7aacb-2d23-80ee-970d-ce56825c6e93" class="bulleted-list"><li style="list-style-type:disc"><strong>Incident Go Bag</strong>: Essential tools for incident response, such as:<ul id="18a7aacb-2d23-807c-8402-f66f9389c88b" class="bulleted-list"><li style="list-style-type:circle">Laptops with specialized software</li></ul><ul id="18a7aacb-2d23-805e-9643-f01d9bc3fc9b" class="bulleted-list"><li style="list-style-type:circle">Removable media for data transfer</li></ul><ul id="18a7aacb-2d23-8093-9bc9-ee28dbdbd5f4" class="bulleted-list"><li style="list-style-type:circle">Forensic software for system analysis</li></ul><ul id="18a7aacb-2d23-8084-88e0-f05f31c3a7dd" class="bulleted-list"><li style="list-style-type:circle">Digital imaging tools for evidence capture</li></ul></li></ul><ul id="18a7aacb-2d23-800b-982f-cd1f7e1521fa" class="bulleted-list"><li style="list-style-type:disc"><strong>Documentation Resources</strong>:<ul id="18a7aacb-2d23-8041-a5bd-d9061cdca700" class="bulleted-list"><li style="list-style-type:circle">Network diagrams and server documentation</li></ul><ul id="18a7aacb-2d23-8075-a355-e1d22b7784b0" class="bulleted-list"><li style="list-style-type:circle">Security baselines and file hashes for integrity checks</li></ul></li></ul><ul id="18a7aacb-2d23-80e6-8f66-ebf1cb6cbeae" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation Resources</strong>:<ul id="18a7aacb-2d23-80d6-b4cc-c943c5ada5c3" class="bulleted-list"><li style="list-style-type:circle">Known-good OS images and application software backups</li></ul><ul id="18a7aacb-2d23-8014-91b7-e0bc441f545f" class="bulleted-list"><li style="list-style-type:circle">Policies and procedures for incident response</li></ul></li></ul><h3 id="18a7aacb-2d23-8017-88e9-c115c905da58" class=""><strong>Detection and Analysis</strong></h3><ul id="18a7aacb-2d23-80a1-97c4-f4f75345c015" class="bulleted-list"><li style="list-style-type:disc"><strong>Challenges in Identifying Incidents</strong>:<ul id="18a7aacb-2d23-80b6-b3a4-d9a65996cc98" class="bulleted-list"><li style="list-style-type:circle">Attacks happen constantly online, making it difficult to distinguish between random threats and actual breaches.</li></ul><ul id="18a7aacb-2d23-8078-b7e0-cc206c848843" class="bulleted-list"><li style="list-style-type:circle">Logs and monitoring systems can help differentiate between automated scans and real attacks.</li></ul></li></ul><ul id="18a7aacb-2d23-8079-924a-ffd39ac36acf" class="bulleted-list"><li style="list-style-type:disc"><strong>Sources of Attack Indicators</strong>:<ul id="18a7aacb-2d23-804d-800a-f1f8fa34b9d2" class="bulleted-list"><li style="list-style-type:circle">Web server logs tracking vulnerability scans.</li></ul><ul id="18a7aacb-2d23-809e-95a6-dd60fbb5d16c" class="bulleted-list"><li style="list-style-type:circle">Patch management schedules to identify attacks targeting unpatched systems.</li></ul><ul id="18a7aacb-2d23-80a2-a30d-dbd394a43c74" class="bulleted-list"><li style="list-style-type:circle">Direct communication from attackers (rare but possible in hacking communities).</li></ul></li></ul><ul id="18a7aacb-2d23-80aa-8ae3-cf669886fc12" class="bulleted-list"><li style="list-style-type:disc"><strong>Automated Detection Methods</strong>:<ul id="18a7aacb-2d23-8017-9475-fc2c03442f6e" class="bulleted-list"><li style="list-style-type:circle">Intrusion Prevention Systems (IPS) can alert on buffer overflow attempts.</li></ul><ul id="18a7aacb-2d23-8087-8daf-e67d35637fe9" class="bulleted-list"><li style="list-style-type:circle">Antivirus software can detect malware infections.</li></ul><ul id="18a7aacb-2d23-80e7-bfa4-f541c19cf1f1" class="bulleted-list"><li style="list-style-type:circle">Monitoring tools can flag unauthorized security configuration changes.</li></ul><ul id="18a7aacb-2d23-8017-b286-c31b880b09ba" class="bulleted-list"><li style="list-style-type:circle">Traffic analysis can detect large-scale data exfiltration.</li></ul></li></ul><h3 id="18a7aacb-2d23-808b-8c2b-e961921aa7ca" class=""><strong>Incident Containment and Response</strong></h3><ul id="18a7aacb-2d23-80ff-8952-d1376c13e32d" class="bulleted-list"><li style="list-style-type:disc">Immediate action is needed to stop active attacks.</li></ul><ul id="18a7aacb-2d23-80ac-92f1-c05e0f3a130c" class="bulleted-list"><li style="list-style-type:disc"><strong>Use of Sandboxing</strong>:<ul id="18a7aacb-2d23-8093-a0fc-efabcbc0a97f" class="bulleted-list"><li style="list-style-type:circle">Sandboxes provide a controlled environment to test suspicious software.</li></ul><ul id="18a7aacb-2d23-80e6-9a95-ceb6c90c363b" class="bulleted-list"><li style="list-style-type:circle">Malware may behave differently in a sandbox, sometimes deleting itself upon detection.</li></ul></li></ul><ul id="18a7aacb-2d23-80d8-a6a9-fb2bfb8b71d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Containment Strategies</strong>:<ul id="18a7aacb-2d23-8018-bea2-e04c65e7fd9d" class="bulleted-list"><li style="list-style-type:circle">Isolate infected systems.</li></ul><ul id="18a7aacb-2d23-8043-a562-d19f8f097250" class="bulleted-list"><li style="list-style-type:circle">Disable compromised user accounts.</li></ul><ul id="18a7aacb-2d23-80e4-a57c-d0ba8252f5dd" class="bulleted-list"><li style="list-style-type:circle">Prevent further unauthorized access by fixing security loopholes.</li></ul></li></ul><h3 id="18a7aacb-2d23-80d5-b829-e12e6fdf40b7" class=""><strong>Recovery Phase</strong></h3><ul id="18a7aacb-2d23-802d-add8-e74fc949bff8" class="bulleted-list"><li style="list-style-type:disc">Replace malicious software with known-good versions.</li></ul><ul id="18a7aacb-2d23-80e7-a1ac-e17937cd79a5" class="bulleted-list"><li style="list-style-type:disc">Restore from <strong>known-good backups</strong> to remove attacker modifications.</li></ul><ul id="18a7aacb-2d23-8051-954b-e5a5b58d61a2" class="bulleted-list"><li style="list-style-type:disc"><strong>Reimage compromised systems</strong> when necessary.</li></ul><ul id="18a7aacb-2d23-8039-8591-f634bf19027a" class="bulleted-list"><li style="list-style-type:disc">Strengthen security to prevent reinfection.</li></ul><ul id="18a7aacb-2d23-8060-917e-def26936931b" class="bulleted-list"><li style="list-style-type:disc"><strong>Revoke unauthorized user accounts</strong> and reset affected credentials.</li></ul><h3 id="18a7aacb-2d23-8025-b36a-fa8db9a814ea" class=""><strong>Post-Incident Activities</strong></h3><ul id="18a7aacb-2d23-8094-abff-ec1947bb778a" class="bulleted-list"><li style="list-style-type:disc"><strong>Post-Incident Meeting</strong>:<ul id="18a7aacb-2d23-8005-83f4-eeda9899a5e9" class="bulleted-list"><li style="list-style-type:circle">Review the entire incident timeline.</li></ul><ul id="18a7aacb-2d23-8086-ba10-ce06c0528d96" class="bulleted-list"><li style="list-style-type:circle">Analyze how well the incident response plan performed.</li></ul><ul id="18a7aacb-2d23-8007-85a8-dbc2bc93ed00" class="bulleted-list"><li style="list-style-type:circle">Identify gaps in detection and response processes.</li></ul><ul id="18a7aacb-2d23-8031-b33f-d8c05669c7b4" class="bulleted-list"><li style="list-style-type:circle">Implement improvements for future incidents.</li></ul></li></ul><ul id="18a7aacb-2d23-80be-ae6c-d3ba0e28afa9" class="bulleted-list"><li style="list-style-type:disc"><strong>Questions to Address</strong>:<ul id="18a7aacb-2d23-800e-acad-e344fb19a317" class="bulleted-list"><li style="list-style-type:circle">What happened during the incident?</li></ul><ul id="18a7aacb-2d23-80fa-994d-d27eea3d76fe" class="bulleted-list"><li style="list-style-type:circle">What was the timeline from detection to resolution?</li></ul><ul id="18a7aacb-2d23-8088-b170-cfde1a177ee5" class="bulleted-list"><li style="list-style-type:circle">Did the existing incident response plan work effectively?</li></ul><ul id="18a7aacb-2d23-8083-9a54-c87de3ea77b9" class="bulleted-list"><li style="list-style-type:circle">Were there any missed indicators that could have prevented the attack?</li></ul></li></ul><h3 id="18a7aacb-2d23-80bf-bd83-f7975cb716c8" class=""><strong>Training and Documentation</strong></h3><ul id="18a7aacb-2d23-8053-840a-f3c0614c38cb" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Incident Training</strong>:<ul id="18a7aacb-2d23-8002-b88d-c498e690cb98" class="bulleted-list"><li style="list-style-type:circle">Security personnel must be well-trained before an incident occurs.</li></ul><ul id="18a7aacb-2d23-80ad-9a28-cfd2ad0c2f28" class="bulleted-list"><li style="list-style-type:circle">Extensive documentation should be in place for quick reference.</li></ul><ul id="18a7aacb-2d23-8027-a28d-c4be31281766" class="bulleted-list"><li style="list-style-type:circle">Organizations should conduct testing and drills to simulate incidents.</li></ul></li></ul><ul id="18a7aacb-2d23-8082-9c87-ea7227cbdc39" class="bulleted-list"><li style="list-style-type:disc"><strong>Cost vs. Benefit</strong>:<ul id="18a7aacb-2d23-802a-91ad-ca1ccb080d71" class="bulleted-list"><li style="list-style-type:circle">Training may be expensive, but it significantly reduces damage and financial loss during actual incidents.</li></ul></li></ul><h3 id="18a7aacb-2d23-8085-97c2-c80b9c4756a6" class=""><strong>Conclusion</strong></h3><ul id="18a7aacb-2d23-806f-b4ce-d963c47fd626" class="bulleted-list"><li style="list-style-type:disc">Incident response requires structured planning, detection, rapid response, recovery, and continuous improvement.</li></ul><ul id="18a7aacb-2d23-803a-bbe2-c4c7cfc08a16" class="bulleted-list"><li style="list-style-type:disc">Proper documentation, training, and preparation ensure effective security incident handling.</li></ul><ul id="18a7aacb-2d23-80a4-84d5-eb77e57cc7b0" class="bulleted-list"><li style="list-style-type:disc">Following established frameworks like NIST 800-61 ensures a standardized and efficient response to cybersecurity incidents.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

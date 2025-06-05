@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Operating System Security</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1877aacb-2d23-80c5-9e6a-c6940abaefde" class="page sans"><header><h1 class="page-title">Operating System Security</h1><p class="page-description"></p></header><div class="page-body"><p id="1877aacb-2d23-8004-ac2d-d649677052d8" class="">Active Directory - everything on the network in a database - Computers, user accounts, file shares, printers, groups and more<div class="indented"><p id="1877aacb-2d23-807d-8e58-c48b430dfb34" class="">Windows based</p></div></p><p id="1877aacb-2d23-80a4-b318-f9f0cc96bbd9" class="">AD can manage authentication</p><p id="1877aacb-2d23-8012-8b83-c3ffda81d40a" class="">Centralized access control<div class="indented"><p id="1877aacb-2d23-8080-88f9-f99dc1bbe3ab" class="">Determine which users can access resources</p></div></p><p id="1877aacb-2d23-80fe-9bb6-dca8b2a5afef" class="">
+</p><p id="1877aacb-2d23-8078-80ba-dea2b7f52be9" class="">Group Policy<div class="indented"><p id="1877aacb-2d23-802c-8e54-f77c282931dd" class="">Manage the computers - local and domain policies</p><p id="1877aacb-2d23-80de-ac4a-c744cf26ceaa" class="">group policy management editor</p><p id="1877aacb-2d23-806a-814a-c711bf892999" class="">Gives us a comprehensive control system</p></div></p><p id="1877aacb-2d23-80d8-bf28-f6bc05e9ef72" class="">
+</p><p id="1877aacb-2d23-801e-9767-d7b660600a6c" class="">Security-Enhanced Linux <div class="indented"><p id="1877aacb-2d23-80bb-8e15-e8a57f531df0" class="">Linux traditionally uses Discretionary Access Control - DAC - its up to the user’s discretion</p><p id="1877aacb-2d23-80c9-9b22-ca6acf31ac14" class="">Mandatory Access Control - all rights and permissions are assigned by a centralized admin</p><p id="1877aacb-2d23-804f-adb9-cb9d4e15a893" class="">SeELinux assigns MAC<div class="indented"><p id="1877aacb-2d23-8059-878a-e07cff0cb83d" class="">Limits application access - least privilege</p><p id="1877aacb-2d23-805f-b882-f469563e052a" class="">A potential brreach will have limited scope</p></div></p><h3 id="1877aacb-2d23-8098-9ab0-f58290dd07af" class=""><strong>Active Directory (AD)</strong></h3><p id="1877aacb-2d23-808a-acf1-f79242764e89" class=""><strong>Overview:</strong></p><ul id="1877aacb-2d23-80cc-bf18-e3029692a98d" class="bulleted-list"><li style="list-style-type:disc"><strong>Active Directory</strong> is a database used in environments with many Windows devices to centralize and manage all network components.</li></ul><ul id="1877aacb-2d23-800f-bb4c-f5d03c43a781" class="bulleted-list"><li style="list-style-type:disc">It contains information about:<ul id="1877aacb-2d23-8099-9e26-f9284d035c64" class="bulleted-list"><li style="list-style-type:circle">Computers and devices on the network.</li></ul><ul id="1877aacb-2d23-8007-b33d-fc0dd6079e0e" class="bulleted-list"><li style="list-style-type:circle">User accounts.</li></ul><ul id="1877aacb-2d23-80a5-b034-ce412fd7ae9a" class="bulleted-list"><li style="list-style-type:circle">File shares and printers.</li></ul><ul id="1877aacb-2d23-805d-a954-c978d7d0e005" class="bulleted-list"><li style="list-style-type:circle">Security groups.</li></ul><ul id="1877aacb-2d23-80d6-811e-c98d030d400c" class="bulleted-list"><li style="list-style-type:circle">Other resources that make up the network.</li></ul></li></ul><p id="1877aacb-2d23-8052-9030-c4b389910d5a" class=""><strong>Key Features:</strong></p><ol type="1" id="1877aacb-2d23-80df-b2bf-d3f8b06e619f" class="numbered-list" start="1"><li><strong>Centralized Authentication:</strong><ul id="1877aacb-2d23-8063-a296-fe98719a72df" class="bulleted-list"><li style="list-style-type:disc">Authentication is managed centrally using the AD database.</li></ul><ul id="1877aacb-2d23-80ea-9e0d-e928d8ac00c1" class="bulleted-list"><li style="list-style-type:disc">Users log in to devices or authenticate to resources using their AD-defined username and password.</li></ul></li></ol><ol type="1" id="1877aacb-2d23-8058-a70e-e8bc983ccd53" class="numbered-list" start="2"><li><strong>Permission Management:</strong><ul id="1877aacb-2d23-80ac-aa6c-eb6cc3cd828c" class="bulleted-list"><li style="list-style-type:disc">Access permissions can be assigned to individual users or groups.</li></ul><ul id="1877aacb-2d23-800a-942e-d7be0100f929" class="bulleted-list"><li style="list-style-type:disc">Groups allow for easier management of permissions for multiple users.</li></ul></li></ol><ol type="1" id="1877aacb-2d23-804c-8228-c3dba2069fd5" class="numbered-list" start="3"><li><strong>Account Management:</strong><ul id="1877aacb-2d23-8071-bfab-d53acb647d8d" class="bulleted-list"><li style="list-style-type:disc">Functions like adding/removing accounts, modifying passwords, and managing access rights are performed via Active Directory.</li></ul></li></ol><hr id="1877aacb-2d23-80e4-8565-dfffc0c9a15a"/><h3 id="1877aacb-2d23-8056-bcab-f4154d472202" class=""><strong>Group Policy</strong></h3><p id="1877aacb-2d23-80c8-83a8-ca569867d14e" class=""><strong>Overview:</strong></p><ul id="1877aacb-2d23-80c1-aed4-d14960f5fbbb" class="bulleted-list"><li style="list-style-type:disc"><strong>Group Policy</strong> is a feature layered over AD to enforce configurations and permissions on users and devices.</li></ul><ul id="1877aacb-2d23-80db-acde-d5ae9514846e" class="bulleted-list"><li style="list-style-type:disc">Managed using the <strong>Group Policy Management Editor</strong>.</li></ul><p id="1877aacb-2d23-8010-9660-dfb49c91d148" class=""><strong>Key Features:</strong></p><ol type="1" id="1877aacb-2d23-8029-9018-f9da98c8a076" class="numbered-list" start="1"><li><strong>Configuration Settings:</strong><ul id="1877aacb-2d23-80b3-b8df-c54545a402a1" class="bulleted-list"><li style="list-style-type:disc">Allows setting specific configurations for users and devices.</li></ul><ul id="1877aacb-2d23-80e1-81c5-c00a200d83f1" class="bulleted-list"><li style="list-style-type:disc">Examples:<ul id="1877aacb-2d23-8068-9797-cb78a0f1b22a" class="bulleted-list"><li style="list-style-type:circle"><strong>Login scripts</strong> that execute when a user connects to the network.</li></ul><ul id="1877aacb-2d23-8040-bd02-dc44697d6fc6" class="bulleted-list"><li style="list-style-type:circle"><strong>Network configurations</strong>, such as Quality of Service (QoS).</li></ul><ul id="1877aacb-2d23-8098-9ddb-da0dbc15a4bc" class="bulleted-list"><li style="list-style-type:circle">Security parameters for users and devices.</li></ul></li></ul></li></ol><ol type="1" id="1877aacb-2d23-803d-8c96-c769266abb8b" class="numbered-list" start="2"><li><strong>Security Policies:</strong><ul id="1877aacb-2d23-80f3-a0b9-fa84e1f74adc" class="bulleted-list"><li style="list-style-type:disc">Enables control over permissions and access rights for devices and users.</li></ul><ul id="1877aacb-2d23-809d-b65d-e3476a014ac5" class="bulleted-list"><li style="list-style-type:disc">Supports enforcing company-wide or user-specific security standards.</li></ul></li></ol><ol type="1" id="1877aacb-2d23-80ea-9e36-d51dea10a6bd" class="numbered-list" start="3"><li><strong>Centralized Control:</strong><ul id="1877aacb-2d23-807f-a517-c366a5613a68" class="bulleted-list"><li style="list-style-type:disc">Combines AD and Group Policy to create a robust and comprehensive network control system.</li></ul><ul id="1877aacb-2d23-8043-930f-d7ead7eff6c9" class="bulleted-list"><li style="list-style-type:disc">Simplifies configuring security policies and settings for users and devices.</li></ul></li></ol><hr id="1877aacb-2d23-80db-848a-c762cd88b41e"/><h3 id="1877aacb-2d23-8011-aaca-c0c5e19c496b" class=""><strong>Linux Access Control</strong></h3><p id="1877aacb-2d23-80fc-a801-fca4e658dfed" class=""><strong>Default Access Control:</strong></p><ul id="1877aacb-2d23-801c-8d7c-c89ef3105e65" class="bulleted-list"><li style="list-style-type:disc"><strong>Discretionary Access Control (DAC):</strong><ul id="1877aacb-2d23-80bd-a161-df84d254ef7e" class="bulleted-list"><li style="list-style-type:circle">The default access control model in Linux.</li></ul><ul id="1877aacb-2d23-80ac-92b1-c6bdd848e501" class="bulleted-list"><li style="list-style-type:circle">Users have the discretion to assign rights and permissions to resources they own.</li></ul><ul id="1877aacb-2d23-804b-8c6a-d0f1fb5fadb2" class="bulleted-list"><li style="list-style-type:circle">Not ideal for highly secure environments due to lack of centralized control.</li></ul></li></ul><p id="1877aacb-2d23-8041-b5cb-cf07d0be60d4" class=""><strong>Mandatory Access Control (MAC):</strong></p><ul id="1877aacb-2d23-807b-9a3a-d4b2853502cf" class="bulleted-list"><li style="list-style-type:disc"><strong>Security-Enhanced Linux (SELinux):</strong><ul id="1877aacb-2d23-801e-be5f-eeb8d5de858f" class="bulleted-list"><li style="list-style-type:circle">SELinux modifies Linux to support <strong>mandatory access control</strong> instead of DAC.</li></ul><ul id="1877aacb-2d23-80c6-9015-e35edcd01ab0" class="bulleted-list"><li style="list-style-type:circle">All permissions and rights are centrally assigned by an administrator.</li></ul><ul id="1877aacb-2d23-8036-8f75-fe641a32f8a3" class="bulleted-list"><li style="list-style-type:circle">Promotes the <strong>principle of least privilege</strong>:<ul id="1877aacb-2d23-8092-a566-d8f8c1c2847c" class="bulleted-list"><li style="list-style-type:square">Users and processes are given only the permissions required to perform their tasks, minimizing risk.</li></ul></li></ul><ul id="1877aacb-2d23-8029-9b75-cfdb1ad8e4e3" class="bulleted-list"><li style="list-style-type:circle">Benefits:<ul id="1877aacb-2d23-8001-b697-e9889f9e1a3a" class="bulleted-list"><li style="list-style-type:square">Limits the scope of breaches, malware, or malicious activity on a Linux system.</li></ul><ul id="1877aacb-2d23-8031-bd5c-dfd59033ac6e" class="bulleted-list"><li style="list-style-type:square">Provides a more secure environment for sensitive operations.</li></ul></li></ul><ul id="1877aacb-2d23-80dd-95fb-eb89836295ee" class="bulleted-list"><li style="list-style-type:circle"><strong>Open Source:</strong><ul id="1877aacb-2d23-80a0-b466-d385772d7171" class="bulleted-list"><li style="list-style-type:square">SELinux is open source and can be installed on many Linux distributions.</li></ul></li></ul></li></ul><hr id="1877aacb-2d23-8069-920e-ff94bfe0c48f"/><h3 id="1877aacb-2d23-8061-93ce-fb6affa3daef" class=""><strong>Comparison of Access Control Models</strong></h3><table id="1877aacb-2d23-8007-86be-c4c6d14a4357" class="simple-table"><tbody><tr id="1877aacb-2d23-808e-b78f-d92c134eacae"><td id="a[ho" class=""><strong>Feature</strong></td><td id="kJGv" class=""><strong>Discretionary Access Control (DAC)</strong></td><td id="NUDi" class=""><strong>Mandatory Access Control (MAC)</strong></td></tr><tr id="1877aacb-2d23-8034-b2be-e6967e3651a0"><td id="a[ho" class=""><strong>Control</strong></td><td id="kJGv" class="">Rights are assigned by individual users.</td><td id="NUDi" class="">Rights are assigned centrally by administrators.</td></tr><tr id="1877aacb-2d23-8072-af49-e2a2d2f60ca4"><td id="a[ho" class=""><strong>Flexibility</strong></td><td id="kJGv" class="">High flexibility; users control their own resources.</td><td id="NUDi" class="">Less flexible; centrally managed permissions.</td></tr><tr id="1877aacb-2d23-804c-9ff9-c3c15b5338b3"><td id="a[ho" class=""><strong>Suitability for Security</strong></td><td id="kJGv" class="">Less secure for sensitive environments.</td><td id="NUDi" class="">Highly secure for critical systems.</td></tr><tr id="1877aacb-2d23-8018-9919-ed9036ae28a2"><td id="a[ho" class=""><strong>Implementation</strong></td><td id="kJGv" class="">Default in Linux.</td><td id="NUDi" class="">Requires additional tools like SELinux.</td></tr></tbody></table></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

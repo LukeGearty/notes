@@ -1,0 +1,706 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Problems</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19a7aacb-2d23-8049-88f9-e3c0f05e498a" class="page sans"><header><h1 class="page-title">Problems</h1><p class="page-description"></p></header><div class="page-body"><p id="19e7aacb-2d23-8054-bf31-d7d23cd992d3" class="">P1.  <strong>Design and describe an application-level protocol to be used between an automatic teller machine and a bank’s centralized computer. Your protocol should allow a user’s card and password to be verified, the account balance (which is maintained at the centralized computer) to be queried, and an account withdrawal to be made (that is, money disbursed to the user). Your protocol entities should be able to handle the all-too-common case in which<br/>there is not enough money in the account to cover the withdrawal. Specify<br/>your protocol by listing the messages exchanged and the action taken by the<br/>automatic teller machine or the bank’s centralized computer on transmission<br/>and receipt of messages. Sketch the operation of your protocol for the case of<br/>a simple withdrawal with no errors, using a diagram similar to that in Figure 1.2.<br/>Explicitly state the assumptions made by your protocol about the underlying<br/>end-to-end transport service.<br/></strong><div class="indented"><p id="19e7aacb-2d23-8054-8b94-f9f452ce54e1" class="">Message from ATM machine to Server:<div class="indented"><p id="19e7aacb-2d23-8033-b8f5-d873b74c9f32" class="">HELO &lt;userid&gt; - lets server know there is a card in ATM. UserID is transmitted to server</p><p id="19e7aacb-2d23-802b-885c-c44c6af4fe15" class="">PASSWD &lt;passwd&gt; - user transmits PIN, which is sent to server</p><p id="19e7aacb-2d23-80f4-a27e-d460b25e0655" class="">BALANCE - user requests balance amount</p><p id="19e7aacb-2d23-809d-86af-c14907c6b8e9" class="">WITHDRAWL &lt;amount&gt; - user requests to withdraw money</p><p id="19e7aacb-2d23-804e-8bef-c4bb6c3fee53" class="">CLOSE - user is done</p></div></p><p id="19e7aacb-2d23-8027-9716-eee2f0d7799f" class="">Message from Server to ATM Machine<div class="indented"><p id="19e7aacb-2d23-80be-81ac-daad4c81e732" class="">PASSWD - asking user for PIN number</p><p id="19e7aacb-2d23-80e8-9fff-cd58785a43a2" class="">OK - requested operation is valid</p><p id="19e7aacb-2d23-809c-b300-f2a3e7b635c8" class="">ERROR - requested operation is invalid</p><p id="19e7aacb-2d23-803d-9267-faf23f72c323" class="">BALANCE &lt;balance&gt; - requested balance</p><p id="19e7aacb-2d23-809f-ae20-d3e4eda7e5a1" class="">AMOUNT &lt;amt&gt; - requested withdrawal amount</p><p id="19e7aacb-2d23-80a5-a66f-e7d8f4d41b49" class="">CLOSE - user is done, closing the transaction</p></div></p><p id="19e7aacb-2d23-8079-a2b7-d0536a6d9600" class=""><div class="indented"><p id="19e7aacb-2d23-8078-bf8a-ecf370870c57" class="">Correct Operation:</p></div></p><p id="19e7aacb-2d23-8003-99d8-f4c7f8c2f18b" class="">client → HELO &lt;userid&gt; → server</p><p id="19e7aacb-2d23-8069-a92b-ca47ca0728c3" class="">server → PASSWD → client</p><p id="19e7aacb-2d23-80e0-a307-d98c346c13a7" class="">client → PASSWD &lt;passwd&gt; → server</p><p id="19e7aacb-2d23-80e7-9e5c-ca0c70d3f64a" class="">server → OK → client</p><p id="19e7aacb-2d23-805e-b4c1-d0830f70567b" class="">client → BALANCE → server</p><p id="19e7aacb-2d23-80d7-9d8a-d0e85f8986de" class="">server → BALANCE &lt;balance&gt; → client</p></div></p><p id="19e7aacb-2d23-8087-8597-e6e3f9bb81db" class="">
+</p><p id="19e7aacb-2d23-801a-9ad7-e3b753ff249c" class=""><br/>P2.  <br/><strong>Equation 1.1 gives a formula for the end-to-end delay of sending one packet of length </strong><em><strong>L </strong></em><strong>over </strong><em><strong>N </strong></em><strong>links of transmission rate </strong><em><strong>R</strong></em><strong>. Generalize this formula for sending </strong><em><strong>P </strong></em><strong>such packets back-to-back over the </strong><em><strong>N </strong></em><strong>links.<br/><br/></strong><br/>	Total delay for packet of length L to be transmitted at rate R over N links is equal to N x L/R<br/><div class="indented"><p id="19e7aacb-2d23-8009-a3c5-c1a2c01380c1" class="">The first packet arrives at N(L/R) time. The second packet moves right after the first one, so it arrives at the destination (L/R) time after the first.</p><p id="19e7aacb-2d23-809e-8c11-d091a926d117" class="">The third packet arrives at L/R time after the second. </p><p id="19e7aacb-2d23-80c5-b555-e240bd4b9c00" class="">This continues for all <em>P packets.</em></p><p id="19e7aacb-2d23-8042-880d-c8a89d061bde" class="">
+</p><p id="19e7aacb-2d23-8062-956e-ca2a70f06416" class="">The first packet reaches there at N(L/R).</p><p id="19e7aacb-2d23-8071-8aec-d484b2f78896" class="">The second packet reaches there at N(L/R) + (L/R).</p><p id="19e7aacb-2d23-802e-84f2-c44c1332b039" class="">The third packet reaches there at N(L/R) + 2(L/R).</p><p id="19e7aacb-2d23-80f5-ab68-c7a8902304b8" class="">This keeps going until the last (P-th) packet arrives.</p><p id="19e7aacb-2d23-80d8-9927-e676c8124f1b" class="">
+</p><p id="19e7aacb-2d23-8087-93f3-db3526684c30" class="">For the P-th packet, the total time is equal to N(L/R) + (P-1)(L/R)</p></div></p><p id="19e7aacb-2d23-80a9-8c49-d344d37a3bdc" class="">
+</p><p id="19e7aacb-2d23-808e-9874-ceffdfb032c4" class="">P3. Consider an application that transmits data at a steady rate (for example, the sender generates an <em>N</em>-bit unit of data every <em>k </em>time units, where <em>k </em>is small<br/>and fixed). Also, when such an application starts, it will continue running<br/>for a relatively long period of time. Answer the following questions, briefly<br/>justifying your answer:<br/>   a.  Would a packet-switched network or a circuit-switched network be more<br/>appropriate for this application? Why?<br/>    b. Suppose that a packet-switched network is used and the only traffic in<br/>this network comes from such applications as described above. Further-<br/>more, assume that the sum of the application data rates is less than the<br/>capacities of each and every link. Is some form of congestion control<br/>needed? Why?<br/></p><p id="19f7aacb-2d23-800b-aa27-e513a11b9d6d" class="">
+</p><ol type="a" id="19e7aacb-2d23-809f-97ac-e23aa00bf21a" class="numbered-list" start="1"><li>A circuit-switched network would be appropriate, because the application involves long sessions with predictable smooth bandwidth requirements. Since the transmission rate is known and not bursty, bandwidth can be reserved for each application session without significant waste.</li></ol><ol type="a" id="19f7aacb-2d23-80df-b557-f700a8c3b01e" class="numbered-list" start="2"><li>No congestion will occur. Worst case scenario, everyone transmits at the same time. Each link has sufficient bandwidth to handle the sum of all the applications’ data rates.</li></ol><p id="19f7aacb-2d23-8064-a845-eaadb887f246" class="">
+</p><p id="19f7aacb-2d23-8085-aaa5-ce9dcc7b4a3b" class="">
+</p><p id="19f7aacb-2d23-80a6-8b4f-c00d58c7e533" class="">P4.  Consider the circuit-switched network in Figure 1.13. Recall that there are<br/>four circuits on each link. Label the four switches A, B, C, and D, going in<br/>the clockwise direction.<br/><br/>    a. What is the maximum number of simultaneous connections that can be in progress at any one time in this network?<br/>Up to 16 connections - there are four for each link in the figure<br/>    b. Suppose that all connections are between switches A and C. What is the<br/>maximum number of simultaneous connections that can be in progress?<br/>8 connections - 4 going through switch B, 4 going through switch D<br/>    c. Suppose we want to make four connections between switches A and C,<br/>and another four connections between switches B and D. Can we<br/>route these calls through the four links to accommodate all eight<br/>connections?<br/></p><p id="19f7aacb-2d23-80f9-9470-c527a7f10974" class="">We can route two connections through B and two connections through D from A to C</p><p id="19f7aacb-2d23-8012-8100-cc150f4b1207" class="">We can route two connections through A and two connections C for B to D</p><p id="1a07aacb-2d23-80ba-b10c-ee1b697ee593" class="">
+</p><p id="1a07aacb-2d23-8048-9b81-ff49f2c6bf34" class="">P5.  Review the car-caravan analogy in Section 1.4. Assume a propagation speed<br/>of 100 km/hour.<br/>    a. Suppose the caravan travels 175 km, beginning in front of one tollbooth,<br/>passing through a second tollbooth, and finishing just after a third toll-<br/>booth. What is the end-to-end delay?<br/></p><p id="1a07aacb-2d23-8073-8121-e99bc57c85a7" class="">Transmission Rate: 12 seconds</p><p id="1a07aacb-2d23-80c6-9d37-e80318b6b134" class="">Transmission Delay: 10 cars means that it would take 120 seconds or 2 minutes for the entire caravan to get onto the highway. </p><p id="1a07aacb-2d23-8081-9a71-eec7a8f7e751" class="">Propagation Delay: Toll booths are 175 / 2 = 87.5 km apart. </p><p id="1a07aacb-2d23-80e7-b3a3-e3081487d3e1" class="">87.5 / 100 = 0.875, * 60 = 52.5 minutes to get to the second tollbooth.</p><p id="1a07aacb-2d23-802d-84ea-dfe57c00271a" class="">52.5 + 2 = 54.5 for the total delay to get to the SECOND tollbooth.</p><p id="1a07aacb-2d23-8083-b106-e9641a298e97" class="">54.5 * 2 = 109 minutes to get through to THIRD tollbooth.</p><p id="1a07aacb-2d23-801f-ae92-de30e21402dd" class="">Add another 2 minutes since it ends after the third.</p><p id="1a07aacb-2d23-80db-8e55-f0a6a7d45b06" class="">111 minutes total.</p><p id="1a07aacb-2d23-80d4-9338-c0d32fc0873b" class=""><br/>    b. Repeat (a), now assuming that there are eight cars in the caravan instead<br/>of ten.<br/></p><p id="1a07aacb-2d23-8069-a912-c03f95c8c8db" class="">Transmission Delay: 8 * 12 = 96 = 1.6 minutes</p><p id="1a07aacb-2d23-8078-a3e0-c940732318b5" class="">52.5 + 1.6 minutes = 54.1 * 2 = 108.2 + 1.6 = 109.8 minutes</p><p id="1a47aacb-2d23-8081-b76c-fba05d18be5b" class="">
+</p><p id="1a47aacb-2d23-8051-86ce-e3eb63eb8f62" class="">P6. This elementary problem begins to explore propagation delay and transmis-<br/>sion delay, two central concepts in data networking. Consider two hosts, A<br/>and B, connected by a single link of rate <br/><em>R </em>bps. Suppose that the two hosts<br/>are separated by <br/><em>m </em>meters, and suppose the propagation speed along the link</p><p id="1a47aacb-2d23-80dc-a7dd-d58ed990268d" class="">is <em>s </em>meters/sec. Host A is to send a packet of size <em>L </em>bits to Host B.</p><ol type="a" id="1a47aacb-2d23-8065-b4a1-d99f56668395" class="numbered-list" start="1"><li>Express the propagation delay, <em>d</em>prop, in terms of <em>m </em>and <em>s</em>.<br/>propagation delay = <br/><em>m/s</em></li></ol><ol type="a" id="1a47aacb-2d23-8025-9730-e4e6d9c037dc" class="numbered-list" start="2"><li>Determine the transmission time of the packet, <em>d</em>trans, in terms of <em>L </em>and <em>R</em>.<br/>transmission time = L/R<br/></li></ol><ol type="a" id="1a47aacb-2d23-808c-9162-fe98546540ac" class="numbered-list" start="3"><li>Ignoring processing and queuing delays, obtain an expression for the end-<br/>to-end delay.<br/>(m/s) + (L/R)<br/></li></ol><ol type="a" id="1a47aacb-2d23-80da-a29c-cdf6aba8dc0b" class="numbered-list" start="4"><li>Suppose Host A begins to transmit the packet at time <em>t </em>= 0. At time <em>t </em>=<br/><br/><em>d</em>trans, where is the last bit of the packet?<br/>Just leaving the router<br/></li></ol><ol type="a" id="1a47aacb-2d23-8001-9dfd-ed5b42607a10" class="numbered-list" start="5"><li>Suppose <em>d</em>prop is greater than <em>d</em>trans. At time <em>t </em>= <em>d</em>trans, where is the first<br/>bit of the packet?<br/>In the link and has not yet reached Host B<br/></li></ol><ol type="a" id="1a47aacb-2d23-807c-98d9-d771b8db9ad6" class="numbered-list" start="6"><li>Suppose <em>d</em>prop is less than <em>d</em>trans. At time <em>t </em>= <em>d</em>trans, where is the first bit of<br/>the packet?<br/>The bit has reached Host B<br/></li></ol><p id="1a47aacb-2d23-8022-a750-feaa5f238b38" class="">P7.  In this problem, we consider sending real-time voice from Hsot A to Host B<br/>over a packet-switched network (VoIP). Host A converts analog voice to a<br/>digital 64 kbps bit stream on the fly. Host A then groups the bits into 56-byte<br/>packets. There is one link between Hosts A and B; its transmission rate is<br/>10 Mbps and its propagation delay is 10 msec. As soon as Host A gathers a<br/>packet, it sends it to Host B. As soon as Host B receives an entire packet, it<br/>converts the packet’s bits to an analog signal. How much time elapses from<br/>the time a bit is created (from the original analog signal at Host A) until the<br/>bit is decoded (as part of the analog signal at Host B)?<br/></p><p id="1a47aacb-2d23-80c5-9d96-e3d6a938b996" class="">First: how long it takes to create the packet<div class="indented"><p id="1a47aacb-2d23-8016-a0e7-f43739401ae0" class="">56 bytes * 8 = 448</p><p id="1a47aacb-2d23-8011-a4f6-c1dbbf02f482" class="">64 Kbps = 64,000 bits</p><p id="1a47aacb-2d23-8019-baf9-fece75614c87" class="">448 / 64,000 = 0.007, or 7 msec</p></div></p><p id="1a47aacb-2d23-803b-b3e9-c7c944e605fc" class="">Second: Determine transmision delay:<div class="indented"><p id="1a47aacb-2d23-80ac-8629-d062c1ed148e" class="">448</p><p id="1a47aacb-2d23-801f-81c8-e7f45c229572" class="">Transmission delay is packet of length <em>L / </em>transmission rate in seconds <em>R</em></p><p id="1a47aacb-2d23-804c-9b86-fe3a34f38c2d" class="">10 Mbps = 10 x 10^6</p><p id="1a47aacb-2d23-80b0-980a-f23b368188ca" class="">T_delay = 448 / 10 x 10^6 = 0.0000448 seconds = 0.0448 msec</p></div></p><p id="1a47aacb-2d23-8012-96b7-ed4c01929adb" class="">Third: Propagation delay is 10 msec</p><p id="1a47aacb-2d23-8094-83b5-fec2ff149102" class="">Fourth: 10 + 7 + 0.0448 = 17.0448 msec</p><p id="1a47aacb-2d23-80f9-b7ac-f6216a3339ae" class="">
+</p><p id="1a47aacb-2d23-8098-b137-c9d29e6b0ade" class="">P8. Suppose users share a 10 Mbps link. Also suppose each user requires 200 kbps<br/>when transmitting, but each user transmits only 10 percent of the time. (See<br/>the discussion of packet switching versus circuit switching in Section 1.3.)<br/><br/><div class="indented"><ol type="a" id="1a47aacb-2d23-80fa-9ac3-dd92c4ec6368" class="numbered-list" start="1"><li>When circuit switching is used, how many users can be supported?<br/>10 Mbps = 10000 Kbps<br/>Each user requires 200 Kbps<br/>50 users can be supported because 10000/200 = 50 <br/></li></ol><ol type="a" id="1a47aacb-2d23-8014-bf52-c3d0f34db7df" class="numbered-list" start="2"><li>For the remainder of this problem, suppose packet switching is used. Find<br/>the probability that a given user is transmitting.<br/>p = 0.1 (10% of the time)<br/></li></ol><ol type="a" id="1a47aacb-2d23-80d7-9a92-f24ecab22fa0" class="numbered-list" start="3"><li>Suppose there are 120 users. Find the probability that at any given time,<br/>exactly <br/><em>n </em>users are transmitting simultaneously. (<em>Hint</em>: Use the binomial<br/>distribution.)<br/></li></ol><figure id="1a47aacb-2d23-8066-a609-de70896f6cba" class="image"><a href="Problems%2019a7aacb2d23804988f9e3c0f05e498a/Screenshot_2025-02-24_at_2.51.04_PM.png"><img style="width:685.9921875px" src="Problems%2019a7aacb2d23804988f9e3c0f05e498a/Screenshot_2025-02-24_at_2.51.04_PM.png"/></a></figure><p id="1a47aacb-2d23-8003-8675-d739f6c57021" class="">Plugging in:</p><p id="1a47aacb-2d23-806d-8e6d-fdc630fdb7fa" class="">(120 / k)0.1^k(1 - 0.1)^(120-k)</p><p id="1a47aacb-2d23-8025-8284-c6cda3164f9f" class="">d. Find the probability that there are 51 or more users transmitting<br/>simultaneously.<br/></p></div></p><p id="1a57aacb-2d23-8013-af06-ccd30904ecfe" class="">
+</p><p id="1a57aacb-2d23-80c8-bcd6-de8e9754a9a9" class="">P9.  Consider the discussion in Section 1.3 of packet switching versus circuit switch-<br/>ing in which an example is provided with a 1 Mbps link. Users are generating<br/>data at a rate of 100 kbps when busy, but are busy generating data only with<br/>probability <br/><em>p </em>= 0.1. Suppose that the 1 Mbps link is replaced by a 1 Gbps link.<br/><br/>    1. What is <br/><em>N, </em>the maximum number of users that can be supported simulta-<br/>neously under circuit switching?<br/>N=10,000<br/><br/>    2. Now consider packet switching and a user population of <br/><em>M </em>users. Give a<br/>formula (in terms of <br/><em>p</em>, <em>M</em>, <em>N</em>) for the probability that more than <em>N </em>users<br/>are sending data.<br/></p><p id="1a67aacb-2d23-80cb-89d0-f495115f75fc" class="">
+</p><p id="1a67aacb-2d23-80be-8c41-cc672122a0a4" class="">P10.  Consider a packet of length <em>L </em>that begins at end system A and travels over<br/>three links to a destination end system. These three links are connected by<br/>two packet switches. Let <br/><em>di</em>, <em>si, </em>and <em>Ri </em>denote the length, propagation speed,<br/>and the transmission rate of link <br/><em>i, </em>for <em>i </em>= 1, 2, 3. The packet switch delays<br/>each packet by <br/><em>d</em>proc. Assuming no queuing delays, in terms of <em>di</em>, <em>si</em>, <em>Ri,</em><br/>(<br/><em>i </em>= 1, 2, 3), and <em>L, </em>what is the total end-to-end delay for the packet? </p><p id="1a67aacb-2d23-8058-b823-e0e215da7b51" class="">total end-to-end delay for the packet </p><p id="1a67aacb-2d23-8006-bf61-f5b92330225d" class="">Transmission Delay for the first = L/R_1</p><p id="1a67aacb-2d23-80ce-8c02-fb154b19f793" class="">Propagation Delay = d_1/s_1</p><p id="1a67aacb-2d23-80e5-bf87-e108713c1326" class="">Total Delay for First link = L/R_1 + d_1/s_1</p><p id="1a67aacb-2d23-80fc-ad2c-ee9b34ef2fe6" class="">Adding all of it up for the next two:</p><p id="1a67aacb-2d23-8006-b388-dd599e9e3cef" class="">L/R_1 + L/R_2 + L/R_3 + d_1/s_1 + d_2/s_2 + d_3/s_3</p><p id="1a67aacb-2d23-80fa-bad6-d5dea5d36c83" class="">Adding in the two processing delays:</p><p id="1a67aacb-2d23-809b-a22b-ec21eeedf94b" class="">L/R_1 + L/R_2 + L/R_3 + d_1/s_1 + d_2/s_2 + d_3/s_3 + 2d_proc</p><p id="1a67aacb-2d23-80eb-b8b1-fe2e39a1e72b" class="">
+</p><p id="1a67aacb-2d23-80bd-bb35-fb6f785bebc1" class="">Suppose now the packet is 1,500 bytes, the propagation speed on all three links is<br/>2.5 * 10^8m/s, the transmission rates of all three links are 2.5 Mbps, the packet<br/>switch processing delay is 3 msec, the length of the first link is 5,000 km, the<br/>length of the second link is 4,000 km, and the length of the last link is 1,000<br/>km. For these values, what is the end-to-end delay?<br/></p><p id="1a67aacb-2d23-80dc-be36-fd1307f97b5c" class="">
+</p><p id="1a67aacb-2d23-804a-b4c8-e7019c359a32" class="">8 bits in a byte</p><p id="1a67aacb-2d23-800d-86b7-cc7bba915ebb" class="">Mb = 10^6 bytes (1 million bytes)</p><p id="1a67aacb-2d23-803f-942e-ceef77df1085" class="">1500 bytes = 12000</p><p id="1a67aacb-2d23-8079-b16e-f1f2a1e023e3" class="">Transmission Delay = L/R = 12000/2.5 x 10^6 = 0.0048 or 4.8 msec</p><p id="1a67aacb-2d23-803c-8db5-c8e12b21fec0" class="">
+</p><p id="1a67aacb-2d23-80df-b6df-d5a09ce2e973" class="">Propagation Delay formula = distance in meters over speed in m/s</p><p id="1a67aacb-2d23-8017-92c4-d3f4a0c9e803" class="">1000 meters in a kilometer</p><p id="1a67aacb-2d23-8035-85e0-dcf0b8a020d3" class="">5000 km = 5000000 meters</p><p id="1a67aacb-2d23-8031-a257-f26f0109fa51" class="">4000 km = 4000000 meters</p><p id="1a67aacb-2d23-8039-8bf1-d31358a02ee9" class="">1000 km = 1000000 meters</p><p id="1a67aacb-2d23-80ad-ba97-e2c1090e1052" class="">Propagation Delay (1st link) = d/s = 5000000/2.5 *10^8 = 0.02 seconds or 20 msec</p><p id="1a67aacb-2d23-804b-936b-f4534124c762" class="">Propagation Delay (2nd Link) = d/s = 4000000/2.5 * 10^8 = 0.016 seconds or 16 msec</p><p id="1a67aacb-2d23-80d8-a2ac-c961b53bf1f7" class="">Propagation Delay (3rd Link) = d/s = 1000000/2.5 * 10^8 = 0.004 seconds or 4 msec</p><p id="1a67aacb-2d23-803e-8287-d91e96870008" class="">
+</p><p id="1a67aacb-2d23-80a5-88eb-d735f4a0c21f" class="">(4.8 * 3) + 20 + 16 + 4 + (2 * 3) = 60.4 msec</p><p id="1a67aacb-2d23-80d9-a60b-fcd12589cbe5" class="">
+</p><p id="1a67aacb-2d23-800f-b953-ccbe16e8222b" class="">
+</p><p id="1a67aacb-2d23-8071-8a24-cf9ce0fc9ec3" class="">P11.  In the above problem, suppose <em>R</em>1 = <em>R</em>2 = <em>R</em>3 = <em>R </em>and <em>d</em>proc = 0. Further<br/>suppose that the packet switch does not store-and-forward packets but instead<br/>immediately transmits each bit it receives before waiting for the entire packet<br/>to arrive. What is the end-to-end delay?<br/><br/></p><p id="1a67aacb-2d23-8096-87cf-f7a681f798a9" class="">Because the packets are immediately transmitted, there is no transmission delay. Since d_proc = 0, there is no processing delay. So it would just be (L/R) + d_1/s_1 + d_2/s_2 + d_3/s_3.<br/>	<br/><br/></p><p id="1a67aacb-2d23-80bd-80fd-fb83ea41f342" class=""><br/>P12.  A packet switch receives a packet and determines the outbound link to which the packet should be forwarded. When the packet arrives, one other packet is halfway done being transmitted on this outbound link and four other packets are waiting to be transmitted. Packets are transmitted in order of arrival. Suppose all packets are 1,500 bytes and the link rate is 2.5 Mbps. What is the queuing delay for the packet? More generally, what is the queuing delay when all packets have length <br/><em>L</em>, the transmission rate is <em>R</em>, <em>x </em>bits of the currently-being-transmitted<br/>packet have been transmitted, and <br/><em>n </em>packets are already in the queue?<br/><br/>	<br/><br/></p><p id="1a67aacb-2d23-8002-a800-da594112d282" class="">The arriving packet must first wait for the link to transmit 4.5 *1,500 bytes = 6,750 bytes</p><p id="1a67aacb-2d23-8080-836d-ee4a41186d8e" class="">or 54,000 bits. Since these bits are transmitted at 2.5 Mbps, the queuing delay is 21.6 msec.</p><p id="1a67aacb-2d23-803f-9717-e6118350a524" class="">Generally, the queuing delay is (nL + (L -x))/R</p><p id="1a87aacb-2d23-8012-855d-cbdf808faf70" class="">
+</p><p id="1a87aacb-2d23-8099-a621-f547ca4ca4b3" class=""><br/><br/><br/></p><p id="1a87aacb-2d23-8002-a5f7-d171869c1e1b" class="">P13.  (a)Suppose <em>N </em>packets arrive simultaneously to a link at which no packets<br/>are currently being transmitted or queued. Each packet is of length <br/><em>L </em>and<br/>the link has transmission rate <br/><em>R</em>. What is the average queuing delay for<br/>the <br/><em>N </em>packets?</p><p id="1a87aacb-2d23-80c2-9b96-ce957da2c4f1" class="">Queuing delay for the first transmitted packet is 0, L/R for the second packet, and for the nth packet it would be (n-1)L/R.</p><p id="1a87aacb-2d23-80b4-a154-d7b1e57dbf9a" class="">The average delay would be:</p><p id="1a87aacb-2d23-803a-8c0c-c57c6276f7d0" class="">0 + L/R + 2(L/R) + …. + (N-1)L/R / N = </p><p id="1a87aacb-2d23-80eb-806d-d6b09bc959df" class="">= (N-1)L / 2R</p><p id="1a87aacb-2d23-8043-ad5e-d202237e593e" class="">
+</p><p id="1a87aacb-2d23-802b-9425-fab2281b7fc0" class="">(b) Now suppose that <em>N </em>such packets arrive to the link every <em>LN/R </em>seconds.</p><p id="1a87aacb-2d23-8052-8e59-c921f3bc78a9" class="">What is the average queuing delay of a packet?</p><p id="1a87aacb-2d23-809b-9b2a-e36e28e8c29a" class="">
+</p><p id="1a87aacb-2d23-80ea-a475-f7a1b7641aa8" class="">P14.  Consider the queuing delay in a router buffer. Let <em>I </em>denote traffic intensity;<br/>that is, <br/><em>I </em>= <em>La</em>/<em>R</em>. Suppose that the queuing delay takes the form <em>IL</em>/<em>R </em>(1 - <em>I</em>)<br/>for I &lt; 1.<br/></p><ol type="a" id="1a87aacb-2d23-80f0-9302-c69a591cf16f" class="numbered-list" start="1"><li>Provide a formula for the total delay, that is, the queuing delay plus the<br/>transmission delay.<br/>IL / R(1 = 1) + L / R = (L/R)/ 1-1<br/></li></ol><ol type="a" id="1a87aacb-2d23-80a3-b57f-d54503e5152a" class="numbered-list" start="2"><li>Plot the total delay as a function of <em>L/R</em>.</li></ol><p id="1ab7aacb-2d23-8086-9cb1-f6b5fba146eb" class="">
+</p><p id="1ab7aacb-2d23-80d3-9e5a-c6ab38c38734" class=""><br/>P15.  Let <br/><em>a </em>denote the rate of packets arriving at a link in packets/sec,and let <em>μ<br/><br/></em>denote the link’s transmission rate in packets/sec. Based on the formula for<br/>the total delay (i.e., the queuing delay plus the transmission delay) derived<br/>in the previous problem, derive a formula for the total delay in terms of <br/><em>a<br/><br/></em>and <em>μ</em>.<br/><br/></p><p id="1ad7aacb-2d23-8068-8dad-fec697cbe94a" class=""><br/><br/><strong>P24. Suppose you would like to urgently deliver 50 terabytes data from Boston to Los Angeles. You have available a 100 Mbps dedicated link for data transfer. Would you prefer to transmit the data via this link or instead use FedEx over-night delivery? Explain.<br/><br/></strong>50 Terabytes of data is equal to 50 x 10^12 bytes. </p><p id="1ad7aacb-2d23-800b-bcdb-d8c665b3859c" class="">50 x 10^12 bytes = ((50 x 10^12) * 8) bits</p><p id="1ad7aacb-2d23-80ee-bbac-f8ab01b6264a" class="">100 Mbps = 100 * 10^ 6 bits per second</p><p id="1ad7aacb-2d23-80f9-a85b-d40709cae2f2" class="">((50 x 10^12) * 8) bits / (100 * 10 ^6 bit/sec) =</p><p id="1ad7aacb-2d23-80a8-889b-ea2de11380e2" class="">4,000,000 seconds</p><p id="1ad7aacb-2d23-805a-9cdb-d94d54c71d7f" class="">60 seconds in a minute, 3600 seconds in an hour, 3600 * 24 = 86400 seconds in a day</p><p id="1ad7aacb-2d23-80a3-8925-c371226ba547" class="">86400 seconds in a day, this would take 4,000,000 / 86,400 = 46.3 days to transmit.</p><p id="1ad7aacb-2d23-802a-a700-c299802cc8d5" class="">I would go with overnight delivery to get these terabytes over, because 1 &lt; 46.3. </p><p id="1ad7aacb-2d23-809b-b725-f775d229c211" class=""><br/><br/><br/></p><p id="1ad7aacb-2d23-802c-84a7-fc38ac07db2d" class=""><strong>P25. Suppose two hosts, A and B, are separated by 20,000 kilometers and are connected by a direct link of </strong><em><strong>R </strong></em><strong>= 5 Mbps. Suppose the propagation speed over the link is 2.5 * 10^8 meters/sec. </strong></p><ol type="a" id="1ad7aacb-2d23-806f-b0a5-e042d9b0bb90" class="numbered-list" start="1"><li><strong>Calculate the bandwidth-delay product, R * d_prop<br/><br/></strong>d_prop = <em>d / s = </em>20,000 * 10^3 m / 2.5 * 10^8 = 0.08 seconds<br/>5  Mbps = 5 * 10^6 = 5000000 bits per second<br/>5000000 * 0.08 = 400000 bits<br/></li></ol><ol type="a" id="1ad7aacb-2d23-80bb-94f7-ff6e7f3502b9" class="numbered-list" start="2"><li><strong>Consider sending a file of 800,000 bits from Host A to Host B. Suppose the file is sent continuously as one large message. What is the maximum number of bits that will be in the link at any given time?<br/><br/></strong>400,000 bits </li></ol><ol type="a" id="1ad7aacb-2d23-80cb-93cb-fed266ee6f48" class="numbered-list" start="3"><li><strong>Provide an interpretation of the bandwidth-delay product.<br/><br/></strong>The bandwidth-delay product of a link is the maximum number of bits that can be in the link.</li></ol><ol type="a" id="1ad7aacb-2d23-80c0-8a2b-f8e66f2cded1" class="numbered-list" start="4"><li><strong>What is the width (in meters) of a bit in the link? Is it longer than a football field?<br/><br/></strong>2.5 * 10^8 meters/sec / 5 * 10^6 bits/sec = 50 meters<strong><br/><br/></strong>No it isn’t longer than a football field</li></ol><ol type="a" id="1ad7aacb-2d23-80a3-af32-c51b2c4d5c76" class="numbered-list" start="5"><li><strong>Derive a general expression for the width of a bit in terms of the propagation speed </strong><em><strong>s, </strong></em><strong>the transmission rate </strong><em><strong>R, </strong></em><strong>and the length of the link </strong><em><strong>m</strong></em><strong>.<br/>speed / transmission Rate = s / R<br/><br/></strong><br/>	<br/><br/><strong><br/><br/></strong><br/>	<br/><br/></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

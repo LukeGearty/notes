@@ -1,0 +1,723 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 5</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c47aacb-2d23-80f0-b10f-d5729314e923" class="page sans"><header><h1 class="page-title">Chapter 5</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1c47aacb-2d23-80c8-8364-e2a0008e20da" class="">Introduction</h1><p id="1c47aacb-2d23-80c4-9796-d1f583b24a47" class="">Data Plane focuses mostly on individual routers, input ports and output ports. Control Plane focuses on the network as a whole.</p><h1 id="1c77aacb-2d23-80d7-b97e-fb40c2687a03" class="">Routing Algorithms</h1><p id="1c77aacb-2d23-8074-907b-f36d2f9c8afb" class="">Link state and distance vector share the common goal, but there is a differnece in how they do it. </p><p id="1c77aacb-2d23-804c-b77b-c82e04365d28" class="">The goal of a routing algorithm is to determine the best path (route) from sending hosts to receiving host, through network of routers. </p><p id="1c77aacb-2d23-800f-bdaf-f8effaa6417a" class="">Path: sequence of routers packets traverse from given initial source host to final destination host. </p><p id="1c77aacb-2d23-8087-9dbb-f11e7761707c" class="">Good: Least “cost”, “fastest”, “Least congested”. The definition of cost and good is left up to network operator. </p><p id="1c77aacb-2d23-8022-982c-c4208948b3ee" class="">Routing is a top 10 networking challenge. </p><p id="1c77aacb-2d23-8099-ba52-fa2344e8da9f" class="">Graph Abstraction: link costs</p><p id="1c77aacb-2d23-80cf-ad21-e64e68136a03" class="">graph consist of N nodes (set of routers) with E set of edges/links { (u,v), (u,x), etc } </p><p id="1c77aacb-2d23-8077-a7e7-d4f5e4372ce8" class="">C(x,y) = the cost of the direct link between x and y</p><p id="1c77aacb-2d23-802f-b42f-dd36f39882ff" class="">Cost is defined by network operator. Could always be 1, or inversely related to bandwidth, or related to congestion.</p><p id="1c77aacb-2d23-8007-8583-d9a052cb0341" class="">Broadly, the algorithm can be clasified by either global or decentralized, static or dynamic.</p><p id="1c77aacb-2d23-8033-9583-d6cbbba74c99" class="">Global: All routers have complete topology, link cost info.<div class="indented"><p id="1c77aacb-2d23-80e6-b5d3-deb7024667b3" class="">Link State algorithms</p></div></p><p id="1c77aacb-2d23-805e-b17c-e41d95d14edf" class="">Decentralized: iterative process of computation, exchange of info with neighbors<div class="indented"><p id="1c77aacb-2d23-8020-b70b-deafbddab035" class="">Routers initially only know link costs to attached neighbors</p><p id="1c77aacb-2d23-8090-9c52-fa634596e0ec" class="">“Distance Vector” algorithms</p></div></p><p id="1c77aacb-2d23-8076-b548-e604624327e7" class="">Static: route change slowly over time</p><p id="1c77aacb-2d23-8013-bce4-cb60fb68245f" class="">Dynamic: route changes more quickly</p><p id="1c77aacb-2d23-806f-ba06-dff2f6566f5c" class="">
+</p><p id="1c77aacb-2d23-8031-86a1-c4001570d3ac" class=""><strong>Dijkstra’s Algorithm</strong></p><p id="1c77aacb-2d23-80d3-9a98-f70c1313dec3" class="">Centralized Algorithm: Assumes complete network topology is known to all nodes</p><p id="1c77aacb-2d23-80dc-93aa-c5a1e0710346" class="">Computes least cost paths from one node (”Source”) to all other nodes<div class="indented"><p id="1c77aacb-2d23-8055-8380-fd3a1000d32e" class="">Gives forwarding table for that node</p></div></p><p id="1c77aacb-2d23-80e5-b9e6-cfa00235e0ff" class="">Iterative: after k iterations, know least cost path to k destinations</p><p id="1c77aacb-2d23-802e-bab2-f9d23e1d348d" class="">c_a,b: Direct link cost from node a to be; = ∞ if not direct neighbors</p><p id="1c77aacb-2d23-804b-ba07-cf520c2ad25c" class="">D(a): current estimate of cost of least cost-path from source to destination a</p><p id="1c77aacb-2d23-8010-9e7b-da42dc14650e" class="">P(a) predecessor node along path from source to a</p><p id="1c77aacb-2d23-8070-a666-c5f235a4a9ba" class="">N’: set of nodes whose least-cost-path definitively known</p><p id="1c77aacb-2d23-8092-8cc9-f5f99b5a6693" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1c77aacb-2d23-800f-ad68-d7e0e5dd57b3" class="code"><code class="language-Plain Text">Initialization
+N&#x27; = {u} //source node
+for all nodes a //all nodes within network
+	if a adjacent to u //if a is a neighbor
+		then D(a) = c_u,a //the path from source to this neighbor is just the 
+											// one hop cost
+	else D(a) = ∞ //else it is unknown
+
+Loop
+find a not in N&#x27; such that D(a) is a minimum //a node not in N&#x27; where the cost is 
+																						//minimum
+add a to N&#x27; // add it to N&#x27;
+update D(b) for all b adjacent to a and not in N&#x27;: //update all the nodes 
+																									// adjacent to a
+	D(b) = min(D(b), D(a) + c_a,b) // either old value of D(b) or the cost
+																// of D(a) plus the cost of a to b
+	//new least-cost path to b is either old least-cost-path to b or 
+// known least-cost-path to a plus direct-cost from a to b //
+until N&#x27; = N</code></pre><p id="1c77aacb-2d23-8034-8150-e2a5b3f1fd61" class="">
+</p><p id="1c77aacb-2d23-8046-95ec-ca9cc7a14641" class="">Algorithm complexity: n nodes</p><p id="1c77aacb-2d23-80a0-a488-eafac299758a" class="">each of n iteration: need to check all nodes, w, not in N</p><p id="1c77aacb-2d23-8030-a95a-c52f22f797a5" class="">n(n+1)/2 comparisons: O(N^2) complexity</p><p id="1c77aacb-2d23-8079-95ab-e49b6217980f" class="">
+</p><p id="1c77aacb-2d23-8067-8e9a-da94b69e612e" class="">Message Complexity: <div class="indented"><p id="1c77aacb-2d23-80c2-8fe2-dd7c894a0b59" class="">Each router must broadcast its link state information to other n routers</p><p id="1c77aacb-2d23-80a8-b082-de42490010c3" class="">Efficient broadcast algorithms O(n) link crossings to disseminate a broadcast message from one source</p><p id="1c77aacb-2d23-80eb-967d-f3343acd1779" class="">Each router’s message crosses O(n) links: overall message complexity: O(n^2)</p></div></p><p id="1c77aacb-2d23-8044-ac86-d3bed9fd4c94" class="">
+</p><p id="1c77aacb-2d23-80a0-af69-f450edcda4c0" class="">Oscillations possible:</p><p id="1c77aacb-2d23-802f-aae0-d878b8086be1" class="">when link costs depend on traffic volume, route oscillations possible</p><p id="1c77aacb-2d23-80a0-b464-e44bce0d25ad" class="">sample scenario: routing to destination a, traffic entering at d, c, e with rates 1, e (&lt;1), 1</p><p id="1c77aacb-2d23-80b1-97f7-f0e742cc03d4" class="">link costs are directional, and volume-dependent</p><p id="1c87aacb-2d23-80f3-9e3c-d42650b2bcaa" class="">
+</p><p id="1c87aacb-2d23-804d-bf0a-ed77dc7d2706" class=""><strong>Distance Vector</strong></p><p id="1c87aacb-2d23-80d7-b3ab-ffb6a44726e8" class="">The Distance Vector algorithm is based on the Bellman-Ford equation (dynamic programming):</p><figure id="1c87aacb-2d23-807b-88f4-f07cbbc60dc4" class="image"><a href="Chapter%205%201c47aacb2d2380f0b10fd5729314e923/Screenshot_2025-04-01_at_3.28.37_PM.png"><img style="width:709.9765625px" src="Chapter%205%201c47aacb2d2380f0b10fd5729314e923/Screenshot_2025-04-01_at_3.28.37_PM.png"/></a></figure><p id="1c87aacb-2d23-80e1-a3b3-e36d4aba3fc9" class="">If I want a minimum cost from source x to destination y, then that path must have one of x’s neighbors, v, as a hop</p><p id="1c87aacb-2d23-8008-a4a8-e2825d493fae" class="">Sum the cost of x to v, then getting neighbor v to destination y</p><p id="1c87aacb-2d23-803f-9bfb-c16d6d935067" class="">min taken over all neighbors v of x</p><p id="1c87aacb-2d23-8008-9408-da659e47a73d" class="">Key Idea: </p><p id="1c87aacb-2d23-8059-ab56-d30748d82a44" class="">from time to time, each node sends its own distance bector estimate to neighbors</p><p id="1c87aacb-2d23-80c2-8b50-eca0f4dffe3f" class="">When x receives new DV estimate from any neighbor, it updates its own DV using B-F equation</p><p id="1c87aacb-2d23-8095-a058-c0a101631499" class="">
+</p><p id="1c87aacb-2d23-8078-8c23-ea18f0432401" class="">each node: <div class="indented"><p id="1c87aacb-2d23-8029-bc24-d2e00b7a4408" class="">wait for (change in local link cost or msg from neighbor)</p><p id="1c87aacb-2d23-8025-98ec-e4d6190ce586" class="">Recompute my DV estimates using DV received from neighbor</p><p id="1c87aacb-2d23-80d8-9ce9-cbf66dcc570d" class="">If my DV to any destination has changed, send my new DV my neighbors, else do nothing</p></div></p><p id="1c87aacb-2d23-806c-9f61-c83ac8ae0c55" class="">Iterative, asynchronous: each local iteration caused by:<div class="indented"><p id="1c87aacb-2d23-8039-9c5a-e5de9916fbfc" class="">local link cost change</p><p id="1c87aacb-2d23-8063-84eb-d6a9393889ce" class="">DV update message from neighbor</p></div></p><p id="1c87aacb-2d23-806a-9ffb-f8b3ac7686a2" class="">Distributed, self-stopping: each node notifies neighbors only when its DV changes<div class="indented"><p id="1c87aacb-2d23-8031-9c97-e067fdddf3df" class="">Neighbors then notify their neighbors - only if necessary</p><p id="1c87aacb-2d23-80d5-ac43-c970272f8f02" class="">No notification received, no actions taken</p></div></p><p id="1c97aacb-2d23-80d5-b295-d6af971b9238" class="">
+</p><h1 id="1c97aacb-2d23-80d4-954b-c0a007addace" class="">Intra-AS Routing in the Internet: OSPF</h1><p id="1c97aacb-2d23-802d-900e-fb0cac0ed312" class="">Making routing scalable</p><p id="1c97aacb-2d23-80a9-8b71-cec97ab169c2" class="">Our routing study thus far has been idealized. All routers are identical, the network is “flat”.</p><p id="1c97aacb-2d23-8037-a05c-cce6e83dc2f1" class="">In practice, the issue of scale: how to route to billions of destinations. Can’t store all destinations in routing tables. Routing table exchange would use up all bandwidth.</p><p id="1c97aacb-2d23-8082-a3c7-f9f5ed8bab85" class="">There is also the issue of autonomy - the internet is a network of networks, each network admin may want to control routing in its own network</p><p id="1c97aacb-2d23-804d-a287-f9d4dd5bc812" class="">The internet approach to scaling routing begins with aggregating routers into regions known as “autonomous systems” (AS) - aka domains. </p><p id="1c97aacb-2d23-805e-8133-fb2ebfea6145" class=""><strong>Intra-AS - intra-domain:</strong></p><p id="1c97aacb-2d23-80c0-95e3-da7f4c03793f" class="">routing among routers within same AS<div class="indented"><p id="1c97aacb-2d23-8006-9460-d604596f5475" class="">all routers in AS must run same intra-domain protocol</p><p id="1c97aacb-2d23-800c-82cf-c09858bb5f19" class="">Routers in different AS can run different intra-domain routing protocol.</p><p id="1c97aacb-2d23-80b1-a549-e495ef589aff" class="">Gateway router: at “edge” of its own AS, has links to routers in other AS’es</p></div></p><p id="1c97aacb-2d23-80ae-862f-ee97346d9bb1" class=""><strong>inter-AS - interdomain:</strong></p><p id="1c97aacb-2d23-8063-a7e0-c72b8a971b58" class="">routing among ASes</p><p id="1c97aacb-2d23-8050-9d77-e612136c23d4" class="">gateways perform inter-domain routing (as well as intra-domain routing)</p><p id="1c97aacb-2d23-809a-b815-cdffffa1db09" class="">Interconnected ASes:</p><p id="1c97aacb-2d23-80fb-8740-c407a28274a9" class="">forwarding table configured by intra and inter-AS routing algorithms</p><p id="1c97aacb-2d23-802b-9597-e15ca1841191" class="">intra-AS routing determine entries for destinations within AS</p><p id="1c97aacb-2d23-8032-9401-e6d592588859" class="">inter-AS &amp; intra-AS determine entries for external destinations</p><p id="1c97aacb-2d23-80d9-ba3f-e0a7703d4a7e" class="">most common intra-AS routing Protocols:<div class="indented"><p id="1c97aacb-2d23-8040-abc4-c091cd6b5a7e" class="">RIP - Routing Infromation protocol<div class="indented"><p id="1c97aacb-2d23-802e-a60e-d68c89dceccd" class="">classic DV: DVs exchanged every 30 seconds</p><p id="1c97aacb-2d23-805f-a112-c6d5a73379fe" class="">no longer widely used</p></div></p><p id="1c97aacb-2d23-8025-b966-ebcf9eb6a85a" class="">OSPF - Open Shortest Path First<div class="indented"><p id="1c97aacb-2d23-807c-8a67-cfbe934a819b" class="">Classic link-state routing - Dijkstra’s Protocol</p><p id="1c97aacb-2d23-80e4-9041-dc12eed5d61e" class="">IS-IS essentially same as OSPF</p></div></p><p id="1c97aacb-2d23-80de-88d3-d3f25dcd758f" class="">EIGRP - Enhanced Interior Gateway Routing Protocol<div class="indented"><p id="1c97aacb-2d23-80ce-abed-d76c90753bb0" class="">DV based</p><p id="1c97aacb-2d23-806c-91e0-eaac18043a72" class="">formerly Cisco-proprietary for decades</p><p id="1c97aacb-2d23-80a4-ae4a-d847ddf14de4" class="">Became open source in 2013</p></div></p></div></p><p id="1c97aacb-2d23-803b-9ab0-f14a1c62e306" class="">
+</p><p id="1c97aacb-2d23-803f-bac5-cba576da42df" class=""><strong>OSPF - Open Shortest Path First</strong></p><p id="1c97aacb-2d23-802c-ab91-c05553c63774" class="">“open” - publicly available</p><p id="1c97aacb-2d23-80d1-a6fb-c3a9e573c0e1" class="">Classic link state<div class="indented"><p id="1c97aacb-2d23-804c-8ecc-df028082283f" class="">Each router floods OSPF link-state advertisements (directly over iP rather than using TCP/UDP) to all other routers in entire AS.</p><p id="1c97aacb-2d23-80e9-b877-f9635cb4de13" class="">Multiple link costs metrics possible: bandwidth, delay</p><p id="1c97aacb-2d23-80d9-a887-dc2097d0e556" class="">Each router has full topology, uses Dijkstra’s algorithm to compute forwarding table</p></div></p><p id="1c97aacb-2d23-8083-b350-e78bb6519fc7" class="">Security: all OSPF messages are authenticated</p><p id="1c97aacb-2d23-80cf-b928-e7bb68f1f972" class="">
+</p><p id="1c97aacb-2d23-8018-b313-dce0861dd715" class="">two-level heirarchy: local area, backbone<div class="indented"><p id="1c97aacb-2d23-80a5-9197-ffb3c37376fb" class="">link-state advertisements flooded only in area, or backbone</p><p id="1c97aacb-2d23-80b3-9068-eb40b3e99173" class="">Each node has detailed area topology; only knows direction to reach other destinations</p></div></p><p id="1c97aacb-2d23-8050-9209-f706eb42d276" class="">
+</p><p id="1c97aacb-2d23-805a-bf30-ce80d1e708c3" class="">area border routers:<div class="indented"><p id="1c97aacb-2d23-8096-97fa-e57ac703c206" class="">summarize distances to destinations in own area, advertise in backbone</p></div></p><p id="1c97aacb-2d23-8059-a138-da63f6294fd3" class="">local routers:<div class="indented"><p id="1c97aacb-2d23-80e0-95f5-ead4ea670a86" class="">flood LS in area only</p><p id="1c97aacb-2d23-806b-bcc5-de887116726a" class="">compute routing within area</p><p id="1c97aacb-2d23-8070-8c18-cbf773d2b03a" class="">forward packets to outside via area border router</p></div></p><p id="1c97aacb-2d23-80e3-8574-cf8a680d2a70" class="">boundary router:<div class="indented"><p id="1c97aacb-2d23-806b-828e-f1a29a89afa9" class="">connects to other ASes</p></div></p><p id="1c97aacb-2d23-80c3-934a-f169e7b55485" class="">backbone router: <div class="indented"><p id="1c97aacb-2d23-80d3-ab6a-cecf76edd71f" class="">runs OSPF limited to backbone</p></div></p><p id="1ca7aacb-2d23-80e1-a20e-ceb406636a45" class="">
+</p><h1 id="1ca7aacb-2d23-8014-94ab-c5ffaad1662a" class="">Routing Among the ISPs: BGP</h1><p id="1ca7aacb-2d23-8050-a303-d58c9f84dcf7" class="">The de facto routing protocol in use today, de facto inter-domain routing protocol</p><p id="1ca7aacb-2d23-8008-830c-ec2aec5605ad" class="">“glue that holds the internet together”</p><p id="1ca7aacb-2d23-80da-b2be-ccefa17072ee" class="">DV - distributed and asynchronous</p><p id="1ca7aacb-2d23-80f6-ae64-f6e9fb806642" class="">As much about policy</p><p id="1ca7aacb-2d23-8091-8c46-caab63b74807" class="">Allows subnet to advertise its existence, and the destinations it can reach, to rest of Internet: “I am here, here is who I can reach, and how”</p><p id="1ca7aacb-2d23-8084-abc9-ead8f1b9dfa9" class="">BGP provides each AS a means to:<div class="indented"><p id="1ca7aacb-2d23-8065-a5fa-d2418843feb0" class="">obtain destination network reachability info from neighboring ASes (eBGP)</p><p id="1ca7aacb-2d23-8032-95c2-e8769fa77167" class="">determine routes to other networks based on reachability info and policy</p><p id="1ca7aacb-2d23-80d3-b532-deb8f2279ebb" class="">propagate reachability information to all AS-internal routers (iBGP)</p><p id="1ca7aacb-2d23-8062-b8bb-ecdb10dcd1cc" class="">advertise (to neighboring networks) destination reachability info</p></div></p><p id="1ca7aacb-2d23-8067-b5a1-fca43b320860" class="">eBGP: runs between two routers in different Autonomys systems</p><p id="1ca7aacb-2d23-80bb-a762-d0b7b4e78ed6" class="">IBGP: runs betwen two routers in same AS</p><p id="1ca7aacb-2d23-80aa-aff2-d448b2392eb2" class="">gateway routers run both eBGP and iBGP protocols</p><p id="1ca7aacb-2d23-8041-b3c4-f8b2739b6cdf" class="">
+</p><p id="1ca7aacb-2d23-80d7-9a9f-cd649c2cfe27" class="">BGP Basics:</p><p id="1ca7aacb-2d23-801f-a3b8-e645ceba09f8" class="">BGP session: two BGP routers exchange BGP messages over semi permanent TCP connection<div class="indented"><p id="1ca7aacb-2d23-8067-8621-e72d37b451ab" class="">Advertising paths to different destination network prefixes (eg to a destination /16 network</p><p id="1ca7aacb-2d23-80bb-96ea-ec8b401d2608" class="">BGP is a “path vector” protocol</p></div></p><p id="1ca7aacb-2d23-8000-ab2d-c786d5aa7b7f" class="">
+</p><p id="1ca7aacb-2d23-80c7-81b1-f12c6ef06310" class="">Protocol Messages:</p><p id="1ca7aacb-2d23-807f-8601-ee2c746b16c8" class="">Messages exchanged between peers over TCP connection<div class="indented"><p id="1ca7aacb-2d23-80ac-bca5-efd832636e74" class="">OPEN: Opens TCP connection to remote BGP peer and authenticates sending BGP peer</p><p id="1ca7aacb-2d23-80a5-be5b-c35baf412696" class="">UPDATE: advertises new path (or withdraws old)<br/>KEEPALIVE: keeps connection alive in absence of UPDATES; also ACKS OPEN request<br/></p><p id="1ca7aacb-2d23-801c-951b-fde2d211c017" class="">NOTIFICATION: reports errors in previous msg; also used to close connection</p></div></p><p id="1ca7aacb-2d23-8083-9ec6-e31db411ae77" class="">
+</p><p id="1ca7aacb-2d23-801b-a9e9-f6cc54037f32" class="">Path Aattributes and BGP routes</p><p id="1ca7aacb-2d23-80db-b808-f08cb4bd6c35" class="">BGP advertised path: prefix + attributes<div class="indented"><p id="1ca7aacb-2d23-809c-b4d9-ce571f640c1b" class="">Path prefix: destination being advertised</p><p id="1ca7aacb-2d23-8037-aa27-d5543f9270c0" class="">Two important attributes:<div class="indented"><p id="1ca7aacb-2d23-8043-86bd-ef4b18a744ba" class="">AS-PATH: List of ASes through which prefix advertisement has passed</p><p id="1ca7aacb-2d23-8033-bff1-e96098d91d7a" class="">NEXT-HOP: indicates specific internal-AS router to next-hop AS</p></div></p><p id="1ca7aacb-2d23-8038-90d0-d0a23d28271e" class="">Policy based routing:<div class="indented"><p id="1ca7aacb-2d23-8096-8d80-e0b494e543dc" class="">Routing receiving route advertisement to destination X uses policy to accept/reject a path (eg never route through AS W, or country Y).</p><p id="1ca7aacb-2d23-8014-bf71-f40cedb99dc6" class="">Router uses policy to decide whether to advertise a path t oneighboring AS Z (does router want to route traffic forwarded from Z destined to X?)</p></div></p></div></p><p id="1ca7aacb-2d23-806e-a334-ff2183f4c11f" class="">
+</p><p id="1ca7aacb-2d23-80dd-8a27-e52d258d346d" class="">BGP achieving policy via advertisements</p><p id="1ca7aacb-2d23-8088-be2a-ca07f8423493" class="">ISP only wants t oroute traffic to/from its customer networks (does not want to carry transit traffic between other ISPs - a typical “real world” policy).</p><p id="1ca7aacb-2d23-80d2-ad09-db64a795a186" class="">
+</p><p id="1ca7aacb-2d23-80f8-8890-e1dff5fea1a7" class="">Hot Potato Routing</p><p id="1ca7aacb-2d23-80d2-a7ec-e6c5cdb6d014" class="">When routing to an external destination, choose local gateway that has least intra-domain cost. Don’t worry about inter-domain cost. </p><p id="1ce7aacb-2d23-80c7-b89d-ec664f688f37" class="">
+</p><h1 id="1ce7aacb-2d23-8045-a235-ee28278027ad" class="">ICMP: Internet Control Message Protocol</h1><p id="1ce7aacb-2d23-8085-aa57-c00e46ab91ed" class="">Used by hosts and oruters to communicate network-level information<div class="indented"><p id="1ce7aacb-2d23-80c3-a084-fd721c1379e5" class="">Error reporting: unreachable host, network, port, protocol</p><p id="1ce7aacb-2d23-8076-b3de-db0029b12668" class="">Echo request/reply used by ping</p></div></p><p id="1ce7aacb-2d23-80fa-bbfc-fd762076e96d" class="">Network-layer “above” IP:<div class="indented"><p id="1ce7aacb-2d23-80f9-b29b-d5fff07112a1" class="">ICMP messages carried in IP datagrams, protocol number: 1</p><p id="1ce7aacb-2d23-8047-9a70-f26d27d6f3a2" class="">Used in demultiplexing</p></div></p><p id="1ce7aacb-2d23-8050-a930-c5f5958339ab" class="">ICMP Message: type, code plus header and first 8 bytes of IP datagram causing error</p><p id="1ce7aacb-2d23-800f-a2d5-e7e56937d75a" class="">
+</p><p id="1ce7aacb-2d23-8017-9622-d91a8a6f9914" class="">Traceroute and ICMP</p><p id="1ce7aacb-2d23-803c-8840-cbdc6385d957" class="">Source sends sets of UDP segments to destination</p><p id="1ce7aacb-2d23-80f0-b66f-c36e28b7a80e" class="">1st set has TTL = 1, 2nd set has TTL = 2, etc.</p><p id="1ce7aacb-2d23-80ba-92ec-da9badf65882" class="">datagram in nth set arrives to nth router:<div class="indented"><p id="1ce7aacb-2d23-80b2-a68b-ceb0593775fe" class="">router discards datagram and sends source ICMP message (type 11, code 0)</p><p id="1ce7aacb-2d23-80b4-9edc-d8de15f9c609" class="">IP address of router where TTL expired is soruce IP address of datagram containing this ICMP message</p></div></p><p id="1ce7aacb-2d23-8026-a94a-fd21aaee095f" class="">
+</p><p id="1ce7aacb-2d23-8026-b8b0-ffe0d900f0cc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

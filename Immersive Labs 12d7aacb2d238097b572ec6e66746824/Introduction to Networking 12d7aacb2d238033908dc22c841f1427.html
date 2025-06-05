@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction to Networking</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="12d7aacb-2d23-8033-908d-c22c841f1427" class="page sans"><header><h1 class="page-title">Introduction to Networking</h1><p class="page-description"></p></header><div class="page-body"><h2 id="12d7aacb-2d23-80a6-8eef-c8700b4e1e57" class="">What is a Network?</h2><h3 id="12d7aacb-2d23-807e-bc09-e2bd7bc61d92" class="">Network Overview</h3><ul id="12d7aacb-2d23-80bb-a384-cbdbc512deb1" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: A network is a connection of two or more electronic devices (e.g., computers, mobile phones, smart TVs, gaming consoles) using cables or Wi-Fi. The Internet is a large example, connecting millions of devices worldwide.</li></ul><h3 id="12d7aacb-2d23-800c-8290-df50fb53d1bf" class="">History of Networks</h3><ul id="12d7aacb-2d23-80e1-a7d4-cf9b033f8316" class="bulleted-list"><li style="list-style-type:disc"><strong>1970s</strong>: Robert Kahn and Vinton Cerf developed the Transmission Control Protocol and Internet Protocol (TCP/IP), a foundational communication model for data transmission across networks.</li></ul><ul id="12d7aacb-2d23-8037-ae59-c5880b2795fe" class="bulleted-list"><li style="list-style-type:disc"><strong>1983</strong>: ARPANET adopted TCP/IP, paving the way for the modern Internet, often called the &quot;network of networks.&quot;</li></ul><h3 id="12d7aacb-2d23-8016-982d-e3e59b5a1cb4" class="">Common Network Types</h3><ol type="1" id="12d7aacb-2d23-80c7-a9ff-da5e799fcfac" class="numbered-list" start="1"><li><strong>Local Area Network (LAN)</strong>:<ul id="12d7aacb-2d23-8021-9f2d-e1fa3e00e280" class="bulleted-list"><li style="list-style-type:disc">Limited to small areas like schools or offices.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80e6-baf7-d171f020267e" class="numbered-list" start="2"><li><strong>Wide Area Network (WAN)</strong>:<ul id="12d7aacb-2d23-80b2-b03c-cef767b46534" class="bulleted-list"><li style="list-style-type:disc">Spans larger areas, connecting networks across cities or countries through infrastructure like transoceanic cables or satellites.</li></ul></li></ol><h3 id="12d7aacb-2d23-80eb-8d3e-cfcbcf6ca040" class="">Role of Servers in Networks</h3><ul id="12d7aacb-2d23-8048-9f68-ee6cd0672f71" class="bulleted-list"><li style="list-style-type:disc"><strong>Servers</strong>: Dedicated devices that provide resources and services to other network devices (e.g., file storage, security, messaging). They are typically accessed indirectly by users.</li></ul><h3 id="12d7aacb-2d23-80c6-9d18-d1c0d8d7f0ef" class="">Advantages of Networks</h3><ol type="1" id="12d7aacb-2d23-8024-8cae-fcca61cd8459" class="numbered-list" start="1"><li><strong>Cost-Effective</strong>: Multiple devices can share a single network, reducing costs.</li></ol><ol type="1" id="12d7aacb-2d23-8058-b715-c7bf9b85cb2d" class="numbered-list" start="2"><li><strong>Communication</strong>: Networks allow communication through email and instant messaging (e.g., Slack, Teams), improving efficiency.</li></ol><ol type="1" id="12d7aacb-2d23-80a3-941a-c1feed45c913" class="numbered-list" start="3"><li><strong>Data Sharing</strong>: Information and files can be easily shared across networked devices.</li></ol><ol type="1" id="12d7aacb-2d23-8025-b5fc-e0c3247772f0" class="numbered-list" start="4"><li><strong>Online Transactions</strong>: Networks support secure online banking and transactions, making everyday tasks more convenient.</li></ol><h3 id="12d7aacb-2d23-800b-a8a5-e729e545ee58" class="">Disadvantages of Networks</h3><ol type="1" id="12d7aacb-2d23-808a-99f4-e9ae99eea05d" class="numbered-list" start="1"><li><strong>Virus and Malware Risks</strong>: Networks facilitate easy sharing, but they also increase the risk of spreading viruses and malware.</li></ol><ol type="1" id="12d7aacb-2d23-80fb-8256-fb2adc686963" class="numbered-list" start="2"><li><strong>Vulnerabilities</strong>: Remote access introduces potential security risks, especially on Internet-connected networks.</li></ol><ol type="1" id="12d7aacb-2d23-8060-a9ea-f4e1f475a056" class="numbered-list" start="3"><li><strong>Complexity</strong>: Setting up and maintaining networks can be challenging, requiring skilled personnel for effective management.</li></ol><h3 id="12d7aacb-2d23-8023-8951-e2285a3c7370" class="">Lab Overview</h3><ul id="12d7aacb-2d23-80cf-996f-ced776e829ef" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Activity</strong>: Use network knowledge to answer questions, needing at least eight correct answers to pass. All required information is available in the lab’s information panel.</li></ul><h2 id="12d7aacb-2d23-8007-86e2-e74fe0ef0ae5" class="">Types of Networks</h2><h3 id="12d7aacb-2d23-8022-8768-d8ab652f7e83" class="">Types of Networks</h3><ol type="1" id="12d7aacb-2d23-80e2-a1fe-e59310af4116" class="numbered-list" start="1"><li><strong>Local Area Network (LAN)</strong>:<ul id="12d7aacb-2d23-80b2-9801-ca98454325b4" class="bulleted-list"><li style="list-style-type:disc">Limited to a small area like a home or office.</li></ul><ul id="12d7aacb-2d23-80ff-b8c2-e4139e0d5029" class="bulleted-list"><li style="list-style-type:disc">Often used to share resources such as printers or internet connections within that space.</li></ul><ul id="12d7aacb-2d23-8014-97a4-dfafeb9f5fb9" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Home or office network.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-806d-bb74-e804e5926d22" class="numbered-list" start="2"><li><strong>Wireless Local Area Network (WLAN)</strong>:<ul id="12d7aacb-2d23-8056-8729-c8cde1d87727" class="bulleted-list"><li style="list-style-type:disc">A wireless version of LAN, commonly known as Wi-Fi.</li></ul><ul id="12d7aacb-2d23-80c3-b4d7-ea24a494a6e5" class="bulleted-list"><li style="list-style-type:disc">Transfers data wirelessly at high speeds using routers or modems.</li></ul><ul id="12d7aacb-2d23-8070-8088-f9b851a33f67" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Wi-Fi networks at home or in public spaces like cafes.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80d1-9c7e-e77039212a7e" class="numbered-list" start="3"><li><strong>Wide Area Network (WAN)</strong>:<ul id="12d7aacb-2d23-8038-b7bb-c04d6d6c7518" class="bulleted-list"><li style="list-style-type:disc">Connects networks over larger geographic areas, such as cities or countries.</li></ul><ul id="12d7aacb-2d23-80ef-a967-cabd8cfa14e6" class="bulleted-list"><li style="list-style-type:disc">Useful for companies with offices in multiple locations, allowing unified network access.</li></ul><ul id="12d7aacb-2d23-8030-bad9-e5b3aea61169" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: The Internet, the largest WAN.</li></ul></li></ol><h3 id="12d7aacb-2d23-808e-b953-c740edfe1403" class="">Wired vs. Wireless Networks</h3><ol type="1" id="12d7aacb-2d23-80c2-8c84-d0d504782bc5" class="numbered-list" start="1"><li><strong>Wired Networks</strong>:<ul id="12d7aacb-2d23-80c4-b734-e8744b52b527" class="bulleted-list"><li style="list-style-type:disc">Data travels through physical cables (e.g., Ethernet) to connect devices.</li></ul><ul id="12d7aacb-2d23-80b4-adf2-e2b2c534a21e" class="bulleted-list"><li style="list-style-type:disc">Provides stable, high-speed connections but may require extensive cabling.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-804d-aea0-d4c6ff5104a1" class="numbered-list" start="2"><li><strong>Wireless Networks</strong>:<ul id="12d7aacb-2d23-807e-b5b7-ed5b311730bf" class="bulleted-list"><li style="list-style-type:disc">Uses radio waves (e.g., Wi-Fi) for data transmission.</li></ul><ul id="12d7aacb-2d23-8043-aebc-f8633393ad94" class="bulleted-list"><li style="list-style-type:disc">Convenient and easy to expand without additional wiring, ideal for public areas or homes.</li></ul></li></ol><h3 id="12d7aacb-2d23-806c-b6f4-d74532526564" class="">Other Network Types</h3><ol type="1" id="12d7aacb-2d23-802a-aae5-d699f688fa7d" class="numbered-list" start="1"><li><strong>Personal Area Network (PAN)</strong>:<ul id="12d7aacb-2d23-8092-86f3-c03de6170302" class="bulleted-list"><li style="list-style-type:disc">Connects devices within a user’s immediate vicinity (range of a few centimeters to meters).</li></ul><ul id="12d7aacb-2d23-80fc-a994-fd6eb9cedc46" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: Bluetooth connection between a phone and a wireless headset.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-809f-acc7-deb27e7d0c6c" class="numbered-list" start="2"><li><strong>Virtual Private Network (VPN)</strong>:<ul id="12d7aacb-2d23-80aa-8409-ce9337025059" class="bulleted-list"><li style="list-style-type:disc">Encrypts network traffic and hides a user&#x27;s IP address to secure data on public networks.</li></ul><ul id="12d7aacb-2d23-801b-a441-eb4982a4519b" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: VPN software for secure internet browsing on public Wi-Fi.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-80cf-b79d-eec23c78870f" class="numbered-list" start="3"><li><strong>Body Area Network (BAN)</strong>:<ul id="12d7aacb-2d23-80a2-95cc-e46063290fbe" class="bulleted-list"><li style="list-style-type:disc">Used in medical applications to track or support biological functions with sensors.</li></ul><ul id="12d7aacb-2d23-8070-ad4a-db02f4817da3" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A wireless insulin pump for diabetic patients.</li></ul></li></ol><ol type="1" id="12d7aacb-2d23-8042-bfa8-f621e5400025" class="numbered-list" start="4"><li><strong>Global National Satellite System (GNSS)</strong>:<ul id="12d7aacb-2d23-806c-bf04-d90209e829b2" class="bulleted-list"><li style="list-style-type:disc">Uses satellites for GPS tracking, providing data on location, speed, time, and direction.</li></ul><ul id="12d7aacb-2d23-8058-969a-ff99556ea811" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: GPS in smartphones and pet trackers.</li></ul></li></ol><h3 id="12d7aacb-2d23-800e-986d-eba8df452be5" class="">Lab Overview</h3><ul id="12d7aacb-2d23-8057-9c4f-e65659297226" class="bulleted-list"><li style="list-style-type:disc"><strong>Lab Activity</strong>: Use knowledge of network types to match statements with their correct network type. Match all correctly to pass the lab. All necessary information is available in the information panel.</li></ul><h3 id="12e7aacb-2d23-8085-9e87-d922e0b5ef1b" class="">What is Network Hardware?</h3><ul id="12e7aacb-2d23-80a5-992c-e4f91b1391ca" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Network hardware includes all devices like computers, peripherals, interface cards, and equipment needed for data-processing and communications in a network.</li></ul><ul id="12e7aacb-2d23-80de-9521-effa9cb031d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Components</strong>: Common networking hardware includes routers, hubs, switches, bridges, modems, and other interface devices.</li></ul><h3 id="12e7aacb-2d23-8096-b722-f86a8cc51cf6" class="">Key Network Devices and Functions</h3><ol type="1" id="12e7aacb-2d23-808c-8e00-e5f267a368f4" class="numbered-list" start="1"><li><strong>Router</strong><ul id="12e7aacb-2d23-80ae-be2a-ef687f07910a" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Connects different networks, allowing communication between them.</li></ul><ul id="12e7aacb-2d23-80d2-abe2-d3915fec6380" class="bulleted-list"><li style="list-style-type:disc"><strong>Capabilities</strong>: Often includes hubs, switches, modems, and wireless access points.</li></ul><ul id="12e7aacb-2d23-8017-9f95-fb187ced196e" class="bulleted-list"><li style="list-style-type:disc"><strong>Types</strong>:<ul id="12e7aacb-2d23-8098-8439-d0d49d158c6b" class="bulleted-list"><li style="list-style-type:circle"><em>Wired Routers</em>: Connect to the network using ethernet cables.</li></ul><ul id="12e7aacb-2d23-80d5-8547-deae9457087d" class="bulleted-list"><li style="list-style-type:circle"><em>Wireless Routers</em>: Broadcast Wi-Fi signals, enabling cable-free connectivity for devices.</li></ul></li></ul><ul id="12e7aacb-2d23-80b6-9131-ea115c4334ad" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Routes data packets to the correct destination. Acts as the network&#x27;s default gateway, essential for communication with other networks.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80b7-9da4-e42e4f7e80ed" class="numbered-list" start="2"><li><strong>Modem</strong><ul id="12e7aacb-2d23-8027-8ee7-fccf10b23757" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Connects a network to the internet.</li></ul><ul id="12e7aacb-2d23-806c-9231-c41dbae0dc32" class="bulleted-list"><li style="list-style-type:disc"><strong>Difference from Router</strong>: A modem provides the connection to the internet, while a router distributes this connection to multiple devices within the network. Often combined in one device but are separate technologies.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80ef-9282-eb8e1498aad4" class="numbered-list" start="3"><li><strong>Hub</strong><ul id="12e7aacb-2d23-80cd-a364-c220c8654448" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Acts as a central connection point for devices like computers and printers.</li></ul><ul id="12e7aacb-2d23-8000-902e-c0812b2b9980" class="bulleted-list"><li style="list-style-type:disc"><strong>Operation</strong>: Passes all network traffic to every connected device without routing or filtering.</li></ul><ul id="12e7aacb-2d23-80fa-ab32-f3c00db10e7a" class="bulleted-list"><li style="list-style-type:disc"><strong>Limitations</strong>: Lack of intelligence to direct traffic leads to excess network traffic.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80be-a869-d6f2e5a41393" class="numbered-list" start="4"><li><strong>Switch</strong><ul id="12e7aacb-2d23-8074-b4b9-ea077add2ab6" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Connects devices within a Local Area Network (LAN).</li></ul><ul id="12e7aacb-2d23-80bf-846b-c45c8b8059c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Capabilities</strong>:<ul id="12e7aacb-2d23-80af-b8c2-eac62232adc8" class="bulleted-list"><li style="list-style-type:circle">Provides centralized ports for connecting multiple devices.</li></ul><ul id="12e7aacb-2d23-8063-b16b-f1605e105a8d" class="bulleted-list"><li style="list-style-type:circle">Uses MAC addresses to direct traffic intelligently, minimizing network congestion.</li></ul></li></ul><ul id="12e7aacb-2d23-8069-aa15-f2c1e3bfad1c" class="bulleted-list"><li style="list-style-type:disc"><strong>Types</strong>:<ul id="12e7aacb-2d23-8076-88b4-f4fcb4819321" class="bulleted-list"><li style="list-style-type:circle"><em>Managed Switches</em>: Allow configuration options, such as disabling ports and adjusting speeds.</li></ul><ul id="12e7aacb-2d23-80df-87bc-d19133ff8a9e" class="bulleted-list"><li style="list-style-type:circle"><em>Unmanaged Switches</em>: Basic connection with no configurable options.</li></ul></li></ul></li></ol><ol type="1" id="12e7aacb-2d23-8091-bac3-cf8aec16c644" class="numbered-list" start="5"><li><strong>Other Hardware</strong><ul id="12e7aacb-2d23-809a-9eff-eebd6f868dfe" class="bulleted-list"><li style="list-style-type:disc"><strong>Dongle</strong>: A portable USB device that connects to mobile networks for broadband access on the go. Often replaced by smartphone hotspotting or wireless hotspots due to limited wireless capability.</li></ul></li></ol><hr id="12e7aacb-2d23-80e7-966c-c0704380e398"/><h3 id="12e7aacb-2d23-8052-ba18-f3c4c722ea84" class="">Lab Activity</h3><ul id="12e7aacb-2d23-80f5-bfdf-d5f96dd0e8da" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>: Match statements with their correct answers by dragging options into place based on provided information about networking hardware.</li></ul><h3 id="12e7aacb-2d23-80d9-ab90-d05182859959" class="">Domain Name System (DNS)</h3><ul id="12e7aacb-2d23-8046-986a-f75fb2a1e229" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: DNS is a distributed, hierarchical directory that matches domain names to IP addresses.</li></ul><ul id="12e7aacb-2d23-8046-aff8-ee8063409a6f" class="bulleted-list"><li style="list-style-type:disc"><strong>Analogy</strong>: Like a phonebook, DNS links human-readable names (e.g., immersivelabs.online) to IP addresses, making it easier to access websites without memorizing numerical IP addresses.</li></ul><h3 id="12e7aacb-2d23-80e2-b781-f9e0c5389fcd" class="">DNS Servers and Their Roles</h3><p id="12e7aacb-2d23-80e4-a43c-f83ad37156c6" class="">Four types of DNS servers work together to provide an IP address for a domain:</p><ol type="1" id="12e7aacb-2d23-807a-8fe2-d9693715f47c" class="numbered-list" start="1"><li><strong>Recursive DNS Server</strong><ul id="12e7aacb-2d23-80ac-aa36-df0d15cd5961" class="bulleted-list"><li style="list-style-type:disc">Often managed by the ISP or third parties, it initiates the DNS query and checks its cache for stored IP address information.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-809d-a70b-e166186c1bc1" class="numbered-list" start="2"><li><strong>Root Name Server</strong><ul id="12e7aacb-2d23-80ae-b48d-fcc731faacb4" class="bulleted-list"><li style="list-style-type:disc">The first stop after the recursive server if the IP address isn’t cached. It provides a list of authoritative name servers for the requested top-level domain (TLD).</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80be-8c49-e559c93ea0ed" class="numbered-list" start="3"><li><strong>Top-Level Domain (TLD) Name Server</strong><ul id="12e7aacb-2d23-800a-94aa-dab76edcf8dd" class="bulleted-list"><li style="list-style-type:disc">Directs the query to the specific authoritative name server for the domain.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80ea-85b5-d2b7f09386d1" class="numbered-list" start="4"><li><strong>Authoritative Name Server</strong><ul id="12e7aacb-2d23-807d-8b19-c1720b327b91" class="bulleted-list"><li style="list-style-type:disc">Stores the actual DNS records and returns the specific IP address for the requested domain.</li></ul></li></ol><p id="12e7aacb-2d23-8063-ba5a-f1b34ce2e2aa" class="">Host → Recursive Server</p><p id="12e7aacb-2d23-80d7-aab2-e979d7221489" class="">Recursive Server → Root Name Server</p><p id="12e7aacb-2d23-8056-a2ec-eab425de3649" class="">Root Name Server → Recursive Server</p><p id="12e7aacb-2d23-80db-836c-f93225c3088a" class="">Recursive Server → TLD Name Server</p><p id="12e7aacb-2d23-80bd-8b49-cc3abdf5e640" class="">TLD Name Server → Recursive Server</p><p id="12e7aacb-2d23-80f4-9a74-f638f2da5c17" class="">Recursive Server → Authoritative Name Server</p><p id="12e7aacb-2d23-8050-bf68-ee157ca428a9" class="">Authoritative Name Server → Recursive Server</p><p id="12e7aacb-2d23-802e-87a5-fec1c7b2a398" class="">Recursiver Server → Host</p><p id="12e7aacb-2d23-804d-ad04-e2fd36fa7c2d" class="">Host → Web Server</p><p id="12e7aacb-2d23-80c8-83b6-e48d67d0f302" class="">Web Server → Host</p><h3 id="12e7aacb-2d23-8008-9c7b-d23398b7c8bb" class="">How DNS Works</h3><ol type="1" id="12e7aacb-2d23-8035-b298-f0e947e031cb" class="numbered-list" start="1"><li><strong>Initiating Query</strong>: User types a URL into a browser. If visited previously, the local DNS cache returns the response.</li></ol><ol type="1" id="12e7aacb-2d23-8036-8e07-c643362b554f" class="numbered-list" start="2"><li><strong>Recursive Resolver</strong>: If no cache exists, the recursive DNS server checks for the record, moving on to the root name server if necessary.</li></ol><ol type="1" id="12e7aacb-2d23-80d1-ac5c-e9ec71c64078" class="numbered-list" start="3"><li><strong>Root Name Server</strong>: Returns the TLD server list for the query.</li></ol><ol type="1" id="12e7aacb-2d23-80e5-8ec7-d9dc39530cef" class="numbered-list" start="4"><li><strong>TLD and Authoritative Servers</strong>: Narrow the search to the authoritative server, which provides the final IP address.</li></ol><ol type="1" id="12e7aacb-2d23-804b-afff-e408b37d7b4d" class="numbered-list" start="5"><li><strong>Result</strong>: The IP address is returned to the user, displaying the requested webpage.</li></ol><h3 id="12e7aacb-2d23-8034-8c37-d64a9eafb573" class="">DNS Records and Their Types</h3><p id="12e7aacb-2d23-8085-a594-f20527b0fee3" class="">DNS records, or zone files, instruct the DNS server on how to handle domain requests. Each record has a <strong>Time to Live (TTL)</strong> value, which specifies when the recursive server must refresh the record.</p><ol type="1" id="12e7aacb-2d23-80bc-9629-d5712c625e46" class="numbered-list" start="1"><li><strong>A Record (Address Record)</strong><ul id="12e7aacb-2d23-80ea-b54a-c2e523d14330" class="bulleted-list"><li style="list-style-type:disc">Provides the IP address associated with a domain name.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80fb-b69e-d8459d5b649e" class="numbered-list" start="2"><li><strong>CNAME Record (Canonical Name Record)</strong><ul id="12e7aacb-2d23-8013-aaa0-cbdeab69e9bc" class="bulleted-list"><li style="list-style-type:disc">Redirects a subdomain (e.g., yellow.immersivelabs.online) to the root domain, simplifying domain management.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-802a-891a-c05257149d2d" class="numbered-list" start="3"><li><strong>MX Record (Mail Exchanger Record)</strong><ul id="12e7aacb-2d23-8066-9f9f-df9f49ae063e" class="bulleted-list"><li style="list-style-type:disc">Directs email to designated servers and manages email handling for a domain.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-800a-9423-eee0e9e6d85c" class="numbered-list" start="4"><li><strong>TXT Record</strong><ul id="12e7aacb-2d23-8020-9004-fa75e603497b" class="bulleted-list"><li style="list-style-type:disc">Allows storing text information. Originally used for human-readable notes, it can also hold machine-readable data for various purposes.</li></ul></li></ol><h3 id="12e7aacb-2d23-8012-8155-f27ffad34e05" class="">Importance of DNS</h3><ul id="12e7aacb-2d23-806e-b5cc-df8f5a3bc5eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Usability</strong>: Simplifies internet navigation by allowing users to remember readable domain names instead of complex IP addresses.</li></ul><ul id="12e7aacb-2d23-8037-b9ab-d536ea6170bf" class="bulleted-list"><li style="list-style-type:disc"><strong>Efficiency</strong>: DNS enables one domain to have multiple IP addresses, optimizing website accessibility and redundancy.</li></ul><hr id="12e7aacb-2d23-8022-8db9-e426cdab9e03"/><h3 id="12e7aacb-2d23-80b2-954c-f8735be6f362" class="">Lab Activity</h3><ul id="12e7aacb-2d23-80d7-b577-c61735caaab1" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>: Match DNS terminology and descriptions based on understanding of DNS functions and record types, using a drag-and-drop format.</li></ul><h3 id="12e7aacb-2d23-8021-9899-cd7cf8a17855" class="">What are Network Topologies?</h3><ul id="12e7aacb-2d23-80e5-8168-c787027952f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Network topology describes the layout and organization of devices and their connections in a network.</li></ul><ul id="12e7aacb-2d23-8030-b302-f37f1963cd95" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Defines how devices connect and communicate over a network, impacting network performance, scalability, and fault tolerance.</li></ul><h3 id="12e7aacb-2d23-80d8-9a15-dc291426b782" class="">Types of Network Topologies</h3><ol type="1" id="12e7aacb-2d23-801c-b962-f0fb2b1b405b" class="numbered-list" start="1"><li><strong>Bus Topology</strong><ul id="12e7aacb-2d23-807a-b18e-c450387d9452" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: Devices are connected along a single central cable (backbone).</li></ul><ul id="12e7aacb-2d23-8065-bfdb-cd53d4dfc455" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Flow</strong>: Data travels in one direction, with terminators at each end to prevent signal bounce.</li></ul><ul id="12e7aacb-2d23-80bb-8965-f4e55fec5770" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: Simple setup, but less common today, sometimes used to connect peripheral devices like printers.</li></ul><ul id="12e7aacb-2d23-80bc-88cb-e4adfb9a7fc5" class="bulleted-list"><li style="list-style-type:disc"><strong>Limitations</strong>: Not very scalable, and any break in the backbone disrupts the entire network.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-8021-818f-c565066c78da" class="numbered-list" start="2"><li><strong>Star Topology</strong><ul id="12e7aacb-2d23-80b7-8cd0-c2d20b5fc504" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: All devices connect to a central hub or switch.</li></ul><ul id="12e7aacb-2d23-8082-8119-e5f2e2f8a61c" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Flow</strong>: Communication goes through the hub, which manages data traffic between devices.</li></ul><ul id="12e7aacb-2d23-8024-bbb2-c6fbc20c2aec" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: Enhanced security, as data only passes through the hub. Isolates individual failures to one device.</li></ul><ul id="12e7aacb-2d23-8012-b2bc-c18a28bd6a9c" class="bulleted-list"><li style="list-style-type:disc"><strong>Drawbacks</strong>: If the hub fails, the entire network goes down (single point of failure).</li></ul><ul id="12e7aacb-2d23-8093-8e30-d8202e6210bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Example</strong>: Local Area Network (LAN).</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80a1-a429-f45af97270b8" class="numbered-list" start="3"><li><strong>Ring Topology</strong><ul id="12e7aacb-2d23-8067-9c4a-f5cdc28a2a21" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: Devices form a closed-loop (ring), connecting each device to its neighbors.</li></ul><ul id="12e7aacb-2d23-8090-b0b7-d6fb39dd4cd3" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Flow</strong>: Data moves in one or both directions around the ring.</li></ul><ul id="12e7aacb-2d23-8027-8929-c6de9489a310" class="bulleted-list"><li style="list-style-type:disc"><strong>Drawbacks</strong>: Vulnerable to failure if one device goes down, as it disrupts the network. Not easily scalable.</li></ul><ul id="12e7aacb-2d23-808e-a848-e8a673c24935" class="bulleted-list"><li style="list-style-type:disc"><strong>Maintenance</strong>: Adding or removing devices requires taking the network offline.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-8066-a508-e5672ff90d62" class="numbered-list" start="4"><li><strong>Tree Topology</strong><ul id="12e7aacb-2d23-80e3-8e7e-ce7c63b3c07d" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: Combines elements of bus and star topologies in a hierarchical, tree-like arrangement.</li></ul><ul id="12e7aacb-2d23-8048-88fe-f728f42df8d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Flow</strong>: Data flows from one level of the hierarchy to another, enabling flexible network expansion.</li></ul><ul id="12e7aacb-2d23-808c-942f-ca13026de36e" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: Scalable and flexible; suitable for large networks like WANs.</li></ul><ul id="12e7aacb-2d23-809a-a260-d32be38cff96" class="bulleted-list"><li style="list-style-type:disc"><strong>Drawbacks</strong>: Dependent on root nodes; if the main nodes fail, sections of the network could be affected.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-80cc-9cb8-e75061aa825c" class="numbered-list" start="5"><li><strong>Mesh Topology</strong><ul id="12e7aacb-2d23-80f6-91f1-c0591eaa5542" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: Devices are interconnected, creating either a full mesh (all devices connected) or partial mesh (some interconnected).</li></ul><ul id="12e7aacb-2d23-8052-8c06-f2e990af2097" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: High reliability, as multiple pathways prevent network failure if one connection drops.</li></ul><ul id="12e7aacb-2d23-80ad-be44-e168c883ea86" class="bulleted-list"><li style="list-style-type:disc"><strong>Drawbacks</strong>: Complex to set up, with high cabling requirements, making it time-consuming and costly.</li></ul><ul id="12e7aacb-2d23-80c2-a169-e1107a04c391" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Use</strong>: Often used for high-performance or highly secure networks.</li></ul></li></ol><ol type="1" id="12e7aacb-2d23-803f-8026-fe37ca3cd635" class="numbered-list" start="6"><li><strong>Hybrid Topology</strong><ul id="12e7aacb-2d23-80fd-8a78-e16a8f2829d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure</strong>: Combines two or more topologies, offering flexibility to suit specific organizational needs.</li></ul><ul id="12e7aacb-2d23-805a-8954-d02abe1d4b8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>:<ul id="12e7aacb-2d23-803c-b974-eb8c16d58e5a" class="bulleted-list"><li style="list-style-type:circle"><em>Star-Ring Hybrid</em>: Combines star and ring topologies, allowing multiple star networks to connect via a central ring.</li></ul><ul id="12e7aacb-2d23-80e2-b420-fb484c35310e" class="bulleted-list"><li style="list-style-type:circle"><em>Office Scenario</em>: Departments using different topologies (e.g., IT uses star, finance uses ring) create a hybrid when interconnected.</li></ul></li></ul><ul id="12e7aacb-2d23-80f6-81a0-dc92c779f15a" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: Customizable and adaptable for large, complex network environments.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

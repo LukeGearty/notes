@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cyber Safety</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1457aacb-2d23-80fe-99bc-c5c0663041f4" class="page sans"><header><h1 class="page-title">Cyber Safety</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1457aacb-2d23-8059-92b1-d9561bef1869" class="">What is Information Security?</h2><h3 id="1457aacb-2d23-8085-b690-ea1803e3b7f2" class=""><strong>Real-world Consequences of Information Security Incidents</strong></h3><ul id="1457aacb-2d23-8026-a808-f0502a682e37" class="bulleted-list"><li style="list-style-type:disc"><strong>May 2017, UK NHS Ransomware Incident</strong><ul id="1457aacb-2d23-809c-a803-c66263af9f23" class="bulleted-list"><li style="list-style-type:circle">Over 80 hospital trusts infected or impacted by ransomware.</li></ul><ul id="1457aacb-2d23-80f5-9531-c6cc67df8dc2" class="bulleted-list"><li style="list-style-type:circle">Systems were locked, disrupting critical health services.</li></ul><ul id="1457aacb-2d23-809d-a598-c7e15106b58d" class="bulleted-list"><li style="list-style-type:circle">Declared a major incident at 4 PM.</li></ul><ul id="1457aacb-2d23-8068-bfff-e9743a849dfd" class="bulleted-list"><li style="list-style-type:circle">Consequences:<ul id="1457aacb-2d23-8030-aa2f-c99644dd2cdf" class="bulleted-list"><li style="list-style-type:square">Cancelled appointments and surgeries.</li></ul><ul id="1457aacb-2d23-801e-86d7-cc71294f2310" class="bulleted-list"><li style="list-style-type:square">Restricted A&amp;E services.</li></ul><ul id="1457aacb-2d23-8004-988c-d3071212bc03" class="bulleted-list"><li style="list-style-type:square">Ambulances redirected, risking patient lives.</li></ul></li></ul></li></ul><ul id="1457aacb-2d23-8003-948f-c7a09b89b48e" class="bulleted-list"><li style="list-style-type:disc"><strong>US Incident (2020)</strong><ul id="1457aacb-2d23-804c-a5a9-fd270fc89bb5" class="bulleted-list"><li style="list-style-type:circle">Similar ransomware attack affected Universal Health Services (UHS).</li></ul></li></ul><hr id="1457aacb-2d23-801b-a24a-c9f4fbefa01f"/><h3 id="1457aacb-2d23-800c-a943-fbc9dfd852fb" class=""><strong>Why Information Security Matters</strong></h3><ul id="1457aacb-2d23-80d6-b7a9-c5978cad768f" class="bulleted-list"><li style="list-style-type:disc"><strong>Devastating Consequences</strong>:<ul id="1457aacb-2d23-801c-b636-d3894aeaca2c" class="bulleted-list"><li style="list-style-type:circle">Affects workplaces, individuals, and critical services.</li></ul><ul id="1457aacb-2d23-80cc-a131-dc1299a6b8c8" class="bulleted-list"><li style="list-style-type:circle">Protects both personal and professional information.</li></ul></li></ul><ul id="1457aacb-2d23-80f1-bd0a-c873cd79bf67" class="bulleted-list"><li style="list-style-type:disc"><strong>Personal and Workplace Protection</strong>:<ul id="1457aacb-2d23-80ee-b2d2-fab6acdc30ce" class="bulleted-list"><li style="list-style-type:circle">Preventing breaches protects colleagues, organizations, and families.</li></ul><ul id="1457aacb-2d23-8017-b1bf-f2fc6ad56123" class="bulleted-list"><li style="list-style-type:circle">Adopting good practices reduces vulnerabilities.</li></ul></li></ul><hr id="1457aacb-2d23-801f-b00f-d3096e97cebc"/><h3 id="1457aacb-2d23-8079-8fed-ecba65698e69" class=""><strong>Cybersecurity vs. Information Security</strong></h3><ol type="1" id="1457aacb-2d23-800c-82e0-e9b1ec80b701" class="numbered-list" start="1"><li><strong>Cybersecurity Definition</strong>:<ul id="1457aacb-2d23-8072-a13b-d1b4dc3be39e" class="bulleted-list"><li style="list-style-type:disc">Protecting <strong>devices</strong>, <strong>services</strong>, <strong>networks</strong>, and the <strong>information</strong> on them from theft or damage (Source: NCSC Glossary).</li></ul><ul id="1457aacb-2d23-809e-a981-f70c27338070" class="bulleted-list"><li style="list-style-type:disc">Key Components:<ul id="1457aacb-2d23-805b-b170-f1110a4e286e" class="bulleted-list"><li style="list-style-type:circle"><strong>Devices</strong>: Store electronic information (e.g., laptops, phones).</li></ul><ul id="1457aacb-2d23-8041-b863-c3481fa19161" class="bulleted-list"><li style="list-style-type:circle"><strong>Services</strong>: Process/manage information (e.g., apps, email, shopping).</li></ul><ul id="1457aacb-2d23-80fb-bed8-cfea73a6e277" class="bulleted-list"><li style="list-style-type:circle"><strong>Networks</strong>: Facilitate information flow between devices and services.</li></ul><ul id="1457aacb-2d23-8029-ab46-e6b431654b35" class="bulleted-list"><li style="list-style-type:circle"><strong>Damage</strong>: Impacts finances, reputation, operations, and wellbeing.</li></ul></li></ul></li></ol><ol type="1" id="1457aacb-2d23-8042-a751-ed1868e2294d" class="numbered-list" start="2"><li><strong>Information Security Definition</strong>:<ul id="1457aacb-2d23-8075-8caf-d9601cac079b" class="bulleted-list"><li style="list-style-type:disc">Broader than cybersecurity; includes:<ul id="1457aacb-2d23-8035-9963-d2efded31e17" class="bulleted-list"><li style="list-style-type:circle">Protection from cyber threats.</li></ul><ul id="1457aacb-2d23-8030-8942-e31be9ef10a6" class="bulleted-list"><li style="list-style-type:circle"><strong>Accidental Loss/Damage</strong>: Internal errors like sending emails to the wrong recipient or misplacing physical data.</li></ul></li></ul><ul id="1457aacb-2d23-803d-8cc2-ee93f489e75f" class="bulleted-list"><li style="list-style-type:disc"><strong>Breach</strong>: Any loss or damage (cyber-related or not).</li></ul></li></ol><hr id="1457aacb-2d23-80d6-b2d9-e927337f70ef"/><h3 id="1457aacb-2d23-8043-89ea-cea9fe4669d4" class=""><strong>Human Element in Breaches</strong></h3><ul id="1457aacb-2d23-806c-b140-db8270a126f3" class="bulleted-list"><li style="list-style-type:disc">In 2020, 85% of information and cyber breaches involved human errors (Source: Verizon).</li></ul><hr id="1457aacb-2d23-80ea-acd2-d97d5a2aa706"/><h3 id="1457aacb-2d23-80e5-8f94-ebc3e8dd8476" class=""><strong>Lab Activity</strong></h3><ul id="1457aacb-2d23-800e-8768-f5ff5a8409fb" class="bulleted-list"><li style="list-style-type:disc">Apply knowledge by pairing key terms and concepts.</li></ul><ul id="1457aacb-2d23-80bc-9d2b-d528b38ff360" class="bulleted-list"><li style="list-style-type:disc">Drag and match terms like <strong>devices</strong>, <strong>services</strong>, <strong>networks</strong>, <strong>damage</strong>, and <strong>breach</strong> to their definitions or examples.</li></ul><hr id="1457aacb-2d23-8094-b4e9-de4f3ad531e5"/><h2 id="1457aacb-2d23-80bc-8030-d6e70515cf21" class=""><strong>Information Security: Starting at the Beginning</strong></h2><h3 id="1457aacb-2d23-8012-bb96-cec116db21db" class=""><strong>What Is Information Security?</strong></h3><ul id="1457aacb-2d23-80ce-b033-e3820fdf33c9" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Protects information in any form, whether digital or physical.</li></ul><ul id="1457aacb-2d23-80b1-b8ca-c6d6b2b95513" class="bulleted-list"><li style="list-style-type:disc"><strong>Cybersecurity</strong>: A subset of information security focused on preventing cyberattacks.</li></ul><h3 id="1457aacb-2d23-8091-8021-f259b17bba28" class=""><strong>Key to Great Information Security</strong></h3><ul id="1457aacb-2d23-80c0-be99-e97d61366dba" class="bulleted-list"><li style="list-style-type:disc"><strong>People</strong>: Employees are the strongest security defense.</li></ul><ul id="1457aacb-2d23-8045-b4c3-c434dd8b8af4" class="bulleted-list"><li style="list-style-type:disc"><strong>Engagement and Awareness</strong>: Ensuring everyone understands their role in maintaining security.</li></ul><hr id="1457aacb-2d23-800d-a46d-efe85d123309"/><h3 id="1457aacb-2d23-80d2-bbae-f100afd50d6f" class=""><strong>What Needs Protecting?</strong></h3><ul id="1457aacb-2d23-8021-9d2b-e6c349a75eae" class="bulleted-list"><li style="list-style-type:disc"><strong>Assets</strong>:<ul id="1457aacb-2d23-80e1-9a66-fc6187e0322e" class="bulleted-list"><li style="list-style-type:circle">Digital: Laptops, USBs, servers, Excel files containing sensitive information.</li></ul><ul id="1457aacb-2d23-80ff-a2cf-dae81f91125f" class="bulleted-list"><li style="list-style-type:circle">Physical: Printed documents (e.g., organizational strategies).</li></ul></li></ul><ul id="1457aacb-2d23-80ba-9985-f5b1b721f00d" class="bulleted-list"><li style="list-style-type:disc"><strong>Risks to Assets</strong>:<ul id="1457aacb-2d23-80ff-875d-f2b9ff868519" class="bulleted-list"><li style="list-style-type:circle">Loss, theft, fire, damage, corruption.</li></ul><ul id="1457aacb-2d23-80cb-b915-ecb24cc988b6" class="bulleted-list"><li style="list-style-type:circle">Incorrect disposal, unauthorized access, deletion.</li></ul><ul id="1457aacb-2d23-80c6-bae3-edc4cdd1d087" class="bulleted-list"><li style="list-style-type:circle">Information becoming outdated.</li></ul></li></ul><ul id="1457aacb-2d23-80cd-922c-ee781abc6ff5" class="bulleted-list"><li style="list-style-type:disc"><strong>Threats</strong>: Malicious or accidental compromise.</li></ul><hr id="1457aacb-2d23-8048-b68e-d5491c51158e"/><h3 id="1457aacb-2d23-80d4-90ea-e54abdcc3c4c" class=""><strong>Information Security Goals: What to Prevent</strong></h3><ol type="1" id="1457aacb-2d23-80c4-9837-fc7c418a2b68" class="numbered-list" start="1"><li><strong>Unauthorized Access</strong>:<ul id="1457aacb-2d23-8021-b1c0-fc84e81afeca" class="bulleted-list"><li style="list-style-type:disc">Prevent sensitive information from being seen by unauthorized individuals.</li></ul><ul id="1457aacb-2d23-8014-91c3-ffc6c2dd82b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>:<ul id="1457aacb-2d23-8078-a0a3-d6579e22f1ea" class="bulleted-list"><li style="list-style-type:circle">Passport information used for <strong>impersonation</strong>.</li></ul><ul id="1457aacb-2d23-8070-b63c-eb734ab33fac" class="bulleted-list"><li style="list-style-type:circle">Intellectual property theft where strategic data is stolen and sold.</li></ul></li></ul><ul id="1457aacb-2d23-80c2-af3f-e05fbf332ce0" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>: Ensure <strong>confidentiality</strong>.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-809b-843c-c08a1f2855c8" class="numbered-list" start="2"><li><strong>Unauthorized Alteration or Deletion</strong>:<ul id="1457aacb-2d23-8009-952f-fbd7e645a29a" class="bulleted-list"><li style="list-style-type:disc">Ensure the trustworthiness of information remains intact.</li></ul><ul id="1457aacb-2d23-8080-82a2-ffb7a28c0624" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>:<ul id="1457aacb-2d23-80f7-93e6-c0d73414e2e5" class="bulleted-list"><li style="list-style-type:circle">Hospital monitor data tampered with, leading to incorrect diagnoses or treatments.</li></ul></li></ul><ul id="1457aacb-2d23-8022-863c-d5c306c18616" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>: Maintain <strong>integrity</strong>.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-80f9-8eb0-d12d89493add" class="numbered-list" start="3"><li><strong>Unavailable Information</strong>:<ul id="1457aacb-2d23-800a-94a3-e9b2bc153243" class="bulleted-list"><li style="list-style-type:disc">Ensure access to critical information when needed.</li></ul><ul id="1457aacb-2d23-80f1-bdae-e18de71c1267" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>:<ul id="1457aacb-2d23-80b5-8ad8-d015bd2c8795" class="bulleted-list"><li style="list-style-type:circle">Firefighters unable to access building plans.</li></ul><ul id="1457aacb-2d23-803a-9356-e8f21855cb15" class="bulleted-list"><li style="list-style-type:circle">Analysts unable to perform tasks due to missing data.</li></ul></li></ul><ul id="1457aacb-2d23-80c9-a4d3-f41eb14fa91b" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>: Guarantee <strong>availability</strong>.</li></ul></li></ol><hr id="1457aacb-2d23-801d-94af-f5278c0ef213"/><h3 id="1457aacb-2d23-80d1-84c8-e27356f12cd9" class=""><strong>CIA Triad</strong></h3><ul id="1457aacb-2d23-802b-b264-e129c90bbfa3" class="bulleted-list"><li style="list-style-type:disc"><strong>Confidentiality</strong>: Protect sensitive information from unauthorized access.</li></ul><ul id="1457aacb-2d23-8082-89cf-f0e535e34f8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Integrity</strong>: Prevent unauthorized changes to information.</li></ul><ul id="1457aacb-2d23-8012-aeed-f2a8e5525af4" class="bulleted-list"><li style="list-style-type:disc"><strong>Availability</strong>: Ensure information is accessible when needed.</li></ul><ul id="1457aacb-2d23-8048-8599-cbec8761a789" class="bulleted-list"><li style="list-style-type:disc"><strong>Breach</strong>: A scenario where any of these three fail is considered a compromise.</li></ul><hr id="1457aacb-2d23-80ba-a177-f7f6165444d4"/><h3 id="1457aacb-2d23-80b9-af61-ccae72a18bf0" class=""><strong>Lab Activity</strong></h3><ul id="1457aacb-2d23-8031-bd9c-d6e36fa03a6a" class="bulleted-list"><li style="list-style-type:disc">Drag and drop statements to match terms like <strong>confidentiality</strong>, <strong>integrity</strong>, and <strong>availability</strong> with their definitions or scenarios.</li></ul><h2 id="1457aacb-2d23-801b-990e-f1a828e917ba" class="">The Importance of Information Security and Cybersecurity</h2><h3 id="1457aacb-2d23-8036-af6f-dcab4bd85793" class=""><strong>Scenario: Falling Victim to Cybercrime</strong></h3><ul id="1457aacb-2d23-80bd-8eb7-fcf76c8e315e" class="bulleted-list"><li style="list-style-type:disc"><strong>Setup</strong>:<ul id="1457aacb-2d23-8096-a44e-dbcd06e726eb" class="bulleted-list"><li style="list-style-type:circle">You’ve saved money for three years to buy a new car.</li></ul><ul id="1457aacb-2d23-80de-a834-d96c1d1c5576" class="bulleted-list"><li style="list-style-type:circle">Days before the purchase, you receive a fraudulent text claiming to be from your bank, requesting sensitive account information.</li></ul><ul id="1457aacb-2d23-809f-9b28-f7b28f30400a" class="bulleted-list"><li style="list-style-type:circle">Believing the message, you provide the requested details.</li></ul></li></ul><ul id="1457aacb-2d23-80e1-bf6d-c4ef56dd8805" class="bulleted-list"><li style="list-style-type:disc"><strong>Outcome</strong>:<ul id="1457aacb-2d23-807a-9673-dcc806884d9f" class="bulleted-list"><li style="list-style-type:circle">Your account is drained three days later, and the bank confirms it never sent the message.</li></ul><ul id="1457aacb-2d23-80ee-9d74-cc1a20ab348b" class="bulleted-list"><li style="list-style-type:circle">The transaction cannot be reversed, leaving you without the savings needed for the car.</li></ul></li></ul><hr id="1457aacb-2d23-809f-9207-e1fb2b3ba81d"/><h3 id="1457aacb-2d23-8088-80ff-edfabab6b43a" class=""><strong>Impacts of Cybercrime</strong></h3><ul id="1457aacb-2d23-80e7-af29-c3d13fb6c45d" class="bulleted-list"><li style="list-style-type:disc"><strong>Everyday Threats</strong>:<ul id="1457aacb-2d23-806f-829d-f44437478f8d" class="bulleted-list"><li style="list-style-type:circle">Cybercriminals steal card details and identities of individuals banking, shopping, or sending money online.</li></ul><ul id="1457aacb-2d23-8098-a5ca-e38a602c3e7b" class="bulleted-list"><li style="list-style-type:circle">Companies and governments are frequent targets due to their societal impact.</li></ul></li></ul><ul id="1457aacb-2d23-807b-83af-c0659c98ea73" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study: Travelex (2019)</strong>:<ul id="1457aacb-2d23-80de-a467-f105f404504c" class="bulleted-list"><li style="list-style-type:circle"><strong>Incident</strong>: Ransomware attack exploiting a VPN vulnerability.</li></ul><ul id="1457aacb-2d23-80f9-b630-dbaddae7dda6" class="bulleted-list"><li style="list-style-type:circle"><strong>Consequences</strong>:<ul id="1457aacb-2d23-8016-b0af-c705c42f36f4" class="bulleted-list"><li style="list-style-type:square">Infrastructure offline for a month.</li></ul><ul id="1457aacb-2d23-8003-b4e9-d2d376d3f139" class="bulleted-list"><li style="list-style-type:square">Long-term ramifications, leading to withdrawal from the UK market and significant job losses.</li></ul></li></ul></li></ul><ul id="1457aacb-2d23-80ce-bd48-c3c66d687104" class="bulleted-list"><li style="list-style-type:disc"><strong>Motivations of Cybercriminals</strong>:<ul id="1457aacb-2d23-8096-9709-d157d580eac4" class="bulleted-list"><li style="list-style-type:circle">Personal gain (e.g., financial theft).</li></ul><ul id="1457aacb-2d23-80cb-b4d1-e8f283a593d3" class="bulleted-list"><li style="list-style-type:circle">Vendettas against individuals or organizations.</li></ul><ul id="1457aacb-2d23-8090-8efe-f485fde566b1" class="bulleted-list"><li style="list-style-type:circle">Tactics evolve constantly, requiring vigilance and awareness.</li></ul></li></ul><hr id="1457aacb-2d23-803c-9ddd-f498979ccd1a"/><h3 id="1457aacb-2d23-80c8-af96-c8e0e75f35be" class=""><strong>Why Information Security Matters</strong></h3><ul id="1457aacb-2d23-8093-979a-d63115ab56f1" class="bulleted-list"><li style="list-style-type:disc"><strong>Direct and Indirect Impact</strong>:<ul id="1457aacb-2d23-80cb-9906-ff897bf876b6" class="bulleted-list"><li style="list-style-type:circle">Incidents can affect individuals personally, even if the primary target is an organization.</li></ul><ul id="1457aacb-2d23-80e9-a10e-dec1a0a80ffb" class="bulleted-list"><li style="list-style-type:circle">Cyberattacks occur frequently, every 39 seconds according to a Clark School study.</li></ul><ul id="1457aacb-2d23-8031-9201-f94bfcc400aa" class="bulleted-list"><li style="list-style-type:circle">It’s not a matter of <em>if</em> but <em>when</em> a person or organization is targeted.</li></ul></li></ul><ul id="1457aacb-2d23-80ce-9013-f06772de602e" class="bulleted-list"><li style="list-style-type:disc"><strong>The Importance of Security Hygiene</strong>:<ul id="1457aacb-2d23-8052-93cb-f19974147d10" class="bulleted-list"><li style="list-style-type:circle">Good practices protect individuals and those around them from malicious activities.</li></ul><ul id="1457aacb-2d23-8080-922c-fecee3e70445" class="bulleted-list"><li style="list-style-type:circle">Early detection or action could prevent a devastating breach, making you a “hero” in stopping cybercrime.</li></ul></li></ul><hr id="1457aacb-2d23-807d-a296-f795f8e513d9"/><h3 id="1457aacb-2d23-8036-a9ef-c46adcbb4eac" class=""><strong>Lab Activity</strong></h3><ul id="1457aacb-2d23-8060-9e60-d1b643d3a6b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Task</strong>: Select the correct drop-down answers to complete ten statements about cybercrime and security.</li></ul><ul id="1457aacb-2d23-80a6-ae07-c9ab807409bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>: Understand the importance of vigilance, security hygiene, and how to prevent falling victim to cybercrime.</li></ul><h2 id="1457aacb-2d23-809a-ac65-e84dddb9adea" class="">Information Security and Cybersecurity Terminology</h2><h3 id="1457aacb-2d23-8059-9382-e6cc98ce9e55" class=""><strong>General Terms</strong></h3><ul id="1457aacb-2d23-809d-85f7-f04e62fe29ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Cyberattack</strong>: An offensive action with malicious intent targeting computer networks, information systems, or devices.</li></ul><ul id="1457aacb-2d23-80cd-9303-c1b36caf3504" class="bulleted-list"><li style="list-style-type:disc"><strong>Cybercrime</strong>: Criminal offenses carried out using the internet, computer networks, and other technology.</li></ul><ul id="1457aacb-2d23-801a-8bc9-e742ecaad2b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Cybersecurity</strong>: The protection of devices, services, and networks—and the information on them—from theft or damage.</li></ul><hr id="1457aacb-2d23-80f4-a0e4-d055834209de"/><h3 id="1457aacb-2d23-801b-8e88-fe7a634c3ec3" class=""><strong>Key Attack Terms</strong></h3><ul id="1457aacb-2d23-8077-9b70-d47425c5123b" class="bulleted-list"><li style="list-style-type:disc"><strong>Adware</strong>: Software that displays unwanted pop-up ads (e.g., banners, videos) on a device.</li></ul><ul id="1457aacb-2d23-8061-bd40-c00674ec93ec" class="bulleted-list"><li style="list-style-type:disc"><strong>Botnet</strong>: A network of infected devices used to carry out cyberattacks remotely.</li></ul><ul id="1457aacb-2d23-80a8-adb2-de089d1a4e55" class="bulleted-list"><li style="list-style-type:disc"><strong>Insider Threat</strong>: Individuals (employees, contractors, etc.) with authorized access who intentionally harm or disrupt the organization.</li></ul><ul id="1457aacb-2d23-8090-ad23-df446f515901" class="bulleted-list"><li style="list-style-type:disc"><strong>Malware</strong>: Malicious software designed to damage or disrupt systems or networks.</li></ul><ul id="1457aacb-2d23-80e9-a6c3-df047bc0837c" class="bulleted-list"><li style="list-style-type:disc"><strong>Phishing</strong>: Mass emails attempting to steal sensitive information or direct victims to fake websites.</li></ul><ul id="1457aacb-2d23-80bf-aedc-fe0d50f533ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Ransomware</strong>: Malware that blocks access to data or systems until a ransom is paid.</li></ul><ul id="1457aacb-2d23-8000-98be-dcf1d6a843d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Social Engineering</strong>: Manipulating individuals into revealing confidential information or performing actions that compromise security.</li></ul><ul id="1457aacb-2d23-807c-bcd8-e62e5a09a75c" class="bulleted-list"><li style="list-style-type:disc"><strong>Trojan</strong>: Malware that appears legitimate but secretly causes harm, steals data, or installs further malware.</li></ul><hr id="1457aacb-2d23-808b-8223-dfc4ea2f6244"/><h3 id="1457aacb-2d23-8010-ab95-c8d2abda6cfe" class=""><strong>Generic &#x27;Need to Know&#x27; Terms</strong></h3><ul id="1457aacb-2d23-8001-966a-dd13bd78411d" class="bulleted-list"><li style="list-style-type:disc"><strong>Antivirus</strong>: Software used to detect, prevent, and remove malware from a system.</li></ul><ul id="1457aacb-2d23-8058-8db9-f6683b9a18b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Bugs</strong>: Errors or flaws in systems or software that cause unintended outcomes or failures.</li></ul><ul id="1457aacb-2d23-8003-93b4-c16885f361af" class="bulleted-list"><li style="list-style-type:disc"><strong>Cloud</strong>: Remote access to shared computing and storage resources via the internet.</li></ul><ul id="1457aacb-2d23-807d-b250-c8776de0bba7" class="bulleted-list"><li style="list-style-type:disc"><strong>Dark Web</strong>: A part of the internet only accessible through special software, providing anonymity to users.</li></ul><ul id="1457aacb-2d23-8061-86c0-e377164154ad" class="bulleted-list"><li style="list-style-type:disc"><strong>Hacker</strong>: An individual attempting unauthorized access to systems or networks.</li></ul><ul id="1457aacb-2d23-80a0-b16d-c8d78175fabe" class="bulleted-list"><li style="list-style-type:disc"><strong>Encryption</strong>: Securing data using algorithms and unique keys, making it unreadable to unauthorized users.</li></ul><ul id="1457aacb-2d23-8013-9555-df596396f4cf" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploit</strong>: Software or code designed to take advantage of vulnerabilities in systems, often for malicious purposes.</li></ul><ul id="1457aacb-2d23-804f-aaba-c869e3891758" class="bulleted-list"><li style="list-style-type:disc"><strong>Firewall</strong>: Hardware or software that protects a network from unauthorized access or malicious activity.</li></ul><ul id="1457aacb-2d23-80f7-a313-fab399300508" class="bulleted-list"><li style="list-style-type:disc"><strong>Internet of Things (IoT)</strong>: A network of interconnected devices and systems that communicate over wireless networks.</li></ul><ul id="1457aacb-2d23-80ee-b0bd-cce429f9c6bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Patches</strong>: Security updates designed to fix vulnerabilities or enhance system protection.</li></ul><ul id="1457aacb-2d23-80ec-aca6-e06922b4c24f" class="bulleted-list"><li style="list-style-type:disc"><strong>Penetration Testing (Pentesting)</strong>: A process of testing systems or networks for vulnerabilities to identify and address weaknesses.</li></ul><hr id="1457aacb-2d23-80dc-8557-fda1ba365264"/><h3 id="1457aacb-2d23-8054-8bc4-cc78a1e9ba65" class=""><strong>Further Learning</strong></h3><ul id="1457aacb-2d23-80de-afe0-f2aa4b98909a" class="bulleted-list"><li style="list-style-type:disc"><strong>NCSC Glossary</strong>: Explore the glossary for more key cybersecurity terms.(Tip: Bookmark for future reference.)</li></ul><h2 id="1457aacb-2d23-8075-8261-cafbae572554" class="">Privacy</h2><h3 id="1457aacb-2d23-8037-85bd-fd990d4e7622" class=""><strong>Common View on Privacy</strong></h3><ul id="1457aacb-2d23-8085-b5d8-d45dd17edeb0" class="bulleted-list"><li style="list-style-type:disc">The mindset &quot;I have nothing to hide, so I have nothing to fear&quot; is common but flawed.</li></ul><ul id="1457aacb-2d23-802b-8826-e1fedf61b7dd" class="bulleted-list"><li style="list-style-type:disc">Many are willing to trade personal information for online services or convenience, often unaware of how this data is used.</li></ul><ul id="1457aacb-2d23-80fb-80e9-fd3a6250f23b" class="bulleted-list"><li style="list-style-type:disc">Organizations profit by capturing and using personal information for various purposes.</li></ul><ul id="1457aacb-2d23-806b-8816-cb5c7012af96" class="bulleted-list"><li style="list-style-type:disc">Private information extends beyond basic data like name and address, including shopping habits, medical records, and more.</li></ul><hr id="1457aacb-2d23-803c-b6ae-d3252e566d59"/><h3 id="1457aacb-2d23-801f-830e-eae21c73dca9" class=""><strong>Real-World Privacy Example</strong></h3><ul id="1457aacb-2d23-80be-a6df-f6a3cb21e035" class="bulleted-list"><li style="list-style-type:disc"><strong>The Visible Part</strong>: You search for new trainers online, and websites ask you to accept cookies.</li></ul><ul id="1457aacb-2d23-8081-bcd4-d58adaadd56f" class="bulleted-list"><li style="list-style-type:disc"><strong>The Hidden Part</strong>: Cookies track your online activity (items added to cart, sites visited) and store this data.<ul id="1457aacb-2d23-802a-abdf-f0595391e7f3" class="bulleted-list"><li style="list-style-type:circle">Legally, companies need your consent to collect data through cookies.</li></ul><ul id="1457aacb-2d23-800d-99f6-da89f07cc367" class="bulleted-list"><li style="list-style-type:circle">However, many users hastily accept cookies, unknowingly sharing data.</li></ul></li></ul><ul id="1457aacb-2d23-8082-a101-d1126a71be82" class="bulleted-list"><li style="list-style-type:disc"><strong>The Result</strong>:<ul id="1457aacb-2d23-80ab-94fe-c5a592d24a97" class="bulleted-list"><li style="list-style-type:circle">You start seeing targeted ads for trainers, sometimes from specific websites.</li></ul><ul id="1457aacb-2d23-8044-a22c-f61a0042eb80" class="bulleted-list"><li style="list-style-type:circle">Accepting cookies can expose you to security risks if data is shared with untrustworthy websites.</li></ul><ul id="1457aacb-2d23-808e-b338-ef56aa55e515" class="bulleted-list"><li style="list-style-type:circle">Not all sites asking for cookie acceptance are legitimate; some may use cookies for malicious purposes.</li></ul></li></ul><hr id="1457aacb-2d23-8086-8af7-ccbde0f64d61"/><h3 id="1457aacb-2d23-8090-9aed-ec79912c880f" class=""><strong>Privacy Settings Online</strong></h3><ul id="1457aacb-2d23-8009-bf42-ed29dc920fa9" class="bulleted-list"><li style="list-style-type:disc">People often share personal information willingly, but they should be cautious about what is shared and with whom.</li></ul><ul id="1457aacb-2d23-8079-81a0-ebca0227fcc9" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A LinkedIn search for your name could reveal where you work, even if your account is private.</li></ul><ul id="1457aacb-2d23-80dd-8243-f4ccc0262ead" class="bulleted-list"><li style="list-style-type:disc">Privacy settings offer limited protection, especially if you&#x27;re freely giving away your information.</li></ul><ul id="1457aacb-2d23-8002-886f-f3eeef4af124" class="bulleted-list"><li style="list-style-type:disc">Posts shared online, including location tags, could lead to identity theft or expose you to physical danger.<ul id="1457aacb-2d23-8058-a21e-fe0d45b53d63" class="bulleted-list"><li style="list-style-type:circle">Using geolocation on posts allows others to track your whereabouts and target your family/friends.</li></ul></li></ul><ul id="1457aacb-2d23-8027-b1c0-cf18c7f39d40" class="bulleted-list"><li style="list-style-type:disc"><strong>Sharing Information Safely</strong>:<ul id="1457aacb-2d23-8032-9811-c4e2e992eb5f" class="bulleted-list"><li style="list-style-type:circle">Share location tags after you’ve moved to a different location to avoid alerting malicious actors in real-time.</li></ul><ul id="1457aacb-2d23-8090-9490-f0ebd60d1914" class="bulleted-list"><li style="list-style-type:circle">Social media platforms (Facebook, Instagram, LinkedIn, Twitter) allow you to adjust privacy settings to control who sees your information.</li></ul></li></ul><hr id="1457aacb-2d23-80a6-89b4-c06c98efbbce"/><h3 id="1457aacb-2d23-80e9-835c-c5725f9ef848" class=""><strong>Steps to Protect Privacy</strong></h3><ul id="1457aacb-2d23-8020-9087-e6238c6b763f" class="bulleted-list"><li style="list-style-type:disc"><strong>Actions to Strengthen Online Privacy</strong>:<ul id="1457aacb-2d23-8098-afb5-f838c6d60ac8" class="bulleted-list"><li style="list-style-type:circle">Regularly clear your browser cookies to limit data tracking.</li></ul><ul id="1457aacb-2d23-80b1-97ac-d2e717dc6d00" class="bulleted-list"><li style="list-style-type:circle">Use a webcam cover to prevent unauthorized access.</li></ul><ul id="1457aacb-2d23-80ea-a21c-ffc59bebad75" class="bulleted-list"><li style="list-style-type:circle">Remove personal details from the open voter register.</li></ul><ul id="1457aacb-2d23-8094-9cc3-f7e658fc3c2e" class="bulleted-list"><li style="list-style-type:circle">Request that friends, relatives, and employers remove your personal information from their systems.</li></ul></li></ul><hr id="1457aacb-2d23-807c-b095-efde4b291be6"/><h3 id="1457aacb-2d23-8098-9dd9-edc67bb4ace4" class=""></h3><h2 id="1457aacb-2d23-80fb-a118-e6bbe82e5abf" class="">Shoulder Surfing</h2><h3 id="1457aacb-2d23-80c7-83c9-cfbe2c8f126d" class=""><strong>What is Shoulder Surfing?</strong></h3><ul id="1457aacb-2d23-80c3-a30f-c55653efb2f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Shoulder surfing is a social engineering technique used to obtain information by observing someone’s screen or their keyboard input.</li></ul><ul id="1457aacb-2d23-802e-8ee5-e82fb9f3dd2e" class="bulleted-list"><li style="list-style-type:disc"><strong>Not limited to digital devices</strong>: Malicious actors can also read written or printed documents over your shoulder.</li></ul><ul id="1457aacb-2d23-80ea-985b-fccf21332609" class="bulleted-list"><li style="list-style-type:disc"><strong>Effective in busy places</strong>: Attackers often target crowded areas like buses, cafés, or ATMs to avoid detection while stealing information.</li></ul><ul id="1457aacb-2d23-8094-bf16-fa258e983f3d" class="bulleted-list"><li style="list-style-type:disc"><strong>Can also include eavesdropping</strong>: Attackers may listen in on phone calls to steal sensitive information, such as credit card details.</li></ul><h3 id="1457aacb-2d23-807b-8cbe-fe14eaf18f34" class=""><strong>When Can Shoulder Surfing Happen?</strong></h3><ul id="1457aacb-2d23-807c-be53-e6361ef3dcad" class="bulleted-list"><li style="list-style-type:disc"><strong>Busy and public places</strong>: It&#x27;s most effective in crowded areas, but can also occur in quieter, secluded spaces.</li></ul><ul id="1457aacb-2d23-8031-8d13-c8f0d3f99ff6" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools used</strong>: Attackers may use binoculars or mini digital cameras to secretly capture private information.</li></ul><hr id="1457aacb-2d23-802b-bbc1-ccc012fb547a"/><h3 id="1457aacb-2d23-80ae-ae6d-ead8138b0e3a" class=""><strong>Consequences of Shoulder Surfing</strong></h3><ul id="1457aacb-2d23-80eb-bd4e-c404fcf0f708" class="bulleted-list"><li style="list-style-type:disc"><strong>Potential Risks</strong>:<ul id="1457aacb-2d23-80e0-a941-dd51837b7c60" class="bulleted-list"><li style="list-style-type:circle">Identity theft</li></ul><ul id="1457aacb-2d23-80c3-b29c-f49a90cc5ebd" class="bulleted-list"><li style="list-style-type:circle">Fraud</li></ul><ul id="1457aacb-2d23-8069-9dbc-c5b235599b09" class="bulleted-list"><li style="list-style-type:circle">Leakage of sensitive personal or company data</li></ul></li></ul><ul id="1457aacb-2d23-8043-a10a-c040cd5460a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Action Required</strong>:<ul id="1457aacb-2d23-804e-a080-e94b138b0099" class="bulleted-list"><li style="list-style-type:circle">If work-related information is compromised, report it to your workplace security team.</li></ul><ul id="1457aacb-2d23-802d-81de-e3814d025eae" class="bulleted-list"><li style="list-style-type:circle">If personal banking information is at risk, contact your bank immediately.</li></ul></li></ul><hr id="1457aacb-2d23-80de-a109-d1fcf0922eb0"/><h3 id="1457aacb-2d23-8051-b667-dd069c6dcdfa" class=""><strong>How to Protect Yourself from Shoulder Surfing</strong></h3><ul id="1457aacb-2d23-809f-bf59-e418be5dfd5b" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Privacy Screen Filters</strong>:<ul id="1457aacb-2d23-809e-9328-fe5b459a478d" class="bulleted-list"><li style="list-style-type:circle">These filters limit the viewing angles of your screen, making it appear dark or tinted to people around you.</li></ul><ul id="1457aacb-2d23-80d8-9870-fb36b99ebbf3" class="bulleted-list"><li style="list-style-type:circle">It acts like a &quot;blind&quot; for your screen to keep your information private.</li></ul></li></ul><ul id="1457aacb-2d23-805a-aac0-eaa74102dab4" class="bulleted-list"><li style="list-style-type:disc"><strong>Sit in Quiet, Secluded Spots</strong>:<ul id="1457aacb-2d23-8060-8f2a-c473325dde22" class="bulleted-list"><li style="list-style-type:circle">In public places, sit with your back to the wall and avoid areas with a window or walkway behind you.</li></ul><ul id="1457aacb-2d23-80eb-9a69-ff5619b2aee1" class="bulleted-list"><li style="list-style-type:circle">This minimizes the risk of being observed.</li></ul></li></ul><ul id="1457aacb-2d23-8064-b4b4-e6a186cae5bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Cover PINs and Passwords</strong>:<ul id="1457aacb-2d23-8061-bb15-f44d9d23d9e1" class="bulleted-list"><li style="list-style-type:circle">Always cover your hand when typing your PIN or passwords in public.</li></ul><ul id="1457aacb-2d23-808b-8bfe-ce54980263e3" class="bulleted-list"><li style="list-style-type:circle">Be cautious when entering sensitive information on mobile devices, laptops, or ATMs.</li></ul><ul id="1457aacb-2d23-8001-9b1f-c482ef9e863b" class="bulleted-list"><li style="list-style-type:circle">Ensure passwords are not displayed in plain text and use the hide option (usually by tapping the eye icon) for password fields.</li></ul></li></ul><ul id="1457aacb-2d23-8019-810e-e44924453631" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Contactless Payments and Biometrics</strong>:<ul id="1457aacb-2d23-8074-9a90-cf456eb2c7d9" class="bulleted-list"><li style="list-style-type:circle"><strong>Contactless payment</strong>: Using contactless cards prevents others from seeing your PIN.</li></ul><ul id="1457aacb-2d23-8088-8bb4-f07d31b3fe2c" class="bulleted-list"><li style="list-style-type:circle"><strong>Biometrics</strong>: Use fingerprint or facial recognition for secure device logins instead of traditional PINs.</li></ul><ul id="1457aacb-2d23-8082-aa0f-f4e8c3dea8da" class="bulleted-list"><li style="list-style-type:circle"><strong>Multi-factor Authentication (MFA)</strong>: Use MFA to add an additional layer of security in case your details are compromised.</li></ul></li></ul><ul id="1457aacb-2d23-8033-bd7a-eec6c9babcfb" class="bulleted-list"><li style="list-style-type:disc"><strong>Avoid Saying Card Details Aloud</strong>:<ul id="1457aacb-2d23-80f3-a616-f76a1243d13f" class="bulleted-list"><li style="list-style-type:circle">Never read your payment card details aloud in public.</li></ul><ul id="1457aacb-2d23-8048-8826-e210f92540d1" class="bulleted-list"><li style="list-style-type:circle">Only share sensitive information in a private, secure setting with trusted individuals.</li></ul></li></ul><p id="1457aacb-2d23-80e5-81fc-e8c364034e53" class="">
+</p><h2 id="1457aacb-2d23-80e1-a6c8-c6e13730748f" class="">Social Engineering</h2><h3 id="1457aacb-2d23-800b-beb3-e3d58cf493ac" class=""><strong>What is Social Engineering?</strong></h3><ul id="1457aacb-2d23-8031-bf57-f9721ed5095f" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Social engineering is an attack technique where attackers manipulate or deceive individuals to gain personal information (e.g., passwords) or make them take actions (e.g., making a payment).</li></ul><ul id="1457aacb-2d23-8039-b65a-e424bd4456ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Attack</strong>: Phishing, where attackers use email to lure victims into revealing data or unwittingly installing malware. Other mediums include:<ul id="1457aacb-2d23-8038-bb54-d1167fd10416" class="bulleted-list"><li style="list-style-type:circle"><strong>SMShing</strong>: Phishing through text messages.</li></ul><ul id="1457aacb-2d23-80bc-afb2-da92de92229c" class="bulleted-list"><li style="list-style-type:circle"><strong>Vishing</strong>: Phishing through telephone calls.</li></ul></li></ul><hr id="1457aacb-2d23-80c1-b988-da4d6d827c66"/><h3 id="1457aacb-2d23-8039-9e68-e966e7d96453" class=""><strong>Psychological Manipulation in Social Engineering</strong></h3><ul id="1457aacb-2d23-80ac-9972-e11a076c0a86" class="bulleted-list"><li style="list-style-type:disc"><strong>Emotional Exploitation</strong>: Attackers use emotions like fear or greed to manipulate victims. For example:<ul id="1457aacb-2d23-80e9-85d7-e17e8bcc79d6" class="bulleted-list"><li style="list-style-type:circle">Offering incentives (prizes, tickets).</li></ul><ul id="1457aacb-2d23-80de-934c-e80b472a2aad" class="bulleted-list"><li style="list-style-type:circle">Creating a sense of urgency (e.g., missing a loan payment or delivery).</li></ul></li></ul><ul id="1457aacb-2d23-8012-8dc1-c0e16f13bfb7" class="bulleted-list"><li style="list-style-type:disc"><strong>Urgency</strong>: Attackers use urgency to push targets into quick decisions before realizing the deception.</li></ul><ul id="1457aacb-2d23-8068-8994-e27a6e597934" class="bulleted-list"><li style="list-style-type:disc"><strong>Spear-Phishing</strong>: A more targeted form of phishing, where attackers use specific details about the victim to make the scam more convincing.</li></ul><p id="1457aacb-2d23-804b-93b9-d2ad093277fb" class=""><strong>Tip</strong>: Always treat urgent requests or actions outside of normal processes with suspicion.</p><hr id="1457aacb-2d23-80b4-bf7b-cca664b91502"/><h3 id="1457aacb-2d23-80ef-818c-d21a29e122c0" class=""><strong>Pretexting</strong></h3><ul id="1457aacb-2d23-80c9-9d06-c45590277441" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Attackers create a fake scenario to manipulate the victim into helping them.<ul id="1457aacb-2d23-80eb-9247-f68ffce4b8a4" class="bulleted-list"><li style="list-style-type:circle">Example: An attacker wearing a high-visibility jacket may ask for access to a secure area to avoid being late for work.</li></ul></li></ul><ul id="1457aacb-2d23-8018-83f2-f6aba79653a9" class="bulleted-list"><li style="list-style-type:disc"><strong>Impersonation</strong>: Attackers may pose as trusted entities (e.g., banks) and ask for sensitive information, like a PIN, under the guise of protecting the account.</li></ul><hr id="1457aacb-2d23-8080-ad18-f0e908587585"/><h3 id="1457aacb-2d23-80e0-9506-ca468ebad0c1" class=""><strong>Common Social Engineering Attacks</strong></h3><ol type="1" id="1457aacb-2d23-802a-93ca-ee84e9a803bd" class="numbered-list" start="1"><li><strong>Baiting</strong><ul id="1457aacb-2d23-807a-9535-c860c634fc8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Attackers offer something enticing (like free downloads or event tickets) to lure victims into unsafe actions (clicking on links, visiting fake sites).</li></ul><ul id="1457aacb-2d23-8044-b6ce-fecc84f8a4a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Steal personal information or install malware on systems.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-80d6-9e4a-d56331148ab3" class="numbered-list" start="2"><li><strong>Quid Pro Quo</strong><ul id="1457aacb-2d23-8022-a395-d6f40799eb7e" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: The attacker offers a service or help, only to later request information or actions that help them gain access to the victim’s system.</li></ul><ul id="1457aacb-2d23-8002-928a-eaf01c6ee1bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A fake Microsoft phone call offering to fix a computer issue, leading to access to the victim’s system.</li></ul><ul id="1457aacb-2d23-8030-8a92-ca54452d0973" class="bulleted-list"><li style="list-style-type:disc"><strong>Tip</strong>: Always verify unsolicited requests using official contact information.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-8049-80a9-ce03b43ee92f" class="numbered-list" start="3"><li><strong>Tailgating</strong><ul id="1457aacb-2d23-8096-ac8a-fc68fdbe9e55" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: An attacker follows an authorized person into a secure area by exploiting their politeness.</li></ul><ul id="1457aacb-2d23-8030-8752-ee41e91df68d" class="bulleted-list"><li style="list-style-type:disc"><strong>Countermeasures</strong>: Be aware of your surroundings and do not let anyone in unless their identity has been verified.</li></ul><ul id="1457aacb-2d23-8071-b906-e45e69c26c4f" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A person with a hi-vis jacket asking for access to a secure area.</li></ul></li></ol><h2 id="1457aacb-2d23-801c-a914-f2676315f5a9" class="">Disposal of Device Information</h2><h3 id="1457aacb-2d23-806c-8e05-c6b135f299c0" class=""><strong>Why Proper Disposal is Important</strong></h3><ol type="1" id="1457aacb-2d23-8044-8c3c-e754cf243d82" class="numbered-list" start="1"><li><strong>Preventing Unauthorized Access</strong>: Proper disposal prevents devices containing sensitive information from falling into the hands of malicious actors.</li></ol><ol type="1" id="1457aacb-2d23-80b7-a4ff-e05b3cdab628" class="numbered-list" start="2"><li><strong>Preventing Unwanted Information from Re-entering the Organization</strong>: Ensures that outdated or irrelevant information doesn&#x27;t accidentally make its way back into the organization, potentially leading to data breaches or misuse.</li></ol><ol type="1" id="1457aacb-2d23-80f1-9a23-cffc7551c0d3" class="numbered-list" start="3"><li><strong>Sensitive Information Risks</strong>: Improper disposal of sensitive information, especially personally identifiable information (PII), can cause harm to individuals or organizations.</li></ol><h3 id="1457aacb-2d23-80bb-a799-d8f87755d1a4" class=""><strong>Risks of Improper Disposal</strong></h3><ul id="1457aacb-2d23-80f2-a80a-c3687953be3b" class="bulleted-list"><li style="list-style-type:disc"><strong>Potential Harm</strong>: Sensitive information like PII can lead to identity theft, fraud, and distress if not disposed of securely.</li></ul><hr id="1457aacb-2d23-80b2-a321-e243ff807c31"/><h3 id="1457aacb-2d23-8019-ade9-c10aea8607b4" class=""><strong>How to Dispose Securely</strong></h3><ul id="1457aacb-2d23-8070-8fb4-f950d22b47c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Organizational Accountability</strong>: Organizations are responsible for securely disposing of physical or electronic information. This may include a <strong>disposal policy</strong> that outlines proper steps for secure destruction.</li></ul><ul id="1457aacb-2d23-8046-a425-c55092d35a43" class="bulleted-list"><li style="list-style-type:disc"><strong>Use of Data Destruction Tools</strong>: Even when files are deleted, specialized tools are required to ensure data cannot be recovered from disposed devices.<ul id="1457aacb-2d23-8076-b8f8-e133927ef8f1" class="bulleted-list"><li style="list-style-type:circle"><strong>IT Team Involvement</strong>: The IT team typically handles or supervises the secure destruction of devices that store confidential information. If an organization outsources this process, it should ensure the third-party vendor follows approved procedures.</li></ul></li></ul><hr id="1457aacb-2d23-8018-8bfd-f75a3f8f4860"/><h3 id="1457aacb-2d23-80b3-b3dc-f96caab7b3fb" class=""><strong>When to Dispose of Devices</strong></h3><ul id="1457aacb-2d23-80d1-8b86-d2d71be5e174" class="bulleted-list"><li style="list-style-type:disc"><strong>Devices Containing Confidential Information</strong>: Any device that holds or has previously held sensitive data (e.g., personnel records, project files, procurement records) must be disposed of securely.</li></ul><ul id="1457aacb-2d23-80e5-994f-dc33fd95c619" class="bulleted-list"><li style="list-style-type:disc"><strong>Return Devices to IT Team</strong>: Any device that may have contained business or personal information should be returned to the IT team for proper disposal.</li></ul><hr id="1457aacb-2d23-80f6-aeaa-d2ccb6b408ed"/><p id="1457aacb-2d23-80ea-bf62-ec0cbda6b91a" class="">
+</p><h2 id="1457aacb-2d23-803b-99b2-e33b8b3762c2" class="">Physical Security</h2><h3 id="1457aacb-2d23-80d5-bb8e-c0fe58dc09d6" class="">Notes on Physical Security</h3><h3 id="1457aacb-2d23-8038-a8e3-d1f10d171706" class=""><strong>What is Physical Security?</strong></h3><ul id="1457aacb-2d23-8044-a63d-f9beb10d2c57" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Physical security involves protecting physical assets, such as devices and documents, from threats that can lead to data breaches or security risks.</li></ul><ul id="1457aacb-2d23-809c-8c4d-f33395463f12" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A company laptop with the password written on a note stuck to the lid. If the laptop is left in a car, it can be stolen along with the password, resulting in a security breach.</li></ul><hr id="1457aacb-2d23-805b-96c2-f295819a2243"/><h3 id="1457aacb-2d23-80ea-91b0-d66a26366ee2" class=""><strong>Physical Security Risks</strong></h3><ol type="1" id="1457aacb-2d23-80dc-9d48-e78209da19e0" class="numbered-list" start="1"><li><strong>Writing Down Passwords</strong>: Storing passwords on physical notes or devices increases the risk of unauthorized access if they are lost or found by attackers.</li></ol><ol type="1" id="1457aacb-2d23-8002-9339-dfba04fb2d02" class="numbered-list" start="2"><li><strong>Holding Secure Doors Open</strong>: Letting strangers or unauthorized people through secure doors can allow attackers access to sensitive areas.</li></ol><ol type="1" id="1457aacb-2d23-8059-af5d-d504988bb3b9" class="numbered-list" start="3"><li><strong>Leaving Sensitive Documents/Devices Unattended</strong>: Leaving laptops, documents, or devices unattended can make them vulnerable to theft or unauthorized access.</li></ol><hr id="1457aacb-2d23-80b4-8094-da59c861688c"/><h3 id="1457aacb-2d23-80e9-aa9a-df25623c0b8d" class=""><strong>Case Studies of Physical Security Risks</strong></h3><ol type="1" id="1457aacb-2d23-8029-afb4-cede975a950d" class="numbered-list" start="1"><li><strong>USB Attacks</strong>:<ul id="1457aacb-2d23-8085-a232-c73ee533c0cf" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: USB devices can be used to infect computers. Attackers may leave USB drives in public places (baiting) or send infected USBs through the mail.</li></ul><ul id="1457aacb-2d23-80ee-989f-f1b41a4e0861" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: The computer worm that halted Iran’s nuclear fuel enrichment program was spread through USB devices.</li></ul><ul id="1457aacb-2d23-80a2-a2dd-da150d17f2d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation</strong>: Many workplaces prevent employees from plugging USB devices into work computers. Be cautious of any unverified USB device.</li></ul></li></ol><ol type="1" id="1457aacb-2d23-8042-809f-e87f46e43a0a" class="numbered-list" start="2"><li><strong>Tailgating and Data Hoarding</strong>:<ul id="1457aacb-2d23-8089-bbf9-db5a81b9ff29" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: Attackers can exploit trust by following employees through secure doors (tailgating) or by collecting confidential data left unattended (data hoarding).</li></ul><ul id="1457aacb-2d23-80fd-81fa-c0b5ab29e4d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Prevention</strong>:<ul id="1457aacb-2d23-8067-9405-e426127d2d9b" class="bulleted-list"><li style="list-style-type:circle">Always verify the identity of individuals before allowing them into restricted areas.</li></ul><ul id="1457aacb-2d23-80e0-b4f6-f524e80f6e76" class="bulleted-list"><li style="list-style-type:circle">Lock confidential information away when not in use.</li></ul><ul id="1457aacb-2d23-8000-acb2-e66d6a744222" class="bulleted-list"><li style="list-style-type:circle">Lock computers when stepping away.</li></ul><ul id="1457aacb-2d23-8029-a6c8-ebaee4b48ae2" class="bulleted-list"><li style="list-style-type:circle">Never lend your ID card and report it if lost.</li></ul></li></ul></li></ol><h2 id="1457aacb-2d23-80cf-8e70-dcede5f8f0f2" class="">Privileged Access</h2><h3 id="1457aacb-2d23-8037-8167-fe7af80fc2f0" class=""><strong>What is Privileged Access?</strong></h3><ul id="1457aacb-2d23-8032-99da-e99170c27257" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Privileged access refers to special permissions or abilities granted to users (human or non-human) to perform specific roles within an organization.</li></ul><ul id="1457aacb-2d23-80ca-89f3-cc1d5865ad7b" class="bulleted-list"><li style="list-style-type:disc"><strong>Criteria</strong>: Privileged access may depend on factors like:<ul id="1457aacb-2d23-8054-b7a8-f8d04bf7c38c" class="bulleted-list"><li style="list-style-type:circle">Seniority level</li></ul><ul id="1457aacb-2d23-8011-84c6-fe6e71f488f3" class="bulleted-list"><li style="list-style-type:circle">Time of day</li></ul><ul id="1457aacb-2d23-806b-8375-f7a3533b9a44" class="bulleted-list"><li style="list-style-type:circle">Special circumstances</li></ul></li></ul><ul id="1457aacb-2d23-804c-9c37-d699348f4911" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: A systems administrator has privileged access to a server room, unlike other employees who do not need such access.</li></ul><hr id="1457aacb-2d23-8033-82d1-ca35da1e34d8"/><h3 id="1457aacb-2d23-807a-8e1a-f244a04ca0c5" class=""><strong>How Attackers Use Privileged Access</strong></h3><ul id="1457aacb-2d23-80ff-9ff8-ea5de46b570b" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploitation</strong>: Attackers may target privileged access to gain higher-level access to systems, networks, and sensitive information.<ul id="1457aacb-2d23-80fb-997d-f2e69c6b2f81" class="bulleted-list"><li style="list-style-type:circle"><strong>Example</strong>: Exploiting admin accounts to access multiple workstations, steal credentials, and escalate access within the network.</li></ul></li></ul><hr id="1457aacb-2d23-8078-b9b3-cc968e4df7f6"/><h3 id="1457aacb-2d23-8057-83e2-e57e5802e51e" class=""><strong>Why You Need to Protect Privileged Access</strong></h3><ul id="1457aacb-2d23-8097-8e64-c2c61628dc0a" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk of Misuse</strong>: Privileged access, if compromised, can lead to unauthorized access to sensitive data, applications, and infrastructure, potentially disrupting business operations.</li></ul><ul id="1457aacb-2d23-8053-9367-e501ad4a0b5d" class="bulleted-list"><li style="list-style-type:disc"><strong>Protection Tips</strong>:<ol type="1" id="1457aacb-2d23-80ff-8099-fb77b70f9a68" class="numbered-list" start="1"><li><strong>Physical Security</strong>: Don’t share physical access assets (like passes, keys, or fobs) with others, and store them safely (e.g., in a drawer or locker).</li></ol><ol type="1" id="1457aacb-2d23-803a-9df5-f769a8e2103a" class="numbered-list" start="2"><li><strong>Digital Security</strong>: Use a password manager to store digital access keys (passwords, PIN codes) and enable multi-factor authentication (MFA) on devices.</li></ol><ol type="1" id="1457aacb-2d23-80cc-8396-f97140ae5635" class="numbered-list" start="3"><li><strong>Avoid Writing Passwords</strong>: Don’t write passwords or PIN codes on paper, as they could be seen and stolen.</li></ol><ol type="1" id="1457aacb-2d23-8062-95e5-fe84ee2b9931" class="numbered-list" start="4"><li><strong>Lock Devices</strong>: Always lock your computer or devices when leaving your work environment to prevent unauthorized access.</li></ol></li></ul><h2 id="1457aacb-2d23-80c7-a366-e29c4e7e4774" class="">Security on the Go</h2><h3 id="1457aacb-2d23-80e3-8639-e8fde6eceab2" class=""><strong>Common Attack Techniques</strong></h3><ul id="1457aacb-2d23-80ac-98d5-c40afbb0ffd1" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: Traveling can expose your devices to additional risks due to a lack of corporate network protections.</li></ul><ul id="1457aacb-2d23-803c-b826-d29294ba9b1e" class="bulleted-list"><li style="list-style-type:disc"><strong>Attack Methods</strong>:<ul id="1457aacb-2d23-803a-b10d-f29d9d7e8756" class="bulleted-list"><li style="list-style-type:circle"><strong>Social Engineering</strong> and <strong>Shoulder Surfing</strong>: Attackers can target you while you&#x27;re on the move, often in public spaces like airports, buses, or trains.</li></ul><ul id="1457aacb-2d23-8036-9f3a-eaa76b0a8ced" class="bulleted-list"><li style="list-style-type:circle">Opportunists may also steal devices if left unattended.</li></ul></li></ul><ul id="1457aacb-2d23-8005-9212-d6647868f2fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Precaution</strong>: Avoid viewing confidential information or having sensitive conversations in public. Always keep your devices near you and check on them frequently.</li></ul><hr id="1457aacb-2d23-80b2-ad3d-c922695d0433"/><h3 id="1457aacb-2d23-8082-b8f4-d274fa0909e6" class=""><strong>Making Sure You&#x27;re Secure</strong></h3><ul id="1457aacb-2d23-8041-92f4-d12cbcfeb4f0" class="bulleted-list"><li style="list-style-type:disc"><strong>Before You Leave</strong>:<ol type="1" id="1457aacb-2d23-8005-9022-f7bf7f6f8240" class="numbered-list" start="1"><li><strong>Device Protection</strong>: Ensure all devices have strong passwords and PINs.</li></ol><ol type="1" id="1457aacb-2d23-80c5-9754-de4d972ccf7e" class="numbered-list" start="2"><li><strong>Multi-Factor Authentication (MFA)</strong>: Enable MFA wherever possible for added security.</li></ol><ol type="1" id="1457aacb-2d23-804d-a619-e32636b34203" class="numbered-list" start="3"><li><strong>Encryption</strong>: Check encryption restrictions for international travel and ensure devices comply.</li></ol><ol type="1" id="1457aacb-2d23-80de-ad95-eab06922d5d7" class="numbered-list" start="4"><li><strong>Minimal Data</strong>: Carry as little information (both electronic and printed) as possible to minimize potential losses.</li></ol><ol type="1" id="1457aacb-2d23-8096-91cb-cf5d04e75000" class="numbered-list" start="5"><li><strong>Backups</strong>: Back up personal devices before traveling to safeguard your data.</li></ol></li></ul><ul id="1457aacb-2d23-8082-97c4-cdb33f208a74" class="bulleted-list"><li style="list-style-type:disc"><strong>While You&#x27;re Away</strong>:<ol type="1" id="1457aacb-2d23-80ac-ab83-d7eb56aaa6ae" class="numbered-list" start="1"><li><strong>Avoid Public Wi-Fi</strong>: Don’t connect to unsecured networks like those in cafes or airports. Use a <strong>VPN</strong> if necessary.</li></ol><ol type="1" id="1457aacb-2d23-8061-bfba-f361a63f4c7c" class="numbered-list" start="2"><li><strong>Device Theft</strong>: If a device is lost or confiscated, report it to your IT team immediately and follow company theft protocols.</li></ol><ol type="1" id="1457aacb-2d23-8092-83f6-c2a7bad136ea" class="numbered-list" start="3"><li><strong>Device Storage</strong>: Use secure lockers or hotel safes for storing devices when not in use.</li></ol><ol type="1" id="1457aacb-2d23-80ea-8dc4-f7bda18d608f" class="numbered-list" start="4"><li><strong>Physical Protection</strong>: Lock devices with a physical or screen lock if you need to leave them unattended, and avoid leaving them out of sight for long.</li></ol><ol type="1" id="1457aacb-2d23-80d8-92fa-f11dec4fb3e3" class="numbered-list" start="5"><li><strong>Insurance</strong>: Ensure your devices are covered by insurance for theft or damage.</li></ol><ol type="1" id="1457aacb-2d23-8081-b7e8-cf1e2722824e" class="numbered-list" start="6"><li><strong>Report Theft</strong>: If your device is stolen, inform local law enforcement and use remote wipe functionality if possible.</li></ol><ol type="1" id="1457aacb-2d23-80b3-a7b1-efc1f144e40d" class="numbered-list" start="7"><li><strong>Privacy Screen</strong>: Use privacy screens to protect sensitive information from prying eyes.</li></ol></li></ul><ul id="1457aacb-2d23-80de-bcaf-d322de0084a4" class="bulleted-list"><li style="list-style-type:disc"><strong>When You Return</strong>:<ol type="1" id="1457aacb-2d23-8083-914b-d6331dbe6173" class="numbered-list" start="1"><li><strong>Device Return</strong>: Return any borrowed work devices.</li></ol><ol type="1" id="1457aacb-2d23-80f4-bdaf-ff212f907fa7" class="numbered-list" start="2"><li><strong>Virus Scans</strong>: Run anti-virus software scans on all devices used during the trip.</li></ol><ol type="1" id="1457aacb-2d23-8019-a509-e954de1909e8" class="numbered-list" start="3"><li><strong>Password Changes</strong>: Change passwords on devices and accounts that were used during travel in case of compromise.</li></ol></li></ul><hr id="1457aacb-2d23-80a8-939f-e482f4bd6dd0"/><h3 id="1457aacb-2d23-8049-a773-f9d18e4a9cf6" class=""><strong>If Your Work Device is Lost or Stolen</strong>:</h3><ul id="1457aacb-2d23-809f-9f52-f0556bbde30a" class="bulleted-list"><li style="list-style-type:disc"><strong>Immediate Action</strong>:<ol type="1" id="1457aacb-2d23-8012-98f2-d6aaf93702c3" class="numbered-list" start="1"><li>Report the theft to your IT department as soon as possible.</li></ol><ol type="1" id="1457aacb-2d23-801c-8a3a-c213b0cada63" class="numbered-list" start="2"><li>If the organization has <strong>Mobile Device Management (MDM)</strong>, they can track, lock, and wipe the device.</li></ol><ol type="1" id="1457aacb-2d23-80ce-84c8-d74e7706f7c7" class="numbered-list" start="3"><li>Change work account passwords immediately to prevent unauthorized access.</li></ol></li></ul><h2 id="1457aacb-2d23-806d-b7be-cfa9b0288c0b" class="">Guidance on Remote Working</h2><h3 id="1457aacb-2d23-8014-8c1c-d4ecfdd79b59" class=""><strong>What is Remote Working?</strong></h3><ul id="1457aacb-2d23-8064-8997-c3ab39b9a400" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Remote working allows employees to work from locations outside the office (e.g., home, coffee shops). Employees can use company-provided devices or personal devices (BYOD) to complete tasks and communicate with teams.</li></ul><hr id="1457aacb-2d23-80fe-81ab-d55bf6828c68"/><h3 id="1457aacb-2d23-80f2-9577-d8973e7851bc" class=""><strong>Risks and Mitigation Strategies</strong></h3><ol type="1" id="1457aacb-2d23-8099-bcf9-e5437afacfd9" class="numbered-list" start="1"><li><strong>Physical Security Risks</strong>:<ul id="1457aacb-2d23-808c-8e74-d8b4aba810a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: Devices used for remote work may be lost or stolen, leading to potential data compromise.</li></ul><ul id="1457aacb-2d23-805b-8fea-ff730bffe038" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>:<ul id="1457aacb-2d23-80ec-ad6b-d25af1739891" class="bulleted-list"><li style="list-style-type:circle">Check if your device&#x27;s remote control and tracking feature (e.g., “Find My Device”) is activated.</li></ul><ul id="1457aacb-2d23-8048-94d3-c529deddbd99" class="bulleted-list"><li style="list-style-type:circle">Use third-party tracking apps like <strong>Cerberus</strong> to locate or remotely wipe lost devices.</li></ul><ul id="1457aacb-2d23-80a6-90c5-c1e6e00ba14d" class="bulleted-list"><li style="list-style-type:circle">Keep devices in safe places (e.g., locked drawers) and out of plain view.</li></ul></li></ul></li></ol><ol type="1" id="1457aacb-2d23-80b6-bea9-c2c0ad4fe941" class="numbered-list" start="2"><li><strong>Unsecured Networks</strong>:<ul id="1457aacb-2d23-802f-91ed-feb085723656" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: Remote workers often use public Wi-Fi or unsecured home networks, which can expose devices to eavesdropping or data modification.</li></ul><ul id="1457aacb-2d23-80d9-b52c-de518da23278" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>:<ul id="1457aacb-2d23-804a-bd2b-f9c8d15dd3f9" class="bulleted-list"><li style="list-style-type:circle">Use a <strong>VPN</strong> (Virtual Private Network) to create a secure connection between your device and the company’s network, ensuring data integrity and confidentiality.</li></ul></li></ul></li></ol><ol type="1" id="1457aacb-2d23-8020-871f-c8255ec93bb5" class="numbered-list" start="3"><li><strong>Weak Passwords</strong>:<ul id="1457aacb-2d23-80f1-942e-cf41d48cd4b4" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk</strong>: Reusing passwords across accounts increases vulnerability to cyberattacks, especially when mixing personal and work profiles.</li></ul><ul id="1457aacb-2d23-8048-bd4b-f63a1b99db61" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution</strong>:<ul id="1457aacb-2d23-8067-b36e-eb1d6d73cda9" class="bulleted-list"><li style="list-style-type:circle">Create <strong>strong, unique passwords</strong> for each account.</li></ul><ul id="1457aacb-2d23-80fa-b226-d5dd7e2dda55" class="bulleted-list"><li style="list-style-type:circle">Use <strong>Multi-Factor Authentication (MFA)</strong> for added security. MFA adds a layer of protection beyond just the password.</li></ul></li></ul></li></ol><hr id="1457aacb-2d23-80ad-a958-d881da00856e"/><h3 id="1457aacb-2d23-8048-b454-e7c006c8a32e" class=""><strong>Useful Tips for Remote Working</strong>:</h3><ul id="1457aacb-2d23-8019-8482-d7878a70a13f" class="bulleted-list"><li style="list-style-type:disc"><strong>Device Security</strong>: Keep work devices out of reach of family members or visitors to avoid unauthorized access.</li></ul><ul id="1457aacb-2d23-80ea-a5d1-eca4ee6522dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Backup</strong>: Use a reputable <strong>cloud storage provider</strong> to back up important work data regularly.</li></ul><ul id="1457aacb-2d23-8081-8327-e2ac9819db0d" class="bulleted-list"><li style="list-style-type:disc"><strong>Limit Device Use</strong>: Avoid using work devices for personal activities like online banking or shopping, which can increase security risks.</li></ul><h2 id="1457aacb-2d23-8088-a87b-fe3e4e28848e" class="">Incident Response in the Workplace</h2><h3 id="1457aacb-2d23-80d5-87c5-f02f0ad25bd6" class=""><strong>Scenario:</strong></h3><ul id="1457aacb-2d23-8081-b7aa-f681859e9a3e" class="bulleted-list"><li style="list-style-type:disc"><strong>Situation</strong>: After returning from a long holiday, you open an email attachment, which contains a <strong>worm</strong>. The worm infects your computer and spreads across the company&#x27;s network, causing systems to shut down. Attempts to restart the computers are unsuccessful.</li></ul><h3 id="1457aacb-2d23-80ef-b983-e65f023b8149" class=""><strong>Who to Contact:</strong></h3><ul id="1457aacb-2d23-802f-98a2-eb3a404841a7" class="bulleted-list"><li style="list-style-type:disc"><strong>Immediate Action</strong>: Contact the <strong>incident response team</strong> to address the issue, which could involve <strong>Computer Security Incident Response Team (CSIRT)</strong>, <strong>Computer Emergency Response Team (CERT)</strong>, or <strong>Security Operations Center (SOC)</strong>, depending on your organization.</li></ul><hr id="1457aacb-2d23-802d-a408-d53af9767242"/><h3 id="1457aacb-2d23-80bb-9e49-d03d971241ce" class=""><strong>Prevention and Preparation</strong></h3><h3 id="1457aacb-2d23-8070-9dd7-e79bb1409959" class=""><strong>Incident Response Plan</strong></h3><ul id="1457aacb-2d23-8020-94fa-e17524870c7d" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Every organization should have an incident response plan in place to handle incidents, minimize damage, recovery time, and costs.</li></ul><ul id="1457aacb-2d23-8034-aba7-ff7ef5ad47eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Teams</strong>:<ul id="1457aacb-2d23-80e3-a4d8-e3e82496a441" class="bulleted-list"><li style="list-style-type:circle"><strong>CSIRT</strong> (Computer Security Incident Response Team)</li></ul><ul id="1457aacb-2d23-8022-8a09-c1df278a3c2f" class="bulleted-list"><li style="list-style-type:circle"><strong>CERT</strong> (Computer Emergency Response Team)</li></ul><ul id="1457aacb-2d23-8043-b8e0-e4a6f5864adc" class="bulleted-list"><li style="list-style-type:circle"><strong>SOC</strong> (Security Operations Center)</li></ul><ul id="1457aacb-2d23-8082-9c20-efba47ee549e" class="bulleted-list"><li style="list-style-type:circle">These teams are typically part of the security department and can be contacted via email, phone, or an online ticket system.</li></ul></li></ul><ul id="1457aacb-2d23-80b9-96d5-f0223409c6d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Importance of Familiarity</strong>: All employees should be aware of their role in the incident response process, even if it’s just providing access to their device when requested.</li></ul><ul id="1457aacb-2d23-8044-8ae6-ea5bf5a4bf3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Without a Plan</strong>: Incident handling can become chaotic, leading to additional problems.</li></ul><hr id="1457aacb-2d23-803e-8ce3-dc0a137d2ee1"/><h3 id="1457aacb-2d23-8084-bb1d-fa5a2529588a" class=""><strong>What You Can Do to Help</strong></h3><ul id="1457aacb-2d23-80a3-bb4b-c0cc44b54433" class="bulleted-list"><li style="list-style-type:disc"><strong>Signs of an Issue</strong>:<ul id="1457aacb-2d23-8012-befe-eb8f8e7eda7b" class="bulleted-list"><li style="list-style-type:circle">If your computer is running slower than usual or you accidentally click on something suspicious, <strong>notify the appropriate team immediately</strong>.</li></ul></li></ul><ul id="1457aacb-2d23-8075-896a-d9520d35d45a" class="bulleted-list"><li style="list-style-type:disc"><strong>Incident Detection</strong>: The <strong>SOC</strong> (if available) may be the first to detect issues, but you should still follow your organization&#x27;s incident response process.</li></ul><ul id="1457aacb-2d23-80a4-bf7c-e854e45415d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Contacts</strong>: Check the company intranet or contact HR or IT for key incident response contacts.</li></ul><hr id="1457aacb-2d23-80af-bdb7-c166641fe94d"/><h3 id="1457aacb-2d23-80db-8c26-c67c7b7055bf" class=""><strong>Additional Prevention Measures</strong></h3><ul id="1457aacb-2d23-808b-ae60-c72bd76c2992" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Spam Filters</strong>: Use email spam filters to detect and block potentially malicious attachments.</li></ul><ul id="1457aacb-2d23-8065-8764-cd41c6a0ae79" class="bulleted-list"><li style="list-style-type:disc"><strong>Learn to Identify Malicious Attachments</strong>: Understanding what suspicious email attachments look like can prevent accidental infections.</li></ul><h2 id="1457aacb-2d23-8045-acfe-c3a535e4d59e" class="">History of Information Security</h2><h3 id="1457aacb-2d23-8047-862e-fc1ba3535ab0" class=""><strong>1970s: ARPANET and the Creeper</strong></h3><ul id="1457aacb-2d23-8078-873e-c9165f90f790" class="bulleted-list"><li style="list-style-type:disc"><strong>Creeper Virus</strong>: Bob Thomas created the first computer virus, the <strong>Creeper</strong>, which left a message: &quot;I&#x27;M THE CREEPER: CATCH ME IF YOU CAN&quot;. It was non-malicious.</li></ul><ul id="1457aacb-2d23-8047-8cbc-ca77bbcf033c" class="bulleted-list"><li style="list-style-type:disc"><strong>Reaper Antivirus</strong>: Ray Tomlinson created the first antivirus, the <strong>Reaper</strong>, in response to the Creeper virus.</li></ul><h3 id="1457aacb-2d23-802c-8468-e3f1beaa70f7" class=""><strong>1976: Insider Threats at Boeing</strong></h3><ul id="1457aacb-2d23-8049-9c2b-f9af7c7cdb8d" class="bulleted-list"><li style="list-style-type:disc"><strong>Greg Chung</strong>: A Boeing employee stole <strong>$2 billion worth of military and spacecraft documents</strong> and passed them to China. Over <strong>225,000 pages</strong> of sensitive info were found at his home.</li></ul><ul id="1457aacb-2d23-8042-8d35-cec35fd3211a" class="bulleted-list"><li style="list-style-type:disc"><strong>Threat Implication</strong>: Data concentration on a single network posed risks; sensitive information could easily be exfiltrated.</li></ul><h3 id="1457aacb-2d23-80f2-ac49-d906fa513111" class=""><strong>1986: Military Computers Hacked</strong></h3><ul id="1457aacb-2d23-801e-acad-e2c35372007e" class="bulleted-list"><li style="list-style-type:disc"><strong>Marcus Hess</strong>: A German hacker who breached military and industrial computers, selling information to the KGB for <strong>$54,000</strong>. He infiltrated over <strong>400 US military computers</strong>.</li></ul><h3 id="1457aacb-2d23-80f8-83f9-e8777743499a" class=""><strong>1988: The First Worm</strong></h3><ul id="1457aacb-2d23-8060-acf2-c20c2ffb5808" class="bulleted-list"><li style="list-style-type:disc"><strong>Morris Worm</strong>: Robert Morris created the first computer worm, which spread through networks, exploiting a <strong>Unix bug</strong>. It is considered the first major worm attack.</li></ul><h3 id="1457aacb-2d23-805d-9cb3-c8afb8c93888" class=""><strong>1988: First CERT</strong></h3><ul id="1457aacb-2d23-803d-aa31-ef9624285575" class="bulleted-list"><li style="list-style-type:disc">The <strong>Computer Emergency Response Team (CERT)</strong> was established in response to Morris’ worm. It was designed to defend US internet infrastructure and respond to cyberattacks.</li></ul><h3 id="1457aacb-2d23-80d1-861d-e965b4cdae77" class=""><strong>1999: Rampant Viruses</strong></h3><ul id="1457aacb-2d23-8039-b51a-c38a85b7904a" class="bulleted-list"><li style="list-style-type:disc"><strong>Melissa Virus</strong>: A virus that infected millions of computers, disrupting global email systems.</li></ul><ul id="1457aacb-2d23-800d-bfa4-e08bfe3b82e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Led to better antivirus systems as viruses were easier to detect by their signatures.</li></ul><h3 id="1457aacb-2d23-807d-8973-cb4cca1cbf2b" class=""><strong>2005: TJX Data Theft</strong></h3><ul id="1457aacb-2d23-80c3-8155-f401df8c7c90" class="bulleted-list"><li style="list-style-type:disc"><strong>Albert Gonzalez</strong>: Led a ring of hackers stealing <strong>45.7 million payment card details</strong> from TJX. The breach cost <strong>$256 million</strong> and raised awareness of data security.</li></ul><h3 id="1457aacb-2d23-8074-8665-e4bc67f3a213" class=""><strong>2013: Snowden and the NSA</strong></h3><ul id="1457aacb-2d23-806a-ae6f-fad0f45fc419" class="bulleted-list"><li style="list-style-type:disc"><strong>Edward Snowden</strong> leaked classified information from the NSA, revealing large-scale surveillance programs.</li></ul><ul id="1457aacb-2d23-805a-8da1-ea8e540ba0f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: This incident sparked global debates about privacy and government surveillance.</li></ul><h3 id="1457aacb-2d23-80ad-b178-f372364748f6" class=""><strong>2013: Yahoo Data Breach</strong></h3><ul id="1457aacb-2d23-80f9-8cb0-c04ca47f3e48" class="bulleted-list"><li style="list-style-type:disc"><strong>Largest Data Breach in History</strong>: Hackers compromised <strong>three billion Yahoo accounts</strong> in 2013, stealing personal data. The breach wasn’t reported until 2016.</li></ul><ul id="1457aacb-2d23-801d-ad19-df6192af6ba9" class="bulleted-list"><li style="list-style-type:disc"><strong>Consequences</strong>: Yahoo faced <strong>$35 million in fines</strong>, and the breach reduced its sale price by <strong>$350 million</strong>.</li></ul><h3 id="1457aacb-2d23-80cd-9e55-c4564cc3559f" class=""><strong>2015: OPM Data Breach</strong></h3><ul id="1457aacb-2d23-800f-bd0d-cc1f924acd31" class="bulleted-list"><li style="list-style-type:disc">The <strong>US Office of Personnel Management (OPM)</strong> was breached, compromising <strong>21.5 million records</strong>, including <strong>5.6 million fingerprints</strong>.</li></ul><ul id="1457aacb-2d23-809b-ba09-cff3efe49346" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: One of the largest breaches of government data.</li></ul><h3 id="1457aacb-2d23-802a-904c-f1d052b69498" class=""><strong>2017: WannaCry</strong></h3><ul id="1457aacb-2d23-8039-9754-f0ef22ea3141" class="bulleted-list"><li style="list-style-type:disc"><strong>WannaCry</strong>: A <strong>ransomworm</strong> that targeted Microsoft Windows, infecting over <strong>230,000 computers</strong> in <strong>150 countries</strong>.</li></ul><ul id="1457aacb-2d23-80ed-afd9-efdc37168318" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact</strong>: Though stopped by a Microsoft patch, the attack caused widespread damage.</li></ul><h3 id="1457aacb-2d23-800e-adc4-c96d842440a8" class=""><strong>2018: GDPR</strong></h3><ul id="1457aacb-2d23-8032-8575-d57c111c5a0d" class="bulleted-list"><li style="list-style-type:disc"><strong>General Data Protection Regulation (GDPR)</strong>: The EU implemented GDPR to provide individuals more control over their personal data, with requirements for organizations handling data from EU citizens.</li></ul><p id="1457aacb-2d23-8006-83bd-fd39105faad7" class="">
+</p><h2 id="1457aacb-2d23-80e1-8369-d9a693146f2c" class="">Personal Devices in the Workplace</h2><h3 id="1457aacb-2d23-80ed-abd3-ccea73358ccd" class=""><strong>Definitions</strong></h3><ul id="1457aacb-2d23-8071-afe2-c77da1224627" class="bulleted-list"><li style="list-style-type:disc"><strong>BYOD (Bring Your Own Device)</strong>: Employees are allowed to use their personal devices (phones, laptops, etc.) for work purposes.</li></ul><ul id="1457aacb-2d23-8085-82b0-d9c6c8329460" class="bulleted-list"><li style="list-style-type:disc"><strong>CYOD (Choose Your Own Device)</strong>: Employees are allowed to select their work devices from a list of pre-approved options provided by the company.</li></ul><h3 id="1457aacb-2d23-8059-857f-d308b58dcc9c" class=""><strong>Advantages of BYOD/CYOD</strong></h3><ul id="1457aacb-2d23-80c3-948a-d43006a0e163" class="bulleted-list"><li style="list-style-type:disc"><strong>Increased Productivity</strong>: Employees are more familiar with their personal devices, which improves their productivity due to comfort with layouts, keyboards, and operating systems.</li></ul><ul id="1457aacb-2d23-80c4-9ce5-ecc088d86976" class="bulleted-list"><li style="list-style-type:disc"><strong>Work-Life Balance</strong>: BYOD contributes to better work-life balance by providing flexibility for employees to work on devices they are comfortable with.</li></ul><ul id="1457aacb-2d23-80c9-bf23-e0ccd7908d8c" class="bulleted-list"><li style="list-style-type:disc"><strong>Enhanced Engagement</strong>: Employees are generally more engaged and satisfied when using their personal devices.</li></ul><ul id="1457aacb-2d23-80e6-9973-dd71ddbf4bfb" class="bulleted-list"><li style="list-style-type:disc"><strong>Mobile Device Management (MDM)</strong>: Organizations can implement MDM solutions to manage and maintain work devices, ensuring compliance with company policies and enhancing security.</li></ul><h3 id="1457aacb-2d23-80b2-9005-cf8c445c3fe2" class=""><strong>Disadvantages of BYOD/CYOD</strong></h3><ul id="1457aacb-2d23-8025-92dc-ff1756551bea" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Risks</strong>:<ul id="1457aacb-2d23-80b8-88a4-f67de94ca3cc" class="bulleted-list"><li style="list-style-type:circle"><strong>Lost Devices</strong>: If an employee loses a device containing sensitive company data, it can lead to data leakage or compromise.</li></ul><ul id="1457aacb-2d23-80e8-ae9c-ef157e8fd565" class="bulleted-list"><li style="list-style-type:circle"><strong>Data Leakage</strong>: Personal devices leaving the premises with confidential information are inherently at risk.</li></ul><ul id="1457aacb-2d23-80bb-bcf4-c5313aafb13d" class="bulleted-list"><li style="list-style-type:circle"><strong>Malware</strong>: Personal devices can be infected through phishing, malicious apps, or compromised websites. Anti-virus software and security measures are needed to counteract these threats.</li></ul><ul id="1457aacb-2d23-8058-86e5-d04d9eb2523b" class="bulleted-list"><li style="list-style-type:circle"><strong>Weak User Security</strong>: Individual users may not have strong security practices on their personal devices, increasing vulnerability.</li></ul></li></ul><h3 id="1457aacb-2d23-8006-bc8c-fd3f5f8bb82c" class=""><strong>Potential Countermeasures</strong></h3><ul id="1457aacb-2d23-8043-977a-c02f6415c60f" class="bulleted-list"><li style="list-style-type:disc"><strong>Remote Wiping</strong>: To mitigate risks from lost or stolen devices, organizations can implement remote wiping solutions to erase sensitive data.</li></ul><ul id="1457aacb-2d23-80d3-8355-fd362cae9061" class="bulleted-list"><li style="list-style-type:disc"><strong>Device Locks</strong>: Using PIN numbers, passwords, and biometric controls can add layers of security to personal devices used for work.</li></ul><h3 id="1457aacb-2d23-8062-8835-efbd984f7c3d" class=""><strong>BYOD Policy</strong></h3><ul id="1457aacb-2d23-80e3-abb1-c7ac959f4df1" class="bulleted-list"><li style="list-style-type:disc"><strong>Review Company Policy</strong>: Employees should check their company&#x27;s specific BYOD policy, which typically includes:<ul id="1457aacb-2d23-80ac-b3e8-ed1e222d27da" class="bulleted-list"><li style="list-style-type:circle"><strong>Device Restrictions</strong>: Clarifies which devices (phones, computers, etc.) are allowed.</li></ul><ul id="1457aacb-2d23-803c-b6e7-d9f60d806b8f" class="bulleted-list"><li style="list-style-type:circle"><strong>Device Lock Policies</strong>: Specifies requirements for locking devices to prevent unauthorized access.</li></ul><ul id="1457aacb-2d23-8017-8ebf-d438af918bb4" class="bulleted-list"><li style="list-style-type:circle"><strong>Service Policy</strong>: Outlines procedures in case of device malfunctions or faults.</li></ul><ul id="1457aacb-2d23-80c9-8dc8-f80dafa68952" class="bulleted-list"><li style="list-style-type:circle"><strong>App Restrictions</strong>: Defines which apps are allowed on devices used for work.</li></ul><ul id="1457aacb-2d23-8075-a372-fd48b02ec18c" class="bulleted-list"><li style="list-style-type:circle"><strong>Data Ownership</strong>: Clarifies ownership of data on personal devices, especially if employees leave the company.</li></ul></li></ul><p id="1457aacb-2d23-8008-af59-d1fc9aeb2bab" class="">Each company will have its own rules regarding the use of personal devices for work, so it’s essential to follow the company&#x27;s guidelines to ensure security and compliance.</p><h3 id="1457aacb-2d23-80b5-a47d-f9776c7b4e96" class=""><strong>Summary</strong></h3><p id="1457aacb-2d23-80f9-ad1d-d517a46f37ce" class="">While BYOD and CYOD policies can increase productivity and flexibility, they introduce security risks such as data leakage, malware, and lost devices. Organizations should implement security measures like MDM, device locks, and remote wiping to mitigate these risks, and employees should always review their company&#x27;s specific BYOD policies.</p><p id="1457aacb-2d23-8045-971b-c98801ec3374" class="">4o mini</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

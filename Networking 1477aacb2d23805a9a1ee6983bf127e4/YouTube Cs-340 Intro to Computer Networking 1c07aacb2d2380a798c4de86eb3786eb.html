@@ -1,0 +1,752 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>YouTube Cs-340 Intro to Computer Networking</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c07aacb-2d23-80a7-98c4-de86eb3786eb" class="page sans"><header><h1 class="page-title">YouTube Cs-340 Intro to Computer Networking</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1c07aacb-2d23-8078-9ba0-c90447364604" class="">Lecture 01</h1><p id="1c07aacb-2d23-80ee-aa87-f39ef79b5dcf" class="">The Internet is really complex and one of the greatest technical achievements in history.</p><p id="1c07aacb-2d23-80c8-91b9-ded84b0e5d1f" class="">A Quick overview of the internet</p><p id="1c07aacb-2d23-80c7-9da7-f9d1d6595c50" class="">What steps are involved when you visit a website on your laptop?<div class="indented"><ol type="1" id="1c07aacb-2d23-8018-be98-e0b34805d261" class="numbered-list" start="1"><li>Turn on laptop</li></ol><ol type="1" id="1c07aacb-2d23-807a-9df5-e37e7f34a844" class="numbered-list" start="2"><li>Open browser</li></ol><ol type="1" id="1c07aacb-2d23-8015-94c6-f5e684c58cf3" class="numbered-list" start="3"><li>Type in name of the website<ol type="a" id="1c07aacb-2d23-80c3-88fa-c0322bd41d6d" class="numbered-list" start="1"><li>Browser sends a request to the web server</li></ol></li></ol><ol type="1" id="1c07aacb-2d23-809a-8779-d18472de4bbe" class="numbered-list" start="4"><li>Go to website</li></ol></div></p><p id="1c07aacb-2d23-80de-a716-f020930cb204" class="">Smartphone?<div class="indented"><ol type="1" id="1c07aacb-2d23-8000-bf29-d63a093c7822" class="numbered-list" start="1"><li>Open browser</li></ol><ol type="1" id="1c07aacb-2d23-803f-b56d-ff591b6986c9" class="numbered-list" start="2"><li>Type in name of website</li></ol><ol type="1" id="1c07aacb-2d23-80eb-85c2-d8e6f54d9f32" class="numbered-list" start="3"><li>Go to website</li></ol></div></p><p id="1c07aacb-2d23-80a7-bde8-f9ba4c2874b9" class="">
+</p><p id="1c07aacb-2d23-80cf-bdd0-c5957260ce3b" class="">What is the Internet? </p><p id="1c07aacb-2d23-803d-9758-e8cb38fe542e" class="">A network of billions of computing devices, called hosts or end systems.</p><p id="1c07aacb-2d23-80bf-ac02-d8c1008fec86" class="">Many communication links - copper wire, fiber optic, or radio</p><p id="1c07aacb-2d23-804c-91d1-c11eeca923d1" class="">Hosts send data packets to other hosts<div class="indented"><p id="1c07aacb-2d23-80ed-acc3-c9f2f431750c" class="">Packets are labeled with IP address of sender and receiver</p></div></p><p id="1c07aacb-2d23-802d-b5cc-ee1bf8cebf25" class="">Routers and Switches direct traffic using addresses on the packets.</p><p id="1c07aacb-2d23-803a-a87a-daaa4c51cf2d" class="">
+</p><p id="1c07aacb-2d23-8092-86d4-c674348372ef" class="">The internet grw out of ARPANET</p><p id="1c07aacb-2d23-80b1-97a4-c4e78a329b1d" class="">The itnernet is a loose confederation of interconneted networks</p><p id="1c07aacb-2d23-804f-bf1c-fc6eca4ad5ca" class="">ICANN assignes IP address and assigns DNS top-level domains, operates 13 root DNS servers</p><p id="1c07aacb-2d23-8055-9d01-d75c7627e2c8" class="">IETF develops protocols that define how internet devices interact</p><p id="1c07aacb-2d23-8048-b28d-f7149f82956f" class="">RFCs are its documents defining Internet standards</p><p id="1c07aacb-2d23-8033-853f-d4264c87f49f" class="">
+</p><p id="1c07aacb-2d23-8059-aee2-f4a4e0919c2e" class="">The Internet ≠ the web</p><p id="1c07aacb-2d23-80a1-8ecc-c8c7c4d85766" class="">The internet is a worldwide network of interconnected computers</p><p id="1c07aacb-2d23-80b7-a1c8-e3fe00a9dcbe" class="">The Web is a worldwide network of interconnected hypertext pages<div class="indented"><p id="1c07aacb-2d23-8085-8f5f-dc8a9c8764e7" class="">Web browser app connects to Web server apps</p><p id="1c07aacb-2d23-8089-a31a-c8f22006199e" class="">Web is just one of many applications built on top of the Internet and DNS</p><p id="1c07aacb-2d23-80b0-9400-ff4f203704a9" class="">Uses HTTP protocol</p></div></p><p id="1c07aacb-2d23-8098-bc17-ef5329c4b0dc" class="">Email, SSH, BitTorrent, VOIP telephony, FTP, Remote Desktop, VNC, Skype, Telnet, Snapchat, FaceTime, Netflix all use the internet</p><p id="1c07aacb-2d23-807f-ba8c-c10f1b7a0e45" class="">
+</p><p id="1c07aacb-2d23-80a0-8f4a-d6b61ee1976b" class="">The internet is distributed and loosely coupled - no one entity manages all the hosts, routers, and links on the Internet.</p><p id="1c07aacb-2d23-802d-89b4-e5547f0ebbd8" class="">Hosts join by building a physical connection to an existing host.</p><p id="1c07aacb-2d23-80e8-aa85-d255dcfafaaa" class="">Hardware and software come from many different vendors.</p><p id="1c07aacb-2d23-80dc-b28e-ffa7b80f6339" class="">Standard Internet protocols define how devices should interoperate.</p><p id="1c07aacb-2d23-805d-b7e4-c3688691868d" class="">
+</p><p id="1c07aacb-2d23-8094-86d6-fc964ccd7bbe" class="">The Internet - in practice</p><p id="1c07aacb-2d23-802a-92b9-fff861c250b1" class="">all machines on the internet can send and receive messages, but there are two distinct categories:</p><p id="1c07aacb-2d23-8018-8c04-f5b6d581883b" class="">Network Edge: The clients and servers, have only one line</p><p id="1c07aacb-2d23-80e1-93b9-cee494424dc7" class="">Network Core: Routers connecting various internet parts, like hosts with multiple links and living only to relay others’ packets</p><p id="1c07aacb-2d23-8002-b5ba-f015ce8198bc" class="">Machines are connected by physical media: wired and wireless communication links</p><p id="1c07aacb-2d23-8058-9745-e15f759a3da4" class="">Public Switched Telephone Network used circuit switching - an electrical connection is established end-to-end for each call, originally done by moving cables plugged into switchboards</p><h1 id="1c17aacb-2d23-8039-ae10-eb133b3ae969" class="">Lecture 02</h1><p id="1c17aacb-2d23-8067-9a6a-c2ab08f38413" class="">Protocol: Rules for communication</p><p id="1c17aacb-2d23-807a-bf68-e36fc4627da6" class="">Telephone network uses circuit switching, Internet uses packet switching</p><p id="1c17aacb-2d23-8047-bd9b-e3e861828b1c" class="">Communication Link: A bi-directional point to point connection, allows 0s or 1s to be transmitted or it can be transmitting nothing<div class="indented"><p id="1c17aacb-2d23-8074-8da2-e23b63bfce86" class="">It has a propagation delay - the time it takes for bits t oflow from sender to receiver (at most the speed of light) </p><p id="1c17aacb-2d23-80e7-8d38-c9d8a820c8bc" class="">Operates at a certain constant bitrate - the throughput</p></div></p><p id="1c17aacb-2d23-80a9-bc33-e8d2c1fba339" class="">Circuit switching: A dedicated electrical path is established. The circuit remains dedicated to the call until the parties hang up. </p><p id="1c17aacb-2d23-8067-afcc-f89ce606cd4a" class="">Packet switching uses store and forward<div class="indented"><p id="1c17aacb-2d23-808d-a91e-cd3627d697a2" class="">Data takes several hops (steps) to reach destination</p><p id="1c17aacb-2d23-800a-b956-dbe71eaa9357" class="">In packet switching, each intermediate router has a queue of packets waiting to be sent along the next hop. There is no reserved capacity for the data to be sent. Packets send in FIFO order.</p></div></p><p id="1c17aacb-2d23-80e6-bc84-d20703f035e6" class="">Routers form the network core</p><p id="1c17aacb-2d23-8017-bf66-fe22b4bec1b0" class="">Distributed routing algorithms to determine which address ranges are most quickly reachable on each of its outbound links</p><p id="1c17aacb-2d23-8015-a371-d6796c31df01" class="">Packet forwarding to direct packets according to the decisions made above</p><h1 id="1c27aacb-2d23-80d0-ba07-d90efe0ddfd4" class="">Lecture 03</h1><p id="1c27aacb-2d23-8013-a7d9-f965f071b318" class="">Packets travel along many hops to reach intended destination</p><p id="1c27aacb-2d23-8025-acdb-eeda5a4edf26" class="">Each router has a fixed-size queue; packets are dropped if full</p><p id="1c27aacb-2d23-8098-99d8-ceb943dbf094" class="">Packet is also dropped if a bit-flip error is detected</p><p id="1c27aacb-2d23-80a0-af4a-e8c91078f2d0" class="">Nodal processing delays, queueing (router), transmission, propagation (associated with the link)</p><p id="1c27aacb-2d23-8019-8f73-ee7e5d9530e2" class="">Internet is a “network of networks”<div class="indented"><p id="1c27aacb-2d23-800d-8f9b-de89b950df65" class="">Tier 1 ISPs and big content providers build high-speed backbone links</p><p id="1c27aacb-2d23-8073-b32f-c39f8694bd3b" class="">Peering is when networks connect to each other without any payment</p></div></p><p id="1c27aacb-2d23-8041-91a5-d6cf71debfd4" class="">Networks use layered protocols: Ethernet, IP, TCP, TLS, HTTP</p><p id="1c27aacb-2d23-806c-ad7e-f38e82aa6ac1" class="">Socket is a software abstraction of a network connection (TCP or UDP) - one end of a pipe you can send data in and get data out</p><p id="1c27aacb-2d23-80c3-a0d8-ed59d838bd0c" class="">Separation of concerns:<div class="indented"><p id="1c27aacb-2d23-8012-b717-ce3464dfab91" class="">LinkLayer shares a physical channel among several transmitters/receivers</p><p id="1c27aacb-2d23-804f-a6f4-eb4baf7c31ff" class="">Network Layer routes from source to destination, along many hops</p><p id="1c27aacb-2d23-8077-b3cb-dd707e644412" class="">Transport Layer: Multiplexing &gt; 1 connection per machine<div class="indented"><p id="1c27aacb-2d23-807f-b6a2-ccf0b243a73c" class="">Ordering, Acknowledgment, Pacing</p></div></p><p id="1c27aacb-2d23-809b-9e92-d36e9eb6ea22" class="">Session Security Layer: Encryption and Authentication</p><p id="1c27aacb-2d23-80e7-b2e7-e5a1bf5a8118" class="">HTTP Application Layer: Resource urls, Response Codes, Caching, Content-types, compression</p></div></p><p id="1c27aacb-2d23-8022-ad8a-ee5663daecae" class="">Application Layer protocols: <div class="indented"><p id="1c27aacb-2d23-805b-b6a5-e292bdfc8df4" class="">Purpose is to allow apps running on different computers to communicate</p><p id="1c27aacb-2d23-80be-9997-d9b64ff9bb98" class="">System is called client-server or p2p</p><p id="1c27aacb-2d23-80ba-991e-f29ea456cbd1" class="">Apps don’t wory about low-level details of the network</p><p id="1c27aacb-2d23-80a4-b251-e601c3a1d8e4" class="">Assume that we can send messages of arbitrary size to any host on the network if we know its address</p></div></p><p id="1c27aacb-2d23-80fb-80e1-eede47d12aba" class="">Hyper Text Transfer Protocol:<div class="indented"><p id="1c27aacb-2d23-8009-9e53-ca2b03e778c4" class="">HTTP is a client-server data exchange protocol built on top of TCP - reliable</p><p id="1c27aacb-2d23-80dd-b513-fd2481172f66" class="">invented for browsers t ofetch pages from webservers</p><p id="1c27aacb-2d23-800a-b4e3-c0f22d8b9fa7" class="">Request specifies: <div class="indented"><p id="1c27aacb-2d23-807d-8f63-f1a0afeedb36" class="">Human readable header with : URL, method</p><p id="1c27aacb-2d23-80de-8326-fd1a9c8f0878" class="">An optional body storing raw data (bytes)</p></div></p><p id="1c27aacb-2d23-808c-b03a-edb989f09963" class="">Response includes:<div class="indented"><p id="1c27aacb-2d23-8010-a5e4-e8ad1c5843d1" class="">A human readable header with response code, plus some optional headers</p><p id="1c27aacb-2d23-8052-9f6c-c0f315f57764" class="">optional body</p></div></p><p id="1c27aacb-2d23-8072-a0de-ceb3d7a8e70b" class="">HTTP is a stateless protocol:<div class="indented"><p id="1c27aacb-2d23-80ed-a99a-c791191ffc85" class="">Each request is self-contained - contains all info needed to give a response</p><p id="1c27aacb-2d23-80ec-a767-cc863402cb4a" class="">Meaning of requests are independent; servers need not remember past requests</p></div></p></div></p><h1 id="1c37aacb-2d23-8042-a7a1-cc97eb983023" class="">Lecture 04</h1><p id="1c37aacb-2d23-8033-b38a-d8ef73ee0324" class="">Application-layer protocols are usually built on top of TCP - don’t have to worry about network itself, just connect with other hosts</p><p id="1c37aacb-2d23-806d-9366-dd3c050b9a64" class="">Most applications use a client-server architecture</p><p id="1c37aacb-2d23-806c-85ec-fb8b77bb0a2b" class="">A p2p arch is more scalable, but difficult to organize</p><p id="1c37aacb-2d23-80c5-b07b-f3d25bbbac3a" class="">HTTP was invented for fetching documents from web servers<div class="indented"><p id="1c37aacb-2d23-80e9-87f0-ffc6cc1cb141" class="">Its now used as the basis for many request-response interactions</p><p id="1c37aacb-2d23-80c6-971e-f184a6f43872" class="">URLs, request methods, response status, human-readable headers, body</p><p id="1c37aacb-2d23-80cf-a762-cbb2a11857af" class="">REST APIs are built on top of HTTP</p><p id="1c37aacb-2d23-8053-acfb-cb3e75b34974" class="">May include a cookie </p></div></p><p id="1c37aacb-2d23-8080-a95d-f057eed101ec" class="">SMTP is an earlier application-layer protocol<div class="indented"><p id="1c37aacb-2d23-8072-a33e-c4a538384f54" class="">It’s stateful, unlike HTTP which is stateless</p></div></p><p id="1c37aacb-2d23-809f-a089-c43684db8bc8" class="">
+</p><h1 id="1c47aacb-2d23-8091-bb6b-e9019b93de14" class="">Lecture 05</h1><p id="1c47aacb-2d23-8097-a85a-c104879d5ff6" class="">DNS is the internet’s directory service</p><p id="1c47aacb-2d23-8075-a2d5-d1c329e63d4c" class="">distributed and hierarchical - 13 root server run by ICANN. Top Level domain servers manage .com, .org, .edu, countries like .uk, etc.</p><p id="1c47aacb-2d23-8067-a4c3-d44b2939adef" class="">Each subdomain has a set authoritative nameservers</p><p id="1c47aacb-2d23-80d8-b7e7-e5b255abdc10" class="">Various types of records exist to do more than just map name → IP</p><p id="1c47aacb-2d23-80ab-a002-ea25f004ed2a" class="">Domain registrars are accredited by each TLD to sell names</p><p id="1c47aacb-2d23-80cb-a3a7-de842137cb62" class="">Dynamic DNS servers can cleverly craft their responses to provide:<div class="indented"><p id="1c47aacb-2d23-80ef-adc1-eb4bab091a4f" class="">Load balancing and fault tolerance in a cluster of servers</p><p id="1c47aacb-2d23-8058-a03a-e83ed3b0b624" class="">Content Delivery Networks, that direct you to the closest service “mirror”</p><p id="1c47aacb-2d23-8043-a539-e69f87b8c8f3" class="">Captive Portals</p></div></p><p id="1c47aacb-2d23-80e9-a81b-d1d1b6e614bf" class="">
+</p><p id="1c47aacb-2d23-8042-bc13-c7b68dfc539f" class="">Four main layers on the internet:<div class="indented"><p id="1c47aacb-2d23-8054-8561-dbc0410a2bbf" class="">Ethernet Frame<div class="indented"><p id="1c47aacb-2d23-8078-a80e-c317c334c11e" class="">Ip Packet<div class="indented"><p id="1c47aacb-2d23-8052-9e2d-d6a708027882" class="">TCP segment<div class="indented"><p id="1c47aacb-2d23-8098-92a2-f30b16f03c85" class="">HTTP response</p></div></p></div></p></div></p><p id="1c47aacb-2d23-80bc-a7d3-d03f10597a72" class="">
+</p></div></p><p id="1c47aacb-2d23-8043-910c-f68cab599cd3" class="">Transport Layer: creates connections/sockets used by apps<div class="indented"><p id="1c47aacb-2d23-8031-934e-d9bbeb29cd1c" class="">Multiplexing &gt; 1 connection per machine</p><p id="1c47aacb-2d23-8045-9f1d-e9a739c8a1be" class="">Ordering, Acknowledgment, Pacing</p><p id="1c47aacb-2d23-80a3-b696-e68d7d015030" class="">
+</p></div></p><p id="1c47aacb-2d23-80e1-987b-dd3249ab7ca3" class="">User Datagram Protocol: UDP</p><p id="1c47aacb-2d23-80e8-91d6-ccf57565abc8" class="">The simplest transport protocol on the internet</p><p id="1c47aacb-2d23-8021-88bc-fe231cdd40e5" class="">Does not provide much more than the IP layer below it<div class="indented"><p id="1c47aacb-2d23-80ef-93cc-d714136ed2d8" class="">Datagrams are packets sent between software applications</p><p id="1c47aacb-2d23-8060-8ba8-eea0f4382bea" class="">IP layer provides “best effort” delivery. Packets may be dropped.</p><p id="1c47aacb-2d23-8029-9a61-c79d07c9c0f9" class="">Thus, UDP is unreliable</p></div></p><p id="1c47aacb-2d23-809c-bb49-fbec5e434afe" class="">Adds to each packet: a port number to distinguish different services on the machine<div class="indented"><p id="1c47aacb-2d23-80cd-ad16-dc8210d4dd3e" class="">Only one process can listen for packets on a given port number</p><p id="1c47aacb-2d23-806f-a693-fd9127b9fafc" class="">A checksum to verify that packet data was not corrupted</p></div></p><p id="1c47aacb-2d23-8099-85c1-c889049cc6f1" class="">UDP</p><p id="1c47aacb-2d23-80be-b773-c009d52ebc55" class="">TCP is usually implemented by the OS. An OS library handles:<div class="indented"><p id="1c47aacb-2d23-8055-9f3a-f58252ab2c03" class="">Ordering: Data must be packetized by the sender and reassembled by receiver<div class="indented"><p id="1c47aacb-2d23-800a-82e4-cd17188e83ce" class="">Reassembly is done in the proper order, regardless of delivery order</p></div></p><p id="1c47aacb-2d23-8015-8532-e89d7aff068f" class="">Acknowledgment: Delivery of each packet is acknowledged, so lost packets can be retransmitted</p><p id="1c47aacb-2d23-8063-86bf-e31be34e0db7" class="">Pacing: <div class="indented"><p id="1c47aacb-2d23-808d-89f9-c7326bb62d7e" class="">Sender adjusts packet send rate so neither receiver nor network are overwhelmed</p><p id="1c47aacb-2d23-80d5-88cf-d1f74a0d2713" class="">Avoid filling up queues and dropping packets</p></div></p></div></p><p id="1c47aacb-2d23-8038-be17-f4345d82b885" class="">TCP deals with packet loss/corruption through ack/checksum, finite link speed &amp; queue size (flow and congestion control) packet reordering (sequence numbers), and finite packet size (sequence numbers)</p><h1 id="1c77aacb-2d23-8067-a2cf-ef33b09ffe4b" class="">Lecture 06</h1><p id="1c77aacb-2d23-800d-a364-e2dc8264c3ac" class="">TCP Packet Structure</p><p id="1c77aacb-2d23-807c-8e4b-e1c2297b5973" class="">Source Port #, Dest Port #</p><p id="1c77aacb-2d23-807c-abac-f627189292da" class="">Sequence Number - sent by the client, indicating the first byte of the packet</p><p id="1c77aacb-2d23-8055-a417-c2f1f7d4640c" class="">Acknowledgment Number - sent by the server, indicating the next byte expected</p><p id="1c77aacb-2d23-8049-9f03-c6d5d8d35890" class="">RST, SYN, FIN</p><p id="1c77aacb-2d23-80ef-987c-ce3f79d95b98" class="">Receive Window</p><p id="1c77aacb-2d23-8079-bb42-f6e2c2f1e56f" class="">Checksum</p><p id="1c77aacb-2d23-8015-ac36-c1f52c134745" class="">Options</p><p id="1c77aacb-2d23-801a-85e7-d823f2f4ee47" class="">Application Data</p><figure id="1c77aacb-2d23-8033-9993-e82a20295f37"><div class="source"><a href="https://www.notion.soundefined"></a></div></figure><h1 id="1c87aacb-2d23-8006-9652-e38e849484ed" class="">Lecture 07</h1><p id="1c87aacb-2d23-80b0-af91-f88061ab57ef" class="">TCP uses cumulative ACKs</p><p id="1c87aacb-2d23-80ea-ad2e-c0efa7a1b86d" class="">Receivers buffer out-of-order segments for later reassembly</p><p id="1c87aacb-2d23-80f4-9822-f7b8112b368b" class="">ACK timeout can be appropriately set with Exponentially-Weighted-Moving Average of recent RTT and recent jitter</p><p id="1c87aacb-2d23-8038-a0b5-d4b8a789ccff" class="">in-flight packets (thus throughput is determined by window size</p><p id="1c87aacb-2d23-808a-8746-c0b6f14dc118" class="">TCP throughput should be regulated to not overwhelm:<div class="indented"><p id="1c87aacb-2d23-8049-a9d4-fc8fdca74d2e" class="">The receiver - flow control is implemented with explicit Receive WIndow</p><p id="1c87aacb-2d23-80ba-bbe0-d2fc4ea8fa26" class="">The network - Congestion Control (today’s topic)</p></div></p><p id="1c87aacb-2d23-8032-9009-f34db8b01b0d" class="">Connection setup requires a 3-way handshake<div class="indented"><p id="1c87aacb-2d23-804e-ab83-fee41ee7d7e7" class="">Sets initial sequence numbers and receive windows in both directions</p><p id="1c87aacb-2d23-8057-b907-f8413d6f2787" class="">Teardown requires sending and acknowledging FIN messages</p></div></p><p id="1c87aacb-2d23-809b-ba75-dfbce094745d" class=""><strong>Congestion Control</strong></p><p id="1c87aacb-2d23-800f-9caa-cc7dc92ba003" class="">Congestion is when the network is overloaded<div class="indented"><p id="1c87aacb-2d23-8074-be81-cfe4eed8cbee" class="">Router queues are full, so packets are dropped</p><p id="1c87aacb-2d23-806c-873c-ff1c32fd792d" class="">or length of queues leads to long nodal queuing delay, causing timer to expire</p></div></p><p id="1c87aacb-2d23-8051-8efd-fef26826cab4" class="">Dropped packets lead to inefficiency and can compound the problem:<div class="indented"><p id="1c87aacb-2d23-809c-91bf-d2c3fc93896e" class="">Congestion → Packet Loss → Retransmission → More congestion → More Loss!</p></div></p><p id="1c87aacb-2d23-8033-92da-ce0279df03f2" class="">Goal is to prevent the self-destructive feedback cycle above.</p><p id="1c87aacb-2d23-8081-b4c3-ea0f1e061ca2" class="">Better to wait than to send a packet likely to be dropped before reaching its destination.</p><p id="1c87aacb-2d23-8065-b40d-d683ef6daf29" class="">We have end-to-end observations of network performance, but the precise internal cause of a network problem is difficult to know.<div class="indented"><p id="1c87aacb-2d23-803d-9338-cb52d1bd7dcf" class="">State of routers along path is unknown - end hosts know only their state.</p></div></p><p id="1c87aacb-2d23-80cf-9fcf-c58c81405c89" class=""><strong>Without Congestion Control</strong></p><p id="1c87aacb-2d23-80c9-9a2b-d8f95995346a" class="">Problems arsie even in simple network with just one connection/flow</p><p id="1c87aacb-2d23-80c4-87d6-cde128dae3f0" class="">If links have different bitrates, and hosts send as fast as possible, packet loss will occur</p><p id="1c87aacb-2d23-8087-a625-de22ece269e3" class="">Very large buffers would be needed, with many gaps for lost packets</p><p id="1c87aacb-2d23-8003-8f12-ec0d9fa58a1e" class="">Cumulative ACKs would not be efficient</p><p id="1c87aacb-2d23-800c-9587-dd6a5cd7dec4" class=""><strong>Shared Congestion causes more inneficiency</strong></p><p id="1c87aacb-2d23-8003-a874-f272f5973333" class="">Its wasteful to drop packets dropped halfway through their trip</p><p id="1c87aacb-2d23-80d8-afb1-ebbbb9aa94e5" class=""><strong>Two Types of Congestion Control</strong></p><p id="1c87aacb-2d23-80c6-bd85-c8d07a2e64ee" class="">End-To-End (TCP) - no explicit feedback from routers, congestion is infered from packet loss</p><p id="1c87aacb-2d23-8026-846c-fdcc3466c675" class="">Network Assisted - Routers signal congestion:<div class="indented"><p id="1c87aacb-2d23-80ae-b205-caabc70044a8" class="">Sets a certain bits in TCP (or IP) header (called ECN)</p><p id="1c87aacb-2d23-8069-acd9-d239ae806b0c" class="">List precise bitrate desired for sender</p><p id="1c87aacb-2d23-806b-b529-cf3dd456cac4" class="">Popular within cloud/datacenter networks<div class="indented"><p id="1c87aacb-2d23-80f5-b358-d935a88f2bc9" class="">Requres routers to be properly configured and trusted.</p></div></p></div></p><p id="1c87aacb-2d23-8048-a585-cd68a34a5dc4" class="">
+</p><p id="1c87aacb-2d23-80a3-b076-d0b9d8b1998d" class=""><strong>Observing Congestion</strong></p><p id="1c87aacb-2d23-80be-a78e-e8731915edbc" class="">Recall that flow control prevents loss at receiver</p><p id="1c87aacb-2d23-80f3-b4f2-c22767d47fdb" class="">If packets are dropped (timer expire before ACK), two possibilities:<div class="indented"><p id="1c87aacb-2d23-805d-8603-d01ae832c323" class="">Timer interval is too small (EWMA will adjust itself) or </p><p id="1c87aacb-2d23-806f-bfae-e53c1478bf25" class="">The network is congested, and packets are being dropped by routers</p></div></p><p id="1c87aacb-2d23-80a4-bce9-ca626145e964" class="">Basic idea fo TCP congestion Control:<div class="indented"><p id="1c87aacb-2d23-80b5-8da4-edfbef6e2908" class="">Sender tries to estimate an appropriate congestion window</p><p id="1c87aacb-2d23-8045-b9c8-c6d6256405c7" class="">Inf flight packets ≤ MIN(cwnd, rwnd)</p><p id="1c87aacb-2d23-80a7-8f65-caec6f2a5fff" class="">Larger cwnd → greater throughput</p><p id="1c87aacb-2d23-803f-8993-dc606b78210a" class="">When sender observes packet loss, decrease cwnd</p></div></p><p id="1c87aacb-2d23-8028-a6dc-dc18fb1bb8de" class="">
+</p><p id="1c87aacb-2d23-80a3-b905-e72de0685a9e" class=""><strong>TCP Reno</strong></p><p id="1c87aacb-2d23-8078-8ddc-d4999ecf65bd" class="">Very popular in 90s and 2000s, still in use today - not likely to be seen in Wireshark traces at homelabs</p><p id="1c87aacb-2d23-80a8-9eb1-f54e5c8e2e17" class="">Allowed internet to scale by solving internet problems</p><p id="1c87aacb-2d23-80dc-bc29-dffd401ad8f0" class="">Starts off with a slow congestion, and then each RTT the rate doubles. (Slow Start). Grows exponentially here.</p><p id="1c87aacb-2d23-803a-a7d7-f4a5de15fec1" class="">Eventually the maximum is met, and we have an estimate of the maximum rate.</p><p id="1c87aacb-2d23-805f-8f71-c313c9684f34" class="">Speed is reduced, not to the beginning, cuts the sending rate in half. Additive Increase, Multiplicative Decrease.</p><p id="1c87aacb-2d23-8076-a3dc-f72b5a128c37" class="">Rate increases by one each RTT. Linear increase. </p><p id="1c87aacb-2d23-8093-988a-c358c392f50b" class="">Eventually the maximum is met again, and then is halved again. </p><p id="1c87aacb-2d23-80d2-b5c7-eedd5d99ce44" class="">Rinse and repeat. </p><p id="1c87aacb-2d23-80c1-b0ae-ca5773863a78" class="">
+</p><ol type="1" id="1c87aacb-2d23-80bd-9c57-fd5be5ce32bf" class="numbered-list" start="1"><li>Slow Start: initially, the network capacity is unknown, so cwnd = MSS (1460 bytes) send 1 packet<ol type="a" id="1c87aacb-2d23-8064-84ab-fc159060608f" class="numbered-list" start="1"><li>Double cwnd each time an ACK is received (every RTT)</li></ol><ol type="a" id="1c87aacb-2d23-800c-aff2-dc98f5b3ece7" class="numbered-list" start="2"><li>This leads to exponential growth</li></ol><ol type="a" id="1c87aacb-2d23-80cf-accb-d64a8591487e" class="numbered-list" start="3"><li>Loss by timeout → ssthresh = cwnd  / 2</li></ol><ol type="a" id="1c87aacb-2d23-8050-804f-d2c45378918a" class="numbered-list" start="4"><li>if cwnd &gt; ssthresh, move to cngestion avoidance</li></ol></li></ol><ol type="1" id="1c87aacb-2d23-80ac-a38e-dc6169b8ac1e" class="numbered-list" start="2"><li>In congestion Avoidance mode: <ol type="a" id="1c87aacb-2d23-80f4-8c4c-f44fa1cf2142" class="numbered-list" start="1"><li>ACK received → Cwnd += MSS<ol type="i" id="1c87aacb-2d23-808f-b8f1-c3c67fe700f9" class="numbered-list" start="1"><li>Linear growth</li></ol></li></ol><ol type="a" id="1c87aacb-2d23-8099-8bc0-d2acca155e2b" class="numbered-list" start="2"><li>Loss by timeout → reset cwnd = MSS and move back to slow start mode<ol type="i" id="1c87aacb-2d23-8022-ab77-fab103f6e890" class="numbered-list" start="1"><li>Timeout indicates a serious network problem → go back to slow start</li></ol></li></ol><ol type="a" id="1c87aacb-2d23-8006-b2d5-d941f794dbf0" class="numbered-list" start="3"><li>On loss by triple-duplicate ACK: move to third phase:</li></ol></li></ol><ol type="1" id="1c87aacb-2d23-8070-8f1f-e3311351721e" class="numbered-list" start="3"><li>Fast Recovery Mode:<ol type="a" id="1c87aacb-2d23-804f-a6e7-c134c0db96ef" class="numbered-list" start="1"><li>Some packets are still getting through, so don’t over react. Cut cwnd in half</li></ol></li></ol><p id="1c87aacb-2d23-80bb-9223-e19e8d3e242e" class="">Incentive to follow TCP rules:<div class="indented"><p id="1c87aacb-2d23-80f0-8e76-c24d2145d9af" class="">If I don’t throttle myself during congestion, then I will have poor performance in cases when I am the only host causing the congestion.</p><p id="1c87aacb-2d23-8027-b29e-c16bac59bc9a" class="">Hosts cannot observe the network directly, just observe packet losses.</p><p id="1c87aacb-2d23-80e2-8145-d3cfbf14d8eb" class="">Thus, everyone will reduce throughput when congestion occurs, just in case they are solely responsible for the congestion.</p><p id="1c87aacb-2d23-80b1-97a1-fa0e5fd306ae" class="">Also, there are only a few TCP implementations, supplied by OSes, so they generally follow an RFC’s recommendations.</p></div></p><p id="1c87aacb-2d23-80fb-9bc5-d79640e566d3" class="">
+</p><p id="1c87aacb-2d23-80a0-8417-ca3d9f48bf6f" class=""><strong>TC Reno Congestion Control Iteration</strong></p><p id="1c87aacb-2d23-80e3-bcb8-ec1db1bb3e41" class="">How does the throughput of connections 1 and 2 evolve over time?</p><p id="1c87aacb-2d23-803d-9a6c-e13793e99ed8" class="">Remember that the two connections follow the TCP rules independently.</p><p id="1c87aacb-2d23-808b-9a82-c924ccfc2320" class="">Each controls its own throughput (congestion window size), but is unaware that the other connection<div class="indented"><p id="1c87aacb-2d23-8037-969e-d4300e97550b" class="">Don’t know other connection’s cwnd</p><p id="1c87aacb-2d23-80c1-a600-d0b7d1435da7" class="">Don’t even know other connection exists</p></div></p><p id="1c97aacb-2d23-80e6-b382-f6e3a55d9f45" class="">
+</p><h1 id="1c97aacb-2d23-8017-8e43-d12ce7adaaff" class="">Lecture 08</h1><p id="1c97aacb-2d23-8009-9d30-ca7f6ba59984" class=""><strong>Congestion Control </strong>is implemented with a dynamic congestion window, controlled by heuristics. <strong>Reno </strong>congestion control:</p><ul id="1c97aacb-2d23-8035-8daa-fa7cf89b2e56" class="bulleted-list"><li style="list-style-type:disc">Slow Start - exponential growth to find approximate network capacity</li></ul><ul id="1c97aacb-2d23-8033-8152-d0c5e3749889" class="bulleted-list"><li style="list-style-type:disc">Congestion Avoidance - linear growth slowly trying to increase throughput</li></ul><ul id="1c97aacb-2d23-8016-8d33-ffd1a8212382" class="bulleted-list"><li style="list-style-type:disc">Fast recovery - if none packet is lost, then cut window in half</li></ul><p id="1c97aacb-2d23-8050-ade8-f889ab388cac" class="">Additive Increase, Multiplicative Decrease ensures fair sharing</p><p id="1c97aacb-2d23-80bd-9526-f765cc7119c0" class="">CUBIC and BBR are newer alternatives that work better in fast networks, particularly long fat pipes.</p><p id="1c97aacb-2d23-8066-8c45-d4013e04deea" class="">TCP behavior can be controlled with <em>socket options</em>:<div class="indented"><p id="1c97aacb-2d23-80cd-be34-d0755a12a694" class="">Nagle’s algorithm merges small packets to reduce header overhead</p><p id="1c97aacb-2d23-80cf-80b1-fb5d5191f238" class="">TCP keepalive message can be periodically sent.</p></div></p><figure id="1c97aacb-2d23-8005-82be-e2b279964368" class="image"><a href="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-02_at_9.52.28_AM.png"><img style="width:709.9921875px" src="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-02_at_9.52.28_AM.png"/></a></figure><p id="1c97aacb-2d23-8074-8928-c803598262f1" class="">Growth in the window size due to TCP congestion control</p><p id="1c97aacb-2d23-809b-a7e3-ec16aa22e5e3" class="">
+</p><p id="1c97aacb-2d23-8018-8e25-d1767d5aa0c8" class=""><strong>IP/Forwarding</strong></p><p id="1c97aacb-2d23-806a-879a-ef458701f1f6" class="">The Network Layer is divided into the Data Plane and the Control Plane. This how a packet gets from a source to destination.</p><p id="1c97aacb-2d23-80ac-9bd8-fdb2b0c60904" class="">IP Packet: Inside will typically have a TCP segment, which will have something like an HTTP response</p><p id="1c97aacb-2d23-80db-97f5-d1e57d5aee59" class="">Internet Protocol (IP) delivers packets (datagrams) </p><p id="1c97aacb-2d23-80d1-8d3e-ce892956b0a6" class="">Each datagram has receiver and sender IP addresses</p><p id="1c97aacb-2d23-8066-ac5a-d6999099f259" class="">Maximum Transmission Unit (MTU) limits datagram size</p><p id="1c97aacb-2d23-8017-93a4-d10beddc9f1f" class="">Best effort delivery (may drop packets)</p><p id="1c97aacb-2d23-8003-972e-dffe84cb12e1" class="">But how do packets reach their intended destination?</p><p id="1c97aacb-2d23-80a3-a27d-d5ea2ecd21af" class="">
+</p><p id="1c97aacb-2d23-80d5-ab82-d13a364b45aa" class="">Routing is the process of guiding packets to their destination - done by routers</p><p id="1c97aacb-2d23-8057-9ef5-c9fcc04154da" class="">Operates in two parts: control plane monitors traffic over the long-term and coordinates with other routers to decide forwarding rules</p><p id="1c97aacb-2d23-80a7-97bb-d044cca1fa03" class="">Data plane implements the forwarding rules for each arriving packet.</p><p id="1c97aacb-2d23-80ca-af81-f7bc6709293c" class="">
+</p><p id="1c97aacb-2d23-8044-8aed-d1735a3bf6fe" class="">Packet Forwarding: <div class="indented"><p id="1c97aacb-2d23-800c-aabe-c79bed4cae8a" class="">Each router in network core is ignorant of end-to-end behavior</p><p id="1c97aacb-2d23-806a-9143-e241215e4175" class="">Does not establish connections or reserve capacity (packet switching versus circuit switching)</p></div></p><p id="1c97aacb-2d23-8068-bf00-d4c50365b0e0" class="">
+</p><p id="1c97aacb-2d23-806d-9bd9-d6399ba5fe07" class="">A router is a device with multiple network connections that is dedicated to forwarding packets (and deciding forwarding rules). </p><p id="1c97aacb-2d23-8011-bb3e-eecbbc8de61f" class="">
+</p><p id="1c97aacb-2d23-8080-8777-deeda2071e2e" class=""><strong>IPv4 Addressing</strong></p><p id="1c97aacb-2d23-80c2-93fe-cbdd2f503d2c" class="">Interface is a connection between host/router and a link</p><p id="1c97aacb-2d23-802a-8228-d8945925d0bf" class="">Every interface has an IP address (32 bits long in IP version 4)</p><p id="1c97aacb-2d23-8088-90c4-f0a48af432f2" class="">Routers usually have multiple interfaces (for multiple links)</p><p id="1c97aacb-2d23-8000-b9fe-e3fbcfccaab0" class="">Hosts usually have one or two interfaces (WiFi + wired)</p><p id="1c97aacb-2d23-80b8-919c-f8deb9f22599" class="">Dotted quad decimal notation is used for IPv4 address</p><p id="1c97aacb-2d23-80d2-bb7e-cc929c8f0988" class="">
+</p><p id="1c97aacb-2d23-80b7-8971-d6a09f22d0c7" class=""><strong>IP Subnet</strong></p><p id="1c97aacb-2d23-80ff-959f-f02c6e1fa935" class="">Subnets are chunks of IP addresses in that can communicate directly, without traveling through a router</p><p id="1c97aacb-2d23-808c-b05e-dde6bbb780a4" class="">Routers send packets between subnets</p><p id="1c97aacb-2d23-80a8-aee8-d03bf4b0e4c8" class="">Subnet mask indicates bit position where subnet is split: 223.1.1.3/24</p><p id="1c97aacb-2d23-80c8-ba9d-f52162999699" class="">/24 means that the high 24 bits identify the subnet and remaining 8 low bits identify the host.</p><p id="1c97aacb-2d23-80d8-bc48-e971d3e78f7d" class="">Subnet can also be expressed as a bitmask: 255.255.255.0 equivelant to /24 </p><p id="1c97aacb-2d23-808b-8c74-eb0e43a9271f" class="">
+</p><p id="1c97aacb-2d23-80f2-ba14-f9aa5701e94f" class="">IPv4 Addressing</p><p id="1c97aacb-2d23-807a-9b52-cfc9b1fc52c3" class="">ICANN distributes chunks of IP addresses</p><p id="1c97aacb-2d23-80e5-bab1-e13794fe461f" class="">Early Scheme: Class A, B, C (/8, /16, /24)<div class="indented"><p id="1c97aacb-2d23-80e5-a5be-dbe6a01dbc27" class="">Very wasteful</p></div></p><p id="1c97aacb-2d23-8067-851f-c85adde3037b" class="">CIDR allows blocks to be distributed with any power of 2 subnet size (2^x)</p><p id="1c97aacb-2d23-8059-b6f9-cf6da1e44cdd" class="">
+</p><p id="1c97aacb-2d23-8045-b5c2-f6b3f5333325" class="">Forwarding Rules</p><p id="1c97aacb-2d23-8059-953a-fdbd4da571be" class="">Stored in each router in its local forwarding table</p><p id="1c97aacb-2d23-803c-9544-c513df984eb9" class="">Rules decide which link a packet should be sent out on, depending on the packet’s destination IP Address</p><p id="1c97aacb-2d23-80e9-b739-cee13f9d2a29" class="">Billions of IP addresses are possible, so rules apply to ranges of IP addresses</p><p id="1c97aacb-2d23-8041-967c-ca10ab0117de" class="">IP address ranges are arranged by prefix</p><p id="1c97aacb-2d23-80b8-8f77-e2683e8657e7" class="">Router looks for a rule that matches the high bits of the address</p><p id="1c97aacb-2d23-801b-9ea3-d6a7ada7c30d" class="">Router looks for a rule that matches the high bits of the address</p><p id="1c97aacb-2d23-8085-9038-ea01374a5db0" class="">If more than one rule matches, choose the most specific one.</p><p id="1c97aacb-2d23-80f4-bbfe-c5c597289925" class="">In other words, choose the rule with the longest prefix.</p><p id="1c97aacb-2d23-808e-876a-c346e7867d78" class="">
+</p><p id="1c97aacb-2d23-80a4-9fc8-c485a181812e" class="">Hierarchical Addressing</p><p id="1c97aacb-2d23-8094-ab88-c22652e56af9" class="">Routing tables are much simplified (route aggregation) if addresses are distributed hierarchically, corresponding to physical connections.</p><p id="1ca7aacb-2d23-802d-9167-ee6f1f1751b9" class="">
+</p><h1 id="1ca7aacb-2d23-80e6-bb08-e27decca2dd4" class="">Lecture 09</h1><p id="1ca7aacb-2d23-8056-940e-f90c349a8005" class="">IP routing gets packets to their destination o nthe net.</p><p id="1ca7aacb-2d23-80ce-a825-ddd4d6f716df" class="">Each router has a forwarding table mapping addresses → outbound links. Uses longest prefix matching.</p><p id="1ca7aacb-2d23-80dc-95b4-cc5ac1d76737" class="">IPv4 fragments packets larger than MTU. Are reassembled at the destination.</p><p id="1ca7aacb-2d23-807c-b0a7-f40c20cb6347" class="">IPv4 header is 20 bytes (UDP header is 8 bytes or TCP header is 20 bytes)</p><p id="1ca7aacb-2d23-806e-85cc-dbd922abbde0" class="">IP Subnets define ranges of address that can communicate directly<div class="indented"><p id="1ca7aacb-2d23-8012-b225-fb4a1d3eb6a9" class="">CIDR notation (123.100.16.0 / 28) specifies a range of addresses<div class="indented"><p id="1ca7aacb-2d23-80c1-8777-cf86f1a2651f" class="">Used both for specfiying subnets and for routing rules</p><p id="1ca7aacb-2d23-806b-b0e0-dc94408b5191" class="">/28 or 255.255.255.240 is called a subnet mask</p></div></p></div></p><p id="1ca7aacb-2d23-8053-b8b7-f4fcb247538a" class="">Host’s IP configuration is: address, subnet mask, gateway and DNS server<div class="indented"><p id="1ca7aacb-2d23-809b-8d59-ddf01ee2ece4" class="">Gateway is IP address of the router who will route packets outside the subnet</p><p id="1ca7aacb-2d23-80ba-9b56-d41e113c4f32" class="">DHCP allows newly arriving machines to request an IP configuration</p></div></p><p id="1ca7aacb-2d23-80a0-9339-e7caf2f120d4" class="">
+</p><p id="1ca7aacb-2d23-8081-9eaf-d4efc5b04324" class=""><strong>NAT</strong></p><p id="1ca7aacb-2d23-8081-86e2-f5e14284d13d" class="">Network Address Translation (NAT)</p><p id="1ca7aacb-2d23-8071-aec3-e0d7e9aab479" class="">IPv4 addresses are in short supply (4 billion). ISP often will give you just one address, so how to connect multiple devices?</p><p id="1ca7aacb-2d23-8023-b155-c2339ecfb202" class="">OS already shares one IP address with multiple independent processes running on one machine, using port numbers.</p><p id="1ca7aacb-2d23-80ef-b725-f27a90bda2d8" class="">NAT makes the entire local network look like one big host.</p><p id="1ca7aacb-2d23-8070-b2db-e81c4566b50a" class="">Public ports map to {local_IP_address, port} pairs on the network.</p><p id="1ca7aacb-2d23-80e8-997f-ce1ee2aa5a8f" class="">NAT router must track this mapping and translate IP addresses on packets leaving  entering local network. </p><p id="1ca7aacb-2d23-8083-b4d4-eccb4825dcbd" class="">
+</p><p id="1ca7aacb-2d23-809e-8429-e6921a5717f6" class="">Public IP addresses specify locations on the Internet.</p><p id="1ca7aacb-2d23-8044-9632-f6b3e19fe6bc" class="">Internet is sometimes called the Wide Area Network.</p><p id="1ca7aacb-2d23-8084-98c1-d4e81d30b14d" class="">Front end servers, university campus, home router WAN</p><p id="1ca7aacb-2d23-80e8-bcd5-e4054e976225" class="">Only one machine has the public IP addres 54.245.121.172 for ex</p><p id="1ca7aacb-2d23-805c-9c1e-e67d718b8635" class="">
+</p><p id="1ca7aacb-2d23-801a-ab17-dc8a59585646" class="">Private IP addresses are meaningful only on a local network.</p><p id="1ca7aacb-2d23-80ff-b9fa-dc8fce800a74" class="">Called local area network (LAN)</p><p id="1ca7aacb-2d23-8054-8921-f5d0287a5e62" class="">Eg home, office, back-end server</p><p id="1ca7aacb-2d23-8002-859d-f347fca0679b" class="">usually behind a NAT, to give hosts access to the Internet.</p><p id="1ca7aacb-2d23-8053-b75c-c1337b7dfc1a" class="">Always within: 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16</p><p id="1ca7aacb-2d23-808f-a24b-eec892f7adc2" class="">Millions of machiens have the private IP address of 192.168.0.100 for ex</p><p id="1ca7aacb-2d23-800e-9270-f3b9f2d342fe" class="">
+</p><p id="1ca7aacb-2d23-8079-b4f6-f9f373739a6a" class="">NAT Difficulties</p><p id="1ca7aacb-2d23-80a7-b8ca-f427fd36b314" class="">Local clients can only be rreached by public IPs that they recently contacted. In other words, cannot easily run services behind a NAT.</p><p id="1ca7aacb-2d23-80fa-a8d7-e9ac0d127a96" class="">Special NAT router configuration called port forwarding determines where to send unsolicited packets.</p><p id="1ca7aacb-2d23-80f9-96f8-e248b863b53f" class="">Some protocols advertise IP address and port in payload of packet, which will not be translated by NAT.</p><p id="1ca7aacb-2d23-8055-bc57-dc00fb3ae6c5" class="">Temporarily-inactive TCP connections may need to send keepalive packets that the NAT router does not “forget” the port mapping.<div class="indented"><p id="1ca7aacb-2d23-8052-b384-c37875baf795" class="">NAT’s port mappings timeout eventually to make room for later connections.</p><p id="1ca7aacb-2d23-8027-8876-ec3140f390bd" class="">
+</p></div></p><p id="1ca7aacb-2d23-8067-9d4a-fa4320ab9594" class="">P2P communication behind a NAT</p><p id="1ca7aacb-2d23-803e-84f4-d00d6ab6af18" class="">Neither of the two peers can reached directly</p><p id="1ca7aacb-2d23-8091-9d93-c1b0016469ac" class="">NAT only works if private address contacts a public address</p><p id="1ca7aacb-2d23-80fc-98a6-d171ba84632c" class="">Private IP address cannot listen for new connections from Internet</p><p id="1ca7aacb-2d23-80b7-b554-c69cd2c140ee" class="">NAT will discard any inbound packets not associated with an already-established connection</p><p id="1ca7aacb-2d23-8062-a82f-fcc4cb0b4e0b" class="">Solution:<div class="indented"><p id="1ca7aacb-2d23-8076-b69c-ff26256e7080" class="">Both parties must communicate through a relay server</p><p id="1ca7aacb-2d23-8095-8acd-e41a90710b35" class="">Relay does no processing, so it can handle lots of traffic</p><p id="1ca7aacb-2d23-8070-b3a9-f7a25e8505ff" class="">But it’s no longer a truly P2P, self-scaling system<div class="indented"><p id="1ca7aacb-2d23-808c-8b9d-fc8729399aa7" class="">need to add more relays as service grows</p></div></p></div></p><p id="1ca7aacb-2d23-80f2-8263-ea01e2c690bc" class="">
+</p><p id="1ca7aacb-2d23-802c-b4b4-e1640132966b" class="">Other benefits to NAT:<div class="indented"><p id="1ca7aacb-2d23-8049-9ec0-d566603be8b1" class="">Security: local devices are not publicly reachable by “strangers”<div class="indented"><p id="1ca7aacb-2d23-8017-874c-d79bfe3234d2" class="">For an outside IP address to contact a local device, the local device must first send a packet ot that outside address, causing the NAT to create a new public port mapping for the connection</p></div></p><p id="1ca7aacb-2d23-8013-8ae4-c92e66eb1ca8" class="">Configuration isolation: ISP and public IP address can change without reconfiguring local devices</p><p id="1ca7aacb-2d23-8030-8e78-e9efd91681e8" class="">Load Balancing: NAT can be used to make several servers work in parallel to handle work destined for one IP address</p></div></p><p id="1ca7aacb-2d23-80f1-8ad1-e17aa9766f3d" class="">
+</p><p id="1ca7aacb-2d23-8050-afa3-d20ded4b40d1" class="">NAT Load Balancing:</p><p id="1ca7aacb-2d23-805b-9584-ee24e1761acb" class="">A type of NAT device that proxies requests to multiple equivalent servers</p><p id="1ca7aacb-2d23-8069-8dc6-cee5dc8779c7" class="">Load Balancer maintains IP address and port mappings, like a traditional NAT</p><p id="1ca7aacb-2d23-80fb-8eaa-fc2152373a01" class="">Makes multiple servers appear like one big machien with one IP address</p><p id="1ca7aacb-2d23-8022-9797-ed0084f042a2" class="">Allows a single IP address to handle lots of requests: port mapping and relaying is easy, whereas responding to requests may require lots of computation or I/O</p><p id="1ca7aacb-2d23-8007-b4b1-e6a0f13ca63c" class="">Load Balancer may monitor health and load of server to inform its choice of server</p><p id="1ca7aacb-2d23-8097-ab49-ceb44a33e321" class="">Called a layer 4 load balancer (TCP/UDP)</p><p id="1ca7aacb-2d23-807f-8d15-de9dd7533934" class="">
+</p><p id="1ca7aacb-2d23-80d7-9512-d9bf46f044c0" class=""><strong>IPv6</strong></p><p id="1ca7aacb-2d23-8069-ade1-c87727f4878d" class="">A much better solution than NAT for the IPv4 Address Shortage</p><p id="1ca7aacb-2d23-800e-9b78-ce966092a15d" class="">Uses 128 bit address instead of 32-bit<div class="indented"><p id="1ca7aacb-2d23-804f-98d1-cde0f2de322d" class="">Expressed in hex:<div class="indented"><p id="1ca7aacb-2d23-801c-b0e9-e2841501dda5" class="">a39b:239e:ffff:29a2:0021:20f1:aaa2:2112 </p></div></p></div></p><p id="1ca7aacb-2d23-8087-9cc1-e9eaf70cb851" class="">Invented in early 90s</p><p id="1ca7aacb-2d23-80f7-838e-f79550df07b9" class="">Notation Rules:<div class="indented"><p id="1ca7aacb-2d23-8011-8240-db80d707d286" class="">Groups of zeros can be replaced with “::”</p><p id="1ca7aacb-2d23-8031-82cd-ca6fee54ea05" class="">Can only use “::” once</p><p id="1ca7aacb-2d23-808e-b66e-c04c43db01be" class="">Leading zeros within each 16-bit group can be omitted.</p><p id="1ca7aacb-2d23-80da-885c-f377947f55e7" class="">
+</p><p id="1ca7aacb-2d23-8022-99b6-f1e2772590ea" class="">0000:0000:0000:0000:0000:0000:0000:0001 → ::1 (localhost)</p><p id="1ca7aacb-2d23-8055-be65-e13cb3105e71" class="">2345:1001:0023:1003:0000:0000:0000:0000 → 2345:10001:23:1003::</p><p id="1ca7aacb-2d23-8075-92fc-de2bb610551d" class="">aecb:0222:0000:0000:0000:0000:0000:0010 → aecb:222::10 </p></div></p><p id="1ca7aacb-2d23-80e4-8dce-cee49112a577" class="">
+</p><p id="1ca7aacb-2d23-80eb-9bb0-cfdc3ae295e6" class="">Other improvements:</p><p id="1ca7aacb-2d23-8091-a7ae-cfb9f0601980" class="">checksum dropped<div class="indented"><p id="1ca7aacb-2d23-8077-b497-d4a0276f969f" class="">Already exists in TCP/UDP and below in Ethernet</p><p id="1ca7aacb-2d23-8018-8329-fac39fc8e158" class="">TTL is decremented at each router, so each router needs to recaclulate checksum (saves on overhead)</p></div></p><p id="1ca7aacb-2d23-803a-8685-f038e9f835d9" class="">Fragmentation support was dropped<div class="indented"><p id="1ca7aacb-2d23-8041-9e80-cb443f64a257" class="">Routers should be simple and fast, let endpoints deal w/fragmentation (TCP)</p></div></p><p id="1ca7aacb-2d23-8030-930e-efbc6726fa26" class="">
+</p><p id="1ca7aacb-2d23-80e3-9731-dc1a1754bfae" class="">
+</p><p id="1ca7aacb-2d23-801a-b369-d8989cc807b0" class=""><strong>IPv4 and IPv6 interoperability</strong></p><p id="1ca7aacb-2d23-8098-b5a0-f84b28ac5f83" class="">Internet is too large, important, and disorganized to force everyone to upgrade to IPv6 simultaneously.</p><p id="1ca7aacb-2d23-8041-be10-cbe9517495e2" class="">Current Internet is a mix of IPv4 and IPv6 routers.</p><p id="1ca7aacb-2d23-80ed-b4bc-c558a694cf3c" class="">Tunneling puts one protocol inside the payload of another</p><p id="1ca7aacb-2d23-8074-9a56-cf0bd8764fad" class="">Either IPv4 inside IPv6 or Ipv6 inside IPv4</p><p id="1cb7aacb-2d23-80a9-b1bc-fd42347c4bd0" class="">
+</p><h1 id="1cb7aacb-2d23-80a5-83bc-e2cb3ee56125" class="">Lecture 10</h1><p id="1cb7aacb-2d23-8003-b027-eb1e21d820af" class="">Each packet has an IP header listing the source &amp; destination IP addresses and the TTL.</p><p id="1cb7aacb-2d23-80bf-bd74-f22e7dae5006" class="">Routers use forwarding tables to direct IP packets to the next hop.</p><p id="1cb7aacb-2d23-805a-99eb-d55126f67247" class="">Forwarding rules associate ranges of addresses with the outbound links.</p><p id="1cb7aacb-2d23-8039-a082-df63052aafb4" class="">Ranges are defined in CIDR notation: 234.30.0.0/16</p><p id="1cb7aacb-2d23-80eb-834b-d3e3f6da6913" class=""><strong>Input and output “ports” on routers</strong></p><p id="1cb7aacb-2d23-80c8-82ec-ee1d6d7f5093" class="">The word port is overloaded in networking:<div class="indented"><p id="1cb7aacb-2d23-80b9-a021-f0c4039468be" class="">At the physical layer the wired connections on routers are called ports</p><p id="1cb7aacb-2d23-80ba-9a30-f60145ed1bf0" class="">At the transport layer (TCP/UDP), ports numbers create logical connections.</p></div></p><p id="1cb7aacb-2d23-80f9-a900-ed60f29170a0" class="">Most wired links are bidirectional, and we can think about each direction separately.</p><p id="1cb7aacb-2d23-8087-9f67-c80be7cf67a6" class="">
+</p><p id="1cb7aacb-2d23-80a3-91e0-fb8c8ad971e5" class="">Input port process packets in parallel</p><p id="1cb7aacb-2d23-80a3-951e-fbe72199b773" class="">Physical layer: bit-level reception and line termination</p><p id="1cb7aacb-2d23-80fd-a735-cc09fcb3cace" class="">Link Layer Protocol to receive</p><p id="1cb7aacb-2d23-8052-b682-fe6b823e2967" class="">Lookup, forwarding, queuing</p><p id="1cb7aacb-2d23-8084-a714-fa59c91d559d" class="">
+</p><p id="1cb7aacb-2d23-802f-a65c-fbda6147f363" class="">Each input port has its own processor and memory</p><p id="1cb7aacb-2d23-8055-9765-f78381ce45e2" class="">Given a packet destination look up output port using a copy of forwarding table in input port memory</p><p id="1cb7aacb-2d23-8025-bbf9-e428760b39c5" class="">The goal is to complete input port processing at line speed - as fast as they come in, so a queue doesn’t form</p><p id="1cb7aacb-2d23-80d2-afb2-d494c98befc0" class="">
+</p><p id="1cb7aacb-2d23-807e-8566-da2c878c08ee" class="">Switching Fabric - connects input and output ports</p><p id="1cb7aacb-2d23-805d-8f56-ec63bd0fadf9" class="">Switching Rate - the maximum rate of data transfer from all input ports to all output ports.<div class="indented"><p id="1cb7aacb-2d23-80bc-8e7d-e9296cc54da1" class="">Ideally = #inputs x input line rate. In practice, switching rate is smaller.</p></div></p><p id="1cb7aacb-2d23-80cd-9361-f9956a8dacff" class="">Two basic types of switching fabric:<div class="indented"><p id="1cb7aacb-2d23-8084-83df-d096fb7174a4" class="">Bus: Simplest design. Can only be used by one in/out pair. Bus should be much faster than individual input line rate.</p><p id="1cb7aacb-2d23-804c-b038-de0bc793988f" class="">Crossbar: advanced design for core routers. Allows multiple simultaneous flows by opening and closing connections appropriately. </p></div></p><p id="1cb7aacb-2d23-808c-9f5e-f2b691a01c93" class="">Crossbar Switch:</p><figure id="1cb7aacb-2d23-80ad-bb74-e8ee396e9d05" class="image"><a href="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-04_at_10.56.19_AM.png"><img style="width:673.984375px" src="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-04_at_10.56.19_AM.png"/></a></figure><p id="1cb7aacb-2d23-80bd-9053-c9ec9eec4e65" class="">Road Analogy:<div class="indented"><p id="1cb7aacb-2d23-80d2-b727-cb4973b25250" class="">Bus is like a <a href="https://www.cityofcorinth.com/sites/default/files/imageattachments/engineering/page/20331/roundabouts_-_engineering.png">rondabout</a></p><p id="1cb7aacb-2d23-80d9-b5c8-c57b3fa9ec67" class="">Crossbar is like a <a href="https://i.redd.it/9c51nru7mmn91.jpg">stack exchange</a></p></div></p><p id="1cb7aacb-2d23-805f-993c-de23e7a1cf70" class="">
+</p><p id="1cb7aacb-2d23-80a9-a398-d4edc161e19c" class="">Output Ports<div class="indented"><p id="1cb7aacb-2d23-8044-83b3-ca46c834cccf" class="">Buffering is required because switch fabric may be faster than physical output link, link may be congested.</p><p id="1cb7aacb-2d23-80d2-b7c1-caab59845191" class="">Queued packet can be scheduled if desired.<div class="indented"><p id="1cb7aacb-2d23-80be-8e0f-f187255e4927" class="">Give higher priority to certain types of packets.</p><p id="1cb7aacb-2d23-8066-b9a7-fe0ba38ccc42" class="">Give higher priority to certain origins/destination</p></div></p><p id="1cb7aacb-2d23-80e0-a2e2-d5f89a080b6f" class="">Net neutrality is the policy debate about whether ISPs can do this. Without</p></div></p><p id="1cb7aacb-2d23-8062-811d-c61ab78d5f6a" class="">
+</p><p id="1cb7aacb-2d23-80c2-98a4-e245349bb599" class="">Queues and packet loss</p><p id="1cb7aacb-2d23-8043-a64c-d0148ff04a33" class="">Packets can be dropped by router if any of the queues are full<div class="indented"><p id="1cb7aacb-2d23-8081-a865-fd5d17f38e2f" class="">Switching fabric may be overloaded, filling up the input queues</p><p id="1cb7aacb-2d23-80b7-b963-f1acfeceffc4" class="">Output ports may be overloaded, filling up the output queues</p></div></p><p id="1cb7aacb-2d23-80fc-b75b-e4ff043f30d6" class="">Routers silently drop packets when a queue is full. </p><p id="1cb7aacb-2d23-806f-939d-c4fd6ae5fad2" class="">
+</p><p id="1cb7aacb-2d23-8085-a9f3-fe99b61510be" class="">Weighted Fair Queueing</p><p id="1cb7aacb-2d23-80c4-b5ad-fd2661aac193" class="">A discriminative alternative to FIFO packet scheduling policy. Some traffic gets higher priority. We have multiple queues instead of just one.</p><p id="1cb7aacb-2d23-80fe-808c-cd8f5abdc624" class="">Administrator creates rules to classify packets, based on header fields:<div class="indented"><p id="1cb7aacb-2d23-8017-a789-f4d32788a857" class="">Src/dest IP address, port number, TCP vs UDP, QoS</p></div></p><p id="1cb7aacb-2d23-805c-bb08-d97f99a35d06" class="">Each class is allocated a certain fraction of link capacity</p><p id="1cb7aacb-2d23-803d-b140-c9fcb9e61bf3" class="">
+</p><p id="1cb7aacb-2d23-8025-aef2-dbdc188c08cc" class=""><strong>Centralized versus Distributed algorithms</strong></p><p id="1cb7aacb-2d23-80e7-bb33-edfff0f0599f" class="">Centralized/Global Routing:<div class="indented"><p id="1cb7aacb-2d23-8054-a187-f27f1647cb4d" class="">Algorithm has full knowledge of the entire network.</p><p id="1cb7aacb-2d23-805a-8ed9-d971cfd8b7d5" class="">Makes decisions that affect all routers.</p><p id="1cb7aacb-2d23-8035-a519-de6bcbc83c36" class="">In routing, we call these link state algorithms.</p><p id="1cb7aacb-2d23-80f7-9b03-c4001650b453" class="">Used within an organization (autonomous system) - OSPF</p></div></p><p id="1cb7aacb-2d23-8026-b3f3-e482557f4bd7" class="">Distributed/Local routing:<div class="indented"><p id="1cb7aacb-2d23-80b9-93c3-dcd990264639" class="">Each router must decide its own routing table using local observations.</p><p id="1cb7aacb-2d23-8014-832d-db0c28b59cb7" class="">Operates iteratively.</p><p id="1cb7aacb-2d23-8005-bd3c-d50638d858ca" class="">Routers continually share information with neighbors.</p><p id="1cb7aacb-2d23-8072-b308-f32cbea75fad" class="">Global information is gradually propagated across the network.</p><p id="1cb7aacb-2d23-8020-9f2c-c3acbde52b2a" class="">Used within and between autonomous systems (eg. RIP &amp; BGP, respectively)</p></div></p><p id="1cb7aacb-2d23-808b-8a81-ccb123f9b203" class="">Distributed algorithms are more difficult to design correctly. </p><p id="1cb7aacb-2d23-80f7-85a1-e52800b95220" class="">
+</p><p id="1cb7aacb-2d23-8083-a31b-f6a897bdf7d0" class="">A Graph is a set of vertexes and edges G = (V, E). V is the set of vertexes, E is the set of edges between vertexes.</p><p id="1cb7aacb-2d23-8007-80b2-d14989992f30" class="">Vertexes represent routers.</p><p id="1cb7aacb-2d23-80a9-a426-ea4e7f2b45a8" class="">Edges represents links.</p><p id="1cb7aacb-2d23-8088-beaa-fb11ec46f935" class="">Edge labels/weights represent distance or cost to cmmunicate. </p><p id="1cb7aacb-2d23-8036-a7e8-f35143824e0b" class="">
+</p><p id="1cb7aacb-2d23-80fb-954f-cdf235b59319" class="">Shortest Path problem</p><p id="1cb7aacb-2d23-8008-a7d3-d3e5255562d3" class="">What edges should I choose to construct a path from x→y with minimal total cost (delay)? </p><p id="1cb7aacb-2d23-80b7-8cbc-ed3b9f5437f3" class="">You are given:<div class="indented"><p id="1cb7aacb-2d23-8013-98d0-c461d5aa6a2c" class="">An edge-weighted graph</p><p id="1cb7aacb-2d23-808e-8043-eecfc7f190ea" class="">A starting vertext</p><p id="1cb7aacb-2d23-80f7-a0f6-d261eb396cd3" class="">A destination vertex</p></div></p><p id="1cb7aacb-2d23-8089-9cf6-e4f12086356f" class="">Must output: The path, the total cost</p><p id="1cb7aacb-2d23-8010-825c-c489a58f9bfe" class="">Breaking down the problem into subproblems. Let d(x, y) represent the cost of the shortest path between x and y. It must be true that d(x, y) = minimum of the cost between x and c + the cost from c to y, or the cost between x and d + the cost from d to y.</p><p id="1cb7aacb-2d23-802f-a3a4-c83562e9b28a" class="">
+</p><p id="1cb7aacb-2d23-806e-854f-e5d8505de383" class="">Bellman-Ford algorithm</p><figure id="1cb7aacb-2d23-80e8-be5b-d6ae2718e68a" class="image"><a href="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-04_at_11.43.19_AM.png"><img style="width:688.9921875px" src="YouTube%20Cs-340%20Intro%20to%20Computer%20Networking%201c07aacb2d2380a798c4de86eb3786eb/Screenshot_2025-04-04_at_11.43.19_AM.png"/></a></figure><p id="1ce7aacb-2d23-8022-9c53-fc6c1e205b3b" class="">
+</p><h1 id="1ce7aacb-2d23-800e-834a-d280a0058562" class="">Lecture 11</h1><p id="1ce7aacb-2d23-80ac-8622-d14ffc330a47" class="">Last Lecture:</p><p id="1ce7aacb-2d23-809d-b4e6-f52c9aec1bf8" class="">Weighted Fair Queueing can prioritize classes of packets in router queue.</p><p id="1ce7aacb-2d23-8058-907e-f95a01a08463" class="">Routing algorithms determine each router’s forwarding table. It’s a shortest path problem on the weighted graph representing the network.<div class="indented"><p id="1ce7aacb-2d23-80f4-bf59-e265983c5130" class="">May be centralized/global or decentralized/distributed.</p></div></p><p id="1ce7aacb-2d23-80cd-b0bf-d03ec0dcd1ef" class="">Dijkstra’s Algorithm is a fast centralized (LS) algorithm for shortest path.<div class="indented"><p id="1ce7aacb-2d23-80de-9bd8-da62487ca202" class="">Used by Open Shortest Path First protocol within an AS</p><p id="1ce7aacb-2d23-80e6-95b4-f280a1f3ffe0" class="">Routers initially flood/broadcast local link info to entire network.</p><p id="1ce7aacb-2d23-80f0-92f3-d264df392ff5" class="">Each router then solves shortest path from itself to all other routers.</p></div></p><p id="1ce7aacb-2d23-806f-a27c-c81012710928" class="">Distance Vector (DV) algorithm is a distributed shortest path algorithm. </p><p id="1ce7aacb-2d23-8034-a8b7-e7dc62e6f3c4" class="">Used by the BGP to route between AS’s. </p><p id="1ce7aacb-2d23-801c-81d1-c37df763358d" class="">Initially, routers only knows distance to neighbors - broadcast to neighbors.</p><p id="1ce7aacb-2d23-80f4-9cd3-e5e87efc074c" class="">When receive a neighbor’s V, update own DV &amp; broadcast if DV changed.</p><p id="1ce7aacb-2d23-80bc-abdf-e581a0f2d18e" class=""><br/><br/><strong>Distance Vector</strong></p><p id="1ce7aacb-2d23-8095-b68a-f415f20e033a" class="">Each network node has its own DV.</p><p id="1ce7aacb-2d23-8009-a280-c83143a345ea" class="">For that node, DV lists the cost, next_hop for every destination.</p><p id="1ce7aacb-2d23-8038-b97e-dbb9589ecbce" class="">
+</p><p id="1ce7aacb-2d23-80ee-bffa-f34f55d7b993" class="">Each node operates independently (a distributed algorithm)</p><p id="1ce7aacb-2d23-80f8-a49b-e0c23fe5db8e" class="">Each node must store:</p><p id="1ce7aacb-2d23-808b-8dc8-e6b9471da8c6" class="">Its outbound links</p><p id="1ce7aacb-2d23-8012-ae4f-d5f49e12e3cc" class="">Each neighbors latest DV</p><p id="1ce7aacb-2d23-801c-9b5b-c4c3c8f4a6e0" class="">
+</p><p id="1ce7aacb-2d23-8005-a68f-d6d949235a43" class="">Each node must compute:</p><p id="1ce7aacb-2d23-806c-8f61-d530b01305d3" class="">its own DV using 1 &amp; 2. This will be optimal.</p><p id="1ce7aacb-2d23-80cb-92c5-f4aeaf118047" class="">Whenever either 1 or 2 changes, I must recompute my DV</p><p id="1ce7aacb-2d23-80c8-a4fd-e58c4ef4f5ae" class="">Whenever my DV changes, send my updated DV to all neighbors.</p><p id="1ce7aacb-2d23-808f-9ce8-cfcf4c325f51" class="">
+</p><p id="1ce7aacb-2d23-80bc-849b-c8231cdf2af4" class="">When link costs change, node detects local link cost change. Recalculates distance vector, DV notifies neighbors.</p><p id="1ce7aacb-2d23-80f8-b164-d8207c911486" class="">
+</p><p id="1ce7aacb-2d23-8080-a091-e772dba593af" class="">Good news travel quickly:</p><p id="1ce7aacb-2d23-8095-b0dc-d108ad62203a" class="">When link changes in a decrease, it is quickly updated for all neighbors.B</p><p id="1ce7aacb-2d23-8067-9443-c258f5264907" class="">Bad news travels slowly, when a link costs increased, updates can be slow.<div class="indented"><p id="1ce7aacb-2d23-80aa-847e-c07899e01acd" class="">Neighbors still think that the other still has a good path and keep trying to route through each other, meanwhile each nde’s estimated distance slowly increases.</p><p id="1ce7aacb-2d23-8084-9168-ef1f936793b6" class="">
+</p></div></p><p id="1ce7aacb-2d23-8084-90a4-e2c1099bb14c" class=""><strong>Hierarchical Routing</strong></p><p id="1ce7aacb-2d23-80f6-a435-e8d0013b19e7" class="">Routers are not all equal, network graph is hierarchical</p><p id="1ce7aacb-2d23-8069-a9f8-c14d982454f4" class="">Scaling: Too many routers (&gt; 100 M) to solve one big shortest path problem.</p><p id="1ce7aacb-2d23-8087-a9d7-ccf5b951589e" class="">Administrative Autonomy: Internet is a network of networks. Each netwrok operator prefers to control its own internal routing policy. </p><p id="1ce7aacb-2d23-809e-ab2e-df6a155be4c2" class="">
+</p><p id="1ce7aacb-2d23-80f3-909d-eaa11c95e822" class="">Autonomy System:</p><p id="1ce7aacb-2d23-80db-8327-fbe3c4841204" class="">The internet is divided into about 100k autonomous systems</p><p id="1ce7aacb-2d23-8060-a83e-ffecdefd5082" class="">Each has an AS number, distributed by the ICANN’s regional authorities.</p><p id="1ce7aacb-2d23-80a0-b188-e11bd01018aa" class="">Gateway routers (broder gateways) at edge of the AS connect to other AS’s.</p><p id="1ce7aacb-2d23-80d9-bd60-c32ed85dd782" class="">Routers in an AS run one interor-gateway (intra-AS) routing protocol.</p><p id="1ce7aacb-2d23-8090-8e29-f7898070694e" class="">Border Gateway Protocol is used by all border gateways to route traffic between AS’s.</p><p id="1ce7aacb-2d23-809b-92ac-e353263583e6" class="">
+</p><p id="1ce7aacb-2d23-8098-b7d5-cc990e5fbb7b" class=""><strong>BGP Basics</strong></p><p id="1ce7aacb-2d23-8070-9df0-fea8f96d7a15" class="">BGP Session: Two BGP routers (”Peers”) exchange BGP messages:<div class="indented"><p id="1ce7aacb-2d23-80cb-ac1d-e801a597c1b4" class="">Advertise paths to different destination network prefixes</p><p id="1ce7aacb-2d23-8039-8054-ee6b902b40d4" class="">exchanged over semi-permanent TCP connections.</p></div></p><p id="1ce7aacb-2d23-808b-a919-fa5484896bcb" class="">When AS3 advetises a prefix to AS1:<div class="indented"><p id="1ce7aacb-2d23-8021-93a8-e7c6022f7dd1" class="">AS3 promises it will forward packets towards that prefix</p><p id="1ce7aacb-2d23-800a-a27a-d021a06845c2" class="">AS3 can aggregate prefixes in its advertisement</p></div></p><p id="1ce7aacb-2d23-8050-80df-d6817bb61f6a" class="">
+</p><p id="1ce7aacb-2d23-8004-84d4-f9eab56559e7" class="">Advertisements</p><p id="1ce7aacb-2d23-809a-a2ce-c2283fd3b6cf" class="">Border gateways share lists of BGP routes, each has a prefix &amp; attributes</p><p id="1ce7aacb-2d23-802f-a632-df2ec7c326a6" class="">Two important route attributes:<div class="indented"><p id="1ce7aacb-2d23-800e-ae88-fb1433abf2aa" class="">AS-PATH: AS numbers through which the advertisement has pased. Indicates the AS-PAth that will be followed to reach the prefix.</p><p id="1ce7aacb-2d23-80a9-a3f1-cb86d96add3c" class="">NEXT-HOP: IP address of the router beginning the AS-PATH</p></div></p><p id="1cf7aacb-2d23-80f7-832d-c589f21537cd" class="">
+</p><h1 id="1ce7aacb-2d23-8025-b01b-feb9eb2005c8" class="">Lecture 12</h1><p id="1cf7aacb-2d23-80fa-a4b4-cb7f901b7cc9" class="">IP networks were bult for unicast addressing (sending a packet to a single destination) but applications have more general needs.</p><p id="1cf7aacb-2d23-80ff-bde5-f059eb536f3b" class="">Unicast: to one node</p><p id="1cf7aacb-2d23-80b3-a149-fe7187b9d297" class="">Anycast: to one of many possible nodes</p><p id="1cf7aacb-2d23-8075-9841-fcd9937de9c3" class="">Broadcast: to all nodes</p><p id="1cf7aacb-2d23-802d-abf0-d613cbd5eef6" class="">Multicast: to a set of nodes</p><p id="1cf7aacb-2d23-80d2-862f-cf470a7b8816" class="">Geocast: to nodes in a specific location</p><p id="1cf7aacb-2d23-80fc-b522-c351f7005045" class="">
+</p><p id="1cf7aacb-2d23-80a8-9ee7-e26f7d398866" class="">IPv4 Anycast hack:</p><p id="1cf7aacb-2d23-8085-8cc7-cc1a136d9d44" class="">The single IP address 8.8.8.8 maps to many different machines across the world</p><p id="1cf7aacb-2d23-809d-b495-f8600292b4bc" class="">Multiple border gateways advertise short routes to 8.8.8.8</p><p id="1cf7aacb-2d23-80e3-a346-e2693a74cd01" class="">Within the AS, traffic is directed to the closest 8.8.8.8 instance</p><p id="1cf7aacb-2d23-807c-979c-f4c6c52502d7" class="">Below there is nothing stopping two AS’es from advertising short routes to the same IP address, thus creating two copies of the same IP address</p><p id="1cf7aacb-2d23-8010-af50-e09394be2a98" class="">BGP Hijacking is the malicious takeover of another AS’es IP addresses</p><p id="1cf7aacb-2d23-808b-86e5-cc5cdc662996" class="">
+</p><p id="1cf7aacb-2d23-802a-b905-dcafa34e9d07" class="">IP Multicast (optional)</p><p id="1cf7aacb-2d23-80b8-b26f-db6b25e06e78" class="">Certain IP addresses are reserved to identify broadcast groups<div class="indented"><p id="1cf7aacb-2d23-8076-b8c2-ce529d8610c5" class="">G 239.1.1.1 traffic sent to that address is forwarded to every host that has subscribed to that broadcast group using IGMP</p></div></p><p id="1cf7aacb-2d23-8053-a24b-fc96c86d698f" class="">Adds burdens to routers, since they must track all broadcasts active at that time (to which neighbor should I forward multicast traffic)</p><p id="1cf7aacb-2d23-80a0-93b5-faa747833125" class="">Public internet routers generally do not support IP multicast</p><p id="1cf7aacb-2d23-8091-9bd9-ffacc6a0cce0" class="">Used in special scenario for streaming content to many viewers</p><p id="1cf7aacb-2d23-80e8-984d-ff21106b78b2" class="">Applications must use UDP, not TCP</p><p id="1cf7aacb-2d23-8025-95b4-f25059f46628" class="">
+</p><p id="1cf7aacb-2d23-809f-b71b-c51b9b34e852" class="">Broadcast as a basic network building block</p><p id="1cf7aacb-2d23-8079-9f2d-fcb433a183e7" class="">IP does not support broadcast because no one message is relavent for every single host</p><p id="1cf7aacb-2d23-80ac-af65-fbc38b6c7a23" class="">Broadcast are crucial in small-to-moderate sized ad hoc networks:<div class="indented"><p id="1cf7aacb-2d23-80a8-9bc2-f721fc641b73" class="">Networks of neighboring hosts that connect without prior planning.</p><p id="1cf7aacb-2d23-8052-bb76-f57eceb06758" class="">Also called mesh networking and MANETS.</p><p id="1cf7aacb-2d23-80fa-aa62-fd79bcf105de" class="">FIRECHAT (2014-18) was a P2P chat app using bluetooth and ad-hoc WiFi</p></div></p><p id="1cf7aacb-2d23-802a-84c3-df30e566b0fe" class="">Broadcasts can be used to share the network structure to enable unicast routing. </p><p id="1cf7aacb-2d23-8084-a30d-f85dffe6906c" class="">
+</p><p id="1cf7aacb-2d23-8039-8bf8-eb60166bbf6e" class="">Broadcast (flooding)</p><p id="1cf7aacb-2d23-8000-a35a-d7e2164d1098" class="">Must be careful to ensure:<div class="indented"><p id="1cf7aacb-2d23-805d-b52a-eb0799965953" class="">Correctness all nodes get the message</p><p id="1cf7aacb-2d23-8018-b55b-cde56e8889c6" class="">Efficiency: ideally message is received just once by each node</p><p id="1cf7aacb-2d23-8080-bb3c-e28b01da954e" class="">Termination: message is not retransmitted forever.</p></div></p><p id="1cf7aacb-2d23-80c4-935a-f7a50b59b979" class="">Naive approach is to unicast the message to each node. Downsides</p><p id="1d07aacb-2d23-803d-83bb-d302e89dd0f1" class="">
+</p><h1 id="1d07aacb-2d23-80a4-a58b-e3279dfb882f" class="">Lecture 13</h1><p id="1d07aacb-2d23-800b-b0ae-e34f9b8d5082" class="">Recap:</p><p id="1d07aacb-2d23-803f-b8be-e89c9c62abf3" class="">IP Anycast: BGP trick to send traffic for one IP address to two hosts</p><p id="1d07aacb-2d23-80c2-a221-c9235e081945" class="">Broadcasting is sending a signle message to every host</p><p id="1d07aacb-2d23-80f1-b303-e5d10ac5295b" class="">Multicast is sending a single message to many hosts</p><p id="1d07aacb-2d23-80db-a01e-eb9fc47af67c" class="">Controlled flooding: add a sequence number to messages, and retransmit only if you have not seen the received sequence number</p><p id="1d07aacb-2d23-8067-9def-e3144b2b873b" class="">Spanning tree: a graph without cycles that reaches all nodes. Broadcast can be done by transmitting along a spanning tree.<div class="indented"><p id="1d07aacb-2d23-8099-b714-d18a3425d332" class="">Prim’s Algorithm constructs a minimum-cost spanning tree</p><p id="1d07aacb-2d23-803f-be35-c09df5aa33c7" class="">Dikstra’s Algorithm constructs a shortest-path-from-root spanning tree</p></div></p><p id="1d07aacb-2d23-80b2-b8a7-e6008bd14358" class="">
+</p><p id="1d07aacb-2d23-80c4-b968-edf2ec8acd15" class="">Link Layer Shares a physical channel among several transmitters/receivers</p><p id="1d07aacb-2d23-8095-8646-e3ad4982d3a9" class="">Implemented in hardware &amp; Driver</p><p id="1d07aacb-2d23-8006-aa01-c9b6488fdc1b" class=""><strong>Terminology:</strong></p><p id="1d07aacb-2d23-80b7-bbd2-f8808cb8c97d" class="">Nodes are host and routers</p><p id="1d07aacb-2d23-80f6-b677-debd7e572598" class="">Links are communication channels that connect adjacent nodes along communication path<div class="indented"><p id="1d07aacb-2d23-80aa-9a0d-ca3be9cf3d32" class="">Wired</p><p id="1d07aacb-2d23-807f-bb98-de0eab05fb57" class="">Wireless</p><p id="1d07aacb-2d23-8051-900c-e2dcebbc70e1" class="">LANs - collection of links</p></div></p><p id="1d07aacb-2d23-8085-9c25-f310bfda43a8" class="">Physical Connectivity is called Layer 1</p><p id="1d07aacb-2d23-805e-afec-e3254604735e" class="">Link Layer is called Layer 2</p><p id="1d07aacb-2d23-80f2-aa24-eb2f7a498a83" class="">IP layer is Layer 3</p><p id="1d07aacb-2d23-8014-8aab-d72971de9390" class="">Transport layer is Layer 3</p><p id="1d07aacb-2d23-8037-b1c6-d474eb8f287d" class="">
+</p><p id="1d07aacb-2d23-8013-8a02-cde1fee69625" class=""><strong>Medium Access Control</strong></p><p id="1d07aacb-2d23-805f-8bae-e9e6e5c5b06d" class="">Communication happens in some physical medium (plural is media)</p><p id="1d07aacb-2d23-80ec-925d-f9b48ea5832f" class="">Wireles communication occurs in Open space, in some freq. band</p><p id="1d07aacb-2d23-8026-894e-ee6229d938c6" class="">Wired communication occurs on a wire</p><p id="1d07aacb-2d23-8055-b2fa-ca06f950899c" class="">MAC is needed in broadcast links, where more than one node is sharing a single channel</p><p id="1d07aacb-2d23-80cb-9529-de4192698b88" class="">MAC is unnecessary in point to point links.<div class="indented"><p id="1d07aacb-2d23-80ab-a892-ce10da812a90" class="">EG a wired link with separate send and receive wires</p><p id="1d07aacb-2d23-80a2-80d1-c523256130ef" class="">such connections are only common over long distances</p></div></p><p id="1d07aacb-2d23-8097-84b2-f1b5845f8927" class="">
+</p><p id="1d07aacb-2d23-8055-b189-fd3b50b2a79c" class=""><strong>Multiple Access Protocols</strong></p><p id="1d07aacb-2d23-80a2-b718-c2d39f0369a9" class="">Collision is the fundamental problem in broadcast links:<div class="indented"><p id="1d07aacb-2d23-8018-b603-dea3b7bd9bbe" class="">Multiple nodes try to communicate at the same time</p><p id="1d07aacb-2d23-8025-90a1-c222fb8322d7" class="">Simultaneous messages interfere with each other</p><p id="1d07aacb-2d23-80b4-abed-fabbf8791d4b" class="">None of the colliding messages can be received</p><p id="1d07aacb-2d23-8059-a827-c04503daa515" class="">Precious time and bandwidth is wasted</p><p id="1d07aacb-2d23-806c-9e5e-f473c848f7b9" class="">Messages must be retransmitted</p></div></p><p id="1d07aacb-2d23-80a1-b807-f7dae54e5388" class="">If we’re too aggressive in sharing, many collisions will occur</p><p id="1d07aacb-2d23-8001-8be9-cae61c0e7cab" class="">If we’re too polite about sharing, may waste time/bandwidth waiting. </p><p id="1d07aacb-2d23-8044-9f76-e02b1b6ad290" class="">
+</p><p id="1d07aacb-2d23-80b9-9cf2-cc8b32641638" class="">Assuming multiple nodes are sharing a link with throughput R bps:</p><p id="1d07aacb-2d23-8084-94aa-f8ef8e651825" class="">If only one node is communicating, then it should get the fulll bandwidth (R)</p><p id="1d07aacb-2d23-80cf-a0fb-c2240eefc880" class="">When N nodes have data to send, they should each get R/N bandwidth</p><p id="1d07aacb-2d23-805c-bfd4-f3c93d6e8373" class="">Protocol should be decentralized with no single point of failure</p><p id="1d07aacb-2d23-80ed-973d-cd4501848d9d" class="">It should be simple and inexpensive to implement</p><p id="1d07aacb-2d23-801e-b1bc-d30227f61991" class="">
+</p><p id="1d07aacb-2d23-8006-9efd-c8b865fd56a4" class="">Channel Partitioning Protocols</p><p id="1d07aacb-2d23-80e8-81c7-db937a242244" class="">FDM and TDM</p><p id="1d07aacb-2d23-80db-b4a2-c6370a669d3d" class="">FDM - based on fraction of spectrum, less bandwidth</p><p id="1d07aacb-2d23-803d-b172-d24bb8c64fe5" class="">TDM: each node communicates a fraction of the time</p><p id="1d07aacb-2d23-806a-a5f1-f1758a1f0455" class="">These are collision-free and fair, but inflexible</p><p id="1d17aacb-2d23-80e1-985e-c9ca801e38bc" class="">
+</p><h1 id="1d17aacb-2d23-80fc-a335-cc7d7e71ad82" class="">Lecture 14</h1><p id="1d17aacb-2d23-80b0-8ad0-fa1f93ca4def" class="">Cablie Internet Link-Layer Protocol</p><p id="1d17aacb-2d23-80c4-9ed0-e434225653cb" class="">Combines ideas from all three classes of multiple access protocols</p><p id="1d17aacb-2d23-8021-8743-ef6b3853477b" class="">ALl cable modems in a neighborhood share the same coaxial medium. <div class="indented"><p id="1d17aacb-2d23-808a-a695-ecf08b26024f" class="">They are all connected to “one big wire”. It’s a shared, broadast medium.</p><p id="1d17aacb-2d23-8000-987b-e5799c61ff54" class="">They can all hear each other’s traffic, in both directions. </p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

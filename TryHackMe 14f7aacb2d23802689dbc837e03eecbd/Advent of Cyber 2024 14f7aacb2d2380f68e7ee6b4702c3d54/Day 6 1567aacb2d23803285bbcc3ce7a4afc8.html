@@ -1,0 +1,775 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Day 6</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1567aacb-2d23-8032-85bb-cc3ce7a4afc8" class="page sans"><header><h1 class="page-title">Day 6</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1567aacb-2d23-8053-ba0d-c25a1fc89240" class=""><strong>1. Introduction</strong></h2><h3 id="1567aacb-2d23-80a5-a6b8-ee1dc0d932ec" class=""><strong>Poetic Overview</strong></h3><ul id="1567aacb-2d23-80be-be71-edf54e0d9ae3" class="bulleted-list"><li style="list-style-type:disc"><strong>Mayor Malware&#x27;s Scheme</strong>:<ul id="1567aacb-2d23-80a3-83be-e15ccd82c4e4" class="bulleted-list"><li style="list-style-type:circle">Intends to disrupt SOC-mas and intimidate SOC teams.</li></ul><ul id="1567aacb-2d23-8038-ac4f-c58945f961a2" class="bulleted-list"><li style="list-style-type:circle">Encountered resistance from defenders Glitch and McSkidy, who exposed his activities.</li></ul></li></ul><h3 id="1567aacb-2d23-80ce-890f-c89c4741cc52" class=""><strong>Narrative Context</strong></h3><ul id="1567aacb-2d23-8039-99f4-dcfab942acf9" class="bulleted-list"><li style="list-style-type:disc"><strong>Mayor Malware&#x27;s Reaction</strong>:<ul id="1567aacb-2d23-8065-9d42-c5de333b964d" class="bulleted-list"><li style="list-style-type:circle">Frustrated by the exposure but remains undeterred.</li></ul><ul id="1567aacb-2d23-8043-9335-cae48f79d530" class="bulleted-list"><li style="list-style-type:circle">Plans to deploy advanced malware capable of evading detection.</li></ul></li></ul><ul id="1567aacb-2d23-8053-8448-c47d381de394" class="bulleted-list"><li style="list-style-type:disc"><strong>Final Step</strong>:<ul id="1567aacb-2d23-80ba-a983-cd3ae86ad843" class="bulleted-list"><li style="list-style-type:circle">Testing the malware in a sandbox environment before full deployment.</li></ul></li></ul><hr id="1567aacb-2d23-8001-abbe-fdeb23743270"/><h2 id="1567aacb-2d23-80e4-8369-c1d16d6ce2dd" class=""><strong>2. Learning Objectives</strong></h2><ol type="1" id="1567aacb-2d23-8081-abda-cd95976eda59" class="numbered-list" start="1"><li><strong>Analyze Malware Behavior</strong>:<ul id="1567aacb-2d23-80c6-bb20-f50117fcc073" class="bulleted-list"><li style="list-style-type:disc">Utilize sandbox tools to observe and understand malware actions.</li></ul></li></ol><ol type="1" id="1567aacb-2d23-800c-9f65-c1891e4898b9" class="numbered-list" start="2"><li><strong>YARA Rules for Detection</strong>:<ul id="1567aacb-2d23-808b-8de6-e95c2db522a4" class="bulleted-list"><li style="list-style-type:disc">Develop and apply YARA rules to identify malicious patterns.</li></ul></li></ol><ol type="1" id="1567aacb-2d23-808b-8d51-e979638f8c29" class="numbered-list" start="3"><li><strong>Malware Evasion Techniques</strong>:<ul id="1567aacb-2d23-80ad-8fda-e8592610e2d2" class="bulleted-list"><li style="list-style-type:disc">Explore various methods malware can use to avoid detection.</li></ul></li></ol><ol type="1" id="1567aacb-2d23-8075-a3d1-d0e7c4d5b4cd" class="numbered-list" start="4"><li><strong>Implement Evasion Techniques</strong>:<ul id="1567aacb-2d23-808a-8893-ef8fa9471d3b" class="bulleted-list"><li style="list-style-type:disc">Apply specific techniques to bypass YARA rule detection.</li></ul></li></ol><hr id="1567aacb-2d23-800a-944d-d5ac992a3896"/><h2 id="1567aacb-2d23-806d-b5ed-f0d82a5bbd53" class=""><strong>3. Connecting to the Virtual Machine (VM)</strong></h2><h3 id="1567aacb-2d23-80d9-a5cc-fd7a2b58a2f2" class=""><strong>Connection Instructions</strong></h3><ul id="1567aacb-2d23-800b-b37f-e2ee0af730d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Review</strong>:<ul id="1567aacb-2d23-8076-b8d5-ef75cef29ece" class="bulleted-list"><li style="list-style-type:circle">Examine the questions on the connection card provided.</li></ul></li></ul><ul id="1567aacb-2d23-8061-8ebf-ef2021d9cb34" class="bulleted-list"><li style="list-style-type:disc"><strong>Start VM</strong>:<ul id="1567aacb-2d23-8034-9c56-c1f1bd1db741" class="bulleted-list"><li style="list-style-type:circle">Click the green <strong>Start Machine</strong> button for split-screen view.</li></ul><ul id="1567aacb-2d23-80fb-9a38-f2fb4d6ed8af" class="bulleted-list"><li style="list-style-type:circle">If VM isn&#x27;t visible, use the blue <strong>Show Split View</strong> button.</li></ul></li></ul><ul id="1567aacb-2d23-80c7-b591-f053ff839552" class="bulleted-list"><li style="list-style-type:disc"><strong>Remote Desktop (RDP) Access</strong>:<ul id="1567aacb-2d23-80fc-b625-cdb61627791d" class="bulleted-list"><li style="list-style-type:circle"><strong>Credentials</strong>:<ul id="1567aacb-2d23-80ed-a2e7-cef3970f92e2" class="bulleted-list"><li style="list-style-type:square"><strong>Username</strong>: <code>administrator</code></li></ul><ul id="1567aacb-2d23-8032-b556-d2d83b3a4b3c" class="bulleted-list"><li style="list-style-type:square"><strong>Password</strong>: <code>TryH@cKMe9#21</code></li></ul><ul id="1567aacb-2d23-8019-b1ef-f3661bb045c2" class="bulleted-list"><li style="list-style-type:square"><strong>IP</strong>: <code>MACHINE_IP</code></li></ul></li></ul></li></ul><hr id="1567aacb-2d23-80d0-aa79-e5aa6fed1cad"/><h2 id="1567aacb-2d23-80db-87df-e2c3d2ffdb4d" class=""><strong>4. Detecting Sandboxes</strong></h2><h3 id="1567aacb-2d23-80b9-ab12-e067d350143e" class=""><strong>Understanding Sandboxes</strong></h3><ul id="1567aacb-2d23-8043-a25c-ce9cf5ce2d54" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>:<ul id="1567aacb-2d23-80f9-9e4d-c1171e5a32e3" class="bulleted-list"><li style="list-style-type:circle">Isolated environments where code is executed without impacting the host system.</li></ul><ul id="1567aacb-2d23-8075-a45c-f0f00b30f807" class="bulleted-list"><li style="list-style-type:circle">Equipped with tools for monitoring, recording, and analyzing code behavior.</li></ul></li></ul><h3 id="1567aacb-2d23-802b-91b7-fffcf88b6f9d" class=""><strong>Malware&#x27;s Sandbox Detection Technique</strong></h3><ul id="1567aacb-2d23-8058-9b65-f76f5b2d7cdd" class="bulleted-list"><li style="list-style-type:disc"><strong>Registry Check</strong>:<ul id="1567aacb-2d23-8001-9e4c-e16ea7389327" class="bulleted-list"><li style="list-style-type:circle">Queries the Registry path: <code>HKLM\Software\Microsoft\Windows\CurrentVersion</code></li></ul><ul id="1567aacb-2d23-800c-b50e-d121904036a3" class="bulleted-list"><li style="list-style-type:circle">Looks for the presence of the <code>C:\Program Files</code> directory.</li></ul><ul id="1567aacb-2d23-80e9-9421-c97e27577c08" class="bulleted-list"><li style="list-style-type:circle">Absence may indicate a sandbox or virtualized environment.</li></ul></li></ul><h3 id="1567aacb-2d23-802f-8e6f-dd779b4ba8cb" class=""><strong>C Code Implementation</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-809a-942b-d0d1173edb98" class="code"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">c
+Copy code
+void registryCheck() {
+    const char *registryPath = &quot;HKLM\\Software\\Microsoft\\Windows\\CurrentVersion&quot;;
+    const char *valueName = &quot;ProgramFilesDir&quot;;
+
+    // Prepare the command string for reg.exe
+    char command[512];
+    snprintf(command, sizeof(command), &quot;reg query \&quot;%s\&quot; /v %s&quot;, registryPath, valueName);
+    // Run the command
+    int result = system(command);
+    // Check for successful execution
+    if (result == 0) {
+        printf(&quot;Registry query executed successfully.\n&quot;);
+    } else {
+        fprintf(stderr, &quot;Failed to execute registry query.\n&quot;);
+    }
+}
+int main() {
+    const char *flag = &quot;[REDACTED]&quot;;
+    registryCheck();
+    return 0;
+}
+
+</code></pre><ul id="1567aacb-2d23-8047-b538-ffda7f764e84" class="bulleted-list"><li style="list-style-type:disc"><strong>Explanation</strong>:<ul id="1567aacb-2d23-8017-9295-ede0a399ed0e" class="bulleted-list"><li style="list-style-type:circle">Checks for <code>ProgramFilesDir</code> in the registry to determine the environment.</li></ul><ul id="1567aacb-2d23-80b2-9fa4-da43418ab4e0" class="bulleted-list"><li style="list-style-type:circle">Helps malware decide whether to proceed with malicious activities.</li></ul></li></ul><hr id="1567aacb-2d23-8044-b239-cce0ff04ee72"/><h2 id="1567aacb-2d23-800d-8de6-c8778264cce1" class=""><strong>5. YARA Rules for Malware Detection</strong></h2><h3 id="1567aacb-2d23-807c-875b-fb4b49ae9802" class=""><strong>Introduction to YARA</strong></h3><ul id="1567aacb-2d23-8019-93b7-e32b3c11265d" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>:<ul id="1567aacb-2d23-801d-9c81-dc068b6c62ff" class="bulleted-list"><li style="list-style-type:circle">Identify and classify malware based on code patterns.</li></ul></li></ul><ul id="1567aacb-2d23-8053-aea9-f90752bea215" class="bulleted-list"><li style="list-style-type:disc"><strong>Functionality</strong>:<ul id="1567aacb-2d23-800a-ad3e-e25d1261221d" class="bulleted-list"><li style="list-style-type:circle">Analysts create custom rules defining specific characteristics (strings, headers, behaviors).</li></ul><ul id="1567aacb-2d23-8028-9c33-fc40058a296f" class="bulleted-list"><li style="list-style-type:circle">YARA scans files/processes for matches to these rules.</li></ul></li></ul><h3 id="1567aacb-2d23-80bb-88ef-f33a4ecd5ffa" class=""><strong>YARA Rule Example</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-80d9-81db-fe947dfaefa8" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">yara
+Copy code
+rule SANDBOXDETECTED
+{
+    meta:
+        description = &quot;Detects the sandbox by querying the registry key for Program Path&quot;
+        author = &quot;TryHackMe&quot;
+        date = &quot;2024-10-08&quot;
+        version = &quot;1.1&quot;
+
+    strings:
+        $cmd = &quot;Software\\Microsoft\\Windows\\CurrentVersion\&quot; /v ProgramFilesDir&quot; nocase
+
+    condition:
+        $cmd
+}
+
+</code></pre><ul id="1567aacb-2d23-80b0-9363-e3b50970757c" class="bulleted-list"><li style="list-style-type:disc"><strong>Components</strong>:<ul id="1567aacb-2d23-801d-a0aa-de57a5b7c199" class="bulleted-list"><li style="list-style-type:circle"><strong>Meta</strong>: Descriptive information about the rule.</li></ul><ul id="1567aacb-2d23-80df-9fc8-facdcdabc007" class="bulleted-list"><li style="list-style-type:circle"><strong>Strings</strong>: Defines patterns to search for (e.g., specific registry queries).</li></ul><ul id="1567aacb-2d23-80c5-bd1e-c72e7f42b812" class="bulleted-list"><li style="list-style-type:circle"><strong>Condition</strong>: Specifies when the rule should trigger (presence of <code>$cmd</code>).</li></ul></li></ul><h3 id="1567aacb-2d23-80ea-814d-de81564940bd" class=""><strong>YARA Rule Application</strong></h3><ul id="1567aacb-2d23-8061-a741-f82880acbc4c" class="bulleted-list"><li style="list-style-type:disc"><strong>Testing</strong>:<ul id="1567aacb-2d23-807b-a3c0-ed0c305c3349" class="bulleted-list"><li style="list-style-type:circle">Mayor Malware sets up a script to execute the YARA rule on new Sysmon events.</li></ul><ul id="1567aacb-2d23-80fe-88ab-f80446f038b4" class="bulleted-list"><li style="list-style-type:circle">Logs true positives in <code>C:\Tools\YaraMatches.txt</code>.</li></ul></li></ul><hr id="1567aacb-2d23-8026-b446-f690a2bcd30d"/><h2 id="1567aacb-2d23-801f-98f6-c61f2e84f9eb" class=""><strong>6. Running EDR and Malware</strong></h2><h3 id="1567aacb-2d23-8061-8b3f-fe3ad1cbbc50" class=""><strong>Executing the EDR Script</strong></h3><ul id="1567aacb-2d23-80cc-9511-f6a4c147cc4e" class="bulleted-list"><li style="list-style-type:disc"><strong>Steps</strong>:<ol type="1" id="1567aacb-2d23-8071-be74-eae2bc14b346" class="numbered-list" start="1"><li>Open PowerShell and navigate to <code>C:\Tools</code>.</li></ol><ol type="1" id="1567aacb-2d23-80cf-b507-d60cbc17286a" class="numbered-list" start="2"><li>Run the EDR script:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-807e-b81c-f7e8fd5f84da" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+PS C:\Tools&gt; .\JingleBells.ps1
+
+</code></pre></li></ol><ol type="1" id="1567aacb-2d23-800e-986c-cea6d1245a3d" class="numbered-list" start="3"><li>The script monitors Sysmon events and alerts on relevant activities.</li></ol></li></ul><h3 id="1567aacb-2d23-80ff-8cdf-d4036880756a" class=""><strong>Deploying the Malware</strong></h3><ul id="1567aacb-2d23-80ea-ab84-c6298fda5a7f" class="bulleted-list"><li style="list-style-type:disc"><strong>Steps</strong>:<ol type="1" id="1567aacb-2d23-8068-bb8c-f4cca9776fc2" class="numbered-list" start="1"><li>Navigate to <code>C:\Tools\Malware</code>.</li></ol><ol type="1" id="1567aacb-2d23-80fc-8a37-d14e30511666" class="numbered-list" start="2"><li>Execute <code>MerryChristmas.exe</code>.</li></ol><ol type="1" id="1567aacb-2d23-807a-90d2-e71be6cf158e" class="numbered-list" start="3"><li>If detection is successful, a popup with a flag (<code>THM{...}</code>) appears.</li></ol></li></ul><h3 id="1567aacb-2d23-80ac-b245-fd945b099f61" class=""><strong>Notes</strong></h3><ul id="1567aacb-2d23-8033-895e-cd7871508e7a" class="bulleted-list"><li style="list-style-type:disc"><strong>Popup Visibility</strong>:<ul id="1567aacb-2d23-8032-ae24-e82b260fa60b" class="bulleted-list"><li style="list-style-type:circle">If not immediately visible, hover over the PowerShell taskbar item to locate it.</li></ul></li></ul><ul id="1567aacb-2d23-8057-923a-c386655108ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Exiting EDR</strong>:<ul id="1567aacb-2d23-809d-b768-e27afc9f7c97" class="bulleted-list"><li style="list-style-type:circle">Press <code>Ctrl+C</code> in PowerShell to terminate the monitoring script.</li></ul></li></ul><hr id="1567aacb-2d23-80e0-8436-d8331c476f57"/><h2 id="1567aacb-2d23-80b2-b827-fb94e1f3e18e" class=""><strong>7. Enhancing Evasion Techniques</strong></h2><h3 id="1567aacb-2d23-80d0-8256-e49d4d5eae27" class=""><strong>Obfuscation Example in C</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-8008-82c3-f757e474f8c4" class="code"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">c
+Copy code
+void registryCheck() {
+    // Encoded PowerShell command to query the registry
+    const char *encodedCommand = &quot;RwBlAHQALQBJAHQAZQBtAFAAcgBvAHAAZQByAHQAeQAgAC0AUABhAHQAaAAgACIASABLAEwATQA6AFwAUwBvAGYAdAB3AGEAcgBlAFwATQBpAGMAcgBvAHMAbwBmAHQAXABXAGkAbgBkAG8AdwBzAFwAQwB1AHIAcgBlAG4AdABWAGUAcgBzAGkAbwBuACIAIAAtAE4AYQBtAGUAIABQAHIAbwBnAHIAYQBtAEYAaQBsAGUAcwBEAGkAcgA=&quot;;
+    // Prepare the PowerShell execution command
+    char command[512];
+    snprintf(command, sizeof(command), &quot;powershell -EncodedCommand %s&quot;, encodedCommand);
+
+    // Run the command
+    int result = system(command);
+
+    // Check for successful execution
+    if (result == 0) {
+        printf(&quot;Registry query executed successfully.\n&quot;);
+    } else {
+        fprintf(stderr, &quot;Failed to execute registry query.\n&quot;);
+    }
+}
+
+</code></pre><ul id="1567aacb-2d23-80c3-8aab-c4ff7f048315" class="bulleted-list"><li style="list-style-type:disc"><strong>Explanation</strong>:<ul id="1567aacb-2d23-80a1-9646-e54d67b4d2a0" class="bulleted-list"><li style="list-style-type:circle">Uses Base64-encoded PowerShell commands to obfuscate registry queries.</li></ul><ul id="1567aacb-2d23-8077-bfbf-ecd610a1fd2b" class="bulleted-list"><li style="list-style-type:circle">Enhances stealth by avoiding plain-text commands that YARA rules can detect.</li></ul></li></ul><h3 id="1567aacb-2d23-805d-9736-ce636b6b25f0" class=""><strong>Decoding the Encoded Command</strong></h3><ul id="1567aacb-2d23-802c-97ae-f7e4423e47ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Tool</strong>: CyberChef</li></ul><ul id="1567aacb-2d23-80aa-868a-f78fcdf67269" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>:<ul id="1567aacb-2d23-8082-9936-f5910c775d12" class="bulleted-list"><li style="list-style-type:circle">Decode Base64 strings to reveal the actual PowerShell commands.</li></ul></li></ul><hr id="1567aacb-2d23-808f-9a87-c3284b56be2a"/><h2 id="1567aacb-2d23-8078-b1b5-e1ebaa461d25" class=""><strong>8. Utilizing Floss for String Extraction</strong></h2><h3 id="1567aacb-2d23-8073-87de-ed4a0d97b6c7" class=""><strong>Understanding Floss</strong></h3><ul id="1567aacb-2d23-80dd-9bfe-faf241d34bdf" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>:<ul id="1567aacb-2d23-801f-83f8-ff7b80b05d79" class="bulleted-list"><li style="list-style-type:circle">Extracts obfuscated or hidden strings from malware binaries.</li></ul></li></ul><ul id="1567aacb-2d23-80c4-8a00-cfe8c4496869" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>:<ul id="1567aacb-2d23-8069-b321-e07985894ba0" class="bulleted-list"><li style="list-style-type:circle">More effective than traditional <code>strings</code> tool for malware analysis.</li></ul></li></ul><h3 id="1567aacb-2d23-8035-952a-c651443ea63f" class=""><strong>Running Floss</strong></h3><ul id="1567aacb-2d23-8023-a0f6-d891eb173838" class="bulleted-list"><li style="list-style-type:disc"><strong>Command</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-805b-a8d0-deb15235a5cc" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+PS C:\Tools\FLOSS&gt; floss.exe C:\Tools\Malware\MerryChristmas.exe | Out-File C:\tools\malstrings.txt
+
+</code></pre></li></ul><ul id="1567aacb-2d23-808a-bff5-c8b7d39557d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Process</strong>:<ol type="1" id="1567aacb-2d23-809b-a3f1-eafa3d4e4f31" class="numbered-list" start="1"><li><strong>floss.exe</strong> scans <code>MerryChristmas.exe</code> for embedded strings.</li></ol><ol type="1" id="1567aacb-2d23-807a-b219-c767ae16e649" class="numbered-list" start="2"><li><strong>Output Redirection</strong>:<ul id="1567aacb-2d23-8020-9ceb-c6ca57560f50" class="bulleted-list"><li style="list-style-type:disc"><code>|</code> pipes the output to <code>Out-File</code>, saving results to <code>malstrings.txt</code>.</li></ul></li></ol><ol type="1" id="1567aacb-2d23-8061-bb0a-cb3333e730ad" class="numbered-list" start="3"><li><strong>Post-Processing</strong>:<ul id="1567aacb-2d23-80e5-9460-f20559707327" class="bulleted-list"><li style="list-style-type:disc">Open <code>malstrings.txt</code>.</li></ul><ul id="1567aacb-2d23-808e-bbff-f9b740f08f87" class="bulleted-list"><li style="list-style-type:disc">Search for &quot;Mayor Malware&quot; to find the flag (<code>THM{...}</code>).</li></ul></li></ol></li></ul><h3 id="1567aacb-2d23-807e-a669-f49e66d19671" class=""><strong>Command Breakdown</strong></h3><ul id="1567aacb-2d23-80ba-81df-dbab1c510854" class="bulleted-list"><li style="list-style-type:disc"><strong>floss.exe C:\Tools\Malware\MerryChristmas.exe</strong>:<ul id="1567aacb-2d23-80b1-bce8-c03549f5350c" class="bulleted-list"><li style="list-style-type:circle">Scans the specified executable for hidden strings.</li></ul></li></ul><ul id="1567aacb-2d23-805a-8828-d70dda779e45" class="bulleted-list"><li style="list-style-type:disc"><strong>| (Pipe)</strong>:<ul id="1567aacb-2d23-8087-aa8a-e1ccfffe5cd7" class="bulleted-list"><li style="list-style-type:circle">Directs the output of <code>floss.exe</code> to the next command.</li></ul></li></ul><ul id="1567aacb-2d23-80f9-83ec-e709a9825c26" class="bulleted-list"><li style="list-style-type:disc"><strong>Out-File C:\tools\malstrings.txt</strong>:<ul id="1567aacb-2d23-808c-909a-e8b9398f71b1" class="bulleted-list"><li style="list-style-type:circle">Saves the extracted strings to <code>malstrings.txt</code>.</li></ul></li></ul><hr id="1567aacb-2d23-8037-b34a-ca580d1f0b2b"/><h2 id="1567aacb-2d23-8002-82ff-e64e055ee4c2" class=""><strong>9. Applying YARA Rules on Sysmon Logs</strong></h2><h3 id="1567aacb-2d23-80f5-b686-ed72cd8f48e5" class=""><strong>Challenges for Malware</strong></h3><ul id="1567aacb-2d23-80fa-a2e5-d606926b756f" class="bulleted-list"><li style="list-style-type:disc">YARA rules are effective against Mayor Malware&#x27;s evasion techniques.</li></ul><h3 id="1567aacb-2d23-80ae-a43d-e5d6b25f8a48" class=""><strong>Sysmon Overview</strong></h3><ul id="1567aacb-2d23-80c9-b800-fc228bdbb25c" class="bulleted-list"><li style="list-style-type:disc"><strong>Tool</strong>: Part of Microsoft&#x27;s Sysinternals suite.</li></ul><ul id="1567aacb-2d23-805d-bd86-f36b6efd6090" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>:<ul id="1567aacb-2d23-80af-8cfc-f83d62776a1a" class="bulleted-list"><li style="list-style-type:circle">Monitors and logs system activity (process creation, network connections, file changes).</li></ul><ul id="1567aacb-2d23-804e-a0f0-fbf4563bf000" class="bulleted-list"><li style="list-style-type:circle">Provides detailed event data useful for tracing malware behavior.</li></ul></li></ul><h3 id="1567aacb-2d23-8093-8ec3-e7cbb260415e" class=""><strong>Custom YARA Rule Application</strong></h3><ul id="1567aacb-2d23-8017-9ee3-d3dc180aeb2a" class="bulleted-list"><li style="list-style-type:disc"><strong>Objective</strong>:<ul id="1567aacb-2d23-80f8-9535-eaab0b31e940" class="bulleted-list"><li style="list-style-type:circle">Detect malware activities by scanning Sysmon logs for specific event IDs.</li></ul></li></ul><h3 id="1567aacb-2d23-80f1-b44f-ff5e97df7c8a" class=""><strong>Procedure</strong></h3><ol type="1" id="1567aacb-2d23-80a5-a31c-ee6f1672e050" class="numbered-list" start="1"><li><strong>Retrieve YARA Match Logs</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-80dd-967a-f05aab3d6e3d" class="code"><code class="language-PowerShell" style="white-space:pre-wrap;word-break:break-all">powershell
+Copy code
+PS C:\Tools&gt; get-content C:\Tools\YaraMatches.txt
+
+</code></pre><ul id="1567aacb-2d23-80d0-8cc0-c8b2f320e52d" class="bulleted-list"><li style="list-style-type:disc">Example Output:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-8099-97d8-ed36dab71e83" class="code"><code class="language-YAML" style="white-space:pre-wrap;word-break:break-all">yaml
+Copy code
+Event Time: 10/11/2024 15:06:39
+Event ID: 1
+Event Record ID: 96517
+Command Line: reg query &quot;HKLM\Software\Microsoft\Windows\CurrentVersion&quot; /v ProgramFilesDir
+YARA Result: DetectShutdownTimeQuery C:\Users\Administrator\AppData\Local\Temp\2\tmp8D61.tmp
+
+</code></pre></li></ul></li></ol><ol type="1" id="1567aacb-2d23-8061-904c-d490f5b2b76c" class="numbered-list" start="2"><li><strong>Note Event Record ID</strong>:<ul id="1567aacb-2d23-8042-a700-dac77bf0bc04" class="bulleted-list"><li style="list-style-type:disc">Example: <code>96517</code></li></ul></li></ol><ol type="1" id="1567aacb-2d23-80ea-ade2-f5a5eb12049b" class="numbered-list" start="3"><li><strong>Filter Sysmon Logs in Event Viewer</strong>:<ul id="1567aacb-2d23-808a-9107-e484e2830caf" class="bulleted-list"><li style="list-style-type:disc"><strong>Navigate</strong>:<ul id="1567aacb-2d23-804f-95f7-f61c151ff0a3" class="bulleted-list"><li style="list-style-type:circle">Open <strong>Windows Event Viewer</strong>.</li></ul><ul id="1567aacb-2d23-804e-b751-f980300a8f5f" class="bulleted-list"><li style="list-style-type:circle">Go to <code>Applications and Services Logs</code> → <code>Microsoft</code> → <code>Windows</code> → <code>Sysmon</code> → <code>Operational</code>.</li></ul></li></ul><ul id="1567aacb-2d23-80f8-80a9-dbbfb8a27d62" class="bulleted-list"><li style="list-style-type:disc"><strong>Apply Filter</strong>:<ol type="1" id="1567aacb-2d23-8062-8b23-d4bd8bec028f" class="numbered-list" start="1"><li>Click on <strong>Filter Current Log</strong>.</li></ol><ol type="1" id="1567aacb-2d23-8054-864c-de150d7d0f50" class="numbered-list" start="2"><li>Select the <strong>XML</strong> tab.</li></ol><ol type="1" id="1567aacb-2d23-805a-a9e0-f180490a0807" class="numbered-list" start="3"><li>Check <strong>Edit query manually</strong> and confirm.</li></ol><ol type="1" id="1567aacb-2d23-80f9-a955-da1fb378b590" class="numbered-list" start="4"><li>Insert the custom filter:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1567aacb-2d23-8043-9a85-c100d2390656" class="code"><code class="language-XML" style="white-space:pre-wrap;word-break:break-all">xml
+Copy code
+&lt;QueryList&gt;
+  &lt;Query Id=&quot;0&quot; Path=&quot;Microsoft-Windows-Sysmon/Operational&quot;&gt;
+    &lt;Select Path=&quot;Microsoft-Windows-Sysmon/Operational&quot;&gt;
+      *[System[(EventRecordID=&quot;96517&quot;)]]
+    &lt;/Select&gt;
+  &lt;/Query&gt;
+&lt;/QueryList&gt;
+
+</code></pre></li></ol><ol type="1" id="1567aacb-2d23-80ba-9a15-d20e80da48a9" class="numbered-list" start="5"><li>Replace <code>96517</code> with the noted Event Record ID.</li></ol><ol type="1" id="1567aacb-2d23-8053-b8a2-f1b90ec6fd0e" class="numbered-list" start="6"><li>Click <strong>OK</strong> to apply the filter.</li></ol></li></ul></li></ol><ol type="1" id="1567aacb-2d23-80f0-b3f0-eebc9d3b81da" class="numbered-list" start="4"><li><strong>Analyze Event Details</strong>:<ul id="1567aacb-2d23-80e1-a921-e57a4cddd83c" class="bulleted-list"><li style="list-style-type:disc"><strong>Details Tab</strong>:<ul id="1567aacb-2d23-805f-b002-c18c1a84abb5" class="bulleted-list"><li style="list-style-type:circle"><strong>ParentImage</strong>: Identifies the parent process (<code>MerryChristmas.exe</code>).</li></ul><ul id="1567aacb-2d23-8087-a26a-d4ee6358cff0" class="bulleted-list"><li style="list-style-type:circle"><strong>ParentProcessId &amp; ProcessId</strong>: Useful for tracking related events.</li></ul><ul id="1567aacb-2d23-80f2-aacb-f5e4ee0cddea" class="bulleted-list"><li style="list-style-type:circle"><strong>User</strong>: Determines privileges used (e.g., hidden accounts).</li></ul><ul id="1567aacb-2d23-80c7-bbab-f8be32c2725e" class="bulleted-list"><li style="list-style-type:circle"><strong>CommandLine</strong>: Details of the executed command.</li></ul><ul id="1567aacb-2d23-80e7-80d5-e2beb0be605b" class="bulleted-list"><li style="list-style-type:circle"><strong>UtcTime</strong>: Time frame for the malware&#x27;s operation.</li></ul></li></ul></li></ol><hr id="1567aacb-2d23-804a-8a50-d1ac68f6c264"/><h2 id="1567aacb-2d23-805b-9cbe-f238a953edb5" class=""><strong>10. Conclusion and Takeaways</strong></h2><h3 id="1567aacb-2d23-80a3-acb9-eabdfc2b1c57" class=""><strong>Mayor Malware&#x27;s Realization</strong></h3><ul id="1567aacb-2d23-80fa-af8a-e78ae6d903ce" class="bulleted-list"><li style="list-style-type:disc">Despite advanced evasion techniques, existing tools and vigilant analysts can detect and mitigate his malware.</li></ul><ul id="1567aacb-2d23-80fd-9de6-d54a1ff38731" class="bulleted-list"><li style="list-style-type:disc"><strong>Tools and Techniques Identified</strong>:<ul id="1567aacb-2d23-808f-852f-ea3a58aa34a8" class="bulleted-list"><li style="list-style-type:circle"><strong>YARA Rules</strong>: Effective in pattern matching and detection.</li></ul><ul id="1567aacb-2d23-8047-9506-de86bbac7133" class="bulleted-list"><li style="list-style-type:circle"><strong>Sysmon</strong>: Provides detailed logging for monitoring activities.</li></ul><ul id="1567aacb-2d23-80dc-b64b-fd85f4f9a492" class="bulleted-list"><li style="list-style-type:circle"><strong>Floss</strong>: Capable of extracting obfuscated strings from binaries.</li></ul></li></ul><h3 id="1567aacb-2d23-807d-bfa4-ed208a6dd0de" class=""><strong>Future Plans</strong></h3><ul id="1567aacb-2d23-8013-9704-d0724b223440" class="bulleted-list"><li style="list-style-type:disc"><strong>Continuous Improvement</strong>:<ul id="1567aacb-2d23-80f9-aeae-cc14c793acfa" class="bulleted-list"><li style="list-style-type:circle">Mayor Malware intends to refine his malware to bypass detection tools.</li></ul><ul id="1567aacb-2d23-80bc-8cdf-e7e4718eac30" class="bulleted-list"><li style="list-style-type:circle">Focus on studying and adapting to evade YARA rules, Sysmon logs, and other detection mechanisms.</li></ul></li></ul><h3 id="1567aacb-2d23-8013-a2b1-c73a06970ca4" class=""><strong>Final Stanzas</strong></h3><ul id="1567aacb-2d23-802e-8252-cce83e5fb6cd" class="bulleted-list"><li style="list-style-type:disc"><strong>Poetic Reflection</strong>:<ul id="1567aacb-2d23-80f9-834f-fe9b0986f141" class="bulleted-list"><li style="list-style-type:circle">Highlights the ongoing battle between malware developers and cybersecurity defenders.</li></ul><ul id="1567aacb-2d23-80ac-bf80-f863a6668720" class="bulleted-list"><li style="list-style-type:circle">Emphasizes the need for continuous adaptation and vigilance in cybersecurity.</li></ul></li></ul><hr id="1567aacb-2d23-801b-bed8-ddc4d771f0d5"/><h2 id="1567aacb-2d23-807f-8afa-cbfcd36caace" class=""><strong>Additional Resources</strong></h2><ul id="1567aacb-2d23-8011-8600-d1e6945c65bb" class="bulleted-list"><li style="list-style-type:disc"><strong>CyberChef</strong>: CyberChef Website</li></ul><ul id="1567aacb-2d23-8085-b0fb-f357646dcbc5" class="bulleted-list"><li style="list-style-type:disc"><strong>Floss Tool</strong>: <a href="https://github.com/fireeye/capa">Floss GitHub Repository</a></li></ul><ul id="1567aacb-2d23-80ba-972f-e90b431ce7c9" class="bulleted-list"><li style="list-style-type:disc"><strong>Sysmon Documentation</strong>: <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon">Microsoft Sysmon</a></li></ul><ul id="1567aacb-2d23-8029-aef9-c5a7ca4594bd" class="bulleted-list"><li style="list-style-type:disc"><strong>YARA Documentation</strong>: <a href="https://yara.readthedocs.io/en/stable/">YARA Rules</a></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

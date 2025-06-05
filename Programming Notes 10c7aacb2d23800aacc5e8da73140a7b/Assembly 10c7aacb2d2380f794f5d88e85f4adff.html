@@ -1,0 +1,705 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assembly</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="10c7aacb-2d23-80f7-94f5-d88e85f4adff" class="page sans"><header><h1 class="page-title">Assembly</h1><p class="page-description"></p></header><div class="page-body"><p id="10c7aacb-2d23-8066-b097-ce498e8f0d32" class="">3 types of data:</p><p id="10c7aacb-2d23-8096-a095-ee0869f2b200" class="">Data we directly give it as part of the instruction</p><p id="10c7aacb-2d23-8066-87e0-f8a16d62e5d9" class="">Data it is actively working on</p><p id="10c7aacb-2d23-80ab-874c-cf7506d7e927" class="">Data in storage</p><p id="10c7aacb-2d23-80be-81ad-f24574337e8a" class="">Think of cash: cash we directly give to someone, cash that is being counted, and cash that is in storage</p><p id="10c7aacb-2d23-8017-a0f8-d5f809197849" class=""><strong>add </strong>data</p><p id="10c7aacb-2d23-8030-8030-e35d9fc64826" class=""><strong>sub</strong>tract data</p><p id="10c7aacb-2d23-80e5-b75a-e326bd6f35bb" class=""><strong>mul</strong>tiply data</p><p id="10c7aacb-2d23-80cc-bebf-f642ccd9e21a" class=""><strong>div</strong>ide some data</p><p id="10c7aacb-2d23-804d-89c7-dacf2197624d" class=""><strong>mov</strong>e some data into or out of storage</p><p id="10c7aacb-2d23-8089-a241-cced0e0e3be9" class=""><strong>c</strong>o<strong>mp</strong>are two pieces of data together</p><p id="10c7aacb-2d23-8041-a885-f58678fed641" class=""><strong>test </strong>some other properties of data</p><p id="10c7aacb-2d23-8081-a409-f95a59841f3b" class="">Assembly is a direct translation of binary code, so it is very CPU dependent. Different architectures have its own variant</p><p id="10c7aacb-2d23-8010-b310-d84f2c1d2f8e" class=""><strong>x86 vs </strong>arm for instance</p><h2 id="10c7aacb-2d23-8039-9ac7-efc3a9ae78b4" class="">Why do computer speak binary?<br/><br/></h2><p id="10c7aacb-2d23-8048-8af0-c180bdd399a2" class="">Logic gates are easier to build with base 2. On and off can be mapped to 1 and 0. <br/><br/></p><p id="10d7aacb-2d23-8067-8d7b-eb532f0c504b" class="">How is octal and hexadecimal used?<br/>Humans see hexadecimal, computers see binary<br/><br/></p><p id="10d7aacb-2d23-804f-ab20-eaff192f8286" class="">A grouping of bits is a byte (8-bits)</p><p id="10d7aacb-2d23-804c-a809-d108bc703d97" class="">Expressing Numbers:</p><p id="10d7aacb-2d23-8088-b66b-ce211c72895f" class="">A 64-bit machine can reason about 64 bits at a time.</p><p id="10d7aacb-2d23-80d7-a0be-f890d41a0706" class="">Minimum: 0b0 = 0 = 0x0 </p><p id="10d7aacb-2d23-80db-9a16-e1db6dbd830f" class="">What happens if you add 1 to 0xffffffffffffffff?</p><p id="10d7aacb-2d23-80ff-9099-d4d833a09320" class="">Integer Overflow = 0x10000000000000000</p><p id="10d7aacb-2d23-8087-b020-f1b7c5a50d3f" class="">The extra bit gets put in common <em>carry bit</em> storage by the CPU and the result of the computation becomes 0</p><p id="10d7aacb-2d23-8039-a254-d1e13f1f30b3" class="">The inverse happens if we subtract 1 from 0</p><p id="10d7aacb-2d23-80f5-bc07-f47591b7691b" class="">How to express negative numbers?<br/>8 bit two’s complement<br/></p><p id="10d7aacb-2d23-8089-b402-e66844066e45" class="">Take a number, 5 in binary: 0101</p><p id="10d7aacb-2d23-8056-92e1-d7fea846b708" class="">Flip the bits: 1010</p><p id="10d7aacb-2d23-80b3-a2db-cf240a5f4e37" class="">and add one: 1011</p><p id="10e7aacb-2d23-80e7-a6cc-cff1d90c3a42" class="">The Need for Registers:<br/>CPUs need to be fast, and CPUs need rapid access to data they’re working on. This is done via the Registers<br/></p><p id="10e7aacb-2d23-80b3-9314-c340a42ad98a" class="">Registers sit inside of the CPU. They are very fast, temporary stores for data. <br/>For x86: eax, ecx, edx, ebx, esp, ebp, esi, edi<br/></p><p id="10e7aacb-2d23-80ad-bfcf-ccd8e43a4aec" class="">amd64: rax, rcx, rdx, rbx, rsp, rbp, rsi, rdi, r8, r9,r10,r11,r12,r13,r14,r15</p><p id="10e7aacb-2d23-8091-8fdc-d3a77829c9d0" class="">Registers are typically the same size as the word width of the architecture ex: 64 bit architecture will have 64 bit registers</p><p id="10e7aacb-2d23-80c1-bbd8-c706f360fc2a" class=""><br/>Partial Register Access:<br/><br/></p><figure id="10e7aacb-2d23-8018-9843-e06e8f57e960" class="image"><a href="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_192732.png"><img style="width:707.9833374023438px" src="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_192732.png"/></a></figure><p id="10e7aacb-2d23-80b5-81fa-ea28e7883e68" class="">Putting data to the register:<br/><br/><strong>mov</strong></p><p id="10e7aacb-2d23-8090-bcf7-d137b2adcbf6" class="">Ex:</p><p id="10e7aacb-2d23-806c-bb8e-dd98a9ff8e04" class=""><strong>mov rax, 0x539</strong></p><p id="10e7aacb-2d23-80fb-873f-f19a72a6a357" class=""><strong>move </strong>0x539 into rax</p><p id="10e7aacb-2d23-8051-bc87-ccc14f428570" class=""><strong>mov rbx, 1337</strong></p><p id="10e7aacb-2d23-8074-a878-d034d6fa504a" class="">move 1337 into rbx</p><p id="10e7aacb-2d23-80e0-a3ab-e799f2c106c2" class="">Flow of data goes from right to left</p><p id="10e7aacb-2d23-8095-9e8d-f439cd7651fe" class="">You can also load data into partial registers</p><p id="10e7aacb-2d23-8053-8176-d7cb1b97556d" class="">mov ah, 0x5</p><p id="10e7aacb-2d23-80ba-8b86-eb2926d66a47" class="">mov al, 0x39</p><p id="10e7aacb-2d23-80d1-88d9-f77a3062326b" class="">If you write to a 32-bit partial (eax for example), then it zeroes out the rest of the register</p><p id="10e7aacb-2d23-80ce-886d-ca722f289c9e" class="">mov rax, 0xfffffffff</p><p id="10e7aacb-2d23-80b3-9156-ce39d8fbecd4" class="">mov eax, 0x539</p><p id="10e7aacb-2d23-8044-9f28-e3f4b190a001" class="">sets rax to 0x000000539</p><p id="10e7aacb-2d23-80a8-a38c-f42f2ffe2ec9" class="">You can mov data around. (mov copies, does not actually move the data)</p><p id="10e7aacb-2d23-80e2-ba1e-c1f2ed9645e1" class="">mov rax, 0x539</p><p id="10e7aacb-2d23-805e-a427-cac3d492ae9c" class="">mov rbx, rax</p><p id="10e7aacb-2d23-804a-903f-efa3734025ee" class="">Extending Data</p><p id="10e7aacb-2d23-80ad-9154-fd258daa2498" class="">mov eax, -1</p><p id="10e7aacb-2d23-808e-931a-f550363eb633" class="">eax is now 0xffffffff</p><p id="10e7aacb-2d23-804b-aa35-cde7bc50e9a7" class="">rax is now 0x00000000ffffffff</p><p id="10e7aacb-2d23-807d-9bd5-fd12d6e0956f" class="">
+</p><p id="10e7aacb-2d23-80f0-814f-f5c8e9a27292" class="">movsx rax, eax</p><p id="10e7aacb-2d23-8003-9fc2-d6add495b4c1" class="">movsx does a sign-extending move, preserving the Two’s Complement value</p><p id="10e7aacb-2d23-8062-8a09-e847ed0c7235" class="">mov eax, -1</p><figure id="10e7aacb-2d23-8097-b1b6-f8235e3170cd" class="image"><a href="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_193545.png"><img style="width:708px" src="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_193545.png"/></a></figure><h2 id="10e7aacb-2d23-8012-8f28-f2a2cb73e615" class="">Memory</h2><p id="10e7aacb-2d23-801a-8b77-f2bdaba817c2" class="">Registers are expensive and we have a limited number of them. We need a place to store lots of data and have fairly fast access.</p><p id="10e7aacb-2d23-80c7-acb2-e99b721ee42c" class="">This place is called memory.</p><p id="10e7aacb-2d23-8028-bb9d-caa71a0a4f8e" class="">CPU has fastest access to registers.</p><h3 id="10e7aacb-2d23-807f-a7c5-db11c0c88617" class=""><strong>Cache:</strong></h3><ul id="10e7aacb-2d23-800a-81d3-debdd1424ec9" class="bulleted-list"><li style="list-style-type:disc"><strong>Cache</strong> is a small, fast memory located closer to the CPU than main memory (RAM). It stores frequently accessed data to reduce the time the CPU spends waiting to fetch data from slower memory.<ul id="10e7aacb-2d23-801a-81be-f29769f7c703" class="bulleted-list"><li style="list-style-type:circle"><strong>L1 Cache</strong>: The fastest and smallest cache, located directly inside the CPU core.</li></ul><ul id="10e7aacb-2d23-8059-9fa0-d7606f9ec12e" class="bulleted-list"><li style="list-style-type:circle"><strong>L2 Cache</strong>: Larger but slower than L1, located near the CPU.</li></ul><ul id="10e7aacb-2d23-80ea-a16f-c7d49968d48f" class="bulleted-list"><li style="list-style-type:circle"><strong>L3 Cache</strong>: Even larger and slower, shared across multiple CPU cores in modern processors.</li></ul></li></ul><ul id="10e7aacb-2d23-8064-adc1-f28d45062998" class="bulleted-list"><li style="list-style-type:disc">Cache improves the overall performance by making sure the most needed data is quickly available to the CPU.</li></ul><p id="10e7aacb-2d23-80cf-9e66-d7dfca15e14b" class="">Each process memory is addressed linearly. From 0x10000 to 0x7ffffffff</p><p id="10e7aacb-2d23-8025-a5e7-f37621646c70" class="">It’s not all real, cause it is virtual!</p><p id="10e7aacb-2d23-80a4-a1be-c99a485ff73e" class="">
+</p><p id="10e7aacb-2d23-80d5-96d7-fccd39e736eb" class="">Memory (stack)<br/>The stack has several uses. Registers and immediates can be pushed onto the stack<br/></p><p id="10e7aacb-2d23-8071-b94b-ea2a0baf7081" class="">mov rax, 0xc001ca75</p><p id="10e7aacb-2d23-8012-8315-caef2bd5ad8e" class="">push rax - copies the value of rax onto the stack</p><p id="10e7aacb-2d23-80a5-a664-f4c29f12da1c" class="">push 0xb0bacafe</p><p id="10e7aacb-2d23-80f7-91f7-f4d26e491757" class="">push rax</p><p id="10e7aacb-2d23-8098-baa8-e1556e4a9651" class="">Stack looks like:<br/>c001ca75<br/></p><p id="10e7aacb-2d23-80a5-b622-d0ec2544f4fb" class="">0xb0bacafe</p><p id="10e7aacb-2d23-801c-bca9-c2bf85707c68" class="">c001ca75</p><p id="10e7aacb-2d23-8016-8213-e808c563a41f" class="">
+</p><p id="10e7aacb-2d23-801d-b246-ec4cdfe0fffb" class="">pop rbx - sets rbx to 0xc001ca75</p><p id="10e7aacb-2d23-806f-892b-eef5b13f0f72" class="">pop rcx - sets rcx to 0xb0bacafe</p><p id="10e7aacb-2d23-8094-96cd-f56ab622a619" class="">The CPU knows where the stack is because its address is stored in rsp</p><p id="10e7aacb-2d23-8041-85b0-f3f26c43e19a" class="">Stack grows backwards toward smaller memory adresses</p><p id="10e7aacb-2d23-8059-96f2-c04228d174c4" class="">As we push it decreases, pop increases</p><p id="10e7aacb-2d23-807a-ba18-cb758edca0dc" class="">Accessing Memory</p><p id="10e7aacb-2d23-800a-a02a-f29d9a703f3a" class="">You can also move data between registers and memroy with mov</p><p id="10e7aacb-2d23-8024-9f25-ebf2955d612d" class="">This loads the 64-bit value stored at memory address 0x12345 into rbx</p><p id="10e7aacb-2d23-8070-acdb-e0ff765bd38b" class="">mov rax, 0x12345</p><p id="10e7aacb-2d23-8015-9c8d-dd8f733a6b7c" class="">mov rbx, [rax]</p><p id="10f7aacb-2d23-802b-8a7d-d30b697623d0" class="">You can use partials to store/load fewer bits</p><p id="10f7aacb-2d23-8022-b530-f718e9aa54e4" class="">Load 64 bits from addr 0x12345 and store the lower 32 bits to addr 0x133337</p><p id="10f7aacb-2d23-80eb-b686-efbb336e9729" class="">mov rax, 0x12345</p><p id="10f7aacb-2d23-80c1-b7a3-d0393b5dffac" class="">mov rbx, [rax]</p><p id="10f7aacb-2d23-805c-831d-e1ecbea790cf" class="">mov rax, 0x133337</p><p id="10f7aacb-2d23-8021-a7af-f06a153d5a5d" class="">mov [rax], ebx</p><p id="10f7aacb-2d23-8032-8e6a-ef5b5075c9c1" class="">On most modern systems data is stored backwards in little <a href="https://en.wikipedia.org/wiki/Endianness">endian</a>.</p><figure id="10f7aacb-2d23-805f-bb3c-f53a1d671d2f" class="image"><a href="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_200415.png"><img style="width:707.9833374023438px" src="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_200415.png"/></a></figure><figure id="10f7aacb-2d23-804d-87da-df89c071944b" class="image"><a href="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_200810.png"><img style="width:708px" src="Assembly%2010c7aacb2d2380f794f5d88e85f4adff/Screenshot_2024-09-27_200810.png"/></a></figure><p id="10f7aacb-2d23-807b-bb8e-fdce351361e6" class="">For the above, you set rax to 0, then do some calculations to get the address at tthe stack, and then to the right of the previous one.</p><h2 id="10f7aacb-2d23-802f-9bc3-d742fe27af99" class="">Control Flow</h2><p id="10f7aacb-2d23-80cd-8494-c5ef09526a5f" class="">What to Execute<br/>First lets look at how computers execute instructions<br/></p><p id="10f7aacb-2d23-80b3-bde5-fbf5ce25e653" class="">Recall: Assembly instructions are direct translations of binary code.</p><p id="10f7aacb-2d23-8043-9726-cc773b5533e9" class="">This binary code lives in memory.</p><h1 id="1a07aacb-2d23-8076-81ed-e9bc3ca9ba4b" class="">YouTube Video</h1><p id="1a07aacb-2d23-8049-a6c2-cf5132cf01a7" class="">Every C program consists of the Heap, Stack, Registers, and Instructions</p><p id="1a07aacb-2d23-8043-98bb-f72fbd7c9d7a" class="">The Heap is designed for manual memory allocation - in C, this is done by functions like malloc or calloc</p><p id="1a07aacb-2d23-8020-8c30-c60a5c764ab2" class="">Registers - small storage areas in processor that can store addresses, values, or anything that can be represented in 8 bytes or less</p><p id="1a07aacb-2d23-8057-b9ad-c7c7e5340ad7" class="">x86 architecture there are 6 General purpose registers:<div class="indented"><p id="1a07aacb-2d23-80c4-91d6-de33a454ea94" class="">eax, ebx, ecx, edx, esi, edi</p></div></p><p id="1a07aacb-2d23-803f-acfe-d2dbcfd511d4" class="">Three registers for reserved:<div class="indented"><p id="1a07aacb-2d23-80c6-947f-fe8a53d91eb4" class="">ebp, esp, eip</p></div></p><p id="1a07aacb-2d23-808c-a894-fbe312ac7ea4" class="">The stack - a data structure that consists of two operations:<div class="indented"><p id="1a07aacb-2d23-804a-8462-db19b8409e69" class="">Push - puts an element at the top of the stack</p><p id="1a07aacb-2d23-806e-b8e6-f9fbb7ed9f5e" class="">Pop - removes the top element of the stack</p></div></p><p id="1a07aacb-2d23-805a-8d0b-d224d7b2c1cf" class="">Each element has a stack address - elements higher on the stack have a lower address than those lower on the stack</p><p id="1a07aacb-2d23-80f3-9628-eaa3df4b718d" class="">When a function is called, it is given a Stack Frame<div class="indented"><p id="1a07aacb-2d23-8078-9357-e37703bd1561" class="">EBP register: base pointer, contains address of the base of the current stack frame</p><p id="1a07aacb-2d23-80b2-b992-d028b1f652e7" class="">ESP register: stack pointer, contains address of the top element of the current stack frame</p></div></p><p id="1a07aacb-2d23-80d9-9855-e869b85f3b3b" class="">
+</p><p id="1a07aacb-2d23-8056-955e-cc2e3ab2d842" class="">Example:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a07aacb-2d23-808e-82c6-fd66c6fd86aa" class="code"><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void func(int x) {
+	int a = 0;
+	int b = x;
+}
+
+int main() {
+	func(10);
+	
+	return 0;
+}</code></pre><p id="1a07aacb-2d23-806d-9b24-fe3f1930f097" class="">First, the value of the argument is pushed on the stack (10 in this case). Then, the return address of the function is pushed onto the stack. The return address is the 4 byte address of the instruction that will be executed as soon as the function has gone out of scope.</p><p id="1a07aacb-2d23-80ac-8a80-c40b680e2242" class="">Then, the base pointer (EBP) is pushed on the stack. Then the stack pointer is given the address of the base pointer. The stack pointer is decremented to make room for the local variables. Everything between base pointer and stack pointer is the stack frame. </p><p id="1a07aacb-2d23-80ba-96f2-e7c1e9310e5a" class="">Since the first variable is an int with value of 0, the address of <em>a </em>is EBP - 4 bytes (an integer is 4 bytes) </p><p id="1a07aacb-2d23-8060-a15e-f847e192a283" class="">For the second variable, the the functions argument is 8 bytes above the EBP. It cannot be moved directly to the stack frame. It is copied to a general purpose register. Then, it is moved 4 bytes below the first variable, 8 bytes below the base pointer.</p><p id="1a07aacb-2d23-805b-84f2-fa4c36b5c637" class="">
+</p><p id="1a07aacb-2d23-802f-83c1-c7c7feb0ff99" class="">Instruction Format of assembly</p><p id="1a07aacb-2d23-8084-9622-faf2cf70602a" class="">operation arg1, arg2</p><p id="1a07aacb-2d23-800e-af40-c88be0b54711" class="">
+</p><p id="1a07aacb-2d23-80c9-b8da-f011d72e82f6" class="">mov arg1, arg2 - copies the value of second arg into first arg</p><p id="1a07aacb-2d23-80f6-9299-e971f7d6a42b" class="">
+</p><p id="1a07aacb-2d23-807a-b318-e6f303e2383f" class="">
+</p><p id="1a07aacb-2d23-8018-a2ad-d2be359af8f1" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

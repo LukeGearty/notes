@@ -1,0 +1,705 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1b97aacb-2d23-8010-ab2f-e4a4d006bf52" class="page sans"><header><h1 class="page-title">Questions</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1b97aacb-2d23-807e-964d-e6f2bfbbdba1" class="">Section 4.1</h1><p id="1bc7aacb-2d23-80eb-8fd6-d6ac02204b9d" class=""><strong>R1.  Let’s review some of the terminology used in this textbook. Recall that the name of a transport-layer packet is </strong><em><strong>segment </strong></em><strong>and that the name of a link-layer packet is </strong><em><strong>frame</strong></em><strong>. What is the name of a network-layer packet? Recall that both routers and link-layer switches are called </strong><em><strong>packet switches</strong></em><strong>. What is the fundamental difference between a router and link-layer switch?</strong></p><p id="1bc7aacb-2d23-80b9-b808-eebea62d4a1e" class="">A network-layer packet is called a <em>datagram. </em>The fundamental difference between a router and a switch is that routers are used to communicate between networks, while switches are used within networks. Routers use IP addresses, link-layer switches use MAC addresses.<br/><br/></p><p id="1bc7aacb-2d23-8056-a6c5-e6c9a4a78ee6" class=""><br/><br/><strong>R2.  We noted that network layer functionality can be broadly divided into data plane functionality and control plane functionality. What are the main functions of the data plane? Of the control plane?</strong></p><p id="1bc7aacb-2d23-80fe-97e3-d7a2ffaf8bef" class="">Data Plane: Handles the local action of forwarding packets from input ports to output ports</p><p id="1bc7aacb-2d23-8058-82f4-ce78a24d85b2" class="">Control Plane: handles the global action of routing.</p><p id="1bc7aacb-2d23-800b-90dc-dd17fb57bf1c" class="">
+</p><p id="1bc7aacb-2d23-809c-8dc8-e8958d5860d8" class=""><strong>R3.  We made a distinction between the forwarding function and the routing function performed in the network layer. What are the key differences between routing and forwarding?<br/><br/></strong>The key distinctions between forwarding and routing is that forwarding is a local action concerned with getting the packet from input to output, while routing is a global action concerned from getting the packet from source to destination.</p><p id="1b97aacb-2d23-809f-808f-d1fc5cfa59c1" class="">
+</p><p id="1b97aacb-2d23-80be-935b-cccbe81e3023" class=""><strong>R4.  What is the role of the forwarding table within a router?<br/><br/></strong>The forwarding table is used to determine which packets go out which output ports. </p><p id="1bc7aacb-2d23-8036-9e9c-c14abeadd4c8" class="">
+</p><p id="1bc7aacb-2d23-8025-95a5-e74b457f6100" class=""><strong>R5.  We said that a network layer’s service model “defines the characteristics of end-to-end transport of packets between sending and receiving hosts.” What is the service model of the Internet’s network layer? What guarantees are made by the Internet’s service model regarding the host-to-host delivery of datagrams?</strong></p><p id="1bc7aacb-2d23-803d-854d-c520aceaccfc" class="">The service model of the Internet’s Network Layer is <strong>best-effort service -</strong> it makes the best attempt, but there are no guarantees regarding delivery, bandwidth, security, etc. <br/><br/></p><h1 id="1b97aacb-2d23-80f0-ad26-d9e89ae6c0f2" class="">Section 4.2</h1><p id="1bd7aacb-2d23-80d2-a087-dc8e55cf44bf" class=""><strong>R6. In Section 4.2, we saw that a router typically consists of input ports, output ports, a switching fabric and a routing processor. Which of these are implemented in hardware and which are implemented in software? Why? Returning to the notion of the network layer’s data plane and control plane, which are implemented in hardware and which are implemented in software? Why?</strong></p><p id="1bd7aacb-2d23-80e9-9ce4-fc168b301f67" class="">Input Ports, Output Ports, switching fabric are implemented in hardware because they need to be fast - faster than software. Routing processor is implemented in software.</p><p id="1bd7aacb-2d23-80e0-b6f3-d4b096a9de78" class="">The data plane - responsible for local action, is implemented in hardware</p><p id="1bd7aacb-2d23-80b4-a20f-db7862b927c6" class="">Control plane - responsible for routing, is implemented in software</p><p id="1bd7aacb-2d23-8013-81af-f24173c3b397" class="">
+</p><p id="1b97aacb-2d23-8064-ba52-fa63127aeada" class=""><strong>R7.  Discuss why each input port in a high-speed router stores a shadow copy of<br/>the forwarding table.<br/></strong></p><p id="1b97aacb-2d23-8047-8aa4-e5836ed30a9a" class="">So forwarding decisions can be made locally at each input port without invoking the centralized routing processor on a per-packet basis. This avoids central processing bottlenecks. </p><p id="1bd7aacb-2d23-8086-b9a6-c1b1aa21a1c6" class="">
+</p><p id="1bd7aacb-2d23-80a3-852d-f411f1099c27" class=""><strong>R8.  What is meant by destination-based forwarding? How does this differ from generalized forwarding (assuming you’ve read Section 4.4, which of the two approaches are adopted by Software-Defined Networking)</strong></p><p id="1bd7aacb-2d23-809d-9110-f5e8d1564359" class="">Destination-based forwarding is the destination of the packet determines the output port the packet will be sent on. Generalized forwarding is when the “match plus action” paradigm can include things like dropping packets, sending them out on specific ports, rewriting source IP and source port for NAT, etc. Software-Defined Networking adopts generalized forwarding.</p><p id="1bd7aacb-2d23-8053-a37b-dda881ff6a5c" class="">
+</p><p id="1bd7aacb-2d23-80a1-8d28-c23beea0b01d" class=""><strong>R9. Suppose that an arriving packet matches two or more entries in a router’s forwarding table. With traditional destination-based forwarding, what rule does a router apply to determine which of these rules should be applied to determine the output port to which the arriving packet should be switched?</strong></p><p id="1bd7aacb-2d23-80a0-a6ed-e379e2ce5175" class="">With traditional destination-based forwarding, the rule applied to determine which output port would be longest-prefix match.</p><p id="1bd7aacb-2d23-80ec-8bce-c5271ccd5734" class="">
+</p><p id="1b97aacb-2d23-80de-a0ec-e16366f7533b" class=""><strong>R10.  Three types of switching fabrics are discussed in Section 4.2. List and briefly<br/>describe each type. Which, if any, can send multiple packets across the fabric<br/>in parallel?<br/></strong></p><p id="1bd7aacb-2d23-802f-b06a-c106ac8be4dc" class="">Switching via memory: The router’s memory is used to store packets and forward them to the appropriate output port.</p><p id="1bd7aacb-2d23-8070-96d4-d4a4a290b9a4" class="">Switching via bus: A shared bus moves the packets from the input ports to the output ports. </p><p id="1bd7aacb-2d23-80f6-938b-db953e9e945b" class="">Switching via interconnection network: a sophisticated network connects input ports to output ports. This can send multiple packets across the fabric in parallel, as long as they are going to different ports.</p><p id="1bd7aacb-2d23-80e8-92ca-e5048063f432" class=""><br/><br/><strong>R11.  Describe how packet loss can occur at input ports. Describe how packet loss<br/>at input ports can be eliminated (without using infinite buffers).<br/></strong><br/><br/></p><p id="1bd7aacb-2d23-8030-bacb-e9deb89361ff" class="">If the switch fabric is not fast enough to transfer all ariving packets through the fabric, then packet queuing can occur at input ports. It can also occur if packets are going to be moved to the same output ports. To eliminate packet loss at input ports, without using infinite buffers, the switching fabric needs to at least N times as fast as the input line speed, where N is the number of ports.</p><p id="1bd7aacb-2d23-80cd-be54-f42a2fb6cea5" class="">
+</p><p id="1bd7aacb-2d23-8060-a31c-dbab2ef7e895" class=""><strong>R12.  Describe how packet loss can occur at output ports. Can this loss be prevented by increasing the switch fabric speed?</strong></p><p id="1bd7aacb-2d23-80f2-bdb6-e0008d1e1828" class="">If the switching fabric is N times faster than the input line speed, and N new packets arrive and are destined for the same output port, the N arriving packets will have to queue for transmission. Increasing the switching fabric speed would not affect the loss. </p><p id="1bd7aacb-2d23-8057-a3dd-f5f4e004d9d5" class="">
+</p><p id="1bd7aacb-2d23-8003-9ab1-f63aaa938e59" class=""><strong>R13.  What is HOL blocking? Does it occur in input ports or output ports?<br/><br/></strong>When processing one packet blocks other packets from being processed. The switching fabric is currently processing one port, so a packet has to wait even if it’s output port is free - it occurs in input ports. </p><p id="1bf7aacb-2d23-8064-a54d-e86628a1b4b7" class="">
+</p><p id="1bc7aacb-2d23-8013-8505-f37ce203833b" class=""><br/><br/><strong>R14.  InSection4.2, we studied FIFO, Priority, Round Robin (RR), and Weighted<br/>Fair Queueing (WFQ) packet scheduling disciplines? Which of these queueing<br/>disciplines ensure that all packets depart in the order in which they arrived?<br/></strong></p><p id="1bf7aacb-2d23-8031-8995-e3032e99e217" class="">FIFO</p><p id="1bf7aacb-2d23-8087-b4af-e9c826b69d9e" class="">
+</p><p id="1bf7aacb-2d23-800e-9c42-d4cd1712df81" class=""><strong>R15.  Give an example showing why a network operator might want one class of<br/>packets to be given priority over another class of packets.<br/></strong></p><p id="1bf7aacb-2d23-80a6-a288-e2823570e6b4" class="">Prioritizing well-known ports and their associated protocols over each other. For example, an SNMP network management datagram on Port 161 might be assigned a higher priority than an IMAP email protocol on port 143 or 993. </p><p id="1bf7aacb-2d23-8013-8828-c48012f70d47" class="">
+</p><p id="1bf7aacb-2d23-806d-a698-f7fdd52a0437" class=""><br/><br/><strong>R16.  What is an essential different between RR and WFQ packet scheduling? Is<br/>there a case (<br/></strong><em><strong>Hint: </strong></em><strong>Consider the WFQ weights) where RR and WFQ will<br/>behave exactly the same?<br/></strong></p><p id="1bf7aacb-2d23-802f-be62-ed2053256730" class="">The difference is that in WFQ, there are classes of packets like in RR, but each class in WFQ receives a weight based on a formula. If the formula leads to all classes having equal weight, then it would behave like RR. </p><h1 id="1bc7aacb-2d23-80a2-b697-f74b8de0788d" class="">Section 4.3</h1><p id="1bf7aacb-2d23-8081-ae36-cec9d9436ea1" class=""><strong>R17.  Suppose Host A sends Host B a TCP segment encapsulated in an IP datagram. When Host B receives the datagram, how does the network layer in Host B know it should pass the segment (that is, the payload of the datagram) to TCP rather than to UDP or to some other upper-layer protocol?</strong></p><p id="1bf7aacb-2d23-80a6-868a-fb526b788cae" class="">Through the Protocol field of the datagram header, which would have a value of 6 to indicate to pass to TCP. 17 would indicate UDP.</p><p id="1bf7aacb-2d23-80ff-9e67-f857c34f42cc" class="">
+</p><p id="1bf7aacb-2d23-80be-982b-c7a54d05b090" class=""><br/><br/><strong>R18.  What field in the IP header can be used to ensure that a packet is forwarded<br/>through no more than <br/></strong><em><strong>N </strong></em><strong>routers?</strong></p><p id="1bf7aacb-2d23-8081-978d-c0d7e488fcff" class="">TTL</p><p id="1bf7aacb-2d23-802b-8a00-d545465145cd" class=""><br/><br/><strong>R19.  Recall that we saw the Internet checksum being used in both transport-layer<br/>segment (in UDP and TCP headers, Figures 3.7 and 3.29 respectively) and in<br/>network-layer datagrams (IP header, Figure 4.17). Now consider a transport layer segment encapsulated in an IP datagram. Are the checksums in the segment header and datagram header computed over any common bytes in the IP datagram? Explain your answer.<br/></strong><br/><br/></p><p id="1bf7aacb-2d23-807a-80d8-d29283c3d362" class="">No, they are computed over different bytes. The IP header computes the checksum of IP header fields, and the TCP/UDP computes the checksum based on the TCP/UDP header fields.</p><p id="1bf7aacb-2d23-80c3-9552-c12ca3b1feb3" class="">
+</p><p id="1bf7aacb-2d23-8053-9bbc-eb62c57df26b" class=""><br/><br/><strong>R20.  When a large datagram is fragmented into multiple smaller datagrams, where<br/>are these smaller datagrams reassembled into a single larger datagram?<br/></strong><br/>At the destination host.<br/></p><p id="1bf7aacb-2d23-80c3-9aca-c4592d32436e" class="">
+</p><p id="1bc7aacb-2d23-8081-b6fa-fc324b287f4f" class=""><strong>R21.  Do routers have IP addresses? If so, how many?</strong></p><p id="1bc7aacb-2d23-80a4-adaa-eb8b77d2ad09" class="">Routers do have IP addresses - one for each interface<br/><br/></p><p id="1bc7aacb-2d23-80c0-8c34-edbe2c5e63fe" class=""><strong>R22.  What is the 32-bit binary equivalent of the IP address 223.1.3.27?</strong></p><p id="1bc7aacb-2d23-80fc-9a7d-e3177f650809" class="">11011111 00000001 00000011 00011011</p><p id="1bf7aacb-2d23-80da-afd7-d319cf9efcde" class="">
+</p><p id="1bf7aacb-2d23-8088-930b-f42f284e3ee6" class=""><br/><br/><strong>R23.  Visit a host that uses DHCP to obtain its IP address, network mask, default<br/>router, and IP address of its local DNS server. List these values.<br/></strong><br/>IP Address: 192.178.1.163<br/></p><p id="1bf7aacb-2d23-805e-b697-efbfba2c67be" class="">Broadcast: 192.168.1.255</p><p id="1bf7aacb-2d23-8028-a7cd-d867bb343774" class="">Network Mask: 0xff000000</p><p id="1bf7aacb-2d23-80a9-9ccd-c1e5acbcfcbe" class="">Default Router: 192.168.1.1</p><p id="1bf7aacb-2d23-8026-85bb-f96e022f306f" class=""><br/><br/><strong>R24.  Suppose there are three routers between a source host and a destination host.<br/>Ignoring fragmentation, an IP datagram sent from the source host to the destination host will travel over how many interfaces? How many forwarding tables will be indexed to move the datagram from the source to the destination?<br/></strong></p><p id="1bf7aacb-2d23-80a2-b2d6-f9f7b2abc276" class="">Number of Routers = 3</p><p id="1bf7aacb-2d23-80cf-a438-c71b1e58a55c" class="">Interfaces per router = 2</p><p id="1bf7aacb-2d23-8083-96b6-d80fafca015c" class="">(3 * 2) + 2 = 8</p><p id="1bf7aacb-2d23-80fd-b0b4-d471a2a2ddc7" class="">3 Routers = 3 forwarding tables</p><p id="1bf7aacb-2d23-8085-9e4a-fa25a21b04cd" class="">
+</p><p id="1bf7aacb-2d23-806f-b545-cdf919dd573f" class=""><br/>R25.  <br/><strong>Suppose an application generates chunks of 40 bytes of data every 20 msec, and each chunk gets encapsulated in a TCP segment and then an IP datagram. What percentage of each datagram will be overhead, and what percentage will be application data?</strong></p><p id="1bf7aacb-2d23-8095-9153-e6b8eb0b6efa" class="">20 bytes added for TCP segment, 20 bytes added for IP datagram. 50% will be overhead, 50% application data.</p><p id="1bf7aacb-2d23-8013-a5f3-ff4119123a67" class=""><br/><br/><strong>R26.  Suppose you purchase a wireless router and connect it to your cable modem. Also suppose that your ISP dynamically assigns your connected device (that is, your wireless router) one IP address. Also suppose that you have five PCs at home that use 802.11 to wirelessly connect to your wireless router. How are IP addresses assigned to the five PCs? Does the wireless router use NAT? Why or why not?</strong><br/>The router has a DHCP server that assigns IP addresses. It would have to use NAT in this instance because it would only obtain 1 address from the ISP. <br/>	<br/><br/></p><p id="1bf7aacb-2d23-8016-b1c1-dd0434467291" class=""><strong>R27.  What is meant by the term “route aggregation”? Why is it useful for a router<br/>to perform route aggregation?<br/></strong></p><p id="1bf7aacb-2d23-80d6-9285-fecfeef8a9ae" class="">The ability to use a single prefix to advertise multiple networks. Suppose that an ISP is providing the address block 200.23.16.0 /20 to eight organizations. The ISP can advertise to the outside world that it should be sent any datagrams whose first 20 address bits match 200.23.16.0 / 20 . The rest of the world doesn’t need to be aware that within that address block there are 8 organizations.</p><p id="1bf7aacb-2d23-80cc-a822-dc42d34e611d" class="">This is useful because it can help reduce the number of routes used to access the network, the size of routing tables.</p><p id="1bf7aacb-2d23-80a0-b006-fadd92f35260" class="">
+</p><p id="1bf7aacb-2d23-8016-9ef9-fc4eebfafc07" class=""><strong>R28.  What is meant by a “plug-and-play” or “zeroconf” protocol?</strong></p><p id="1bf7aacb-2d23-8079-98a3-d352b3a363cd" class="">A plug-and-play protocol or zero conf allows the automation of network related aspects of the protocol, without having to do things manually. </p><p id="1bf7aacb-2d23-804e-aced-e35a90b50ac2" class=""><br/><br/><strong>R29.  What is a private network address? Should a datagram with a private network<br/>address ever be present in the larger public Internet? Explain.<br/></strong><br/><br/></p><p id="1bf7aacb-2d23-8001-88c1-d4c1524e918c" class="">A private network address is a network address whose address only has meaning to other devices within that network.  Since the IP address wouldn’t have meaning to anyone outside of the network, it shouldn’t be present in the larger public Internet.</p><p id="1bf7aacb-2d23-8045-b35f-cf02ce43a5dd" class=""><br/><br/><strong>R30.  Compare and contrast the IPv4 and the IPv6 header fields. Do they have any<br/>fields in common?<br/></strong></p><p id="1bf7aacb-2d23-807b-a27a-ec1cec35f7a5" class="">Version, which would indicate if the datagram is IPv4 or IPv6. This would have a 6 if it is IPv6, and not a 4 if it is IPv4.</p><p id="1bf7aacb-2d23-80ff-bab3-dd6a4ad29249" class="">Hop Limit/TTL</p><p id="1bf7aacb-2d23-8049-b6b5-c395842996f1" class="">Source and Destination Addresses</p><p id="1bf7aacb-2d23-80e1-8b2c-fd718102f7d7" class="">Traffic Class/TOS</p><p id="1bf7aacb-2d23-80ad-9f28-d2452bb297b3" class="">
+</p><p id="1bc7aacb-2d23-80ce-ae49-de5bf3e6f67c" class=""><strong>R31.  It has been said that when IPv6 tunnels through IPv4 routers, IPv6 treats the IPv4 tunnels as link-layer protocols. Do you agree with this statement? Why or why not?</strong></p><p id="1bc7aacb-2d23-80a7-a19d-d95fd7e7d71d" class="">Yes because the entire IPv6 datagram is encapsulated in an IPv4 datagram. </p><p id="1bf7aacb-2d23-8088-8b2f-d2a5c2c32899" class="">
+</p><h1 id="1bf7aacb-2d23-805b-b7cf-fb0f49d2d9ae" class="">Section 4.4</h1><p id="1bf7aacb-2d23-80fc-8cb0-e6b68e88d6b6" class=""><br/><br/><strong>R32.  How does generalized forwarding differ from destination-based forwarding?</strong></p><p id="1bf7aacb-2d23-80f7-bf55-de21ae252721" class="">Generalized forwarding follows the match plus action paradigm where the action can be multiple things like dropping a packet, NAT rewrite, etc. , whereas destination-based forwarding the action is just forwarding packets based on destination. <br/><br/></p><p id="1bf7aacb-2d23-80ba-a7f0-f40e1c72da37" class=""><br/><br/><strong>R33.  What is the difference between a forwarding table that we encountered in destination-based forwarding in Section 4.1 and OpenFlow’s flow table that we encountered in Section 4.4?</strong></p><p id="1c07aacb-2d23-80ad-bb2f-e44ac3f8ca74" class="">OpenFlow’s flow table provides other actions besides forwarding, like load balancing. </p><p id="1c07aacb-2d23-8011-bd96-e35058bd2a2a" class=""><br/><br/><strong>R34.  What is meant by the “match plus action” operation of a router or switch? In the case of destination-based forwarding packet switch, what is matched and what is the action taken? In the case of an SDN, name three fields that can be matched, and three actions that can be taken.</strong></p><p id="1c07aacb-2d23-8054-ad3d-edbc79772163" class="">Match plus action is that a specific IP address range or protocol will have some kind of action for it, for example dropping packets.</p><p id="1c07aacb-2d23-80f6-aacc-f441ae6cc479" class="">In the case of an SDN, three fields can be IP SRC, IP DSt, TCP/UDP Src Port/Dst Port</p><p id="1c07aacb-2d23-8017-8cf6-dd5945539f99" class="">Three actions can be forwarding, dropping, and modifying</p><p id="1c07aacb-2d23-8085-9f72-e47b5ed265a2" class="">
+</p><p id="1c07aacb-2d23-80f7-92d3-cead89c588d3" class=""><br/><br/><strong>R35.  Name three header fields in an IP datagram that can be “matched” in Open-Flow 1.0 generalized forwarding. What are three IP datagram header fields that </strong><em><strong>cannot </strong></em><strong>be “matched” in OpenFlow?</strong></p><p id="1c07aacb-2d23-8038-b788-d35c4e804fb4" class="">IP SRC, IP DSt, TCP/UDP Src Port/Dst Port</p><p id="1c07aacb-2d23-8051-8786-f66ce7bf0e32" class="">Thee IP Datagram header fields that can’t be matched: TTL, Checksum, Datagram Length<br/>	<br/><br/></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

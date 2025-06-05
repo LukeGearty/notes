@@ -1,0 +1,693 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>1-25-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1867aacb-2d23-808d-bbb5-da877acf7840" class="page sans"><header><h1 class="page-title">1-25-25</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1867aacb-2d23-80f9-ac61-fdb7468b8078" class="">Class Logistics</h1><p id="1867aacb-2d23-80d4-9a1e-da0834716028" class="">Chapters covered in Kurose and Ross: Chapter 1-6 and 8. If it is in the book, it may show up on the exam.</p><p id="1867aacb-2d23-80e2-8f2a-dc39742c8151" class="">Assignments are usually due Saturdays at 11:55 pm</p><p id="1867aacb-2d23-80e8-acf8-e8d9011a6aa9" class="">Quizes - 10% of final grade, open book</p><p id="1867aacb-2d23-8001-b8fa-d778501df825" class="">Wireshark Assignments - 20% of final grade</p><p id="1867aacb-2d23-80fa-963c-f225d221920c" class="">Programming Assignments - 20% of final grade</p><p id="1867aacb-2d23-80fa-a274-e6e61a988af7" class="">Midterm - 25% of final grade - uses lockdown browser</p><p id="1867aacb-2d23-80e6-a5f5-d39cde6977c9" class="">Final Exam - 25% of final grade - uses lockdown browser</p><p id="1867aacb-2d23-80a9-b1cb-fbc5cf481477" class="">Extra Credit of up to 2 points for completing an additional Wireshark TLS lab and advanced DNS programming lab</p><h2 id="1867aacb-2d23-8081-bd26-f4c0ac046eb1" class="">Recommended Reading:</h2><p id="1867aacb-2d23-800d-9600-fb1a9e8badda" class="">Countdown to Zero Day by Kim Zetter</p><p id="1867aacb-2d23-800f-8d5d-d0575afc3af6" class="">Flashboys by Michael Lewis</p><p id="1867aacb-2d23-806d-8951-e3db17224fa5" class="">Sandworm by Andy Greenberg</p><p id="1867aacb-2d23-801a-b3a8-f3427e21b427" class="">The Code Book by Simon Singh</p><p id="1867aacb-2d23-80cf-b3cb-e0f9c7bfff7c" class="">AI Snake Oil by Arvind Narayanan and Sayash Kapoor</p><h1 id="1867aacb-2d23-806d-801c-fd10ce97b3c6" class="">Notes on Chapter 1</h1><p id="1867aacb-2d23-8073-a695-e260bbdc009b" class="">Approach is that the Internet is a fabric of the business that supports the functions of the business. How do we look at the network as a cohesive unit?</p><p id="1867aacb-2d23-80df-94d5-ff48feceeba1" class="">TCP/IP is the predominant architecture today - 20/30 years ago there were a lot more</p><p id="1867aacb-2d23-80e9-a612-d54556f58e87" class="">A “nuts and bolts” view - the hardware running to make the internet<div class="indented"><p id="1867aacb-2d23-80e6-b138-edc54e25e233" class="">The billions of computing devices connected to each other are called hosts/end systems, running network apps at the internet’s edge</p><p id="1867aacb-2d23-806a-b970-d6484a9e3144" class="">Packet Switches: forward packets (chunks of data)  from applications to destinations - routers, switches</p><p id="1867aacb-2d23-80d4-9bd9-f6ef919227c6" class="">Communication links - fiber optics, copper, radio, satellite<div class="indented"><p id="1867aacb-2d23-8038-93a8-e3c08ba16814" class="">Transmisson Rate is also known as bandwidth: how many bits can we push through a given link at a period of time?</p></div></p><p id="1867aacb-2d23-80ce-a140-d854e7bf59b6" class="">Networks - a collection of devices, routers, and links managed by an organization</p><p id="1867aacb-2d23-808e-80cd-d6bdc644dbe1" class="">Network of Networks - interconnected ISP running ‘protocols’  that define the sending and receiving of messages - HTTP or something proprietary like Skype</p><p id="1867aacb-2d23-802d-bca9-d2f9fbb66724" class="">Internet Standard - RFC (Request for Comments) - Internet Engineering Task Force (IETF)</p><p id="1867aacb-2d23-80dc-a94d-f38413e527cc" class="">
+</p></div></p><p id="1867aacb-2d23-8058-bf3d-efde8d75a2b4" class="">The Internet as a Service View - the internet is an infrastructure that provides services to applications, similar to USPS:<div class="indented"><p id="1867aacb-2d23-8001-910a-e2bda482aaaf" class="">The service view provides programming interface to distributed applications: there are hooks allowing sending/receiving apps to ‘connect’ to, use Internet transport service</p><p id="1867aacb-2d23-80c6-8fe1-d89cf0362c0a" class="">provides service options like Web, streaming, video, multimedia, teleconferencing, email, games, e-commerce, social media, inter-connected appliances, etc. </p></div></p><p id="1867aacb-2d23-80f0-bd16-ce9c6d0df0ab" class="">
+</p><h3 id="1867aacb-2d23-80f2-a880-f86b86ce3805" class="">What is a Protocol?</h3><p id="1867aacb-2d23-8080-a0e0-ed28f3e03ff0" class="">Human protocol - what’s the time, I have a question, introductions. They define a way humans interact. A specific message sent and how that message is received, or other events</p><p id="1867aacb-2d23-80ed-a4ab-e3f491a1d79b" class="">Protocols define how computers, potentially running different OSes, interact<div class="indented"><p id="1867aacb-2d23-8080-a029-ff4fd7065bb7" class="">Protocols define the format, order of messages sent and received among network entities, and actions taken on msg transmission, receipt</p><p id="1867aacb-2d23-80ad-b129-d1f139c8d1e3" class="">For a TCP transaction, there is a 3-way handshake before the transaction occurs</p></div></p><h2 id="1867aacb-2d23-80f4-9497-cfef456437df" class="">Network Edge</h2><p id="1867aacb-2d23-80f0-81f1-e45975859490" class="">Hosts: clients and servers</p><p id="1867aacb-2d23-80bf-9ae4-c3a4883ed996" class="">Servers are often in data center</p><p id="1867aacb-2d23-80e9-9851-dc87e86f2d4b" class="">Access networks, physical media: wired or wireless communication links</p><p id="1867aacb-2d23-80d3-9d19-f81c1eb107a7" class="">Network Core: interconnected routers, network of network of networks<div class="indented"><p id="1867aacb-2d23-803a-9205-cdda28e11570" class="">These routers are extremely fast and expensive, not like the home router</p><p id="1867aacb-2d23-80b9-8660-c115e1d30f74" class="">Routers sitting at the edge are different than those sitting at the core<div class="indented"><p id="1867aacb-2d23-8042-9f92-da3f7d0be21a" class="">Routers at the edge need to accommodate a number of hosts</p><p id="1867aacb-2d23-8054-be95-d28ac3a38698" class="">Routers in the core are designed to take an incoming packet, understand where it is going, and push it out</p></div></p></div></p><p id="1867aacb-2d23-80fa-be69-ec2bfc597817" class="">How do we interconnect them?</p><p id="1867aacb-2d23-802e-88db-fbd9312e9adb" class="">Need an ISP to connect edge devices to edge routers</p><p id="1867aacb-2d23-8010-b490-e6316cad9c40" class="">When looking for residential ISPs, we want to know the transmission rate (bits per second) of the access network and shared or dedicated access among users </p><p id="1867aacb-2d23-80d0-8718-d56751f8a736" class="">
+</p><p id="1867aacb-2d23-80a4-a82e-ea8752878f38" class="">cable-based access<div class="indented"><p id="1867aacb-2d23-80d1-a0a0-e2e2faa48e21" class="">Frequency Division Multiplexing (FDM): different channels are subdivided into different frequencies and put on the same wire. They don’t interfere.  </p><p id="1867aacb-2d23-802f-b433-c1aeb08234d1" class="">Access is shared as multiple households are using the same wire from cable company</p><p id="1867aacb-2d23-8026-898d-d375c9bb3423" class="">There are different kinds of frequencies/electrical wiring</p><p id="1867aacb-2d23-80fb-b80b-ed0319e4d98b" class="">Hybrid Fiber coax (HFC) asymettric up to 40 Mbps to 1.2 Gbps downstream, 30-100 upstream transmission rate</p><p id="1867aacb-2d23-8015-b9cc-c184510f15f9" class="">Network of ccable, fiber attaches homes to ISP router</p><p id="1867aacb-2d23-8080-8c8e-d668785c7754" class="">The more people you have, the slower the traffic is going to be</p></div></p><p id="1867aacb-2d23-80ea-a8e6-f680e62df9c7" class="">Digital Subscriber Line (DSL)</p><p id="1867aacb-2d23-808d-9c67-fbeb973da28d" class="">voice and data transmitted at different frequencies over dedicated line to central office, separated by a splitter</p><p id="1867aacb-2d23-8081-a0d0-e8c9d24393b5" class="">The wire was dedicated directly<div class="indented"><p id="1867aacb-2d23-8053-8736-e00c7ec229e6" class="">Use existing telephone line to central office DSLAM<div class="indented"><p id="1867aacb-2d23-804f-9c7d-d38e4f8c6e08" class="">data over DSL phone line goes to Internet</p><p id="1867aacb-2d23-8010-a321-e230687bf8c4" class="">voice over DSL phone line goes to telephone net</p></div></p><p id="1867aacb-2d23-805a-8468-cced44edd532" class="">
+</p></div></p><p id="1867aacb-2d23-804f-9371-ff5205cf712f" class="">What is better? Shared access (Cable) or Dedicated access (DSL)?</p><p id="1867aacb-2d23-800d-abb2-ca309c441a1e" class="">
+</p><p id="1867aacb-2d23-80fe-843b-ff05792e8585" class="">Wireless Access Networks - shared<div class="indented"><p id="1867aacb-2d23-805b-9988-f63b58d27fb1" class="">Connect end system to routers</p><p id="1867aacb-2d23-80de-9606-ecee0b1ba4c7" class="">Wireless LANS - typically within or around building<div class="indented"><p id="1867aacb-2d23-80c0-af4c-dcc4e5b5a203" class="">802.11b/g/n</p></div></p><p id="1867aacb-2d23-8053-8353-f1ff8b56c98d" class="">Wide area cellular access networks - provided by mobile, celullar network operator<div class="indented"><p id="1867aacb-2d23-803a-9ff6-d0eba30692a2" class="">10s Mbps</p><p id="1867aacb-2d23-805c-bc41-e261e3145182" class="">4G cellular networks (5G incoming)</p></div></p></div></p><p id="1867aacb-2d23-8085-b2e3-e200bd852caf" class="">
+</p><p id="1867aacb-2d23-8068-bf02-f7a30b046d08" class="">Access Networks - enterprise networks<div class="indented"><p id="1867aacb-2d23-80f9-922b-e321db20a05d" class="">Companies, universities</p><p id="1867aacb-2d23-80d5-9bbc-ed6ffdde9e08" class="">Mix of wired, wireless link technologies, connecting a mix of switches and routers<div class="indented"><p id="1867aacb-2d23-80ab-911f-ebcf49c854de" class="">Ethernet: wired access at 100Mbps, 1Gbps, 10Gbps</p><p id="1867aacb-2d23-801a-9ba0-f8a39d6d62a5" class="">WiFi: wireless access points at 11, 54, 450 Mbps</p></div></p></div></p><p id="1867aacb-2d23-80ea-aff6-e771842b844f" class="">
+</p><p id="1867aacb-2d23-8072-9ea9-cb5825be91e7" class="">Host: sends packets of data - takes application message, breaks into smaller chunks known as packets of length L bits<div class="indented"><p id="1867aacb-2d23-8085-af58-fba0f0b9e995" class="">transmit packet into access network at transmission rate R</p><p id="1867aacb-2d23-80b5-9bdd-ca26e7a76126" class="">link transmission rate, aka link capacity, aka link bandwidth</p></div></p><p id="1867aacb-2d23-806f-a666-d83cb9df741c" class="">
+</p><p id="1867aacb-2d23-80b2-9a77-f755b0bb81bb" class="">packet transmission delay = time needted to transmit L-bit packet into link<div class="indented"><p id="1867aacb-2d23-8092-9132-c7f1054674cb" class="">= L (bits) / R (bits/sec)</p></div></p><p id="1867aacb-2d23-8083-b231-eab38e36efb3" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

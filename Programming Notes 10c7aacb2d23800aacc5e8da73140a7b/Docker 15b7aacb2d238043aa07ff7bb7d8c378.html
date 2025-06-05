@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Docker</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="15b7aacb-2d23-8043-aa07-ff7bb7d8c378" class="page sans"><header><h1 class="page-title">Docker</h1><p class="page-description"></p></header><div class="page-body"><p id="15b7aacb-2d23-80f5-95ed-eb9092bdeac4" class="">Virtualization software that makes developing and deploying applications easier</p><p id="15b7aacb-2d23-808e-87fc-f739e44944a7" class="">Docker is a tool that helps you package up your code and everything it needs (like libraries, tools, and settings) into a &quot;container.&quot;</p><p id="15b7aacb-2d23-8049-aaf4-d3b2f10da0c3" class="">A container is like a tiny, portable, and self-contained computer environment. You can run it on any machine that has Docker installed, and it will work the same way every time. This makes it great for developing, testing, and deploying software without worrying about &quot;it works on my computer but not on yours&quot; problems.</p><h3 id="15b7aacb-2d23-800b-b8ad-e2fdeca9abc8" class="">1. <strong>Consistency Across Environments</strong></h3><ul id="15b7aacb-2d23-80c7-a3ad-dc70a9215cb3" class="bulleted-list"><li style="list-style-type:disc">Containers include everything your app needs (code, dependencies, libraries, etc.).</li></ul><ul id="15b7aacb-2d23-8084-aad8-f3029c7c2f9b" class="bulleted-list"><li style="list-style-type:disc">It ensures that your app behaves the same on your machine, in testing, and in production, eliminating the &quot;it works on my machine&quot; problem.</li></ul><h3 id="15b7aacb-2d23-8027-b168-ee194b5b37f1" class="">2. <strong>Simplified Setup</strong></h3><ul id="15b7aacb-2d23-802b-92af-c77fb6586f1d" class="bulleted-list"><li style="list-style-type:disc">Instead of manually installing dependencies, a <code>Dockerfile</code> defines what your app needs, and Docker handles the rest.</li></ul><ul id="15b7aacb-2d23-80f6-bcf8-cf1bd2e99338" class="bulleted-list"><li style="list-style-type:disc">New developers on your team can start coding quickly by running a single command to set up the environment.</li></ul><h3 id="15b7aacb-2d23-802d-a8ff-f6e24767524a" class="">3. <strong>Isolation</strong></h3><ul id="15b7aacb-2d23-8085-898f-c48f3af2235d" class="bulleted-list"><li style="list-style-type:disc">Each container runs independently, so you can use different versions of software or dependencies without conflicts (e.g., Python 3 for one project and Python 2 for another).</li></ul><h3 id="15b7aacb-2d23-8042-a29a-cb171bfb9e6d" class="">4. <strong>Lightweight and Fast</strong></h3><ul id="15b7aacb-2d23-8052-becc-e72200e6e340" class="bulleted-list"><li style="list-style-type:disc">Unlike virtual machines, Docker containers share the host OS&#x27;s kernel, making them quicker to start and use less system resources.</li></ul><h3 id="15b7aacb-2d23-80ec-8676-f80d983f9e51" class="">5. <strong>Easy Collaboration and Deployment</strong></h3><ul id="15b7aacb-2d23-80d9-827e-e05dd8ba3d01" class="bulleted-list"><li style="list-style-type:disc">You can share your app as a container image. Others just download and run it, with no additional setup.</li></ul><ul id="15b7aacb-2d23-8065-a101-ca3e69841209" class="bulleted-list"><li style="list-style-type:disc">Deploying your app is as easy as running the same container image on a server.</li></ul><h3 id="15b7aacb-2d23-80bd-b3ac-e73e43cf2ca8" class="">6. <strong>Supports Microservices Architecture</strong></h3><ul id="15b7aacb-2d23-8033-8121-c82fcd45d8bc" class="bulleted-list"><li style="list-style-type:disc">Docker helps you break down your app into smaller, self-contained services (e.g., separate containers for the database, backend, and frontend) that communicate with each other.</li></ul><p id="15b7aacb-2d23-802c-9671-e8a177c106d8" class="">
+</p><h1 id="15b7aacb-2d23-80e7-af81-e216ea6d30de" class="">Problems</h1><h3 id="15b7aacb-2d23-80f3-bc32-d3f3f449936b" class="">1. <strong>&quot;It Works on My Machine&quot; Problem</strong></h3><ul id="15b7aacb-2d23-8046-9720-fefa846353ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Code works on a developer&#x27;s machine but fails in testing or production due to differences in environments.</li></ul><ul id="15b7aacb-2d23-80af-bea1-c7f4a4082909" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker containers package the code and its dependencies, ensuring consistent behavior across different environments.</li></ul><hr id="15b7aacb-2d23-80c6-ab60-e02e2671355b"/><h3 id="15b7aacb-2d23-8038-8cd0-db5a888b3725" class="">2. <strong>Dependency Conflicts</strong></h3><ul id="15b7aacb-2d23-803f-ad5d-d02e932332dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Different applications require different versions of dependencies or software, leading to conflicts.</li></ul><ul id="15b7aacb-2d23-8042-8385-e0609b118c99" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker isolates applications in separate containers, allowing them to run with their specific dependencies without interference.</li></ul><hr id="15b7aacb-2d23-808a-847c-f007a0e03cf8"/><h3 id="15b7aacb-2d23-80e7-8bb2-cffc0569074f" class="">3. <strong>Complex Environment Setup</strong></h3><ul id="15b7aacb-2d23-804e-85dd-e82772f2773f" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Setting up development, testing, or production environments can be time-consuming and error-prone.</li></ul><ul id="15b7aacb-2d23-80e8-95de-faf69f4b3fb6" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker simplifies setup with <code>Dockerfile</code> and <code>docker-compose</code> files that automate the configuration of environments.</li></ul><hr id="15b7aacb-2d23-80a8-b34e-f7341d9807e0"/><h3 id="15b7aacb-2d23-8027-b7a0-c24c6f7cdda9" class="">4. <strong>Resource Inefficiency</strong></h3><ul id="15b7aacb-2d23-8059-baec-e89e3d8e545a" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Traditional virtual machines (VMs) are resource-heavy, requiring their own OS and significant overhead.</li></ul><ul id="15b7aacb-2d23-8075-8cc0-da99646bfad8" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker containers share the host OS kernel, making them much more lightweight and efficient.</li></ul><hr id="15b7aacb-2d23-80a2-a005-d7eb91d6b774"/><h3 id="15b7aacb-2d23-8022-b359-e9114822dda7" class="">5. <strong>Difficult Collaboration</strong></h3><ul id="15b7aacb-2d23-805f-bc3f-cc58eb2c1962" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Developers working on different systems may face compatibility issues when sharing their work.</li></ul><ul id="15b7aacb-2d23-8078-a41e-cfcc16dca8c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> With Docker, developers share container images, ensuring everyone works in the same environment.</li></ul><hr id="15b7aacb-2d23-8025-b75e-c7fea92afed3"/><h3 id="15b7aacb-2d23-80ad-9d36-d685a44e9421" class="">6. <strong>Inconsistent Deployments</strong></h3><ul id="15b7aacb-2d23-8006-9e21-fcd3f37fbf47" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Applications fail when moved from development to production due to subtle differences in system configurations.</li></ul><ul id="15b7aacb-2d23-8003-8830-d19a5953a75a" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker ensures the app runs in identical containers from development to production.</li></ul><hr id="15b7aacb-2d23-8066-896d-d531daea54d8"/><h3 id="15b7aacb-2d23-8034-8721-f4cff71edac8" class="">7. <strong>Scaling Challenges</strong></h3><ul id="15b7aacb-2d23-80ad-af5f-cb0542fe15c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Scaling applications across multiple servers can be complex and error-prone.</li></ul><ul id="15b7aacb-2d23-8077-89f9-cee0273406f1" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker works well with orchestration tools like Kubernetes to deploy and scale containers automatically.</li></ul><hr id="15b7aacb-2d23-8040-b871-f6d2867448d5"/><h3 id="15b7aacb-2d23-801d-ab3a-d3b21be1aa45" class="">8. <strong>Microservices Management</strong></h3><ul id="15b7aacb-2d23-807d-99a5-fed909a7a8d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Managing multiple interconnected services in a microservices architecture can become a logistical nightmare.</li></ul><ul id="15b7aacb-2d23-8047-869f-fe3283d1b2d4" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker containers make it easier to deploy, isolate, and manage individual services independently.</li></ul><hr id="15b7aacb-2d23-80ff-8688-c2fd01cc030a"/><h3 id="15b7aacb-2d23-8075-bb90-e10e9e667fff" class="">9. <strong>Application Portability</strong></h3><ul id="15b7aacb-2d23-80cc-9764-dcb6791c83cc" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem:</strong> Moving applications between different operating systems or cloud providers is challenging.</li></ul><ul id="15b7aacb-2d23-809b-ae72-eae3f0be3d0b" class="bulleted-list"><li style="list-style-type:disc"><strong>Solution:</strong> Docker containers can run on any system with Docker installed, providing true portability.</li></ul><p id="15b7aacb-2d23-8047-9656-d165cce0a295" class="">
+</p><p id="15b7aacb-2d23-804b-a38e-e48068a63e5c" class="">
+</p><h1 id="15b7aacb-2d23-807c-b55b-ff680f74db02" class="">Difference between virtual machines and docker</h1><h3 id="15b7aacb-2d23-80a8-9afc-e22186f30d5d" class=""><strong>1. Architecture</strong></h3><h3 id="15b7aacb-2d23-804b-84a8-f4d9a0879f52" class=""><strong>Virtual Machine:</strong></h3><ul id="15b7aacb-2d23-8022-9e6f-dcef966b5ce2" class="bulleted-list"><li style="list-style-type:disc">A VM includes an entire operating system (OS), virtualized hardware, and the application.</li></ul><ul id="15b7aacb-2d23-8029-9eea-fb55e38fc1f1" class="bulleted-list"><li style="list-style-type:disc">Each VM runs on a hypervisor (e.g., VMware, VirtualBox) that manages multiple VMs on the host.</li></ul><ul id="15b7aacb-2d23-801b-ad6b-cd1d4476ad3a" class="bulleted-list"><li style="list-style-type:disc">Components:<ul id="15b7aacb-2d23-80f7-a00c-eec8da58c63e" class="bulleted-list"><li style="list-style-type:circle"><strong>Host OS</strong>: The actual OS on the machine.</li></ul><ul id="15b7aacb-2d23-8009-a8c6-c1bdc45d4967" class="bulleted-list"><li style="list-style-type:circle"><strong>Hypervisor</strong>: Virtualization layer.</li></ul><ul id="15b7aacb-2d23-8031-b110-ef09f36a91af" class="bulleted-list"><li style="list-style-type:circle"><strong>Guest OS</strong>: A full OS running inside the VM.</li></ul><ul id="15b7aacb-2d23-8001-93e5-f419d36ffaf6" class="bulleted-list"><li style="list-style-type:circle"><strong>Application</strong>: Runs inside the guest OS.</li></ul></li></ul><h3 id="15b7aacb-2d23-8055-ab3f-d3fc67eded7d" class=""><strong>Docker:</strong></h3><ul id="15b7aacb-2d23-8038-a883-da671737102a" class="bulleted-list"><li style="list-style-type:disc">Docker uses <strong>containers</strong> to virtualize applications at the OS level.</li></ul><ul id="15b7aacb-2d23-8022-b68d-e83c804b1cb9" class="bulleted-list"><li style="list-style-type:disc">Containers share the host OS kernel, avoiding the need for separate OS instances.</li></ul><ul id="15b7aacb-2d23-803e-ad6d-ed393d334c28" class="bulleted-list"><li style="list-style-type:disc">Components:<ul id="15b7aacb-2d23-808d-ad4e-e8ca8ef5cbf4" class="bulleted-list"><li style="list-style-type:circle"><strong>Host OS</strong>: The actual OS on the machine.</li></ul><ul id="15b7aacb-2d23-8090-ae5b-ecf181e783a3" class="bulleted-list"><li style="list-style-type:circle"><strong>Docker Engine</strong>: Manages and runs containers.</li></ul><ul id="15b7aacb-2d23-804c-ad6d-fb8756429106" class="bulleted-list"><li style="list-style-type:circle"><strong>Container</strong>: Includes the application and its dependencies.</li></ul></li></ul><hr id="15b7aacb-2d23-80f4-b5cf-d7479cbf5889"/><h3 id="15b7aacb-2d23-8092-b7ac-c2086ecdd307" class=""><strong>2. Size and Resource Usage</strong></h3><h3 id="15b7aacb-2d23-80e3-ba4d-ceb172e5aa25" class=""><strong>Virtual Machine:</strong></h3><ul id="15b7aacb-2d23-80b0-b2a0-e569c8003c24" class="bulleted-list"><li style="list-style-type:disc">Large and resource-intensive because each VM runs a full OS.</li></ul><ul id="15b7aacb-2d23-8060-87a7-e3993ec3ae4e" class="bulleted-list"><li style="list-style-type:disc">Takes more time to start (e.g., seconds to minutes).</li></ul><h3 id="15b7aacb-2d23-80dd-b549-e08cf14d43f6" class=""><strong>Docker:</strong></h3><ul id="15b7aacb-2d23-8011-a897-ef0ed2d1091e" class="bulleted-list"><li style="list-style-type:disc">Lightweight because containers share the host OS kernel.</li></ul><ul id="15b7aacb-2d23-80b3-8fe0-c02d42f2a490" class="bulleted-list"><li style="list-style-type:disc">Much faster to start (e.g., milliseconds).</li></ul><hr id="15b7aacb-2d23-8091-84d1-e7c407d8e903"/><h3 id="15b7aacb-2d23-800f-934e-c65e0f115b9e" class=""><strong>3. Portability</strong></h3><h3 id="15b7aacb-2d23-80cd-8f92-dcaa71a62e18" class=""><strong>Virtual Machine:</strong></h3><ul id="15b7aacb-2d23-8045-ae39-f739048d7e72" class="bulleted-list"><li style="list-style-type:disc">VMs are less portable because they include a full OS, making them bulky.</li></ul><ul id="15b7aacb-2d23-8082-8771-f7924f9da6da" class="bulleted-list"><li style="list-style-type:disc">Moving a VM between systems requires significant resources and setup.</li></ul><h3 id="15b7aacb-2d23-8074-a968-df07af7e4c9c" class=""><strong>Docker:</strong></h3><ul id="15b7aacb-2d23-80f0-863c-d1326c88c2e8" class="bulleted-list"><li style="list-style-type:disc">Containers are portable and consistent.</li></ul><ul id="15b7aacb-2d23-80e0-a39a-c32beb06e1e8" class="bulleted-list"><li style="list-style-type:disc">You can easily share and deploy a container image on any machine with Docker.</li></ul><hr id="15b7aacb-2d23-8042-9483-c830a8b2bfdf"/><h3 id="15b7aacb-2d23-80eb-8cb5-e7cd00196a43" class=""><strong>4. Isolation</strong></h3><h3 id="15b7aacb-2d23-80f0-ac14-e7650e44ca86" class=""><strong>Virtual Machine:</strong></h3><ul id="15b7aacb-2d23-807d-82a4-f6f87d99f29a" class="bulleted-list"><li style="list-style-type:disc">Provides strong isolation between VMs since each has its own OS.</li></ul><ul id="15b7aacb-2d23-80fc-b055-eed50217b1e5" class="bulleted-list"><li style="list-style-type:disc">Suitable for running multiple, fully isolated operating systems.</li></ul><h3 id="15b7aacb-2d23-801f-88e9-fab2945e1120" class=""><strong>Docker:</strong></h3><ul id="15b7aacb-2d23-8071-930f-e7c624fd52db" class="bulleted-list"><li style="list-style-type:disc">Provides process-level isolation.</li></ul><ul id="15b7aacb-2d23-80a5-9df4-db3e6f0e0d63" class="bulleted-list"><li style="list-style-type:disc">Less isolated than VMs since all containers share the host OS kernel.</li></ul><hr id="15b7aacb-2d23-808c-8a18-ffe40c8d887c"/><h3 id="15b7aacb-2d23-8054-9a15-d21c706f5f2f" class=""><strong>5. Use Cases</strong></h3><h3 id="15b7aacb-2d23-80a6-8081-d42632edcf52" class=""><strong>Virtual Machine:</strong></h3><ul id="15b7aacb-2d23-80e9-bd36-c5e2aa7c85a7" class="bulleted-list"><li style="list-style-type:disc">Best for running applications that require different operating systems.</li></ul><ul id="15b7aacb-2d23-809a-95e1-e19278a1a288" class="bulleted-list"><li style="list-style-type:disc">Ideal for running legacy applications or systems needing complete OS isolation.</li></ul><h3 id="15b7aacb-2d23-806a-9bc9-ccdd0cc40dfb" class=""><strong>Docker:</strong></h3><ul id="15b7aacb-2d23-80c9-94d5-d38b7d52748b" class="bulleted-list"><li style="list-style-type:disc">Best for modern application development, especially microservices.</li></ul><ul id="15b7aacb-2d23-8090-93e1-ca4dae9bb1a3" class="bulleted-list"><li style="list-style-type:disc">Ideal for consistent development, testing, and deployment environments.</li></ul><hr id="15b7aacb-2d23-8072-8563-e653e65f5dda"/><h3 id="15b7aacb-2d23-80ed-968a-e48f553058b5" class=""><strong>Summary Table</strong></h3><table id="15b7aacb-2d23-80b4-9c6e-f35a244d5c99" class="simple-table"><tbody><tr id="15b7aacb-2d23-80f4-a0bc-e833ba2a2887"><td id="Wmn:" class="">Feature</td><td id="O`[|" class=""><strong>Virtual Machine</strong></td><td id="uKK\" class=""><strong>Docker (Container)</strong></td></tr><tr id="15b7aacb-2d23-8040-b1f6-f8a07ba9acd2"><td id="Wmn:" class=""><strong>OS Virtualization</strong></td><td id="O`[|" class="">Full OS (Guest OS)</td><td id="uKK\" class="">Shares Host OS Kernel</td></tr><tr id="15b7aacb-2d23-80ff-89e1-dde32367d54e"><td id="Wmn:" class=""><strong>Startup Time</strong></td><td id="O`[|" class="">Slow (seconds to minutes)</td><td id="uKK\" class="">Fast (milliseconds)</td></tr><tr id="15b7aacb-2d23-8092-b901-d802a32fe77e"><td id="Wmn:" class=""><strong>Size</strong></td><td id="O`[|" class="">Large (GBs)</td><td id="uKK\" class="">Lightweight (MBs)</td></tr><tr id="15b7aacb-2d23-802a-b826-d15e780477da"><td id="Wmn:" class=""><strong>Portability</strong></td><td id="O`[|" class="">Harder</td><td id="uKK\" class="">Easy</td></tr><tr id="15b7aacb-2d23-80e7-b739-e32b5fe3b770"><td id="Wmn:" class=""><strong>Resource Usage</strong></td><td id="O`[|" class="">High</td><td id="uKK\" class="">Low</td></tr><tr id="15b7aacb-2d23-80d3-95aa-d8c33b8af307"><td id="Wmn:" class=""><strong>Isolation</strong></td><td id="O`[|" class="">Strong (hardware-level)</td><td id="uKK\" class="">Moderate (process-level)</td></tr><tr id="15b7aacb-2d23-80f1-9535-e0d7d55439a4"><td id="Wmn:" class=""><strong>Use Case</strong></td><td id="O`[|" class="">Multi-OS setups</td><td id="uKK\" class="">App portability and scaling</td></tr></tbody></table><hr id="15b7aacb-2d23-80d0-9745-c03a9ae917fe"/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

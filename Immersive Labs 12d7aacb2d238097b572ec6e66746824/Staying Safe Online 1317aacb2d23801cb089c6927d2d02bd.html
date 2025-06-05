@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Staying Safe Online</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1317aacb-2d23-801c-b089-c6927d2d02bd" class="page sans"><header><h1 class="page-title">Staying Safe Online</h1><p class="page-description"></p></header><div class="page-body"><p id="1317aacb-2d23-807e-b85e-d1abef3c634d" class=""><strong>Overview</strong></p><p id="1317aacb-2d23-80b6-aedb-fe94189458a5" class="">People are often cited as the weakest link in information security due to actions like using weak passwords, clicking on malicious attachments, or using infected media. However, with proper awareness and training, individuals can transform into an organization’s most effective defense.</p><hr id="1317aacb-2d23-8025-ba2a-fc60df69e651"/><p id="1317aacb-2d23-8040-abaf-d3b796a8835b" class=""><strong>Key Points</strong></p><ul id="1317aacb-2d23-80e0-9486-d9a627fea80c" class="bulleted-list"><li style="list-style-type:disc"><strong>Individual Responsibility</strong><ul id="1317aacb-2d23-80d0-9835-c4e6f9e834c0" class="bulleted-list"><li style="list-style-type:circle">Information security is everyone&#x27;s responsibility. Devices like computers, tablets, and mobile phones store valuable data that can be targeted by cybercriminals.</li></ul><ul id="1317aacb-2d23-801f-9e28-c1b88f1af405" class="bulleted-list"><li style="list-style-type:circle">Hackers may exploit access to email accounts to send malicious attachments under the guise of a trusted source.</li></ul></li></ul><ul id="1317aacb-2d23-8035-b186-e839900fc7d0" class="bulleted-list"><li style="list-style-type:disc"><strong>Phishing Tactics</strong><ul id="1317aacb-2d23-801b-87c5-e73474dfe416" class="bulleted-list"><li style="list-style-type:circle">Hackers often use social engineering to disguise malicious content as legitimate communication, like an enticing email promising access to confidential information.</li></ul></li></ul><ul id="1317aacb-2d23-8028-ae82-fc40a074ebae" class="bulleted-list"><li style="list-style-type:disc"><strong>Real-World Example: The Case of &#x27;Dave&#x27;</strong><ul id="1317aacb-2d23-80d4-be29-d2d324841ea4" class="bulleted-list"><li style="list-style-type:circle">A dedicated employee unknowingly compromised sensitive company data by transferring it to his home computer, which was infected with malware.</li></ul><ul id="1317aacb-2d23-80bf-ba96-fa067127cec4" class="bulleted-list"><li style="list-style-type:circle"><strong>Key Issues:</strong> Lack of authorization and control procedures, along with coworkers not stepping in, contributed to the breach.</li></ul><ul id="1317aacb-2d23-8051-96ec-e1eef5a2f52a" class="bulleted-list"><li style="list-style-type:circle"><strong>Lessons Learned:</strong> Security training and protocols are essential to avoid similar incidents and protect both employees and the organization.</li></ul></li></ul><ul id="1317aacb-2d23-80ea-8e21-d81729535df0" class="bulleted-list"><li style="list-style-type:disc"><strong>Importance of Training</strong><ul id="1317aacb-2d23-80ef-b0d0-e8abcf30ac08" class="bulleted-list"><li style="list-style-type:circle">Proper training on recognizing phishing, secure handling of data, and maintaining authorization controls can mitigate risks and prevent data breaches.</li></ul></li></ul><hr id="1317aacb-2d23-808d-814f-ea9e7a94c3db"/><p id="1317aacb-2d23-80af-b78f-cf22c5489f34" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-8071-a00f-fdf4e94ff0f3" class="">In this lab, apply your information security knowledge to answer questions. A score of eight correct answers completes the lab.</p><h3 id="1317aacb-2d23-80b7-8b48-dfa68f99b8f9" class="">Cyberattacks and Their Consequences Summary</h3><hr id="1317aacb-2d23-8048-b9d1-ddee030b1af7"/><p id="1317aacb-2d23-80ef-a87c-e7e05d8a6957" class=""><strong>What is a Cyberattack?</strong></p><p id="1317aacb-2d23-8012-a131-dd80ece4210f" class="">A cyberattack is an offensive action by criminals, like hackers, that targets data, computer networks, information systems, or devices with malicious intent. The impacts can vary widely, from disrupting operations to causing complete financial ruin. Personal devices are also targets, and attacks on these can lead to data corruption or identity theft, which can take years to recover from.</p><hr id="1317aacb-2d23-8013-afe8-d1e7b1a87cb4"/><p id="1317aacb-2d23-80e6-9ed8-cbe3264a928b" class=""><strong>Key Concepts</strong></p><ul id="1317aacb-2d23-8065-b53d-d830b7f81ff3" class="bulleted-list"><li style="list-style-type:disc"><strong>Impacts vs. Consequences</strong><ul id="1317aacb-2d23-809b-bf58-fcfd674aadf4" class="bulleted-list"><li style="list-style-type:circle"><strong>Impacts</strong> are direct effects on individuals, companies, or systems (e.g., time loss due to network shutdown).</li></ul><ul id="1317aacb-2d23-8094-abf7-c7fb22687cc9" class="bulleted-list"><li style="list-style-type:circle"><strong>Consequences</strong> are broader events resulting from these impacts, such as financial losses or damage to reputation.</li></ul></li></ul><ul id="1317aacb-2d23-809d-9467-e1b181a1e26c" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Impacts</strong><ul id="1317aacb-2d23-80ba-a8a1-eef2f8ae7e86" class="bulleted-list"><li style="list-style-type:circle">Cyberattacks on businesses often focus on obtaining customer and employee data or intellectual property.</li></ul><ul id="1317aacb-2d23-8073-8ab8-eadfa8cb42aa" class="bulleted-list"><li style="list-style-type:circle"><strong>Data Breaches:</strong> Attackers may release, sell, or hold data for ransom, leading to financial costs (fines, repairs, compensation) and reputational damage.</li></ul><ul id="1317aacb-2d23-8030-afdd-c4de700914c6" class="bulleted-list"><li style="list-style-type:circle"><strong>Example:</strong> In 2021, Facebook’s data breach affected 533 million users, leading to media scrutiny and a loss of customer trust.</li></ul></li></ul><ul id="1317aacb-2d23-800d-b197-e6ff00a5c44b" class="bulleted-list"><li style="list-style-type:disc"><strong>Individual Impacts</strong><ul id="1317aacb-2d23-805b-9f8a-c555ffbe968f" class="bulleted-list"><li style="list-style-type:circle">Individuals can suffer emotional and social effects, such as distress, anxiety, or a reluctance to use certain technologies, after falling victim to attacks like phishing scams.</li></ul><ul id="1317aacb-2d23-8027-a531-c0c592b53e02" class="bulleted-list"><li style="list-style-type:circle">Severe cases may lead to isolation and a lasting fear of internet use.</li></ul></li></ul><hr id="1317aacb-2d23-8007-907a-c6b68db36485"/><p id="1317aacb-2d23-801e-a0d8-f0b6fd6a9bd4" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-80f4-8069-dd73baf6b3a7" class="">In this lab, choose the correct option to complete sentences about cyberattack impacts and consequences. Answer eight correctly to pass.</p><p id="1317aacb-2d23-80f6-99a8-c737a53c4ba5" class=""><strong>What is Phishing?</strong></p><p id="1317aacb-2d23-8071-b67a-d4d8c8dbe726" class="">Phishing is a social engineering technique used by attackers to steal sensitive information, such as login credentials and banking information. Phishing can involve email, phone calls (vishing), text messages (SMShing), social media, and instant messaging. Attackers disguise themselves as legitimate entities to deceive victims into taking harmful actions, like transferring money or downloading malware.</p><hr id="1317aacb-2d23-8081-8259-e75d7679fd4a"/><p id="1317aacb-2d23-8017-9cef-fe71462bb109" class=""><strong>Types of Phishing</strong></p><ul id="1317aacb-2d23-80a7-b957-f734ab2bcc22" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Phishing:</strong> The most common form, often containing malicious links or attachments.</li></ul><ul id="1317aacb-2d23-80db-a96f-c5f952488c48" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Email Compromise (BEC):</strong> Attackers hijack legitimate corporate email accounts to issue fake invoices or initiate unauthorized payments, often targeting executives or budget holders.</li></ul><hr id="1317aacb-2d23-80b3-85a9-d06ec0b612c4"/><p id="1317aacb-2d23-807b-8353-d2fb52cd2026" class=""><strong>Common Phishing Tactics</strong></p><p id="1317aacb-2d23-80b4-99b9-fd1ec6a011ea" class="">Phishing emails are crafted to elicit an emotional response. Common tactics include:</p><ol type="1" id="1317aacb-2d23-8054-99d1-c273e33669c8" class="numbered-list" start="1"><li><strong>Promises of Rewards:</strong> Offering vouchers, financial transfers, or lottery winnings.</li></ol><ol type="1" id="1317aacb-2d23-8079-890e-e73bb5c99969" class="numbered-list" start="2"><li><strong>Authority Figures:</strong> Impersonating government officials, executives, or known employees, sometimes with technical jargon.</li></ol><ol type="1" id="1317aacb-2d23-80bc-bf3b-fb9eb8aee80c" class="numbered-list" start="3"><li><strong>Intimidation:</strong> Creating a fear of negative consequences if no action is taken.</li></ol><ol type="1" id="1317aacb-2d23-802a-8d78-eb4fc3a19d29" class="numbered-list" start="4"><li><strong>Urgency or Scarcity:</strong> Encouraging quick action, often with limited-time offers or intimidation.</li></ol><ol type="1" id="1317aacb-2d23-8094-9b45-db1193e001f3" class="numbered-list" start="5"><li><strong>Social Validation:</strong> Suggesting others (like coworkers) have already acted on a request.</li></ol><ol type="1" id="1317aacb-2d23-8024-8d23-c4ccb2f1a8f5" class="numbered-list" start="6"><li><strong>Unexpected Attachments:</strong> Using names like “Payslip,” “Invoice,” or “Invitation” to increase curiosity.</li></ol><ol type="1" id="1317aacb-2d23-8066-abc8-d9963e897fce" class="numbered-list" start="7"><li><strong>Impersonation of a Familiar Contact:</strong> Pretending to be someone the recipient knows or trusts.</li></ol><hr id="1317aacb-2d23-800d-ac73-ca95d5875907"/><p id="1317aacb-2d23-80bb-a48a-f66c3c9f4ab2" class=""><strong>How to Protect Yourself</strong></p><p id="1317aacb-2d23-801d-8a81-e58b1b8339f8" class="">To detect and protect yourself from phishing, practice these actions:</p><ul id="1317aacb-2d23-803c-b508-c90427beba9e" class="bulleted-list"><li style="list-style-type:disc"><strong>Check Sender Fields:</strong> Look for unfamiliar or suspicious email addresses and confirm the sender’s legitimacy.</li></ul><ul id="1317aacb-2d23-801e-867b-db69b34f6084" class="bulleted-list"><li style="list-style-type:disc"><strong>Hover Over Links:</strong> Before clicking, hover over links to confirm the displayed URL matches the source.</li></ul><ul id="1317aacb-2d23-802e-a9a1-c084cf1da984" class="bulleted-list"><li style="list-style-type:disc"><strong>Avoid Unexpected Emails:</strong> If you’re uncertain about an unexpected email, it’s safer to ignore it.</li></ul><p id="1317aacb-2d23-8078-8225-eb05d795498a" class=""><strong>Reminder:</strong> Trust your instincts. If something seems too good to be true, it likely is.</p><hr id="1317aacb-2d23-80ee-8bc3-c85de5494643"/><p id="1317aacb-2d23-80d7-8984-d38f8801900a" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-80a1-a480-dc462cf8907c" class="">In this lab, you will review emails and identify phishing attempts. Click “Spam” if an email appears to be phishing and “Safe” if it is legitimate. Correctly identify eight emails to complete the lab.</p><h3 id="1317aacb-2d23-801d-91b1-f52d8084b3e0" class="">Covid-19 Cybercriminal Tactics Summary</h3><hr id="1317aacb-2d23-80a2-8775-c35b925789fa"/><p id="1317aacb-2d23-8066-b354-cdcaafbb7efe" class=""><strong>Opportunistic Behavior During Covid-19</strong></p><p id="1317aacb-2d23-80c7-b0dd-c81db3a4ea4f" class="">Cybercriminals exploited the global Covid-19 crisis, taking advantage of widespread emotional and financial distress. They launched phishing campaigns targeting people through email and text messages, intending to prompt an emotional or urgent response.</p><hr id="1317aacb-2d23-8057-bb69-e180a62f4e1a"/><p id="1317aacb-2d23-801e-aca2-fe3c59e36e04" class=""><strong>Covid-19 Phishing Techniques</strong></p><ol type="1" id="1317aacb-2d23-80af-b5b7-c31472978664" class="numbered-list" start="1"><li><strong>Impersonation of Trusted Entities</strong><ul id="1317aacb-2d23-80dc-b3be-d096ba66e84e" class="bulleted-list"><li style="list-style-type:disc">Attackers pretended to be from government bodies, health organizations, schools, workplaces, and charities.</li></ul><ul id="1317aacb-2d23-8064-a75d-caa59078413a" class="bulleted-list"><li style="list-style-type:disc">These impersonations were intended to deceive victims into paying for fake Covid-19 vaccinations, donating to fake charities, or providing personal information for test kits. Some scammers even created fake organizations.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-8036-b1b0-e8c82519fef1" class="numbered-list" start="2"><li><strong>Sense of Urgency</strong><ul id="1317aacb-2d23-802f-84ba-f77bf8943388" class="bulleted-list"><li style="list-style-type:disc">Emails and messages urged recipients to act immediately, often providing harmful links or attachments (e.g., PDFs, Word documents, executables). This tactic induced fear and encouraged users to click on links without verifying sources.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-8055-8826-d39166ad6447" class="numbered-list" start="3"><li><strong>Poor Spelling and Grammar</strong><ul id="1317aacb-2d23-8098-9e98-c7b298aba933" class="bulleted-list"><li style="list-style-type:disc">Intentional spelling and grammar errors were used to filter out those more security-conscious, targeting individuals seen as more vulnerable or likely to respond.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-80bb-bb84-de43cdf12996" class="numbered-list" start="4"><li><strong>Too-Good-To-Be-True Offers</strong><ul id="1317aacb-2d23-8098-8c1a-e5474ad353c6" class="bulleted-list"><li style="list-style-type:disc">Scammers capitalized on people’s hope, selling non-existent, overpriced Covid-19 medicines. These emails exploited victims&#x27; desire to protect friends and family during the crisis.</li></ul></li></ol><hr id="1317aacb-2d23-8041-ab26-c3f6bcf35d9a"/><p id="1317aacb-2d23-8062-a4aa-c2f38ca6d1a8" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-803f-ab10-e61f72afa424" class="">In this lab, you will analyze Covid-related emails. Mark an email as “Spam” if it appears malicious or “Safe” if legitimate. Correctly identify eight emails to complete the lab.</p><p id="1317aacb-2d23-8051-a0b4-ea5e2ebc5e95" class=""><strong>Tracking and Privacy Concerns</strong></p><p id="1317aacb-2d23-8048-8366-fb49ff1ec86e" class="">When browsing the internet, your traffic can be tracked by various services for advertising and security purposes. This tracking isn’t limited to legitimate companies; malicious actors can also access data like browsing history.</p><hr id="1317aacb-2d23-800e-bbf3-d4d9e8befec8"/><p id="1317aacb-2d23-8099-9add-eea66601a293" class=""><strong>Good Privacy and Browsing Habits</strong></p><ol type="1" id="1317aacb-2d23-802b-bc59-f335b38ba419" class="numbered-list" start="1"><li><strong>Choose a Secure Browser</strong><ul id="1317aacb-2d23-80e9-8dcc-c73238e9d121" class="bulleted-list"><li style="list-style-type:disc">Stick to reputable browsers with strong security features (e.g., Chrome, Firefox, Edge, Safari). Update your browser regularly to receive patches that protect against security vulnerabilities.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-80a1-89bb-ea05d77329f8" class="numbered-list" start="2"><li><strong>Use Private Browsing Mode</strong><ul id="1317aacb-2d23-805c-a8b7-cc87bc34a9da" class="bulleted-list"><li style="list-style-type:disc">Most browsers offer private browsing modes, like Chrome’s Incognito and Firefox’s Private Browsing, to prevent local history storage. Note, however, that this does not stop your ISP, employer, or visited sites from tracking your activity.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-8028-a887-ccb04e641e32" class="numbered-list" start="3"><li><strong>Install Trusted Extensions and Plug-ins</strong><ul id="1317aacb-2d23-8064-bc23-f769768c8f41" class="bulleted-list"><li style="list-style-type:disc">Extensions, such as ad-blockers, can enhance your browser&#x27;s functionality, while plug-ins like Adobe Reader help with specific file types. Only install extensions from authorized sources and check with IT before adding new tools.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-8077-a750-dd2d5809cc8f" class="numbered-list" start="4"><li><strong>Download Files Safely</strong><ul id="1317aacb-2d23-8054-a86c-e9f44eba4a3a" class="bulleted-list"><li style="list-style-type:disc">Be cautious with downloads, especially executable (.exe) files. Always verify the source, keep antivirus software updated, and avoid unexpected downloads. Some browsers offer file scanners for additional protection.</li></ul></li></ol><hr id="1317aacb-2d23-80cb-a11b-c2a0e18212ce"/><p id="1317aacb-2d23-8091-b39b-f5dae7e22be9" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-808f-8adb-db003aafcfdc" class="">In this lab, use your knowledge of internet privacy and safer browsing practices to complete the game. Answer eight questions correctly to pass.</p><h3 id="1317aacb-2d23-806b-984a-eb62ffbe04c9" class="">Password Best Practices Summary</h3><hr id="1317aacb-2d23-8032-905b-e310d2c98adb"/><p id="1317aacb-2d23-8015-8723-e35b5d394cd0" class=""><strong>Importance of Strong, Unique Passwords</strong></p><p id="1317aacb-2d23-8061-a0ce-deb24342a890" class="">With around 100 passwords used on average, it’s tempting to reuse them, but doing so puts your accounts at risk. Strong, unique passwords help keep sensitive information secure.</p><hr id="1317aacb-2d23-8094-981d-e42527170533"/><p id="1317aacb-2d23-80f6-aa49-d6e9a29a3268" class=""><strong>Characteristics of Strong Passwords</strong></p><ol type="1" id="1317aacb-2d23-80e0-918f-c8683bd8cdc5" class="numbered-list" start="1"><li><strong>Mix of Characters</strong><ul id="1317aacb-2d23-80cc-940f-cfc00d6680ac" class="bulleted-list"><li style="list-style-type:disc">Use a combination of uppercase and lowercase letters, numbers, and symbols. Avoid predictable substitutions (e.g., &quot;i&quot; with &quot;1&quot; or &quot;e&quot; with &quot;3&quot;). Random placements strengthen passwords, like in this example: <code>Imme16rsive!Labs86&amp;</code>.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-80b9-81da-f4197e78d570" class="numbered-list" start="2"><li><strong>Longer Length</strong><ul id="1317aacb-2d23-8003-89b9-c5f8382de2fd" class="bulleted-list"><li style="list-style-type:disc">Aim for at least twelve characters. Password-cracking tools can now quickly break shorter passwords, so longer ones help add security.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-8017-92e5-e349f5d5de62" class="numbered-list" start="3"><li><strong>Passphrases</strong><ul id="1317aacb-2d23-80df-9a1b-e1d905fe36af" class="bulleted-list"><li style="list-style-type:disc">Use a memorable phrase with at least three words and twelve characters, like <code>3verycl0ud!has@GoldLin1ng</code>. Personalize idioms by changing words and adding unexpected characters.</li></ul></li></ol><hr id="1317aacb-2d23-8063-8ea4-cbbba56bb742"/><p id="1317aacb-2d23-802b-8fa4-e7bf20cde00b" class=""><strong>Tools and Techniques</strong></p><ol type="1" id="1317aacb-2d23-80d7-8d4d-fac8806446f3" class="numbered-list" start="1"><li><strong>Password Managers</strong><ul id="1317aacb-2d23-8069-9583-d0e3c8f9c84d" class="bulleted-list"><li style="list-style-type:disc">Store complex, unique passwords securely, needing only a single master password. Ensure this master password is strong, as a compromised password manager can expose all your credentials.</li></ul></li></ol><ol type="1" id="1317aacb-2d23-80e2-a28f-eb669344cce9" class="numbered-list" start="2"><li><strong>Multi-Factor Authentication (MFA)</strong><ul id="1317aacb-2d23-80ef-9833-ff56bab04198" class="bulleted-list"><li style="list-style-type:disc">Adds an extra layer of security by requiring a one-time code, PIN, or biometrics along with the password. MFA codes should never be shared with others.</li></ul></li></ol><hr id="1317aacb-2d23-8076-83fc-f65690739e47"/><p id="1317aacb-2d23-8061-9016-cd3a4aacb16c" class=""><strong>Lab Activity</strong></p><p id="1317aacb-2d23-80e1-abd3-f6f67fc05c71" class="">In this lab, match password-related statements to complete the game.</p><h3 id="1347aacb-2d23-80df-8d91-ff2b25f2e805" class="">What is Antivirus Software?</h3><ul id="1347aacb-2d23-80d1-83ad-eceb1a64f35e" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Protects systems from malware (malicious software).</li></ul><ul id="1347aacb-2d23-8095-9c31-e7a356826559" class="bulleted-list"><li style="list-style-type:disc"><strong>Functionality</strong>: Detects and secures devices against malware by removing dangerous files or blocking high-risk IPs, hosts, or domains.</li></ul><h3 id="1347aacb-2d23-808f-9fa3-c264b851e721" class="">Key Capabilities</h3><ul id="1347aacb-2d23-80fe-b5d6-de0f3240484c" class="bulleted-list"><li style="list-style-type:disc"><strong>Scanning</strong>: Most antivirus software can scan files and folders for malware patterns via:<ul id="1347aacb-2d23-80d7-af55-e65205904ed1" class="bulleted-list"><li style="list-style-type:circle"><strong>Manual scans</strong>.</li></ul><ul id="1347aacb-2d23-8099-b90f-e0ec2c6fb387" class="bulleted-list"><li style="list-style-type:circle"><strong>Scheduled, automatic scans</strong>.</li></ul></li></ul><ul id="1347aacb-2d23-8089-94bb-f3f1b36d3089" class="bulleted-list"><li style="list-style-type:disc"><strong>File Security</strong>: Scans downloads at the point of transfer in some cases.</li></ul><ul id="1347aacb-2d23-80cc-bdb4-f525cb9df5b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Background Processing</strong>: Many antivirus tools operate in the background, while some allow you to decide whether to remove threats.</li></ul><h3 id="1347aacb-2d23-80db-960f-c1539f71f410" class="">Common Threats Protected Against</h3><ul id="1347aacb-2d23-801d-a21b-f8cc5983416e" class="bulleted-list"><li style="list-style-type:disc">Viruses</li></ul><ul id="1347aacb-2d23-8043-bf15-ee60640df111" class="bulleted-list"><li style="list-style-type:disc">Ransomware</li></ul><ul id="1347aacb-2d23-801b-871b-d80f52c45a6d" class="bulleted-list"><li style="list-style-type:disc">Keyloggers</li></ul><ul id="1347aacb-2d23-80cd-a5ee-fedb1319bd38" class="bulleted-list"><li style="list-style-type:disc">Rootkits</li></ul><ul id="1347aacb-2d23-8021-8d7f-dba04377123b" class="bulleted-list"><li style="list-style-type:disc">Worms and Trojan horses</li></ul><ul id="1347aacb-2d23-80c5-9408-f5ffcf79d63c" class="bulleted-list"><li style="list-style-type:disc">Adware</li></ul><ul id="1347aacb-2d23-80e4-853f-d4a9aa2f2b83" class="bulleted-list"><li style="list-style-type:disc">Spyware</li></ul><ul id="1347aacb-2d23-803c-bfb2-f5ae56152493" class="bulleted-list"><li style="list-style-type:disc">High-risk IP addresses</li></ul><h3 id="1347aacb-2d23-8011-b856-d3286fff9d8f" class="">Importance of Antivirus Software</h3><ul id="1347aacb-2d23-8046-ad9d-c75aabc2ebdb" class="bulleted-list"><li style="list-style-type:disc">Acts as a protective shield against malware threats.</li></ul><ul id="1347aacb-2d23-804d-af6b-c9f251fee2b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Risks of Not Using</strong>: Includes data breaches, malware infections, and ransomware threats.</li></ul><ul id="1347aacb-2d23-80fe-b3e3-d96b3a26d42a" class="bulleted-list"><li style="list-style-type:disc"><strong>Daily Threats</strong>: Frequent updates are needed to defend against new malware.</li></ul><h3 id="1347aacb-2d23-8083-923b-c49687735cd9" class="">Special Products</h3><ul id="1347aacb-2d23-80ae-aba7-d611c474b4bc" class="bulleted-list"><li style="list-style-type:disc">Anti-spyware and other specialized tools can offer advanced features for added protection.</li></ul><ul id="1347aacb-2d23-8029-bfc6-f137990dbacf" class="bulleted-list"><li style="list-style-type:disc">Not all antivirus products offer complete protection, so choose based on specific needs and requirements.</li></ul><h3 id="1347aacb-2d23-802b-aa48-d331a2d1f108" class="">Choosing Antivirus Software</h3><ul id="1347aacb-2d23-80bf-b4f0-c2bec4031aef" class="bulleted-list"><li style="list-style-type:disc"><strong>Selection</strong>: No single product covers all threats; research to find one that fits your requirements.</li></ul><ul id="1347aacb-2d23-8058-b3a1-db4556dd6b28" class="bulleted-list"><li style="list-style-type:disc"><strong>Organization Policies</strong>: Many workplaces provide licensed antivirus for work devices.</li></ul><h3 id="1347aacb-2d23-80ee-aca5-d8f6d4fd9f24" class="">Vigilance</h3><ul id="1347aacb-2d23-8043-b11b-cd890f7261b7" class="bulleted-list"><li style="list-style-type:disc">Even with antivirus, remain cautious online, especially with links and files from unverified sources.</li></ul><h3 id="1347aacb-2d23-80ad-95b6-cc693808203f" class="">Lab Objective</h3><ul id="1347aacb-2d23-8082-8fa3-eccccfae6891" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Use antivirus knowledge to answer questions; answer eight correctly to pass.</li></ul><h3 id="1347aacb-2d23-80eb-88c8-ec6e45c8262a" class="">What is Malware?</h3><ul id="1347aacb-2d23-804d-9849-f7a0090797c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Malware, short for &quot;malicious software,&quot; refers to software that performs unwanted or harmful activities on a device.</li></ul><ul id="1347aacb-2d23-80a7-a222-f5bb291d7ecd" class="bulleted-list"><li style="list-style-type:disc"><strong>Infection Term</strong>: A device &quot;infected by malware&quot; implies that it has harmful software installed, akin to how viruses affect the human body.</li></ul><h3 id="1347aacb-2d23-80d9-931c-f9bf693013f6" class="">Types of Malware</h3><ul id="1347aacb-2d23-802f-9f54-fc5d3e47b407" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples</strong>: Malware includes a wide range of software designed to harm or exploit devices, often categorized by their behaviors and targets (e.g., ransomware, spyware).</li></ul><h3 id="1347aacb-2d23-806e-aee6-c69afcfaa5d3" class="">Common Infection Methods</h3><ul id="1347aacb-2d23-8001-968c-f30a883b4a0f" class="bulleted-list"><li style="list-style-type:disc"><strong>Email Attachments &amp; Links</strong>: Attackers often use phishing emails with malicious attachments or links to distribute malware, targeting users to unknowingly download the infected files.</li></ul><ul id="1347aacb-2d23-80c8-b217-f64a94932508" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploit Kits</strong>: Toolkits designed to exploit system vulnerabilities and distribute malware, often deployed through fake websites that initiate malicious downloads when clicked.<ul id="1347aacb-2d23-8076-ae0b-eb5a0a4eaecd" class="bulleted-list"><li style="list-style-type:circle">Example: Downloading illegal software copies can install hidden malware.</li></ul></li></ul><ul id="1347aacb-2d23-80d3-8518-f127d4d737c4" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerable Software</strong>: Outdated or unpatched software may have vulnerabilities that attackers use to deliver malware.</li></ul><h3 id="1347aacb-2d23-806a-8c1e-ed35c7926ade" class="">Who Can Be Affected by Malware?</h3><ul id="1347aacb-2d23-802f-91fe-ce34ac73d0fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Targets</strong>: Any device can be affected, with organizations at higher risk due to valuable assets (e.g., money, data). Malware can spread across networks, affecting multiple devices quickly.</li></ul><h3 id="1347aacb-2d23-8018-b84a-f77680dd93cc" class="">Protecting Against Malware</h3><ol type="1" id="1347aacb-2d23-80fa-995a-e079d28825da" class="numbered-list" start="1"><li><strong>Run Antivirus and Anti-Malware</strong>: Regularly scan devices with antivirus and anti-malware programs. IT teams can manage this on work devices.</li></ol><ol type="1" id="1347aacb-2d23-80f2-8185-c23d2f63670e" class="numbered-list" start="2"><li><strong>Safe Browsing</strong>: Only visit trusted websites. Verify unfamiliar sites with independent reviews and check for a padlock icon in the URL bar, indicating a secure connection.</li></ol><ol type="1" id="1347aacb-2d23-804b-9147-c0f1379f1018" class="numbered-list" start="3"><li><strong>Caution with Links and Attachments</strong>: Only interact with links and attachments from reputable sources. Verify with the sender if in doubt, using other identity verification methods.</li></ol><ol type="1" id="1347aacb-2d23-8041-96b0-ca94a69896f2" class="numbered-list" start="4"><li><strong>Avoid Random QR Codes</strong>: Scanning unknown QR codes could lead to malware.</li></ol><ol type="1" id="1347aacb-2d23-808d-a8eb-ca5a6ebfbb2c" class="numbered-list" start="5"><li><strong>Don’t Click Pop-Ups</strong>: Avoid clicking on pop-up ads in browsers.</li></ol><ol type="1" id="1347aacb-2d23-80e7-9f44-ebf7183742eb" class="numbered-list" start="6"><li><strong>Use Official App Stores</strong>: Only download apps from verified stores like Google Play or the App Store.</li></ol><ol type="1" id="1347aacb-2d23-808a-ab56-cce3f240e4ca" class="numbered-list" start="7"><li><strong>Consult IT Support</strong>: When in doubt, contact IT support for guidance.</li></ol><h3 id="1347aacb-2d23-80ff-858b-f5717d28a6f2" class="">Lab Objective</h3><ul id="1347aacb-2d23-8046-ac62-fbc077274567" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Demonstrate understanding by correctly matching malware-related statements in the lab&#x27;s drag-and-drop activity.</li></ul><h3 id="1347aacb-2d23-8073-b1ac-ce2735ea8cf4" class="">What is Ransomware?</h3><ul id="1347aacb-2d23-80bc-9b07-efe02c4e9e5f" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Ransomware is malware that locks or encrypts a device’s data and demands a ransom to release it.</li></ul><ul id="1347aacb-2d23-8094-94ac-d00c6e4eaea9" class="bulleted-list"><li style="list-style-type:disc"><strong>Ransom Note</strong>: The attack typically includes a ransom note with payment instructions. Paying the ransom does not guarantee data recovery.</li></ul><h3 id="1347aacb-2d23-8022-b85b-ea8f22f414de" class="">Impact and Threat Level</h3><ul id="1347aacb-2d23-8071-9bbb-fc67d6b12add" class="bulleted-list"><li style="list-style-type:disc"><strong>Widespread Threat</strong>: Ransomware attacks are a growing global threat, with over 4,000 attacks occurring daily in the U.S. since 2016.</li></ul><h3 id="1347aacb-2d23-80a8-9a6a-c0308bf23f92" class="">Ransomware Distribution Methods</h3><ol type="1" id="1347aacb-2d23-8085-8fda-f54117868f76" class="numbered-list" start="1"><li><strong>Mass Phishing Emails</strong>: Sent to a broad audience, hoping recipients will open infected attachments or links.</li></ol><ol type="1" id="1347aacb-2d23-80b8-ab54-d98ee37cad52" class="numbered-list" start="2"><li><strong>Spear Phishing</strong>: A targeted attack where personalized emails mimic legitimate sources to deceive specific employees.</li></ol><ol type="1" id="1347aacb-2d23-80d6-95f5-d9570c875235" class="numbered-list" start="3"><li><strong>Infected Websites</strong>: Ransomware can be downloaded from malicious sites that evade detection by browsers and antivirus tools.</li></ol><ol type="1" id="1347aacb-2d23-808d-a3c1-d772e90e0012" class="numbered-list" start="4"><li><strong>Bundled Downloads</strong>: Malware can be hidden in what appears to be legitimate software, but the source may be untrustworthy.</li></ol><h3 id="1347aacb-2d23-80e8-9d5b-cb59e9e6c3f5" class="">Indicators of Ransomware Infection</h3><ol type="1" id="1347aacb-2d23-807a-8dca-d60cbf9212ab" class="numbered-list" start="1"><li><strong>Ransom Note</strong>: Often displayed on the screen or as a background change; may also appear as an unusual file on the desktop.</li></ol><ol type="1" id="1347aacb-2d23-8080-9129-c8179cb9401e" class="numbered-list" start="2"><li><strong>Changed File Extensions</strong>: File extensions may alter (e.g., work.xlsx becomes work.xlsx.ransomware).</li></ol><ol type="1" id="1347aacb-2d23-809d-9625-edd8fc112c20" class="numbered-list" start="3"><li><strong>Unusual System Behavior</strong>: Devices may slow down noticeably, and fans may run louder than usual.</li></ol><h3 id="1347aacb-2d23-80f9-9bc0-dcc745f256dc" class="">Steps to Remediate a Ransomware Attack</h3><ol type="1" id="1347aacb-2d23-805e-be9c-ea6c314331a8" class="numbered-list" start="1"><li><strong>Disconnect from the Network</strong>: Immediately unplug the internet cable or turn off Wi-Fi to prevent malware from spreading.</li></ol><ol type="1" id="1347aacb-2d23-80c0-903a-fd4977120455" class="numbered-list" start="2"><li><strong>Report to IT Support</strong>: Notify your IT or information security team to ensure the infection is addressed. File loss may occur during restoration.</li></ol><h3 id="1347aacb-2d23-8026-8251-ee8e13916d5f" class="">Lab Objective</h3><ul id="1347aacb-2d23-802a-8645-ff2d4cc0ad6e" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Identify all indicators of a ransomware attack on the desktop by locating four hidden objects to complete the lab.</li></ul><h3 id="1347aacb-2d23-8006-848e-e51d1daf01ed" class="">What is Network Security?</h3><ul id="1347aacb-2d23-80b3-9839-fe4c9db53547" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Protects the integrity, availability, and confidentiality of network and data.</li></ul><ul id="1347aacb-2d23-804b-abde-fcfeb1bac67b" class="bulleted-list"><li style="list-style-type:disc"><strong>Forms</strong>: Involves both hardware and software protections.</li></ul><ul id="1347aacb-2d23-8009-979b-c8660973d89b" class="bulleted-list"><li style="list-style-type:disc"><strong>User Awareness</strong>: Network security may go unnoticed by users unless they encounter a blocked webpage or missing email.</li></ul><h3 id="1347aacb-2d23-80d8-b2b9-e3e82f77ca30" class="">Key Network Security Tools</h3><ol type="1" id="1347aacb-2d23-8054-8e30-eddd6009acc0" class="numbered-list" start="1"><li><strong>Firewalls</strong><ul id="1347aacb-2d23-806c-82ef-c847890e8dc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Function</strong>: Control incoming and outgoing network traffic to prevent unauthorized access.</li></ul><ul id="1347aacb-2d23-8095-af67-f542f38e1380" class="bulleted-list"><li style="list-style-type:disc"><strong>Operation</strong>: Managed by IT security, allowing safe access to necessary sites (e.g., online stores, social media).</li></ul><ul id="1347aacb-2d23-80b9-9c6e-f13222f90cf6" class="bulleted-list"><li style="list-style-type:disc"><strong>Limitations</strong>: Firewalls add security but are not a complete solution for all types of attacks.</li></ul></li></ol><ol type="1" id="1347aacb-2d23-807e-8e22-d8c087e7c4ed" class="numbered-list" start="2"><li><strong>Virtual Private Networks (VPNs)</strong><ul id="1347aacb-2d23-804a-86d3-f3481459834a" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Create a secure connection over less secure networks (e.g., public Wi-Fi).</li></ul><ul id="1347aacb-2d23-8058-849f-ca8f98fbc215" class="bulleted-list"><li style="list-style-type:disc"><strong>Usage</strong>: Often configured by companies to restrict access to certain applications to only company networks, allowing secure remote access.</li></ul><ul id="1347aacb-2d23-8022-b21f-ee26ab9725c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Benefits</strong>: Protects against data theft on public networks and hides online activity from ISPs and advertisers.</li></ul></li></ol><h3 id="1347aacb-2d23-80ed-a7b7-e001b80713c2" class="">Reasons to Use a VPN</h3><ul id="1347aacb-2d23-807d-a82d-ca001ff26566" class="bulleted-list"><li style="list-style-type:disc"><strong>Enhanced Security on Public Networks</strong>: Secures personal and work data when using public Wi-Fi (e.g., in cafes).</li></ul><ul id="1347aacb-2d23-806e-b239-c0b1d19dfb51" class="bulleted-list"><li style="list-style-type:disc"><strong>Privacy Protection</strong>: Prevents ISPs, law enforcement, and advertisers from tracking browsing activity.</li></ul><h3 id="1347aacb-2d23-805f-bb7d-d46733d8c9ed" class="">VPN Usage Abroad</h3><ul id="1347aacb-2d23-80bf-b597-d8f6839e2fe1" class="bulleted-list"><li style="list-style-type:disc"><strong>Local Regulations</strong>: Some countries (e.g., China) have restrictions on VPN usage.</li></ul><ul id="1347aacb-2d23-80e1-8f62-d757771f82ae" class="bulleted-list"><li style="list-style-type:disc"><strong>Preparation</strong>: Consult IT before traveling abroad to ensure compliance with company policies and local VPN laws.</li></ul><h3 id="1347aacb-2d23-8026-9024-dfcea640e2bd" class="">Lab Objective</h3><ul id="1347aacb-2d23-8090-91ee-d2c230aeca56" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Correctly match statements about network security concepts in a drag-and-drop activity.</li></ul><h3 id="1347aacb-2d23-80e9-922a-cd96418ed0fb" class="">What is Identity Theft?</h3><ul id="1347aacb-2d23-80de-82d3-d3ae22026813" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Occurs when someone steals personal information to commit crimes in the victim&#x27;s name, often leading to fraud.</li></ul><ul id="1347aacb-2d23-8018-b09c-db556edcc658" class="bulleted-list"><li style="list-style-type:disc"><strong>Consequences</strong>: Victims may lose money, struggle to obtain credit, and potentially be held accountable for a criminal’s actions.</li></ul><h3 id="1347aacb-2d23-803c-a84b-ef9866ec5eed" class="">Impact of Identity Theft</h3><ul id="1347aacb-2d23-80b4-8922-c5ccb86093c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Financial Fraud</strong>: Victims can incur massive debt, affecting their homes and livelihoods.</li></ul><ul id="1347aacb-2d23-8040-a22e-d3da5f43c2fd" class="bulleted-list"><li style="list-style-type:disc"><strong>Difficulty Proving Innocence</strong>: Identity theft can create challenges in proving one&#x27;s innocence due to fraudulent actions taken in their name.</li></ul><h3 id="1347aacb-2d23-80cc-ac10-ed946e8d34c4" class="">Key Information Used in Identity Theft</h3><ul id="1347aacb-2d23-8001-ab29-c4db92700150" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Details</strong>: Name, address, and date of birth are often sufficient for impersonation.</li></ul><ul id="1347aacb-2d23-805d-bd53-f268e12c8148" class="bulleted-list"><li style="list-style-type:disc"><strong>Further Risks</strong>: With additional information, criminals may open bank accounts, take out credit cards, or apply for benefits in the victim’s name.</li></ul><h3 id="1347aacb-2d23-8044-b35d-c9d14598e2a4" class="">Signs of Identity Theft</h3><ol type="1" id="1347aacb-2d23-8068-b522-d9af5249f5a7" class="numbered-list" start="1"><li>Loss of vital documents (passport, driving license).</li></ol><ol type="1" id="1347aacb-2d23-803b-ac36-d051709cd331" class="numbered-list" start="2"><li>Unrecognized purchases on bank or credit card statements or a sudden credit score drop.</li></ol><ol type="1" id="1347aacb-2d23-8082-aeec-ed91eaba04ef" class="numbered-list" start="3"><li>Bills or receipts for unknown services.</li></ol><ol type="1" id="1347aacb-2d23-80e7-afcd-d312c080656f" class="numbered-list" start="4"><li>Letters from debt collectors or government officials for unknown debts.</li></ol><h3 id="1347aacb-2d23-80f2-94e9-ee62e341d004" class="">Steps to Take if You Suspect Identity Theft</h3><ol type="1" id="1347aacb-2d23-8031-84b1-d409525b2942" class="numbered-list" start="1"><li>Report any suspicious activity on accounts to the provider using verified contact details.</li></ol><ol type="1" id="1347aacb-2d23-80a3-a9de-fde277ad6733" class="numbered-list" start="2"><li>Report fraudulent letters or emails to the relevant fraud authority.</li></ol><ol type="1" id="1347aacb-2d23-80a3-8c11-f28f9fcc5f95" class="numbered-list" start="3"><li>Immediately report unauthorized transactions to your bank’s fraud department.</li></ol><h3 id="1347aacb-2d23-8096-8610-c9fb1a477513" class="">Preventing Identity Theft</h3><ul id="1347aacb-2d23-80c8-83c7-d0d8b1fb3b54" class="bulleted-list"><li style="list-style-type:disc">Be cautious about sharing personal information.</li></ul><ul id="1347aacb-2d23-8010-a781-c934b4c5eb00" class="bulleted-list"><li style="list-style-type:disc">Shred financial documents and avoid reusing passwords.</li></ul><ul id="1347aacb-2d23-8085-bbab-f6da0a98d68c" class="bulleted-list"><li style="list-style-type:disc">Only share personal information with trusted contacts.</li></ul><h3 id="1347aacb-2d23-8049-ad48-d26a1e092f8b" class="">If You&#x27;re a Victim of Identity Theft</h3><ol type="1" id="1347aacb-2d23-8033-a41a-ce1a5ad44f8a" class="numbered-list" start="1"><li>Report lost or stolen documents to the issuing organization.</li></ol><ol type="1" id="1347aacb-2d23-809d-a4d5-e2ab022e6d2b" class="numbered-list" start="2"><li>Notify your bank or credit company of any unusual transactions.</li></ol><ol type="1" id="1347aacb-2d23-8007-a89b-e2344ca543cb" class="numbered-list" start="3"><li>Report the issue to local or national authorities.</li></ol><h3 id="1347aacb-2d23-80e2-a236-d49839853ca1" class="">Lab Objective</h3><ul id="1347aacb-2d23-8007-9f59-f1c95dd55fc1" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Complete the game by correctly answering questions on identity theft.</li></ul><h3 id="1347aacb-2d23-802b-a63e-e7a31606f38c" class="">What Are Backups?</h3><ul id="1347aacb-2d23-80a6-bdb4-f55c56dfb013" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: A backup is a copy of important data stored separately from the original, which can be physical (e.g., photocopy) or digital (e.g., USB drive).</li></ul><ul id="1347aacb-2d23-80c5-b7d2-d94505532602" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Used to restore data if the original is damaged, destroyed, or inaccessible.</li></ul><h3 id="1347aacb-2d23-8031-994e-fd7a48b56780" class="">Importance of Backups</h3><ul id="1347aacb-2d23-80fb-843b-d353d936df65" class="bulleted-list"><li style="list-style-type:disc"><strong>Personal Value</strong>: Protects essential information on personal devices (contacts, photos, messages).</li></ul><ul id="1347aacb-2d23-805c-ae79-d3d9e8d14526" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Impact</strong>: Data loss can be catastrophic for businesses. Backups help restore operations after incidents like cyberattacks or natural disasters.</li></ul><ul id="1347aacb-2d23-80eb-922e-e69ed7cb2637" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Protocol</strong>: Companies must clearly define what data to back up, store it separately, and integrate backups into business policies for regular completion and testing.</li></ul><h3 id="1347aacb-2d23-8018-aca0-f14fec222451" class="">Backup Methods</h3><ol type="1" id="1347aacb-2d23-8019-b6fb-e33a8cd641be" class="numbered-list" start="1"><li><strong>Physical Backups</strong><ul id="1347aacb-2d23-80f5-93af-cf22203a0ebe" class="bulleted-list"><li style="list-style-type:disc">Stored on external storage devices, efficient, and capable of holding large data volumes.</li></ul><ul id="1347aacb-2d23-80c6-abb3-ff9d76760d72" class="bulleted-list"><li style="list-style-type:disc"><strong>Cons</strong>: Vulnerable to loss, damage, or theft if not secured properly.</li></ul></li></ol><ol type="1" id="1347aacb-2d23-804d-b45f-d96eadb2bafe" class="numbered-list" start="2"><li><strong>Cloud Backups</strong><ul id="1347aacb-2d23-8063-be6f-ebed097cb1e4" class="bulleted-list"><li style="list-style-type:disc">Popular for low cost, high security, and accessibility from any internet-connected location.</li></ul><ul id="1347aacb-2d23-8048-842e-e01964596494" class="bulleted-list"><li style="list-style-type:disc"><strong>Cons</strong>: Vulnerable to data exposure if the provider experiences a security breach.</li></ul></li></ol><h3 id="1347aacb-2d23-8000-a30d-db73885b83ef" class="">Frequency of Backups</h3><ul id="1347aacb-2d23-80ca-a0d4-cd7d3f9e1ff8" class="bulleted-list"><li style="list-style-type:disc"><strong>Regularity</strong>: Frequency depends on data type and usage; for instance, professionals working with frequently updated data (like web developers) need frequent backups.</li></ul><ul id="1347aacb-2d23-804e-80ac-e434f21d7002" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Protocol</strong>: Critical data is often backed up multiple times daily, usually via automated processes.</li></ul><ul id="1347aacb-2d23-80c7-8e96-e19df0f60cd8" class="bulleted-list"><li style="list-style-type:disc"><strong>Personal Devices</strong>: Can be set to auto-backup periodically or after changes (such as new photos).</li></ul><h3 id="1347aacb-2d23-80fe-8ad0-e1b3426ece73" class="">Lab Objective</h3><ul id="1347aacb-2d23-80d8-bd8a-c4d9d2e368c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Answer eight questions on backups correctly to complete the game.</li></ul><h3 id="1347aacb-2d23-8058-9e26-e1b6704f5534" class="">Updates and Patches</h3><ul id="1347aacb-2d23-80cf-a5e1-dcbf73b1f515" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Patches are updates that address vulnerabilities or security issues in systems and applications, acting as &quot;digital band-aids&quot; to close security gaps.</li></ul><ul id="1347aacb-2d23-8016-9303-e8658685b789" class="bulleted-list"><li style="list-style-type:disc"><strong>Distinction</strong>: While all patches are updates, not all updates are patches. Patches add security fixes, whereas some updates add new features or functionality.</li></ul><h3 id="1347aacb-2d23-8011-82ab-c819037969c0" class="">Importance of Installing Updates and Patches</h3><ol type="1" id="1347aacb-2d23-8047-b31e-c85c79cae78d" class="numbered-list" start="1"><li><strong>Personal Devices</strong><ul id="1347aacb-2d23-807b-a0a9-d8a16cd11817" class="bulleted-list"><li style="list-style-type:disc">It&#x27;s crucial to install updates and patches promptly to secure devices against exploitation.</li></ul><ul id="1347aacb-2d23-801f-aa51-d3f3187e172a" class="bulleted-list"><li style="list-style-type:disc"><strong>Automatic Updates</strong>: Many experts recommend setting devices to install updates automatically, especially for security updates.</li></ul><ul id="1347aacb-2d23-80d5-ae77-dd3204910997" class="bulleted-list"><li style="list-style-type:disc"><strong>Safety Precaution</strong>: Only follow update instructions from the official vendor. Avoid links from suspicious emails or pop-ups, as they may be malicious.</li></ul></li></ol><ol type="1" id="1347aacb-2d23-80f6-9f69-f3671e02dcbd" class="numbered-list" start="2"><li><strong>Work Devices</strong><ul id="1347aacb-2d23-80b0-8144-fcf88a473c54" class="bulleted-list"><li style="list-style-type:disc"><strong>Large Organizations</strong>: Often test updates before release to prevent conflicts with existing systems. Employees are usually notified when to leave devices on or restart them.</li></ul><ul id="1347aacb-2d23-8002-b895-dcfbe66b9009" class="bulleted-list"><li style="list-style-type:disc"><strong>Small Organizations</strong>: May not have automated update systems. Employees should follow company policy on updates and consult IT or security teams if unsure.</li></ul></li></ol><ol type="1" id="1347aacb-2d23-80c6-bdbc-e7b542919a8c" class="numbered-list" start="3"><li><strong>Consequences of Delaying Updates</strong><ul id="1347aacb-2d23-80cd-aa46-c709deb1c3c6" class="bulleted-list"><li style="list-style-type:disc">Outdated software exposes vulnerabilities that attackers can exploit using readily available scanning tools.</li></ul><ul id="1347aacb-2d23-8092-9561-f924288e15f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Equifax Example</strong>: The 2017 data breach was partly due to outdated software that hadn’t been patched in time.</li></ul><ul id="1347aacb-2d23-80c1-ac78-d6cb3db76b64" class="bulleted-list"><li style="list-style-type:disc"><strong>Public Network Risk</strong>: Running unpatched software on public networks (e.g., in a coffee shop) increases exposure to attacks.</li></ul></li></ol><h3 id="1347aacb-2d23-8085-9caa-e738f6365452" class="">Lab Objective</h3><ul id="1347aacb-2d23-80d0-950d-dd8561fc4c38" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Match statements correctly by dragging them from left to right based on the provided information to complete the game.</li></ul><h3 id="1347aacb-2d23-8013-922d-cf4af4a5c4a3" class="">Data Leaks Overview</h3><ul id="1347aacb-2d23-8088-9e94-f1bb8b293640" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Data leaks occur when sensitive information is unintentionally or deliberately exposed.</li></ul><ul id="1347aacb-2d23-80ad-83ae-cb489957aa1f" class="bulleted-list"><li style="list-style-type:disc"><strong>Types</strong>:<ul id="1347aacb-2d23-8014-a4ce-ed6558274df2" class="bulleted-list"><li style="list-style-type:circle"><strong>Accidental Leaks</strong>: Caused by mistakes, such as emailing the wrong person or using insecure networks.</li></ul><ul id="1347aacb-2d23-80f2-8e16-f8d924f3c028" class="bulleted-list"><li style="list-style-type:circle"><strong>Malicious Leaks</strong>: Intentional leaks, often by insider threats, aiming to harm the organization.</li></ul></li></ul><h3 id="1347aacb-2d23-80da-9acd-f98dd8fef11e" class="">Causes of Accidental Data Leaks</h3><ol type="1" id="1347aacb-2d23-807b-92fb-d67968dff8ed" class="numbered-list" start="1"><li><strong>Wrong Recipient</strong>: Accidentally sending sensitive information (like PII) to the wrong email address can lead to a data breach.</li></ol><ol type="1" id="1347aacb-2d23-805f-9925-c927c3ad5be4" class="numbered-list" start="2"><li><strong>Personal Email Accounts</strong>: Using personal email alongside work email increases the risk of mistakenly sending work information via a personal account.</li></ol><ol type="1" id="1347aacb-2d23-8065-9a3a-e7d84c259d48" class="numbered-list" start="3"><li><strong>Using Personal Devices</strong>: Transferring sensitive work data to personal devices outside the corporate network can expose data to unsecure environments. Secure access methods, such as VPNs, are advised.</li></ol><ol type="1" id="1347aacb-2d23-804e-8618-dc7d26edfb59" class="numbered-list" start="4"><li><strong>Wrong Cloud/Network Folder</strong>: Saving files in the wrong shared folder, especially sensitive ones like payroll or HR files, can expose data to unauthorized individuals.</li></ol><h3 id="1347aacb-2d23-8004-b08c-f593c3296f13" class="">Preventing Data Leaks</h3><ul id="1347aacb-2d23-8012-af40-f775b3877316" class="bulleted-list"><li style="list-style-type:disc"><strong>Training and Awareness</strong>: Employees should be educated on data security responsibilities to reduce accidental leaks.</li></ul><ul id="1347aacb-2d23-8085-843d-fe6536fe83c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Encryption and Access Control</strong>: Sensitive documents should be encrypted and password-protected with unique passwords.</li></ul><ul id="1347aacb-2d23-80fe-b6f8-d543d68d343b" class="bulleted-list"><li style="list-style-type:disc"><strong>Password-Protected External Sharing</strong>: When sending sensitive information externally, protect it with a password and share the password separately for security.</li></ul><h3 id="1347aacb-2d23-802a-8a3e-f80c195401b3" class="">Lab Objective</h3><ul id="1347aacb-2d23-8079-b5ca-ec4d77e0a99e" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Determine if a data leak scenario is accidental, malicious, or not a data leak by reading and categorizing statements correctly.</li></ul><h3 id="1347aacb-2d23-8002-8db0-d2cb5cf922c4" class="">Importance of Mobile Phone Security</h3><ul id="1347aacb-2d23-809e-897d-c6c5ca465062" class="bulleted-list"><li style="list-style-type:disc">Mobile phones hold sensitive data and are used frequently for various tasks, making them attractive targets for attackers.</li></ul><ul id="1347aacb-2d23-803f-bfc4-c4021428d72b" class="bulleted-list"><li style="list-style-type:disc">Securing a mobile phone is as important as securing a computer.</li></ul><h3 id="1347aacb-2d23-8092-9653-ed71e238fd72" class="">Mobile Phone Usage</h3><ul id="1347aacb-2d23-8098-9bdb-c201cafd32e5" class="bulleted-list"><li style="list-style-type:disc">Phones are used for services like location sharing, live streaming, online banking, storing personal photos, and messaging.</li></ul><ul id="1347aacb-2d23-80e3-b31a-c229c9c9c558" class="bulleted-list"><li style="list-style-type:disc">These diverse uses increase the amount of sensitive data stored on phones.</li></ul><h3 id="1347aacb-2d23-80a0-be73-daa32626fbf7" class="">Protecting Your Mobile Phone</h3><ol type="1" id="1347aacb-2d23-80af-9032-efe0b4e5b5d1" class="numbered-list" start="1"><li><strong>Passcodes and Biometrics</strong>: Use strong passcodes or biometrics (like fingerprints) to secure your phone. Failed unlock attempts may lead to data wiping, depending on settings.</li></ol><ol type="1" id="1347aacb-2d23-80ca-87d8-c3bec4afe220" class="numbered-list" start="2"><li><strong>Use Reputable App Stores</strong>: Download apps only from trusted sources (Google Play, App Store) to reduce malware risk. Third-party stores are less secure.</li></ol><ol type="1" id="1347aacb-2d23-8008-a137-c8d780242da1" class="numbered-list" start="3"><li><strong>Limit Public Wi-Fi Use</strong>: Avoid public Wi-Fi due to security risks. Attackers may use Wi-Fi spoofing to lure users into connecting to fake networks. Disable Bluetooth when not in use to prevent unauthorized access.</li></ol><ol type="1" id="1347aacb-2d23-80a4-8078-e8380175d4ef" class="numbered-list" start="4"><li><strong>Software Updates</strong>: Regularly update your phone’s software to ensure protection against vulnerabilities and security issues.</li></ol><ol type="1" id="1347aacb-2d23-80ea-b29f-d2d5b7a22eaf" class="numbered-list" start="5"><li><strong>VPN Usage</strong>: Use a VPN to secure data sent and received on the internet, especially on public Wi-Fi or when conducting sensitive tasks.</li></ol><ol type="1" id="1347aacb-2d23-80ab-bd44-c3b86d3d5c99" class="numbered-list" start="6"><li><strong>Cloud Backups</strong>: Enable cloud backups to protect against data loss if your phone is lost, damaged, or compromised.</li></ol><h3 id="1347aacb-2d23-80b4-a7a0-f3f2bc63fef2" class="">Lab Objective</h3><ul id="1347aacb-2d23-80e2-b17f-f708e95b6639" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal</strong>: Correctly match statements related to mobile phone security to complete the game.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

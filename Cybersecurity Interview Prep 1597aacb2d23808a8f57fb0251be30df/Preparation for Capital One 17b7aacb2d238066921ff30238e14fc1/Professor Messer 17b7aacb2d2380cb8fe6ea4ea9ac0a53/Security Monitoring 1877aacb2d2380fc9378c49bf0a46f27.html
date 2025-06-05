@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Security Monitoring</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1877aacb-2d23-80fc-9378-c49bf0a46f27" class="page sans"><header><h1 class="page-title">Security Monitoring</h1><p class="page-description"></p></header><div class="page-body"><p id="1877aacb-2d23-8028-8a05-f15715afc218" class="">Monitoring all endpoints</p><p id="1877aacb-2d23-80b6-adb9-dcd93ef5cf26" class="">It is common to roll all the monitoring (logs, firewal rulebase, additional scanning) into a dashboard</p><p id="1877aacb-2d23-8009-8540-e33484cb05ea" class=""><br/>SIEM (Security Information and Event Manager) consolidates log files from many different origins (firewalls, switches, VPNs, etc). This allows for centralized reporting.<br/></p><p id="1877aacb-2d23-8093-8832-df80314cf56b" class="">
+</p><p id="1877aacb-2d23-80f3-a9e9-e5a510d66f90" class="">There is a constantly changing threat landscape, with new vulnerabilities discovered daily. Many different business applications and services, systems and people are always moving.</p><p id="1877aacb-2d23-8098-8fc0-d12a30643bb3" class="">Actively check systems and devices.</p><p id="1877aacb-2d23-80ee-8f8b-ea6b2431d2c2" class="">We look for reports that can give us action items - status information on what devices need to be updated (software, hardware, OSes).</p><p id="1877aacb-2d23-8035-b4f9-f3f5035bb689" class="">
+</p><h3 id="1877aacb-2d23-8061-bbf2-f3b6a3d6b582" class="">Importance of Network Monitoring</h3><ul id="1877aacb-2d23-80a5-9a01-c45b5ced3bc9" class="bulleted-list"><li style="list-style-type:disc">Attackers constantly target systems and services, necessitating continuous monitoring.</li></ul><ul id="1877aacb-2d23-8022-8df9-c05fcbdeccb9" class="bulleted-list"><li style="list-style-type:disc">Key areas to monitor:<ul id="1877aacb-2d23-805f-a359-c281dd22c6e2" class="bulleted-list"><li style="list-style-type:circle"><strong>Authentications and logins</strong>: Verify legitimate access.</li></ul><ul id="1877aacb-2d23-80fd-ad5c-cdae98effb51" class="bulleted-list"><li style="list-style-type:circle"><strong>Services and remote access</strong>: Identify suspicious activity.</li></ul></li></ul><ul id="1877aacb-2d23-80c8-898f-f468895d0a24" class="bulleted-list"><li style="list-style-type:disc">Real-time monitoring allows quick reactions to security events:<ul id="1877aacb-2d23-803d-8348-e06925fe1146" class="bulleted-list"><li style="list-style-type:circle">Account access</li></ul><ul id="1877aacb-2d23-80f8-9054-ff952870dd68" class="bulleted-list"><li style="list-style-type:circle">Firewall rule base</li></ul><ul id="1877aacb-2d23-80e9-adf1-fc0aeb16bbeb" class="bulleted-list"><li style="list-style-type:circle">Additional scanning for abnormal activities</li></ul></li></ul><h3 id="1877aacb-2d23-80fd-9a46-f59cb48d97b6" class="">Monitoring Tools and Dashboards</h3><ul id="1877aacb-2d23-8087-951e-e175de105b97" class="bulleted-list"><li style="list-style-type:disc">Dashboards provide a high-level view of security posture.</li></ul><ul id="1877aacb-2d23-805d-a4f4-e92d437e6d48" class="bulleted-list"><li style="list-style-type:disc">Key monitoring points:<ul id="1877aacb-2d23-804e-ad7e-da79d2021cde" class="bulleted-list"><li style="list-style-type:circle"><strong>Computing resources</strong>: Identify unusual authentications (e.g., logins from unexpected countries).</li></ul><ul id="1877aacb-2d23-8032-bc57-c1bb62cee019" class="bulleted-list"><li style="list-style-type:circle"><strong>Services</strong>: Check activity levels, backups, and software versions.</li></ul><ul id="1877aacb-2d23-80de-80be-ed385d601cb1" class="bulleted-list"><li style="list-style-type:circle"><strong>Applications</strong>: Monitor availability and operational status.</li></ul></li></ul><ul id="1877aacb-2d23-8072-997b-c7b7428719cd" class="bulleted-list"><li style="list-style-type:disc">Traffic monitoring can uncover data exfiltration attempts (e.g., large, unusual data transfers).</li></ul><h3 id="1877aacb-2d23-8075-8b91-e9ea46accb1c" class="">Consolidation with SIEM</h3><ul id="1877aacb-2d23-805c-be96-d4ebd0d54ad2" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Information and Event Manager (SIEM):</strong><ul id="1877aacb-2d23-8087-9145-d55d8095a5b7" class="bulleted-list"><li style="list-style-type:circle">Centralizes logs from various devices (firewalls, switches, servers, routers).</li></ul><ul id="1877aacb-2d23-804f-a709-c56aebb88927" class="bulleted-list"><li style="list-style-type:circle">Simplifies reporting and correlation of diverse data.</li></ul><ul id="1877aacb-2d23-8063-85c6-e69f6b5b9dba" class="bulleted-list"><li style="list-style-type:circle">Enables actionable insights, such as VPN authentication tracking or data transfer analysis.</li></ul></li></ul><h3 id="1877aacb-2d23-80a5-b546-dc0090147b98" class="">Vulnerability Scanning</h3><ul id="1877aacb-2d23-80a3-8f7f-fc059b03a01d" class="bulleted-list"><li style="list-style-type:disc">Systems are in constant motion (e.g., laptops, mobile devices), making tracking vulnerabilities challenging.</li></ul><ul id="1877aacb-2d23-8033-8e44-f6f59680cc4e" class="bulleted-list"><li style="list-style-type:disc">Scanning software gathers data on:<ul id="1877aacb-2d23-80f0-9672-d8387b6bd647" class="bulleted-list"><li style="list-style-type:circle">Operating systems and versions</li></ul><ul id="1877aacb-2d23-805f-bcd7-c039565c59b0" class="bulleted-list"><li style="list-style-type:circle">Device drivers</li></ul><ul id="1877aacb-2d23-80b3-a8d7-dc2aac2fe435" class="bulleted-list"><li style="list-style-type:circle">Applications</li></ul><ul id="1877aacb-2d23-800c-9935-fe3d50a3670e" class="bulleted-list"><li style="list-style-type:circle">Anomalies logged in devices</li></ul></li></ul><ul id="1877aacb-2d23-80b7-bb22-c53dcd70656a" class="bulleted-list"><li style="list-style-type:disc">Reports from scans are used to:<ul id="1877aacb-2d23-80cd-82f0-f7124b0cfd0d" class="bulleted-list"><li style="list-style-type:circle">Identify non-compliance with patches.</li></ul><ul id="1877aacb-2d23-8050-a071-c8c20a3ed666" class="bulleted-list"><li style="list-style-type:circle">Plan remediation actions for vulnerable systems.</li></ul><ul id="1877aacb-2d23-8012-b70a-d3b2e2d11ac1" class="bulleted-list"><li style="list-style-type:circle">Analyze future risks (e.g., end-of-life systems).</li></ul></li></ul><h3 id="1877aacb-2d23-8026-8622-cdc265a9a7d9" class="">Long-Term Threat Detection</h3><ul id="1877aacb-2d23-80c3-a37d-e2a4b808973f" class="bulleted-list"><li style="list-style-type:disc">Breaches often go unnoticed for months (e.g., IBM study: average detection time is nine months).</li></ul><ul id="1877aacb-2d23-8010-9cc5-e2366bb944cd" class="bulleted-list"><li style="list-style-type:disc">Long-term backups are essential to address undetected breaches.</li></ul><ul id="1877aacb-2d23-80a0-80c2-d1fb1a71e7dc" class="bulleted-list"><li style="list-style-type:disc">Legal requirements may mandate extended data retention for security analysis.</li></ul><h3 id="1877aacb-2d23-80cd-883a-cc825271b6ce" class="">Alerts and Alarms</h3><ul id="1877aacb-2d23-80f6-8bea-ed4c2c1d348a" class="bulleted-list"><li style="list-style-type:disc">Real-time alerts notify of unusual events:<ul id="1877aacb-2d23-806e-8d49-e627d0777f41" class="bulleted-list"><li style="list-style-type:circle">Increased authentication errors (e.g., brute-force attacks).</li></ul><ul id="1877aacb-2d23-804a-80aa-edb003ec1d32" class="bulleted-list"><li style="list-style-type:circle">Sudden spikes in data transfers.</li></ul></li></ul><ul id="1877aacb-2d23-8017-ae23-d9275673725a" class="bulleted-list"><li style="list-style-type:disc">Notifications can be delivered via text, email, or SOC-specific systems.</li></ul><ul id="1877aacb-2d23-80e9-9306-ebd9cbab5a3e" class="bulleted-list"><li style="list-style-type:disc">Immediate actions include quarantining compromised systems to limit attacker movement.</li></ul><h3 id="1877aacb-2d23-808e-a267-ca50da43f4a0" class="">Challenges in Alert Management</h3><ul id="1877aacb-2d23-8090-a8a8-d2bae0acdd9c" class="bulleted-list"><li style="list-style-type:disc"><strong>False Positives</strong>: Alerts for non-issues; require tuning to reduce noise.</li></ul><ul id="1877aacb-2d23-80b0-8ce2-d2e84a2bf019" class="bulleted-list"><li style="list-style-type:disc"><strong>False Negatives</strong>: Missed critical events; need adjustments to avoid gaps.</li></ul><ul id="1877aacb-2d23-80db-ab54-ebcfca7e9c87" class="bulleted-list"><li style="list-style-type:disc">Continuous refinement ensures accurate alerts for timely and effective responses.</li></ul><h3 id="1877aacb-2d23-8079-b74e-db952ed0695e" class="">Summary</h3><ul id="1877aacb-2d23-8025-b7a4-cfc421983279" class="bulleted-list"><li style="list-style-type:disc">Effective monitoring involves a combination of real-time detection, centralized logging (via SIEM), actionable reporting, and proactive alerting systems.</li></ul><ul id="1877aacb-2d23-8003-afd8-ce489482a0e1" class="bulleted-list"><li style="list-style-type:disc">Ongoing challenges include tuning alerts, managing false positives/negatives, and maintaining long-term security strategies.</li></ul><p id="1877aacb-2d23-8065-8544-d6953a851707" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

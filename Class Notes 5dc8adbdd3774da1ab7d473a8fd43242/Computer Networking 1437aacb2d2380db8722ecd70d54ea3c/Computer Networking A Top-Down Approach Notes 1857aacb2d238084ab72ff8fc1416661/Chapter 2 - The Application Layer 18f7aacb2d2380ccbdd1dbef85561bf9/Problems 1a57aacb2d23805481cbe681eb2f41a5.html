@@ -1,0 +1,719 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Problems</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1a57aacb-2d23-8054-81cb-e681eb2f41a5" class="page sans"><header><h1 class="page-title">Problems</h1><p class="page-description"></p></header><div class="page-body"><p id="1a57aacb-2d23-80dd-923d-c36b88128650" class="">P1.  True or false?<br/><br/>    a. A user requests a Web page that consists of some text and three images.<br/>For this page, the client will send one request message and receive four<br/>response messages.<br/>False<br/>    b. Two distinct Web pages (for example, www.mit.edu/research<br/>.html and www.mit.edu/students.html) can be sent over the<br/>same persistent connection.<br/>True<br/>    c. With nonpersistent connections between browser and origin server, it is<br/>possible for a single TCP segment to carry two distinct HTTP request<br/>messages.<br/>False<br/>    d. The Date: header in the HTTP response message indicates when the<br/>object in the response was last modified.<br/>False<br/>    e. HTTP response messages never have an empty message body.<br/></p><p id="1a57aacb-2d23-8051-8ea1-d9cb38986766" class="">False</p><p id="1a57aacb-2d23-80e2-86df-d26a5694f925" class="">
+</p><p id="1a57aacb-2d23-805e-b80e-c5c8edc74a52" class=""><br/>P2.  SMS, iMessage, Wechat, and WhatsApp are all smartphone real-time mes-<br/>saging systems. After doing some research on the Internet, for each of these<br/>systems write one paragraph about the protocols they use. Then write a para-<br/>graph explaining how they differ.<br/><br/>	<br/>SMS (Short Message Service) is a technology that allows the sending and receiving of textmessages between mobile phones over cellular networks. One SMS message can containdata of 140 bytes and it supports languages internationally. The maximum size of amessage can be 160 7-bit characters, 140 8-bit characters, or 70 16-bit characters. SMS isrealized through the Mobile Application Part (MAP) of the SS#7 protocol, and the ShortMessage protocol is defined by 3GPP TS 23.040 and 3GPP TS 23.041. In addition, MMS(Multimedia Messaging Service) extends the capability of original text messages, andsupport sending photos, longer text messages, and other content.iMessage is an instant messenger service developed by Apple. iMessage supports texts,photos, audios or videos that we send to iOS devices and Macs over cellular data networkor WiFi. Apple’s iMessage is based on a proprietary, binary protocol APNs (Apple PushNotification Service).WhatsApp Messenger is an instant messenger service that supports many mobile platformssuch as iOS, Android, Mobile Phone, and Blackberry. WhatsApp users can send each otherunlimited images, texts, audios, or videos over cellular data network or WiFi. WhatsAppuses the XMPP protocol (Extensible Messaging and Presence Protocol).iMessage and WhatsApp are different than SMS because they use data plan to sendmessages and they work on TCP/IP networks, but SMS use the text messaging plan wepurchase from our wireless carrier. Moreover, iMessage and WhatsApp support sendingphotos, videos, files, etc., while the original SMS can only send text message. Finally,iMessage and WhatsApp can work via WiFi, but SMS canno<br/></p><p id="1a67aacb-2d23-804e-bc83-e56419965d30" class="">
+</p><p id="1a67aacb-2d23-80f0-8317-cfe4f993197e" class=""><br/>P3: Consider an HTTP client that wants to retrieve a Web document at a given URL. The IP address of the HTTP server is initially unknown. What transport and application-layer protocols besides HTTP are needed in this scenario?<br/></p><p id="1a67aacb-2d23-80f1-b0fd-d3be63927b85" class="">Application: DNS</p><p id="1a67aacb-2d23-80db-8562-d5923c9618da" class="">Transport: UDP for DNS, TCP for HTTP</p><p id="1a67aacb-2d23-8065-8e2f-ca9954c19756" class="">
+</p><p id="1a67aacb-2d23-8073-9c56-f7ead776f206" class=""><br/><br/></p><ol type="1" id="1a67aacb-2d23-8010-bb7a-dc0efef8af9c" class="numbered-list" start="1"><li>P4. Consider the following string of ASCII characters that were captured by<br/>Wireshark when the browser sent an HTTP GET message (i.e., this is the<br/>actual content of an HTTP GET message). The characters <br/><em>&lt;cr&gt;&lt;lf&gt; </em>are<br/>carriage return and line-feed characters (that is, the italized character string<br/><br/><em>&lt;cr&gt; </em>in the text below represents the single carriage-return character that was<br/>contained at that point in the HTTP header). Answer the following questions,<br/>indicating where in the HTTP GET message below you find the answer.<br/></li></ol><p id="1a67aacb-2d23-80f2-a213-d847c9acb0f3" class="">GET /cs453/index.html HTTP/1.1<em>&lt;cr&gt;&lt;lf&gt;</em>Host: gai<br/>a.cs.umass.edu<br/><em>&lt;cr&gt;&lt;lf&gt;</em>User-Agent: Mozilla/5.0 (<br/>Windows;U; Windows NT 5.1; en-US; rv:1.7.2) Gec<br/>ko/20040804 Netscape/7.2 (ax) <br/><em>&lt;cr&gt;&lt;lf&gt;</em>Accept:ex<br/>t/xml, application/xml, application/xhtml+xml, text<br/>/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5<br/></p><p id="1a67aacb-2d23-8071-a528-c5a653bd2952" class=""><em>&lt;cr&gt;&lt;lf&gt;</em>Accept-Language: en-us,en;q=0.5<em>&lt;cr&gt;&lt;lf&gt;</em>Accept-<br/>Encoding: zip,deflate<br/><em>&lt;cr&gt;&lt;lf&gt;</em>Accept-Charset: ISO<br/>-8859-1,utf-8;q=0.7,*;q=0.7<br/><em>&lt;cr&gt;&lt;lf&gt;</em>Keep-Alive: 300<em>&lt;cr&gt;<br/>&lt;lf&gt;<br/></em>Connection:keep-alive<em>&lt;cr&gt;&lt;lf&gt;&lt;cr&gt;&lt;lf&gt;<br/><br/></em><br/>	<br/><br/></p><p id="1a67aacb-2d23-8050-ae55-cf25a48e54fb" class="">a. What is the URL of the document requested by the browser?<br/>gaia.cs.umass.edu/cs453/index.html<br/>b. What version of HTTP is the browser running?<br/>HTTP 1.1<br/>c. Does the browser request a non-persistent or a persistent connection?<br/>Persisent through the Connection: Keep-alive hader<br/>d. What is the IP address of the host on which the browser is running?<br/>You can’t tell that by the HTTP headers<br/>e. What type of browser initiates this message? Why is the browser type<br/>needed in an HTTP request message?<br/></p><p id="1a67aacb-2d23-801f-9273-c3a2fca9ec2e" class="">Mozilla/5.0. The browser type information is needed by the server to send differentversions of the same object to different types of browsers.</p><p id="1a67aacb-2d23-80be-ac68-ce18f3b92924" class="">
+</p><p id="1a67aacb-2d23-8082-8262-c0acd7826b46" class="">P5. The text below shows the reply sent from the server in response to the HTTP<br/>GET message in the question above. Answer the following questions, indicat-<br/>ing where in the message below you find the answer.<br/></p><p id="1a67aacb-2d23-8017-9189-e7b6aff31f05" class="">HTTP/1.1 200 OK<em>&lt;cr&gt;&lt;lf&gt;</em>Date: Tue, 07 Mar 2008<br/>12:39:45GMT<br/><em>&lt;cr&gt;&lt;lf&gt;</em>Server: Apache/2.0.52 (Fedora)<br/><br/><em>&lt;cr&gt;&lt;lf&gt;</em>Last-Modified: Sat, 10 Dec2005 18:27:46<br/>GMT<br/><em>&lt;cr&gt;&lt;lf&gt;</em>ETag: ”526c3-f22-a88a4c80”<em>&lt;cr&gt;&lt;lf&gt;</em>Accept-<br/>Ranges: bytes<br/><em>&lt;cr&gt;&lt;lf&gt;</em>Content-Length: 3874<em>&lt;cr&gt;&lt;lf&gt;<br/><br/></em>Keep-Alive: timeout=max=100<em>&lt;cr&gt;&lt;lf&gt;</em>Connection:<br/>Keep-Alive<br/><em>&lt;cr&gt;&lt;lf&gt;</em>Content-Type: text/html; charset=<br/>ISO-8859-1<br/><em>&lt;cr&gt;&lt;lf&gt;&lt;cr&gt;&lt;lf&gt;</em>&lt;!doctype html public ”-<br/>//w3c//dtd html 4.0transitional//en”&gt;<br/><em>&lt;lf&gt;</em>&lt;html&gt;<em>&lt;lf&gt;<br/><br/></em>&lt;head&gt;<em>&lt;lf&gt; </em>&lt;meta http-equiv=”Content-Type”<br/>content=”text/html; charset=iso-8859-1”&gt;<br/><em>&lt;lf&gt; </em>&lt;meta<br/>name=”GENERATOR” content=”Mozilla/4.79 [en] (Windows NT<br/>5.0; U) Netscape]”&gt;<br/><em>&lt;lf&gt; </em>&lt;title&gt;CMPSCI 453 / 591 /<br/>NTU-ST550ASpring 2005 homepage&lt;/title&gt;<br/><em>&lt;lf&gt;</em>&lt;/head&gt;<em>&lt;lf&gt;<br/>&lt;much more document text following here (not shown)&gt;<br/></em></p><ol type="a" id="1a67aacb-2d23-8033-a0b9-ee04619c338f" class="numbered-list" start="1"><li>Was the server able to successfully find the document or not? What time<br/>was the document reply provided?<br/>Yes, there is 200 OK message. It was provided Tue, 07 Mar 2008 12:39:45GMT<br/></li></ol><ol type="a" id="1a67aacb-2d23-80cb-9de8-ef36e2ffc064" class="numbered-list" start="2"><li>When was the document last modified?<br/>Sat, 10 Dec2005 18:27:46 GMT<br/></li></ol><ol type="a" id="1a67aacb-2d23-80d7-8046-cfc43212833b" class="numbered-list" start="3"><li>How many bytes are there in the document being returned?<br/>3874<br/></li></ol><ol type="a" id="1a67aacb-2d23-80c4-9786-f77b1ad03897" class="numbered-list" start="4"><li>What are the first 5 bytes of the document being returned? Did the server<br/>agree to a persistent connection?<br/>&lt;!doc are the first 5 bytes.<br/>It did as indicated by the Connection: Keep-alive header<br/></li></ol><p id="1a87aacb-2d23-800b-8dea-ee47b018b772" class="">
+</p><p id="1a87aacb-2d23-8026-821a-c9535621cb2c" class="">
+</p><p id="1a87aacb-2d23-80a4-9b0e-de909cea6e17" class="">P6. Obtain the HTTP/1.1 specification (RFC 2616). Answer the following questions:</p><p id="1a87aacb-2d23-8017-9ce4-cef82bb196c8" class=""><br/>a. Explain the mechanism used for signaling between the client and server to indicate that a persistent connection is being closed. Can the client, the server, or both signal the close of a connection?<br/></p><p id="1a87aacb-2d23-80be-87d7-fd6e66df116d" class="">Persistent connections are the default behavior of HTTP/1.1. Servers assume that the client intends to maintain a persistent connection unless a Connection header including the connection-token close was sent in the request. If the server chooses to close the connection immediately after sending the response, it should send a Connection header including the connection-token close.</p><p id="1a87aacb-2d23-80eb-94bd-f4d8eb2ab814" class="">b. What encryption services are provided by HTTP?</p><p id="1a87aacb-2d23-80ae-8867-debe37997166" class="">None<br/><br/>c. Can a client open three or more simultaneous connections with a given<br/>server?<br/></p><p id="1a87aacb-2d23-8004-a554-ffb46e40adcd" class="">No: Section 8.1.4 states: “single-user client should not maintain more than 2 connections with any server or proxy.”<br/><br/>d. Either a server or a client may close a transport connection between them<br/>if either one detects the connection has been idle for some time. Is it<br/>possible that one side starts closing a connection while the other side is<br/>transmitting data via this connection? Explain.<br/></p><p id="1a87aacb-2d23-8044-b182-cf397baf4c7b" class="">Yes. 8.1.4 states: “</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a87aacb-2d23-8089-b50f-c5dcf8adee25" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">A client, server, or proxy MAY close the transport connection at any
+   time. For example, a client might have started to send a new request
+   at the same time that the server has decided to close the &quot;idle&quot;
+   connection. From the server&#x27;s point of view, the connection is being
+   closed while it was idle, but from the client&#x27;s point of view, a
+   request is in progress.</code></pre><p id="1a87aacb-2d23-8035-8efd-dfcfb6604013" class="">
+</p><p id="1a87aacb-2d23-80ac-b7da-e08b9f95903a" class="">P7.  Suppose within your Web browser you click on a link to obtain a Web page.<br/>The IP address for the associated URL is not cached in your local host, so<br/>a DNS lookup is necessary to obtain the IP address. Suppose that <br/><em>n </em>DNS<br/>servers are visited before your host receives the IP address from DNS; the<br/>successive visits incur an RTT of RTT1, . . . , RTT<br/><em>n</em>. Further suppose that the<br/>Web page associated with the link contains exactly one object, consisting of<br/>a small amount of HTML text. Let RTT0 denote the RTT between the local<br/>host and the server containing the object. Assuming zero transmission time<br/>of the object, how much time elapses from when the client clicks on the link<br/>until the client receives the object?<br/></p><p id="1a87aacb-2d23-80a5-bec1-e37341561b78" class="">Since the IP address is not cached, the local host must query multiple DNS servers sequentially. The query travels through n DNS servers, each adding a round trip time. The total time spent in the DNS lookup process is:</p><p id="1a87aacb-2d23-8008-886f-ea3d485b207d" class="">RTT1 + RTT2 + … + RTTn</p><p id="1a87aacb-2d23-802e-9f20-e75420e90aa0" class="">Once the IP address is resolved, the client initiates a TCP connection to the web server. A TCP connection typically requires a 3-way handshake. That is RTT0.</p><p id="1a87aacb-2d23-80d3-9dd6-ecbbdb8654b5" class="">Then the client sends an HTTP request and gets a response. That is RTT0.</p><p id="1a87aacb-2d23-8094-8b94-f6113e90ae5d" class="">So the total is 2RTT0 + (RTT1 + RTT2 + … RTTn)</p><p id="1a87aacb-2d23-8010-852e-d122253bf1c7" class="">
+</p><p id="1a87aacb-2d23-80a1-8479-f69771e7abe1" class="">P8. Referring to Problem P7, suppose the HTML file references eight very small objects on the same server. Neglecting transmission times, how much time elapses with<br/>a. Non-persistent HTTP with no parallel TCP connections?<br/></p><p id="1a87aacb-2d23-8092-99e4-ee0c56438d9f" class="">8 * 2RTT0 for each object.</p><p id="1a87aacb-2d23-8097-92a3-fc46e38fa575" class="">(RTT1 + RTT2 + … RTTn) +2RTT0 + 8 * 2RTT0 = </p><p id="1a87aacb-2d23-8002-9671-d40d1fae1fd5" class="">(RTT! + RTT2 + … RTTn) + 18RTT0<br/>b. Non-persistent HTTP with the browser configured for 6 parallel connections?<br/>c. Persistent HTTP?<br/></p><p id="1a87aacb-2d23-80d4-97ac-d88bd3013a0e" class="">
+</p><p id="1a87aacb-2d23-80e7-9cf7-feaafcfbb893" class=""><strong>P17. Read RFC 5321 for SMTP. What does MTA stand for? Consider the follow- ing received spam e-mail (modified from a real spam e-mail). Assuming only the originator of this spam e-mail is malicious and all other hosts are honest, identify the malacious host that has generated this spam e-mail.</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1ad7aacb-2d23-8014-b11f-c52c00d4bab0" class="code"><code class="language-Plain Text">
+From - Fri Nov 07 13:41:30 2008
+Return-Path: &lt;tennis5@pp33head.com&gt;
+Received: from barmail.cs.umass.edu (barmail.cs.umass.
+edu
+[128.119.240.3]) by cs.umass.edu (8.13.1/8.12.6) for
+&lt;hg@cs.umass.edu&gt;; Fri, 7 Nov 2008 13:27:10 -0500
+Received: from asusus-4b96 (localhost [127.0.0.1]) by
+barmail.cs.umass.edu (Spam Firewall) for &lt;hg@cs.umass.
+edu&gt;; Fri, 7
+Nov 2008 13:27:07 -0500 (EST)
+Received: from asusus-4b96 ([58.88.21.177]) by barmail.
+cs.umass.edu
+for &lt;hg@cs.umass.edu&gt;; Fri, 07 Nov 2008 13:27:07 -0500
+(EST)
+Received: from [58.88.21.177] by inbnd55.exchangeddd.
+com; Sat, 8
+Nov 2008 01:27:07 +0700
+From: ”Jonny” &lt;tennis5@pp33head.com&gt;
+To: &lt;hg@cs.umass.edu&gt;
+Subject: How to secure your savings</code></pre><p id="1ad7aacb-2d23-805f-b7ff-facfddf6ec4f" class="">MTA: Mail Transfer Agents</p><p id="1ad7aacb-2d23-8090-a86e-d07015db4187" class="">asusus-4b96 ([58.88.21.177]) </p><p id="1ad7aacb-2d23-8051-8283-f0d6ad7e850d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

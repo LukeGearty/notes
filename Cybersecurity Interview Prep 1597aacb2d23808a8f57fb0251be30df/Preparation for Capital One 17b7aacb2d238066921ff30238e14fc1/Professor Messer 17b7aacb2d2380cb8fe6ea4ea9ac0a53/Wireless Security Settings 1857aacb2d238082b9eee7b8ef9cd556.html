@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Wireless Security Settings</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1857aacb-2d23-8082-b9ee-e7b8ef9cd556" class="page sans"><header><h1 class="page-title">Wireless Security Settings</h1><p class="page-description"></p></header><div class="page-body"><p id="1857aacb-2d23-8050-8021-e06d8a8e7409" class="">Securing a wireless network - an organization’s wireless network can contain confidential information</p><p id="1857aacb-2d23-8006-a192-fdc93094c98a" class="">Authenticate the users before granting access</p><p id="1857aacb-2d23-80a4-bdd5-e0c9afbc6a82" class="">WPA2 has a PSK brute-force problem - PSK= preshared key - anyone who gets PSK has access to network</p><p id="1857aacb-2d23-800f-a841-f8cddf9c24c8" class="">
+</p><h3 id="1857aacb-2d23-80c5-baf8-c66ecb939585" class="">Wireless Network Security Concerns</h3><ol type="1" id="1857aacb-2d23-8072-bcb7-eb91a1dc6d41" class="numbered-list" start="1"><li><strong>Over-the-Air Communication</strong>: Vulnerable to attackers who can intercept unencrypted data.</li></ol><ol type="1" id="1857aacb-2d23-8084-8412-fa39b488c901" class="numbered-list" start="2"><li><strong>Authentication</strong>: Preventing unauthorized access via usernames, passwords, or other methods.</li></ol><hr id="1857aacb-2d23-802b-8ae7-cd812606b7c0"/><h3 id="1857aacb-2d23-801c-a9bf-d6513a2f9d76" class="">Encryption and Integrity</h3><ol type="1" id="1857aacb-2d23-8079-9826-ff1ef66d7c4a" class="numbered-list" start="1"><li><strong>Default Encryption</strong>: Ensures intercepted data is unreadable.</li></ol><ol type="1" id="1857aacb-2d23-805f-8afd-dd0ad1e458fa" class="numbered-list" start="2"><li><strong>Message Integrity Check (MIC)</strong>: Ensures data integrity during transmission.</li></ol><hr id="1857aacb-2d23-8057-999e-d9f9103560c1"/><h3 id="1857aacb-2d23-803b-910c-dfb291a6c523" class="">WPA2 and Its Limitations</h3><ol type="1" id="1857aacb-2d23-804a-8ba3-c053a4ea1f98" class="numbered-list" start="1"><li><strong>Four-Way Handshake Vulnerability</strong>:<ul id="1857aacb-2d23-80c2-aba5-e76a37664d01" class="bulleted-list"><li style="list-style-type:disc">Attackers can capture the handshake and brute-force the pre-shared key (PSK) hash offline.</li></ul><ul id="1857aacb-2d23-8076-9311-d8ab6acf5ef0" class="bulleted-list"><li style="list-style-type:disc">Modern tools (e.g., GPU processing, cloud cracking) accelerate brute-forcing.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-802b-8819-e401bb6d4dbc" class="numbered-list" start="2"><li><strong>Shared PSK Limitation</strong>: Once known, any user can connect.</li></ol><hr id="1857aacb-2d23-809e-8beb-f87d9f4836e7"/><h3 id="1857aacb-2d23-808c-b6ce-ce836b3df295" class="">WPA3 Improvements</h3><ol type="1" id="1857aacb-2d23-805e-8085-e82a5ecb0aba" class="numbered-list" start="1"><li><strong>Enhanced Security</strong>:<ul id="1857aacb-2d23-8021-8ee1-cc7331f2420c" class="bulleted-list"><li style="list-style-type:disc">Replaces the four-way handshake with Simultaneous Authentication of Equals (SAE), using Diffie-Hellman key exchange.</li></ul><ul id="1857aacb-2d23-808b-83ee-d340c58c12d1" class="bulleted-list"><li style="list-style-type:disc">Eliminates PSK hash transmission.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-80c8-aef7-d3698582fd1d" class="numbered-list" start="2"><li><strong>GCMP</strong>:<ul id="1857aacb-2d23-8029-b7d6-f522b040077c" class="bulleted-list"><li style="list-style-type:disc">Stronger encryption and built-in message integrity.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-8032-b804-fd797f10c485" class="numbered-list" start="3"><li><strong>Individual Session Keys</strong>: Unique keys for each user, enhancing privacy.</li></ol><hr id="1857aacb-2d23-8034-845d-f2a18ec18e9a"/><h3 id="1857aacb-2d23-80a8-b3a4-da7401bfec3e" class="">Authentication Methods</h3><ol type="1" id="1857aacb-2d23-807c-94f4-c53663da90aa" class="numbered-list" start="1"><li><strong>WPA3-Personal (PSK)</strong>:<ul id="1857aacb-2d23-8098-b17b-c22bfe81cce1" class="bulleted-list"><li style="list-style-type:disc">Used in home networks with a shared password.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-80c4-a941-c99e914a102b" class="numbered-list" start="2"><li><strong>WPA3-Enterprise (802.1X)</strong>:<ul id="1857aacb-2d23-80ca-a74a-e2bbc256ab50" class="bulleted-list"><li style="list-style-type:disc">Used in corporate settings.</li></ul><ul id="1857aacb-2d23-80c5-bb9d-c50ab42cc628" class="bulleted-list"><li style="list-style-type:disc">Requires unique usernames, passwords, and centralized authentication (e.g., RADIUS, LDAP).</li></ul></li></ol><hr id="1857aacb-2d23-80e1-90be-e15c8d9b6637"/><h3 id="1857aacb-2d23-8095-9dab-e7e3160a094e" class="">AAA Framework (Authentication, Authorization, Accounting)</h3><ol type="1" id="1857aacb-2d23-808b-a3f7-f564ed38c2ed" class="numbered-list" start="1"><li><strong>Authentication</strong>: Verifies identity (e.g., username and password).</li></ol><ol type="1" id="1857aacb-2d23-80b5-a0f9-f2b7b3abb9c7" class="numbered-list" start="2"><li><strong>Authorization</strong>: Defines accessible resources.</li></ol><ol type="1" id="1857aacb-2d23-801f-a6fb-ecee6a937fec" class="numbered-list" start="3"><li><strong>Accounting</strong>: Logs metrics (e.g., session duration, data usage).</li></ol><hr id="1857aacb-2d23-80b0-bb1a-d86265b670a8"/><h3 id="1857aacb-2d23-8085-a5f8-e23f6d690f31" class="">Centralized Authentication (802.1X and AAA)</h3><ol type="1" id="1857aacb-2d23-80e9-bb50-f63d7630ee01" class="numbered-list" start="1"><li><strong>Devices Involved</strong>:<ul id="1857aacb-2d23-8098-8bf9-d86979daef4a" class="bulleted-list"><li style="list-style-type:disc"><strong>Supplicant</strong>: The user/device attempting to connect.</li></ul><ul id="1857aacb-2d23-806b-bb55-d6039aa359e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Authenticator</strong>: The network device (e.g., access point).</li></ul><ul id="1857aacb-2d23-80a4-8b6a-dc4347fe57e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Authentication Server (AAA)</strong>: Validates credentials.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-805b-a993-fef68986eec7" class="numbered-list" start="2"><li><strong>802.1X Process</strong>:<ul id="1857aacb-2d23-80b0-a4f7-d3d9e82ae88e" class="bulleted-list"><li style="list-style-type:disc">Authenticator blocks access until credentials are provided.</li></ul><ul id="1857aacb-2d23-8079-ba8f-f29fe00c2bbb" class="bulleted-list"><li style="list-style-type:disc">Uses EAP (Extensible Authentication Protocol) for authentication.</li></ul></li></ol><hr id="1857aacb-2d23-80b2-90a8-d2824d16c57f"/><h3 id="1857aacb-2d23-8099-892a-c507c9de64e3" class="">Key Takeaways</h3><ul id="1857aacb-2d23-800b-a80e-cf989db77153" class="bulleted-list"><li style="list-style-type:disc"><strong>WPA3 Advantages</strong>: Superior security, unique session keys, and protection against brute-force attacks.</li></ul><ul id="1857aacb-2d23-80b5-8acf-f12fdebe44a3" class="bulleted-list"><li style="list-style-type:disc"><strong>Corporate Networks</strong>: Employ centralized authentication with AAA servers and 802.1X.</li></ul><ul id="1857aacb-2d23-8050-bfcb-cb697cf662ed" class="bulleted-list"><li style="list-style-type:disc"><strong>EAP</strong>: A flexible protocol enabling secure and customizable authentication.</li></ul><p id="1857aacb-2d23-8066-bf41-e49dacbd90cc" class="">RADIUS stands for <strong>Remote Authentication Dial-In User Service</strong>. Despite having &quot;dial-in&quot; in its name, RADIUS is a versatile protocol used for authentication, authorization, and accounting (AAA) in a variety of network scenarios, including local area networks (LANs), virtual private networks (VPNs), and wireless networks.</p><h3 id="1857aacb-2d23-802b-9249-e66d459bd199" class="">Key Points About RADIUS:</h3><ol type="1" id="1857aacb-2d23-80f9-9b52-f33a13a97c5c" class="numbered-list" start="1"><li><strong>Authentication</strong>:<ul id="1857aacb-2d23-806f-99c7-f84248cf9b4c" class="bulleted-list"><li style="list-style-type:disc">Verifies the identity of users or devices attempting to connect to the network.</li></ul><ul id="1857aacb-2d23-8036-8077-c4d1588c02e7" class="bulleted-list"><li style="list-style-type:disc">Typically involves a username and password being checked against the RADIUS server.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-80bc-9514-c21183c59abd" class="numbered-list" start="2"><li><strong>Authorization</strong>:<ul id="1857aacb-2d23-8039-abfd-dddb91224513" class="bulleted-list"><li style="list-style-type:disc">Determines what resources the authenticated user can access on the network.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-8039-a57e-d6c4ffb60299" class="numbered-list" start="3"><li><strong>Accounting</strong>:<ul id="1857aacb-2d23-8002-826e-c8228fc68a6c" class="bulleted-list"><li style="list-style-type:disc">Tracks user activity, such as connection time, data usage, and session duration.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-8062-9421-d8357a337826" class="numbered-list" start="4"><li><strong>How It Works</strong>:<ul id="1857aacb-2d23-80f8-9784-dba0418bcc1d" class="bulleted-list"><li style="list-style-type:disc">A <strong>RADIUS client</strong> (e.g., a router, switch, or VPN concentrator) forwards the authentication request from a user to the <strong>RADIUS server</strong>.</li></ul><ul id="1857aacb-2d23-802e-89e6-d302a242323e" class="bulleted-list"><li style="list-style-type:disc">The RADIUS server checks the credentials against a user database and provides a response:<ul id="1857aacb-2d23-806a-8344-d30640cc5152" class="bulleted-list"><li style="list-style-type:circle">Accept: Grants access to the network.</li></ul><ul id="1857aacb-2d23-8077-bcec-eda1f78da5bc" class="bulleted-list"><li style="list-style-type:circle">Reject: Denies access.</li></ul><ul id="1857aacb-2d23-8004-9dc1-ef85cdff7fab" class="bulleted-list"><li style="list-style-type:circle">Challenge: Requests additional information (e.g., multi-factor authentication).</li></ul></li></ul></li></ol><ol type="1" id="1857aacb-2d23-806f-aff1-d5dd23c8ad5f" class="numbered-list" start="5"><li><strong>Common Uses</strong>:<ul id="1857aacb-2d23-80b9-9d1b-f798aebd6c6a" class="bulleted-list"><li style="list-style-type:disc">Securing access to corporate wireless networks (commonly with WPA3-Enterprise).</li></ul><ul id="1857aacb-2d23-8096-8f91-d71aaec4d7e4" class="bulleted-list"><li style="list-style-type:disc">Authenticating VPN users.</li></ul><ul id="1857aacb-2d23-809f-881a-df592e2b02dd" class="bulleted-list"><li style="list-style-type:disc">Centralized management of user credentials in an organization.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-800e-849c-fe766dc2d246" class="numbered-list" start="6"><li><strong>Advantages</strong>:<ul id="1857aacb-2d23-8049-9fc5-c0463a5894a6" class="bulleted-list"><li style="list-style-type:disc"><strong>Centralized Authentication</strong>: User credentials are managed on one server, making it easier to control access.</li></ul><ul id="1857aacb-2d23-80c1-96e8-eae587606616" class="bulleted-list"><li style="list-style-type:disc"><strong>Scalability</strong>: Supports large networks with many devices.</li></ul><ul id="1857aacb-2d23-80cd-a437-e783b0ffe9e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Multi-Vendor Support</strong>: Widely supported by networking devices from various manufacturers.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-8039-8c69-c01f9dca2836" class="numbered-list" start="7"><li><strong>802.1X Integration</strong>:<ul id="1857aacb-2d23-8087-93f5-c61cbc22098c" class="bulleted-list"><li style="list-style-type:disc">RADIUS is often used in conjunction with the <strong>802.1X standard</strong>, which enforces authentication before granting network access.</li></ul></li></ol><ol type="1" id="1857aacb-2d23-8050-b3eb-f7dce0a6a58e" class="numbered-list" start="8"><li><strong>Common AAA Server</strong>:<ul id="1857aacb-2d23-800a-a60a-eeb40885aa5b" class="bulleted-list"><li style="list-style-type:disc">RADIUS is one of the most widely used protocols for AAA servers, which may also use alternatives like <strong>LDAP</strong> or <strong>TACACS+</strong>.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

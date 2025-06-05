@@ -1,0 +1,716 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - The Transport Layer</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19d7aacb-2d23-8038-a809-dc6ab0a48da5" class="page sans"><header><h1 class="page-title">Chapter 3 - The Transport Layer</h1><p class="page-description"></p></header><div class="page-body"><p id="1a17aacb-2d23-80ad-b0fb-c975f6a6b94c" class="">
+</p><h1 id="19d7aacb-2d23-805f-9f47-e133cbdc3885" class="">Introduction and Transport Layer Services</h1><p id="19d7aacb-2d23-802c-ac4c-f2a58561e8ac" class="">Transport-layer protocols provide logical communication between application process running on dfiferent hosts.<div class="indented"><p id="19d7aacb-2d23-80f7-91fc-f8aa89105990" class="">Logical Communication: The two processes can communicate as if they were directly connected, even if they were physically separated</p><p id="19d7aacb-2d23-80f0-aa51-dca77d823837" class="">They are free from the details of the physical infrastructure separating the processes</p></div></p><p id="19d7aacb-2d23-8001-9adf-e1c0643e04a8" class="">Transport layer protocols are implemented on end-systems, not on routers</p><p id="19d7aacb-2d23-8072-9ecb-df7adaaaf895" class="">Transport layer packets are called <strong>segments</strong></p><p id="19d7aacb-2d23-801e-8e9e-fef72ca1b5fc" class="">The Internet has TCP and UDP</p><h2 id="19d7aacb-2d23-8031-b227-d9121cf41437" class="">Relationship between Transport and Network Layers</h2><p id="19d7aacb-2d23-8022-9903-ee5ee62c65be" class="">Transport layer provides logical communication between processes running on different hosts, a network-layer protocol provides logical communication between hosts.</p><p id="19d7aacb-2d23-8013-8c05-d8eee97fa185" class="">Imagine a family of 12 in a house communicating with their cousins, also a family of 12 in a different house. The two familes send each other letters to communicate. The mail service is the network layer, delivering messages to each houses. </p><p id="19d7aacb-2d23-80b2-8663-d64db59ebbd4" class="">When the letters come, one member of the family is responsible for getting the letters to the right member of the family in the same house. That member of the family is the transport layer, making sure that when the messages come to the house (end-system) the message gets to the right member of the family (process).</p><p id="19d7aacb-2d23-8016-a44c-ce87d84e27e1" class="">Some members of the family deliver the messages guaranteed (TCP) while others of the family have no guarantee (UDP). </p><h2 id="19d7aacb-2d23-8002-bdee-c55cdae916fc" class="">Overview of the Transport Layer in the Internet</h2><p id="19d7aacb-2d23-80d4-8399-dda7fe87eea4" class="">When designing a network application, the choices are either TCP or UDP. UDP is unreliable, connectionless service. TCP is reliable, connection-oriented.</p><p id="19d7aacb-2d23-8024-9ec9-d842e5f1a838" class="">Internet Protocol provides logical commmunication between hosts. The IP service model is best-effort delivery service. It makes “a best effort” to deliver data, but it makes no guarantees.</p><p id="1ab7aacb-2d23-8009-b09c-fe7c710a65c3" class="">IP is an unreliable service therefore. IP is network-layer, not transport-layer.</p><p id="1ab7aacb-2d23-802c-bab6-d3105e2190f2" class="">TCP provides reliable data transfer and congestion control - not for the application but for the internet.</p><h1 id="19d7aacb-2d23-80c2-951e-dbe536ebce21" class="">Multiplexing and Demultiplexing</h1><p id="19e7aacb-2d23-80cc-b8f9-c7dd3f7d2ec9" class="">The overview is that the network layer extends the host-to-host delivery service to a process-to-process delivery service for applications running on the hosts. </p><p id="19e7aacb-2d23-805c-81ba-f05c56dba88e" class="">The network layer sends data between devices, the transport layer makes sure the data reaches the right application on a device.</p><p id="19e7aacb-2d23-80e2-8c85-ddf641f4e9af" class="">Suppose you are browsing the internet (HTTP), running an FTP session, and have two telnet sessions. That is altogether 4 processes. The transport layer receives data from the network layer, and it needs to direct the received data to one of these four processes. </p><p id="19e7aacb-2d23-804a-aa3f-e812bfdfd971" class="">Remember that a process can have 1 or more sockets (doors through which data passes from the network to the process and through which data passes from the process to the network). The transport layer doesn’t deliver data directly to the process, but instead to an intermediary socket. </p><p id="19e7aacb-2d23-8021-a19e-ed5c20e0c2c8" class="">There can be one or more sockets in the receiving host, each socket has a unique identifier - depending on whether it is a UDP or TCP socket.</p><p id="19e7aacb-2d23-80a4-90e2-cb73195e0f66" class=""><strong>Demultiplexing - </strong>delivering data in a transport-layer segment to the correct socket. This is done by examining fields to identify the receiving socket and the directs the segment to that socket. </p><p id="19e7aacb-2d23-8044-96f7-d8d55fe58f63" class=""><strong>Multiplexing - </strong>The job of gathering data chunks at the source host from different socket, encapsulating each data chunk with header information (that will later be used in demultiplexing) to create segments, and passing the segments to the network layer. </p><p id="19e7aacb-2d23-8082-ac7b-c853df73d667" class="">Transport-layer multiplexing requires - sockets have unique identifiers and that each segment have special fields that indicate the socket ot which the segment is to be delivered. These special fieds are the source port number field and the destination port number field.</p><p id="19e7aacb-2d23-80f0-9961-fb02d14c74de" class="">Port numbers ranging from 0 to 1023 are <strong>well-known port numbers, </strong>and are restricted which means that they are reserved for use by well-known application protocols such as HTTP (port 80) and FTP (port 21). When a network application is developed, we must assign the application a port number.</p><h3 id="19e7aacb-2d23-80a0-b74a-edc48583b49f" class="">Connectionless Multiplexing and Demultiplexing</h3><p id="19e7aacb-2d23-8019-add9-d7a91642b91a" class="">In python programming, the host can create a UDP socket with this line:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19e7aacb-2d23-80e4-88ba-f12ecc8d1f9e" class="code"><code class="language-Python">clientSocket = socket(AF_INET, SOCK_DGRAM)</code></pre><p id="19e7aacb-2d23-8085-a7d1-e80dd5e7ebda" class="">The transport layer automatically assigns a port number to the socket, in the range of 1024 to 65535. We can also add this:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19e7aacb-2d23-8066-ad68-c73e378763dd" class="code"><code class="language-Python">PORT_NUMBER = 19157 #this can be changed
+clientSocket.bind((&#x27;&#x27;, PORT_NUMBER))</code></pre><p id="19e7aacb-2d23-80bc-9882-cb8e8137bfe3" class="">to specify the port number.</p><p id="19e7aacb-2d23-80ab-b62c-e388cc33fbc1" class="">A UDP socket is fully identified by a two-tuple consisting of destination IP address and destination port number. If two UDP segments have different source IP addresses or source port numbers, but have the same destination IP address and port number, then the two segments will be directed to the same destination process via the same socket.</p><h3 id="19e7aacb-2d23-80a6-a7fc-c263c8c467f2" class="">Connection-Oriented Multiplexing and Demultiplexing</h3><p id="19e7aacb-2d23-802e-8a0c-e87bbd653686" class="">TCP sockets are identified by a four-tuple: source IP, source port, destination IP, destination port.</p><p id="19e7aacb-2d23-80f8-8d16-e8081d4b3c82" class="">In contrast to UDP, TCP segments with different source IP addresses or source port numbers will be directed to two different sockets.</p><p id="19e7aacb-2d23-804a-942c-c8e58831ea4c" class="">In HTTP, all destination segments will have destination port 80. </p><h3 id="1ab7aacb-2d23-80a9-9ee6-df3d071467f4" class="">Web Servers and TCP</h3><p id="1ab7aacb-2d23-8015-a009-f48e6482a7de" class="">Say there is a web server on port 80 - HTTP. When clients send segments to the server, all segments will have destination port 80. </p><h1 id="19f7aacb-2d23-809e-a28b-cb78a0f9a594" class="">Connectionless Transport: UDP</h1><p id="19f7aacb-2d23-80bb-914c-e2c6534dc4b4" class="">If you wanted to create a simple transport protocol with no extra features, there must at least be multiplexing and demultiplexing to ensure messages reach the correct application. </p><p id="19f7aacb-2d23-8012-b911-f93a6b973682" class="">UDP does the multiplexing/demultiplexing function and some light error checking. Nothing else. The application that uses UDP is almost directly talking with IP - it provides minimal additional functionality beyond what the IP layer already does. </p><p id="19f7aacb-2d23-80de-b731-dfc9472ba10b" class="">DNS typically uses UDP. When the application in a host wants to make a query, it constructs a DNS query message and passes the message to UDP. The host-side UDP adds header fields to the message and passes the resulting segment to the network layer, which encapsulates the UDP segment into a datagram and sends the datagram to a name server. The DNS application at the querying host then waits for a reply. If it doesn’t get a reply, it can send another query, send the query to an other name server, or inform the application that it can’t get.a reply. </p><p id="19f7aacb-2d23-808a-a713-c6db797db075" class="">Advantages of UDP:</p><ol type="1" id="19f7aacb-2d23-805c-a3e3-c3c4703fc269" class="numbered-list" start="1"><li>Greater control over what data is sent and when - UDP immediately sends the segment to the network layer. TCP has a congestion-control mechanism that throttles the transport-layer TCP sender when one or more links between the source and destination hosts become excessively congested. Real-time applications often require a minimum sending rate, and do not want to overly delay segment transmission, and can tolerate data loss. </li></ol><ol type="1" id="19f7aacb-2d23-807a-bac5-cf7a0365dd97" class="numbered-list" start="2"><li>No connection establishment - UDP does not use something like the three-way handshake before it starts to transfer data.</li></ol><ol type="1" id="19f7aacb-2d23-8068-a1d5-ef3703ac941a" class="numbered-list" start="3"><li>No connection state - UDP does not maintain connection state and does not keep track of any parameters like send and receive buffers, congestion control parameters, sequence and acknowledgment numbers. Because UDP doesn’t require the server to store connection information, a single server can handle many more clients. This makes UDP better for DNS, streaming, and online gaming.</li></ol><ol type="1" id="19f7aacb-2d23-802e-b739-d42ed8791d30" class="numbered-list" start="4"><li>Small packet overhead - TCP segment has 20 bytes of header overhead in every segment. UDP has 8 bytes of overhead.</li></ol><p id="19f7aacb-2d23-8047-8839-ff0256a83d92" class="">UDP lacks congestion control, which is essential for preventing network congestion. If everyone were to start streaming high-bit-rate video without using any congestion control, there would be so much packet overflow at routers that very few UDP packets would successfully traverse the source-to-destination path. </p><p id="1ac7aacb-2d23-8020-b1c3-cf3aa251a176" class="">There does need to be care when using UDP. There is no congestion control, so if a network is geting flooded then the high loss rates induced by the uncontrolled UDP senders would cause TCP senders to dramatically decrease their rates. </p><p id="19f7aacb-2d23-80e3-9d5f-ebba662fa1cf" class="">It is possible for UDP to have reliable data transfer, but it needs to be built into the application. The <a href="https://en.wikipedia.org/wiki/QUIC">QUIC protocol</a> does this, but it is really hard to do and takes up a lot of time and resources to properly implement. </p><h2 id="19f7aacb-2d23-806d-843d-d0eff2d84de8" class="">UDP Segment Structure</h2><p id="19f7aacb-2d23-804b-9af6-fac78ae7f2a7" class="">Data field: contains application specific data. For example, for DNS, the data field will contain either a query message or a response message.</p><p id="19f7aacb-2d23-804a-89c6-fca964b5c06e" class="">Header - has four fields , each consisting of two bytes:</p><ol type="1" id="19f7aacb-2d23-809c-bdeb-e2e989eeb6d3" class="numbered-list" start="1"><li>Source and destination port numbers allow the destination host to pass the application data to the correct process running on the destination end system (that is, to perform the demultiplexing function). </li></ol><ol type="1" id="19f7aacb-2d23-8042-b621-ed44cb560b91" class="numbered-list" start="2"><li>Length Field: specifies the number of bytes in the UDP segment (header plus data). This is needed since the size of the data field may differ from one UDP segment to the next.</li></ol><ol type="1" id="19f7aacb-2d23-8068-8bc7-d366269b11f9" class="numbered-list" start="3"><li>Checksum: Used by the receiving host to check whether errors have been introduced into the segment. </li></ol><h2 id="19f7aacb-2d23-801e-af23-d90c0a3c728f" class="">UDP Checksum</h2><p id="19f7aacb-2d23-8058-8903-e65383a437a5" class="">The checksum provides for error detection - that is, whether bits with the segment have been altered as it moved from source to destination.</p><p id="19f7aacb-2d23-8014-a323-f5c20c6705fc" class="">At the sender side, UDP performs the 1s complement (flipping the 1s to 0s and the 0s to 1s) of the sum of all the 16-bit words in the segment with any overflow encountered during the sum being wrapped around. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19f7aacb-2d23-8055-9edd-fb7b8fc16a6b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">    0110011001100000
+    0101010101010101
+    1000111100001100
+</code></pre><p id="19f7aacb-2d23-803e-850c-ee57490dbd81" class="">The sum of first two of these 16-bit words is</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19f7aacb-2d23-80d3-83d6-c0a964b03df6" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">    0110011001100000
+    0101010101010101
+    1011101110110101
+</code></pre><p id="19f7aacb-2d23-8028-b6b8-d3520369ffa5" class="">Adding the third word to the above sum gives</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19f7aacb-2d23-80d8-a66f-cfd941b88bee" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">    1011101110110101
+    1000111100001100
+    0100101011000010
+</code></pre><p id="19f7aacb-2d23-80ad-adff-ce98b8ab2a56" class="">0100101011000010, when the 1s complement is done, is 1011010100111101, which becomes the checksum. </p><p id="1ac7aacb-2d23-808e-b50e-c4dc75863a9a" class="">Note - since these are 16 bit numbers, if there is overflow at the end (which would cause it to be 17-bit), then we “overflow” the last bit.</p><p id="19f7aacb-2d23-80f7-aea7-fbc813050384" class="">At the receiving end, all the words and the checksum are added together. If the result is 1111111111111111, then there were no errors.</p><p id="19f7aacb-2d23-80d9-9bd4-c302ae4a7f41" class="">UDP provides a checksum because even though many link-layer protocols provide error checking, there is no guarantee that the links between a source and destination provide that error checking. </p><p id="19f7aacb-2d23-80d4-a6e2-c14f1ce6260b" class="">Errors can also occur in routers, when the data is stored. </p><p id="19f7aacb-2d23-8066-b8d6-e9f818900c27" class="">End-end principle - since certain functionality must be implemented on an end-end basis: functions placed at the lower levels may be redundant or of little value when compared to the cost of providing them at the higher level.</p><p id="19f7aacb-2d23-80a7-b444-fdb9ad13d24b" class="">Even though UDP provides error checking, it doesn’t do anything to recover from an error.</p><h1 id="1a07aacb-2d23-80f1-8d99-ed8d756e7625" class="">Principles of Reliable Data Transfer</h1><p id="1a07aacb-2d23-80d8-b236-d47a6dbf9a0f" class="">The problem of implementing reliable data transfer occurs at the transport layer, link layer, and application layer. It is an incredibly important topic.</p><p id="1a07aacb-2d23-80b7-bc65-e1a75865c486" class="">In a reliable channel, no transferred data bits are corrupted (flip 0s to 1s or vice versa) or lost, and all are delivered in the order in which they were sent. </p><p id="1a07aacb-2d23-8040-bb23-cd8f00f54110" class="">The reliable data transfer protocol must ensure dependable communication. Even if the layer below the reliable data transfer protocol is unreliable. For example, TCP is reliable, implemented on top of the internet protocol (IP) which is unreliable. </p><p id="1a07aacb-2d23-80da-aede-d285b16f8636" class="">The abstraction - a sender sends data through a reliable channel</p><p id="1a07aacb-2d23-80ee-a7c2-f7d40056b12e" class="">The implementation - the sender-side sends data to a reliable transfer protocol which sends it to an unreliable channel. </p><figure id="1ad7aacb-2d23-8014-aede-f3200ada220c" class="link-to-page"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Reliable%20Data%20Transfer%20Explained%201ad7aacb2d238014aedef3200ada220c.html">Reliable Data Transfer Explained</a></figure><h2 id="1a07aacb-2d23-807f-850e-d46f4dfcd418" class="">Building a Reliable Data Transfer Protocol</h2><p id="1a07aacb-2d23-803c-b168-db537bca0e3b" class="">Stepping through a series of protocols, each one more complex, arriving at a reliable data transfer protocol.</p><figure id="1a07aacb-2d23-8076-926d-f5538abe9b89" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_2.42.36_PM.png"><img style="width:683.96875px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_2.42.36_PM.png"/></a></figure><p id="1a07aacb-2d23-80fc-be33-c244fef5c2a5" class="">When no action is taken on an event, or no event occurs and an action is taken, we’ll use the symbol Λ below or above the horizontal, respectively, to explicitly denote the lack of an action or event.</p><h3 id="1a07aacb-2d23-80c8-bf59-f3175317bb96" class="">Reliable Data Transfer over a Perfectly Reliable Channel: rdt1.0</h3><p id="1a07aacb-2d23-80b9-9845-dceb76ce45ca" class="">The simplest case in which the underlying channel is completely reliable. </p><figure id="1a07aacb-2d23-805b-833f-cbd2592f0649" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_2.50.30_PM.png"><img style="width:683.96875px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_2.50.30_PM.png"/></a></figure><p id="1a07aacb-2d23-8079-baa1-f161d51accfc" class="">There are no bit errors, and no loss of packets. </p><p id="1a07aacb-2d23-8060-b551-ffa471258dfe" class="">
+</p><h3 id="1a07aacb-2d23-80ed-a4ef-c117d76b53e8" class="">Reliable Data Transfer over a Channel with Bit Errors: rdt2.0</h3><p id="1a07aacb-2d23-80a6-a2a0-e839e90fb2d0" class="">More realistically, the underlying channel is one in which bits in a packet may be corrupted. </p><p id="1a07aacb-2d23-80b4-a43c-d5dcbe919447" class="">Assume all transmitted packets are received, but there may be errors. How do you deal with errors?</p><p id="1a07aacb-2d23-80a1-a3a5-d20915137077" class="">As an analogy, assume you are talking to someone who mumbles a lot. You may be asking them “Can you repeat that?”, or you might be saying “I got that”.</p><p id="1a07aacb-2d23-8028-a9f8-db8f2d5d660d" class="">These are positive and negative acknowledgements. They allow the receiver to let the sender know what has been received correctly, and what needs repeating. </p><p id="1a07aacb-2d23-8068-8cf9-db0176ae9f17" class="">In a computer setting, reliable data transfer protocols based on such retransmission are known as Automatic Repeat reQuest protocols.</p><p id="1a07aacb-2d23-809e-b589-c3403f46e736" class="">ARQ protocols need to have:</p><ol type="1" id="1a07aacb-2d23-8070-ba2d-d36a7b36726a" class="numbered-list" start="1"><li>Error Detection: a mechanism is needed to allow the receiver to detect when bit errors have occurred. </li></ol><ol type="1" id="1a07aacb-2d23-803b-9ece-e001f5a679df" class="numbered-list" start="2"><li>Receiver Feedback: The receiver must provide explicit feedback (ACK for positive, NACK for negative)</li></ol><ol type="1" id="1a07aacb-2d23-80b0-9452-c666047ce43a" class="numbered-list" start="3"><li>Retransmission: a packet received in error at the receiver will be retransmitted by the sender</li></ol><figure id="1a07aacb-2d23-800a-a165-e99c9cf5d8e3" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.01.36_PM.png"><img style="width:683.984375px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.01.36_PM.png"/></a></figure><p id="1a07aacb-2d23-800d-a926-deb803655302" class="">Because in rdt2.0, the sender will not transmit a new piece of data until it is sure that the receiver has received the current packet, it is called a <strong>stop-and-wait </strong>protocol. </p><p id="1a07aacb-2d23-8045-9493-cbff3ffa077d" class="">The fatal flaw in rdt2.0 is if the ACK or NAK is corrupted. To detect an error in the ACK or NAK, we will need to add checksum bits. </p><p id="1a07aacb-2d23-8020-80eb-e7e2b7e18a9f" class="">How does it recover?</p><p id="1a07aacb-2d23-802b-858f-cf5648d7b879" class="">There are three possibilities:</p><ol type="1" id="1a07aacb-2d23-8079-bc62-c79a770fa17d" class="numbered-list" start="1"><li>In a real world analogy, if the speaker doesn’t understand the “I got that” or “Can you repeat that?” They might ask “What did you say?”. But if the &quot;What did you say?” is corrupted, then there is a infinite loop of “What?” “Huh?” “What did you say?”</li></ol><ol type="1" id="1a07aacb-2d23-80a9-b51d-c923144913e6" class="numbered-list" start="2"><li>Add enough checksum bits to allow the sender not only to detect but also to recover from bit errors. This solves the immediate problem for a channel that can corrupt packets but not lose them.</li></ol><ol type="1" id="1a07aacb-2d23-8092-8496-e7a1646c35cf" class="numbered-list" start="3"><li>The sender simply resends the urrent data packet when it receives a garbled ACK or NAK. This can result in duplicate packets in the sender-to-receiver channel. </li></ol><p id="1a07aacb-2d23-8069-9289-f3792a2ba12b" class="">
+</p><p id="1a07aacb-2d23-800a-b1ba-f5d74fe74a0d" class="">A simpler solution is to add a new field to the data packet and have the sender number its data packets by putting a sequence number into this field. The receiver then needs only check this sequence number to determine whether or not the received packet is a retransmission.</p><figure id="1a07aacb-2d23-8066-be9a-d3ee46ad0620" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.12.01_PM.png"><img style="width:683.96875px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.12.01_PM.png"/></a></figure><p id="1a07aacb-2d23-8080-aa77-cd5ac70a73d0" class="">
+</p><figure id="1a07aacb-2d23-80f7-a6d7-c163103ce50b" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.15.06_PM.png"><img style="width:683.96875px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.15.06_PM.png"/></a></figure><p id="1a07aacb-2d23-8020-8725-c8854a14b8fb" class="">We can accomplish the same effect as a NAK if, instead of sending a NAK, when a corrupted packet arrives, we send an ACK for the last correctly received packet. When the sender receives two ACKs, the sender knows that the receiver did not correctly receive the packets following the packet that was ACKed two times. </p><figure id="1a07aacb-2d23-80ea-b659-eea09f6fe48f" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.17.19_PM.png"><img style="width:683.984375px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.17.19_PM.png"/></a></figure><figure id="1a07aacb-2d23-80d1-9c6f-f361794f2277" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.17.35_PM.png"><img style="width:683.96875px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-20_at_3.17.35_PM.png"/></a></figure><h3 id="1a07aacb-2d23-8094-bd10-e68796b800a3" class=""><strong>Reliable Data Transfer over a Lossy Channel with Bit Errors: </strong>rdt3.0</h3><p id="1a07aacb-2d23-80e0-b400-d69e3575e2ff" class="">Suppose the underlying channel can lose packets as well as have corrupted bits. Two questions emerge: how to detect packet loss and what to do when it happens.</p><p id="1a07aacb-2d23-8084-a6b9-c01924fecbc3" class="">The double ACK method addresses the second concern.</p><p id="1a07aacb-2d23-80bc-9e6b-fa3dbaf480d8" class="">One way to deal with the packet loss is for the sender to wait a certain amount of time after sending a packet. If no reply comes, then there is packet loss.</p><h2 id="1a07aacb-2d23-8056-8eda-e098e183d8c4" class="">Pipelined Reliable Data Transfer Protocols</h2><p id="1a17aacb-2d23-80cf-80eb-f1aeefcae039" class="">The problem with rdt3.0 is that it has performance problems. The stop-and-wait approach ( a sender transmits one packet and then waits for an ACK before sending another) can ignificantly reduce the utilization of the network, especially when the RTT is long compared to the packet transmission time.</p><p id="1a17aacb-2d23-8095-9b64-df0bda1aaca8" class="">Assume these parameters:</p><ul id="1a17aacb-2d23-802a-bb9a-ca46fcb07ae5" class="bulleted-list"><li style="list-style-type:disc"><strong>Two hosts</strong>: One on the West Coast, one on the East Coast of the U.S.</li></ul><ul id="1a17aacb-2d23-806d-97e9-c8534f736d79" class="bulleted-list"><li style="list-style-type:disc"><strong>Round-trip time (RTT)</strong>: 30 milliseconds (ms)</li></ul><ul id="1a17aacb-2d23-8021-a3cc-daf57abc69ca" class="bulleted-list"><li style="list-style-type:disc"><strong>Transmission rate (R)</strong>: 1 Gbps = 109 bits per second<p id="1a17aacb-2d23-80d5-9eb0-c0d6b82b36f7" class="">10910^9</p></li></ul><ul id="1a17aacb-2d23-8028-b6fc-c6ceb080b9e2" class="bulleted-list"><li style="list-style-type:disc"><strong>Packet size (L)</strong>: 1,000 bytes = 8,000 bits</li></ul><p id="1a17aacb-2d23-8088-a846-cc548e86f72e" class="">The transmission delay is L/R = 8000 bits / 10^9 bits/sec = 8 microseconds</p><p id="1a17aacb-2d23-80c1-807d-c16782322803" class="">The packet propagates across the US in 15 ms (RTT of 30 milliseconds / 2), which means the packet arrives at the destination at 15.008 ms. </p><p id="1a17aacb-2d23-8044-8252-c39f06b9dce0" class="">The receiver sends the ACK which travels back in 15 ms, which arrives at the host at 30.008 ms.</p><p id="1a17aacb-2d23-803d-9e86-f8a3a69d9b2b" class="">The Utilization of the sender is equal to (L / R) / RTT + L/R = .008 / 30.008 = 0.00027</p><p id="1a17aacb-2d23-80c6-9c83-fd8daa3388e5" class="">That means the utilization rate is 0.027% of the time, the rest of the time is spent waiting for an ACK. </p><p id="1a17aacb-2d23-8011-a5f2-e0b96c1afc43" class="">The Solution: Sending multiple packets without waiting for acknowledgments - pipelining</p><p id="1a17aacb-2d23-80ab-a45d-d385975884a7" class="">Three consequences of pipelining:</p><ol type="1" id="1a17aacb-2d23-80b1-8bd3-c916c092ac4e" class="numbered-list" start="1"><li>The range of sequence numbers must be increased, since each in-transit packet must have a unique sequence number and there may be multiple, in-transit unacknowledge packets</li></ol><ol type="1" id="1a17aacb-2d23-80d7-994d-d1828c5dbb68" class="numbered-list" start="2"><li>The sender and receiver sides of the protocols may have to buffer more than one packet. The sender will have to buffer packets that have been transmitted but not yet acknowledged. </li></ol><ol type="1" id="1a17aacb-2d23-8011-95ec-c0751f4cb7ea" class="numbered-list" start="3"><li>The range of sequence numbers and buffering requirements will depend on the manner in which a data transfer protocol responds to lost, corrupted, and overly delayed packets. - Two basic approaches to pipelined error: Go-Back-N and selective repeat.</li></ol><p id="1a17aacb-2d23-807a-8d5a-f531a24ee530" class="">
+</p><h2 id="1a17aacb-2d23-8068-9fd5-de1f10e6e716" class="">Go-Back-N</h2><p id="1a17aacb-2d23-8095-ae90-f3fd060e339e" class="">The sender is allowed to transmit multiple packets without waiting for an acknowledgment, but is constrained to have no more than some maximum allowed number, N, of unacknowledge packets in the pipeline. </p><p id="1a17aacb-2d23-80e6-9dce-cd43bb96f25b" class="">The sender keeps track of two key numbers: base - the oldest unacknowledged packet’s sequence number and nextseqnum - the next available sequencen umber for a new packet.</p><p id="1a17aacb-2d23-80b8-b0db-f6ded184871f" class="">Four intervals in the range of sequence number:</p><ol type="1" id="1a17aacb-2d23-80fd-994e-df7eb2eab70b" class="numbered-list" start="1"><li>[0, base-1] - Packets already sent and acked</li></ol><ol type="1" id="1a17aacb-2d23-8033-9487-d7cb81c50758" class="numbered-list" start="2"><li>[base, nextseqnum -1] - Packets sent but not yet acked</li></ol><ol type="1" id="1a17aacb-2d23-803b-bffa-d9ddfcc19567" class="numbered-list" start="3"><li>[nextseqnum, base + N - 1] - Packet that can be sent immediately if data is available</li></ol><ol type="1" id="1a17aacb-2d23-80c2-aedf-c6d3a5545b3f" class="numbered-list" start="4"><li>[base + N and beyond] - cannot be used yet</li></ol><p id="1a17aacb-2d23-80e6-9da1-fbbe9089b46b" class="">N is the window size - GBN protocol is a sliding window protocol</p><figure id="1a17aacb-2d23-8038-95a4-d4c3431bb441" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_12.50.23_PM.png"><img style="width:699.984375px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_12.50.23_PM.png"/></a></figure><p id="1a17aacb-2d23-80b6-be85-d7c6b47e8939" class="">The GBN sender must handle:</p><ol type="1" id="1a17aacb-2d23-80f7-8859-f6a47cb23478" class="numbered-list" start="1"><li>Sending Data - invoked from above, the sender first checks to see if the window is full (whether there are N outstanding, unacknowledged packets). If the window is not full, a packet is created and sent. If the window is full, the sender does not send the packet and returns the data back to the upper layer.</li></ol><ol type="1" id="1a17aacb-2d23-8075-85f1-f83eb58392c3" class="numbered-list" start="2"><li>Receipt of an ACK - An acknowledgment for a packet with sequence number n will be taken to be a cumulative acknowledgment, indicating that all packets with a sequence number up to and including n have been correctly received at the receiver.</li></ol><ol type="1" id="1a17aacb-2d23-80ba-8dc2-eb39fda3aaa7" class="numbered-list" start="3"><li>A timeout event - a timer will be again used to recover from lost data or acknowledgment packets. If a timeout occurs, the sender resends all packets that have been previously sent but that have not yet been acknowledged. </li></ol><p id="1a17aacb-2d23-8008-88f9-cc91f8e4c35d" class="">
+</p><p id="1a17aacb-2d23-80ea-8e93-ed249c5f3c2b" class="">On the receiving side, if a packet with a sequence number n is received correctly and is in order, the receiver sends an ACK for packet n and delivers the data portion of the packet to the upper layer. In all other cases, the receiver discards the pacekt and resends an ACK for the most recently received in-order packet. </p><p id="1a17aacb-2d23-8032-84be-faa607f67c38" class="">If a receiver receives an out of order packet, it discards that packet, since everything will be sent after a timeout anyway.</p><p id="1a17aacb-2d23-80a7-be8a-fe7096600e47" class="">
+</p><h2 id="1a17aacb-2d23-803f-97ad-d5a944ea9512" class="">Selective Repeat (SR)</h2><p id="1a17aacb-2d23-8087-8403-c54614552ed2" class="">When the window size and bandwidth delay are both large, GBN suffers from performance problems. Imagine if every 1000 words you speak, if one word is garbled, so you have to repeat the last 1000. </p><p id="1a17aacb-2d23-80bf-abe3-ce6cfeac70ce" class="">Selective Repeat avoids unnecessary transmission by having the sender retransmit only those packets that it suspects were received in error. </p><p id="1a17aacb-2d23-8076-8417-e3c4d5ebb38a" class="">
+</p><figure id="1a17aacb-2d23-8049-9245-fe6d08896636" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_1.17.07_PM.png"><img style="width:699.984375px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_1.17.07_PM.png"/></a></figure><p id="1a17aacb-2d23-8060-a11a-fa02ecfcac64" class="">SR receiver will acknowledge a correctly received packet whether or not it is in order. Out-of-order packets are buffered until any missing packets (packets with lower sequence numbers) are received, at which point a batch of packets can be delivered in order to the upper layer. </p><p id="1a17aacb-2d23-80c7-a126-d78e6032eab8" class="">
+</p><p id="1a17aacb-2d23-80b6-9b3b-cdc306c8ba85" class="">SR Sender Events:</p><ol type="1" id="1a17aacb-2d23-80e7-961b-f0d389cd73ff" class="numbered-list" start="1"><li>Receiving Data from Upper Layer - the SR sender checks if its sequence number is witin the allowed window - if yes, the sender creates the packet and sends it. If not, the data is either buffered for later transmission or returned to the upper layer.</li></ol><ol type="1" id="1a17aacb-2d23-80a6-9f1e-e5f2b29f6ed9" class="numbered-list" start="2"><li>Timeout handling - Each packet must have its own timer. The SR retransmits only the specific packet that timed out. A single hardware timer can be used to simulate multiple logical timers.</li></ol><ol type="1" id="1a17aacb-2d23-8063-800a-d57cc24b3314" class="numbered-list" start="3"><li>ACK received - when the sender receives an ACK, it marks the packet as still received, provided it is in the window. If the packet’s number is equal to the base of the window, it moves the window forward to the next unacknowledged packet. If n the window moves and there are untransmitted packets with sequence numbers that now fall within the window, these packets are transmitted.</li></ol><p id="1a17aacb-2d23-8076-81c8-c04adf2f3602" class="">
+</p><p id="1a17aacb-2d23-8058-a8b3-c607ff396930" class="">SR Receiver Events:</p><ol type="1" id="1a17aacb-2d23-80e6-b875-efd463789920" class="numbered-list" start="1"><li>If the receiver gets a packet with a sequence number that falls within its current window:<ol type="a" id="1a17aacb-2d23-8098-a933-d6274f97e463" class="numbered-list" start="1"><li>If the packet hasn’t been received before, it is buffered for later</li></ol><ol type="a" id="1a17aacb-2d23-80f6-822c-c701e14ee4af" class="numbered-list" start="2"><li>If the packet’s sequence number is equal to the base of the window, the receiver can now deliver this packet and all consecutively numbered packets starting from rcv_base to the upper layer.</li></ol><ol type="a" id="1a17aacb-2d23-80e1-998d-cbf21b807fa5" class="numbered-list" start="3"><li>After delivering the data, the window moves forward by the number of packets delivered.</li></ol></li></ol><ol type="1" id="1a17aacb-2d23-806d-8507-d241b57a2b01" class="numbered-list" start="2"><li>Duplicate Packet is correctly received - an ACK is generated</li></ol><ol type="1" id="1a17aacb-2d23-8009-a893-ddb62be8ab63" class="numbered-list" start="3"><li>If the packet’s sequence number does not fall within the window, receiver ignores the packet</li></ol><figure id="1a17aacb-2d23-80e1-8cf2-f984856ed72f" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_1.16.18_PM.png"><img style="width:621.3125px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-21_at_1.16.18_PM.png"/></a></figure><p id="1a17aacb-2d23-80a1-a4a4-e88d924143ad" class="">
+</p><h1 id="1a17aacb-2d23-8079-87ac-ca7f8baec46f" class="">Connection-Oriented Transport: TCP</h1><h2 id="1a47aacb-2d23-8092-bc26-e60bb93ef92f" class="">The TCP Connection</h2><p id="1a17aacb-2d23-8012-bd6b-c23ea45b3d5d" class="">TCP is connection-oriented because before the applications can send data to each other, they must “handshake” with each other. </p><p id="1a47aacb-2d23-8059-b886-f0a01b831339" class="">The ‘connection’ is a logical one, with common state residing only in the TCPs in the two communicating end systems. The intermediate network elements (routers and switches) do not maintain information.</p><p id="1a47aacb-2d23-802a-9eae-e0b3fa34a00d" class="">TCP is:</p><ol type="1" id="1a47aacb-2d23-8020-9937-ca66c14e4b43" class="numbered-list" start="1"><li>Full-duplex: if there is a TCP connection between Process A on one host, and Process B on another host, data can blow between A and B at the same time as between B and A.</li></ol><ol type="1" id="1a47aacb-2d23-803a-bc72-eaa6efc144d9" class="numbered-list" start="2"><li><strong>Point-to-point: </strong>Between a single sender and receiver</li></ol><p id="1a47aacb-2d23-8050-a10f-da657ea9345e" class="">
+</p><p id="1a47aacb-2d23-80c6-a4eb-eb2224def0be" class="">The three-way handshake is how the TCP conection is first established</p><p id="1a47aacb-2d23-804a-844d-d0318bb3aa91" class="">Once the connection is established, the two application processes can send data to each other. </p><p id="1a47aacb-2d23-80dc-88a4-f7354fc78c44" class="">The client passes a stream of data through the socket to TCP. TCP directs this data to the connection’s send buffer (one of the buffers it set aside during the initial three-way handshake).  The maximum amount of data that can be grabbed and placed in a segment is limited by the maximum segment size.</p><p id="1a47aacb-2d23-803c-af0b-ea4bd5ea6900" class="">The MSS is set by first determining the length of the largest link-layer frame that can be sent by the local sending host (the so-called maximum transmission unit, MTU) and then setting the MSS to ensure that a TCP segment (when encapsulated into an IP datagram) plus the TCP/IP header length (typically 40 bytes) will fit into a single link-layer frame. Ethernet and PPP link-layerp rotocols have an MTU of 1500 bytes, so the typical value of an MSS is 1460 bytes.</p><h2 id="1a47aacb-2d23-80d0-979f-c1f3032f1810" class="">TCP Segment Structure</h2><p id="1a47aacb-2d23-8071-9678-dcf735d8a169" class="">The segment consists of header fields and a data field. The data field contains a chunk of application data.</p><p id="1a47aacb-2d23-80dc-bcab-e7fb35965e95" class="">A TCP segment header contains:<div class="indented"><p id="1a47aacb-2d23-80bb-bcaa-c917f883c070" class="">Source and destination port numbers - used for multiplexing/demultiplexing</p><p id="1a47aacb-2d23-802e-815e-ec488d1dbee1" class="">32-bit Sequence number field and 32-bit acknowledgment number</p><p id="1a47aacb-2d23-8081-8db4-c338e810721f" class="">16-bit receive window</p><p id="1a47aacb-2d23-809e-a30b-f3a318b15fe2" class="">4-bit header length field</p><p id="1a47aacb-2d23-80b5-8098-dd5d8d634f06" class="">options field - optional</p><p id="1a47aacb-2d23-804c-851b-eab597564aac" class="">flag field - 6 bit </p></div></p><p id="1a47aacb-2d23-80b3-aa04-f195c8c12ed9" class="">
+</p><h3 id="1a47aacb-2d23-8050-bda7-eb834caa8ef4" class="">Sequence Numbers and Acknowledgment Number</h3><p id="1a47aacb-2d23-80e7-b023-db04c67dc1a2" class="">TCP views data as an unstructured but ordered stream of bytes. </p><p id="1a47aacb-2d23-8001-832b-ca1e7de8b189" class="">The sequence number for a segment is therefore the byte-stream number of the first byte in the segment. </p><p id="1a47aacb-2d23-8021-b10e-ea5340509523" class="">Assume that Host A wants to send a stream of data to a process in Host B over TCP. The TCP in Host A will implicitly number each byte in the data stream. If the file consists of 500,000 bytes and the MSS is 1000 bytes, there will be 500 segments in the data stream. The first segment gets assigned sequence number 0, the second will get sequence number 1000, the third will get sequence number 2000, and so-on. </p><p id="1a47aacb-2d23-80cc-ad5a-ec3c869a4d8c" class="">For acknowledgment numbers, since Host A can be receiving data from Host B at the same time it sends data, each of the segments that arrive from Host B has a sequence number for the data flowing from B to A. The acknowledgment number that Host A puts in its segment is the sequence number of the next byte Host A is expecting from Host B. If Host A received all bytes number 0 through 535 from B and is about to send a segment to B. Host A is waiting for byte 536 and all subsequent bytes. Host A puts 536 in the acknowledgment number field.</p><p id="1ad7aacb-2d23-8025-8aa0-fa084764e39a" class="">The sequence number: the first byte # for the segment</p><p id="1ad7aacb-2d23-804f-b2b7-e3e9d574a20b" class="">The acknowledgment number: the first byte of the next expected packet</p><h3 id="1a47aacb-2d23-800e-94ce-dd9528d80255" class="">Telnet: A Case Study for Sequence and Acknowledgment Numbers</h3><p id="1a47aacb-2d23-8065-a041-efcab21cbbbd" class="">Client A initiates a Telnet session with Host B. Each character typed by the user (client) will be sent to the host, which will be displayed on the Telnet user’s screen. It traverses the network twice.</p><figure id="1a47aacb-2d23-80f8-ad71-fd7a7d4f8280" class="image"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-24_at_1.36.38_PM.png"><img style="width:709.984375px" src="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Screenshot_2025-02-24_at_1.36.38_PM.png"/></a></figure><p id="1a47aacb-2d23-80ac-8a1a-c06d0c63dd5d" class="">
+</p><h2 id="1a47aacb-2d23-80bb-bd2d-e48dc5055ee8" class="">Round-Trip Time Estimation and Timeout</h2><p id="1a47aacb-2d23-80fd-90d9-c5222c6bc9b2" class="">TCP implements a timeout mechanism to recover from lost segments, but how much larger should the timeout be compared to the RTT?</p><h3 id="1a47aacb-2d23-808a-9ab5-d827be30171f" class="">Estimating the Round-Trip Time</h3><p id="1a47aacb-2d23-804d-8388-d2132cd18d6a" class="">When a client sends a message and waits for the acknowledgment, once it gets the acknowledgment then it measures how long the whole round trip took. </p><p id="1ad7aacb-2d23-802b-a1dc-ed727f6566ab" class="">The sample RTT, denoted SampleRTT, for a segment is the amount of time between when the segment is sent (passed to IP) and when an acnowledgement is received. Instead of measured SampleRTT for every transmitted segment, there is only one SampleRTT measurement at a time. The sampleRTT is being estimated for only one of the transmitted by currently unacknowledged segments, leadign to a new value of sampleRTT approximately once every RTT. TCP also never computes SampleRTT for a segment that has been retransmitted.</p><p id="1ad7aacb-2d23-8017-bdf9-f09ba242944e" class="">This value will fluctuate, so there is an average, EstimatedRTT. When a new SampleRTT is obtained, this formula:</p><p id="1ad7aacb-2d23-808c-b18b-ed313e4dbe4a" class="">EstimatedRTT = (1 - a) * EstimatedRTT + a * SampleRTT</p><p id="1ad7aacb-2d23-8050-b43d-e71e1e60f3b8" class="">a is recommended to be 0.125. </p><p id="1ae7aacb-2d23-80f3-9e91-c16563d3e538" class="">EstimatedRTT is a weighted average of SampleRTT values. </p><p id="1ad7aacb-2d23-80b8-932d-d6c9f22c4f3d" class="">
+</p><h3 id="1a47aacb-2d23-80e4-aaf9-c2b156514b95" class="">Setting and Managing the Retransmission Timeout Interval</h3><p id="1ad7aacb-2d23-8037-87a6-e74e9dba3e3c" class="">The TimeoutInterval should be equal to the EstimatedRTT plus some margin. </p><p id="1a47aacb-2d23-8008-9879-d4b16f47289c" class="">
+</p><h3 id="1a47aacb-2d23-8014-81c5-c10996d2ff60" class="">Reliable Data Transfer</h3><p id="1a47aacb-2d23-8085-9bae-d0ca195e1bb6" class="">The IP service is unreliable. IP does not guarantee delivery. TCP creates a reliable data transfer service on top of IP’s unreliable best-effort service. </p><p id="1a47aacb-2d23-8059-a241-e606f0f8bea7" class="">The recommended TCP timer management procedures use only a single retransmission timer, even if there are multiple transmitted but not yet acknowledged segments. </p><h3 id="1a47aacb-2d23-803c-903b-e1f1b1b4df7f" class="">A Few Interesting Scenarios</h3><p id="1a57aacb-2d23-80b5-ac9c-ec83769ec3af" class="">Scenario One:<div class="indented"><p id="1a47aacb-2d23-8013-aaba-fe7f48c0b241" class="">Host A sends a small piece of data with a sequence number of 92 - 8 bytes. </p><p id="1a57aacb-2d23-8010-be1b-e5d368c5ac5d" class="">Host B receives it and sends an ACK</p><p id="1a57aacb-2d23-8010-884e-fd52fd2eab74" class="">The Ack gets lost, Host A resends it after the timer runs out of time.</p><p id="1a57aacb-2d23-80b9-bf20-cec7b045b7ed" class="">Host B sees the dplicate and ignores it.</p></div></p><p id="1a57aacb-2d23-802b-8294-f1e74dd10072" class="">Scenario Two: <div class="indented"><p id="1a57aacb-2d23-805d-8dab-cb6f6206dcc9" class="">Host A sends two segments back to back. The first segment has sequence number 92 and 8 bytes of data, the second has sequence number 100 and 20 bytes.</p><p id="1a57aacb-2d23-80f6-ae41-f98ddbdb1d57" class="">B receives them and sends ACKs - the first ACK of 100 and the second has ACK number 120.</p><p id="1a57aacb-2d23-8077-b2ce-dcaea27da9a8" class="">Neither ACK gets to A.</p><p id="1a57aacb-2d23-80d7-bc47-dc1a8ba7358c" class="">A resends the first segment. If the second ACK (120) gets there before the new timeout, the second segment won’t be transmitted.</p></div></p><p id="1a57aacb-2d23-80fa-8365-e808c0b07e1e" class="">Scenario Three:<div class="indented"><p id="1a57aacb-2d23-80fa-9762-df9eb2cbfc03" class="">Host A sends two segments.</p><p id="1a57aacb-2d23-80b9-8889-e2a2ddeb8a07" class="">The ACK for the first segment is lost in the network, but just before the timeout, Host A receives an acknowledgment with ack number 120.</p><p id="1a57aacb-2d23-8011-9d72-e8251cd60fc6" class="">Host A knows that Host B received everything up through byte 119, so it doesn’t resend either of the two segments.</p></div></p><h3 id="1a57aacb-2d23-804d-920e-fbc59c5c8435" class="">Doubling the Timeout Interval</h3><p id="1a57aacb-2d23-8005-baaf-de923ea6f780" class="">When TCP doesn’t receive an ACK, it has to resend the data. When it resends the data, it makes the timeout interval longer each time it has to retransmit. If the original is .75 sec, the resent data will be 1.5 seconds, if that fails then the resent data is 3.0 seconds. </p><p id="1a57aacb-2d23-80a5-9499-f966c41acbf9" class="">When TCP receives new data from the application or an ACK from the receiver, it resets the timeout interval based on more accurate estimates of how long packets typically take to travel across the network. </p><h3 id="1a57aacb-2d23-8041-805b-e2b58de45757" class="">Fast Retransmit</h3><p id="1a57aacb-2d23-8025-9843-dea297603fd0" class="">Timeout periods can be long - when a segment is lost, the long timeout period forces the sender to delay resending the lost packet.</p><p id="1a57aacb-2d23-806c-b060-dd46bd7df66e" class="">The sender can often detect packet loss well before the timeout event occurs by noting so-called duplicate ACKs. </p><p id="1a57aacb-2d23-80e5-9129-fde7eadfa698" class="">When a receiver gets a packet out of order, it sends the last ACK it sent. </p><p id="1a57aacb-2d23-80aa-b77d-deb251cf6f7e" class="">If the sender receives three duplicate ACKs for the same data, it takes this as an indication that the segment following the segment that has been ACKed three times has been lost. </p><p id="1ae7aacb-2d23-80d2-ab47-d39b974ccd11" class="">In the case of three duplicate ACKs, the TCP sender performs a fast retransmit - transmitting the missing segment before that segment’s timer expires. </p><h3 id="1a57aacb-2d23-80b0-b9ba-fdabbb6e23cc" class="">Go-Back-N or Selective Repeat?</h3><p id="1a57aacb-2d23-8006-b461-c5b34a89df03" class="">Is TCP a GBN or SR protocol?</p><p id="1a57aacb-2d23-80a3-acc3-e57ffdf7ceda" class="">It is similar to GBN:<div class="indented"><p id="1a57aacb-2d23-805b-978f-da0cf69083c4" class="">It uses cumulative acknowledgments</p><p id="1a57aacb-2d23-804a-b0fe-d88bea1692c1" class="">The sender tracks the smallest unacknowledged sequence number and the next sequence number to send</p></div></p><p id="1a57aacb-2d23-8015-a378-de8ea8c64713" class="">It is different from GBN:<div class="indented"><p id="1a57aacb-2d23-8007-9d64-c12a8ba5da9c" class="">GBN reends all packets after a lost one, TCP only resends the missing segment. </p><p id="1a57aacb-2d23-8064-aa7d-fb00d3921987" class="">If an acknowledgement for a later segment arrives before a timeout, TCP may not even retransmit the lost one.</p></div></p><p id="1a57aacb-2d23-8010-a536-dc8659b8a5bd" class="">TCP is like SR:<div class="indented"><p id="1a57aacb-2d23-809f-b7ea-d818cc116c3a" class="">Selective Acknowledgment - a proposed modification - allows a TCP receiver to acknowledge out-of-order segments selectively rather than cumulatively acknwoeldging the last correctly received, in-order segment.</p><p id="1a57aacb-2d23-8045-b717-faeb2162b235" class="">With this, TCP can skip retransmitting segments that were already received, making it behave more like SR.</p></div></p><h2 id="1a57aacb-2d23-80b4-8bc2-c86f3332ffda" class="">Flow Control</h2><p id="1a57aacb-2d23-80a8-9355-feaf44fdb010" class="">Each host on both sides of the TCP connection sets aside a receive buffer for the connection. When the TCP connection receives bytes that are correct and in sequence, it places the data in the receive buffer. The application will read data from this buffer, but not necessarily the instant it arrives. It may be doing other things. If the application is too slow, the sender can very easily overflow the connection’s receive buffer by sending too much data too quickly. </p><p id="1a57aacb-2d23-80d3-9ff1-c595718c16a3" class="">Flow-control service is provided to eliminate this possibility. Flow control is thus a speed-matching service - matching the rate at which the sender is sending against the rate at which the receiving application is reading.</p><p id="1a57aacb-2d23-80c0-b1a0-c1f1324ad85d" class="">TCP provides flow control by having the sender maintain a variable called the receive window. The receive window is used to give the sender an idea of how much free buffer space is available at the receiver.</p><p id="1a57aacb-2d23-80c5-9e70-ce6d2bdd13ae" class="">Each connection maintains a distinct receive window. </p><p id="1ae7aacb-2d23-8067-9f90-fb3af46372d7" class="">LastByteRead: The number of the last byte in the data stream read from the buffer by the application process in B</p><p id="1ae7aacb-2d23-80bc-8377-f652b6980f46" class="">LastByteRcvd: The number of the last byte in the data stream that has arrived from the network and has been placed in the receive buffer at B</p><p id="1ae7aacb-2d23-804c-b484-f1dfb3fbc2cc" class="">LastByteRcvd - LastByteRead ≤ RcvBuffer</p><p id="1ae7aacb-2d23-8083-a721-e183c5f3b9ed" class="">receive window = rwnd</p><p id="1ae7aacb-2d23-8056-b802-c95268949420" class="">rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]</p><p id="1ae7aacb-2d23-80b2-8744-f6ab457636a5" class="">rwnd = 0, meaning the receive window is full, TCP will send a segment to the sender only if it has data to send or if it has an acknowledgement to send. Therefore, the sender is never informed that some spae has opened up in Host B’s receive buffer. Host A will instead continue to send segments with 1 data byte that will be acknowledged by the receiver, and will eventually contain a nonzero rwnd value. </p><h2 id="1a57aacb-2d23-8036-a54f-c31e3f780e14" class="">TCP Connection Management</h2><p id="1a57aacb-2d23-806e-a7da-d1a651b9fbba" class="">How does a TCP connection get established and torn down?</p><p id="1a57aacb-2d23-8062-b834-cddc9d8e3101" class="">Established:<div class="indented"><ol type="1" id="1a57aacb-2d23-8041-ad5a-e9b437bc3833" class="numbered-list" start="1"><li>THe client-side TCP first sends a special TCP segment to the server-side TCP. The TCP SYN segment.</li></ol><ol type="1" id="1a57aacb-2d23-80fa-bb3d-d347cc968e70" class="numbered-list" start="2"><li>The server extracts the TCP SYN, allocates the TCP buffers and variables to the connection, and sends a connection-granted segment to the client TCP. This is the SYNACK segment.</li></ol><ol type="1" id="1a57aacb-2d23-8005-988f-ed197680cf8f" class="numbered-list" start="3"><li>Upon receiving the SYNACK segment, the client allocates buffers and variables ot hte connection, then sends another segment that acknowledges the SYNACK.</li></ol></div></p><p id="1a57aacb-2d23-802c-a952-fb12f29cbd83" class="">Then the connection is established and segments containing data can be sent. This is called the three-way handshake.</p><p id="1a57aacb-2d23-8049-9725-db000403164d" class="">When the connection needs to end (either side can end it) the resources in the hosts are deallocated. </p><p id="1a57aacb-2d23-80a6-9bc7-ca5ead05f0ae" class="">client TCP has several states:<div class="indented"><p id="1a57aacb-2d23-8050-8003-db6b18852e31" class="">CLOSED - it begins in this state</p><p id="1a57aacb-2d23-80cd-9900-dee55c213622" class="">SYN_SENT - after sending the SYN segment, waiting for a response</p><p id="1a57aacb-2d23-8044-b518-d4a713ec73cd" class="">ESTABLISHED -  Once the client gets the response, it enters this state, meaning the connection is successfully set up</p></div></p><p id="1a57aacb-2d23-8027-ba15-f009944c2185" class="">If a client wants to close the connection, the client TCP sends a TCP segment with the FIN bit set to 1 and enters the FIN_WAIT_1 state. The client waits for a TCP segment from the server with an acknowledgment. </p><p id="1a57aacb-2d23-80a8-9bcc-f5c9c6c034a4" class="">When it receives this, it enters FIN_WAIT_2 state. The client waits for a message from the server wit hthe FIN bit set to 1. The client TCP acknowledges the server’s segment and enters TIME_WAIT. This lets the TCP client resend the final acknowledgment in case the ACK is lost. After the wait, the connection formally closes and all resources on the client side are released.</p><p id="1a57aacb-2d23-8079-af21-f09ba0fafd76" class="">If a host receives a TCP SYN packet with destination port 80, the host will send a special reset segment to the source. This tells the source there is no socket for that segment, don’t send another.</p><h1 id="1a67aacb-2d23-8087-bf1b-c5d964cab455" class="">Principles of Congestion Control</h1><p id="1a67aacb-2d23-805f-9358-c26fc164748b" class="">Packet loss typically results from overflowing of router buffers as the network becomes congested. </p><p id="1a67aacb-2d23-805d-a7d5-d8ab6eef3911" class="">Congestion Control is a fundamentally important problem in networking.</p><h2 id="1a67aacb-2d23-800b-9334-f61f4944eb00" class="">The Causes and the Costs of Congestion</h2><p id="1a67aacb-2d23-80c5-8a47-d699775d0597" class="">Three scenarios where congestion can occur:</p><h3 id="1a67aacb-2d23-807c-9c01-feeed426bb34" class="">Scenario 1: Two Senders, a Router with Infinite Buffers</h3><p id="1a67aacb-2d23-8016-b1c9-ed3ca968eefc" class="">Two hosts: A and B</p><p id="1a67aacb-2d23-808b-8d37-dcc22a779034" class="">Host A is sending data into the connection at average rate of L_in bytes/sec. Each data is sent only once.</p><p id="1a67aacb-2d23-808e-815d-dd584b769c16" class="">The underlying transport-layer protocol is simple: data is encapsulated and sent; no error recovery, flow control, or congestion control.</p><p id="1a67aacb-2d23-80e5-a1a8-c96c5b4c1c8f" class="">Host B operates at a similar manner - assume that it too is sending at a rate of L_in bytes/sec.</p><p id="1a67aacb-2d23-8005-abea-cc5a7c971597" class="">Packets from both pass through a router and over a shared outgoing link of capacity R. The router has infinite amount of buffer space.</p><p id="1a67aacb-2d23-808c-8e2d-c89c99e9c958" class="">Host A and B are sending data, the router forwards their data over a shared link that has a maximum speed of R bytes per second.</p><p id="1a67aacb-2d23-808f-b022-d7687c491c65" class="">For a spedning rate betwen 0 and R/2, the throughput at the receiver equals the sender’s sending - everything sent by the sender is received at the receiver at a finite delay.</p><p id="1a67aacb-2d23-809b-9fd8-ef89e249b5e2" class="">When the sending rate is above R/2, however, the throughput is only R/2.</p><p id="1a67aacb-2d23-8082-8ef6-f1748b45cfd3" class="">The link cannot deliver packets to a receiver at a steady-state that exceeds R/2, no matter how high Hosts A and B set their sending rates.</p><p id="1a67aacb-2d23-80be-8a9a-f7ccfb09d4e0" class="">When the sending rate exceeds R/2, the average number of queued packets in the router is unbounded, and the average delay between source and destination becomes infinite. </p><h3 id="1a67aacb-2d23-8083-a10e-d6d7188f72ff" class="">Scenario 2: Two Senders and a Router With Finite Buffers</h3><p id="1a67aacb-2d23-804f-9435-de05c6e93a42" class="">Modifying the first scenario: the amount of router buffering is assumed to be finite. Packets will be dropped when arriving to an already full buffer. Each conection is reliable. If a packet containing a transport-level segment is dropped at the router, the sender will eventually retransmit it. Packets can be retransmitted.</p><p id="1a67aacb-2d23-801e-b0b5-f3aeabbe0ed2" class="">The sending rate changes to l′in bytes/sec. l′in.</p><p id="1a67aacb-2d23-80b5-ac42-cc9c4c33f926" class="">Performance now depends on how retransmission is performed. </p><p id="1a67aacb-2d23-80dd-9c91-cefc34374c98" class="">First, the unrealistic case that Host A is able to somehow determine whether or not a buffer is free in the router and thus sends a packet only when a buffer is free.</p><p id="1a67aacb-2d23-8006-88c9-dd6c3320d992" class="">Second, the more realistic scenario that the sender retransmits only when a packet is known for certain to be lost. Still a bit of a stretch, but the timeout may be set large enough to be assured that a packet that hasn’t been ACKed has been lost.</p><p id="1a67aacb-2d23-8071-a4ad-f596e7c139dc" class="">Retransmitting lost packets adds more traffic to the network, making congestion worst.</p><p id="1a67aacb-2d23-8059-a293-df0dca7224d9" class="">There may also be the case that the sender times out prematurely and retransmits a packet that has been delayed in the queue but not yet lost.</p><p id="1a67aacb-2d23-80e8-aafb-ddfee71b1263" class="">Both original data and retransmission may reach the sender.</p><h3 id="1a67aacb-2d23-80b8-86c0-d841ee4e40c7" class="">Scenario 3: Four Senders, Routers with Finite Buffers, and Multihop Paths</h3><p id="1a67aacb-2d23-8079-b6a8-ebbb5dec0734" class="">Four hosts transmitting packets, each over overlapping two-hop paths. Each host uses a timeout/retransmission mechanism to implement a rdt service.</p><p id="1a67aacb-2d23-80f1-9126-f7ddb673e2d8" class="">If traffic is really low, the throughput is large.</p><p id="1a67aacb-2d23-8022-97d0-f1e7eb1f895e" class="">If traffic is extremely high, the connections begin to compete with each other, and packets get dropped. </p><h2 id="1a67aacb-2d23-8014-bab7-d9b1cdaf0410" class="">Approaches to Congestion Control</h2><p id="1a67aacb-2d23-80fa-9021-dec07ee14bf0" class="">End-to-end congestion control: The network layer provides no explicit support to the transport layer for congestion control purposes. The end systems must observe network behavior.</p><p id="1a67aacb-2d23-8099-931f-ee421e44190a" class="">Network assisted congestion control: With network assisted congestion control, routers provide explicit feedback to the sender and/or receiver regarding the congestion state of the network. Routers can give a single bit indicating congestion at a link, or more detailed feedback. </p><h1 id="1a67aacb-2d23-8026-8eff-e4dc65adaeb2" class="">TCP Congestion Control</h1><p id="1a77aacb-2d23-8075-adc3-c5f589fdb241" class="">Classic TCP uses end-to-end congstion control rather than network-assisted congestion control.</p><h2 id="1a77aacb-2d23-80d3-8963-ef7c6ab64d1e" class="">Classic TCP Congestion Control</h2><p id="1a77aacb-2d23-80ba-bd6e-f36b1cb265f5" class="">Each sender limits the rate at which it sends traffic into its connection as a function of perceived network congestion. If there is little congestion perceived by the sender, it increases the send rate. </p><p id="1a77aacb-2d23-80d0-b28d-fde8873fa85c" class="">How does a TCP sender limit the rate at which it sends traffic into its connection?</p><p id="1a77aacb-2d23-8057-a690-c9b1bd936eae" class="">How does a TCP sender perceive that there is congestion on the path between itself and the destination?</p><p id="1a77aacb-2d23-800e-a1d1-c7114bb8e56b" class="">What algorithm should the sender use to change its send rate as a function of perceived end-to-end congestion?</p><p id="1a77aacb-2d23-809c-80c3-e5b2653471a5" class="">
+</p><p id="1a77aacb-2d23-8076-8175-f00a7fccb391" class=""><strong>How does a TCP sender limit the rate at which it sends traffic into its connection?</strong><div class="indented"><p id="1a77aacb-2d23-807b-aa2a-c9af7e144f33" class="">There is a receive buffer, a send buffer, and several variables. One of those variables is the congestion window. The amount of unacknowledged data may not exceed the minimum of congestion window and receive window (cwnd, rwnd). </p><p id="1a77aacb-2d23-80c5-af6e-e1e3eaabffa3" class="">LastByteSent - LastByteAcked ≤ min{cwnd, rwnd}</p><p id="1a77aacb-2d23-8097-922b-c4fbf0fcd58d" class="">The constraint limits the amount of unacknowledged data at the sender and therefore indirectly limits the sender’s send rate.</p><p id="1a77aacb-2d23-8028-806d-d597d38ec96e" class="">The effective send rate is cwnd/RTT bytes/sec.</p><p id="1a77aacb-2d23-803d-96c9-e363493cb483" class="">If there is no packet loss or significant delay, the sender operates in a smooth cycle:<div class="indented"><p id="1a77aacb-2d23-801a-bba2-f6e030d2859d" class="">At the beginning of a RTT, the sender transmits cwnd bytes of data.</p><p id="1a77aacb-2d23-8000-a90a-c6984d791eb3" class="">After one RTT, the sender gets ACKs for the previously sent data.</p><p id="1a77aacb-2d23-806c-98f3-cde02d3249ca" class="">With the new ACKs, the sender is allowed to send more data.</p><p id="1a77aacb-2d23-80e4-9e83-ecc3cc8b0dcd" class="">If cwnd increases, the sender can transmit more data</p><p id="1a77aacb-2d23-8070-a540-f8c77ea3918f" class="">If RTT increases, the sender must wait longer for ACKs.</p></div></p></div></p><p id="1a77aacb-2d23-8035-ba34-c74d0cd08943" class=""><strong>How A TCP sender perceives that there is congestion on the path between itself and the destination:</strong><div class="indented"><p id="1a77aacb-2d23-803e-9532-cf2d5cfe03b9" class="">Loss Event - the occurrence of either a timeout or the receipt of three duplicate ACKs from the receiver. </p><p id="1a77aacb-2d23-80b4-af3b-e493094727c5" class="">When there is excessive congestion, one (or more) rotuer buffers along the path overflows, causing datagram (containing a TCP segment) to be lost. The dropped datagram results in a loss event at the sender - which is taken by the sender to be an indication of congestion on the sender-to-receiver path.</p><p id="1a77aacb-2d23-8017-ab9c-dadf83f4dd16" class="">When congestion is low or zero, acknowledgments for previously unacked segments will be received at the TCP sender. TCP will take the arrival of these acknowledgments that all is well. </p><p id="1a77aacb-2d23-80fe-b648-c1a84886f50c" class="">If acknowledgments arrive at a slow rate, the congestion window is increased at a relatively slow rate. If acknowledgments arrive at a higher rate, it is increased much quicker. This is called <strong>self-clocking.</strong></p></div></p><p id="1a77aacb-2d23-808a-8d96-f7a6087a7a24" class="">
+</p><p id="1a77aacb-2d23-80ec-bab2-eb66d2d5738d" class="">How should TCP determine the rate at which it should send? </p><p id="1a77aacb-2d23-80aa-a403-d96b9c960f18" class="">If they’re too cautious, then the available bandwidth isn’t used. if they’re too fast, then they congest the network.</p><p id="1a77aacb-2d23-8049-9b18-eeaa468d6772" class="">How then do the TCP senders determine their sending rates such that they don’t congest the network but at the same time make use of all the avail- able bandwidth?</p><p id="1a77aacb-2d23-8076-b4ce-fc177098ee49" class="">Are TCP senders explicitly coordinated, or is there a distributed approach in which the TCP senders can set their sending rates based only on local information?</p><p id="1a77aacb-2d23-80ea-baf7-ee4687dd2dd8" class="">Three Guiding Principles:<div class="indented"><ol type="1" id="1a77aacb-2d23-80ba-bdbd-e81eed6cf525" class="numbered-list" start="1"><li>A lost segment implies congestion, and hence, the TCP sender’s rate should be decreased when a segment is lost. A timeout event or the receipt of four acks for 1 segment (one original, three duplicate) is interpreted as an implicit “loss event”, triggering a retransmission. <p id="1a77aacb-2d23-80f3-b2c3-d4152981b998" class="">From a congestion control standpoint, the question is how the TCP sender should decrease its congestion window size, hence its sending rate, in response to the loss event.</p></li></ol><ol type="1" id="1a77aacb-2d23-8071-94fd-d824626deb54" class="numbered-list" start="2"><li>An acknowledged segment indicates that the network is delivering the sender’s segments to the receiver, and hence the sender’s rate can be increased when an ACK arrives for a previously unacknowledged segment. </li></ol><ol type="1" id="1a77aacb-2d23-806f-b5cc-dad2decf9a66" class="numbered-list" start="3"><li>Bandwidth Probing: Given ACKs indicating a congestion-free source-to-destination path and loss events indicating a congested path, TCP’s strategy for adjusting its transmission rate is to increase its rate in response to arriving ACKs until a loss event occurs, at which point the transmission rate is decreased. </li></ol></div></p><p id="1a77aacb-2d23-80fa-ae92-e2ae74502189" class="">
+</p><p id="1a77aacb-2d23-8071-a47b-c4af688683b1" class="">The <strong>TCP congestion-control algorithm:</strong><div class="indented"><ol type="1" id="1a77aacb-2d23-80c6-82bc-e11787442089" class="numbered-list" start="1"><li>Slow Start</li></ol><ol type="1" id="1a77aacb-2d23-8060-bbd2-ea6a5a69030d" class="numbered-list" start="2"><li>Congestion Avoidance</li></ol><ol type="1" id="1a77aacb-2d23-807f-a236-c0a884dece3a" class="numbered-list" start="3"><li>Fast Recovery</li></ol></div></p><h3 id="1a77aacb-2d23-801f-888d-c8e71f677533" class="">Slow Start</h3><p id="1a77aacb-2d23-804c-97c8-f22e2976eefd" class="">The value of cwnd is initialized to a small value of 1 MSS, resulting in an initial sending rate of roughly MSS/RTT. If MSS=500 bytes and RTT = 200 msec, the resulting initial sending rate is 20 kbps.</p><p id="1a77aacb-2d23-801d-ade5-c0ab2249c4af" class="">The available bandwidth may be much larger, so the TCP sender wants to find the amount of available bandwidth quickly.</p><p id="1a77aacb-2d23-8092-8aba-fa26e20933b5" class="">In the slow start state, the value of cwnd increases by 1 MSS every time a transmitted segment is first acknowledged.</p><p id="1a77aacb-2d23-80d2-a552-dc9c4c1edce6" class="">So if 1 acknowledgment arrives, it increases to 2 MSS. If both of those acknowledgments arrive, 4 MSS, and so on.</p><p id="1a77aacb-2d23-80da-a4fd-e30843b2536f" class="">Exponential growth. </p><p id="1a77aacb-2d23-8051-94a8-cf124c356d9d" class="">This growth ends when there is a loss event, th TCP sender sets the value of cwnd to 1 and begins the process again. </p><p id="1a77aacb-2d23-80ec-8564-f6b5eecee706" class="">Then there is a second variable, ssthresh (slow start threshold) set to cwnd/2.</p><p id="1a77aacb-2d23-807b-96ca-c1a4037359c7" class="">Since ssthresh is half the value ofcwnd when congestion was last detected, it would be reckless to keep increasing cwnd to that again. TCP increases cwnd until cwnd == ssthresh. Then slow start ends and TCP transitions to congestion-avoidance. TCP increases cwnd more cautiously in this mode.</p><p id="1a77aacb-2d23-80ce-a519-eb32a38ebcc1" class="">Slow start can also ends if three duplicate ACKS are detected, in which case TCP performs a fast retransmit and enters fast recovery state.</p><h3 id="1a77aacb-2d23-80d1-b6d4-fba288554b8e" class="">Congestion Avoidance</h3><p id="1a77aacb-2d23-80d4-872f-d28ac536b83b" class="">The value of cwnd is half its value when congestion was last encountered. TCP increases the value of cwnd by just a single MSS every RTT. </p><p id="1a77aacb-2d23-80ef-9066-c5361f54a790" class="">Linear growth.</p><p id="1a77aacb-2d23-8095-bd48-f168bc8ac41d" class="">This ends when a timeout occurs: The value of cwnd is set to 1, and the value of ssthresh is updated to half the value of cwnd when the loss event occurred.</p><h3 id="1a77aacb-2d23-8003-b941-f5147e270bb9" class="">Fast Recovery</h3><p id="1a77aacb-2d23-804e-a9a1-fb05fcb5e0bc" class="">The value of cwnd is increased by 1 MSS for every duplicate ACK received for the missing segment that caused TCP to enter the fast-recovery state. When an ACK arrives for the missing segment, TCP enters congestion-avoidance state after deflating cwnd. If a timeout event occurs, fast recovery transitions to the slow-start state after performing the same actions as in slow start and congestion avoidance: THe value of cwnd is set to 1 MSS, and the value of ssthresh is set to half of the value of cwnd when the loss event occurred.</p><p id="1a77aacb-2d23-80d8-b7c0-caeb2223bdc4" class="">Fast Recovery is recommended, but not required, component of TCP. </p><h3 id="1a77aacb-2d23-8085-91cb-f00fc032bbbe" class="">TCP Congestion Control: Retrospective</h3><p id="1a77aacb-2d23-80d0-95d4-f86a61a11487" class="">When a connection begins and assuming that losses are indicated by triple duplicate ACKs rather than timeouts, TCP’s congestion control conssits of linear increases in cwnd of 1 MSS per RTT and then a halving of cwnd on a triple duplicate ACK.</p><p id="1a77aacb-2d23-800b-a493-eaa8028c678c" class="">Additive increase, multiplicative decrease. </p><h3 id="1a77aacb-2d23-806a-a4bb-c46d0ac93797" class="">TCP Cubic</h3><p id="1a77aacb-2d23-808e-9708-e93c3ad43dc4" class="">What is the best way to “probe” for a packet sending rate that is just below the threshold of triggering packet loss?</p><p id="1a77aacb-2d23-80ec-824b-fb1734b60e94" class="">Cutting the sending rate in half and increasing slowly over time may be overly cautious. </p><p id="1a77aacb-2d23-80f0-97c6-f5facaa26790" class="">If the state of the congested link where packet loss occurred hasn’t changed much, then perhaps it’s better to more quickly ramp up the sending rate to get close to the pre-loss sending rate and only then probe cautiously for bandwidth.</p><p id="1a77aacb-2d23-8089-b901-db5f6c76bc59" class="">TCP Cubic congesiton window only increased on ACK receipt, and the slow start and fast recovery phases remain the same.<div class="indented"><ol type="1" id="1a77aacb-2d23-8085-93f5-d084d122091d" class="numbered-list" start="1"><li>Wmax is the size of TCP’s congestion window when loss was last detected. K the future point in time when when TCP CUBIC’s window size will again reach Wmax. Tunable CUBIC parameters determine the value K, that is, how quickly the protocol’s congestion window size would reach Wmax.</li></ol><ol type="1" id="1a77aacb-2d23-8044-a62f-e28ba25ab23b" class="numbered-list" start="2"><li>CUBIC increases the congestion window as a function of cube of the distance between the current time, t, and K. When t is further away from K, the congestion window size increases are much larger than when t isclose to K. That is CUBIC quickly ramps up TCP’s sending rate t oget close to the pre-loss rate, Wmax, and only then probes cautiously for bandwidth as it approaches Wmax.</li></ol><ol type="1" id="1a77aacb-2d23-8068-a4bb-f9733d4dd2c0" class="numbered-list" start="3"><li>When t is greater than K, the cubic rule implies that CUBIC’s congestion window increases are small when t is still close to K (which is good if the congestion level of the link causing loss hasn’t changed much) but then increases rapidly if t exceeds K (which allows CUBIC to more quickly find a new operating point if the congestion level of the link that caused loss has changed significantly). </li></ol></div></p><p id="1a77aacb-2d23-80a0-b897-f7a371bdef35" class=""> </p><h2 id="1a77aacb-2d23-80ab-875c-f63acac8ac58" class="">Network-Assisted Explicit Congestion Notification and Delayed-based Congestion Control</h2><p id="1a77aacb-2d23-802e-8924-e1e320425056" class="">Since the initial standardization, TCP has implemented end-end congestion control - infers congestion through packet loss. It doesn’t receive support from the network layer.</p><p id="1a87aacb-2d23-8008-aef3-ec722ab4d1f2" class="">Extensions to IP and TCP have been proposes, implemented and deployed that allow the network to explicitly signal congestion to a TCP sender and receiver.</p><h3 id="1a87aacb-2d23-80b2-a1a5-f36d5bcf111e" class="">Explicit Congestion Notification</h3><p id="1a87aacb-2d23-8069-ade2-d8e60e18774b" class="">The form of network-assisted congestion control performed within the network.</p><p id="1a87aacb-2d23-803b-8bc6-e36264121888" class="">A router can mark an IP packet using ECN bits to indicate it is experiencing congestion.  It is then carried in the mark IP datagram to the destination host, which then informs the sending host.</p><p id="1a87aacb-2d23-806b-a3d2-f41344761076" class="">There isn’t a strict definition of when a router is congested.</p><p id="1a87aacb-2d23-80c4-8c07-d43abf5943f7" class="">
+</p><h3 id="1a87aacb-2d23-80ad-9ec8-c67659facc11" class="">Delay-based Congestion Control</h3><p id="1a87aacb-2d23-805c-b4aa-d514ce672d41" class="">A congested router can set the congestion indication bit to signal congestion onset to senders before full buffers cause packets to be dropped at that router.</p><p id="1a87aacb-2d23-8083-a433-c69776b5fb88" class="">In tCP Vegas, the sender measures the RTT of the source-to-destination path for all acknowledged packets. </p><p id="1a87aacb-2d23-80ee-9969-e51b79778c64" class="">RTTmin is the minimum of these measurements. This occurs when the path is uncongested and packets experience minimal queuing delay. If TCP Vegas’ congestion window size is cwn, then the uncongested throughput rate is cwnd/RTTmin.</p><h2 id="1a87aacb-2d23-80d1-a2e5-e9315b286582" class="">Fairness</h2><p id="1a87aacb-2d23-8087-ac35-cb11f02a376c" class="">Consider K TCP connections, each with a different end-to-end path, all passing through a bottleneck link with transmission rate R bps.</p><p id="1a87aacb-2d23-801a-9cf1-c60075ddfaf7" class="">Suppose each connection is transferring a large file and there is no UDP traffic passing through the bottleneck link. A congestion-control mechanism is said to be fair if the average transmission rate of each connection is approximately R/K. Each connection gets an equal share of the link bandwidth.</p><h3 id="1a87aacb-2d23-8002-b23c-ca7b4290bc80" class="">Fairness and UDP</h3><p id="1a87aacb-2d23-807d-b1f2-f28999e8dd70" class="">TCP congestion control regulates an application’s transmission rate via the congestion window mechanism. Multimedia apps such as internet phone and video conferencing do not run over TCP for this very reason. Because UDP will not decrease its transmission rate in the face of increasing congestion, it is possible for UDP to crowd out TCP. </p><h3 id="1a87aacb-2d23-807d-a85f-f353281a3397" class="">Fairness and Parallel TCP connections</h3><p id="1a87aacb-2d23-805e-8da7-d81e2f02e3d3" class="">There is nothing stopping a TCP-based application from using multiple parallel connections. </p><p id="1a87aacb-2d23-80b8-a63d-e0cbd50deeb5" class="">
+</p><h1 id="1a87aacb-2d23-804f-a6bf-d1ba7e1ea2ba" class="">Evolution of Transport-Layer Functionality</h1><p id="1a87aacb-2d23-800c-9070-d5086906c219" class="">There is a rich evolution in the use of TCP. There are several newer versions of TCP. </p><h3 id="1a87aacb-2d23-80d8-9ece-c8716eaf546b" class="">QUIC: Quick UDP Internet Connections</h3><p id="1a87aacb-2d23-8023-a824-e813f2acfa92" class="">If the transport services needed don’t fit either UDP or TCP, then the designers can “roll their own” protocol. This is the approach for QUIC - Quick UDP Internet Connections. It is designed for application-layer services for secure HTTP. </p><p id="1a87aacb-2d23-80cb-81aa-ceb1475b8d92" class="">It is connection oriented and secure</p><p id="1a87aacb-2d23-8041-bc11-ed28c61e48f3" class="">It allows several different application-level “streams” to be multiplexed through a single QUIC connection.</p><p id="1a87aacb-2d23-8036-b569-da90cb465fab" class="">Reliable, TCP-friendly congestion-controlled data transfer.</p><p id="1ab7aacb-2d23-80f7-b276-d7c95065a5fb" class="">
+</p><figure id="1ab7aacb-2d23-805a-b1cc-d494bbffe520" class="link-to-page"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Questions%201ab7aacb2d23805ab1ccd494bbffe520.html">Questions</a></figure><figure id="1ab7aacb-2d23-807b-81ba-cc4c5302c873" class="link-to-page"><a href="Chapter%203%20-%20The%20Transport%20Layer%2019d7aacb2d238038a809dc6ab0a48da5/Problems%201ab7aacb2d23807b81bacc4c5302c873.html">Problems</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

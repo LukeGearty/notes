@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2-8-25</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1947aacb-2d23-80e2-b26e-cf23cecf679c" class="page sans"><header><h1 class="page-title">2-8-25</h1><p class="page-description"></p></header><div class="page-body"><p id="1947aacb-2d23-8033-bbf5-e43f45cb8f69" class="">Creating a network app: the idea is that we can write programs that run on different end systems<div class="indented"><p id="1947aacb-2d23-806a-b318-f62ecc347bf0" class="">For example, a Linux web server serving clients on Mac or Windows systems</p><p id="1947aacb-2d23-80eb-8b95-e197eb8a1a17" class="">We don’t have to do anything to ensure that these different end systems can run the same program - The core devices operate independently of the end systems. The highest level protocol for core devices is IP. They don’t run application level protocols like HTTP, DNS, SMTP, or even TCP/UDP.</p></div></p><p id="1947aacb-2d23-80f6-9056-e7973f4d8d58" class="">Client-Server Paradigm<div class="indented"><p id="1947aacb-2d23-80c9-80a0-d106cda89a96" class="">The Server is an always-on host, permanent IP address, often in data centers for scaling</p><p id="1947aacb-2d23-8045-827d-da4cbd10b5d3" class="">The client contacts/communicates with server may be intermittently connected - may have dynamic IP address</p><p id="1947aacb-2d23-80dc-b2ea-fb92146c2b6b" class="">Examples: HTTP, IMAP, FTP</p></div></p><p id="1947aacb-2d23-8071-9f73-f3a934475a68" class="">Peer-Peer Architecture<div class="indented"><p id="1947aacb-2d23-80ba-8f87-fc4abdac100f" class="">No always-on server</p><p id="1947aacb-2d23-80f2-b38f-eb3c3f200d18" class="">Arbitrary end systems directly communicate</p><p id="1947aacb-2d23-807b-a682-e287fbb090ca" class="">Peers request service from other peers, provide service in return to other peers<div class="indented"><p id="1947aacb-2d23-8026-81a4-ca4700680d37" class="">Self scalability - new peers bring new service capacity, as well as new service demands</p></div></p><p id="1947aacb-2d23-8014-bc0e-c995848910ba" class="">Peers are intermittently connected and change IP addresses</p></div></p><p id="1947aacb-2d23-8074-8b0e-c6511cb6165c" class="">Processes Communicating:<div class="indented"><p id="1947aacb-2d23-80ea-96e9-e1fe6e2ddb4a" class="">Process is an instance of a program running within a host</p><p id="1947aacb-2d23-80e8-9fb7-c2eb6f69c0b1" class="">Within the same host, two processes communicate using inter-process communication (defined by OS)</p><p id="1947aacb-2d23-80ab-ae9f-d1cae7673643" class="">Processes in different hosts communicate by exchanging messages</p></div></p><p id="1947aacb-2d23-8082-afbf-e70ce395bbca" class="">A socket is analoguous to a door<div class="indented"><p id="1947aacb-2d23-80dc-8c47-f58772507f0a" class="">Process sends/receives messages to/from its socket</p><p id="1947aacb-2d23-806c-b9fb-f6c28fa3b6e4" class="">Sending process shoves message out door</p></div></p><p id="1947aacb-2d23-807d-9076-cd1710a36a8b" class="">Addressing processes<div class="indented"><p id="1947aacb-2d23-803c-8a71-edb9d6343511" class="">To receive messages, process must have an identifier</p><p id="1947aacb-2d23-808d-945a-df4549bc2fbf" class="">Host device has unique 32-bit IP address</p><p id="1947aacb-2d23-802a-8ae9-eec3d182ede1" class="">Identifier includes both IP address and port numbers associated with process on host<div class="indented"><p id="1947aacb-2d23-80ed-bcc3-e2cae992a306" class="">Ex: HTTP over port 80, mail server over port 25</p></div></p><p id="1947aacb-2d23-80ce-a514-ffad76ca7456" class="">Multiple processes can run on the same host</p></div></p><p id="1947aacb-2d23-802d-8bba-fb3c4db3495e" class="">Application-layer protocol defines:<div class="indented"><p id="1947aacb-2d23-80e6-879a-e042d7c945e7" class="">types of messages exchanged: e.g., request, response</p><p id="1947aacb-2d23-8028-a6ee-d18b5164c6c8" class="">message syntax: what fields in messages &amp; how fields are delineated</p><p id="1947aacb-2d23-80d1-a9cb-c285ea740af2" class="">message semantics: meaning of information in fields</p><p id="1947aacb-2d23-8068-89a7-c9759964ffec" class="">rules for when and how processes send &amp; respond to messages</p><p id="1947aacb-2d23-8040-83ff-f69fe023ab4a" class="">open protocols: defined in RFCs, everyone has access to protocol definition</p></div></p><p id="1947aacb-2d23-8018-8367-f5bd0f05329d" class="">
+</p><p id="1947aacb-2d23-80e6-baf7-f09a43a61739" class="">What transport service does an app need?<div class="indented"><p id="1947aacb-2d23-8068-abec-fc4a15633ae0" class="">Data integrity - some apps require 100% reliable data transfer, others can tolerate some loss</p><p id="1947aacb-2d23-8018-8fce-e8dcc1d6269b" class="">Timing - some apps (like internet telephony, interactive games) require low delay to be effective</p><p id="1947aacb-2d23-8091-851a-f11059a0b786" class="">throughput - some apps (e.g., multimedia) require minimum amount of throughput to be ‘effective’, others make use of what they get<div class="indented"><p id="1947aacb-2d23-80c5-b4bd-c1433cb8e09c" class="">Throughput is the actual amount of data successfully transmitted over a network in a given time, usually measured in bits per second (bps). It differs from bandwidth, which is the maximum theoretical data transfer rate, because real-world factors like congestion, latency, and packet loss can reduce throughput. Essentially, throughput represents the network’s real performance rather than its potential capacity.</p></div></p><p id="1947aacb-2d23-8050-98bf-cd5318224d6a" class="">security</p></div></p><p id="1947aacb-2d23-8002-ac18-d041c2a76bf1" class="">
+</p><p id="1947aacb-2d23-80aa-8a42-de7e6097e1f8" class="">Internet Transport Protocols Services:<div class="indented"><p id="1947aacb-2d23-809d-9e0d-c294adce27c7" class="">TCP Service:<div class="indented"><p id="1947aacb-2d23-8053-80e2-e074fef2f9e3" class="">Reliable transport</p><p id="1947aacb-2d23-80c9-b89d-e5bb5df3e3de" class="">flow control - sender won’t overwhelm receiver</p><p id="1947aacb-2d23-804a-bb76-f890d5b84c65" class="">congestion control: throttle sender when network overloaded</p><p id="1947aacb-2d23-8025-9041-f13ee37c7e48" class="">does not provide: timing, minimum throughput guarantee, security</p><p id="1947aacb-2d23-8015-9ec0-dc3abf9a3d0e" class="">connection-oriented: setup required between client and server processes</p></div></p><p id="1947aacb-2d23-8017-b43e-f41e9d21436a" class="">UDP service:<div class="indented"><p id="1947aacb-2d23-80a7-9205-fe6680ba69ec" class="">Unreliable data transfer: between sending and receiving process</p><p id="1947aacb-2d23-80a1-98d5-ff4e0048ca94" class="">Does not provide: reliability, flow control, congestion control, timing ,throughput guarantee, security, or connection setup</p></div></p><p id="1947aacb-2d23-80fc-acba-e3e2dec39b53" class="">
+</p><p id="1947aacb-2d23-8087-ac5a-df589ea8c9a6" class="">Web and HTTP</p><p id="1947aacb-2d23-803b-b2ad-cef9bd0d1350" class="">Web page consists of objects, each of which can be stored on different Web Servers<div class="indented"><p id="1947aacb-2d23-804d-8e3f-cba4fc9fd19c" class="">Web Page consists of base HTML-file which includes several referenced objects, each addressable by a URL</p></div></p><p id="1947aacb-2d23-8004-be3f-f3609a1486e8" class="">Client/Server model: client is a browser that requests, receives and displays Web objects<div class="indented"><p id="1947aacb-2d23-80df-86e1-d4011c24f643" class="">Server is a web server that sends (using the HTTP protocol) objects in response to requests</p></div></p><p id="1947aacb-2d23-8043-8802-e61a063b48e9" class="">HTTP (unless HTTP 3) uses TCP - client initiates TCP connection to server, port 80 or port 443 for HTTPS</p><p id="1947aacb-2d23-80e2-b786-d102d5958dc2" class="">Server accepts TCP connection from client</p><p id="1947aacb-2d23-80fa-8cf3-db1222fd7093" class="">HTTP messages exchanged between browser (HTTP client) and Web Server (HTTP server)</p><p id="1947aacb-2d23-8008-8709-f90227483fff" class="">TCP connection closed</p><p id="1947aacb-2d23-8034-b1bb-cbcfbc150e10" class="">HTTP is stateless - server maintains no information about past client requests</p><p id="1947aacb-2d23-8008-9d1c-c42cb39e147e" class="">
+</p><p id="1947aacb-2d23-805e-a39c-ed39f91270bf" class="">Non-persistent HTTP - the TCP connection is opened, at most one object sent over TCP connection, then TCP connection closed<div class="indented"><p id="1947aacb-2d23-80a8-bcdc-c014a6aa2011" class="">Downloading multiple objects required multiple connections</p></div></p><p id="1947aacb-2d23-80e8-82d8-f6a8e03f727e" class="">Persistent HTTP - TCP connection opened to a server, multiple objects can be sent over single TCP connection between client, and that server, then TCP connection closed<div class="indented"><p id="1947aacb-2d23-8029-82ae-e776b83e61cb" class="">If there is a network with an unreliable performance/connection, then non-persistent may make more sense</p></div></p><p id="1947aacb-2d23-80db-8c30-e0dac521f122" class="">
+</p><p id="1947aacb-2d23-8064-ae83-f42743e1ff7e" class="">Non-persistent HTTP</p><p id="1947aacb-2d23-8059-b446-f8a1b9306a5e" class="">RTT - time for a small packet to travel from client to server and back - round trip time</p><p id="1947aacb-2d23-8039-bd68-ef37433ae09f" class="">HTTP response time (per object):<div class="indented"><p id="1947aacb-2d23-8031-810f-fe57bdaeeb54" class="">One RTT to initiate TCP connection</p><p id="1947aacb-2d23-80be-957f-f3e15c47c94a" class="">One TT for HTTP request and first few bytes of HTTP response to return</p><p id="1947aacb-2d23-809c-84d7-cb518c9e5510" class="">object/file transmission time</p></div></p><p id="1947aacb-2d23-80ad-9ce0-de0aec4765e2" class="">Non-persistent HTTP response time = 2RTT + file transmission time</p></div></p><p id="1947aacb-2d23-807f-ae9e-ce35884938df" class="">
+</p><p id="1947aacb-2d23-80a0-b7e5-f87ea616e21e" class="">HTTP request message<div class="indented"><p id="1947aacb-2d23-80f1-86d5-fdc0fe8b98e4" class="">Two types of HTTP messages: request, response</p><p id="1947aacb-2d23-80d6-a5af-dc39b986bf55" class="">\r\n - carriage return character, line-feed character</p></div></p><p id="1947aacb-2d23-80c7-a409-cc4555806c5c" class="">
+</p><p id="1947aacb-2d23-8042-aa18-f9f4a515c588" class="">POST method: web pages often includes form input, user input sent from client to server in entity body of HTTP post request message</p><p id="1947aacb-2d23-8080-971f-fe60ae4847f0" class="">GET method (for sending data to server): include user data in URL field of HTTP GET request message (following a ‘?’) - SQL injection is done through a GET method</p><p id="1947aacb-2d23-80cb-af72-dbbd58d01eae" class="">HEAD method - like a GET method except for headers</p><p id="1947aacb-2d23-80fd-aa60-d9085be8f9a0" class="">PUT method - updating something on the server</p><p id="1947aacb-2d23-8008-9c31-c61f273203c3" class="">
+</p><p id="1947aacb-2d23-80eb-8ff1-ce4ac8a4958b" class="">Maintaining user/server state: cookies</p><p id="1947aacb-2d23-80f0-8baf-db499eecc935" class="">HTTP GET/response interaction in stateless - no information is retained about the users</p><p id="1947aacb-2d23-800d-a438-eb1052fc05b7" class="">Cookies are used to maintain some state between transactions</p><p id="1947aacb-2d23-8004-ad35-c5aae4303180" class="">
+</p><p id="1947aacb-2d23-8066-8cb8-e2ae4a67ee92" class="">Four components of cookies:<div class="indented"><p id="1947aacb-2d23-80af-9df1-f8260584ead4" class="">Cookie header line of HTTP response message</p><p id="1947aacb-2d23-80f2-b815-dd8f06555247" class="">Cookie header line in next HTTP request message</p><p id="1947aacb-2d23-80c0-8e1b-c097c1534d90" class="">Cookie file kept on user’s host, managed by user’s browser</p><p id="1947aacb-2d23-809e-9f7e-c704bbe02452" class="">back-end database at Web site</p></div></p><p id="1947aacb-2d23-8051-8741-dc0db413ffc7" class="">
+</p><p id="1947aacb-2d23-8032-a70e-d0b0669a61e9" class="">Web Caches (proxy servers)</p><p id="1947aacb-2d23-8070-8285-c51657b4514a" class="">Goal: satisfy client request without involving origin server<div class="indented"><p id="1947aacb-2d23-80a2-a81e-fdd8048379d6" class="">User configures browser to point to a Web Cache</p><p id="1947aacb-2d23-8038-952d-e3efb6d04cfa" class="">Browser sends all HTTP requests to cache<div class="indented"><p id="1947aacb-2d23-8066-9157-ee111509600b" class="">if object in cache: cache returns object to client</p><p id="1947aacb-2d23-80b8-bed2-e88e16369657" class="">else cache requests object from origin server</p></div></p></div></p><p id="1947aacb-2d23-80f4-9b57-f8a3d4eb901d" class="">
+</p><p id="1947aacb-2d23-807e-af0c-f06870adaac2" class="">Conditional GET:<div class="indented"><p id="1947aacb-2d23-8093-aec3-d78afd4e1137" class="">Goal: don’t send object if cache has an up-to-date version</p><p id="1947aacb-2d23-80fa-8574-c8c46a9d636d" class="">If not up to date, get the object from the origin server</p></div></p><p id="1947aacb-2d23-8041-b591-f5f1b4eac94b" class="">
+</p><p id="1947aacb-2d23-8034-b55d-ef85d039d463" class="">HTTP/2:<div class="indented"><p id="1947aacb-2d23-80a2-8cfb-d5140222d59a" class="">Key goal: decreased delay in multi-object HTTP requests</p><p id="1947aacb-2d23-803b-b591-fac2e2584c45" class="">
+</p></div></p><p id="1947aacb-2d23-80b3-97fd-cd07e968f1a7" class="">HTTP/3: key goal is to decrease delay in multi-object HTTP requests</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

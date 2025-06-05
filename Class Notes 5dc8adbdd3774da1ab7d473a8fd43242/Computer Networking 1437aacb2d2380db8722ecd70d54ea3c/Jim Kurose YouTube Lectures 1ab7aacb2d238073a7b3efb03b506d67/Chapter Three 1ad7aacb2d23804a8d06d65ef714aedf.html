@@ -1,0 +1,695 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter Three</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1ad7aacb-2d23-804a-8d06-d65ef714aedf" class="page sans"><header><h1 class="page-title">Chapter Three</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1ad7aacb-2d23-80ba-89df-c32a8d5388af" class="">Introduction and Transport-layer Services</h1><p id="1ad7aacb-2d23-80bc-83e1-ca407f3efd47" class="">How can two entities communicate over a channel where the messages can be corrupted or lost?</p><p id="1ad7aacb-2d23-807c-b04f-e3d2c59f00ee" class="">Transport Services and Protocols:</p><p id="1ad7aacb-2d23-8080-8fc7-e67c9470f671" class="">Provide logical communication between application processes running on different hosts</p><p id="1ad7aacb-2d23-80d7-9940-e725c8e6d3bf" class="">Transport protocols actions in end systems:<div class="indented"><p id="1ad7aacb-2d23-80df-849b-f1e84927fbc6" class="">Sender - breaks application messages into segments, passes to network layer</p><p id="1ad7aacb-2d23-80cb-b20e-fe3d1aeddf9c" class="">Receiver: reassembles segments into messages, passes to application layer</p></div></p><p id="1ad7aacb-2d23-8000-ad96-efb8045d3863" class="">Two Transport Protocols are available to Internet applications: <strong>TCP, UDP</strong></p><p id="1ad7aacb-2d23-8086-9b43-c6ce1fcea7c8" class="">TCP - reliable, in-order delivery, congestion control, flow control and connection setup</p><p id="1ad7aacb-2d23-8043-93da-dc3e8f1d81ee" class="">UDP - unreliable, unordered delivery. No frills extension of “best-effort” IP</p><p id="1ad7aacb-2d23-80b5-ab7d-c2d4879e1e95" class="">No service provides delay guarantees or bandwidth guarantees.</p><h1 id="1ad7aacb-2d23-800e-806e-e08fa4ca1cb9" class="">Multiplexing and Demultiplexing</h1><p id="1ad7aacb-2d23-8076-b456-dd9f7870b2d4" class="">Think of a datagram coming into a host, with payloads. Demultiplexing takes that datagram and directs those payloads to the correct application. Multiplexing is the opposite of that, taking data and adding headers and information to it as it goes down the internet stack. Multiplexing happens at the sender, Demultiplexing happens at the receiver.</p><p id="1ad7aacb-2d23-805a-9023-db4d31e7ead4" class="">Demultiplexing uses header info to deliver received segments to correct socket.</p><p id="1ad7aacb-2d23-8000-9709-df35482a3599" class="">Host receives IP datagrams - there is a source IP address, Destination IP address - each datagram carries a transport-layer segment</p><p id="1ad7aacb-2d23-80d4-a08f-da91860c6452" class="">Within that segment, there is a source port number and a destination port number</p><p id="1ad7aacb-2d23-8018-a1a4-f7f75eb3b1a2" class="">Connectionless Demultiplexing:<div class="indented"><p id="1ad7aacb-2d23-80e5-be71-d6c838bd5405" class="">When creating a socket, there must be a host-local port #</p><p id="1ad7aacb-2d23-8088-9b26-e5b009554047" class="">When creating datagram to send into UDP socket, must specify dest IP and port #</p><p id="1ad7aacb-2d23-804b-8f4a-cb13d9012bab" class="">When receiving the UDP segment, it checks the destination port # and directs UDP segment to socket with that port #</p><p id="1ad7aacb-2d23-803c-8295-f75f973db1d4" class="">IP/UDP datagrams with same dest port #, but different source IP addresses, will be directed to same socket at receiving host</p></div></p><p id="1ad7aacb-2d23-80f0-9565-e1ff3953c45c" class="">Connection-oriented Demultiplexing:<div class="indented"><p id="1ad7aacb-2d23-8073-acd0-d66f7cf026f3" class="">TCP socket is identified by a 4 tuple: source IP address, port #, dest IP address, dest port #</p><p id="1ad7aacb-2d23-802e-aa00-f43788437406" class="">Segments all destined to same IP address and same port number are going to be demultiplexed to different sockets</p></div></p><h1 id="1ae7aacb-2d23-80ce-9991-d62e0f424ae7" class="">Connectionless Transport: UDP</h1><p id="1ae7aacb-2d23-8004-8e1b-d199f1e2a324" class="">User Datagram Protocol is a no frill, bare bones, Internet Transport Protocol. It is a best effort service, UDP segments can be lost or delivered out-of-order. </p><p id="1ae7aacb-2d23-80f8-80b6-d5d03cc95514" class="">There is no handshaking, and each UDP segment is handled independently of others.</p><p id="1ae7aacb-2d23-80cc-8ee3-d681004c9153" class="">Reasons for UDP: no connection establishment which can add RTT delay, it is simple: no connection state at sender, receiver. There is a small header size, and no congestion control - UDP can blast away as fast as desired. Can function in the face of congestion. </p><p id="1ae7aacb-2d23-80cd-84a1-fbe2b5b05518" class="">Applications: Streaming multimedia apps (loss tolerant, rate sensitive).<div class="indented"><p id="1ae7aacb-2d23-80e0-a59b-f508ba72584d" class="">DNS, SNMP, HTTP/3</p></div></p><p id="1ae7aacb-2d23-808d-bf69-d7c3059f1a56" class="">If reliable transfer needed - add needed reliability at application layer, add congestion control at application layer</p><p id="1ae7aacb-2d23-8014-b483-fd65d97a6f42" class="">UDP Segment - four fields. Source port, destination port (Both used for demultiplexing), length, checksum.</p><p id="1ae7aacb-2d23-805a-9701-f74ac7d1bf5d" class="">UDP Checksum - the checksum is meant to detect errors (ie flipped bits) in transmitted segment.</p><p id="1ae7aacb-2d23-80a9-bf55-c202c6c99bf3" class="">sender: treat contents of UDP segment as sequence of 16-bit integers. Checksum: addition (one’s complement sum) of segment content. </p><p id="1ae7aacb-2d23-80b4-97af-e9af0c0c1b32" class="">Receiver: compute checksum of received segment. Check if computed checksum equals checksum field value.</p><p id="1ae7aacb-2d23-80b1-97ca-d3f25546adcf" class="">Add the bits together and flip the bits for the sum.</p><p id="1ae7aacb-2d23-80fc-a23f-e94e6b15448c" class="">Weak Protection - Sometimes bit flips will not result in a changed checksum - these errors do not go undetected. This means that a correct checksum DOESN’T MEAN EVERYTHING is right.</p><p id="1ae7aacb-2d23-809e-8f19-fea10f823a36" class="">The checksum field is computed over the entire UDP segment, except for the checksum field itself</p><p id="1ae7aacb-2d23-8088-9ddc-d962e5c712e8" class="">
+</p><h1 id="1ae7aacb-2d23-8049-a8dc-ce4e5e3eca21" class="">TCP Reliability, Flow Control, and Connection Management</h1><p id="1ae7aacb-2d23-80a8-b56b-d699822aa0ca" class="">TCP is point-to-point - one sender, one receiver</p><p id="1ae7aacb-2d23-8087-8d46-c649bc9e1ac4" class="">reliable, in-order byte stream - UDP is message oriented</p><p id="1ae7aacb-2d23-80b5-a555-c134e979ce66" class="">Full duplex - data will flow in both directions</p><p id="1ae7aacb-2d23-809c-9627-ec02f7129ad8" class="">MSS: Maximum segment size: 1460 bytes in practice</p><p id="1ae7aacb-2d23-801e-b0c3-cc6aa5ee7b1a" class="">Cumulative ACKs</p><p id="1ae7aacb-2d23-80c7-8e64-d270778de96f" class="">Pipelining: Congestion and flow control set window size</p><p id="1ae7aacb-2d23-80bd-96e4-e55bca57f3b5" class="">Connection oriented - handshaking</p><p id="1ae7aacb-2d23-8001-a0af-c5ede9cab6c0" class="">Flow Controlled - sender will not overwhelm receiver with data</p><p id="1ae7aacb-2d23-80c0-a39c-f739e698e057" class="">TCP Segment Structure</p><p id="1ae7aacb-2d23-805e-b028-c28103374102" class="">Source Port #, Dest Port # - used for multiplexing, demultiplexing</p><p id="1ae7aacb-2d23-807f-b1ec-f3cbc5d4bcda" class="">Sequence Number</p><p id="1ae7aacb-2d23-807c-9411-c8126512f06f" class="">Acknowledgment Number</p><p id="1ae7aacb-2d23-80b8-968f-f9cd90acdbb7" class="">Internet Checksum</p><p id="1ae7aacb-2d23-80a9-a9b7-d63f1c233f5c" class="">TCP options of variable length</p><p id="1ae7aacb-2d23-801d-933e-ce411a406fbd" class="">RST, SYN, FIN: Connection bits</p><p id="1ae7aacb-2d23-801f-aafa-c5bad560e27b" class="">Receive Window: used for flow control - # bytes receiver willing to accept</p><p id="1ae7aacb-2d23-809f-973f-cb12210c6a07" class="">C, E: Congestion notification</p><p id="1ae7aacb-2d23-80ae-b214-d0c430c3a372" class="">
+</p><p id="1ae7aacb-2d23-808f-92b8-e30fb45f54b3" class="">Sequence Numbers: byte stream “number” of first byte in segment’s data</p><p id="1ae7aacb-2d23-80bd-97a9-c108293f1782" class="">Acknowledgements: seq # of next byte expected from other side. Cumulative ACKS</p><p id="1ae7aacb-2d23-8053-a379-c807dce698f9" class="">
+</p><p id="1ae7aacb-2d23-8070-af8d-c755092faa7e" class="">TCP places no specifications on how receiver handles out-of-order segments - it is up to the implementer</p><p id="1ae7aacb-2d23-801f-945b-da7402706411" class="">
+</p><p id="1ae7aacb-2d23-8095-99f5-eecd41d9f345" class="">TCP Round Trip Time, timeout: How to set TCP timeout value?</p><p id="1ae7aacb-2d23-80f3-8adb-fd35bc1a83bb" class="">Longer than RTT, but RTT varies</p><p id="1ae7aacb-2d23-80a9-8ada-ed9c5aed46e9" class="">too short, we can have unnecessary retransmissions</p><p id="1ae7aacb-2d23-803d-91c1-cb2092532fa9" class="">too long, and it is slow reaction to segment loss</p><p id="1ae7aacb-2d23-80bf-b4cc-cd1fa2e03936" class="">SampleRTT: measured time from segment transmission until ACK receipt. Will vary, want estimated RTT “smoother”. Average several recent measurements, not just current SampleRTT</p><p id="1ae7aacb-2d23-80fa-b39a-cac99979ed79" class="">EstimatedRTT = (1 - a) * EstimatedRTT + a * SampleRTT</p><p id="1ae7aacb-2d23-80a9-ac12-c7672b02b532" class="">exponentially weighted moving average - each time a new observation, you take a weighted overservation of the new observation with the old average</p><p id="1ae7aacb-2d23-80c4-9c4a-ed6e8b4c704e" class="">Influence of past sample decreases exponentially fast</p><p id="1ae7aacb-2d23-80c7-850f-fbf1165be072" class="">typical value of a = 0.125</p><p id="1ae7aacb-2d23-80a3-8705-cb500209543a" class="">
+</p><p id="1ae7aacb-2d23-8002-9121-e39f40a13392" class="">timeout interval: EstimatedRTT + “Safety margin” </p><p id="1ae7aacb-2d23-80da-aaf8-fc9158931173" class="">IF large variation in EstimatedRTT, we want a larger safety margin DevRTT</p><p id="1ae7aacb-2d23-806b-bea5-f510a584506c" class="">timeoutInterval = EstimatedRTT + 4*DevRTT</p><p id="1ae7aacb-2d23-80f3-b17f-f0ea7f8c54d8" class="">DevRTT: EWMA of SampleRTT deviation from EstimatedRTT</p><p id="1ae7aacb-2d23-80d5-a9eb-e7363d143b41" class="">
+</p><p id="1ae7aacb-2d23-80df-9b09-e35429f74343" class="">TCP Sender</p><p id="1ae7aacb-2d23-8014-82c3-dc6d5d9058fd" class="">Event: Data received from application<div class="indented"><p id="1ae7aacb-2d23-80ae-b976-ee55029761a7" class="">Create segment with seq #</p><p id="1ae7aacb-2d23-80c9-909f-efc848f40634" class="">seq # is byte-stream numbr of first data byte in segment</p><p id="1ae7aacb-2d23-8053-a373-fbad575ecb19" class="">start timer if not already running<div class="indented"><p id="1ae7aacb-2d23-8019-a74d-e2750ce4891b" class="">think of timer as for oldest unACKed segment</p><p id="1ae7aacb-2d23-8091-b2be-ebdf9d03d06c" class="">expiration interval: TimeOutInterval</p></div></p></div></p><p id="1ae7aacb-2d23-80cd-b5f1-d6775d4c2284" class="">event: timeout<div class="indented"><p id="1ae7aacb-2d23-8062-872f-eefb824b3ba3" class="">retransmit segment that caused timeout</p><p id="1ae7aacb-2d23-809c-87eb-ef0ed5de28b8" class="">restart timeout</p></div></p><p id="1ae7aacb-2d23-80a8-ab52-eb6c4dcb9b05" class="">event ACK received:<div class="indented"><p id="1ae7aacb-2d23-8053-bb60-fd89dcd7ffe2" class="">If ACK acknowledges previously unACKed segments, update what is known to be ACKed, start timer if there are still unACKed segments.</p></div></p><p id="1ae7aacb-2d23-803a-9439-fb51e6c33d1a" class="">
+</p><table id="1ae7aacb-2d23-809b-ac28-f8de5e50cd48" class="simple-table"><tbody><tr id="1ae7aacb-2d23-80b0-ba1d-c0f4686a2a1a"><td id="X{V:" class="">Event at Receiver</td><td id="PLX]" class="">TCP Receiver ACTIOn</td></tr><tr id="1ae7aacb-2d23-8018-ae1e-da757ca54bcc"><td id="X{V:" class="">Arrival of in-order segment with expected seq #. All data up to expected seq # is already ACKed</td><td id="PLX]" class="">Delayed ACK. Wait up to 500 ms for next segment. If no segment, send ACK</td></tr><tr id="1ae7aacb-2d23-80e3-82b6-df433a4424b1"><td id="X{V:" class="">Arrival of in-order segment with expected seq #. One other segment has ACK pending</td><td id="PLX]" class="">Immediately send single cumulative ACK, ACKing both in-order segments.</td></tr><tr id="1ae7aacb-2d23-809f-a706-fb14d3fd38f5"><td id="X{V:" class="">arrival of out-of-order segment, higher than expect seq #. Gap Detected</td><td id="PLX]" class="">Immediately send duplicate ACK, indicating seq # of next expected byte. </td></tr><tr id="1ae7aacb-2d23-80ff-8996-e91e74c8df23"><td id="X{V:" class="">Arrival of segment that partially or completely fills gap</td><td id="PLX]" class="">Immediate send ACK, provided that segment starts at lower end of gap</td></tr></tbody></table><p id="1ae7aacb-2d23-808d-bdf4-e0334c93dae6" class="">TCP Fast Retransmit - The arrival of three duplicate ACKs indicates 3 segments received after a missing segment - lost segment is likely, so retransmit. </p><p id="1ae7aacb-2d23-80e2-aaa4-e9594e75aa24" class=""><strong>TCP Flow Control</strong></p><p id="1ae7aacb-2d23-8029-85cf-f7b9ea284eac" class="">What happens if the receiver is getting packets faster than it can process them?</p><p id="1ae7aacb-2d23-80bb-99c6-fe637e0fe4ae" class="">Flow control is the receiver controls sender, so sender doesn’t overflow receiver’s buffer by transmitting too much too fast.</p><p id="1ae7aacb-2d23-8098-bdd1-c604fd8ab090" class="">TCP Receiver “advertises” free buffer space in rwn field in TCP header. </p><p id="1ae7aacb-2d23-8043-b58c-d96214d8e1ee" class="">RCVbuffer size set via socket options - typical default is 4096 bytes</p><p id="1ae7aacb-2d23-80bd-b826-eac39077c89c" class="">Sender limits amount of unACed data to received rwn.</p><p id="1ae7aacb-2d23-80d4-abf6-c7954c34045c" class="">Guarantees receive buffer will not overflow.</p><p id="1ae7aacb-2d23-80ed-ac89-c8da1d537ec0" class="">TCP Connection Management</p><p id="1ae7aacb-2d23-80fb-a57f-fd42c8333e5c" class="">Before exchanging data, sender/receiver handshake - agree to establish a conection and on connection parameters - eg starting seq #s</p><p id="1ae7aacb-2d23-80b1-9d81-d1880f415b0e" class="">TCP uses a 3-way handshake</p><p id="1ae7aacb-2d23-8050-8519-cce18f7ec3b7" class="">
+</p><h1 id="1ae7aacb-2d23-80b9-9582-e591f264e82c" class="">Principles of Congestion Control</h1><p id="1ae7aacb-2d23-800e-be70-ce383e8dba0c" class="">Congestion: “too many sources sending too much data too fast for network to handle”</p><p id="1ae7aacb-2d23-80a6-88a0-ccd5194e62e1" class="">Manifests in long delays (queueing in router buffers) and packet loss</p><p id="1ae7aacb-2d23-80c1-adbf-da36ce089dfa" class="">Difference between flow and congestion control: flow control is making sure the receiver does not get overwhelmed, congestion control is making sure the network does not get overwhelmed.</p><p id="1ae7aacb-2d23-804e-8962-fde59b6101e4" class=""><strong>Causes</strong></p><p id="1ae7aacb-2d23-8091-8570-defbe8d7226d" class="">Scenario: </p><p id="1ae7aacb-2d23-8064-af9e-f0a8cba866ce" class=""><strong>λ_in: rate at which data is being sent</strong></p><p id="1ae7aacb-2d23-80ea-8289-eca84b485c9e" class=""><strong>λ_out: the throughput - rate at which data is delivered</strong></p><p id="1ae7aacb-2d23-8072-ab2f-edb179362842" class="">What happens as arrival rate <strong>λ_in approaches R/2?</strong></p><p id="1ae7aacb-2d23-8097-9393-f0ba34a630ba" class="">In the simplest scenario, where there is an infinite shared output link buffers, it caps out at R /2 (because there is 1 sender and 1 receiver)</p><p id="1ae7aacb-2d23-80d9-9808-ff47b0800deb" class="">The delay however increases</p><p id="1ae7aacb-2d23-80c9-9632-ed2c6aebb096" class="">With a one router with finite buffers:<div class="indented"><p id="1ae7aacb-2d23-80c7-8b57-cc2223d374bd" class="">Senders retransmit in the face of packet loss or corruption</p><p id="1ae7aacb-2d23-80c8-b097-dbfb6cf458c8" class="">Application-layer input = application-layer output: <strong>λ_in = λ_out</strong></p><p id="1ae7aacb-2d23-8032-9957-d8245d8725c4" class="">Transport layer input includes retranmsissions: <strong>λ</strong>’_in ≥ <strong>λ_in</strong></p></div></p><p id="1ae7aacb-2d23-8098-b351-ee828402f4b6" class="">If there is free buffer space: It still caps at R/2</p><p id="1ae7aacb-2d23-80d8-8e86-f60c3dd0498c" class="">If retransmission occurs because of known loss, retransmissions will </p><p id="1ae7aacb-2d23-8050-938e-ee3ef6ba686b" class="">
+</p><h1 id="1ae7aacb-2d23-8066-bf0f-fef05371b4a0" class="">TCP Congestion Control</h1><p id="1ae7aacb-2d23-8068-9478-d444bc7e7969" class="">Approach: senders can increase sending rate until packet loss (congestion) occurs, then decrease sending rate on loss event</p><p id="1ae7aacb-2d23-80f3-a601-eabc1e04a274" class="">Additive Increase, Multiplactive Decrease - increases sending rate by 1 maximum segment size every RTT until loss detected, then cut sending rate in half at each loss event<div class="indented"><p id="1ae7aacb-2d23-80f4-b344-ea3057efa466" class="">Think of it like asking for more until you get told no, then trying again</p></div></p><p id="1ae7aacb-2d23-80e6-beac-ed73e2e0a4ed" class="">Multiplicative Decrease detail: sending rate is:<div class="indented"><p id="1ae7aacb-2d23-80f7-aa46-f8bb6b529e27" class="">cut in half on loss detected by triple duplicate ACK (TCP Reno)</p><p id="1ae7aacb-2d23-8089-9e60-f2312a71e171" class="">cut to 1 MSS when loss detected timeout (TCP Tahoe)</p></div></p><p id="1ae7aacb-2d23-806f-bc7c-fadef6ecc46e" class="">AIMD has been shown to optimize congested flow rates network wide and have desirable stability properties.</p><p id="1ae7aacb-2d23-802c-b012-dfe7eb2090ec" class="">TCP sender limits transmission:<div class="indented"><p id="1ae7aacb-2d23-8011-9cfb-e201c1d1d2b9" class=""><strong>LastByteSent - LastByteAcked ≤ cwnd</strong></p><p id="1ae7aacb-2d23-80bf-a0ef-f640756a060e" class="">cwnd is dynamically adjusted in response to observed network congestion (implementing TCP congestion control)</p></div></p><p id="1ae7aacb-2d23-80ce-8df5-ed7d795d8295" class="">TCP slow start:<div class="indented"><p id="1ae7aacb-2d23-8006-957c-c8971d6cb169" class="">When connection begins, increase rate exponentially until first loss event:</p><p id="1ae7aacb-2d23-80ae-8af7-d5814650138f" class="">Initially cwnd = 1 MSS</p><p id="1ae7aacb-2d23-80c3-b4f8-d66dfc905057" class="">double cwnd every RTT</p><p id="1ae7aacb-2d23-8055-998f-fd1bbf2a6202" class="">done by incrementing cwn for every ACK received<div class="indented"><p id="1ae7aacb-2d23-8084-b537-cb6d38253e93" class="">Host A sends one segment gets an ack back, cwnd is now </p></div></p></div></p><p id="1ae7aacb-2d23-806c-a08c-f99c806fb29b" class="">From slow start t ocongestion avoidance: It switches from exponential increase to linear when cwn gets to 1/2 of its value before timeout. </p><p id="1ae7aacb-2d23-800a-8854-ecab57ea96b8" class="">Variable, ssthresh is set to be 1/2 of cwnd just before loss event</p><p id="1ae7aacb-2d23-8086-9480-e4720b36062e" class="">TCP Cubic: Is there a better way than AIMD to probe for usable bandwidth?<div class="indented"><p id="1ae7aacb-2d23-80e8-9944-c69c2191e7f2" class="">Suppose W_max is the sending rate at which congestion loss was detected</p><p id="1ae7aacb-2d23-80ee-84ec-c740fea3bfa3" class="">Congestion state of bottleneck link probably hasn’t changed much</p><p id="1ae7aacb-2d23-802c-87b0-dce906aeaa49" class="">After cutting rate/window in half on loss, initially ramp to W_max faster, but then approach W_max more slowly</p><p id="1ae7aacb-2d23-801e-83af-de2bcc90c31b" class="">TCP Cubic is higher throughput than TCP Classic</p></div></p><p id="1ae7aacb-2d23-80b5-8726-e2534ab111c4" class="">TCP and the congested “bottleneck link”<div class="indented"><p id="1ae7aacb-2d23-8028-b116-de14ff12aa8e" class="">TCP (Classic, CUBIC) increase TCP’s sending rate until packet loss occurs at some router’s output: the bottleneck link</p><p id="1ae7aacb-2d23-8034-a5a0-c085c4f43d10" class="">Packet queue almost never empty, sometimes overflows packet (loss)</p><p id="1ae7aacb-2d23-80e8-a0f9-fa785025dd2e" class="">
+</p></div></p><p id="1ae7aacb-2d23-8058-b207-f1c05d9006fc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
