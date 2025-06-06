@@ -231,3 +231,52 @@ N
 
 
 Timestamp: 00:02:02:15
+
+# 06/06
+
+Multiprogramming Model:
+Process starts in new -> Ready -> scheduling dispatch chooses to run -> Running -> I/O or system call -> Blocked/Wait -> I/O or system call completion -> Running -> waits for scheduling dispatch to run process again
+
+The existence of the Ready state implies the multiprogramming system, because uniprogramming can only have one process in memory at a time
+This is a model of non-preemptive, because the process only exits the CPU when there is an I/O or system call. Preemptive will have process shift between running and ready.
+
+When process completes from Running State, it terminates. Exit in the end of the program.
+
+When Process is in ready, running or blocked, it is in main memory. When it is in new, it is entering main memory. 
+
+## Suspension
+Transferring processes from main memory to disk, from Ready state. Running it is being executed by CPU, blocked it is waiting for I/O. Ready is the most desirable state for suspension. It is not running, it is not waiting for I/O.
+
+Can suspend from other states, but it isn't quite as desirable as from Ready state.
+
+```
+
+		 Suspend Ready -----------------------------|
+		/	          \                             |
+New - Ready --------- Running -----Terminat.        |
+        \              /                            |
+         -----Block---                              |
+               |                                    |
+	          / \                                   |
+	         Suspend                                |
+	        Block -----------------------------------
+```
+
+To go from Running to ready, preempt
+I/O or system call to go from block or system call
+A process is moved from blocked to suspended block due to resource management and multitasking needs. 
+Blocked, means the process is waiting for I/O. Sometimes the OS needs to free up resources, or need to pause the process like user switches to a different application. 
+In suspended block, it is also out of main memory. 
+Suspend Block to Suspend Ready: When it goes from suspended block to suspended ready, it is ready in a logical sense but its not in main memory. It needs to be brought from disk to main memory. Suspended Ready is a way for OS to acknowledge that the process is ready to run but it isn't in main memory. 
+
+## Scheduling Queues  & State Queueing Diagram
+Queue follows FIFO discipline
+
+Ready Queue contains the list of PCBs of Ready Processes. 
+
+Device Queues: also known as blocked queue, contains the list of blocked processes. Holds processes to manage I/O requests.
+
+Ondisk Queues: job Queues (contain programs ready to be loaded in memory), Suspend Queue 
+(list of process that gets suspended from memoy onto disk)
+
+Timestamp: 2:35:16
