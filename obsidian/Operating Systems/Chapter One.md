@@ -1347,3 +1347,482 @@ Robbins (2005)
 
 
 # Operating System Structure
+ # Internal Structure of Operating Systems
+#### Six Operating System Structures
+
+1. **Monolithic Systems**
+   - Entire OS runs in a single address space.
+   - Components are tightly integrated.
+
+2. **Layered Systems**
+   - Organized in hierarchical layers.
+   - Each layer builds on services provided by the layer below it.
+
+3. **Microkernels**
+   - Minimal core kernel.
+   - Most OS services run in user space as separate processes.
+
+4. **Client-Server Systems**
+   - Extension of microkernel model.
+   - System is split into client and server processes communicating via messages.
+
+5. **Virtual Machines**
+   - Hardware is abstracted to run multiple OS instances.
+   - Each VM thinks it's running on real hardware.
+
+6. **Exokernels**
+   - Minimalist approach.
+   - Applications get as much control over hardware as possible, with minimal OS abstraction.
+
+## 1.7.1 Monolithic Systems
+
+## Overview
+- **Most common OS structure.**
+- Entire OS runs as a single program in **kernel mode**.
+- Composed of **many procedures** compiled and linked into one large executable.
+
+## Key Characteristics
+- Procedures can **freely call each other**.
+- High **efficiency** due to unrestricted access.
+- Risk: **Lack of modularity** → harder to maintain, debug, or secure.
+- **Any crash** in a single procedure can bring down the entire system.
+
+## Compilation Process
+1. All procedures are compiled.
+2. Linked into a **single executable binary** using the system linker.
+3. **No information hiding**—every procedure is visible to every other.
+
+## Basic Internal Structure
+Despite being monolithic, a rough structure can exist:
+1. **Main Program** – dispatches to appropriate service procedures.
+2. **Service Procedures** – implement system calls.
+3. **Utility Procedures** – assist service procedures (e.g., fetching user data).
+
+### System Call Handling (Typical Flow)
+- Parameters placed in a well-defined area (e.g., the stack).
+- **Trap instruction** switches CPU from user mode to kernel mode.
+- OS determines system call type and dispatches to appropriate procedure.
+
+## Loadable Extensions
+- **Core OS** is loaded at boot.
+- Additional components (e.g., drivers, file systems) are **loadable on demand**.
+
+### Examples
+- **UNIX**: Uses **shared libraries**.
+- **Windows**: Uses **DLLs (Dynamic-Link Libraries)**.
+  - Stored in `C:\Windows\System32`.
+  - File extension: `.dll`.
+  - Typically over 1000 DLLs in a modern system.
+
+> Monolithic systems are fast but can become complex and fragile without careful structuring.
+
+## 1.7.2 Layered Systems
+
+### Overview
+- OS organized as a **hierarchy of layers**.
+- Each layer built upon the services of the layer below it.
+- Provides modularity, easier debugging, and separation of concerns.
+
+---
+
+##### Example: THE System (E. W. Dijkstra, 1968)
+- Early layered OS for the **Electrologica X8** (32K 27-bit words).
+- Comprised **six layers**, each handling a specific system function.
+
+###### Layer Breakdown (Bottom to Top)
+
+| Layer | Function                               |
+|-------|----------------------------------------|
+| 5     | Operator                                |
+| 4     | User Programs                           |
+| 3     | Input/Output Management                 |
+| 2     | Operator-Process Communication          |
+| 1     | Memory and Drum Management              |
+| 0     | Processor Allocation & Multiprogramming |
+
+##### Notes:
+- **Layer 0**: Handled context switching and CPU allocation.
+- **Layer 1**: Managed memory and drum storage (paging).
+- **Layer 2**: Enabled operator-console communication for each process.
+- **Layer 3**: Buffered and abstracted I/O device communication.
+- **Layer 4**: Ran user programs with no need to manage lower-level functions.
+- **Layer 5**: Contained the operator process.
+
+> Higher layers didn't need to understand the complexities of the lower layers—each layer abstracted the functionality below it.
+
+---
+
+#### Generalization: MULTICS and Ring Structure
+
+##### MULTICS Approach
+- Used **concentric rings** instead of flat layers.
+  - **Inner rings** = more privileged
+  - **Outer rings** = less privileged
+
+##### Characteristics:
+- **TRAP instruction** required to access inner ring functionality.
+  - Parameters validated before execution.
+- OS resided in user process address space, but:
+  - Hardware-enforced protection (read/write/execute permissions on memory segments).
+
+##### Advantages:
+- Strong **runtime enforcement** of protection and structure.
+- **Extendable** for user subsystems.
+  - Example: A grading program runs in ring _n_, while student code runs in ring _n + 1_ to prevent tampering.
+
+---
+
+##### Key Takeaways
+- **Layered systems** offer:
+  - Modular design
+  - Improved maintenance
+  - Simplified development/debugging
+- **THE System**: Design aid; all layers compiled into one program.
+- **MULTICS**: Enforced layering via hardware at runtime; offers real protection and extendability.
+
+## 1.7.3 Microkernels
+
+#### Overview
+- Aim: **Increase system reliability** by minimizing kernel size.
+- Only the **microkernel** runs in **kernel mode**; all other components (drivers, servers) run in **user mode**.
+- Reduces system crashes caused by bugs in privileged code.
+
+---
+
+#### Why Minimize the Kernel?
+- Bugs in kernel mode can crash the entire system.
+- Bug density: ~2–10 bugs per 1000 lines of code.
+- Large monolithic kernels (e.g., 5M LOC) → 10,000–50,000 potential bugs.
+- Microkernels contain **far less code in kernel space**, reducing risk.
+
+---
+
+#### Microkernel Design Principles
+- **Minimal kernel responsibilities**:
+  - Process management
+  - Interprocess communication (IPC)
+  - Basic scheduling
+- **User-mode components**:
+  - Device drivers
+  - File systems
+  - Process manager
+  - Servers handling system calls (POSIX interface, etc.)
+- Failures in user-mode components **do not crash the whole system**.
+
+---
+
+#### Benefits
+- High **fault isolation** (a buggy driver crashes itself, not the OS).
+- Enhanced **security** (restricted privileges).
+- Greater **modularity and maintainability**.
+- Ideal for **real-time, industrial, military, and avionics systems**.
+
+---
+
+#### Real-World Usage
+- Desktop OS adoption: rare (exception: **macOS**, based on **Mach**).
+- Common microkernels:  
+  `Integrity`, `K42`, `L4`, `PikeOS`, `QNX`, `Symbian`, `MINIX 3`
+
+---
+
+#### Case Study: **MINIX 3**
+
+##### Kernel Size
+- ~12,000 lines of C + ~1,400 lines of Assembly.
+- Provides ~40 kernel calls (e.g., for I/O access, memory management).
+
+#### Structure
+
+1. **Kernel (small)**:
+   - Handles basic scheduling and IPC.
+   - Includes critical drivers (e.g., clock).
+   - Verifies all I/O port access via messages.
+
+2. **User Mode Layers**:
+   - **Drivers**: Run in user mode, must request kernel for I/O operations.
+   - **Servers**:
+     - File server: manages file systems.
+     - Process manager: handles process creation/destruction.
+     - Others provide POSIX services via message passing.
+   - **Reincarnation Server**: Monitors and restarts faulty components (self-healing).
+
+#### Security and Permissions
+- **Per-process controls**:
+  - I/O port access
+  - Kernel call access
+  - Messaging restrictions
+- **Controlled address space sharing**:
+  - E.g., file system grants disk driver permission to write to a specific memory region.
+
+---
+
+#### Mechanism vs. Policy
+- **Mechanism** (in kernel): How things are done.
+  - e.g., selecting the highest-priority runnable process.
+- **Policy** (user mode): Decisions about *what* should happen.
+  - e.g., assigning process priorities.
+- Separation keeps kernel minimal and flexible.
+
+---
+
+### Summary
+- Microkernels increase system reliability and modularity by:
+  - Reducing kernel size.
+  - Isolating components in user mode.
+  - Enforcing strict permissions.
+- **MINIX 3** exemplifies this architecture and adds **self-healing** capabilities.
+
+## 1.7.4 Client-Server Model
+
+#### Overview
+- A variation of the **microkernel architecture**.
+- **Two distinct classes of processes**:
+  - **Clients**: Request services.
+  - **Servers**: Provide services.
+- Communication occurs via **message passing**.
+
+---
+
+#### Key Concepts
+
+##### Structure
+- Clients and servers can run:
+  - On the **same machine**.
+  - On **different machines** connected via a **network**.
+- Optimizations may exist for same-machine setups, but the model remains message-based.
+
+##### Message Passing
+- Clients send structured requests to a server.
+- Server processes the request and sends back a response.
+- **Clients do not need to know** where the server is (local or remote).
+
+---
+
+#### Benefits
+- **Modularity**: Clean separation of concerns.
+- **Scalability**: Easily extendable to distributed systems.
+- **Transparency**: Same interface whether service is local or remote.
+- **Flexibility**: Clients and servers can be updated independently.
+
+---
+
+#### Example (Network Scenario)
+
+- **Clients** on multiple machines:
+  - Request services like file access, process management, or terminal control.
+- **Servers** run on one or more machines:
+  - **File server**, **process server**, **terminal server**, etc.
+- **Kernels** on each machine coordinate local process management and communication.
+
+
+---
+
+#### Real-World Example: The Web
+- **Client**: Home PC or browser.
+- **Server**: Web server hosting pages.
+- **Flow**:
+  1. Client sends HTTP request.
+  2. Server responds with the webpage.
+- This is a **classic use** of the client-server model across the Internet.
+
+---
+
+##### Summary
+- The client-server model enables service abstraction through message passing.
+- It scales seamlessly from **local IPC** to **distributed computing** over networks.
+- It underpins many modern systems, especially **web architecture**.
+
+## 1.7.5 Virtual Machines
+
+#### Overview
+- Virtual machines (VMs) allow a single physical machine to behave like multiple independent computers.
+- Early VM systems provided **hardware-level abstraction**, not user-friendly interfaces.
+- VMs offer a way to run multiple operating systems on one machine, isolated from each other.
+
+---
+
+#### Historical Background
+
+##### IBM and VM/370
+- IBM’s **CP/CMS** → later called **VM/370**.
+- Created as an alternative to TSS/360, which was slow and over-budget.
+- Introduced the concept of:
+  - **Virtual Machine Monitor (VMM)**: Core of the system that ran on bare metal.
+  - **Multiple virtual machines** (VMs): Each an exact copy of the real hardware.
+  - Allowed running different OSes simultaneously (e.g., CMS, OS/360).
+
+##### Architecture
+- VMM handles **multiprogramming** only.
+- Each VM handles its own **extended machine functions** (e.g., file systems).
+- System calls from within a VM are intercepted and handled by the VMM transparently.
+
+---
+
+#### Modern Use: z/VM
+- Current IBM mainframes (zSeries) use **z/VM** to run:
+  - Multiple full-fledged OSes (e.g., Linux, IBM OSes).
+  - Supports thousands of concurrent transactions.
+
+---
+
+#### Virtual Machines Today
+
+##### Why It's Popular Now
+- **Server consolidation**: Run multiple servers (e.g., mail, web, FTP) on one machine.
+- **Web hosting**: Virtual private servers (VPS) offer a cost-effective middle ground between shared and dedicated hosting.
+- **Dual-OS Use**: Users run multiple OSes (e.g., Windows + Linux) for different applications.
+
+---
+
+#### Hypervisor Types
+
+##### Type 1 Hypervisor (Bare Metal)
+- Runs directly on hardware.
+- No underlying host OS.
+- Manages all resources itself.
+- Common in enterprise and data centers.
+
+##### Type 2 Hypervisor (Hosted)
+- Runs on top of a host OS.
+- Uses host’s file system, process manager, etc.
+- Installs guest OS onto a virtual disk (file in host OS).
+- Examples: **VMware Workstation**, **VirtualBox**.
+
+##### Performance Evolution
+1. **Emulation** (e.g., Bochs): Very slow.
+2. **Binary Translation** (e.g., early VMware): Translates code on-the-fly, caches results.
+3. **Hybrid Approach**: Type 2 hypervisors with kernel modules (faster performance).
+
+> Note: Some prefer to call Type 2 hypervisors “Type 1.7” due to their partial kernel-level functionality.
+
+---
+
+#### Virtualization Challenges
+
+##### Hardware Requirements
+- CPUs must be **virtualizable**.
+- Some early x86 CPUs (e.g., Pentium) didn’t trap privileged instructions in user mode → poor virtualization support.
+
+##### Solutions
+- **Academic research** led to better solutions:
+  - **Disco** (Stanford), **Xen** (Cambridge).
+  - Introduced commercial-grade virtualization (e.g., VMware, Xen, KVM, Hyper-V).
+
+##### Paravirtualization
+- Modify the guest OS to avoid problematic instructions.
+- Faster but not true virtualization.
+
+---
+
+#### Java Virtual Machine (JVM)
+
+##### A Different Kind of VM
+- JVM is a **software-based virtual machine** designed to run Java bytecode.
+- Java compiler → JVM bytecode → Executed by JVM interpreter.
+
+##### Benefits
+- **Platform independence**: JVM code can run on any system with a JVM.
+- **Security**: Programs can be sandboxed and verified before execution.
+- **Portability**: Enables easy Internet delivery and execution.
+
+---
+
+#### Summary
+
+| Type                | Description                                          |
+|---------------------|------------------------------------------------------|
+| **VM/370 (IBM)**     | Hardware-level VMs allowing multiple OSes           |
+| **Type 1 Hypervisor**| Bare-metal hypervisor, no host OS                   |
+| **Type 2 Hypervisor**| Runs on host OS, uses hybrid methods                |
+| **JVM**              | High-level VM for executing Java bytecode           |
+| **Paravirtualization** | OS is modified to cooperate with the hypervisor   |
+
+# The World According to C
+# 1.8 The World According to C
+
+### Key Idea
+- Operating systems are typically large programs written in **C** (and sometimes **C++**).
+- OS development is vastly different from writing small programs in **Java** or **Python**.
+
+---
+
+### Language Differences
+
+#### C vs. High-Level Languages (Java, Python)
+- **C** is low-level, offering more direct access to memory and hardware.
+- No automatic memory management (e.g., garbage collection).
+- No built-in safety features like bounds checking.
+
+---
+
+#### Development Environment
+
+- OS code is often written and compiled in **non-interactive**, **bare-metal** or **low-level** environments.
+- Little to no runtime support compared to Java/Python.
+- Tools: Compilers (e.g., GCC), debuggers (e.g., GDB), linkers, and makefiles.
+
+---
+
+### Programming Mindset Shift
+
+| Concept     | Java/Python            | C (OS Dev)                      |
+| ----------- | ---------------------- | ------------------------------- |
+| Memory      | Automatic (GC)         | Manual (malloc/free)            |
+| Errors      | Exceptions             | Segfaults, manual checks        |
+| Safety      | High-level protections | Low-level, easy to break        |
+| Libraries   | Rich standard libs     | Minimal or custom-built         |
+| Environment | OS-managed             | Bare hardware or minimal kernel |
+
+---
+
+#### Summary
+
+- Writing OS code in C requires understanding:
+  - Memory management
+  - Pointers and manual allocation
+  - Compilation and linking
+  - Hardware-level concepts
+- It’s a **different world** from high-level programming – more powerful, but more dangerous.
+
+## 1.8.1 The C Language
+
+### Overview
+- C is an **imperative** language, like Java and Python.
+- Shares similarities with Java in **syntax** and **control structures**.
+- Focuses on **performance**, **low-level control**, and **manual memory management**—ideal for OS development.
+
+---
+
+#### Similarities to Java/Python
+
+| Feature            | C, Java, Python |
+|-------------------|-----------------|
+| Data Types         | Yes             |
+| Variables          | Yes             |
+| Control Statements | if, switch, for, while |
+| Functions          | Yes             |
+| Arrays             | Yes             |
+| Structures         | C & Java        |
+
+---
+
+#### Key Difference: Pointers
+
+- **Pointers**: Variables that store memory addresses.
+- Example:
+  ```c
+  char c1, c2, *p;
+  c1 = 'c';
+  p = &c1;
+  c2 = *p;  // c2 now contains 'c'
+```
+
+## 1.8.2 Header Files
+
+### Purpose of Header Files
+- Used to share **declarations**, **definitions**, and **macros** across multiple `.c` source files.
+- Typically stored in `.h` files.
+- Promote **modularity**, **reusability**, and **consistency** in large projects like OS development.
+
+---
