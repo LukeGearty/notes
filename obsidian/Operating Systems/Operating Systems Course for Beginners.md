@@ -280,3 +280,5 @@ Ondisk Queues: job Queues (contain programs ready to be loaded in memory), Suspe
 (list of process that gets suspended from memoy onto disk)
 
 Timestamp: 2:35:16
+
+# 06/09
