@@ -282,3 +282,68 @@ Ondisk Queues: job Queues (contain programs ready to be loaded in memory), Suspe
 Timestamp: 2:35:16
 
 # 06/09
+Job Queue: Contains list of PCBs ready to loaded
+Scheduler chooses which in the ready queue gets to CPU
+
+Schedulers and Dispatchers:
+Scheduling: choosing the process to run in job queue, ready queue, suspend queue
+Scheduler is the component of Operating System that makes the decision
+Long Term Scheduler: new-> ready, controls how many programs get loaded from disk to main memory
+Short Term Scheduler: Ready -> running 
+Medium term scheduler: process suspension & resuming
+
+Dispatcher: Responsible for carrying out the activity of context switching
+context switching: activity of loading and saving the process during a process switch on CPU
+Dispatch is not involved in the suspension of process - only the Medium term scheduler is there. Dispatcher is involved with short term scheduler
+
+## CPU Scheduling
+Process Switch Time > user to kernel mode switch time
+Process switching time involves the user to kernel mode switch
+
+Arrival Time: The time at which the process enters the ready queue for the first time
+Waiting Time: The time spent by the process waiting in the ready queue
+Burst TIme: The time spent by the process running on CPU
+I/O Burst Time: Time spent by the process waiting for IO operation in blocked state (IO operation not done by process, the operating system does)
+Completion Time: When process terminates
+Turn Around TIme: Time spent by the process from new -> terminate. The lifetime of the process.
+	TAT = Completion Time - Arrival Time
+	Waiting Time = TAT - (BT + IOBT)
+Schedule Length: Total time taken to complete all n processes as per schedule
+
+Schedule:
+The order in which processes are run
+
+How many schedules are possible with n process: n!  in non-preemptive - In preemeptive = ∞
+
+schedule length = completion time of last process - Arrival time of first process
+
+Throughput = no of process completed per unit time
+
+
+Algorithms:
+1. First Come First Serve (FCFS)
+	1. Selection Criteria: Arrival Time
+	2. Mode of Operation: non preemptive
+	3. Conflict Resolution: best one is choose the lower process ID if two processes come in at the same time
+	4. Assumption:
+		1. Time is in clock ticks
+		2. No IOBTs
+		3. Scheduling overhead = 0
+
+TAT = CT - AT
+WT = TAT - (BT + IOBT)
+
+
+| PID | Arrival Time | Burst tIme | Completion Time | Turn Around Time | Waiting Time |
+| --- | ------------ | ---------- | --------------- | ---------------- | ------------ |
+| 1   | 0            | 4          | 4               | 4                | 0            |
+| 2   | 0            | 3          | 7               | 7                | 4            |
+| 3   | 0            | 5          | 12              | 12               | 7            |
+```
+  _________________________________________________________
+    P1            | P2        | P3                        |     
+  _________________________________________________________
+  0   1   2   3   4   5   6   7    8    9    10    11    12
+```
+
+TImestamp: 3:17:01
