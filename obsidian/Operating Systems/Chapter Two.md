@@ -426,3 +426,262 @@ This is the foundation of **context switching** and multitasking in modern syste
 | **C Interrupt Handler**    | Handles specific I/O or other interrupt logic                 |
 | **Scheduler**              | Picks the next process to run                                 |
 | **Context Switch Logic**   | Restores state of selected process and resumes it             |
+
+# Threads
+In traditional operating systems, a **process** is defined by its:
+- **Address space:** A dedicated memory region.
+- **Single thread of control:** A single execution path.
+However, many situations benefit from having **multiple threads of control** within the **same address space**. These threads run in "quasi-parallel," acting almost like separate processes, but with the key distinction of **sharing the same memory space**.
+
+## Thread Usage
+Threads offer several advantages over traditional processes, especially in applications with multiple concurrent activities.
+
+#### Simplified Programming Model
+- Many applications involve multiple simultaneous activities, some of which may **block** (e.g., waiting for I/O).
+- By breaking down an application into multiple **sequential threads** that run in **quasi-parallel**, the programming becomes simpler.
+- This is similar to the argument for processes, where we think of parallel processes instead of complex interrupt handling.
+- The key difference with threads is their ability to **share an address space and all its data**, which is crucial for certain applications where separate address spaces (like in processes) wouldn't work.
+
+---
+
+#### Efficiency and Performance
+
+- **Lighter weight:** Threads are significantly **faster to create and destroy** than processes (10-100 times faster in many systems). This is beneficial when the number of concurrent tasks changes rapidly.
+- **Overlapping activities:** While threads offer no performance gain for purely CPU-bound tasks, they greatly improve performance when there's a mix of **computing and I/O**. Threads allow these activities to **overlap**, speeding up the application.
+- **Leveraging multiple CPUs:** On systems with **multiple CPUs**, threads enable true **parallelism**, allowing different threads to execute simultaneously on different cores.
+
+---
+
+#### Concrete Example: Word Processor
+
+Consider a word processor that displays a document exactly as it will appear when printed.
+
+- **The Problem:** If a user deletes a sentence from page 1 of an 800-page book, the word processor must reformat the entire book up to a requested page (e.g., page 600) before it can display it. This leads to substantial delays and a frustrated user.
+- **Threads to the Rescue:**
+    - **Two-threaded program:**
+        - **Interactive thread:** Handles user input (keyboard, mouse) and responds to simple commands (like scrolling the current page).
+        - **Reformatting thread:** Works in the background to reformat the entire document.
+        - When a change is made, the interactive thread signals the reformatting thread. Meanwhile, the interactive thread remains responsive. Ideally, reformatting finishes before the user requests a distant page, making the display instantaneous.
+    - **Adding a third thread:** Many word processors automatically save files to disk periodically. A **third thread** can manage these **disk backups** without interrupting the interactive or reformatting threads.
+
+## The Classical Thread Model
+
+### Concepts Behind Threads
+
+- The **process model** separates:
+  - **Resource grouping**
+  - **Execution**
+- Threads allow these to be **treated independently**.
+
+---
+
+### Process vs Thread
+
+#### A **Process**:
+- Groups related resources:
+  - Address space (program text + data)
+  - Open files
+  - Child processes
+  - Pending alarms
+  - Signal handlers
+  - Accounting info
+
+#### A **Thread**:
+- Represents an **execution flow**:
+  - Program counter
+  - Registers (working variables)
+  - Stack (execution history)
+
+> Threads run **within** a process, but they are **separate entities**.
+
+---
+
+### Multithreading
+
+- **Multiple threads** can exist in **one process**, sharing:
+  - Address space
+  - Global variables
+  - Open files
+  - Child processes
+  - Signals
+
+- Analogous to:
+  - Threads → multiple threads in one process
+  - Processes → multiple processes in one system
+
+#### Advantages
+- Efficient use of shared resources
+- Lightweight (sometimes called "lightweight processes")
+- Fast context switching (especially on multithreading-supported CPUs)
+
+---
+
+### Visual Representations (Described)
+
+- **Fig. 2-11(a)**: Three separate processes with individual address spaces and single threads.
+- **Fig. 2-11(b)**: One process with three threads, sharing a single address space.
+
+---
+
+### CPU and Thread Execution
+
+- On single-CPU systems:
+  - Threads take **turns** (like process scheduling)
+  - Illusion of **parallel execution**
+  - Each gets a fraction of CPU time (e.g., 3 threads → ⅓ CPU each)
+
+---
+
+### Shared Address Space: Dangers & Implications
+
+- Threads can:
+  - Access **all memory** in the process
+  - **Interfere** with each other's stacks and variables
+- No memory protection:
+  - Assumes threads are **cooperative** (same user/process)
+- Use multithreading when threads are **closely related** and need to **collaborate**.
+
+---
+
+### Resource Sharing
+
+- Only **processes** own resources, not threads.
+- If each thread had its own:
+  - Address space
+  - Open files
+  - Alarms, etc.
+  - → It would be a **process**, not a thread.
+
+---
+
+### Thread Lifecycle
+
+#### States:
+- **Running**: Currently on the CPU
+- **Blocked**: Waiting for an event
+- **Ready**: Scheduled and waiting
+- **Terminated**: Done executing
+
+Transitions are similar to process state transitions.
+
+---
+
+### Stack Per Thread
+
+- Each thread has its **own stack**:
+  - One frame per active procedure
+  - Keeps local variables + return addresses
+- Required due to **different execution paths**.
+
+---
+
+### Thread Management
+
+- A process starts with **one thread**
+- **Creating a thread**:
+  - `thread_create(procName)`
+  - New thread runs in the same address space
+
+- **Exiting a thread**:
+  - `thread_exit()`
+
+- **Waiting for a thread**:
+  - `thread_join(threadID)`
+
+- **Yielding CPU voluntarily**:
+  - `thread_yield()`
+
+---
+
+### Complications of Threads
+#### 1. Forking with Threads:
+- Should child get parent’s threads?
+  - If not: May break behavior
+  - If yes: Confusion over blocked threads and shared I/O
+#### 2. Data Races:
+- Shared structures may cause:
+  - File closed by one thread while another reads
+  - Memory allocation conflicts if threads act simultaneously
+
+Careful design is needed to avoid errors in multithreaded programs.
+
+## 2.2.3 POSIX Threads
+
+To enable portable threaded programs, IEEE defined a thread standard in **IEEE 1003.1c**, called **Pthreads**. Most UNIX systems support it.
+
+The standard defines over 60 function calls. Here are some major ones to give an idea of how it works (see Fig. 2-14):
+
+| Thread Call           | Description                           |
+|----------------------|-------------------------------------|
+| `pthread_create`      | Create a new thread                  |
+| `pthread_exit`        | Terminate the calling thread        |
+| `pthread_join`        | Wait for a specific thread to exit  |
+| `pthread_yield`       | Release CPU to let another thread run |
+| `pthread_attr_init`   | Create and initialize a thread’s attribute structure |
+| `pthread_attr_destroy`| Remove a thread’s attribute structure|
+
+---
+
+#### Pthreads Properties
+
+- Each thread has:
+  - An **identifier**
+  - A set of **registers** (including the program counter)
+  - A set of **attributes** stored in a structure (e.g., stack size, scheduling parameters)
+
+---
+
+#### Key Thread Calls
+
+- `pthread_create`  
+  Creates a new thread and returns its thread identifier (like a PID). Parameters specify the thread’s start routine.
+
+- `pthread_exit`  
+  Terminates the calling thread and releases its stack.
+
+- `pthread_join`  
+  The calling thread waits for a specific other thread (given by thread id) to exit.
+
+- `pthread_yield`  
+  Allows a thread to voluntarily give up the CPU to let another thread run. Useful for cooperative multitasking among threads.
+
+- `pthread_attr_init`  
+  Creates and initializes a thread attribute structure with default values (like priority).
+
+- `pthread_attr_destroy`  
+  Removes and frees the attribute structure memory but does not affect running threads using it.
+
+---
+
+```c
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NUMBER_OF_THREADS 10
+
+void* print_hello_world(void* tid) {
+    /* This function prints the thread’s identifier and then exits. */
+    printf("Hello World. Greetings from thread %d\n", (int)(size_t)tid);
+    pthread_exit(NULL);
+}
+
+int main(int argc, char *argv[]) {
+    /* The main program creates 10 threads and then exits. */
+    pthread_t threads[NUMBER_OF_THREADS];
+    int status, i;
+
+    for(i = 0; i < NUMBER_OF_THREADS; i++) {
+        printf("Main here. Creating thread %d\n", i);
+        status = pthread_create(&threads[i], NULL, print_hello_world, (void*)(size_t)i);
+        if (status != 0) {
+            printf("Oops. pthread_create returned error code %d\n", status);
+            pthread_exit(-1);
+        }
+    }
+    exit(EXIT_SUCCESS);
+}
+```
+
+## Threads in User Space
+

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Operating Systems Course for Beginners.md",
+                "file": "Chapter Two.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Operating Systems Course for Beginners"
+              "title": "Chapter Two"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 322.5
+    "width": 322.5,
+    "collapsed": true
   },
   "right": {
     "id": "49246161625926ee",
@@ -171,8 +172,8 @@
   },
   "active": "ba8c9a10dcca1d65",
   "lastOpenFiles": [
-    "Paper.md",
     "Operating Systems Course for Beginners.md",
+    "Paper.md",
     "Memory Management.md",
     "Chapter Two.md",
     "Chapter One.md",
