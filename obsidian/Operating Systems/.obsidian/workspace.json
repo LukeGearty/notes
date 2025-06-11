@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter Two.md",
+                "file": "Operating Systems Course for Beginners.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter Two"
+              "title": "Operating Systems Course for Beginners"
             }
           }
         ]
@@ -172,10 +172,10 @@
   },
   "active": "ba8c9a10dcca1d65",
   "lastOpenFiles": [
+    "Chapter Two.md",
     "Operating Systems Course for Beginners.md",
     "Paper.md",
     "Memory Management.md",
-    "Chapter Two.md",
     "Chapter One.md",
     "Introduction.md",
     "Processes and Threads.md",

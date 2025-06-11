@@ -347,3 +347,52 @@ WT = TAT - (BT + IOBT)
 ```
 
 TImestamp: 3:17:01
+
+# 06/11
+
+Second example:
+
+| PID | Arrival Time | Burst Time | Completion Time | Turn Around Time | Waiting Time |
+| --- | ------------ | ---------- | --------------- | ---------------- | ------------ |
+| 1   | 0            | 2          | 2               | 2                | 0            |
+| 2   | 0            | 1          | 3               | 3                | 1            |
+| 3   | 2            | 3          | 6               | 4                | 1            |
+| 4   | 3            | 2          | 8               | 5                | 3            |
+| 5   | 5            | 4          | 12              | 7                | 3            |
+
+Third Example:
+
+| PID | Arrival Time | Burst Time | Completion Time | Turn Around Time | Waiting Time |
+| --- | ------------ | ---------- | --------------- | ---------------- | ------------ |
+| 1   | 3            | 5          | 8               | 5                | 0            |
+| 2   | 10           | 2          | 12              | 2                | 0            |
+| 3   | 15           | 4          | 19              | 4                | 0            |
+| 4   | 18           | 5          | 24              | 6                | 1            |
+
+Fourth Example:
+
+| PID | Arrival Time | Burst Time | Completion Time | Turn Around Time | Waiting Time |
+| --- | ------------ | ---------- | --------------- | ---------------- | ------------ |
+| 1   | 5            | 2          | 7               | 2                | 0            |
+| 2   | 3            | 1          | 4               | 1                | 0            |
+| 3   | 8            | 4          | 12              | 4                | 0            |
+
+Example with IO Burst Time
+
+WT = TAT - (BT + IOBT + NS)
+NS = # of times a process get scheduled on CPU
+
+| PID | Arrival Time | Burst Time | IO Burst Time | Burst Time after IO | Completion Time | Turn Around Time | Waiting Time |
+| --- | ------------ | ---------- | ------------- | ------------------- | --------------- | ---------------- | ------------ |
+| 1   | 0            | 3          | 7             | 2                   | 15              | 15               | 1            |
+| 2   | 2            | 5          | 2             | 3                   | 19              | 17               | 5            |
+| 3   | 5            | 1          | 4             | 2                   | 22              | 17               | 8            |
+P1 arives at T0, runs at T1, runs for 3, goes to IO at T4 for 7, and goes back to ready queue at T11
+P2 arrives at T2, starts running at T5, runs from 5->10, goes to IO queue for 2 units at T10, goes back to reay queue at T12
+At T11, CPU is empty so P3 starts running from T11->T12, goes to IO Queue for 4 units, goes back to ready queue at T16
+At T13, P1 is running again and completes at T15.
+At T16, P2 runs for 3 units, completes at 19
+At T20, P3 runs again for 2 units, completes at T22
+
+
+Timestamp: 3:53:31
