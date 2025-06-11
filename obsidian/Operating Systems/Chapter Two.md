@@ -685,3 +685,180 @@ int main(int argc, char *argv[]) {
 
 ## Threads in User Space
 
+There are two main places to implement threads:
+- **User space**
+- **Kernel space**
+
+### Structure
+
+- Threads are managed entirely in **user space**.
+- Implemented using a **runtime library**.
+- Operating systems that don’t support threads can still run them this way.
+
+#### Example Library Functions
+
+- `pthread_create`
+- `pthread_exit`
+- `pthread_join`
+- `pthread_yield`
+
+#### Thread Table
+
+- Each process maintains its **own thread table**:
+  - Similar to the kernel’s process table.
+  - Stores:
+    - Program counter
+    - Stack pointer
+    - Registers
+    - Thread state
+
+#### How Thread Switching Works
+
+1. A thread blocks or yields.
+2. The **runtime system**:
+   - Saves the current thread’s state.
+   - Finds a ready thread.
+   - Loads that thread’s state.
+3. Fast switching (possibly just a few CPU instructions).
+4. **No kernel trap** required.
+
+#### Advantages
+
+- Can be used on **any OS**, even those without native thread support.
+- **Fast context switching**:
+  - No system calls
+  - No context switching overhead
+  - No cache flushing
+- **Custom scheduling** per process.
+- **Better scalability**:
+  - No kernel resource usage (e.g., stacks or process table entries).
+
+### Problems
+
+#### 1. Blocking System Calls
+
+- Blocking a thread (e.g., reading from keyboard) blocks the **entire process**.
+
+##### Workarounds:
+
+- **Nonblocking I/O**: Requires OS changes.
+- **`select` + wrapper ("jacket") functions**:
+  - Check if I/O will block before calling.
+  - Inefficient and requires library modification.
+#### 2. Page Faults
+
+- Page Fault: A program calls or jumps to an instruction that is not in memory - the OS goes to get the missing info from disk 
+- If a thread triggers a **page fault**, the **whole process** blocks.
+- Kernel doesn’t know which thread caused it.
+#### 3. Cooperative Scheduling
+
+- No **clock interrupts** at user level.
+- Threads run until they yield:
+  - No preemption
+  - Risk of one thread monopolizing the CPU
+
+##### Workaround:
+
+- Use **periodic timers**, but:
+  - Crude
+  - Hard to program
+  - May interfere with application logic
+
+#### 4. Frequent Blocking Applications
+
+- Applications that block often (e.g., web servers):
+  - Make frequent system calls.
+  - Kernel is better suited to handle thread switching.
+
+## 2.2.5 Implementing Threads in the Kernel
+
+When threads are implemented in the **kernel**, the kernel is aware of and manages all threads directly.
+
+- No **runtime system** is needed in each process.
+- There is **no per-process thread table**.
+- The **kernel maintains a global thread table** that tracks:
+  - Thread registers
+  - Thread state
+  - Other thread-specific data
+
+This is similar to the user-level thread table but managed **inside the kernel**. Additionally, the kernel retains the **traditional process table** to track processes.
+
+- Thread creation/destruction is done via **kernel calls**.
+- The **kernel thread table** is updated accordingly.
+- All thread-related operations are **more costly** than user-space procedures because they involve **system calls**.
+
+- All blocking operations are handled via **system calls**.
+- When a thread blocks, the kernel may:
+  - Run another **thread from the same process**, or
+  - Run a **thread from a different process**
+- This contrasts with **user-level threads**, where the runtime system can only run threads from the **same process**.
+
+- Due to the **high cost** of creating/destroying threads in the kernel:
+  - Some systems **recycle threads**:
+    - Mark a thread as "not runnable" when destroyed.
+    - Reactivate it later when needed.
+- **User-level threads** can also be recycled, but the benefit is less due to **lower overhead**.
+
+#### Advantages
+
+- No need for **nonblocking system calls**.
+- **Page fault handling** is more efficient:
+  - If a thread causes a page fault, the kernel can run another thread from the **same process**.
+- Can run threads across processes more flexibly.
+
+#### Disadvantages
+
+- **System calls are expensive**, increasing the overhead of:
+  - Thread creation
+  - Thread destruction
+  - Context switching
+
+#### Open Issues
+
+##### 1. Forking a Multithreaded Process
+
+- When a multithreaded process calls `fork()`, questions arise:
+  - Should the child process have **all threads** of the parent?
+  - Or just **one thread**?
+
+**Depends on next action:**
+- If calling `exec()` soon after, one thread is preferred.
+- If continuing execution, duplicating all threads may be better.
+
+##### 2. Signals and Threads
+
+- Signals are traditionally sent to **processes**, not threads.
+- Problems:
+  - Which thread should handle the signal?
+  - Possible solution: threads register interest in specific signals.
+    - But what if **multiple threads** register for the same signal?
+
+## 2.2.6 Hybrid Implementations
+
+- Hybrid threading combines **user-level** and **kernel-level** threads.
+- Goal: Get the **flexibility and efficiency** of user-level threads with the **robustness** of kernel-level threads.
+
+- Use **kernel threads** as a base.
+- **Multiplex** user-level threads onto one or more kernel threads.
+
+
+- Programmers can decide:
+  - How many **kernel threads** to create.
+  - How many **user threads** to assign to each kernel thread.
+
+- The **kernel**:
+  - Only knows about and schedules **kernel threads**.
+  - Has no visibility into the user threads.
+
+- The **user-level threads**:
+  - Are managed like regular user threads.
+  - Share time on their assigned kernel thread.
+
+## Benefits
+
+- **Flexible** configuration.
+- **Efficient** user-level thread switching.
+- **Kernel support** for blocking and I/O.
+
+
+
