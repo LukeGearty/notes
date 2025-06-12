@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Operating Systems Course for Beginners.md",
+                "file": "Chapter Two.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Operating Systems Course for Beginners"
+              "title": "Chapter Two"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 322.5,
-    "collapsed": true
+    "width": 322.5
   },
   "right": {
     "id": "49246161625926ee",
@@ -170,17 +169,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba8c9a10dcca1d65",
+  "active": "9799bdfafb8f028b",
   "lastOpenFiles": [
+    "Chapter One.md",
+    "Chapter One Questions.md",
     "Chapter Two.md",
+    "Introduction.md",
+    "Memory Management.md",
     "Operating Systems Course for Beginners.md",
     "Paper.md",
-    "Memory Management.md",
-    "Chapter One.md",
-    "Introduction.md",
     "Processes and Threads.md",
     "Untitled",
-    "2025-05-30.md",
-    "Chapter One Questions.md"
+    "2025-05-30.md"
   ]
 }

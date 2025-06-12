@@ -854,11 +854,306 @@ This is similar to the user-level thread table but managed **inside the kernel**
   - Are managed like regular user threads.
   - Share time on their assigned kernel thread.
 
-## Benefits
-
 - **Flexible** configuration.
 - **Efficient** user-level thread switching.
 - **Kernel support** for blocking and I/O.
 
 
+# Interprocess Communication
+Processes often need to communicate with one another. For example, in a shell pipeline, the output of one process is passed to the next. This communication should be structured and not rely on interrupts.
 
+Three Key Issues in IPC
+1. **Information Transfer**
+   - How one process can send data to another.
+   - Essential for structured inter-process workflows.
+1. **Mutual Exclusion**
+   - Prevents processes from interfering with each other.
+   - Example: Two airline reservation processes trying to book the last seat simultaneously.
+1. **Proper Sequencing**
+   - Ensures correct order of operations when processes are dependent.
+   - Example: Process B should wait for Process A to generate data before printing.
+
+IPC vs. Thread Communication
+- **Information Sharing:**
+  - Easier with threads due to shared memory space.
+  - If threads are in different address spaces, the problem becomes one of process communication.
+- **Mutual Exclusion & Sequencing:**
+  - These challenges apply equally to both threads and processes.
+  - The same synchronization solutions (e.g., locks, semaphores) are used for both.
+
+## 2.3.1 Race Conditions
+A **race condition** occurs when two or more processes access shared data, and the **final result depends on the exact timing** of their execution.
+
+- Race conditions are difficult to debug.
+- Tests usually pass, but **rare failures** may occur unpredictably.
+- **Increased parallelism** (more CPU cores) is making race conditions more common
+
+### Shared Memory in IPC
+
+- In some OSes, cooperating processes may share common storage (e.g., main memory or a shared file).
+- The **location** of the shared memory doesn't change the nature of the **communication** or the **problems**.
+
+### Example: Print Spooler
+
+- When a process wants to print, it writes the file name to a **spooler directory**.
+- A **printer daemon** checks the directory periodically, prints queued files, and removes them afterward.
+
+#### Spooler Structure:
+- Slots numbered `0, 1, 2, ...` hold file names.
+- Two shared variables:
+  - `in`: points to the next free slot.
+  - `out`: points to the next file to print.
+- These may be stored in a shared two-word file.
+
+### The Race Condition Scenario
+
+1. **Initial State**:  
+   - Slots `0–3` are empty (already printed).  
+   - Slots `4–6` are full (waiting to be printed).  
+   - `in = 7`.
+
+2. **Simultaneous Access**:
+   - Processes **A** and **B** both try to add files at the same time.
+   - Both read `in = 7` and store it in a local variable `next_free_slot`.
+
+3. **Interleaving Execution**:
+   - **Clock interrupt** occurs. Process A is paused.
+   - **Process B**:
+     - Writes its file to **slot 7**.
+     - Updates `in = 8`.
+   - **Process A resumes**:
+     - Uses its old `next_free_slot = 7`.
+     - Overwrites **slot 7** with its own file name.
+     - Updates `in = 8`.
+
+4. **Final Outcome**:
+   - The spooler appears consistent.
+   - Process B’s file is lost.
+   - **User B** waits forever for a printout that will never come.
+## 2.3.2 Critical Regions
+
+- **Problem**: Race conditions occur when multiple processes read/write shared data **simultaneously**.
+- **Solution**: Enforce **mutual exclusion** — ensure only one process accesses shared data at a time.
+
+> Mutual exclusion prevents interference by allowing only one process to be in a **critical region** at a time.
+
+- A **critical region (or critical section)** is the part of a program where a process accesses **shared memory** or **resources**.
+- Outside the critical region, processes perform internal computations or operations that **don’t affect** shared data.
+
+If **no two processes** are in their critical regions **simultaneously**, **race conditions can be avoided**.
+
+---
+
+### Four Conditions for a Correct Mutual Exclusion Solution
+
+1. No two processes may be in their critical regions at the same time.
+2. No assumptions can be made about **CPU speed** or the **number of CPUs**.
+3. A process not in its critical region **should not block others** from entering theirs.
+4. No process should have to **wait forever** to enter its critical region (i.e., no starvation).
+
+---
+
+### Conceptual Timeline of Critical Region Access
+- **T1**: Process A enters its critical region.
+- **T2**: Process B tries to enter but is **blocked** (A is inside).
+- **T3**: A exits its critical region; B **enters immediately**.
+- **T4**: B exits; **no process** is now in the critical region.
+
+This sequence ensures mutual exclusion is preserved.
+
+## 2.3.3 Mutual Exclusion with Busy Waiting
+
+This section explores techniques to achieve mutual exclusion so that only one process at a time can enter its critical region and avoid race conditions.
+
+---
+
+Disabling Interrupts
+
+On a single-processor system, one solution is to disable interrupts after entering the critical region and re-enable them before leaving. Since context switches occur due to interrupts, this prevents any process switch during that period.
+
+However, this method is not suitable for general use:
+
+- It is unsafe to allow user processes to disable interrupts; if they fail to re-enable them, the system may freeze.
+- In multiprocessor systems, disabling interrupts on one CPU does not prevent others from accessing shared memory.
+- Modern systems often have multiple cores, making this approach ineffective.
+
+Disabling interrupts can still be useful in the operating system kernel for short, critical sections, but is not a viable mutual exclusion mechanism for user-level code.
+
+---
+
+Lock Variables
+
+A software-based attempt at mutual exclusion uses a shared lock variable. The variable is initially set to 0. When a process wants to enter its critical region, it checks the lock:
+
+- If the lock is 0, it sets it to 1 and proceeds.
+- If the lock is 1, it waits until it becomes 0.
+
+This method fails due to race conditions. Two processes could simultaneously see the lock as 0 and both set it to 1 before either enters the critical region, resulting in both entering at once.
+
+Even adding a second check does not solve the problem, as the race can still occur between the checks and updates.
+
+---
+
+Strict Alternation
+
+This method uses a shared integer variable `turn` to alternate access to the critical region. If `turn` is 0, process 0 can enter; if 1, process 1 can enter.
+
+This works in terms of ensuring mutual exclusion, but it causes inefficiencies:
+
+- If one process finishes its non-critical region quickly but the other is still busy outside its critical region, the first process must wait needlessly.
+- This violates a required condition: no process running outside its critical region may block any process.
+
+This solution requires strict alternation and prevents a process from entering its critical region twice in a row. Although it avoids race conditions, it is not practical.
+
+---
+
+Peterson’s Solution
+
+Peterson’s algorithm is a software-only solution that combines intent signaling and turn-taking to achieve mutual exclusion for two processes.
+
+It uses two shared components:
+
+- `interested[2]`: an array indicating whether each process wants to enter its critical region.
+- `turn`: an integer indicating whose turn it is.
+
+When a process wants to enter:
+
+1. It sets its `interested` flag to true.
+2. It sets `turn` to itself.
+3. It waits until the other process is not interested or it is its own turn.
+
+This algorithm ensures that only one process enters the critical region at a time, and it satisfies all four necessary conditions for mutual exclusion. It is simple, correct, and does not rely on hardware support.
+
+---
+
+The TSL (Test-and-Set Lock) Instruction
+
+Some CPUs provide special instructions like `TSL` (Test-and-Set Lock), which perform the following atomically:
+
+- Copy the lock variable to a register.
+- Set the lock variable to 1.
+
+No other processor can access the lock variable during the execution of the `TSL` instruction, as it locks the memory bus.
+
+This is different from disabling interrupts because it works even in multiprocessor systems.
+
+Implementation involves:
+
+1. A process calling `enter_region`, which repeatedly executes the `TSL` instruction until it successfully acquires the lock.
+2. The process entering its critical region.
+3. On exit, the process calls `leave_region`, which sets the lock to 0.
+
+Correct operation depends on all processes calling `enter_region` and `leave_region` at appropriate times. If one process fails to release the lock, the system fails.
+
+---
+An alternative to `TSL` is the `XCHG` instruction, which atomically swaps the contents of a register and a memory location.
+
+Intel x86 processors use `XCHG` for low-level synchronization. Its use is similar to `TSL`, and it provides another hardware-assisted way to ens
+
+## 2.3.4 Sleep and Wakeup
+
+ Busy Waiting Issues
+- **Peterson's**, **TSL**, and **XCHG** solutions avoid race conditions but rely on **busy waiting**.
+- Busy waiting wastes CPU time and can cause **priority inversion**:
+  - A high-priority process may wait forever if a low-priority process is holding a lock and is never scheduled to release it.
+
+---
+
+ Sleep and Wakeup Mechanism
+- **`sleep`**: Suspends the calling process until another process explicitly wakes it up.
+- **`wakeup(process)`**: Wakes a specific process that is sleeping.
+- Alternative design: both `sleep` and `wakeup` use a memory address to match sleeping and waking actions.
+
+---
+
+The Producer-Consumer Problem (Bounded Buffer)
+- Two processes share a **fixed-size buffer**:
+  - The **producer** adds items to the buffer.
+  - The **consumer** removes items from the buffer.
+- A variable `count` tracks the number of items in the buffer.
+- If the buffer is **full**, the producer goes to `sleep` until the consumer removes an item.
+- If the buffer is **empty**, the consumer goes to `sleep` until the producer adds an item.
+
+---
+
+ Race Condition Example
+1. The buffer is empty.
+2. The consumer reads `count == 0` and is about to go to sleep.
+3. The scheduler switches to the producer.
+4. The producer adds an item, sets `count = 1`, and calls `wakeup`.
+5. The consumer hasn’t actually gone to sleep yet, so the `wakeup` is **lost**.
+6. Later, the consumer goes to sleep (forever), and the producer eventually sleeps too—**deadlock**.
+
+---
+Wakeup Waiting Bit (Partial Fix)
+- Add a **wakeup-waiting bit**:
+  - If `wakeup` is called while the target process is still awake, set the bit.
+  - Before sleeping, a process checks the bit:
+    - If set, it clears the bit and **does not sleep**.
+- This allows missed wakeups to be preserved temporarily.
+- **Limitation**: Works for **two processes**, but not for more.
+  - Generalizing this approach (multiple bits, flags, etc.) is complex and fragile.
+- **Conclusion**: A more robust synchronization mechanism is needed for systems with more than two cooperating processes.
+
+## 2.3.5 Semaphores
+
+### Introduction to Semaphores
+- Introduced by **E. W. Dijkstra (1965)** to solve the **lost wakeup problem**.
+- A **semaphore** is an integer variable representing the number of saved wakeups:
+  - **0**: No wakeups saved.
+  - **Positive**: One or more wakeups are pending.
+
+---
+
+### Semaphore Operations
+- Two atomic operations:
+  - **`down`** (P): 
+    - If value > 0: decrement and continue.
+    - If value == 0: process sleeps until value becomes > 0.
+  - **`up`** (V): 
+    - Increments the value.
+    - If processes are sleeping on the semaphore, one is awakened.
+- These operations are **atomic**—cannot be interrupted.
+- In Dijkstra’s notation:
+  - **P**: Proberen (try)
+  - **V**: Verhogen (raise)
+  - More commonly referred to now as **down** and **up**.
+
+---
+
+### Solving Producer-Consumer Problem with Semaphores
+- Semaphores resolve the **lost wakeup problem**.
+- Must be implemented **indivisibly**:
+  - Often done by **disabling interrupts** briefly during execution.
+  - On **multiprocessor systems**, use a **lock** and instructions like **TSL** or **XCHG** to ensure only one CPU accesses the semaphore at a time.
+
+---
+
+### Semaphore Usage in Producer-Consumer
+- Three semaphores:
+  - **`full`**: Counts full slots (initially `0`)
+  - **`empty`**: Counts empty slots (initially `buffer size`)
+  - **`mutex`**: Ensures mutual exclusion when accessing the buffer (initially `1`)
+- `mutex` is a **binary semaphore**:
+  - Used to enforce **mutual exclusion**—only one process can access the critical section at a time.
+  - Pattern: `down(mutex)` before entering critical region, `up(mutex)` after leaving.
+
+---
+
+### Semaphores and Interrupts
+- Used to manage device I/O:
+  - Each I/O device has a semaphore (initially `0`).
+  - After initiating I/O, process does `down(device_semaphore)` to wait.
+  - When interrupt occurs, the handler does `up(device_semaphore)` to unblock the process.
+
+---
+
+### Two Uses of Semaphores
+1. **Mutual Exclusion (mutex semaphore)**:
+   - Prevents multiple processes from accessing critical regions simultaneously.
+   - Ensures **data integrity**.
+2. **Synchronization (full/empty semaphores)**:
+   - Controls the **order of events**.
+   - Ensures:
+     - Producer blocks if buffer is full.
+     - Consumer blocks if buffer is empty.
