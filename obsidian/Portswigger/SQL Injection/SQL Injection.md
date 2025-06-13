@@ -412,3 +412,163 @@ You can use this information to refine your injection and target valuable data.
 | 2. Identify target table/columns | E.g., `users`, `username`, `password` |
 | 3. Construct UNION SELECT | Pull data from real table |
 | 4. Refine based on schema info | If unknown, enumerate the structure |
+# Examining the Database in SQL Injection Attacks
+
+To exploit SQL injection vulnerabilities, it's often necessary to gather information about the **database** itself. This includes:
+
+- The **type and version** of the database software.
+- The **tables and columns** that the database contains.
+
+---
+
+## Why This Matters
+
+Knowing these details allows attackers to:
+
+- Tailor payloads to the specific SQL dialect (e.g., Oracle, MySQL, SQL Server).
+- Identify sensitive tables (like `users`, `accounts`, `payments`) to target for data extraction.
+- Understand how to structure queries that retrieve useful information.
+
+---
+
+## Techniques
+
+While this section doesn’t include specific code, typical methods include:
+
+- Using `UNION SELECT` to infer table structure.
+- Querying system tables (like `information_schema.tables` in MySQL or `all_tables` in Oracle).
+- Identifying database version using functions like `@@version` (SQL Server) or `SELECT version()` (PostgreSQL).
+
+> Always test payloads carefully and be aware of database-specific syntax and behaviors.
+
+---
+
+## Summary
+
+To effectively exploit SQL injection:
+
+- Detect the **DBMS type/version**.
+- Enumerate **tables and columns**.
+- Craft tailored injection payloads accordingly.
+
+# Querying the Database Type and Version
+
+You can potentially identify both the **database type and version** by injecting provider-specific queries to see which ones work.
+
+---
+
+## Common Queries to Determine Database Version
+
+| Database Type      | Query                         |
+|--------------------|-------------------------------|
+| Microsoft, MySQL   | `SELECT @@version`            |
+| Oracle             | `SELECT * FROM v$version`     |
+| PostgreSQL         | `SELECT version()`            |
+
+---
+
+## Example: UNION-Based Injection
+
+A possible injection payload:
+
+```sql
+' UNION SELECT @@version--
+If successful, this might return version information. For example:
+
+pgsql
+Copy
+Edit
+Microsoft SQL Server 2016 (SP2) (KB4052908) - 13.0.5026.0 (X64)
+Mar 18 2018 09:11:49
+Copyright (c) Microsoft Corporation
+Standard Edition (64-bit) on Windows Server 2016 Standard 10.0 <X64> (Build 14393: ) (Hypervisor)
+This confirms that the database is Microsoft SQL Server, and reveals detailed version and system information.
+```
+
+# Listing the Contents of the Database
+
+Most database types (except Oracle) have a set of views called the **information schema**. This schema provides metadata about the database.
+
+---
+
+## Listing Tables
+
+You can query `information_schema.tables` to list all the tables in the database:
+
+```sql
+SELECT * FROM information_schema.tables
+Sample Output
+TABLE_CATALOG	TABLE_SCHEMA	TABLE_NAME	TABLE_TYPE
+MyDatabase	dbo	Products	BASE TABLE
+MyDatabase	dbo	Users	BASE TABLE
+MyDatabase	dbo	Feedback	BASE TABLE
+
+This output indicates that the database contains three tables: Products, Users, and Feedback.
+
+Listing Columns in a Specific Table
+To list columns of a specific table (e.g., Users), query information_schema.columns with a filter on the table name:
+
+sql
+Copy
+Edit
+SELECT * FROM information_schema.columns WHERE table_name = 'Users'
+Sample Output
+TABLE_CATALOG	TABLE_SCHEMA	TABLE_NAME	COLUMN_NAME	DATA_TYPE
+MyDatabase	dbo	Users	UserId	int
+MyDatabase	dbo	Users	Username	varchar
+MyDatabase	dbo	Users	Password	varchar
+
+```
+
+# What is Blind SQL Injection?
+
+**Blind SQL injection** occurs when an application is vulnerable to SQL injection, but its HTTP responses:
+
+- Do **not** contain the results of the injected SQL query.
+- Do **not** reveal details of any database errors.
+
+---
+
+## Key Points
+
+- Common techniques like **UNION attacks** are often ineffective against blind SQL injection because they rely on seeing query results in the application's response.
+- Despite this limitation, blind SQL injection can still be exploited to access unauthorized data.
+- Exploiting blind SQL injection requires **different techniques** that do not depend on direct feedback from the server.
+
+---
+# Exploiting Blind SQL Injection by Triggering Conditional Responses
+
+Consider an application that uses tracking cookies for analytics. Requests include a cookie header like:
+
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4
+
+yaml
+Copy
+Edit
+
+---
+
+## Vulnerable Query Example
+
+The application runs a SQL query to check if the `TrackingId` is known:
+
+```sql
+SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
+This query is vulnerable to SQL injection.
+
+However, query results are not returned to the user.
+
+Application Behavior
+If the TrackingId is recognized (query returns data), the user receives a "Welcome back" message.
+
+If not recognized (no data returned), the response differs.
+
+Exploiting the Vulnerability
+Although direct query results are not shown, the difference in application responses can be used to infer data.
+
+By injecting conditional statements into the TrackingId, you can trigger different responses.
+
+This technique allows information retrieval through blind SQL injection by observing the application's behavior.
+
+```
+

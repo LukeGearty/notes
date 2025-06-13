@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "b567eb593f55dbfc",
+    "id": "75b59970e698f101",
     "type": "split",
     "children": [
       {
-        "id": "549c15ba3cd42e9a",
+        "id": "6dd1939df1e22837",
         "type": "tabs",
         "children": [
           {
-            "id": "f16e3598ab72bdee",
+            "id": "e1809d408a826bfd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lecture 06-09.md",
+                "file": "SQL Injection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lecture 06-09"
+              "title": "SQL Injection"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "5ae3825f26717fe9",
+    "id": "98a9ff4a1d70e116",
     "type": "split",
     "children": [
       {
-        "id": "c68365d926a9f1f5",
+        "id": "f8f58d68a74be586",
         "type": "tabs",
         "children": [
           {
-            "id": "afbf581aa6a24bad",
+            "id": "9893414c990ed183",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "aa734ba44d19cb01",
+            "id": "e2e415b0045b5807",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "dc6c906eeadb57db",
+            "id": "58f378cf69608772",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "14e1dd7e237c2411",
+    "id": "b6ff41201329fa8a",
     "type": "split",
     "children": [
       {
-        "id": "b4cf11ecbd0e4733",
+        "id": "36fab70d30ecbe56",
         "type": "tabs",
         "children": [
           {
-            "id": "e9830d71af6f7a1c",
+            "id": "750a8a9e5046fd75",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lecture 05-19.md",
+                "file": "SQL Injection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Lecture 05-19"
+              "title": "Backlinks for SQL Injection"
             }
           },
           {
-            "id": "0f2243291e247999",
+            "id": "7f431e1ec6bcdde9",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Lecture 05-19.md",
+                "file": "SQL Injection.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Lecture 05-19"
+              "title": "Outgoing links from SQL Injection"
             }
           },
           {
-            "id": "961da4ef7deac1ac",
+            "id": "ee9a60b1feacbfd8",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,18 +137,18 @@
             }
           },
           {
-            "id": "dbfb5375fb36516c",
+            "id": "7e7d13cb3896722f",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Lecture 05-19.md",
+                "file": "SQL Injection.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lecture 05-19"
+              "title": "Outline of SQL Injection"
             }
           }
         ]
@@ -168,11 +168,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f16e3598ab72bdee",
-  "lastOpenFiles": [
-    "Lecture 06-09.md",
-    "Lecture 06-02.md",
-    "Lecture 05-19.md",
-    "Lesson 1.md"
-  ]
+  "active": "e1809d408a826bfd",
+  "lastOpenFiles": []
 }
