@@ -1,6 +1,8 @@
 As memory increases, memory requirements of programs increase. There is never enough memory.
 
+Computers today have a lot more memory than those of the past
 
+Address Spaces
 No Memory Abstraction:
 Single Process with operating system with no virtual memory:
 1. OS runs in memory from base 0 up to some point, and the user program runs on top of that
