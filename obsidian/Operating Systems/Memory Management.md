@@ -10,16 +10,23 @@ Single Process with operating system with no virtual memory:
 3. Low level at base 0: OS, user program above, device drivers in ROM
 
 Multi programs running at the same time:
+With two programs with a jump location, offsets can be wrong and lead to one program accessing the memory of another
 Base Register: Where the lowest point in memory it starts
-Limit Registers: The extent in which that program can reach
+Limit Registers: The extent in which that program can reach. Program can not point to anything beyond.
+Jump instructions can be added to base registers to point to real address
 
 Swapping in and out programs, each of different size
 There are multiple processes that are running in the background, not even accounting for the programs you use
 
-Algorithms:
-First Fit
-Next Fit
-Best Fit
+Bitmaps: shows for each chunk (maybe a word or page) whether there is something in there.
+Linked List: Easier to manage than a bitmap. As programs start, there are algorithms to decide where to fit a program in the list
+There are also needs to manipulate the linked list
+Entries may need to be merged, split, etc
+
+5 Algorithms for memory management, with advantages and disadvantage
+First Fit: Take the first empty space hwere program fits
+Next Fit: Remembers where we searched from last time, and start there next time the program runs
+Best Fit: Searches through whole list and tries to find the smallest space where program can fits. 
 Worst Fit
 Quick Fit
 
