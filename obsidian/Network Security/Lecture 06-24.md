@@ -65,3 +65,5 @@ What are 2 methods to mitigate a SYN Flood:
 Exercise #4:
 Aside from SYN Flood, name and describe another type of DDOS attack.
 UDP Flood: large number of UDP packets are sent to a targeted server with the aim of overwhelming that device's ability to process and respond. 
+
+Timestamp: 1:16:25
