@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lesson 2.md",
+                "file": "Lecture 06-24.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lesson 2"
+              "title": "Lecture 06-24"
             }
           }
         ],
@@ -186,8 +186,8 @@
   },
   "active": "53cf61202884eee5",
   "lastOpenFiles": [
-    "Lesson 1.md",
     "Lesson 2.md",
+    "Lesson 1.md",
     "Lecture 06-24.md",
     "Lecture 06-16.md",
     "Lecture 06-09.md",

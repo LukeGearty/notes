@@ -60,10 +60,28 @@ Bandwidth flooding attack: Overwhelming communication link with packets
 Exercise #3:
 What are 2 methods to mitigate a SYN Flood:
 1. Using SYN Cookies - generating a unique cookie and sending it in the SYN-ACK and wait for the ACK before opening the connection
-2. Recent Connection Cache: a small cache of recent connections
+2. Recent Connection Cache: a small cache of recent connections - typical system reservers about 25% of the connections to be only used by the recently used connections
 
 Exercise #4:
 Aside from SYN Flood, name and describe another type of DDOS attack.
 UDP Flood: large number of UDP packets are sent to a targeted server with the aim of overwhelming that device's ability to process and respond. 
 
-Timestamp: 1:16:25
+DDoS is a generic term for "sending lots of junk" to a target. It can be done with a lot of protocols.
+Attacker controls a bunch of bots that attack a particular victim. 
+Where do bots come from? From hacked systems. Back in the day, it could be a hacked computer. But today, IoT devices do outnumber computers.
+It can be done with any protocol.
+Using the DNS Protocol:
+One of the biggest DDoS attacks was done with the DNS protocol (UDP).
+Attacker will send a DNS request to a server to get a response. The response goes to the victim. The maximum size of a reply is 512 bytes max. A DNS request can vary, but it can be 60 to 80 bytes.
+Attacker can send a packet 70 bytes in size, but then the DNS response can be up to 512 bytes in size. 
+This is an amplification attack: Attacker sends something small, and server amplifies it. 
+This is a reflection attack: Attacker sends to DNS server, the DNS server is the one "attacking" the victim
+
+DNS Amplification Attack: sends forged DNS requests with spoofed source IP addresses to DNS servers
+
+Exercise #5
+Assuming that your browser and the DNS servers has not been on the Internet for a while, what are the steps (in terms of DNS) that occur when you want to visit the site: 
+https://www.nytimes.com/section/science
+
+
+Exercise A: Describe Three types of Denial of Service Attacks and explain a mitigation strategy for each.
