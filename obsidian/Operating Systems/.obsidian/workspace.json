@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Memory Management.md",
+                "file": "Input Output.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Memory Management"
+              "title": "Input Output"
             }
           }
         ]
@@ -171,6 +171,7 @@
   },
   "active": "31d343fe49104b81",
   "lastOpenFiles": [
+    "Memory Management.md",
     "File Systems.md",
     "Input Output.md",
     "Paper.md",
@@ -178,7 +179,6 @@
     "Chapter One.md",
     "Chapter One Questions.md",
     "Introduction.md",
-    "Memory Management.md",
     "Operating Systems Course for Beginners.md",
     "Processes and Threads.md",
     "Untitled",
