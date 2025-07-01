@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d87186a2aecffa21",
+        "id": "92216a8ba7622a66",
         "type": "tabs",
         "children": [
           {
-            "id": "6b4eeb435b1e5200",
+            "id": "1cbbf40852fa011b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Deadlocks.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Deadlocks"
+              "title": "New tab"
             }
           }
         ]
@@ -170,10 +166,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6b4eeb435b1e5200",
+  "active": "1cbbf40852fa011b",
   "lastOpenFiles": [
-    "Input Output.md",
     "Deadlocks.md",
+    "Input Output.md",
     "Memory Management.md",
     "File Systems.md",
     "Paper.md",
