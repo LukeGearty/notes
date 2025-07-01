@@ -28,3 +28,21 @@ Annualized Rate of Occurrence (ARO) = Estimated frequency a threat will occur wi
 Annualized Loss Expectancy (ALE) = SLE x ARO
 
 
+Mat Honan Attack:
+- Attacker's goal was to take control of the Twitter handle @mat 
+- Chose not to attack Twitter authentication directly
+- Found personal homepage linked on Mat’s Twitter profile
+- Discovered victim’s Gmail address on the homepage
+- Visited Google account recovery page
+- Recovery page revealed an alternate email ending in @me.com
+- Attacker knew @me.com email could be recovered using billing address and last four digits of credit card
+- Attacker exploited a loophole in Amazon to get this information
+- Called Amazon claiming to be the account holder and requested to add a new credit card
+- Only needed email and billing address (found via domain name registration)
+- Called Amazon again, claimed email access was lost, and provided name, billing address, and the new credit card number
+- Amazon allowed account recovery and sent account info to attacker's email
+- Attacker accessed Amazon account and viewed the last four digits of the original credit card   
+- Used that info to recover the @me.com and iCloud account
+- Since @me.com was a recovery email for Gmail and Twitter, attacker also took over those accounts
+- Remotely wiped the victim’s computer using iCloud's remote wipe feature
+- Demonstrates how different systems' recovery processes can be chained together and exploited
