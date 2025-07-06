@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5077b0474c44c58f",
+            "id": "cdc36065045fb9e2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lesson 2.md",
+                "file": "Lesson 5.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lesson 2"
+              "title": "Lesson 5"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "14e1dd7e237c2411",
@@ -169,12 +168,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5077b0474c44c58f",
+  "active": "cdc36065045fb9e2",
   "lastOpenFiles": [
+    "Lesson 2.md",
+    "Lesson 5.md",
     "Lesson 1.md",
     "Lecture 06-30.md",
     "Lecture 06-24.md",
-    "Lesson 2.md",
     "Lecture 06-16.md",
     "Lecture 06-09.md",
     "Lecture 06-02.md",
