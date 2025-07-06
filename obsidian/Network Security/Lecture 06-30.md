@@ -112,12 +112,31 @@ Can switch between UDP and ICMP
 Encryption supported
 
 
+Covert Channel:
+The message is hidden within the traffic of legitimate communications channel. 
+
+Network Steganography:
+The message is hidden within the traffic of a legitimate comm channel
+
+Common Example: Tunnel inside TCP 80
+Tunneling - encapsulating one protocol into another protocol.
+•Very common method for even legitimate applications is to tunnel their communications over TCP 80.
+•Other methods include tunneling inside SSH and GRE tunneling.
+GRE: GRE protocol, or Generic Routing Encapsulation, is ==a tunneling protocol developed by Cisco that encapsulates packets of one network protocol within another.
+•This causes problems for firewalls that rely on restricting traffic by IP and source/destination port
+•Application layer firewalls dig deeper into the packets and can filter by the application itself.
+
+covert_tcp:
+1. IP Identification method: ID field is a 16 bit number used for TCP segmentation. Supposed to be a random number. You can fit insert a single ASCII charactr and receive it at the other end
+2. TCP sequence Number method: Send SYN with ADCII character as the initial sequence number, reply with rst, rst actuall acks the receipt of the hidden character
+3. TCP ACK #: sender bounces this information of an unwitting intermediate party
 Exercise #5
 Explain the three functions of covert_tcp
+
 What are another three places (aside from the covert_tcp functions) where data can be hidden while still allowing TCP to work correctly?
-IP ID Method
-Sequence # Method
-ACK # Method
+. IP Identification method: ID field is a 16 bit number used for TCP segmentation. Supposed to be a random number. You can fit insert a single ASCII charactr and receive it at the other end
+2. TCP sequence Number method: Send SYN with ADCII character as the initial sequence number, reply with rst, rst actuall acks the receipt of the hidden character
+3. TCP ACK #: sender bounces this information of an unwitting intermediate party
 You can hide in Checksum, options, source port # (supposed to be randomly generated)
 
 
@@ -159,4 +178,6 @@ Send logs to external service (Splunk, ELK, etc), log redundancy and backups
 
 Exercise A:
 Describe three methods attackers use to maintain access on a compromised system. What are ways to detect each method?
-
+Create a backdoor - a hidden entry point into the system. This can be detected with unusual network connections, weird processes, and anti-malware scans.
+Credential Theft - stealing user credentials like username/password combinations. This can be detected with multifactor authentication.
+Installing malware on operating system - can be detected with tools that monitor the kernel 
