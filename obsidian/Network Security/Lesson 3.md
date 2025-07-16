@@ -47,3 +47,28 @@ Ways to stop:
 Session Hijacking: take control of one side of a TCP connection, marriage of sniffing and spoofing. Attacker is on segment where traffic passes from A to B: attacker sniffs packets, sees TCP packets between A and B and their sequence numbers. Attacker jumps in, sending TCP packets to B; source IP = A's IP. 
 Principal defense: encryption w/auth protocol
 
+Denial of Service: 
+ **Goal**: Overwhelm a system, network, or service to make it unavailable to legitimate users.
+**Types**: Includes basic DoS (single source), DDoS (distributed from many sources), and application-layer attacks.
+**Common Methods**: Flooding with traffic (e.g., ICMP, SYN floods), exploiting vulnerabilities, or consuming resources.
+**Impacts**: Service outages, financial loss, damaged reputation, and potential security breaches.
+**Mitigations**: Rate limiting, firewalls, intrusion detection systems, and using cloud-based DDoS protection services.
+
+Land DoS: sends spoofed packet with source and dest address/port the same
+Ping of death: sends oversized ping packet
+Jolt2: sends a stream of fragments, none of which
+have offset of 0. Rebuilding consumes all processor
+capacity
+IP Fragmentation and Reassembly:
+4000 byte datagram, 1500 byte MTU
+1480 bytes in data field, offset = 1480/8
+
+SYN Flood: Send Many SYN packets, filling connection queue with half-open connections, can spoof source IP address.
+Defense:
+Syn Cookies: When SYN segment arrives, host B calculates function
+(hash) based on:
+•Apache example: Source and destination IP addresses and port
+numbers, and a secret number
+Host B uses resulting “cookie” for its initial seq # (ISN)
+in SYNACK
+

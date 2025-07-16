@@ -8,49 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bf79706b1ca7bba7",
+            "id": "ec51055996a3e658",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lesson 5.md",
+                "file": "Lecture 07-15.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lesson 5"
-            }
-          },
-          {
-            "id": "9b5e568ce9428291",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Midterm Review.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Midterm Review"
-            }
-          },
-          {
-            "id": "39b3d0fb2d8083c3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Midterm Sample.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Midterm Sample"
+              "title": "Lecture 07-15"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "14e1dd7e237c2411",
@@ -197,19 +169,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "39b3d0fb2d8083c3",
+  "active": "ec51055996a3e658",
   "lastOpenFiles": [
-    "Midterm Review.md",
-    "Lesson 2.md",
-    "Midterm Sample.md",
-    "Lesson 5.md",
-    "Lecture 06-16.md",
-    "Lecture 06-24.md",
-    "Lesson 3.md",
     "Lecture 06-30.md",
+    "Lecture 07-15.md",
+    "Lecture 06-30.pdf",
+    "Lecture 06-24.md",
+    "Lecture 06-24.pdf",
+    "Lecture 06-16.md",
+    "Lecture 06-16.pdf",
     "Lecture 06-09.md",
-    "Lesson 1.md",
+    "Lecture 06-09.pdf",
     "Lecture 06-02.md",
-    "Lecture 05-19.md"
+    "Lecture 06-02.pdf",
+    "Lecture 05-19.md",
+    "Lecture 05-19.pdf",
+    "Lesson 5.md",
+    "Lesson 5.pdf",
+    "Lesson 3.md",
+    "Lesson 3.pdf",
+    "Lesson 2.md",
+    "Lesson 2.pdf",
+    "Lesson 1.md",
+    "Lesson 1.pdf",
+    "Midterm Review.md",
+    "Midterm Sample.md"
   ]
 }
