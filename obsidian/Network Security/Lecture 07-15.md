@@ -92,3 +92,55 @@ Sender MAC: MAC C
 Sender IP: 10.1.1.1
 Target MAC: MAC B
 Target IP: 10.1.1.2
+
+Task 2: 
+Step 1: Launch Scapy Program AITM Attack
+Step 2 & 3: Test to make sure it works, turn ip_forward on/off (show proof)
+Step 4:
+	Launch AITM attack
+	Establish telnet
+	Turn off ip_forward
+	Replace characters Q with Z
+
+Task 3:
+Same as above using netcat instead
+
+Submit:
+Create attack
+capture attack on wireshark
+save it as netID.pcap
+Create a settings.txt file
+Upload those files to gradescope
+
+
+-----
+
+When you go to starbucks, you are susceptible to an ARP cache poisoning - it is pretty easy to do
+
+
+------
+Message Integrity: Allows communicating party to verify that received messages are authentic
+
+Encrypt: keeps communications private, using same or different keys, needs key management, is reversible
+
+Hashing: transforms message into fixed-size string, one-way hash function, strongly collision-free hash, viewed as a "digital fingerprint". Used for message integrity check and digital certificates, faster than encryption. 
+
+Hash Functions
+MD5 (broken)
+SHA-1 (also broken)
+These two are not collision resistant. Collision: when two different inputs produce the same output
+
+Exercise #1:
+What's the minimal recommended strength for each of the following algorithms:
+-AES: 128 bits, 256 preferred. Technically there is no difference, so no reason why an application can't support 256 over 128. 128 is okay for legacy.
+-DH: 2048 bit, 4096 for highly secure
+-RSA: 2048 bits, 4096 for highly secure
+-SHA (Which version):  => Sha-2 256 bits. Also Sha-3
+
+When you are calculating DH, RSA, etc, it is difficult to figure out the prime numbers needed. Quantum computing threatens to break that by factoring the values extremely fast.
+
+Digital Signature: a method to verify the authenticity and integrity of digital messages or documents
+Requires Public Key algorithms. It has a public key and a private key. 
+hash of a file encrypted using the private key. 
+message -> hash of message -> encrypted using private key to create digital signature
+To evaluate that the digital signature is from the right person, the digital signature is decrypted using the public key. The recipient takes the digital signature, decrypts it using public key, gets a hash of the message. 
