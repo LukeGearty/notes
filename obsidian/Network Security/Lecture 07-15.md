@@ -144,3 +144,47 @@ Requires Public Key algorithms. It has a public key and a private key.
 hash of a file encrypted using the private key. 
 message -> hash of message -> encrypted using private key to create digital signature
 To evaluate that the digital signature is from the right person, the digital signature is decrypted using the public key. The recipient takes the digital signature, decrypts it using public key, gets a hash of the message. 
+Validating a digital signature:
+Take a hash of the original message and decrypt the digital signature, compare hash
+Getting another person's public key, it is sent with the email 
+One of the properties of a public key is to say what email address it is associated with
+
+HMAC vs Digital Signatures
+Digital Signatures use public key while HMAC uses symmetric keys. Other than that they are extremely similar. 
+HMAC keys must be pre-shared, digital signature keys don't. 
+HMAC is extremely fast.Digital Signatures are slower than HMAC.
+HMAC is used for automated processes, digital signatures are more used for human interactions. 
+
+Playback Attack: An attacker intercepts communication and resends it.
+
+Nonce is a number used only once
+Someone sends a message, the recipient sends back a nonce, and the sender resends the message with the nonce
+The recipient validates the HMAC/digital signature and validates the transfer
+Nonce ensures that replay attacks/playback don't work
+1. **1.** **Unique Number Generation:**
+    When a user or system initiates a communication, a random or pseudo-random number (the nonce) is generated and included in the message. 
+2. **2.** **Message Transmission:**
+    The message, along with the nonce, is then sent to the intended recipient. 
+3. **3.** **Verification:**
+    The recipient system stores the nonce and checks it against previously received nonces. If the nonce has already been used, the message is rejected as a replay.
+
+
+Exercise #2: 
+Explain the difference between these terms: 
+Symmetric key cryptography: cryptography that utilizes one single shared key
+Public Key Cryptography: Cryptography that utilizes a publicly available key and private key
+Hashing: A function that takes a message of any size and transforms it into a string of a fixed size
+
+Exercise #3:
+What are some ways to use symmetric keys, public keys, and hashes to create a message encrypt scheme? (Also list bad answers)
+1. Sender: encrypts message with symmetric key
+	Receiver: Decrypts message with same key
+2. Sender: uses a secret key to encrypt the message, encrypt the secret key with the recipient's public key, send both to the recipient
+
+Exercise B: Please find the cost of a one-year TLS certificate. Note the vendor and type of certificate issued.
+Can range from free to over $2000.
+Free: Let's Encrypt, basic Domain Validation. It certifies that you own a specific domain name.
+DigiCert: Can be around $100 - $200 per month, depending on the need. 
+
+Exercise C: Explain in detail how Diffie-Hellman is susceptible to an AITM attack. 
+An attacker can intercept the public key exchange between two parties and modify the keys.
