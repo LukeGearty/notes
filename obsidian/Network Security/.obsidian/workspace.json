@@ -8,35 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3a05c8df96411118",
+            "id": "1a5531f25650b060",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lecture 7-21.md",
+                "file": "Final Sample.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lecture 7-21"
-            }
-          },
-          {
-            "id": "6c24548aec60ea79",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Lecture 7-28.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lecture 7-28"
+              "title": "Final Sample"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "FTP",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "14e1dd7e237c2411",
@@ -184,31 +168,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6c24548aec60ea79",
+  "active": "1a5531f25650b060",
   "lastOpenFiles": [
-    "Lecture 7-21.md",
+    "Lesson 6 - MI, PKI, TLS.md",
+    "Final Exam Cheatsheet.md",
+    "Final Exam Cheatsheet.pdf",
     "Lecture 7-28.md",
+    "Lesson 8 - Layer 2 Security.md",
+    "Lecture 7-21.md",
+    "Lecture 8-7.md",
+    "Final Sample.md",
     "Lecture 07-15.md",
-    "Lecture 06-30.md",
-    "Lecture 06-30.pdf",
-    "Lecture 06-24.md",
+    "Lesson 7 - Firewalls.md",
+    "Lesson 1.md",
+    "Lesson 3.md",
+    "Lecture 05-19.pdf",
+    "Lecture 06-02.pdf",
+    "Lecture 06-09.pdf",
     "Lecture 06-24.pdf",
+    "Lecture 06-30.pdf",
+    "Lesson 3.pdf",
+    "Lesson 2.pdf",
+    "Lesson 1.pdf",
+    "Lecture 06-30.md",
+    "Lecture 06-24.md",
     "Lecture 06-16.md",
     "Lecture 06-16.pdf",
     "Lecture 06-09.md",
-    "Lecture 06-09.pdf",
     "Lecture 06-02.md",
-    "Lecture 06-02.pdf",
     "Lecture 05-19.md",
-    "Lecture 05-19.pdf",
     "Lesson 5.md",
-    "Lesson 5.pdf",
-    "Lesson 3.md",
-    "Lesson 3.pdf",
     "Lesson 2.md",
-    "Lesson 2.pdf",
-    "Lesson 1.md",
-    "Lesson 1.pdf",
     "Midterm Review.md",
     "Midterm Sample.md"
   ]
