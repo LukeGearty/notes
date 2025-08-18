@@ -395,4 +395,26 @@ At T16, P2 runs for 3 units, completes at 19
 At T20, P3 runs again for 2 units, completes at T22
 
 
-Timestamp: 3:53:31
+SJF - Shortest Job First - Based on Burst Time
+Selection Criteria: Shortest Burst Time
+Mode of Operation: Non-preemptive
+Conflict Resolution: Lower PID (P1 > P2 Preference)
+
+Among the process present in BQ, we select the process with least burst time & schedule it on CP
+
+
+| Process No | Arrival Time | Burst Time |
+| ---------- | ------------ | ---------- |
+| 1          | 0            | 2          |
+| 2          | 2            | 3          |
+| 3          | 3            | 1          |
+| 4          | 5            | 2          |
+| 5          | 8            | 3          |
+| 6          | 10           | 2          |
+Burst time is only compared between the processes in ready queue
+
+
+Shortest Remaining Time First / Preemptive SJF
+Selection Criteria: Burst Time
+Mode of Operation: Preemptive
+Tie Breaking: Preemption of running process is based on the availability of strictly shorter process

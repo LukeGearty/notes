@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "2be95e306684e638",
+    "id": "48d11f13a96fb110",
     "type": "split",
     "children": [
       {
-        "id": "92216a8ba7622a66",
+        "id": "25dc9ad14abe7356",
         "type": "tabs",
         "children": [
           {
-            "id": "bb054454bb516b78",
+            "id": "e74a98f693d5d4d5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Operating Systems Course for Beginners.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Operating Systems Course for Beginners"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "53b9e9d7b2b279c7",
+    "id": "1af6dec198c08b98",
     "type": "split",
     "children": [
       {
-        "id": "6d79ffa9ac1a817a",
+        "id": "8a6e7c791d3d445d",
         "type": "tabs",
         "children": [
           {
-            "id": "9799bdfafb8f028b",
+            "id": "0132f0bfbb01a6c4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +44,7 @@
             }
           },
           {
-            "id": "490d1dfec4c28da1",
+            "id": "b4eec1f91f294dfb",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "fb1fa3ef944948ea",
+            "id": "e82dca6a0b5979c9",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,24 +74,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 322.5,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "49246161625926ee",
+    "id": "bd83caad094c5523",
     "type": "split",
     "children": [
       {
-        "id": "492aa59eaa1d812b",
+        "id": "affb155d8e69a305",
         "type": "tabs",
         "children": [
           {
-            "id": "a5aa5b0771b18206",
+            "id": "1912279ff4009ea0",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter One.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,25 +100,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Chapter One"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "22f69e6090d47a15",
+            "id": "83b1c9b6fc09b4d0",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Chapter One.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Chapter One"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "f63826624fa4a4d1",
+            "id": "b143726796a7d72e",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -138,22 +132,20 @@
             }
           },
           {
-            "id": "d2491cf936c10ef3",
+            "id": "9267aaff4849693a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Chapter One.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Chapter One"
+              "title": "Outline"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -170,24 +162,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bb054454bb516b78",
+  "active": "e74a98f693d5d4d5",
   "lastOpenFiles": [
-    "Security.md",
-    "Chapter Three.md",
-    "Multiprocessors.md",
-    "Virtualization and the Cloud.md",
-    "Deadlocks.md",
-    "Input Output.md",
-    "Memory Management.md",
-    "File Systems.md",
-    "Paper.md",
-    "Chapter Two.md",
-    "Chapter One.md",
-    "Chapter One Questions.md",
-    "Introduction.md",
-    "Operating Systems Course for Beginners.md",
-    "Processes and Threads.md",
-    "Untitled",
-    "2025-05-30.md"
+    "Coursera.md"
   ]
 }
