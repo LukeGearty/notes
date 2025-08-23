@@ -418,3 +418,13 @@ Shortest Remaining Time First / Preemptive SJF
 Selection Criteria: Burst Time
 Mode of Operation: Preemptive
 Tie Breaking: Preemption of running process is based on the availability of strictly shorter process
+
+Highest Response Ratio Next
+Selection Criteria: ( WT + BT ) / (BT) 
+Next process to run is the one whose response ratio is highest. Longer process waiting from a long time will have high RR.
+
+Priority Based Scheduling:
+	Problem: Starvation to low priority process - if high priority process keeps going, then when does low priority go?
+	Solution: Low priority process will become high priority after some time (Dynamic)
+
+Timestamp: 5:34:43

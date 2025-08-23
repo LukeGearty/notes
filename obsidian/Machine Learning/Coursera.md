@@ -51,3 +51,41 @@ In classification, classes and categories are used interchangeably.
 Classification Algorithms predict categories - can predict whether a picture is a cat or a dog. 
 There can be more than one input to predict an output. 
 For example, instead of just using tumor size, the input can also include the age. 
+
+# 8/19
+## Unsupervised Learning Part 1
+In unsupervised learning, we are given data that isn't associated with an output label y. In the example above, it would just be input - age and tumor size, and the goal is to find something interested in unlabeled data. There isn't a right answer, the algorithm is asked to find what is interesting and what patterns are there in the data. 
+Clustering: placing data into groups. For example: google news goes through a lot of news stories and places them into groups. The algorithm figures out which words go with each other.
+Another example: customers for a company/store, clustered into different clusters based on different characteristics. 
+
+## Unsupervised Learning Part 2
+More formal definitions:
+	"Data only comes with inputs x, but not output labels y. Algorithm has to find structure in the data."
+	Clustering: Group similar data points together. 
+	Anomaly Detection: find unusual data points. 
+	Dimensionality reduction: Compress data using fewer numbers. 
+
+## Jupyter Notebooks
+A widely used environment to code and experiment in ML. 
+
+# 8/20
+## Linear Regression Model part 1
+Linear Regression: "fitting a straight line to your data"
+Regression model predicts numbers
+Supervised learning model Data has "right answers"
+Classification model predicts categories
+Training Set: Data used to train the model
+Notation:
+	*x* = "input" variable feature
+	*y* = "output" variable, "target" variable
+	*m* = number of training examples
+	(x, y) = single training example
+
+## Linear Regression Model part 2
+Training set is fed to learning algorithm, which produces a function, *f*, and the job of *f* is to take input *x* and make a prediction called *y-hat* (a y with a hat symbol out). This is the estimated value of y. When the symbol is *y* is used, it is the "target", actual true value.
+f_w,b(x) = wx + b
+
+# 8/21
+## Cost Functions Formula
+In order to implement linear regression, need a cost function to tell us how well the model is doing.
+Parameters: coefficients, weights, variables you can adjust
