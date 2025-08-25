@@ -54,4 +54,4 @@ Binary Cross-Entropy Loss
 	Loss decreases as performance gets better
 
 Accuracy: 
-	Say there is a model being trained to p
+	Say there is a model being trained to see the difference between apples and oranges. If it looks at a picture of an apple 4 times and predicts "apple" 3 times, it has a 75% accuracy.
