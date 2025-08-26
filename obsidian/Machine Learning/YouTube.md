@@ -55,3 +55,54 @@ Binary Cross-Entropy Loss
 
 Accuracy: 
 	Say there is a model being trained to see the difference between apples and oranges. If it looks at a picture of an apple 4 times and predicts "apple" 3 times, it has a 75% accuracy.
+
+
+k-nearest neighbors
+Euclidean Distance
+	d = sqrt((x_2 -x_1)^2 + (y_2 - y_1)^2)
+
+https://en.wikipedia.org/wiki/Precision_and_recall
+
+Naive Bayes
+Has covid?
+
+Top is test results, far right is sum of those rows, bottom is sum of columns
+
+|     | +   | -    |      |
+| --- | --- | ---- | ---- |
+| y   | 531 | 6    | 537  |
+| n   | 20  | 9443 | 9463 |
+|     | 551 | 9449 |      |
+What is the probability of having covid given a positive test result?
+P(covid | + test) = 531 / 551 = 96.4%
+Probability of covid given a positive test
+Of the positive tests, there are 531 people who had covid after a positive test, out of 551
+
+Bayes Rule
+P(A | B) = P(B | A) \* P(A) / P (B)
+
+In action:
+P(false positive) = 0.05
+P(false negative) = 0.01
+P(disease) = 0.1
+
+P(disease | (+) test) = ?
+
+P(false positive) can be rewritten: P((+) test | no disease)
+P(false negative) can be rewritten: P((-) test | disease)
+
+Putting it into a chart:
+
+|            | +    | -    |
+| ---------- | ---- | ---- |
+| disease    | 0.99 | 0.01 |
+| no disease | 0.05 | 0.95 |
+
+P((+) test) = P(+ | disease) * P(disease) + P(+ | no disease) * P(no disease)
+		= 0.99 * 0.1 + 0.05 * 0.9
+
+
+P(disease | (+) test) = P((+) test | disease) * P(disease) / P((+) test)
+	 = 0.99 * 0.1 / (0.99 * 0.1 + 0.05 * 0.9)
+	 = 0.6875
+	 or 68.75
