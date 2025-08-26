@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Remove Element"
             }
+          },
+          {
+            "id": "38c92d67c40dc78c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Search Insert Position.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Search Insert Position"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,10 +184,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "ce11faffd29e6692",
+  "active": "38c92d67c40dc78c",
   "lastOpenFiles": [
-    "Remove Duplicates from Sorted Array.md",
     "Remove Element.md",
+    "Search Insert Position.md",
+    "Remove Duplicates from Sorted Array.md",
     "Two Sum.md",
     "Longest Common Prefix.md",
     "Welcome.md"
