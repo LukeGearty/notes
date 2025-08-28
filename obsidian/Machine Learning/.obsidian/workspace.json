@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "96624cf286e4d11e",
+        "id": "051d8bf679ca49ed",
         "type": "tabs",
         "children": [
           {
-            "id": "44c65e21bf4c5bde",
+            "id": "774070024dd88fd9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -164,7 +164,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "44c65e21bf4c5bde",
+  "active": "774070024dd88fd9",
   "lastOpenFiles": [
     "YouTube.md",
     "Coursera.md"

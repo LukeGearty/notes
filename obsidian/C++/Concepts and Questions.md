@@ -58,3 +58,23 @@ The compiler gives a warning:
 
 https://en.wikipedia.org/wiki/Most_vexing_parse
 https://www.fluentcpp.com/2018/01/30/most-vexing-parse/
+
+# Compilers and Linkers
+The code that you write is called the source code. 
+Compilers translate the high level language to machine language. 
+
+The compiler converts the source file into object code. 
+
+A real program will probably have to reference other code/files. For example, printing to the screen in C and C++ requires the stdio.h, or iostream. The compiler puts a reference to those functions, and the linker links the object code with that library. 
+
+Examples of compilers:
+gcc, clang, mcvs
+# Increment and Decrement Operators
+
+```C++
+int x = 3;
+int y = 2 * x++;
+int z = ++y * 4;
+```
+
+x++ will evaluate the original value of x, then increment it.  ++y first increments the value of y, then evaluates it.

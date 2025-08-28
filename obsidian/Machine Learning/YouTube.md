@@ -106,3 +106,4 @@ P(disease | (+) test) = P((+) test | disease) * P(disease) / P((+) test)
 	 = 0.99 * 0.1 / (0.99 * 0.1 + 0.05 * 0.9)
 	 = 0.6875
 	 or 68.75
+
