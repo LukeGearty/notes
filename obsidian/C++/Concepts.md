@@ -78,3 +78,22 @@ int z = ++y * 4;
 ```
 
 x++ will evaluate the original value of x, then increment it.  ++y first increments the value of y, then evaluates it.
+
+
+# String Literal
+Sequence of characters actually included in code between the quotes. 
+std::string
+Example:
+```C++
+std::string s = "Pasadena";
+```
+s is a string. "Pasadena" is the literal.
+
+# Auto
+A placeholder for a type to be deduced from the initializer expression of a variable. It basically means "let the compiler deduce the exact type from the initializer."
+
+# Initializer
+The value of a variable
+
+# Vector vs Array
+Arrays are fixed size with static memory allocation, taking space on the stack. Vectors are dynamic size, containing pointers into the heap. 

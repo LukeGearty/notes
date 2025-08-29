@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Merge Sorted Array.md",
+                "file": "array/Merge Sorted Array.md",
                 "mode": "source",
                 "source": false
               },
@@ -169,11 +169,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "5ac8bf2f031bb080",
+  "active": "8e50b9a1eec1819c",
   "lastOpenFiles": [
     "array/Two Sum.md",
     "array/Plus One.md",
-    "Merge Sorted Array.md",
+    "array/Merge Sorted Array.md",
     "array",
     "array/Search Insert Position.md",
     "array/Remove Element.md",
