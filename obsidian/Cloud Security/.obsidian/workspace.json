@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "48d11f13a96fb110",
+    "id": "d1cef8f43ce0d5df",
     "type": "split",
     "children": [
       {
-        "id": "051d8bf679ca49ed",
+        "id": "c5d0f942084ac2b8",
         "type": "tabs",
         "children": [
           {
-            "id": "e76fd5893cfc5762",
+            "id": "5616a73a6335089a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Class/9-3.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "9-3"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "1af6dec198c08b98",
+    "id": "2c889cb69d49e605",
     "type": "split",
     "children": [
       {
-        "id": "8a6e7c791d3d445d",
+        "id": "37b02070eca48d96",
         "type": "tabs",
         "children": [
           {
-            "id": "0132f0bfbb01a6c4",
+            "id": "65edc163e9a16dba",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +44,7 @@
             }
           },
           {
-            "id": "b4eec1f91f294dfb",
+            "id": "d91eaed65610b00a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "e82dca6a0b5979c9",
+            "id": "64e7701c346bc98f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,24 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "bd83caad094c5523",
+    "id": "f556bbb69ad63906",
     "type": "split",
     "children": [
       {
-        "id": "affb155d8e69a305",
+        "id": "a54c950a8d1609a1",
         "type": "tabs",
         "children": [
           {
-            "id": "1912279ff4009ea0",
+            "id": "3c35edaef487ec8d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "YouTube.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,11 +99,11 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for YouTube"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "83b1c9b6fc09b4d0",
+            "id": "d07219c05e5dccc1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -122,7 +116,7 @@
             }
           },
           {
-            "id": "b143726796a7d72e",
+            "id": "336c96f73b14e6d4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +131,7 @@
             }
           },
           {
-            "id": "9267aaff4849693a",
+            "id": "c00b955dc9779be9",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -159,21 +153,15 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
     }
   },
-  "active": "e76fd5893cfc5762",
-  "lastOpenFiles": [
-    "Class/Week 1.md",
-    "Class/9-3.md",
-    "YouTube.md",
-    "Coursera.md",
-    "Class"
-  ]
+  "active": "5616a73a6335089a",
+  "lastOpenFiles": []
 }
