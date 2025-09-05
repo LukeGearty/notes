@@ -11,10 +11,14 @@
             "id": "5616a73a6335089a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Introduction - 9-4.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Introduction - 9-4"
             }
           }
         ]
@@ -74,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f556bbb69ad63906",
@@ -163,5 +168,7 @@
     }
   },
   "active": "5616a73a6335089a",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Introduction - 9-4.md"
+  ]
 }
