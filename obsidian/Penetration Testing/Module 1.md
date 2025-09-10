@@ -158,3 +158,122 @@ http://www.pentest-standard.org/index.php/Main_Page
 
 http://www.pentest-standard.org/index.php/PTES_Technical_Guidelines
 
+# Risk Scoring Formula, Definitions, CVSS
+
+The pentest's advantage over vuln assessment is the prioritization of findings
+Tester needs to be able to score and rank their findings
+Only possible if testers understand the exploit, have threat data, and can determine the impact to the org
+Most methodologies include some for Risk Scoring
+Next slides provide two examples of risk scoring
+	CVSS - Risk is based on vuln
+	NIST - Risk is categorized by a specific threat event and impact
+
+### CVSS
+Methodology to score vulns from 1 -> 10
+Open industry standard
+Provides valuable technical impact of a vuln
+	but short of a risk score
+Almost all published CVEs have a raw impact score based on CVSS
+
+#### Three Parts
+Base Score - raw impact score
+	Exploitability Metrics
+		Attack Vector - the context by which the attack is possible.
+			Over the network, adjacent, local, etc.
+		Attack Complexity - either low or high
+			Low - attacker isn't required to do anything to set it up
+			High - 
+		Privileges Required
+			None - no privileges required
+			Low - basic user
+			High - admin/root privileges 
+		User Interaction - is user interaction required or not?
+			Certain attacks may require a user to click something, run something, download something
+	Impact Metrics
+		Confidentiality Impact, Integrity Impact, Availability Impact
+			Low, None, or High
+Temporal Metric Group - how it changes over time
+	Exploit Code Maturity - how mature the exploit is available to attackers
+		Is it published on the internet (ExploitDB) or is there a POC, is this just a theoretical concept?
+	Remediation Level - how well and mature the fix is for the vuln
+		Is there a workaround in place? Has it been patched?
+	Report Confidence - how well the intel is that this vuln/exploit actually does what is says it does
+		If a vendor can corroborate it, it would have a high report confidence
+		If a security group says it can create something that isn't reproducible, it would be low/unknown 
+Environmental Metric Group - unique to each organization's specific environment
+	Confidentiality Requirement
+	Integrity Requirement
+	Availability Requirement
+	Modified Base Metrics
+
+Adding Temporal and Environmental data points can only reduce the score
+
+### NIST
+800-30: Guide for conducting risk assessment
+Not a pentest methodology, it is thorough in how an org can conduct a risk assessment which may include a pentest
+
+Likelihood of Threat Event Initiation or Occurrence
+	How likely it is that the threat event will be initiated by an adversary or occur if its a non-adversary
+		Ex: Once a year, somewhat likely, almost certain, daily
+Likelihood of Threat Event Adverse Impact
+	How likely it is that the threat event will be successful in harming the system or organization
+	Example: Almost certain; unlikely to be successful
+Impact of Threat Event
+	Measurement of how harmful the threat event would be
+	Example: Negligible, catastrophic, $100,000+
+Risk
+	The overall measure of a vulnerability that can get exploited by a threat event which will have an impact to an asset
+	Can be quantitative or qualitative
+	Used to help provide recommendations in a test report.
+	Often expressed as negligible, low, moderate, high, critical
+
+
+Risk Examples
+Target - a small local community e-commerce business ,old version of Apache
+Threat Event - integrity Loss by Deleting or Disrupting a Web Server (DoS)
+	A threat actor tries to target specific flaws in a listening services to cause a DoS condition
+	A threat actor also defaces the site, also resulting in a loss of integrity, availability
+	A threat actor may also gain access to sensitive or privileged info
+Likelihood of Initiation - adversarial
+	Logs show regular scans but not rarely seeing application errors
+	Unlikely to initiate an event (Low)
+Likelihood of Adverse Impact
+	Running Apache from 2015, multiple known CVEs, including Apache Struts vuln
+	Highly likely to have adverse impacts (HIgh)
+Impact
+	DoS would mean downtime and loss of sales until servie restarted and attack stopped
+	High or severe adverse effects (High)
+	Other integrity or confidentiality impacts may elevate impact to Very High
+Risk - Moderate to High
+
+
+# Software, OS Distros, Hardware, Virtualization, Network Considerations, Securing
+Testing Toolkit - Kali, Protecting Data, Notes, Collaboration
+**Software** :
+	Windows 10
+	Linux Distro - Kali
+	Virtualization - Free (virtualBox, XenServer) or Professional (VMware)
+	Free/open source tools
+		nmap, tcpdump, wireshark, openVAS, Metasploit, Burp Suite, notepad++
+	Licensed Tools - not using
+		Retina, Nessus, FTK, Metasplot Pro, HP Fortify, Burp Pro, WebInspect, IDA Pro, Core Imapct, MS Office
+
+Hardware:
+	Machines for testing - not your daily use machine
+		Expect anything on this machine to be potentially be posted on Wikipedia
+		VMs used instead
+	External Storage
+	Mobile phones for app testing
+	Compatible radios
+		802.11
+		Bluetooth
+		IoT
+	Switches, routers, networking equipment
+Cloud Resources
+	Kali over AWS
+		https://aws.amazon.com/marketplace/pp/B01M26MMTT
+	EC2 for password cracking
+
+## Kali
+Debian-derived Linux distro designed for pentesting
+300+ pentesting and security auditing tools
