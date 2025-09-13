@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "051d8bf679ca49ed",
+        "id": "207ab7cb1a74902d",
         "type": "tabs",
         "children": [
           {
-            "id": "e76fd5893cfc5762",
+            "id": "baedb1346999fb06",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Class/9-3.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "9-3"
+              "title": "New tab"
             }
           }
         ]
@@ -167,9 +163,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e76fd5893cfc5762",
+  "active": "baedb1346999fb06",
   "lastOpenFiles": [
+    "Week 2.md",
+    "Adaptive Linear Neuron (Adaline).md",
+    "Perceptron.md",
+    "Class/9-10.md",
     "Class/Week 1.md",
+    "Gradient Descent.md",
+    "Neural Networks.md",
+    "main_notes.pdf",
     "Class/9-3.md",
     "YouTube.md",
     "Coursera.md",

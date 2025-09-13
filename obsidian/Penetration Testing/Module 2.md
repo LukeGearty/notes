@@ -2,7 +2,7 @@
 
 General Timeline:
 Pre-Test -> Test -> Post-Test 
-0-4               4-5.        5-7
+0-4               4-5        5-7
 
 ## Pre-test
 Intake - new request for a test, with optional questionnaire or other forms
